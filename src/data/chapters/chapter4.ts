@@ -23,15 +23,15 @@ export const chapter4: Chapter = {
 			nameEn: 'Year 2 Uni: Humiliating Funeral',
 			background: '/assets/sprites/backgrounds/funeral_countryside.png',
 			music: '/assets/audio/music/chapters/ch4_sadness.mp3',
-			dialogueStart: 'ch4_funeral_1',
+			dialogueStart: 'ch4_start',
 		},
 		{
 			id: 'ch4_divorce',
 			name: 'Lá đơn ly hôn',
 			nameVi: 'Lá đơn ly hôn (System Failure)',
 			nameEn: 'The Divorce Papers (System Failure)',
-			background: '/assets/sprites/backgrounds/home_broken.png',
-			music: '/assets/audio/music/chapters/ch4_sadness.mp3',
+			background: '/assets/sprites/backgrounds/university_gate.png',
+			music: '/assets/audio/music/chapters/ch4_energetic.mp3',
 			dialogueStart: 'ch4_divorce_1',
 		},
 		{
@@ -47,37 +47,14 @@ export const chapter4: Chapter = {
 	nightlyEvents: {
 		todoList: [
 			{
-				id: 'ch4_todo_freelance',
-				text: 'Bùng học làm freelance',
-				textVi: 'Bùng học làm freelance',
-				textEn: 'Skip class for freelance work',
-				effects: [{ stat: 'vision', value: 1 }],
-				reward: { money: 200000 },
-			},
-			{
-				id: 'ch4_todo_adopt_bi',
-				text: 'Nhận nuôi Bi (Corgi)',
-				textVi: 'Nhận nuôi Bi (Corgi)',
-				textEn: 'Adopt Bi (Corgi)',
-				effects: [{ stat: 'humanity', value: 1 }],
-				cost: { money: 100000 },
-			},
-			{
 				id: 'ch4_todo_code_hard',
 				text: 'Cày code 16 tiếng/ngày',
 				textVi: 'Cày code 16 tiếng/ngày',
 				textEn: 'Code 16 hours/day',
 				effects: [{ stat: 'vision', value: 2 }],
-				cost: { health: 1, stress: 1 },
+				cost: { health: 2, stress: 2 }, // Increased costs
 			},
-			{
-				id: 'ch4_todo_eat_noodle',
-				text: 'Ăn mì tôm qua ngày',
-				textVi: 'Ăn mì tôm qua ngày',
-				textEn: 'Survive on instant noodles',
-				cost: { health: 1 },
-				reward: { money: 20000 },
-			},
+
 			{
 				id: 'ch4_todo_call_mom',
 				text: 'Gọi điện cho mẹ',
@@ -91,7 +68,7 @@ export const chapter4: Chapter = {
 				textVi: 'Lờ đi cuộc gọi của bố',
 				textEn: "Ignore Dad's call",
 				effects: [{ stat: 'steelMind', value: 1 }],
-				cost: { humanity: 1 },
+				cost: { humanity: 2 }, // Increased Humanity cost
 			},
 			{
 				id: 'ch4_todo_hackathon',
@@ -160,14 +137,7 @@ export const chapter4: Chapter = {
 				textEn: 'Dream of Silicon Valley',
 				effects: [{ stat: 'vision', value: 1 }],
 			},
-			{
-				id: 'ch4_todo_buy_keyboard',
-				text: 'Mua bàn phím cơ xịn',
-				textVi: 'Mua bàn phím cơ xịn',
-				textEn: 'Buy mechanical keyboard',
-				effects: [{ stat: 'vision', value: 1 }],
-				cost: { money: 500000 },
-			},
+
 			{
 				id: 'ch4_todo_skip_shower',
 				text: 'Lười tắm',
@@ -405,6 +375,26 @@ export const chapter4: Chapter = {
 };
 
 export const chapter4Dialogues: Record<string, DialogueNode> = {
+	ch4_end: {
+		id: 'ch4_end',
+		speaker: 'narrator',
+		text: 'Lễ tốt nghiệp kết thúc. Bạn ném chiếc mũ cử nhân lên trời, nhưng trong lòng trĩu nặng lo âu. Ngày mai, bạn chính thức thất nghiệp.',
+		textVi:
+			'Lễ tốt nghiệp kết thúc. Bạn ném chiếc mũ cử nhân lên trời, nhưng trong lòng trĩu nặng lo âu. Ngày mai, bạn chính thức thất nghiệp.',
+		textEn:
+			'Graduation ceremony ended. You threw the cap in the sky, but heart heavy with worry. Tomorrow, you are officially unemployed.',
+		next: 'chapter_5_start',
+	},
+	ch4_start: {
+		id: 'ch4_start',
+		speaker: 'narrator',
+		text: 'Hà Nội ồn ào và bụi bặm. Giảng đường Đại học rộng lớn đến choáng ngợp. Bạn cảm thấy mình thật nhỏ bé giữa dòng người hối hả.',
+		textVi:
+			'Hà Nội ồn ào và bụi bặm. Giảng đường Đại học rộng lớn đến choáng ngợp. Bạn cảm thấy mình thật nhỏ bé giữa dòng người hối hả.',
+		textEn:
+			'Hanoi is noisy and dusty. The University lecture hall is overwhelmingly large. You feel so small amidst the rushing crowd.',
+		next: 'ch4_funeral_1',
+	},
 	// 4.1 Đám giỗ
 	ch4_funeral_1: {
 		id: 'ch4_funeral_1',
@@ -515,6 +505,172 @@ export const chapter4Dialogues: Record<string, DialogueNode> = {
 			'Bạn chuyển ra ở riêng tại một phòng trọ 15m2 ở Triều Khúc. Mùa hè 40 độ, không điều hòa. Bạn làm bạn với gián và mì tôm.',
 		textEn:
 			'You moved out to a 15m2 room in Trieu Khuc. 40 degrees summer, no AC. Friends with cockroaches and instant noodles.',
+		next: 'ch4_noodle_start',
+	},
+
+	// NEW: Eat Noodle Event
+	ch4_noodle_start: {
+		id: 'ch4_noodle_start',
+		speaker: 'player',
+		text: '(Suy nghĩ) Cuối tháng rồi. Ví rỗng tuếch. Lại là bài toán muôn thuở: Ăn gì?',
+		textVi:
+			'(Suy nghĩ) Cuối tháng rồi. Ví rỗng tuếch. Lại là bài toán muôn thuở: Ăn gì?',
+		textEn:
+			'(Thinking) End of month. Empty wallet. The eternal question: What to eat?',
+		choices: [
+			{
+				id: 'choice_noodle_save',
+				text: 'Mì tôm: Người bạn trung thành (+20k)',
+				textVi: 'Mì tôm: Người bạn trung thành (+20k)',
+				textEn: 'Instant noodles: Loyal friend (+20k)',
+				effects: [{ stat: 'money', value: 20000 }],
+				next: 'ch4_noodle_save',
+			},
+			{
+				id: 'choice_noodle_eat',
+				text: 'Bún chả: Tự thưởng cho mình (Health +1)',
+				textVi: 'Bún chả: Tự thưởng cho mình (Health +1)',
+				textEn: 'Bun cha: Treat myself (Health +1)',
+				effects: [{ stat: 'health', value: 1 }],
+				next: 'ch4_noodle_eat',
+			},
+		],
+	},
+	ch4_noodle_save: {
+		id: 'ch4_noodle_save',
+		speaker: 'narrator',
+		text: 'Gói mì tôm Hảo Hảo chua cay. Vừa ăn vừa hít hà. Tiết kiệm là quốc sách.',
+		textVi:
+			'Gói mì tôm Hảo Hảo chua cay. Vừa ăn vừa hít hà. Tiết kiệm là quốc sách.',
+		textEn:
+			'Spicy Hao Hao noodles. Slurping and sniffing. Saving is national policy.',
+		next: 'ch4_club_start', // Redirect to Club
+	},
+	ch4_noodle_eat: {
+		id: 'ch4_noodle_eat',
+		speaker: 'narrator',
+		text: 'Một suất bún chả đầy đặn. Hương vị thịt nướng làm bạn quên đi cái nóng 40 độ.',
+		textVi:
+			'Một suất bún chả đầy đặn. Hương vị thịt nướng làm bạn quên đi cái nóng 40 độ.',
+		textEn:
+			'A full portion of Bun Cha. Grilled meat aroma makes you forget the 40-degree heat.',
+		next: 'ch4_club_start', // Redirect to Club
+	},
+
+	// NEW: Club Activity
+	ch4_club_start: {
+		id: 'ch4_club_start',
+		speaker: 'narrator',
+		text: 'Trường Đại học có rất nhiều CLB. Bạn đứng trước bàn tuyển thành viên.',
+		textVi:
+			'Trường Đại học có rất nhiều CLB. Bạn đứng trước bàn tuyển thành viên.',
+		textEn: 'University has many clubs. You stand before the recruitment desk.',
+		choices: [
+			{
+				id: 'choice_club_code',
+				text: 'CLB Lập trình: Nơi hội tụ tinh hoa (Vision +1, Network ++)',
+				textVi: 'CLB Lập trình: Nơi hội tụ tinh hoa (Vision +1, Network ++)',
+				textEn: 'Coding Club: Elite gathering (Vision +1, Network ++)',
+				effects: [{ stat: 'vision', value: 1 }],
+				next: 'ch4_job_start',
+			},
+			{
+				id: 'choice_club_social',
+				text: 'CLB Tình nguyện: Kết nối cộng đồng (Humanity +2, Money -50k)',
+				textVi: 'CLB Tình nguyện: Kết nối cộng đồng (Humanity +2, Money -50k)',
+				textEn: 'Volunteer Club: Community connect (Humanity +2, Money -50k)',
+				effects: [
+					{ stat: 'humanity', value: 2 },
+					{ stat: 'money', value: -500000 },
+				],
+				next: 'ch4_job_start',
+			},
+			{
+				id: 'choice_club_solo',
+				text: 'Không tham gia: Dành thời gian tự học (Steel Mind +1)',
+				textVi: 'Không tham gia: Dành thời gian tự học (Steel Mind +1)',
+				textEn: 'Join none: Time for self-study (Steel Mind +1)',
+				effects: [{ stat: 'steelMind', value: 1 }],
+				next: 'ch4_job_start',
+			},
+		],
+	},
+
+	// NEW: Part-time Job
+	ch4_job_start: {
+		id: 'ch4_job_start',
+		speaker: 'player',
+		text: '(Suy nghĩ) Tiền sinh hoạt phí bố gửi không đủ. Mình cần kiếm thêm việc làm thêm.',
+		textVi:
+			'(Suy nghĩ) Tiền sinh hoạt phí bố gửi không đủ. Mình cần kiếm thêm việc làm thêm.',
+		textEn:
+			'(Thinking) Allowance from Dad is not enough. I need a part-time job.',
+		choices: [
+			{
+				id: 'choice_job_tutor',
+				text: 'Gia sư: Dạy toán cho trẻ con (Money +500k, Humanity +1)',
+				textVi: 'Gia sư: Dạy toán cho trẻ con (Money +500k, Humanity +1)',
+				textEn: 'Tutor: Teach math to kids (Money +500k, Humanity +1)',
+				effects: [
+					{ stat: 'money', value: 500000 },
+					{ stat: 'humanity', value: 1 },
+				],
+				next: 'ch4_exam_start',
+			},
+			{
+				id: 'choice_job_waiter',
+				text: 'Phục vụ bàn: Việc nhẹ lương thấp (Money +300k, Stress +2)',
+				textVi: 'Phục vụ bàn: Việc nhẹ lương thấp (Money +300k, Stress +2)',
+				textEn: 'Waiter: Low pay hard work (Money +300k, Stress +2)',
+				effects: [
+					{ stat: 'money', value: 300000 },
+					{ stat: 'stress', value: 2 },
+				],
+				next: 'ch4_exam_start',
+			},
+		],
+	},
+
+	// NEW: Exam & Cheating Chain
+	ch4_exam_start: {
+		id: 'ch4_exam_start',
+		speaker: 'narrator',
+		text: 'Kỳ thi cuối kỳ môn Cấu trúc dữ liệu & Giải thuật. Đề bài cực khó. Bạn bí ở câu cuối cùng.',
+		textVi:
+			'Kỳ thi cuối kỳ môn Cấu trúc dữ liệu & Giải thuật. Đề bài cực khó. Bạn bí ở câu cuối cùng.',
+		textEn:
+			'Final exam on Data Structures & Algorithms. Extremely hard. You are stuck on the last question.',
+		choices: [
+			{
+				id: 'choice_exam_cheat',
+				text: 'Quay cóp: Nhìn bài bạn bên cạnh (Risk: High)',
+				textVi: 'Quay cóp: Nhìn bài bạn bên cạnh (Risk: High)',
+				textEn: 'Cheat: Peek at neighbor (Risk: High)',
+				next: 'ch4_cheat_caught', // Collapse
+			},
+			{
+				id: 'choice_exam_honest',
+				text: 'Tự làm: Chấp nhận điểm thấp (Steel Mind +1)',
+				textVi: 'Tự làm: Chấp nhận điểm thấp (Steel Mind +1)',
+				textEn: 'Do yourself: Accept low score (Steel Mind +1)',
+				effects: [{ stat: 'steelMind', value: 1 }],
+				next: 'ch4_independence_rat_race',
+			},
+		],
+	},
+	ch4_cheat_caught: {
+		id: 'ch4_cheat_caught',
+		speaker: 'narrator',
+		text: 'Giám thị bắt gặp bạn đang liếc bài. Bạn bị lập biên bản, đình chỉ thi. Điểm F. Bố mẹ nhận được thông báo về hạnh kiểm.',
+		textVi:
+			'Giám thị bắt gặp bạn đang liếc bài. Bạn bị lập biên bản, đình chỉ thi. Điểm F. Bố mẹ nhận được thông báo về hạnh kiểm.',
+		textEn:
+			'Proctor caught you peeking. Record made, suspended. Grade F. Parents notified about conduct.',
+		effects: [
+			{ stat: 'vision', value: -2 },
+			{ stat: 'humanity', value: -2 },
+			{ stat: 'stress', value: 3 },
+		],
 		next: 'ch4_independence_rat_race',
 	},
 	ch4_independence_rat_race: {
@@ -525,6 +681,47 @@ export const chapter4Dialogues: Record<string, DialogueNode> = {
 			'Nhìn dòng người chen chúc tắc đường mỗi sáng, bạn nhận ra mình đã chính thức gia nhập "Rat Race". Cuộc đua của những chú chuột.',
 		textEn:
 			'Watching the traffic jam every morning, you realized you officially joined the "Rat Race".',
+		next: 'ch4_freelance_start',
+	},
+
+	// NEW: Freelance Event
+	ch4_freelance_start: {
+		id: 'ch4_freelance_start',
+		speaker: 'player',
+		text: '(Suy nghĩ) Có job freelance gấp. Deadline ngày mai. Nhưng mai lại có tiết học quan trọng.',
+		textVi:
+			'(Suy nghĩ) Có job freelance gấp. Deadline ngày mai. Nhưng mai lại có tiết học quan trọng.',
+		textEn:
+			'(Thinking) Urgent freelance job. Deadline tomorrow. But important class tomorrow too.',
+		choices: [
+			{
+				id: 'choice_freelance_do',
+				text: 'Bùng học làm job: Tiền quan trọng hơn (+5M)',
+				textVi: 'Bùng học làm job: Tiền quan trọng hơn (+5M)',
+				textEn: 'Skip class: Money is more important (+5M)',
+				effects: [{ stat: 'money', value: 5000000 }],
+				flags: [{ key: 'skipped_class', value: true }],
+				next: 'ch4_freelance_do',
+			},
+			{
+				id: 'choice_freelance_skip',
+				text: 'Đi học: Kiến thức là nền tảng (Vision +1)',
+				textVi: 'Đi học: Kiến thức là nền tảng (Vision +1)',
+				textEn: 'Go to class: Knowledge is foundation (Vision +1)',
+				effects: [{ stat: 'vision', value: 1 }],
+				flags: [{ key: 'skipped_class', value: false }],
+				next: 'ch4_independence_money',
+			},
+		],
+	},
+	ch4_freelance_do: {
+		id: 'ch4_freelance_do',
+		speaker: 'narrator',
+		text: 'Bạn cày thâu đêm để kịp deadline. Sáng hôm sau ngủ gục, bỏ lỡ buổi điểm danh.',
+		textVi:
+			'Bạn cày thâu đêm để kịp deadline. Sáng hôm sau ngủ gục, bỏ lỡ buổi điểm danh.',
+		textEn:
+			'You worked all night to meet deadline. Overslept next morning, missed roll call.',
 		next: 'ch4_independence_money',
 	},
 	ch4_independence_money: {
@@ -561,6 +758,50 @@ export const chapter4Dialogues: Record<string, DialogueNode> = {
 			'Bố cứ lo cho em. Con tự lo được. Con không cần tiền của bố nữa. Con là Developer mà, con có thể tự build cuộc đời mình.',
 		textEn:
 			"Take care of younger brother. I can handle myself. I don't need your money anymore. I am a Developer, I can build my own life.",
+		next: 'ch4_keyboard_start',
+	},
+
+	// NEW: Buy Keyboard Event
+	ch4_keyboard_start: {
+		id: 'ch4_keyboard_start',
+		speaker: 'player',
+		text: '(Suy nghĩ) Bàn phím hỏng nút Enter. Bạn muốn mua một chiếc bàn phím cơ xịn để code cho sướng tay. Giá 2 triệu.',
+		textVi:
+			'(Suy nghĩ) Bàn phím hỏng nút Enter. Bạn muốn mua một chiếc bàn phím cơ xịn để code cho sướng tay. Giá 2 triệu.',
+		textEn:
+			'(Thinking) Enter key broken. Want a mechanical keyboard to code better. Price 2 million.',
+		choices: [
+			{
+				id: 'choice_keyboard_buy',
+				text: 'Mua luôn: Đầu tư cho công cụ (-2M)',
+				textVi: 'Mua luôn: Đầu tư cho công cụ (-2M)',
+				textEn: 'Buy now: Invest in tools (-2M)',
+				condition: {
+					type: 'stat',
+					key: 'money',
+					operator: '>=',
+					value: 2000000,
+				},
+				effects: [{ stat: 'money', value: -2000000 }],
+				next: 'ch4_keyboard_buy',
+			},
+			{
+				id: 'choice_keyboard_skip',
+				text: 'Dùng tạm phím cũ: Vẫn gõ được là được (Steel Mind +1)',
+				textVi: 'Dùng tạm phím cũ: Vẫn gõ được là được (Steel Mind +1)',
+				textEn: 'Use old one: Still works (Steel Mind +1)',
+				effects: [{ stat: 'steelMind', value: 1 }],
+				next: 'ch4_bi_1',
+			},
+		],
+	},
+	ch4_keyboard_buy: {
+		id: 'ch4_keyboard_buy',
+		speaker: 'narrator',
+		text: 'Cảm giác gõ phím cơ thật sướng. Code như bay. Tiền nào của nấy.',
+		textVi: 'Cảm giác gõ phím cơ thật sướng. Code như bay. Tiền nào của nấy.',
+		textEn:
+			'Mechanical keyboard feels great. Coding like flying. You get what you pay for.',
 		next: 'ch4_bi_1',
 	},
 	ch4_bi_1: {
@@ -591,7 +832,43 @@ export const chapter4Dialogues: Record<string, DialogueNode> = {
 			'Sinh nhật 21 tuổi. Nhận được khoản thanh toán đầu tiên từ dự án outsource cho khách hàng Mỹ. Việc đầu tiên bạn làm: Mua một chú chó Corgi.',
 		textEn:
 			'21st birthday. Got first payment from US outsource project. First thing you did: Buy a Corgi puppy.',
-		next: 'ch4_bi_naming',
+		next: 'ch4_bi_birthday_choice',
+	},
+	ch4_bi_birthday_choice: {
+		id: 'ch4_bi_birthday_choice',
+		speaker: 'player',
+		text: '(Suy nghĩ) Một chú chó Corgi lai đang được rao bán. Giá 500k (tiền vía). Nhìn nó giống hệt con Miu ngày xưa.',
+		textVi:
+			'(Suy nghĩ) Một chú chó Corgi lai đang được rao bán. Giá 500k (tiền vía). Nhìn nó giống hệt con Miu ngày xưa.',
+		textEn:
+			'(Thinking) A mixed Corgi for sale. Price 500k (adoption fee). Looks just like Miu.',
+		choices: [
+			{
+				id: 'choice_adopt_bi',
+				text: 'Nhận nuôi: Thêm bạn thêm vui (-500k, Humanity +2)',
+				textVi: 'Nhận nuôi: Thêm bạn thêm vui (-500k, Humanity +2)',
+				textEn: 'Adopt: More friends more fun (-500k, Humanity +2)',
+				condition: {
+					type: 'stat',
+					key: 'humanity',
+					operator: '>=',
+					value: 15,
+				},
+				effects: [
+					{ stat: 'money', value: -500000 },
+					{ stat: 'humanity', value: 2 },
+				],
+				next: 'ch4_bi_naming',
+			},
+			{
+				id: 'choice_skip_bi',
+				text: 'Thôi: Mình còn chưa lo xong thân mình (Steel Mind +1)',
+				textVi: 'Thôi: Mình còn chưa lo xong thân mình (Steel Mind +1)',
+				textEn: "No: Can't even take care of myself (Steel Mind +1)",
+				effects: [{ stat: 'steelMind', value: 1 }],
+				next: 'ch4_bi_reject',
+			},
+		],
 	},
 	ch4_bi_naming: {
 		id: 'ch4_bi_naming',
@@ -618,8 +895,109 @@ export const chapter4Dialogues: Record<string, DialogueNode> = {
 				text: 'Chào mừng Bi (New Companion)',
 				textVi: 'Chào mừng Bi (New Companion)',
 				textEn: 'Welcome Bi (New Companion)',
-				next: 'ch5_cv_1',
+				next: 'ch4_bonus_start',
 			},
 		],
+	},
+	ch4_bi_reject: {
+		id: 'ch4_bi_reject',
+		speaker: 'narrator',
+		text: 'Bạn quay lưng bỏ đi. Chú chó nhìn theo, ánh mắt buồn rười rượi. Đêm đó, bạn mơ thấy con Miu đang cào cửa xin vào, nhưng bạn đã khóa chặt cửa.',
+		textVi:
+			'Bạn quay lưng bỏ đi. Chú chó nhìn theo, ánh mắt buồn rười rượi. Đêm đó, bạn mơ thấy con Miu đang cào cửa xin vào, nhưng bạn đã khóa chặt cửa.',
+		textEn:
+			'You turned away. The dog watched with sad eyes. That night, you dreamt of Miu scratching the door, but you locked it tight.',
+		effects: [
+			{ stat: 'humanity', value: -2 },
+			{ stat: 'stress', value: 1 },
+		],
+		next: 'ch4_bonus_start',
+	},
+	// NEW: Year End Bonus & Retake Fee
+	ch4_bonus_start: {
+		id: 'ch4_bonus_start',
+		speaker: 'narrator',
+		text: 'Cuối năm, công ty thưởng Tết. Bạn nhận được khoản thưởng hiệu suất vượt mong đợi.',
+		textVi:
+			'Cuối năm, công ty thưởng Tết. Bạn nhận được khoản thưởng hiệu suất vượt mong đợi.',
+		textEn:
+			'Year end, company Tet bonus. You received a performance bonus exceeding expectations.',
+		next: 'ch4_bonus_receive',
+	},
+	ch4_bonus_receive: {
+		id: 'ch4_bonus_receive',
+		speaker: 'player',
+		text: '(Vui sướng) 20 triệu! Một khoản tiền lớn đối với sinh viên mới ra trường.',
+		textVi:
+			'(Vui sướng) 20 triệu! Một khoản tiền lớn đối với sinh viên mới ra trường.',
+		textEn: '(Joyful) 20 million! A huge amount for a fresh graduate.',
+		effects: [{ stat: 'money', value: 20000000 }],
+		next: 'ch4_retake_fee_check',
+	},
+	ch4_retake_fee_check: {
+		id: 'ch4_retake_fee_check',
+		speaker: 'narrator',
+		text: 'Kết quả học tập cuối kỳ đã có.',
+		textVi: 'Kết quả học tập cuối kỳ đã có.',
+		textEn: 'End of semester results are in.',
+		choices: [
+			{
+				id: 'choice_view_results_fail',
+				text: 'Xem kết quả...',
+				textVi: 'Xem kết quả...',
+				textEn: 'View results...',
+				condition: {
+					type: 'flag',
+					key: 'skipped_class',
+					operator: '==',
+					value: true,
+				},
+				next: 'ch4_retake_fee_fail',
+			},
+			{
+				id: 'choice_view_results_pass',
+				text: 'Xem kết quả...',
+				textVi: 'Xem kết quả...',
+				textEn: 'View results...',
+				condition: {
+					type: 'flag',
+					key: 'skipped_class',
+					operator: '!=',
+					value: true,
+				},
+				next: 'ch4_retake_fee_pass',
+			},
+		],
+	},
+	ch4_retake_fee_fail: {
+		id: 'ch4_retake_fee_fail',
+		speaker: 'narrator',
+		text: 'Do nghỉ quá số buổi quy định, bạn bị cấm thi môn Chuyên ngành. Phải đóng tiền học lại.',
+		textVi:
+			'Do nghỉ quá số buổi quy định, bạn bị cấm thi môn Chuyên ngành. Phải đóng tiền học lại.',
+		textEn:
+			'Due to excessive absences, you are banned from the Major exam. Must pay retake fee.',
+		next: 'ch4_retake_fee_pay',
+	},
+	ch4_retake_fee_pay: {
+		id: 'ch4_retake_fee_pay',
+		speaker: 'player',
+		text: '(Thở dài) 2 triệu tiền học lại. Coi như mất toi mấy ngày lương freelance.',
+		textVi:
+			'(Thở dài) 2 triệu tiền học lại. Coi như mất toi mấy ngày lương freelance.',
+		textEn: '(Sigh) 2 million retake fee. Lost a few days of freelance salary.',
+		effects: [
+			{ stat: 'money', value: -2000000 },
+			{ stat: 'stress', value: 5 },
+		],
+		next: 'ch5_cv_1',
+	},
+	ch4_retake_fee_pass: {
+		id: 'ch4_retake_fee_pass',
+		speaker: 'narrator',
+		text: 'Bạn qua môn trót lọt. May mà vẫn đi học đầy đủ.',
+		textVi: 'Bạn qua môn trót lọt. May mà vẫn đi học đầy đủ.',
+		textEn: 'You passed. Luckily you attended classes.',
+		next: 'ch5_cv_1',
 	},
 };

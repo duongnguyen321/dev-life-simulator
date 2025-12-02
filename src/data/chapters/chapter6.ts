@@ -69,16 +69,9 @@ export const chapter6: Chapter = {
 				textVi: 'Pitching gọi vốn',
 				textEn: 'Pitching for funding',
 				effects: [{ stat: 'vision', value: 1 }],
-				cost: { stress: 2 },
+				cost: { stress: 3 }, // Increased Stress cost
 			},
-			{
-				id: 'ch6_todo_team_building',
-				text: 'Tổ chức Team Building',
-				textVi: 'Tổ chức Team Building',
-				textEn: 'Organize Team Building',
-				effects: [{ stat: 'humanity', value: 1 }],
-				cost: { money: 10000000 },
-			},
+
 			{
 				id: 'ch6_todo_fire_staff',
 				text: 'Sa thải nhân viên kém',
@@ -102,30 +95,16 @@ export const chapter6: Chapter = {
 				effects: [{ stat: 'humanity', value: 1 }],
 				cost: { stress: 1 },
 			},
-			{
-				id: 'ch6_todo_buy_server',
-				text: 'Mua thêm Server',
-				textVi: 'Mua thêm Server',
-				textEn: 'Buy more Servers',
-				effects: [{ stat: 'vision', value: 1 }],
-				cost: { money: 10000000 },
-			},
+
 			{
 				id: 'ch6_todo_work_weekend',
 				text: 'Làm việc cả cuối tuần',
 				textVi: 'Làm việc cả cuối tuần',
 				textEn: 'Work on weekends',
 				effects: [{ stat: 'steelMind', value: 1 }],
-				cost: { humanity: 1, health: 1 },
+				cost: { humanity: 2, health: 1 }, // Increased Humanity cost
 			},
-			{
-				id: 'ch6_todo_coffee_investor',
-				text: 'Cafe với nhà đầu tư',
-				textVi: 'Cafe với nhà đầu tư',
-				textEn: 'Coffee with investor',
-				effects: [{ stat: 'vision', value: 1 }],
-				cost: { money: 200000 },
-			},
+
 			{
 				id: 'ch6_todo_check_competitor',
 				text: 'Soi sản phẩm đối thủ',
@@ -133,14 +112,7 @@ export const chapter6: Chapter = {
 				textEn: 'Spy on competitor',
 				effects: [{ stat: 'vision', value: 1 }],
 			},
-			{
-				id: 'ch6_todo_pay_salary',
-				text: 'Duyệt bảng lương',
-				textVi: 'Duyệt bảng lương',
-				textEn: 'Approve payroll',
-				cost: { money: 100000000 },
-				reward: { stress: -1 }, // Relief
-			},
+
 			{
 				id: 'ch6_todo_fix_prod_bug',
 				text: 'Fix bug trên Production lúc 3h sáng',
@@ -424,6 +396,49 @@ export const chapter6Dialogues: Record<string, DialogueNode> = {
 			'Hội tụ (Reunion): Anh Q (đang làm cho Big Tech Singapore), Anh D (Tech Lead công ty Product top đầu), Anh N (Quản lý dự án thâm niên). Tất cả đều đang ở đỉnh cao sự nghiệp.',
 		textEn:
 			'Reunion: Brother Q (Big Tech Singapore), Brother D (Top Product Company Tech Lead), Brother N (Senior PM). All at the peak of their careers.',
+		next: 'ch6_investor_start',
+	},
+
+	// NEW: Investor Event
+	ch6_investor_start: {
+		id: 'ch6_investor_start',
+		speaker: 'npc',
+		text: 'Một nhà đầu tư thiên thần hẹn gặp. Cơ hội gọi vốn triệu đô. Nhưng phải mời họ đi ăn tối ở nhà hàng 5 sao.',
+		textVi:
+			'Một nhà đầu tư thiên thần hẹn gặp. Cơ hội gọi vốn triệu đô. Nhưng phải mời họ đi ăn tối ở nhà hàng 5 sao.',
+		textEn:
+			'Angel investor meeting. Million dollar opportunity. But must treat them to 5-star dinner.',
+		choices: [
+			{
+				id: 'choice_investor_meet',
+				text: 'Chơi lớn: Mời bữa tối sang trọng (-2M)',
+				textVi: 'Chơi lớn: Mời bữa tối sang trọng (-2M)',
+				textEn: 'Go big: Luxury dinner (-2M)',
+				condition: {
+					type: 'stat',
+					key: 'money',
+					operator: '>=',
+					value: 2000000,
+				},
+				effects: [{ stat: 'money', value: -2000000 }],
+				next: 'ch6_investor_meet',
+			},
+			{
+				id: 'choice_investor_skip',
+				text: 'Tiết kiệm: Mời cafe vỉa hè (Vision +1)',
+				textVi: 'Tiết kiệm: Mời cafe vỉa hè (Vision +1)',
+				textEn: 'Save: Street coffee (Vision +1)',
+				effects: [{ stat: 'vision', value: 1 }],
+				next: 'ch6_startup_motivation',
+			},
+		],
+	},
+	ch6_investor_meet: {
+		id: 'ch6_investor_meet',
+		speaker: 'narrator',
+		text: 'Bữa tối tốn kém nhưng bạn học được nhiều điều từ tầm nhìn của họ.',
+		textVi: 'Bữa tối tốn kém nhưng bạn học được nhiều điều từ tầm nhìn của họ.',
+		textEn: 'Expensive dinner but you learned a lot from their vision.',
 		next: 'ch6_startup_motivation',
 	},
 	ch6_startup_motivation: {
@@ -445,6 +460,50 @@ export const chapter6Dialogues: Record<string, DialogueNode> = {
 		textEn:
 			'Legacy Activation: You used Father\'s "Ghost Company" license. 20 billion charter capital (on paper). This is "Virtual Capital" (Mock Data) - a "Firewall" creating huge credibility.',
 		effects: [{ stat: 'vision', value: 1 }],
+		next: 'ch6_fraud_start', // Redirect to Investor Fraud Check
+	},
+
+	// NEW: Investor Fraud Chain
+	ch6_fraud_start: {
+		id: 'ch6_fraud_start',
+		speaker: 'player',
+		text: '(Suy nghĩ) Nhà đầu tư yêu cầu số liệu tăng trưởng user. Thực tế đang đi ngang. Có nên "xào nấu" số liệu một chút không?',
+		textVi:
+			'(Suy nghĩ) Nhà đầu tư yêu cầu số liệu tăng trưởng user. Thực tế đang đi ngang. Có nên "xào nấu" số liệu một chút không?',
+		textEn:
+			'(Thinking) Investor asks for user growth data. Reality is flat. Should I "cook" the data a bit?',
+		choices: [
+			{
+				id: 'choice_fake_data',
+				text: 'Làm đẹp số liệu: Để lấy vốn đã (Money +500M, Risk)',
+				textVi: 'Làm đẹp số liệu: Để lấy vốn đã (Money +500M, Risk)',
+				textEn: 'Fake data: Get funding first (Money +500M, Risk)',
+				effects: [{ stat: 'money', value: 500000000 }],
+				next: 'ch6_fraud_exposed',
+			},
+			{
+				id: 'choice_honest_data',
+				text: 'Trung thực: Chấp nhận khó khăn (Steel Mind +1)',
+				textVi: 'Trung thực: Chấp nhận khó khăn (Steel Mind +1)',
+				textEn: 'Honest: Accept hardship (Steel Mind +1)',
+				effects: [{ stat: 'steelMind', value: 1 }],
+				next: 'ch6_startup_reply',
+			},
+		],
+	},
+	ch6_fraud_exposed: {
+		id: 'ch6_fraud_exposed',
+		speaker: 'narrator',
+		text: 'Đội ngũ Due Diligence của nhà đầu tư phát hiện sự bất thường. Họ rút vốn và dọa kiện. Uy tín công ty sụp đổ.',
+		textVi:
+			'Đội ngũ Due Diligence của nhà đầu tư phát hiện sự bất thường. Họ rút vốn và dọa kiện. Uy tín công ty sụp đổ.',
+		textEn:
+			'Investor Due Diligence team found anomalies. Pulled funding, threatened lawsuit. Company reputation collapsed.',
+		effects: [
+			{ stat: 'money', value: -500000000 }, // Lose the funding
+			{ stat: 'vision', value: -3 },
+			{ stat: 'stress', value: 3 },
+		],
 		next: 'ch6_startup_reply',
 	},
 	ch6_startup_reply: {
@@ -460,7 +519,7 @@ export const chapter6Dialogues: Record<string, DialogueNode> = {
 				textVi: 'Chúng ta sẽ thay đổi thế giới!',
 				textEn: 'We will change the world!',
 				effects: [{ stat: 'vision', value: 2 }],
-				next: 'ch6_personnel_1',
+				next: 'ch6_team_building_start',
 			},
 			{
 				id: 'choice_humble_start',
@@ -468,9 +527,126 @@ export const chapter6Dialogues: Record<string, DialogueNode> = {
 				textVi: 'Cảm ơn các anh. Em sẽ không để mọi người thất vọng.',
 				textEn: "Thank you. I won't let you down.",
 				effects: [{ stat: 'humanity', value: 2 }],
-				next: 'ch6_personnel_1',
+				next: 'ch6_hiring_start', // Redirect to Hiring Friends
 			},
 		],
+	},
+
+	// NEW: Hiring Friends
+	ch6_hiring_start: {
+		id: 'ch6_hiring_start',
+		speaker: 'narrator',
+		text: 'Một người bạn cũ thời đại học xin vào làm. Cậu ta nhiệt tình nhưng kỹ năng còn yếu.',
+		textVi:
+			'Một người bạn cũ thời đại học xin vào làm. Cậu ta nhiệt tình nhưng kỹ năng còn yếu.',
+		textEn: 'Old college friend applies. Enthusiastic but weak skills.',
+		choices: [
+			{
+				id: 'choice_hire_friend',
+				text: 'Nhận vào: Bạn bè giúp nhau (Humanity +2, Vision -1)',
+				textVi: 'Nhận vào: Bạn bè giúp nhau (Humanity +2, Vision -1)',
+				textEn: 'Hire: Friends help friends (Humanity +2, Vision -1)',
+				effects: [
+					{ stat: 'humanity', value: 2 },
+					{ stat: 'vision', value: -1 },
+				],
+				next: 'ch6_team_building_start',
+			},
+			{
+				id: 'choice_reject_friend',
+				text: 'Từ chối: Công việc là công việc (Vision +1, Humanity -1)',
+				textVi: 'Từ chối: Công việc là công việc (Vision +1, Humanity -1)',
+				textEn: 'Reject: Business is business (Vision +1, Humanity -1)',
+				effects: [
+					{ stat: 'vision', value: 1 },
+					{ stat: 'humanity', value: -1 },
+				],
+				next: 'ch6_team_building_start',
+			},
+		],
+	},
+
+	// NEW: Team Building Event
+	ch6_team_building_start: {
+		id: 'ch6_team_building_start',
+		speaker: 'player',
+		text: '(Suy nghĩ) Team mới thành lập. Anh em cần gắn kết. Một chuyến đi Resort 5 sao sẽ xốc lại tinh thần.',
+		textVi:
+			'(Suy nghĩ) Team mới thành lập. Anh em cần gắn kết. Một chuyến đi Resort 5 sao sẽ xốc lại tinh thần.',
+		textEn:
+			'(Thinking) New team. Need bonding. A 5-star Resort trip will boost morale.',
+		choices: [
+			{
+				id: 'choice_team_building_luxury',
+				text: 'Resort 5 sao: Anh em là trên hết (-50M, Humanity +2)',
+				textVi: 'Resort 5 sao: Anh em là trên hết (-50M, Humanity +2)',
+				textEn: '5-star Resort: Bros before code (-50M, Humanity +2)',
+				condition: {
+					type: 'stat',
+					key: 'money',
+					operator: '>=',
+					value: 50000000,
+				},
+				effects: [
+					{ stat: 'money', value: -50000000 },
+					{ stat: 'humanity', value: 2 },
+				],
+				next: 'ch6_team_building_luxury',
+			},
+			{
+				id: 'choice_team_building_motel',
+				text: 'Nhà nghỉ Vũng Tàu: Tiết kiệm là quốc sách (-10M, Humanity +1)',
+				textVi: 'Nhà nghỉ Vũng Tàu: Tiết kiệm là quốc sách (-10M, Humanity +1)',
+				textEn: 'Vung Tau Motel: Saving is policy (-10M, Humanity +1)',
+				effects: [
+					{ stat: 'money', value: -10000000 },
+					{ stat: 'humanity', value: 1 },
+				],
+				next: 'ch6_team_building_motel',
+			},
+			{
+				id: 'choice_team_building_park',
+				text: 'Công viên: Team building 0 đồng (Humanity -1)',
+				textVi: 'Công viên: Team building 0 đồng (Humanity -1)',
+				textEn: 'Public Park: 0 cost team building (Humanity -1)',
+				effects: [{ stat: 'humanity', value: -1 }],
+				flags: [{ key: 'cheap_team_building', value: true }],
+				next: 'ch6_team_building_park',
+			},
+		],
+	},
+	ch6_team_building_luxury: {
+		id: 'ch6_team_building_luxury',
+		speaker: 'narrator',
+		text: 'Chuyến đi tuyệt vời. Mọi người được tận hưởng dịch vụ đẳng cấp. Sức mạnh đoàn kết tăng lên tột đỉnh.',
+		textVi:
+			'Chuyến đi tuyệt vời. Mọi người được tận hưởng dịch vụ đẳng cấp. Sức mạnh đoàn kết tăng lên tột đỉnh.',
+		textEn: 'Great trip. Everyone enjoyed premium service. Unity reached peak.',
+		next: 'ch6_personnel_1',
+	},
+	ch6_team_building_motel: {
+		id: 'ch6_team_building_motel',
+		speaker: 'narrator',
+		text: 'Chuyến đi vui vẻ nhưng hơi chật chội. Anh em cũng thông cảm cho giai đoạn khó khăn của công ty.',
+		textVi:
+			'Chuyến đi vui vẻ nhưng hơi chật chội. Anh em cũng thông cảm cho giai đoạn khó khăn của công ty.',
+		textEn:
+			"Fun but cramped trip. Team sympathized with company's tough times.",
+		next: 'ch6_personnel_1',
+	},
+	ch6_team_building_park: {
+		id: 'ch6_team_building_park',
+		speaker: 'narrator',
+		text: 'Anh em nhìn nhau ngán ngẩm giữa trời nắng chang chang. "Sếp ki bo quá". Tinh thần team sụp đổ hoàn toàn.',
+		textVi:
+			'Anh em nhìn nhau ngán ngẩm giữa trời nắng chang chang. "Sếp ki bo quá". Tinh thần team sụp đổ hoàn toàn.',
+		textEn:
+			'Team looked at each other in dismay under hot sun. "Boss is too stingy". Team morale collapsed completely.',
+		effects: [
+			{ stat: 'humanity', value: -5 },
+			{ stat: 'vision', value: -2 },
+		],
+		next: 'ch6_personnel_1',
 	},
 
 	// 6.2 Personnel Crisis
@@ -544,10 +720,113 @@ export const chapter6Dialogues: Record<string, DialogueNode> = {
 			'Cậu ấy bỏ đi dưới mưa. Bạn ngồi lại một mình. Bài học quản trị tàn khốc đầu tiên: Làm sếp là phải biết ác.',
 		textEn:
 			'He walked away in the rain. You sat alone. First cruel management lesson: To be a boss is to be ruthless.',
+		next: 'ch6_end',
+	},
+	ch6_end: {
+		id: 'ch6_end',
+		speaker: 'narrator',
+		text: 'Hợp đồng đầu tư được ký kết. Tiếng nổ của sâm-panh vang lên. Các bạn ôm chầm lấy nhau. Nhưng ánh mắt của Co-founder có gì đó là lạ.',
+		textVi:
+			'Hợp đồng đầu tư được ký kết. Tiếng nổ của sâm-panh vang lên. Các bạn ôm chầm lấy nhau. Nhưng ánh mắt của Co-founder có gì đó là lạ.',
+		textEn:
+			"Investment contract signed. Champagne popped. You hugged each other. But Co-founder's eyes had something strange.",
+		next: 'chapter_7_start',
+	},
+
+	// NEW: Big Contract Event
+	ch6_big_contract_start: {
+		id: 'ch6_big_contract_start',
+		speaker: 'narrator',
+		text: 'Công ty nhận được một hợp đồng outsource lớn từ Nhật Bản. Giá trị 500 triệu.',
+		textVi:
+			'Công ty nhận được một hợp đồng outsource lớn từ Nhật Bản. Giá trị 500 triệu.',
+		textEn:
+			'Company received a big outsource contract from Japan. Value 500 million.',
+		next: 'ch6_big_contract_receive',
+	},
+	ch6_big_contract_receive: {
+		id: 'ch6_big_contract_receive',
+		speaker: 'player',
+		text: '(Thở phào) Đủ tiền trả lương cho anh em rồi.',
+		textVi: '(Thở phào) Đủ tiền trả lương cho anh em rồi.',
+		textEn: '(Relieved) Enough money to pay salaries.',
+		effects: [{ stat: 'money', value: 500000000 }],
+		next: 'ch6_staff_quit_check',
+	},
+	// NEW: Staff Quit Consequence
+	ch6_staff_quit_check: {
+		id: 'ch6_staff_quit_check',
+		speaker: 'narrator',
+		text: 'Không khí trong công ty bỗng trở nên căng thẳng.',
+		textVi: 'Không khí trong công ty bỗng trở nên căng thẳng.',
+		textEn: 'Atmosphere in company suddenly became tense.',
+		choices: [
+			{
+				id: 'choice_staff_quit_check_bad',
+				text: 'Có chuyện gì vậy?',
+				textVi: 'Có chuyện gì vậy?',
+				textEn: "What's happening?",
+				condition: {
+					type: 'flag',
+					key: 'cheap_team_building',
+					operator: '==',
+					value: true,
+				},
+				next: 'ch6_staff_quit_bad',
+			},
+			{
+				id: 'choice_staff_quit_check_ok',
+				text: 'Mọi người vẫn làm việc chăm chỉ.',
+				textVi: 'Mọi người vẫn làm việc chăm chỉ.',
+				textEn: 'Everyone is working hard.',
+				condition: {
+					type: 'flag',
+					key: 'cheap_team_building',
+					operator: '!=',
+					value: true,
+				},
+				next: 'ch6_market_1',
+			},
+		],
+	},
+	ch6_staff_quit_bad: {
+		id: 'ch6_staff_quit_bad',
+		speaker: 'npc',
+		text: 'Anh D (Tech Lead) nộp đơn xin nghỉ việc. "Tôi không thể làm việc với một người sếp coi thường nhân viên như vậy. Buổi team building ở công viên là giọt nước tràn ly."',
+		textVi:
+			'Anh D (Tech Lead) nộp đơn xin nghỉ việc. "Tôi không thể làm việc với một người sếp coi thường nhân viên như vậy. Buổi team building ở công viên là giọt nước tràn ly."',
+		textEn:
+			'Brother D (Tech Lead) resigned. "I cannot work with a boss who disrespects employees like that. The park team building was the last straw."',
+		next: 'ch6_staff_quit_penalty',
+	},
+	ch6_staff_quit_penalty: {
+		id: 'ch6_staff_quit_penalty',
+		speaker: 'narrator',
+		text: 'Sự ra đi của Anh D khiến dự án bị đình trệ. Bạn phải thuê Outsource ngoài giá cao để lấp chỗ trống. Thiệt hại 50 triệu.',
+		textVi:
+			'Sự ra đi của Anh D khiến dự án bị đình trệ. Bạn phải thuê Outsource ngoài giá cao để lấp chỗ trống. Thiệt hại 50 triệu.',
+		textEn:
+			"Brother D's departure stalled the project. You had to hire expensive external Outsource to fill the gap. Loss 50 million.",
+		effects: [
+			{ stat: 'money', value: -50000000 },
+			{ stat: 'vision', value: -2 },
+		],
 		next: 'ch6_market_1',
 	},
 
-	// 6.3 Market Slap
+	// 6.3 Market
+	// NEW: Intro
+	ch6_intro: {
+		id: 'ch6_intro',
+		speaker: 'narrator',
+		text: 'Căn phòng trọ ngổn ngang dây cáp và vỏ hộp mì tôm. Ba người bạn, ba chiếc laptop, và một giấc mơ thay đổi thế giới (hoặc ít nhất là kiếm được tiền).',
+		textVi:
+			'Căn phòng trọ ngổn ngang dây cáp và vỏ hộp mì tôm. Ba người bạn, ba chiếc laptop, và một giấc mơ thay đổi thế giới (hoặc ít nhất là kiếm được tiền).',
+		textEn:
+			'Rental room messy with cables and noodle boxes. Three friends, three laptops, and a dream to change the world (or at least make money).',
+		next: 'ch6_start',
+	},
+
 	ch6_market_1: {
 		id: 'ch6_market_1',
 		speaker: 'narrator',
@@ -556,6 +835,61 @@ export const chapter6Dialogues: Record<string, DialogueNode> = {
 			'29 tuổi. Tham vọng làm Super App (AI, Blockchain). Over-engineering. Ra mắt: 0 user. Thị trường không cần.',
 		textEn:
 			"29 years old. Ambition for Super App (AI, Blockchain). Over-engineering. Launch: 0 users. Market didn't need it.",
+		next: 'ch6_server_start',
+	},
+
+	// NEW: Server Event
+	ch6_server_start: {
+		id: 'ch6_server_start',
+		speaker: 'player',
+		text: '(Suy nghĩ) Hệ thống AI cần GPU khủng để train model. Server hiện tại đang quá tải.',
+		textVi:
+			'(Suy nghĩ) Hệ thống AI cần GPU khủng để train model. Server hiện tại đang quá tải.',
+		textEn:
+			'(Thinking) AI system needs massive GPU for training. Current server overloaded.',
+		choices: [
+			{
+				id: 'choice_server_cheap',
+				text: 'Thuê Server giá rẻ: Tiết kiệm chi phí (Money +10M, Risk)',
+				textVi: 'Thuê Server giá rẻ: Tiết kiệm chi phí (Money +10M, Risk)',
+				textEn: 'Cheap Server: Save cost (Money +10M, Risk)',
+				effects: [{ stat: 'money', value: 10000000 }],
+				next: 'ch6_server_crash',
+			},
+			{
+				id: 'choice_server_premium',
+				text: 'Server xịn: Đắt xắt ra miếng (Money -20M, Vision +1)',
+				textVi: 'Server xịn: Đắt xắt ra miếng (Money -20M, Vision +1)',
+				textEn: 'Premium Server: Quality costs (Money -20M, Vision +1)',
+				effects: [
+					{ stat: 'money', value: -20000000 },
+					{ stat: 'vision', value: 1 },
+				],
+				next: 'ch6_market_2',
+			},
+		],
+	},
+	ch6_server_crash: {
+		id: 'ch6_server_crash',
+		speaker: 'narrator',
+		text: 'Server giá rẻ liên tục bị down vào giờ cao điểm. Khách hàng phàn nàn dữ dội.',
+		textVi:
+			'Server giá rẻ liên tục bị down vào giờ cao điểm. Khách hàng phàn nàn dữ dội.',
+		textEn:
+			'Cheap server keeps crashing at peak hours. Customers complain loudly.',
+		effects: [
+			{ stat: 'vision', value: -1 },
+			{ stat: 'stress', value: 1 },
+		],
+		next: 'ch6_market_2',
+	},
+	ch6_server_buy: {
+		id: 'ch6_server_buy',
+		speaker: 'narrator',
+		text: 'Server mới chạy mượt mà. Model train nhanh hơn hẳn. Nhưng ví tiền thì rỗng tuếch.',
+		textVi:
+			'Server mới chạy mượt mà. Model train nhanh hơn hẳn. Nhưng ví tiền thì rỗng tuếch.',
+		textEn: 'New server runs smooth. Model trains faster. But wallet is empty.',
 		next: 'ch6_market_2',
 	},
 	ch6_market_2: {
@@ -566,6 +900,45 @@ export const chapter6Dialogues: Record<string, DialogueNode> = {
 			'Sản phẩm thất bại (Product Fail). Nhưng may mắn thay, mảng Outsource vẫn hoạt động tốt, gánh team qua cơn bĩ cực (Fallback Mechanism). Công ty không chết, nhưng giấc mơ Product bị trì hoãn.',
 		textEn:
 			'Product Fail. Luckily, Outsource arm worked well, carrying the team through crisis (Fallback Mechanism). Company survived, but Product dream delayed.',
+		next: 'ch6_salary_start',
+	},
+
+	// NEW: Salary Event
+	ch6_salary_start: {
+		id: 'ch6_salary_start',
+		speaker: 'player',
+		text: '(Suy nghĩ) Cuối tháng. Bảng lương 100 triệu đang chờ duyệt. Dòng tiền Outsource vừa về kịp lúc.',
+		textVi:
+			'(Suy nghĩ) Cuối tháng. Bảng lương 100 triệu đang chờ duyệt. Dòng tiền Outsource vừa về kịp lúc.',
+		textEn:
+			'(Thinking) End of month. 100M payroll waiting. Outsource cashflow just arrived.',
+		choices: [
+			{
+				id: 'choice_salary_pay',
+				text: 'Duyệt chi: Uy tín là vàng (-100M)',
+				textVi: 'Duyệt chi: Uy tín là vàng (-100M)',
+				textEn: 'Approve: Reputation is gold (-100M)',
+				effects: [{ stat: 'money', value: -100000000 }],
+				next: 'ch6_salary_pay',
+			},
+			{
+				id: 'choice_salary_delay',
+				text: 'Khất lương: Anh em thông cảm (Humanity -1)',
+				textVi: 'Khất lương: Anh em thông cảm (Humanity -1)',
+				textEn: 'Delay: Bros please understand (Humanity -1)',
+				effects: [{ stat: 'humanity', value: -1 }],
+				next: 'ch6_market_fear',
+			},
+		],
+	},
+	ch6_salary_pay: {
+		id: 'ch6_salary_pay',
+		speaker: 'narrator',
+		text: 'Ting ting. Tiếng tin nhắn báo lương làm cả văn phòng reo hò. Bạn thở phào nhẹ nhõm.',
+		textVi:
+			'Ting ting. Tiếng tin nhắn báo lương làm cả văn phòng reo hò. Bạn thở phào nhẹ nhõm.',
+		textEn:
+			'Ding ding. Salary notification makes office cheer. You sigh in relief.',
 		next: 'ch6_market_fear',
 	},
 	ch6_market_fear: {
@@ -599,6 +972,27 @@ export const chapter6Dialogues: Record<string, DialogueNode> = {
 		textEn:
 			'Enlightenment: "Tech is just a tool. Solving Pain Point is the goal."',
 		effects: [{ stat: 'vision', value: 2 }],
-		next: 'ch7_divide_1',
+		next: 'ch6_series_a_start',
+	},
+
+	// NEW: Series A Funding
+	ch6_series_a_start: {
+		id: 'ch6_series_a_start',
+		speaker: 'narrator',
+		text: 'Tin vui! Nhà đầu tư thiên thần đã đồng ý rót vốn Series A. 5 tỷ đồng được chuyển vào tài khoản công ty.',
+		textVi:
+			'Tin vui! Nhà đầu tư thiên thần đã đồng ý rót vốn Series A. 5 tỷ đồng được chuyển vào tài khoản công ty.',
+		textEn:
+			'Good news! Angel investor agreed to Series A funding. 5 billion transferred to company account.',
+		next: 'ch6_series_a_receive',
+	},
+	ch6_series_a_receive: {
+		id: 'ch6_series_a_receive',
+		speaker: 'player',
+		text: '(Hét lớn) Chúng ta sống rồi!',
+		textVi: '(Hét lớn) Chúng ta sống rồi!',
+		textEn: '(Shouting) We are alive!',
+		effects: [{ stat: 'money', value: 5000000000 }],
+		next: 'ch7_scale_1',
 	},
 };

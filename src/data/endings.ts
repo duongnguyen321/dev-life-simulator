@@ -74,6 +74,21 @@ export const endings: EndingDefinition[] = [
 			(flags.foundedCompany || flags.mentored || flags.donated),
 	},
 	{
+		id: 'SOULLESS_TYCOON',
+		name: 'Soulless Tycoon',
+		nameVi: 'Tỷ Phú Vô Cảm',
+		nameEn: 'Soulless Tycoon',
+		description:
+			'You have all the money in the world, but lost your soul along the way.',
+		descriptionVi:
+			'Bạn có tất cả tiền bạc trên thế giới, nhưng đã đánh mất linh hồn của mình trên con đường đó. Cô đơn trên đỉnh vinh quang.',
+		descriptionEn:
+			'You have all the money in the world, but lost your soul along the way. Lonely at the top.',
+		priority: 80, // Higher than SUCCESS
+		condition: (stats: Stats) =>
+			stats.money >= 10000000000 && stats.humanity < 30,
+	},
+	{
 		id: 'SUCCESS',
 		name: 'Brilliant Success',
 		nameVi: 'Thành Công Rực Rỡ',
@@ -86,7 +101,9 @@ export const endings: EndingDefinition[] = [
 			'You reached the peak of your career. Wealthy, famous, and admired. But is this all you wanted?',
 		priority: 60,
 		condition: (stats: Stats) =>
-			stats.vision >= 90 && stats.money >= 1000000000000,
+			stats.vision >= 90 &&
+			stats.money >= 1000000000000 &&
+			stats.humanity >= 30,
 	},
 	{
 		id: 'TRAGEDY',

@@ -54,9 +54,9 @@ const initialState: GameState = {
 		musicVolume: 0.6,
 		sfxVolume: 0.5,
 		textSpeed: 50,
-		autoAdvance: false,
-		skipRead: false,
 	},
+	events: [],
+	ending: null,
 };
 
 export const useGameStore = create<GameStore>((set, get) => ({
@@ -93,11 +93,26 @@ export const useGameStore = create<GameStore>((set, get) => ({
 				newValue = Math.max(0, Math.min(100, currentValue + value));
 			}
 
+			const newStats = {
+				...state.stats,
+				[stat]: newValue,
+			};
+
+			// Check for Game Over conditions
+			let newEnding = state.ending;
+
+			// Bankruptcy: Money < 0
+			if (newStats.money < 0) {
+				newEnding = 'BANKRUPTCY';
+			}
+			// Burnout: Health <= 0 or Stress >= 100
+			else if (newStats.health <= 0 || newStats.stress >= 100) {
+				newEnding = 'BURNOUT';
+			}
+
 			return {
-				stats: {
-					...state.stats,
-					[stat]: newValue,
-				},
+				stats: newStats,
+				ending: newEnding,
 			};
 		});
 	},

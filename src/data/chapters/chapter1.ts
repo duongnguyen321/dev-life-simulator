@@ -23,16 +23,16 @@ export const chapter1: Chapter = {
 			nameEn: 'Age 3: The Giant Who Built Bridges',
 			background: '/assets/sprites/backgrounds/construction_site.png',
 			music: '/assets/audio/music/chapters/ch1_childhood.mp3',
-			dialogueStart: 'ch1_intro_1',
+			dialogueStart: 'ch1_intro',
 		},
 		{
 			id: 'ch1_school',
 			name: 'Lớp 1-3',
 			nameVi: 'Lớp 1-3: Hoàng tử bé nơi biên ải',
 			nameEn: 'Grade 1-3: The Little Prince of the Border',
-			background: '/assets/sprites/backgrounds/school_luxury.png',
+			background: '/assets/sprites/backgrounds/school_gate.png',
 			music: '/assets/audio/music/chapters/ch1_childhood.mp3',
-			dialogueStart: 'ch1_school_1',
+			dialogueStart: 'ch1_intro', // Changed from ch1_start
 		},
 		{
 			id: 'ch1_fortress',
@@ -137,7 +137,7 @@ export const chapter1: Chapter = {
 				textVi: 'Đánh nhau với bạn hàng xóm',
 				textEn: 'Fight with neighbor kid',
 				effects: [{ stat: 'steelMind', value: 1 }],
-				cost: { health: 1, humanity: 1 },
+				cost: { health: 2, humanity: 1 }, // Increased Health cost
 			},
 			{
 				id: 'ch1_todo_sleep_late',
@@ -146,13 +146,7 @@ export const chapter1: Chapter = {
 				textEn: 'Sleep in',
 				reward: { health: 1 },
 			},
-			{
-				id: 'ch1_todo_ask_money',
-				text: 'Xin tiền bố mua kẹo',
-				textVi: 'Xin tiền bố mua kẹo',
-				textEn: 'Ask Dad for candy money',
-				reward: { money: 50000 },
-			},
+			// Removed ch1_todo_ask_money - Moved to dialogue
 			{
 				id: 'ch1_todo_hide_seek',
 				text: 'Chơi trốn tìm',
@@ -187,7 +181,7 @@ export const chapter1: Chapter = {
 				textVi: 'Bắt nạt bạn yếu hơn',
 				textEn: 'Bully weaker kids',
 				effects: [{ stat: 'steelMind', value: 1 }],
-				cost: { humanity: 2 },
+				cost: { humanity: 3 }, // Increased Humanity cost
 			},
 			{
 				id: 'ch1_todo_learn_math',
@@ -414,6 +408,17 @@ export const chapter1: Chapter = {
 // ==========================================
 
 export const chapter1Dialogues: Record<string, DialogueNode> = {
+	// NEW: Intro
+	ch1_intro: {
+		id: 'ch1_intro',
+		speaker: 'narrator',
+		text: 'Những năm 2000. Tiếng ve kêu râm ran trên những tán phượng vĩ. Thế giới của bạn gói gọn trong khoảng sân nhỏ và những viên bi ve lấp lánh.',
+		textVi:
+			'Những năm 2000. Tiếng ve kêu râm ran trên những tán phượng vĩ. Thế giới của bạn gói gọn trong khoảng sân nhỏ và những viên bi ve lấp lánh.',
+		textEn:
+			'The 2000s. Cicadas buzzing on flamboyant trees. Your world is wrapped in a small courtyard and sparkling marbles.',
+		next: 'ch1_intro_1',
+	},
 	// 1.1 Ký ức 3 tuổi
 	ch1_intro_1: {
 		id: 'ch1_intro_1',
@@ -480,7 +485,7 @@ export const chapter1Dialogues: Record<string, DialogueNode> = {
 				textVi: 'Ngưỡng mộ: Thành công xây bằng mồ hôi (Steel Mind +1)',
 				textEn: 'Admire: Success is built on sweat (Steel Mind +1)',
 				effects: [{ stat: 'steelMind', value: 1 }],
-				next: 'ch1_school_1',
+				next: 'ch1_ask_money_start',
 			},
 			{
 				id: 'choice_pity_dad',
@@ -488,9 +493,48 @@ export const chapter1Dialogues: Record<string, DialogueNode> = {
 				textVi: 'Thương bố: Bố vất vả quá (Humanity +1)',
 				textEn: 'Pity: Father works too hard (Humanity +1)',
 				effects: [{ stat: 'humanity', value: 1 }],
+				next: 'ch1_ask_money_start',
+			},
+		],
+	},
+
+	// NEW: Ask for Money Event
+	ch1_ask_money_start: {
+		id: 'ch1_ask_money_start',
+		speaker: 'player',
+		text: '(Suy nghĩ) Bố đang vui vẻ sau khi uống rượu xong. Mình có nên xin tiền mua kẹo không nhỉ? Mẹ thì chắc chắn không cho rồi.',
+		textVi:
+			'(Suy nghĩ) Bố đang vui vẻ sau khi uống rượu xong. Mình có nên xin tiền mua kẹo không nhỉ? Mẹ thì chắc chắn không cho rồi.',
+		textEn:
+			"(Thinking) Dad is happy after drinking. Should I ask for candy money? Mom definitely wouldn't give any.",
+		choices: [
+			{
+				id: 'choice_ask_money_yes',
+				text: 'Xin bố 50k: "Bố ơi cho con tiền mua kẹo"',
+				textVi: 'Xin bố 50k: "Bố ơi cho con tiền mua kẹo"',
+				textEn: 'Ask for 50k: "Dad, can I have candy money?"',
+				effects: [{ stat: 'money', value: 50000 }],
+				next: 'ch1_ask_money_success',
+			},
+			{
+				id: 'choice_ask_money_no',
+				text: 'Thôi ngại lắm: Bố đang mệt (Humanity +1)',
+				textVi: 'Thôi ngại lắm: Bố đang mệt (Humanity +1)',
+				textEn: 'Too shy: Dad is tired (Humanity +1)',
+				effects: [{ stat: 'humanity', value: 1 }],
 				next: 'ch1_school_1',
 			},
 		],
+	},
+	ch1_ask_money_success: {
+		id: 'ch1_ask_money_success',
+		speaker: 'boQ',
+		text: '"Tiền đây. Cầm lấy mà mua. Đừng có nói với mẹ đấy nhé!" (Bố dúi tờ 50k vào tay bạn)',
+		textVi:
+			'"Tiền đây. Cầm lấy mà mua. Đừng có nói với mẹ đấy nhé!" (Bố dúi tờ 50k vào tay bạn)',
+		textEn:
+			'"Here. Take it. Don\'t tell your mom!" (Dad slips a 50k note into your hand)',
+		next: 'ch1_school_1',
 	},
 
 	// 1.2 Lớp 1-3: Hoàng tử bé nơi biên ải
@@ -514,6 +558,16 @@ export const chapter1Dialogues: Record<string, DialogueNode> = {
 			'You went to school with a chauffeur. Friends looked at you with a mix of admiration and fear.',
 		next: 'ch1_classmates_whisper',
 	},
+	ch1_end: {
+		id: 'ch1_end',
+		speaker: 'narrator',
+		text: 'Một buổi chiều muộn, tiếng đập cửa dồn dập phá tan sự yên bình. Những người lạ mặt bước vào, và bố mẹ bạn cúi đầu im lặng.',
+		textVi:
+			'Một buổi chiều muộn, tiếng đập cửa dồn dồn dập phá tan sự yên bình. Những người lạ mặt bước vào, và bố mẹ bạn cúi đầu im lặng.',
+		textEn:
+			'Late one afternoon, frantic knocking shattered the peace. Strangers walked in, and your parents bowed their heads in silence.',
+		next: 'chapter_2_start', // Will be handled by engine to switch chapter
+	},
 	ch1_classmates_whisper: {
 		id: 'ch1_classmates_whisper',
 		speaker: 'npc',
@@ -530,6 +584,73 @@ export const chapter1Dialogues: Record<string, DialogueNode> = {
 		text: '(Suy nghĩ) Họ sợ mình... nhưng mình chẳng có ai để chơi cùng cả.',
 		textVi: '(Suy nghĩ) Họ sợ mình... nhưng mình chẳng có ai để chơi cùng cả.',
 		textEn: '(Thinking) They fear me... but I have no one to play with.',
+		next: 'ch1_bully_start', // Redirect to Bully event
+	},
+
+	// NEW: School Bully Event
+	ch1_bully_start: {
+		id: 'ch1_bully_start',
+		speaker: 'narrator',
+		text: 'Một đứa bạn to con trong lớp chặn đường bạn. Nó muốn trấn lột chiếc bút máy xịn của bạn.',
+		textVi:
+			'Một đứa bạn to con trong lớp chặn đường bạn. Nó muốn trấn lột chiếc bút máy xịn của bạn.',
+		textEn:
+			'A big kid in class blocks your way. He wants to take your fancy fountain pen.',
+		choices: [
+			{
+				id: 'choice_bully_fight',
+				text: 'Đánh lại: Không được bắt nạt tao! (Steel Mind +2, Health -1)',
+				textVi: 'Đánh lại: Không được bắt nạt tao! (Steel Mind +2, Health -1)',
+				textEn: "Fight back: Don't bully me! (Steel Mind +2, Health -1)",
+				effects: [
+					{ stat: 'steelMind', value: 2 },
+					{ stat: 'health', value: -1 },
+					{ stat: 'humanity', value: -1 },
+				],
+				next: 'ch1_bully_fight_result',
+			},
+			{
+				id: 'choice_bully_report',
+				text: 'Mách cô giáo: An toàn là trên hết (Vision +1)',
+				textVi: 'Mách cô giáo: An toàn là trên hết (Vision +1)',
+				textEn: 'Tell teacher: Safety first (Vision +1)',
+				effects: [
+					{ stat: 'vision', value: 1 },
+					{ stat: 'steelMind', value: -1 },
+				],
+				next: 'ch1_bully_report_result',
+			},
+			{
+				id: 'choice_bully_give',
+				text: 'Đưa bút: Tránh rắc rối (Humanity +1)',
+				textVi: 'Đưa bút: Tránh rắc rối (Humanity +1)',
+				textEn: 'Give pen: Avoid trouble (Humanity +1)',
+				effects: [
+					{ stat: 'humanity', value: 1 },
+					{ stat: 'steelMind', value: -2 },
+				],
+				next: 'ch1_school_trip',
+			},
+		],
+	},
+	ch1_bully_fight_result: {
+		id: 'ch1_bully_fight_result',
+		speaker: 'narrator',
+		text: 'Bạn lao vào đánh nhau. Cả hai đều sứt đầu mẻ trán. Bố mẹ bị mời lên trường, nhưng bố lại cười: "Đàn ông là phải thế".',
+		textVi:
+			'Bạn lao vào đánh nhau. Cả hai đều sứt đầu mẻ trán. Bố mẹ bị mời lên trường, nhưng bố lại cười: "Đàn ông là phải thế".',
+		textEn:
+			'You fought. Both bruised. Parents called, but Dad laughed: "That\'s how men are".',
+		next: 'ch1_school_trip',
+	},
+	ch1_bully_report_result: {
+		id: 'ch1_bully_report_result',
+		speaker: 'narrator',
+		text: 'Cô giáo phạt đứa bạn kia. Nhưng từ đó, cả lớp gọi bạn là "kẻ mách lẻo". Bạn càng cô đơn hơn.',
+		textVi:
+			'Cô giáo phạt đứa bạn kia. Nhưng từ đó, cả lớp gọi bạn là "kẻ mách lẻo". Bạn càng cô đơn hơn.',
+		textEn:
+			'Teacher punished him. But class called you "tattletale". You became lonelier.',
 		next: 'ch1_school_trip',
 	},
 	ch1_school_trip: {
@@ -567,7 +688,7 @@ export const chapter1Dialogues: Record<string, DialogueNode> = {
 				textVi: 'Tự hào: Mình là con của Bố (Ego ++)',
 				textEn: "Proud: I am Father's son (Ego ++)",
 				effects: [{ stat: 'steelMind', value: 1 }],
-				next: 'ch1_fortress_1',
+				next: 'ch1_buy_toy_start',
 			},
 			{
 				id: 'choice_feel_isolated',
@@ -575,9 +696,94 @@ export const chapter1Dialogues: Record<string, DialogueNode> = {
 				textVi: 'Sợ hãi: Quyền lực này thật xa lạ (Humanity ++)',
 				textEn: 'Fear: This power feels alien (Humanity ++)',
 				effects: [{ stat: 'humanity', value: 1 }],
+				next: 'ch1_buy_toy_start',
+			},
+		],
+	},
+
+	// NEW: Buy Toy Event
+	ch1_buy_toy_start: {
+		id: 'ch1_buy_toy_start',
+		speaker: 'narrator',
+		text: 'Trên đường về, bạn đi ngang qua cửa hàng đồ chơi. Một con robot Gundam mới toanh đang được trưng bày. Nó đẹp lấp lánh.',
+		textVi:
+			'Trên đường về, bạn đi ngang qua cửa hàng đồ chơi. Một con robot Gundam mới toanh đang được trưng bày. Nó đẹp lấp lánh.',
+		textEn:
+			'On the way home, you pass a toy store. A brand new Gundam robot is on display. It sparkles beautifully.',
+		choices: [
+			{
+				id: 'choice_buy_toy_yes',
+				text: 'Mua luôn: Đắt sắt ra miếng (-100k)',
+				textVi: 'Mua luôn: Đắt sắt ra miếng (-100k)',
+				textEn: 'Buy it: Quality costs money (-100k)',
+				effects: [
+					{ stat: 'money', value: -100000 },
+					{ stat: 'humanity', value: 1 }, // Happiness/Childhood joy
+				],
+				next: 'ch1_buy_toy_success',
+			},
+			{
+				id: 'choice_buy_toy_no',
+				text: 'Tiếc tiền: Thôi để dành tiền làm việc khác (Steel Mind +1)',
+				textVi: 'Tiếc tiền: Thôi để dành tiền làm việc khác (Steel Mind +1)',
+				textEn: 'Save money: Save for other things (Steel Mind +1)',
+				effects: [{ stat: 'steelMind', value: 1 }],
 				next: 'ch1_fortress_1',
 			},
 		],
+	},
+	ch1_buy_toy_success: {
+		id: 'ch1_buy_toy_success',
+		speaker: 'player',
+		text: '(Cầm con robot trên tay) Cảm giác sở hữu món đồ mình thích thật tuyệt vời. Lũ bạn sẽ lác mắt cho xem.',
+		textVi:
+			'(Cầm con robot trên tay) Cảm giác sở hữu món đồ mình thích thật tuyệt vời. Lũ bạn sẽ lác mắt cho xem.',
+		textEn:
+			'(Holding the robot) The feeling of owning what you want is amazing. Friends will be jealous.',
+		next: 'ch1_toy_showoff', // Redirect to Showoff choice
+	},
+
+	// NEW: Spoiled Prince Chain
+	ch1_toy_showoff: {
+		id: 'ch1_toy_showoff',
+		speaker: 'player',
+		text: '(Suy nghĩ) Con robot đẹp thế này, có nên mang đến lớp khoe không nhỉ?',
+		textVi:
+			'(Suy nghĩ) Con robot đẹp thế này, có nên mang đến lớp khoe không nhỉ?',
+		textEn: '(Thinking) This robot is so cool, should I show it off at class?',
+		choices: [
+			{
+				id: 'choice_showoff_yes',
+				text: 'Mang đi khoe: Cho chúng nó lác mắt (Ego ++)',
+				textVi: 'Mang đi khoe: Cho chúng nó lác mắt (Ego ++)',
+				textEn: 'Show off: Make them jealous (Ego ++)',
+				effects: [{ stat: 'steelMind', value: 1 }],
+				next: 'ch1_show_off_fail',
+			},
+			{
+				id: 'choice_showoff_no',
+				text: 'Để ở nhà: Sợ bị mất (Vision +1)',
+				textVi: 'Để ở nhà: Sợ bị mất (Vision +1)',
+				textEn: 'Keep at home: Fear losing it (Vision +1)',
+				effects: [{ stat: 'vision', value: 1 }],
+				next: 'ch1_fortress_1',
+			},
+		],
+	},
+	ch1_show_off_fail: {
+		id: 'ch1_show_off_fail',
+		speaker: 'narrator',
+		text: 'Bạn mang robot đến lớp. Lũ bạn xúm lại xem, tranh giành nhau. "Rắc!" - cánh tay robot bị gãy. Bạn khóc nức nở, còn lũ bạn tản ra, cười cợt.',
+		textVi:
+			'Bạn mang robot đến lớp. Lũ bạn xúm lại xem, tranh giành nhau. "Rắc!" - cánh tay robot bị gãy. Bạn khóc nức nở, còn lũ bạn tản ra, cười cợt.',
+		textEn:
+			'You brought robot to class. Kids grabbed it. "Snap!" - arm broke. You cried, they laughed.',
+		effects: [
+			{ stat: 'humanity', value: -2 },
+			{ stat: 'steelMind', value: 2 },
+			{ stat: 'stress', value: 2 },
+		],
+		next: 'ch1_fortress_1',
 	},
 
 	// 1.3 Lớp 4: Căn cứ địa 4.000m²
@@ -639,6 +845,48 @@ export const chapter1Dialogues: Record<string, DialogueNode> = {
 			'(Chạy chơi cùng Bi) Ở đây thật an toàn. Bố là luật pháp, và mọi thứ đều vận hành trơn tru.',
 		textEn:
 			'(Playing with Bi) It feels so safe here. Father is the law, and everything runs smoothly.',
+		next: 'ch1_secret_base_start', // Redirect to Secret Base
+	},
+
+	// NEW: Secret Base Event
+	ch1_secret_base_start: {
+		id: 'ch1_secret_base_start',
+		speaker: 'narrator',
+		text: 'Trong góc khuất nhất của khu vườn, bạn phát hiện một cái hang nhỏ dưới gốc cây cổ thụ. Một căn cứ bí mật tuyệt vời.',
+		textVi:
+			'Trong góc khuất nhất của khu vườn, bạn phát hiện một cái hang nhỏ dưới gốc cây cổ thụ. Một căn cứ bí mật tuyệt vời.',
+		textEn:
+			'In a hidden corner, you found a small cave under an old tree. A perfect secret base.',
+		choices: [
+			{
+				id: 'choice_base_secret',
+				text: 'Giữ bí mật: Nơi này là của riêng mình (Steel Mind +1)',
+				textVi: 'Giữ bí mật: Nơi này là của riêng mình (Steel Mind +1)',
+				textEn: 'Keep secret: This is mine alone (Steel Mind +1)',
+				effects: [{ stat: 'steelMind', value: 1 }],
+				next: 'ch1_revelation_1',
+			},
+			{
+				id: 'choice_base_share',
+				text: 'Rủ bạn bè đến: Cùng chơi mới vui (Humanity +2, Money -50k)',
+				textVi: 'Rủ bạn bè đến: Cùng chơi mới vui (Humanity +2, Money -50k)',
+				textEn: 'Invite friends: Fun together (Humanity +2, Money -50k)',
+				effects: [
+					{ stat: 'humanity', value: 2 },
+					{ stat: 'money', value: -50000 }, // Snacks
+				],
+				next: 'ch1_base_party',
+			},
+		],
+	},
+	ch1_base_party: {
+		id: 'ch1_base_party',
+		speaker: 'narrator',
+		text: 'Bạn mua bim bim, nước ngọt mời lũ bạn. Căn cứ bí mật rộn rã tiếng cười. Lần đầu tiên bạn thấy mình không cô đơn.',
+		textVi:
+			'Bạn mua bim bim, nước ngọt mời lũ bạn. Căn cứ bí mật rộn rã tiếng cười. Lần đầu tiên bạn thấy mình không cô đơn.',
+		textEn:
+			'You bought snacks. Secret base filled with laughter. First time you felt not alone.',
 		next: 'ch1_revelation_1',
 	},
 
@@ -712,18 +960,18 @@ export const chapter1Dialogues: Record<string, DialogueNode> = {
 					{ stat: 'vision', value: 1 },
 					{ stat: 'steelMind', value: 1 },
 				],
-				next: 'ch1_end',
+				next: 'ch1_father_agrees',
 			},
 		],
 	},
-	ch1_end: {
-		id: 'ch1_end',
+	ch1_father_agrees: {
+		id: 'ch1_father_agrees',
 		speaker: 'boQ',
 		text: '"Được. Bố đồng ý." Mắt bố ánh lên niềm tự hào nhưng cũng thoáng chút lo âu.',
 		textVi:
 			'"Được. Bố đồng ý." Mắt bố ánh lên niềm tự hào nhưng cũng thoáng chút lo âu.',
 		textEn:
 			'"Okay. I agree." Father\'s eyes shone with pride but also a hint of worry.',
-		next: 'ch2_fpt_1',
+		next: 'ch1_end',
 	},
 };

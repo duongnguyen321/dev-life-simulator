@@ -39,18 +39,18 @@ export const chapter3: Chapter = {
 			name: 'Hy vọng lóe lên',
 			nameVi: 'Lớp 11: Hy vọng lóe lên (VinFast LuxSA)',
 			nameEn: 'Grade 11: Flashing Hope (VinFast LuxSA)',
-			background: '/assets/sprites/backgrounds/car_luxury.png',
+			background: '/assets/sprites/backgrounds/bedroom_pc.png',
 			music: '/assets/audio/music/chapters/ch3_hope.mp3',
-			dialogueStart: 'ch3_hope_1',
+			dialogueStart: 'ch3_intro', // Changed from ch3_hope_1
 		},
 		{
-			id: 'ch3_legacy',
+			id: 'ch3_hack',
 			name: 'Công ty Ma',
 			nameVi: 'Tầm nhìn của Bố (The Legacy Code)',
 			nameEn: "Father's Vision (The Legacy Code)",
 			background: '/assets/sprites/backgrounds/dorm_room.png',
 			music: '/assets/audio/music/chapters/ch3_struggle.mp3',
-			dialogueStart: 'ch3_legacy_1',
+			dialogueStart: 'ch3_legacy_1', // Assuming it uses the same dialogue start as the original 'ch3_legacy'
 		},
 		{
 			id: 'ch3_covid',
@@ -70,16 +70,9 @@ export const chapter3: Chapter = {
 				textVi: 'Cày code thâu đêm',
 				textEn: 'Code all night',
 				effects: [{ stat: 'vision', value: 1 }],
-				cost: { health: 1 },
+				cost: { health: 2 }, // Increased Health cost
 			},
-			{
-				id: 'ch3_todo_fix_pc',
-				text: 'Sửa máy tính hộ hàng xóm',
-				textVi: 'Sửa máy tính hộ hàng xóm',
-				textEn: "Fix neighbor's PC",
-				effects: [{ stat: 'vision', value: 1 }],
-				reward: { money: 100000 },
-			},
+
 			{
 				id: 'ch3_todo_net_cafe',
 				text: 'Trốn học đi net',
@@ -110,14 +103,7 @@ export const chapter3: Chapter = {
 				effects: [{ stat: 'steelMind', value: 1 }],
 				cost: { stress: 1 },
 			},
-			{
-				id: 'ch3_todo_eat_noodle',
-				text: 'Ăn mì tôm trừ bữa',
-				textVi: 'Ăn mì tôm trừ bữa',
-				textEn: 'Eat instant noodles for meal',
-				cost: { health: 1 },
-				reward: { money: 20000 },
-			},
+
 			{
 				id: 'ch3_todo_read_blog',
 				text: 'Đọc blog công nghệ',
@@ -131,7 +117,7 @@ export const chapter3: Chapter = {
 				textVi: 'Thử hack một trang web dạo',
 				textEn: 'Try hacking a random site',
 				effects: [{ stat: 'vision', value: 1 }],
-				cost: { stress: 1 },
+				cost: { stress: 1, humanity: 1 }, // Added Humanity cost
 			},
 			{
 				id: 'ch3_todo_love_letter',
@@ -177,13 +163,7 @@ export const chapter3: Chapter = {
 				textEn: 'Teach younger brother',
 				effects: [{ stat: 'humanity', value: 1 }],
 			},
-			{
-				id: 'ch3_todo_sell_items',
-				text: 'Bán vật phẩm game online',
-				textVi: 'Bán vật phẩm game online',
-				textEn: 'Sell online game items',
-				reward: { money: 200000 },
-			},
+
 			{
 				id: 'ch3_todo_argue_parents',
 				text: 'Cãi nhau với bố mẹ về tiền bạc',
@@ -420,6 +400,17 @@ export const chapter3: Chapter = {
 };
 
 export const chapter3Dialogues: Record<string, DialogueNode> = {
+	// NEW: Intro
+	ch3_intro: {
+		id: 'ch3_intro',
+		speaker: 'narrator',
+		text: 'Tiếng bàn phím lạch cạch thay thế tiếng ve sầu. Những dòng code chạy dài trên màn hình đen. Bạn tìm thấy sự bình yên trong logic của máy tính.',
+		textVi:
+			'Tiếng bàn phím lạch cạch thay thế tiếng ve sầu. Những dòng code chạy dài trên màn hình đen. Bạn tìm thấy sự bình yên trong logic của máy tính.',
+		textEn:
+			'Clacking keyboard replaced cicadas. Lines of code running on black screen. You found peace in computer logic.',
+		next: 'ch3_dorm_1',
+	},
 	// 3.1 Khu tập thể & Miu
 	ch3_dorm_1: {
 		id: 'ch3_dorm_1',
@@ -429,6 +420,110 @@ export const chapter3Dialogues: Record<string, DialogueNode> = {
 			'Căn nhà thuê ở khu tập thể Thành Công. Tường mốc xanh, mùa mưa nước dột tứ bề, phải lấy xô chậu hứng. Bạn sống cùng mẹ và em trai V.',
 		textEn:
 			'Rented house in Thanh Cong dorm. Moldy walls, leaking roof requiring buckets when it rained. You lived with mom and brother V.',
+		next: 'ch3_crush_start', // Redirect to Crush Event
+	},
+
+	// NEW: First Crush Event
+	ch3_crush_start: {
+		id: 'ch3_crush_start',
+		speaker: 'narrator',
+		text: 'Lớp 10. Một cô bạn cùng lớp mượn vở bạn chép bài. Cô ấy cười rất xinh, làm tim bạn lệch một nhịp.',
+		textVi:
+			'Lớp 10. Một cô bạn cùng lớp mượn vở bạn chép bài. Cô ấy cười rất xinh, làm tim bạn lệch một nhịp.',
+		textEn:
+			'Grade 10. A classmate borrowed your notes. Her smile made your heart skip a beat.',
+		choices: [
+			{
+				id: 'choice_crush_confess',
+				text: 'Tỏ tình: Liều ăn nhiều (Humanity +2, Stress +2)',
+				textVi: 'Tỏ tình: Liều ăn nhiều (Humanity +2, Stress +2)',
+				textEn: 'Confess: High risk high reward (Humanity +2, Stress +2)',
+				effects: [
+					{ stat: 'humanity', value: 2 },
+					{ stat: 'stress', value: 2 },
+				],
+				next: 'ch3_crush_reject',
+			},
+			{
+				id: 'choice_crush_hide',
+				text: 'Giấu kín: Yêu đơn phương (Stress +1)',
+				textVi: 'Giấu kín: Yêu đơn phương (Stress +1)',
+				textEn: 'Hide it: Unrequited love (Stress +1)',
+				effects: [{ stat: 'stress', value: 1 }],
+				next: 'ch3_fix_pc_start',
+			},
+			{
+				id: 'choice_crush_ignore',
+				text: 'Lơ đi: Code là chân ái (Vision +1, Humanity -1)',
+				textVi: 'Lơ đi: Code là chân ái (Vision +1, Humanity -1)',
+				textEn: 'Ignore: Code is true love (Vision +1, Humanity -1)',
+				effects: [
+					{ stat: 'vision', value: 1 },
+					{ stat: 'humanity', value: -1 },
+				],
+				next: 'ch3_fix_pc_start',
+			},
+		],
+	},
+	ch3_crush_reject: {
+		id: 'ch3_crush_reject',
+		speaker: 'narrator',
+		text: 'Cô ấy bối rối: "Tớ chỉ coi cậu là bạn tốt thôi". Bạn quê độ, muốn độn thổ.',
+		textVi:
+			'Cô ấy bối rối: "Tớ chỉ coi cậu là bạn tốt thôi". Bạn quê độ, muốn độn thổ.',
+		textEn:
+			'She was confused: "I only see you as a good friend". You felt embarrassed.',
+		effects: [{ stat: 'steelMind', value: 1 }],
+		next: 'ch3_fix_pc_start',
+	},
+
+	// NEW: Fix PC Event
+	ch3_fix_pc_start: {
+		id: 'ch3_fix_pc_start',
+		speaker: 'player',
+		text: '(Suy nghĩ) Hàng xóm nhờ sửa máy tính. Họ hứa trả 500k. Máy cũ rích, bụi bặm.',
+		textVi:
+			'(Suy nghĩ) Hàng xóm nhờ sửa máy tính. Họ hứa trả 500k. Máy cũ rích, bụi bặm.',
+		textEn:
+			'(Thinking) Neighbor asked to fix PC. Promised 500k. Old, dusty machine.',
+		choices: [
+			{
+				id: 'choice_fix_pc_yes',
+				text: 'Sửa giúp: Kiếm thêm thu nhập (+500k)',
+				textVi: 'Sửa giúp: Kiếm thêm thu nhập (+500k)',
+				textEn: 'Fix it: Earn extra income (+500k)',
+				// effects: [{ stat: 'money', value: 500000 }], // Removed direct reward
+				next: 'ch3_fix_pc_twist', // Redirect to twist
+			},
+			{
+				id: 'choice_fix_pc_no',
+				text: 'Từ chối: Tập trung học (Vision +1)',
+				textVi: 'Từ chối: Tập trung học (Vision +1)',
+				textEn: 'Refuse: Focus on study (Vision +1)',
+				effects: [{ stat: 'vision', value: 1 }],
+				next: 'ch3_debt_1',
+			},
+		],
+	},
+	ch3_fix_pc_twist: {
+		id: 'ch3_fix_pc_twist',
+		speaker: 'narrator',
+		text: 'Bạn hì hục cả buổi chiều. Máy chạy ngon lành. Hàng xóm rút tờ 500k ra trả, nhưng lỡ tay làm rơi xuống cống. Bạn vớt lên được... 1/5 tờ tiền.',
+		textVi:
+			'Bạn hì hục cả buổi chiều. Máy chạy ngon lành. Hàng xóm rút tờ 500k ra trả, nhưng lỡ tay làm rơi xuống cống. Bạn vớt lên được... 1/5 tờ tiền.',
+		textEn:
+			'You toiled all afternoon. PC runs great. Neighbor pulled out 500k bill, but dropped it into sewer. You fished out... 1/5 of the bill.',
+		next: 'ch3_fix_pc_success',
+	},
+	ch3_fix_pc_success: {
+		id: 'ch3_fix_pc_success',
+		speaker: 'narrator',
+		text: 'Hàng xóm ái ngại đưa tạm bạn 100k tiền lẻ. "Thôi cầm tạm uống nước nhé cháu". Công cốc.',
+		textVi:
+			'Hàng xóm ái ngại đưa tạm bạn 100k tiền lẻ. "Thôi cầm tạm uống nước nhé cháu". Công cốc.',
+		textEn:
+			'Neighbor awkwardly gave you 100k small change. "Take this for water". Wasted effort.',
+		effects: [{ stat: 'money', value: 100000 }],
 		next: 'ch3_debt_1',
 	},
 
@@ -516,7 +611,7 @@ export const chapter3Dialogues: Record<string, DialogueNode> = {
 				textVi: 'Nhận tiền (Bố làm vất vả lắm rồi)',
 				textEn: 'Accept the money (Father worked so hard)',
 				effects: [{ stat: 'money', value: 500000 }],
-				next: 'ch3_hope_1',
+				next: 'ch3_noodle_start',
 			},
 			{
 				id: 'choice_refuse_money',
@@ -537,6 +632,50 @@ export const chapter3Dialogues: Record<string, DialogueNode> = {
 		textEn:
 			'You pushed his hand away. "I can manage, Dad. Keep the money." Father looked at you, eyes watering, then nodded. He hugged you tightly, saying nothing.',
 		effects: [{ stat: 'steelMind', value: 1 }],
+		next: 'ch3_noodle_start',
+	},
+
+	// NEW: Eat Noodle Event
+	ch3_noodle_start: {
+		id: 'ch3_noodle_start',
+		speaker: 'player',
+		text: '(Suy nghĩ) Đói quá. Trong túi còn ít tiền. Ăn gì đây?',
+		textVi: '(Suy nghĩ) Đói quá. Trong túi còn ít tiền. Ăn gì đây?',
+		textEn: '(Thinking) So hungry. Little money left. What to eat?',
+		choices: [
+			{
+				id: 'choice_noodle_save',
+				text: 'Mì tôm: Tiết kiệm là quốc sách (+20k)',
+				textVi: 'Mì tôm: Tiết kiệm là quốc sách (+20k)',
+				textEn: 'Instant noodles: Saving is policy (+20k)',
+				effects: [{ stat: 'money', value: 20000 }],
+				next: 'ch3_noodle_save',
+			},
+			{
+				id: 'choice_noodle_eat',
+				text: 'Cơm rang: Ăn no mới có sức học (Health +1)',
+				textVi: 'Cơm rang: Ăn no mới có sức học (Health +1)',
+				textEn: 'Fried rice: Eat well to study well (Health +1)',
+				effects: [{ stat: 'health', value: 1 }],
+				next: 'ch3_noodle_eat',
+			},
+		],
+	},
+	ch3_noodle_save: {
+		id: 'ch3_noodle_save',
+		speaker: 'narrator',
+		text: 'Gói mì tôm 3k. Nước sôi miễn phí. Bạn tiết kiệm được một khoản nhỏ.',
+		textVi:
+			'Gói mì tôm 3k. Nước sôi miễn phí. Bạn tiết kiệm được một khoản nhỏ.',
+		textEn: '3k noodle pack. Free boiling water. You saved a small amount.',
+		next: 'ch3_hope_1',
+	},
+	ch3_noodle_eat: {
+		id: 'ch3_noodle_eat',
+		speaker: 'narrator',
+		text: 'Đĩa cơm rang nóng hổi. Bạn cảm thấy tràn trề năng lượng.',
+		textVi: 'Đĩa cơm rang nóng hổi. Bạn cảm thấy tràn trề năng lượng.',
+		textEn: 'Hot fried rice. You feel full of energy.',
 		next: 'ch3_hope_1',
 	},
 
@@ -606,6 +745,16 @@ export const chapter3Dialogues: Record<string, DialogueNode> = {
 			'COVID pandemic. Hanoi lockdown. Mom lost income. Father unemployed, LuxSA dusty.',
 		next: 'ch3_covid_2',
 	},
+	ch3_end: {
+		id: 'ch3_end',
+		speaker: 'narrator',
+		text: 'Giấy báo trúng tuyển Đại học trên tay. Bạn xếp gọn chiếc máy tính vào ba lô. Chuyến tàu đêm đưa bạn rời xa thị trấn nhỏ, hướng về ánh đèn thành phố.',
+		textVi:
+			'Giấy báo trúng tuyển Đại học trên tay. Bạn xếp gọn chiếc máy tính vào ba lô. Chuyến tàu đêm đưa bạn rời xa thị trấn nhỏ, hướng về ánh đèn thành phố.',
+		textEn:
+			'University acceptance letter in hand. You packed the computer into the backpack. Night train took you away from small town, towards city lights.',
+		next: 'chapter_4_start',
+	},
 	ch3_covid_2: {
 		id: 'ch3_covid_2',
 		speaker: 'narrator',
@@ -614,6 +763,90 @@ export const chapter3Dialogues: Record<string, DialogueNode> = {
 			'Bạn tận dụng thời gian cày nát các khóa học lập trình trên Udemy, Coursera. 14 tiếng mỗi ngày bên màn hình máy tính cũ kỹ.',
 		textEn:
 			'You devoured coding courses on Udemy, Coursera. 14 hours a day by the old PC.',
+		next: 'ch3_sell_items_start',
+	},
+
+	// NEW: Sell Items Event
+	ch3_sell_items_start: {
+		id: 'ch3_sell_items_start',
+		speaker: 'player',
+		text: '(Suy nghĩ) Tài khoản game của mình có vài món đồ hiếm. Có người hỏi mua giá 500k.',
+		textVi:
+			'(Suy nghĩ) Tài khoản game của mình có vài món đồ hiếm. Có người hỏi mua giá 500k.',
+		textEn: '(Thinking) My game account has rare items. Someone offered 200k.',
+		choices: [
+			{
+				id: 'choice_sell_items_yes',
+				text: 'Bán hết: Cầm cự qua ngày (+500k, Humanity -1)',
+				textVi: 'Bán hết: Cầm cự qua ngày (+500k, Humanity -1)',
+				textEn: 'Sell all: Survive the day (+500k, Humanity -1)',
+				effects: [
+					{ stat: 'money', value: 500000 },
+					{ stat: 'humanity', value: -1 },
+				],
+				next: 'ch3_gamble_start', // Redirect to Gamble Chain
+			},
+			{
+				id: 'choice_sell_items_no',
+				text: 'Giữ lại: Kỷ niệm tuổi thơ (Humanity +1)',
+				textVi: 'Giữ lại: Kỷ niệm tuổi thơ (Humanity +1)',
+				textEn: 'Keep it: Childhood memories (Humanity +1)',
+				effects: [{ stat: 'humanity', value: 1 }],
+				next: 'ch3_covid_father',
+			},
+		],
+	},
+	ch3_sell_items_sell: {
+		id: 'ch3_sell_items_sell',
+		speaker: 'narrator',
+		text: 'Giao dịch thành công. Bạn có thêm tiền để trang trải, nhưng lòng hơi tiếc nuối.',
+		textVi:
+			'Giao dịch thành công. Bạn có thêm tiền để trang trải, nhưng lòng hơi tiếc nuối.',
+		textEn:
+			'Transaction successful. Extra money for expenses, but a bit regretful.',
+		next: 'ch3_covid_father',
+	},
+
+	// NEW: Gamble Chain
+	ch3_gamble_start: {
+		id: 'ch3_gamble_start',
+		speaker: 'npc',
+		text: 'Thằng bạn rủ rê: "Mày có 500k à? Đánh con lô đi, tối nay về là có 2 triệu mua màn hình mới."',
+		textVi:
+			'Thằng bạn rủ rê: "Mày có 500k à? Đánh con lô đi, tối nay về là có 2 triệu mua màn hình mới."',
+		textEn:
+			'Friend tempted: "You have 500k? Bet on lottery, tonight you get 2 million for new screen."',
+		choices: [
+			{
+				id: 'choice_gamble_yes',
+				text: 'Chơi luôn: Liều ăn nhiều (Money ??)',
+				textVi: 'Chơi luôn: Liều ăn nhiều (Money ??)',
+				textEn: 'Bet it: High risk (Money ??)',
+				next: 'ch3_gamble_lose', // Most likely lose
+			},
+			{
+				id: 'choice_gamble_no',
+				text: 'Thôi: Cờ bạc là bác thằng bần (Steel Mind +1)',
+				textVi: 'Thôi: Cờ bạc là bác thằng bần (Steel Mind +1)',
+				textEn: 'No: Gambling is ruin (Steel Mind +1)',
+				effects: [{ stat: 'steelMind', value: 1 }],
+				next: 'ch3_covid_father',
+			},
+		],
+	},
+	ch3_gamble_lose: {
+		id: 'ch3_gamble_lose',
+		speaker: 'narrator',
+		text: 'Tối hôm đó, kết quả về... trượt lòi mắt. Bạn mất trắng 500k. Cảm giác cay cú và hối hận xâm chiếm.',
+		textVi:
+			'Tối hôm đó, kết quả về... trượt lòi mắt. Bạn mất trắng 500k. Cảm giác cay cú và hối hận xâm chiếm.',
+		textEn:
+			'That night, result came... lost. You lost 500k. Anger and regret took over.',
+		effects: [
+			{ stat: 'money', value: -500000 },
+			{ stat: 'stress', value: 3 },
+			{ stat: 'steelMind', value: -1 },
+		],
 		next: 'ch3_covid_father',
 	},
 	ch3_covid_father: {
@@ -659,7 +892,40 @@ export const chapter3Dialogues: Record<string, DialogueNode> = {
 			'Sau 4 tháng "tu luyện" trong phòng kín, bạn nhận được job freelance đầu tiên: Cắt HTML/CSS cho một landing page đơn giản. Thù lao: 300.000 VNĐ.',
 		textEn:
 			'After 4 months of "cultivation" in isolation, you got your first freelance job: HTML/CSS for a simple landing page. Pay: 300,000 VND.',
-		next: 'ch3_covid_job_choice',
+		next: 'ch3_blackhat_start', // Redirect to Black Hat
+	},
+
+	// NEW: Black Hat Event
+	ch3_blackhat_start: {
+		id: 'ch3_blackhat_start',
+		speaker: 'npc',
+		text: 'Một người lạ trên diễn đàn nhắn tin: "Viết cho anh con tool lấy cắp cookie Facebook. Trả 2 triệu."',
+		textVi:
+			'Một người lạ trên diễn đàn nhắn tin: "Viết cho anh con tool lấy cắp cookie Facebook. Trả 2 triệu."',
+		textEn:
+			'Stranger on forum messaged: "Write me a tool to steal Facebook cookies. Pay 2 million."',
+		choices: [
+			{
+				id: 'choice_blackhat_accept',
+				text: 'Nhận lời: Đang túng quá (Money +2M, Humanity -10)',
+				textVi: 'Nhận lời: Đang túng quá (Money +2M, Humanity -10)',
+				textEn: 'Accept: Desperate (Money +2M, Humanity -10)',
+				effects: [
+					{ stat: 'money', value: 2000000 },
+					{ stat: 'humanity', value: -10 },
+					{ stat: 'stress', value: 2 }, // Fear of police
+				],
+				next: 'ch3_covid_job_choice',
+			},
+			{
+				id: 'choice_blackhat_refuse',
+				text: 'Từ chối: Đạo đức nghề nghiệp (Steel Mind +2)',
+				textVi: 'Từ chối: Đạo đức nghề nghiệp (Steel Mind +2)',
+				textEn: 'Refuse: Professional ethics (Steel Mind +2)',
+				effects: [{ stat: 'steelMind', value: 2 }],
+				next: 'ch3_covid_job_choice',
+			},
+		],
 	},
 	ch3_covid_job_choice: {
 		id: 'ch3_covid_job_choice',

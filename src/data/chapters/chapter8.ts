@@ -23,7 +23,7 @@ export const chapter8: Chapter = {
 			nameEn: 'Age 40-45: AI Gamble & Robots',
 			background: '/assets/sprites/backgrounds/server_room_future.png',
 			music: '/assets/audio/music/chapters/ch8_epic.mp3',
-			dialogueStart: 'ch8_ai_1',
+			dialogueStart: 'ch8_intro', // Changed from ch8_ai_1
 		},
 		{
 			id: 'ch8_recall',
@@ -61,14 +61,7 @@ export const chapter8: Chapter = {
 				effects: [{ stat: 'vision', value: 1 }], // Reputation
 				cost: { stress: 1 },
 			},
-			{
-				id: 'ch8_todo_approve_budget',
-				text: 'Duyệt ngân sách R&D cho Robot',
-				textVi: 'Duyệt ngân sách R&D cho Robot',
-				textEn: 'Approve R&D budget for Robot',
-				effects: [{ stat: 'vision', value: 1 }],
-				cost: { money: 1000000000 },
-			},
+
 			{
 				id: 'ch8_todo_ethics',
 				text: 'Đối mặt với tình huống khó xử về đạo đức',
@@ -110,14 +103,7 @@ export const chapter8: Chapter = {
 				effects: [{ stat: 'vision', value: 1 }], // Speed
 				cost: { stress: 1 }, // Risk High
 			},
-			{
-				id: 'ch8_todo_hire_ethics',
-				text: 'Thuê Giám đốc Đạo đức',
-				textVi: 'Thuê Giám đốc Đạo đức',
-				textEn: 'Hire Ethics Director',
-				effects: [{ stat: 'vision', value: 1 }], // Reputation
-				cost: { money: 100000000 },
-			},
+
 			{
 				id: 'ch8_todo_meditate_life',
 				text: 'Thiền định về ý nghĩa cuộc sống',
@@ -139,14 +125,7 @@ export const chapter8: Chapter = {
 				textEn: 'Time with grown-up kids',
 				effects: [{ stat: 'humanity', value: 1 }],
 			},
-			{
-				id: 'ch8_todo_donate_uni',
-				text: 'Quyên góp cho nghiên cứu đại học',
-				textVi: 'Quyên góp cho nghiên cứu đại học',
-				textEn: 'Donate to university research',
-				effects: [{ stat: 'vision', value: 1 }], // Reputation
-				cost: { money: 10000000 },
-			},
+
 			{
 				id: 'ch8_todo_long_leave',
 				text: 'Nghỉ phép dài hạn',
@@ -163,20 +142,29 @@ export const chapter8: Chapter = {
 				effects: [{ stat: 'vision', value: 1 }], // Legacy
 			},
 			{
+				id: 'ch8_todo_spy_cofounder',
+				text: 'Thuê thám tử theo dõi Co-founder',
+				textVi: 'Thuê thám tử theo dõi Co-founder',
+				textEn: 'Hire PI to spy on Co-founder',
+				effects: [{ stat: 'steelMind', value: 1 }],
+				cost: { money: 50000000, humanity: -1 },
+			},
+			{
+				id: 'ch8_todo_marriage_counseling',
+				text: 'Đi tư vấn hôn nhân',
+				textVi: 'Đi tư vấn hôn nhân',
+				textEn: 'Marriage counseling',
+				effects: [{ stat: 'humanity', value: 1 }],
+				cost: { money: 10000000 },
+			},
+			{
 				id: 'ch8_todo_watch_news',
 				text: 'Xem tin tức về AI cướp việc làm',
 				textVi: 'Xem tin tức về AI cướp việc làm',
 				textEn: 'Watch news about AI taking jobs',
 				cost: { stress: 1 },
 			},
-			{
-				id: 'ch8_todo_consult_lawyer',
-				text: 'Tham vấn luật sư',
-				textVi: 'Tham vấn luật sư',
-				textEn: 'Consult lawyer',
-				cost: { money: 1000000 },
-				effects: [{ stat: 'steelMind', value: 1 }], // Safety
-			},
+
 			{
 				id: 'ch8_todo_sleeping_pill',
 				text: 'Uống thuốc ngủ',
@@ -405,6 +393,18 @@ export const chapter8: Chapter = {
 };
 
 export const chapter8Dialogues: Record<string, DialogueNode> = {
+	// NEW: Intro
+	ch8_end: {
+		id: 'ch8_end',
+		speaker: 'narrator',
+		text: 'Cơn bão qua đi, để lại những tàn tích. Bạn đứng giữa văn phòng trống rỗng, nhìn ra thành phố lên đèn. Bạn đã chiến thắng, nhưng bạn còn lại gì?',
+		textVi:
+			'Cơn bão qua đi, để lại những tàn tích. Bạn đứng giữa văn phòng trống rỗng, nhìn ra thành phố lên đèn. Bạn đã chiến thắng, nhưng bạn còn lại gì?',
+		textEn:
+			'Storm passed, leaving ruins. You stand in empty office, looking at city lights. You won, but what is left?',
+		next: 'chapter_9_start',
+	},
+
 	// 8.1 AI Gamble
 	ch8_ai_1: {
 		id: 'ch8_ai_1',
@@ -424,7 +424,94 @@ export const chapter8Dialogues: Record<string, DialogueNode> = {
 			'Bạn thấy cơ hội trong mảng Robot chăm sóc sức khỏe (Care Robots). Không phải vì tiền, mà vì ý nghĩa: Giúp người già sống đàng hoàng hơn.',
 		textEn:
 			'Saw opportunity in Care Robots. Not for money, but for meaning: Help elderly live with dignity.',
-		next: 'ch8_ai_bet',
+		next: 'ch8_budget_start',
+	},
+
+	// NEW: Budget Event
+	ch8_budget_start: {
+		id: 'ch8_budget_start',
+		speaker: 'player',
+		text: '(Suy nghĩ) Dự án Robot cần ngân sách R&D khổng lồ. 10 tỷ đồng để mua linh kiện và thuê chuyên gia.',
+		textVi:
+			'(Suy nghĩ) Dự án Robot cần ngân sách R&D khổng lồ. 10 tỷ đồng để mua linh kiện và thuê chuyên gia.',
+		textEn:
+			'(Thinking) Robot project needs huge R&D budget. 10 billion for parts and experts.',
+		choices: [
+			{
+				id: 'choice_budget_approve',
+				text: 'Duyệt chi: Đầu tư cho tương lai (-10B)',
+				textVi: 'Duyệt chi: Đầu tư cho tương lai (-10B)',
+				textEn: 'Approve: Invest in future (-10B)',
+				effects: [{ stat: 'money', value: -10000000000 }],
+				next: 'ch8_budget_approve',
+			},
+			{
+				id: 'choice_budget_cut',
+				text: 'Cắt giảm: Tận dụng linh kiện cũ (-2B, Vision -1)',
+				textVi: 'Cắt giảm: Tận dụng linh kiện cũ (-2B, Vision -1)',
+				textEn: 'Cut: Reuse old parts (-2B, Vision -1)',
+				effects: [
+					{ stat: 'money', value: -2000000000 },
+					{ stat: 'vision', value: -1 },
+				],
+				next: 'ch8_budget_fail',
+			},
+		],
+	},
+	ch8_budget_approve: {
+		id: 'ch8_budget_approve',
+		speaker: 'narrator',
+		text: 'Ngân sách được thông qua. Các kỹ sư làm việc hăng say với thiết bị mới nhất.',
+		textVi:
+			'Ngân sách được thông qua. Các kỹ sư làm việc hăng say với thiết bị mới nhất.',
+		textEn: 'Budget approved. Engineers work passionately with latest gear.',
+		next: 'ch8_betrayal_start', // Redirect to Betrayal
+	},
+	ch8_budget_fail: {
+		id: 'ch8_budget_fail',
+		speaker: 'narrator',
+		text: 'Linh kiện cũ gây ra lỗi quá nhiệt. Robot thử nghiệm phát nổ trong phòng Lab. Cổ phiếu lao dốc không phanh. Đối tác rút vốn. Bạn mất 50 tỷ để đền bù và khắc phục.',
+		textVi:
+			'Linh kiện cũ gây ra lỗi quá nhiệt. Robot thử nghiệm phát nổ trong phòng Lab. Cổ phiếu lao dốc không phanh. Đối tác rút vốn. Bạn mất 50 tỷ để đền bù và khắc phục.',
+		textEn:
+			'Old parts caused overheating. Prototype robot exploded in Lab. Stocks plummeted. Partners withdrew capital. You lost 50 billion in compensation and repairs.',
+		effects: [{ stat: 'money', value: -50000000000 }],
+		next: 'ch8_betrayal_start', // Redirect to Betrayal
+	},
+
+	// NEW: Co-founder Betrayal
+	ch8_betrayal_start: {
+		id: 'ch8_betrayal_start',
+		speaker: 'narrator',
+		text: 'Tin mật báo: Co-founder của bạn đang bí mật đàm phán bán công nghệ lõi cho đối thủ.',
+		textVi:
+			'Tin mật báo: Co-founder của bạn đang bí mật đàm phán bán công nghệ lõi cho đối thủ.',
+		textEn:
+			'Intel: Your Co-founder is secretly negotiating to sell core tech to competitor.',
+		choices: [
+			{
+				id: 'choice_betrayal_fight',
+				text: 'Kiện ra tòa: Khô máu (Money -2B, Stress +2)',
+				textVi: 'Kiện ra tòa: Khô máu (Money -2B, Stress +2)',
+				textEn: 'Sue them: All out war (Money -2B, Stress +2)',
+				effects: [
+					{ stat: 'money', value: -2000000000 },
+					{ stat: 'stress', value: 2 },
+				],
+				next: 'ch8_ai_bet',
+			},
+			{
+				id: 'choice_betrayal_negotiate',
+				text: 'Thỏa hiệp: Chia lợi nhuận (Money +5B, Vision -2)',
+				textVi: 'Thỏa hiệp: Chia lợi nhuận (Money +5B, Vision -2)',
+				textEn: 'Negotiate: Share profit (Money +5B, Vision -2)',
+				effects: [
+					{ stat: 'money', value: 5000000000 },
+					{ stat: 'vision', value: -2 },
+				],
+				next: 'ch8_ai_bet',
+			},
+		],
 	},
 	ch8_ai_bet: {
 		id: 'ch8_ai_bet',
@@ -435,7 +522,53 @@ export const chapter8Dialogues: Record<string, DialogueNode> = {
 		textEn:
 			'All-in. Government loans, top professor partnerships. Final gamble to become a Unicorn.',
 		effects: [{ stat: 'vision', value: 2 }],
-		next: 'ch8_recall_1',
+		next: 'ch8_prison_check', // Redirect to Prison Check
+	},
+
+	// NEW: Lawsuit/Prison Check
+	ch8_prison_check: {
+		id: 'ch8_prison_check',
+		speaker: 'narrator',
+		text: 'Chính phủ rà soát hồ sơ năng lực để cấp vốn.',
+		textVi: 'Chính phủ rà soát hồ sơ năng lực để cấp vốn.',
+		textEn: 'Government reviews profile for funding.',
+		choices: [
+			{
+				id: 'choice_prison_trigger',
+				text: '...',
+				textVi: '...',
+				textEn: '...',
+				condition: {
+					type: 'flag',
+					key: 'choice_fake_data', // From Ch 6
+					operator: '==',
+					value: true,
+				},
+				next: 'ch8_prison_risk',
+			},
+			{
+				id: 'choice_prison_pass',
+				text: 'Hồ sơ sạch: Được duyệt',
+				textVi: 'Hồ sơ sạch: Được duyệt',
+				textEn: 'Clean profile: Approved',
+				next: 'ch8_recall_1',
+			},
+		],
+	},
+	ch8_prison_risk: {
+		id: 'ch8_prison_risk',
+		speaker: 'narrator',
+		text: 'Phát hiện gian lận số liệu trong quá khứ (Vụ án Chapter 6). Bạn bị điều tra hình sự. Cổ phiếu bị đình chỉ giao dịch.',
+		textVi:
+			'Phát hiện gian lận số liệu trong quá khứ (Vụ án Chapter 6). Bạn bị điều tra hình sự. Cổ phiếu bị đình chỉ giao dịch.',
+		textEn:
+			'Past data fraud detected (Chapter 6 case). Criminal investigation. Stock trading suspended.',
+		effects: [
+			{ stat: 'money', value: -50000000000 }, // Huge fine
+			{ stat: 'vision', value: -5 },
+			{ stat: 'stress', value: 5 },
+		],
+		next: 'ch8_recall_1', // Still proceed but crippled
 	},
 
 	// 8.2 The Recall
@@ -457,6 +590,61 @@ export const chapter8Dialogues: Record<string, DialogueNode> = {
 			'Một báo cáo nội bộ gửi đến bàn làm việc: Trong một số điều kiện hiếm gặp, AI bị ảo giác (Hallucination) và robot có thể kẹp tay người già gây thương tích. Tỷ lệ: 1%.',
 		textEn:
 			'Internal report landed on desk: In rare edge cases, AI hallucinates and robot may clamp elderly hands causing injury. Rate: 1%.',
+		next: 'ch8_ethics_start',
+	},
+
+	// NEW: Ethics Event
+	ch8_ethics_start: {
+		id: 'ch8_ethics_start',
+		speaker: 'player',
+		text: '(Suy nghĩ) Báo cáo lỗi khiến bạn lo ngại. Bạn muốn thuê một Giám đốc Đạo đức AI để kiểm soát rủi ro. Chi phí 2 tỷ/năm.',
+		textVi:
+			'(Suy nghĩ) Báo cáo lỗi khiến bạn lo ngại. Bạn muốn thuê một Giám đốc Đạo đức AI để kiểm soát rủi ro. Chi phí 2 tỷ/năm.',
+		textEn:
+			'(Thinking) Bug report worries you. Want to hire AI Ethics Director to control risk. Cost 2 billion/year.',
+		choices: [
+			{
+				id: 'choice_ethics_hire',
+				text: 'Thuê ngay: An toàn là trên hết (-2B, Vision +1)',
+				textVi: 'Thuê ngay: An toàn là trên hết (-2B, Vision +1)',
+				textEn: 'Hire now: Safety first (-2B, Vision +1)',
+				effects: [
+					{ stat: 'money', value: -2000000000 },
+					{ stat: 'vision', value: 1 },
+				],
+				next: 'ch8_ethics_hire',
+			},
+			{
+				id: 'choice_ethics_nephew',
+				text: 'Thuê người quen: Thằng cháu mới ra trường (-200M)',
+				textVi: 'Thuê người quen: Thằng cháu mới ra trường (-200M)',
+				textEn: 'Hire relative: Nephew just graduated (-200M)',
+				effects: [{ stat: 'money', value: -200000000 }],
+				next: 'ch8_ethics_nephew',
+			},
+		],
+	},
+	ch8_ethics_hire: {
+		id: 'ch8_ethics_hire',
+		speaker: 'narrator',
+		text: 'Giám đốc Đạo đức đưa ra những cảnh báo quan trọng. Bạn cảm thấy yên tâm hơn.',
+		textVi:
+			'Giám đốc Đạo đức đưa ra những cảnh báo quan trọng. Bạn cảm thấy yên tâm hơn.',
+		textEn: 'Ethics Director gave important warnings. You feel more secure.',
+		next: 'ch8_recall_pressure',
+	},
+	ch8_ethics_nephew: {
+		id: 'ch8_ethics_nephew',
+		speaker: 'narrator',
+		text: 'Thằng cháu làm việc hời hợt, bỏ qua các cảnh báo an toàn. Một scandal lộ dữ liệu xảy ra trên quy mô toàn cầu. Google và Apple gỡ ứng dụng. Công ty bị phạt 20 tỷ và mất uy tín nghiêm trọng.',
+		textVi:
+			'Thằng cháu làm việc hời hợt, bỏ qua các cảnh báo an toàn. Một scandal lộ dữ liệu xảy ra trên quy mô toàn cầu. Google và Apple gỡ ứng dụng. Công ty bị phạt 20 tỷ và mất uy tín nghiêm trọng.',
+		textEn:
+			'Nephew worked carelessly, ignored safety warnings. Global data leak scandal. Google and Apple delisted app. Company fined 20 billion and lost serious reputation.',
+		effects: [
+			{ stat: 'money', value: -20000000000 },
+			{ stat: 'vision', value: -10 },
+		],
 		next: 'ch8_recall_pressure',
 	},
 	ch8_recall_pressure: {
@@ -467,7 +655,79 @@ export const chapter8Dialogues: Record<string, DialogueNode> = {
 			'Cổ đông gào lên: "Mày điên à? Tỷ lệ 1% là sai số cho phép! Im lặng mà vá lỗi (Silent Patch). Thu hồi bây giờ là tự sát! Mày muốn mất tất cả như bố mày à?"',
 		textEn:
 			'Shareholder screamed: "Are you crazy? 1% is acceptable margin! Silent Patch it. Recall now is suicide! Do you want to lose everything like your dad?"',
-		next: 'ch8_recall_reply',
+		next: 'ch8_lawyer_start',
+	},
+
+	// NEW: Lawyer Event
+	ch8_lawyer_start: {
+		id: 'ch8_lawyer_start',
+		speaker: 'player',
+		text: '(Suy nghĩ) Cổ đông gây áp lực. Bạn cần tư vấn pháp lý về trách nhiệm nếu xảy ra sự cố.',
+		textVi:
+			'(Suy nghĩ) Cổ đông gây áp lực. Bạn cần tư vấn pháp lý về trách nhiệm nếu xảy ra sự cố.',
+		textEn:
+			'(Thinking) Shareholders pressure. Need legal advice on liability if incident occurs.',
+		choices: [
+			{
+				id: 'choice_lawyer_hire',
+				text: 'Thuê luật sư: Bảo vệ bản thân (-500M, Steel Mind +1)',
+				textVi: 'Thuê luật sư: Bảo vệ bản thân (-500M, Steel Mind +1)',
+				textEn: 'Hire lawyer: Protect self (-500M, Steel Mind +1)',
+				effects: [
+					{ stat: 'money', value: -500000000 },
+					{ stat: 'steelMind', value: 1 },
+				],
+				next: 'ch8_lawyer_hire',
+			},
+			{
+				id: 'choice_lawyer_skip',
+				text: 'Tự chịu trách nhiệm: Mình làm mình chịu (Humanity +1)',
+				textVi: 'Tự chịu trách nhiệm: Mình làm mình chịu (Humanity +1)',
+				textEn: 'Self-responsibility: I own it (Humanity +1)',
+				effects: [{ stat: 'humanity', value: 1 }],
+				next: 'ch8_recall_reply',
+			},
+		],
+	},
+	ch8_lawyer_hire: {
+		id: 'ch8_lawyer_hire',
+		speaker: 'narrator',
+		text: 'Luật sư tư vấn các phương án bảo vệ tài sản và danh dự.',
+		textVi: 'Luật sư tư vấn các phương án bảo vệ tài sản và danh dự.',
+		textEn: 'Lawyer advised on asset and reputation protection.',
+		next: 'ch8_divorce_start', // Redirect to Divorce
+	},
+
+	// NEW: Divorce Crisis
+	ch8_divorce_start: {
+		id: 'ch8_divorce_start',
+		speaker: 'narrator',
+		text: 'Giữa tâm bão khủng hoảng công ty, vợ bạn đưa đơn ly hôn. "Em không thể chịu đựng sự vô tâm của anh thêm một ngày nào nữa."',
+		textVi:
+			'Giữa tâm bão khủng hoảng công ty, vợ bạn đưa đơn ly hôn. "Em không thể chịu đựng sự vô tâm của anh thêm một ngày nào nữa."',
+		textEn:
+			'Amidst company crisis, wife files for divorce. "I can\'t stand your indifference one more day."',
+		choices: [
+			{
+				id: 'choice_divorce_sign',
+				text: 'Ký đơn: Chia tài sản (Money / 2, Stress +3)',
+				textVi: 'Ký đơn: Chia tài sản (Money / 2, Stress +3)',
+				textEn: 'Sign: Split assets (Money / 2, Stress +3)',
+				effects: [
+					{ stat: 'money', value: -10000000000 }, // Approximate half
+					{ stat: 'stress', value: 3 },
+				],
+				next: 'ch8_recall_reply',
+			},
+			{
+				id: 'choice_divorce_beg',
+				text: 'Van xin: Anh sẽ thay đổi (Humanity -2, Chance?)',
+				textVi: 'Van xin: Anh sẽ thay đổi (Humanity -2, Chance?)',
+				textEn: 'Beg: I will change (Humanity -2, Chance?)',
+				effects: [{ stat: 'humanity', value: -2 }],
+				next: 'ch8_recall_reply',
+			},
+		],
 	},
 	ch8_recall_reply: {
 		id: 'ch8_recall_reply',
@@ -536,6 +796,7 @@ export const chapter8Dialogues: Record<string, DialogueNode> = {
 				text: 'Thu hồi toàn bộ - Nghe lương tâm (Canon/True Ending)',
 				textVi: 'Thu hồi toàn bộ - Nghe lương tâm (Canon/True Ending)',
 				textEn: 'Full Recall - Follow Conscience (Canon/True Ending)',
+				condition: { type: 'stat', key: 'humanity', operator: '>=', value: 40 },
 				effects: [
 					{ stat: 'humanity', value: 3 },
 					{ stat: 'vision', value: 1 },
@@ -574,6 +835,19 @@ export const chapter8Dialogues: Record<string, DialogueNode> = {
 			'Di sản cuối cùng (Final Commit): Bạn thức trắng đêm, tự tay code bản vá lỗi. Commit message: "Fix bug, heal soul". Đây là dòng code đẹp nhất cuộc đời bạn.',
 		textEn:
 			'Final Commit: You stayed up all night, coding the patch yourself. Commit message: "Fix bug, heal soul". The most beautiful line of code in your life.',
+		next: 'ch8_ipo_start',
+	},
+
+	// NEW: IPO Event
+	ch8_ipo_start: {
+		id: 'ch8_ipo_start',
+		speaker: 'narrator',
+		text: 'Công ty IPO thành công rực rỡ. Định giá Unicorn. Bạn trở thành tỷ phú đô la.',
+		textVi:
+			'Công ty IPO thành công rực rỡ. Định giá Unicorn. Bạn trở thành tỷ phú đô la.',
+		textEn:
+			'Company IPO successful. Unicorn valuation. You became a billionaire.',
+		effects: [{ stat: 'money', value: 100000000000 }],
 		next: 'ch8_rebirth_1',
 	},
 
@@ -598,6 +872,46 @@ export const chapter8Dialogues: Record<string, DialogueNode> = {
 			'Cổ phiếu lao dốc. Bị chửi rủa. Nhưng sau đó, khách hàng tin tưởng: "Ông ta không lừa dối".',
 		textEn:
 			'Stocks crashed. Mocked. But then, clients trusted: "He doesn\'t lie".',
+		next: 'ch8_donate_uni_start',
+	},
+
+	// NEW: Donate Uni Event
+	ch8_donate_uni_start: {
+		id: 'ch8_donate_uni_start',
+		speaker: 'player',
+		text: '(Suy nghĩ) Trường đại học cũ kêu gọi tài trợ xây phòng Lab AI. Bạn muốn đóng góp 5 tỷ.',
+		textVi:
+			'(Suy nghĩ) Trường đại học cũ kêu gọi tài trợ xây phòng Lab AI. Bạn muốn đóng góp 5 tỷ.',
+		textEn:
+			'(Thinking) Old university asking for AI Lab funding. You want to donate 5 billion.',
+		choices: [
+			{
+				id: 'choice_donate_uni_give',
+				text: 'Tài trợ: Ươm mầm tài năng (-5B, Vision +1)',
+				textVi: 'Tài trợ: Ươm mầm tài năng (-5B, Vision +1)',
+				textEn: 'Donate: Nurture talent (-5B, Vision +1)',
+				effects: [
+					{ stat: 'money', value: -5000000000 },
+					{ stat: 'vision', value: 1 },
+				],
+				next: 'ch8_donate_uni_give',
+			},
+			{
+				id: 'choice_donate_uni_skip',
+				text: 'Giữ lại tái thiết công ty: Cần vốn (Money +0)',
+				textVi: 'Giữ lại tái thiết công ty: Cần vốn (Money +0)',
+				textEn: 'Keep to rebuild: Need capital (Money +0)',
+				next: 'ch8_rebirth_2',
+			},
+		],
+	},
+	ch8_donate_uni_give: {
+		id: 'ch8_donate_uni_give',
+		speaker: 'narrator',
+		text: 'Trường đại học vinh danh bạn. Sinh viên có thêm nguồn lực để nghiên cứu.',
+		textVi:
+			'Trường đại học vinh danh bạn. Sinh viên có thêm nguồn lực để nghiên cứu.',
+		textEn: 'University honors you. Students have resources for research.',
 		next: 'ch8_rebirth_2',
 	},
 	ch8_rebirth_2: {

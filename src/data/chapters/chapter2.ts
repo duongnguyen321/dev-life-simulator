@@ -21,9 +21,9 @@ export const chapter2: Chapter = {
 			name: 'FPT School',
 			nameVi: 'Lớp 6: Rời tổ và FPT School',
 			nameEn: 'Grade 6: Leaving the Nest & FPT School',
-			background: '/assets/sprites/backgrounds/fpt_school.png',
-			music: '/assets/audio/music/chapters/ch2_collapse.mp3',
-			dialogueStart: 'ch2_fpt_1',
+			background: '/assets/sprites/backgrounds/living_room_dark.png',
+			music: '/assets/audio/music/chapters/ch2_sad.mp3',
+			dialogueStart: 'ch2_intro',
 		},
 		{
 			id: 'ch2_overflow',
@@ -86,7 +86,7 @@ export const chapter2: Chapter = {
 				textVi: 'Gánh nước giếng',
 				textEn: 'Carry well water',
 				effects: [{ stat: 'health', value: 1 }],
-				cost: { stress: 1 },
+				cost: { stress: 2 }, // Increased Stress cost
 			},
 			{
 				id: 'ch2_todo_study_late',
@@ -102,7 +102,7 @@ export const chapter2: Chapter = {
 				textVi: 'Trốn trong nhà khi chủ nợ đến',
 				textEn: 'Hide when debt collectors come',
 				effects: [{ stat: 'steelMind', value: 1 }],
-				cost: { stress: 2 },
+				cost: { stress: 3 }, // Increased Stress cost significantly
 			},
 			{
 				id: 'ch2_todo_read_book',
@@ -141,14 +141,7 @@ export const chapter2: Chapter = {
 				textEn: 'Look in the mirror',
 				effects: [{ stat: 'vision', value: 1 }], // Tự nhủ phải thành công
 			},
-			{
-				id: 'ch2_todo_save_money',
-				text: 'Nhịn ăn sáng tiết kiệm tiền',
-				textVi: 'Nhịn ăn sáng tiết kiệm tiền',
-				textEn: 'Skip breakfast to save money',
-				reward: { money: 20000 },
-				cost: { health: 1 },
-			},
+
 			{
 				id: 'ch2_todo_fix_roof',
 				text: 'Chèn mái nhà chống dột',
@@ -171,14 +164,7 @@ export const chapter2: Chapter = {
 				textEn: 'Play with clay',
 				effects: [{ stat: 'vision', value: 1 }], // Sáng tạo
 			},
-			{
-				id: 'ch2_todo_catch_crab',
-				text: 'Mò cua bắt ốc',
-				textVi: 'Mò cua bắt ốc',
-				textEn: 'Catch crabs and snails',
-				reward: { money: 5000 },
-				cost: { health: 1 },
-			},
+
 			{
 				id: 'ch2_todo_fight_bully',
 				text: 'Đánh nhau với bọn bắt nạt',
@@ -431,9 +417,20 @@ export const chapter2: Chapter = {
 };
 
 export const chapter2Dialogues: Record<string, DialogueNode> = {
+	// NEW: Intro
+	ch2_intro: {
+		id: 'ch2_intro',
+		speaker: 'narrator',
+		text: 'Căn nhà mới lạ lẫm và chật hẹp. Không còn khoảng sân rộng, không còn những món đồ chơi đắt tiền. Chỉ còn lại sự im lặng nặng nề trong bữa cơm.',
+		textVi:
+			'Căn nhà mới lạ lẫm và chật hẹp. Không còn khoảng sân rộng, không còn những món đồ chơi đắt tiền. Chỉ còn lại sự im lặng nặng nề trong bữa cơm.',
+		textEn:
+			'The new house is strange and cramped. No more wide yard, no more expensive toys. Only heavy silence remains during meals.',
+		next: 'ch2_start',
+	},
 	// 2.1 Lớp 6: Rời tổ
-	ch2_fpt_1: {
-		id: 'ch2_fpt_1',
+	ch2_start: {
+		id: 'ch2_start',
 		speaker: 'narrator',
 		text: 'Bạn vào học nội trú tại FPT School. Một môi trường kỷ luật, hiện đại và đầy tính cạnh tranh.',
 		textVi:
@@ -441,6 +438,16 @@ export const chapter2Dialogues: Record<string, DialogueNode> = {
 		textEn:
 			'You entered boarding school at FPT School. A disciplined, modern, and competitive environment.',
 		next: 'ch2_fpt_2',
+	},
+	ch2_end: {
+		id: 'ch2_end',
+		speaker: 'narrator',
+		text: 'Trong góc phòng kho bụi bặm, màn hình CRT cũ kỹ bỗng sáng lên. Dòng lệnh nhấp nháy màu xanh lá. Một cánh cửa bí mật vừa hé mở.',
+		textVi:
+			'Trong góc phòng kho bụi bặm, màn hình CRT cũ kỹ bỗng sáng lên. Dòng lệnh nhấp nháy màu xanh lá. Một cánh cửa bí mật vừa hé mở.',
+		textEn:
+			'In the dusty storage corner, the old CRT monitor lit up. A green blinking cursor. A secret door just cracked open.',
+		next: 'chapter_3_start',
 	},
 	ch2_fpt_2: {
 		id: 'ch2_fpt_2',
@@ -460,7 +467,44 @@ export const chapter2Dialogues: Record<string, DialogueNode> = {
 			'(Nằm nghe tiếng mưa) Nhớ nhà quá. Nhớ tiếng chó sủa, nhớ tiếng công kêu. Ở đây chỉ có tiếng mưa lạnh lẽo.',
 		textEn:
 			'(Listening to rain) I miss home. Miss the barking dogs, the calling peacocks. Here, only cold rain.',
-		next: 'ch2_overflow_1',
+		next: 'ch2_internet_start', // Redirect to Internet Escape
+	},
+
+	// NEW: Internet Escape Event
+	ch2_internet_start: {
+		id: 'ch2_internet_start',
+		speaker: 'player',
+		text: '(Suy nghĩ) Cổng trường có quán Net mới mở. Mấy đứa bạn rủ ra đó "giải khuây".',
+		textVi:
+			'(Suy nghĩ) Cổng trường có quán Net mới mở. Mấy đứa bạn rủ ra đó "giải khuây".',
+		textEn:
+			'(Thinking) New Net cafe opened near school. Friends invited to "relax" there.',
+		choices: [
+			{
+				id: 'choice_internet_go',
+				text: 'Đi Net: Quên hết sự đời (Stress -2, Vision -1, Money -20k)',
+				textVi: 'Đi Net: Quên hết sự đời (Stress -2, Vision -1, Money -20k)',
+				textEn:
+					'Go to Net: Forget everything (Stress -2, Vision -1, Money -20k)',
+				effects: [
+					{ stat: 'stress', value: -2 },
+					{ stat: 'vision', value: -1 },
+					{ stat: 'money', value: -20000 },
+				],
+				next: 'ch2_overflow_1',
+			},
+			{
+				id: 'choice_internet_stay',
+				text: 'Ở lại thư viện: Đọc sách (Vision +1, Stress +1)',
+				textVi: 'Ở lại thư viện: Đọc sách (Vision +1, Stress +1)',
+				textEn: 'Stay in library: Read books (Vision +1, Stress +1)',
+				effects: [
+					{ stat: 'vision', value: 1 },
+					{ stat: 'stress', value: 1 },
+				],
+				next: 'ch2_overflow_1',
+			},
+		],
 	},
 
 	// 2.2 Sự cố Stack Overflow
@@ -619,7 +663,39 @@ export const chapter2Dialogues: Record<string, DialogueNode> = {
 			'Cả gia đình dắt díu nhau về quê nội. Không còn biệt thự, chỉ còn căn nhà cấp 4 dột nát. Bố mẹ ly thân tạm thời. Bố ở lại Lào Cai giải quyết nợ.',
 		textEn:
 			'Family moved to countryside. Dilapidated cottage. Parents separated temporarily. Father stayed in Lao Cai for debts.',
-		next: 'ch2_countryside_2',
+		next: 'ch2_breakfast_start',
+	},
+
+	// NEW: Breakfast Event
+	ch2_breakfast_start: {
+		id: 'ch2_breakfast_start',
+		speaker: 'player',
+		text: '(Suy nghĩ) Sáng sớm đi học xa. Bụng đói cồn cào. Mẹ cho 5 nghìn ăn sáng.',
+		textVi:
+			'(Suy nghĩ) Sáng sớm đi học xa. Bụng đói cồn cào. Mẹ cho 5 nghìn ăn sáng.',
+		textEn:
+			'(Thinking) Early morning school. Stomach growling. Mom gave 5k for breakfast.',
+		choices: [
+			{
+				id: 'choice_breakfast_skip',
+				text: 'Nhịn ăn: Tiết kiệm tiền mua sách (+5k, Health -1)',
+				textVi: 'Nhịn ăn: Tiết kiệm tiền mua sách (+5k, Health -1)',
+				textEn: 'Skip: Save for books (+5k, Health -1)',
+				effects: [
+					{ stat: 'money', value: 5000 },
+					{ stat: 'health', value: -1 },
+				],
+				next: 'ch2_health_collapse',
+			},
+			{
+				id: 'choice_breakfast_eat',
+				text: 'Ăn xôi: Có thực mới vực được đạo (Health +1)',
+				textVi: 'Ăn xôi: Có thực mới vực được đạo (Health +1)',
+				textEn: 'Eat sticky rice: Health first (Health +1)',
+				effects: [{ stat: 'health', value: 1 }],
+				next: 'ch2_countryside_2',
+			},
+		],
 	},
 	ch2_countryside_2: {
 		id: 'ch2_countryside_2',
@@ -629,6 +705,68 @@ export const chapter2Dialogues: Record<string, DialogueNode> = {
 			'Mùa đông miền Bắc rét cắt da cắt thịt. Nhà không có lò sưởi, gió lùa qua khe cửa.',
 		textEn:
 			'Northern winter was bone-chilling. No heater, wind whistling through door cracks.',
+		next: 'ch2_theft_start', // Redirect to Theft Event
+	},
+
+	// NEW: Health Collapse Chain
+	ch2_health_collapse: {
+		id: 'ch2_health_collapse',
+		speaker: 'narrator',
+		text: 'Vì nhịn ăn và lạnh, bạn bị tụt huyết áp ngất xỉu giữa lớp. Tiền thuốc men tốn gấp đôi số tiền bạn tiết kiệm được.',
+		textVi:
+			'Vì nhịn ăn và lạnh, bạn bị tụt huyết áp ngất xỉu giữa lớp. Tiền thuốc men tốn gấp đôi số tiền bạn tiết kiệm được.',
+		textEn:
+			'Due to hunger and cold, you fainted in class. Medical bills cost double what you saved.',
+		effects: [
+			{ stat: 'money', value: -10000 },
+			{ stat: 'health', value: -2 },
+			{ stat: 'vision', value: -1 }, // Missed lessons
+		],
+		next: 'ch2_countryside_2',
+	},
+
+	// NEW: The Theft Event
+	ch2_theft_start: {
+		id: 'ch2_theft_start',
+		speaker: 'narrator',
+		text: 'Giờ ra chơi, bạn thấy trên bàn giáo viên có tờ 50k ai đó để quên. Bụng bạn đang đói cồn cào.',
+		textVi:
+			'Giờ ra chơi, bạn thấy trên bàn giáo viên có tờ 50k ai đó để quên. Bụng bạn đang đói cồn cào.',
+		textEn:
+			"Recess time. You saw a 50k note left on teacher's desk. Your stomach is growling.",
+		choices: [
+			{
+				id: 'choice_theft_take',
+				text: 'Lấy trộm: Cần tiền ăn (Money +50k, Humanity -10)',
+				textVi: 'Lấy trộm: Cần tiền ăn (Money +50k, Humanity -10)',
+				textEn: 'Steal it: Need food money (Money +50k, Humanity -10)',
+				effects: [
+					{ stat: 'money', value: 50000 },
+					{ stat: 'humanity', value: -10 },
+					{ stat: 'steelMind', value: -2 }, // Guilt
+				],
+				next: 'ch2_theft_guilt',
+			},
+			{
+				id: 'choice_theft_ignore',
+				text: 'Bỏ qua: Đói cho sạch, rách cho thơm (Steel Mind +2)',
+				textVi: 'Bỏ qua: Đói cho sạch, rách cho thơm (Steel Mind +2)',
+				textEn: 'Ignore: Starve but stay clean (Steel Mind +2)',
+				effects: [
+					{ stat: 'steelMind', value: 2 },
+					{ stat: 'health', value: -1 }, // Still hungry
+				],
+				next: 'ch2_neighbor_mock',
+			},
+		],
+	},
+	ch2_theft_guilt: {
+		id: 'ch2_theft_guilt',
+		speaker: 'player',
+		text: '(Suy nghĩ) Mình đã trở thành kẻ cắp sao? Miếng bánh mì này sao đắng ngắt...',
+		textVi:
+			'(Suy nghĩ) Mình đã trở thành kẻ cắp sao? Miếng bánh mì này sao đắng ngắt...',
+		textEn: '(Thinking) Have I become a thief? This bread tastes so bitter...',
 		next: 'ch2_neighbor_mock',
 	},
 	ch2_neighbor_mock: {
@@ -660,6 +798,45 @@ export const chapter2Dialogues: Record<string, DialogueNode> = {
 		textEn:
 			'Realized without money, self-esteem is all that keeps you standing. Learned to ignore whispers.',
 		effects: [{ stat: 'steelMind', value: 2 }],
+		next: 'ch2_crab_start',
+	},
+
+	// NEW: Crab Event
+	ch2_crab_start: {
+		id: 'ch2_crab_start',
+		speaker: 'player',
+		text: '(Suy nghĩ) Chiều về, lũ bạn rủ đi mò cua bắt ốc bán lấy tiền.',
+		textVi: '(Suy nghĩ) Chiều về, lũ bạn rủ đi mò cua bắt ốc bán lấy tiền.',
+		textEn:
+			'(Thinking) Afternoon, friends invite to catch crabs/snails to sell.',
+		choices: [
+			{
+				id: 'choice_crab_go',
+				text: 'Đi luôn: Kiếm thêm thu nhập (+2k, Health -1)',
+				textVi: 'Đi luôn: Kiếm thêm thu nhập (+2k, Health -1)',
+				textEn: 'Go: Earn extra income (+2k, Health -1)',
+				effects: [
+					{ stat: 'money', value: 2000 },
+					{ stat: 'health', value: -1 },
+				],
+				next: 'ch2_crab_go',
+			},
+			{
+				id: 'choice_crab_skip',
+				text: 'Về học: Tương lai quan trọng hơn (Vision +1)',
+				textVi: 'Về học: Tương lai quan trọng hơn (Vision +1)',
+				textEn: 'Study: Future matters (Vision +1)',
+				effects: [{ stat: 'vision', value: 1 }],
+				next: 'ch2_mentor_1',
+			},
+		],
+	},
+	ch2_crab_go: {
+		id: 'ch2_crab_go',
+		speaker: 'narrator',
+		text: 'Bạn lấm lem bùn đất, nhưng cầm 2 nghìn trên tay thấy vui vui.',
+		textVi: 'Bạn lấm lem bùn đất, nhưng cầm 2 nghìn trên tay thấy vui vui.',
+		textEn: 'Muddy, but holding 2k makes you happy.',
 		next: 'ch2_mentor_1',
 	},
 

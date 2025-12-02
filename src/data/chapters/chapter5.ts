@@ -72,21 +72,14 @@ export const chapter5: Chapter = {
 				effects: [{ stat: 'steelMind', value: 1 }],
 				cost: { health: 1 },
 			},
-			{
-				id: 'ch5_todo_fix_bug_senior',
-				text: 'Fix bug hộ Senior',
-				textVi: 'Fix bug hộ Senior',
-				textEn: 'Fix bug for Senior',
-				effects: [{ stat: 'vision', value: 1 }],
-				reward: { money: 100000 }, // Bonus?
-			},
+
 			{
 				id: 'ch5_todo_ot_no_pay',
 				text: 'OT không lương',
 				textVi: 'OT không lương',
 				textEn: 'Unpaid OT',
 				effects: [{ stat: 'steelMind', value: 1 }],
-				cost: { health: 1, stress: 1 },
+				cost: { health: 1, stress: 2 }, // Increased Stress cost
 			},
 			{
 				id: 'ch5_todo_learn_english',
@@ -96,14 +89,7 @@ export const chapter5: Chapter = {
 				effects: [{ stat: 'vision', value: 1 }],
 				cost: { stress: 1 },
 			},
-			{
-				id: 'ch5_todo_networking',
-				text: 'Đi nhậu với sếp',
-				textVi: 'Đi nhậu với sếp',
-				textEn: 'Drink with boss',
-				effects: [{ stat: 'vision', value: 1 }], // Networking
-				cost: { health: 1, money: 1000000 },
-			},
+
 			{
 				id: 'ch5_todo_refactor_legacy',
 				text: 'Refactor code rác',
@@ -119,22 +105,7 @@ export const chapter5: Chapter = {
 				textEn: 'Write Tech Blog',
 				effects: [{ stat: 'vision', value: 1 }],
 			},
-			{
-				id: 'ch5_todo_gym_skip',
-				text: 'Bỏ tập Gym vì deadline',
-				textVi: 'Bỏ tập Gym vì deadline',
-				textEn: 'Skip Gym for deadline',
-				cost: { health: 1 },
-				reward: { money: 100000 }, // Done work
-			},
-			{
-				id: 'ch5_todo_call_mom_salary',
-				text: 'Gửi lương về cho mẹ',
-				textVi: 'Gửi lương về cho mẹ',
-				textEn: 'Send salary to Mom',
-				effects: [{ stat: 'humanity', value: 1 }],
-				cost: { money: 2000000 },
-			},
+
 			{
 				id: 'ch5_todo_date_fail',
 				text: 'Đi date nhưng chỉ nói về code',
@@ -142,21 +113,14 @@ export const chapter5: Chapter = {
 				textEn: 'Date but only talk code',
 				cost: { money: 200000, humanity: 1 }, // Fail
 			},
-			{
-				id: 'ch5_todo_buy_course',
-				text: 'Mua khóa học Udemy',
-				textVi: 'Mua khóa học Udemy',
-				textEn: 'Buy Udemy course',
-				effects: [{ stat: 'vision', value: 1 }],
-				cost: { money: 100000 },
-			},
+
 			{
 				id: 'ch5_todo_argue_pm',
 				text: 'Cãi nhau với PM về feature',
 				textVi: 'Cãi nhau với PM về feature',
 				textEn: 'Argue with PM about feature',
 				effects: [{ stat: 'steelMind', value: 1 }],
-				cost: { stress: 1 },
+				cost: { stress: 2 }, // Increased Stress cost
 			},
 			{
 				id: 'ch5_todo_mentor_junior',
@@ -201,7 +165,7 @@ export const chapter5: Chapter = {
 				text: 'Lờ đi cơn đau lưng',
 				textVi: 'Lờ đi cơn đau lưng',
 				textEn: 'Ignore back pain',
-				cost: { health: 2 },
+				cost: { health: 3 }, // Increased Health cost
 				effects: [{ stat: 'steelMind', value: 1 }],
 			},
 			{
@@ -426,6 +390,17 @@ export const chapter5: Chapter = {
 };
 
 export const chapter5Dialogues: Record<string, DialogueNode> = {
+	// NEW: Intro
+	ch5_intro: {
+		id: 'ch5_intro',
+		speaker: 'narrator',
+		text: 'Thẻ nhân viên đeo trên cổ. Văn phòng máy lạnh chạy ro ro. Bạn có một chỗ ngồi, một mức lương, và hàng tá deadline đang chờ đợi.',
+		textVi:
+			'Thẻ nhân viên đeo trên cổ. Văn phòng máy lạnh chạy ro ro. Bạn có một chỗ ngồi, một mức lương, và hàng tá deadline đang chờ đợi.',
+		textEn:
+			'Employee badge on neck. AC humming in office. You have a seat, a salary, and dozens of deadlines waiting.',
+		next: 'ch5_cv_1',
+	},
 	// 5.0 Viết CV
 	ch5_cv_1: {
 		id: 'ch5_cv_1',
@@ -446,6 +421,54 @@ export const chapter5Dialogues: Record<string, DialogueNode> = {
 		textEn:
 			'Spammed 50 CVs. Silence. Or cold automated rejection emails. Imposter Syndrome took over. You asked yourself: "Do I really know how to code or am I just a typist?" The "prodigy" confidence was crushed.',
 		effects: [{ stat: 'steelMind', value: 1 }],
+		next: 'ch5_buy_course_start',
+	},
+
+	// NEW: Buy Course Event
+	ch5_buy_course_start: {
+		id: 'ch5_buy_course_start',
+		speaker: 'player',
+		text: '(Suy nghĩ) Kiến thức hổng quá nhiều. Có khóa học Fullstack chuyên sâu giá 10 triệu.',
+		textVi:
+			'(Suy nghĩ) Kiến thức hổng quá nhiều. Có khóa học Fullstack chuyên sâu giá 10 triệu.',
+		textEn:
+			'(Thinking) Too many knowledge gaps. Advanced Fullstack course costs 10 million.',
+		choices: [
+			{
+				id: 'choice_buy_course_yes',
+				text: 'Mua khóa học: Đầu tư cho bản thân (-10M, Vision +2)',
+				textVi: 'Mua khóa học: Đầu tư cho bản thân (-10M, Vision +2)',
+				textEn: 'Buy course: Invest in self (-10M, Vision +2)',
+				condition: {
+					type: 'stat',
+					key: 'money',
+					operator: '>=',
+					value: 10000000,
+				},
+				effects: [
+					{ stat: 'money', value: -10000000 },
+					{ stat: 'vision', value: 2 },
+				],
+				next: 'ch5_course_study',
+			},
+			{
+				id: 'choice_buy_course_no',
+				text: 'Tự học: Google là miễn phí (Vision +1)',
+				textVi: 'Tự học: Google là miễn phí (Vision +1)',
+				textEn: 'Self-study: Google is free (Vision +1)',
+				effects: [{ stat: 'vision', value: 1 }],
+				next: 'ch5_commute_1',
+			},
+		],
+	},
+	ch5_buy_course_buy: {
+		id: 'ch5_buy_course_buy',
+		speaker: 'narrator',
+		text: 'Bạn mua khóa học và cày ngày đêm. Những mảnh ghép kiến thức dần được lấp đầy.',
+		textVi:
+			'Bạn mua khóa học và cày ngày đêm. Những mảnh ghép kiến thức dần được lấp đầy.',
+		textEn:
+			'You bought the course and studied day and night. Knowledge gaps slowly filled.',
 		next: 'ch5_commute_1',
 	},
 
@@ -458,6 +481,43 @@ export const chapter5Dialogues: Record<string, DialogueNode> = {
 			'Xin được thực tập ở FPT Software (Hòa Lạc). Cách nhà 20km. Bạn cưỡi con Wave Alpha cũ của mẹ, "chiến mã" già nua gào thét trên đại lộ Thăng Long bất kể nắng mưa.',
 		textEn:
 			'Got internship at FPT Software (Hoa Lac). 20km away. You rode Mom\'s old Wave Alpha, the aging "warhorse" screaming on Thang Long Avenue rain or shine.',
+		next: 'ch5_fix_bug_start',
+	},
+
+	// NEW: Fix Bug Event
+	ch5_fix_bug_start: {
+		id: 'ch5_fix_bug_start',
+		speaker: 'player',
+		text: '(Suy nghĩ) Senior đang bận tối mắt. Có con bug nhỏ mình có thể fix được. Nhưng sẽ phải về muộn.',
+		textVi:
+			'(Suy nghĩ) Senior đang bận tối mắt. Có con bug nhỏ mình có thể fix được. Nhưng sẽ phải về muộn.',
+		textEn:
+			'(Thinking) Senior is swamped. I can fix this small bug. But will go home late.',
+		choices: [
+			{
+				id: 'choice_fix_bug_yes',
+				text: 'Fix giúp: Lấy điểm với sếp (+100k bonus)',
+				textVi: 'Fix giúp: Lấy điểm với sếp (+100k bonus)',
+				textEn: 'Fix it: Impress boss (+100k bonus)',
+				effects: [{ stat: 'money', value: 100000 }],
+				next: 'ch5_fix_bug_do',
+			},
+			{
+				id: 'choice_fix_bug_no',
+				text: 'Về đúng giờ: Mưa to quá rồi (Health +1)',
+				textVi: 'Về đúng giờ: Mưa to quá rồi (Health +1)',
+				textEn: 'Leave on time: Rain is heavy (Health +1)',
+				effects: [{ stat: 'health', value: 1 }],
+				next: 'ch5_commute_mentor',
+			},
+		],
+	},
+	ch5_fix_bug_do: {
+		id: 'ch5_fix_bug_do',
+		speaker: 'narrator',
+		text: 'Bạn ở lại fix bug. Sếp gật đầu hài lòng và thưởng nóng cho bạn.',
+		textVi: 'Bạn ở lại fix bug. Sếp gật đầu hài lòng và thưởng nóng cho bạn.',
+		textEn: 'You stayed to fix bug. Boss nodded in approval and gave a bonus.',
 		next: 'ch5_commute_mentor',
 	},
 	ch5_commute_mentor: {
@@ -483,7 +543,7 @@ export const chapter5Dialogues: Record<string, DialogueNode> = {
 				textVi: 'Cãi lại: Code chạy ngon là được',
 				textEn: 'Argue: It works fine',
 				effects: [{ stat: 'steelMind', value: 1 }],
-				next: 'ch5_edtech_1',
+				next: 'ch5_politics_start', // Redirect to Politics
 			},
 			{
 				id: 'choice_absorb_mentor',
@@ -491,6 +551,46 @@ export const chapter5Dialogues: Record<string, DialogueNode> = {
 				textVi: 'Im lặng tiếp thu và sửa lại',
 				textEn: 'Silently absorb and refactor',
 				effects: [{ stat: 'vision', value: 1 }],
+				next: 'ch5_politics_start', // Redirect to Politics
+			},
+		],
+	},
+
+	// NEW: Office Politics
+	ch5_politics_start: {
+		id: 'ch5_politics_start',
+		speaker: 'narrator',
+		text: 'Trong team có một Senior hay bắt nạt Junior. Hôm nay, hắn ta đang mắng xối xả một cậu thực tập sinh vì lỗi nhỏ.',
+		textVi:
+			'Trong team có một Senior hay bắt nạt Junior. Hôm nay, hắn ta đang mắng xối xả một cậu thực tập sinh vì lỗi nhỏ.',
+		textEn:
+			'A Senior in team bullies Juniors. Today, he is yelling at an intern for a small mistake.',
+		choices: [
+			{
+				id: 'choice_politics_defend',
+				text: 'Bảo vệ Junior: Anh đừng quá đáng thế (Humanity +2, Risk)',
+				textVi: 'Bảo vệ Junior: Anh đừng quá đáng thế (Humanity +2, Risk)',
+				textEn: "Defend Junior: Don't be so harsh (Humanity +2, Risk)",
+				effects: [{ stat: 'humanity', value: 2 }],
+				next: 'ch5_edtech_1',
+			},
+			{
+				id: 'choice_politics_ignore',
+				text: 'Lờ đi: Không phải việc của mình (Steel Mind +1)',
+				textVi: 'Lờ đi: Không phải việc của mình (Steel Mind +1)',
+				textEn: 'Ignore: Not my business (Steel Mind +1)',
+				effects: [{ stat: 'steelMind', value: 1 }],
+				next: 'ch5_edtech_1',
+			},
+			{
+				id: 'choice_politics_join',
+				text: 'Hùa theo: Đúng là gà mờ (Steel Mind +1, Humanity -2)',
+				textVi: 'Hùa theo: Đúng là gà mờ (Steel Mind +1, Humanity -2)',
+				textEn: 'Join in: Such a noob (Steel Mind +1, Humanity -2)',
+				effects: [
+					{ stat: 'steelMind', value: 1 },
+					{ stat: 'humanity', value: -2 },
+				],
 				next: 'ch5_edtech_1',
 			},
 		],
@@ -515,7 +615,120 @@ export const chapter5Dialogues: Record<string, DialogueNode> = {
 			'(Suy nghĩ) Lần đầu tiên mình hiểu code không chỉ là kỹ thuật, mà là trách nhiệm.',
 		textEn:
 			'(Thinking) For the first time, I understood code is not just tech, but responsibility.',
-		next: 'ch5_edtech_network',
+		next: 'ch5_ot_start', // Redirect to OT
+	},
+
+	// NEW: OT Culture
+	ch5_ot_start: {
+		id: 'ch5_ot_start',
+		speaker: 'npc',
+		text: 'Sếp yêu cầu cả team ở lại làm thêm giờ để kịp tiến độ. "Anh em cố gắng nhé, cuối năm sẽ có thưởng to."',
+		textVi:
+			'Sếp yêu cầu cả team ở lại làm thêm giờ để kịp tiến độ. "Anh em cố gắng nhé, cuối năm sẽ có thưởng to."',
+		textEn:
+			'Boss asks team to OT to meet deadline. "Try hard guys, big bonus at year end."',
+		choices: [
+			{
+				id: 'choice_ot_stay',
+				text: 'Ở lại làm: Cống hiến hết mình (Vision +1, Health -1)',
+				textVi: 'Ở lại làm: Cống hiến hết mình (Vision +1, Health -1)',
+				textEn: 'Stay: Dedicate yourself (Vision +1, Health -1)',
+				effects: [
+					{ stat: 'vision', value: 1 },
+					{ stat: 'health', value: -1 },
+				],
+				next: 'ch5_salary_start',
+			},
+			{
+				id: 'choice_ot_leave',
+				text: 'Về sớm: Sức khỏe quan trọng hơn (Health +1, Risk)',
+				textVi: 'Về sớm: Sức khỏe quan trọng hơn (Health +1, Risk)',
+				textEn: 'Leave early: Health first (Health +1, Risk)',
+				effects: [{ stat: 'health', value: 1 }],
+				next: 'ch5_salary_start',
+			},
+		],
+	},
+
+	// NEW: Salary Event
+	ch5_salary_start: {
+		id: 'ch5_salary_start',
+		speaker: 'narrator',
+		text: 'Lương tháng đầu tiên. Cầm tiền trong tay, bạn nhớ đến mẹ ở quê.',
+		textVi: 'Lương tháng đầu tiên. Cầm tiền trong tay, bạn nhớ đến mẹ ở quê.',
+		textEn: 'First salary. Holding money, you remember Mom back home.',
+		choices: [
+			{
+				id: 'choice_salary_send',
+				text: 'Gửi về cho mẹ: Con hứa rồi (-5M, Humanity +2)',
+				textVi: 'Gửi về cho mẹ: Con hứa rồi (-5M, Humanity +2)',
+				textEn: 'Send to mom: I promised (-5M, Humanity +2)',
+				condition: {
+					type: 'stat',
+					key: 'humanity',
+					operator: '>=',
+					value: 20,
+				},
+				effects: [
+					{ stat: 'money', value: -5000000 },
+					{ stat: 'humanity', value: 2 },
+				],
+				flags: [{ key: 'sent_money_mom', value: true }],
+				next: 'ch5_salary_mom',
+			},
+			{
+				id: 'choice_salary_keep',
+				text: 'Giữ lại: Mình cần trang trải cuộc sống',
+				textVi: 'Giữ lại: Mình cần trang trải cuộc sống',
+				textEn: 'Keep it: I need to cover expenses',
+				flags: [{ key: 'sent_money_mom', value: false }],
+				next: 'ch5_salary_keep_consequence',
+			},
+		],
+	},
+	ch5_salary_send: {
+		id: 'ch5_salary_send',
+		speaker: 'narrator',
+		text: 'Mẹ gọi điện lên, giọng rưng rưng. Bạn thấy ấm lòng.',
+		textVi: 'Mẹ gọi điện lên, giọng rưng rưng. Bạn thấy ấm lòng.',
+		textEn: 'Mom called, voice trembling. You feel warm inside.',
+		next: 'ch5_side_project_start',
+	},
+	ch5_salary_keep_consequence: {
+		id: 'ch5_salary_keep_consequence',
+		speaker: 'narrator',
+		text: 'Bạn giữ tiền lại. Mấy hôm sau nghe tin mẹ ốm nhưng không dám báo vì sợ bạn lo. Bạn cảm thấy có lỗi vô cùng.',
+		textVi:
+			'Bạn giữ tiền lại. Mấy hôm sau nghe tin mẹ ốm nhưng không dám báo vì sợ bạn lo. Bạn cảm thấy có lỗi vô cùng.',
+		textEn:
+			"You kept the money. Days later, heard Mom was sick but didn't tell you. You felt terrible guilt.",
+		effects: [
+			{ stat: 'humanity', value: -5 },
+			{ stat: 'stress', value: 2 },
+		],
+		next: 'ch5_burnout_start', // Redirect to Burnout Check
+	},
+
+	// NEW: Side Project Exit
+	ch5_side_project_start: {
+		id: 'ch5_side_project_start',
+		speaker: 'narrator',
+		text: 'Ngoài giờ làm, bạn cùng nhóm bạn làm một tool nhỏ hỗ trợ học tiếng Anh. Bất ngờ thay, một trung tâm tiếng Anh đề nghị mua lại với giá 100 triệu.',
+		textVi:
+			'Ngoài giờ làm, bạn cùng nhóm bạn làm một tool nhỏ hỗ trợ học tiếng Anh. Bất ngờ thay, một trung tâm tiếng Anh đề nghị mua lại với giá 100 triệu.',
+		textEn:
+			'After work, you and friends built a small English learning tool. Surprisingly, an English center offered to buy it for 100 million.',
+		next: 'ch5_side_project_sell',
+	},
+	ch5_side_project_sell: {
+		id: 'ch5_side_project_sell',
+		speaker: 'player',
+		text: '(Ngỡ ngàng) 100 triệu! Chia cho 3 anh em, mỗi người cũng được một khoản kha khá.',
+		textVi:
+			'(Ngỡ ngàng) 100 triệu! Chia cho 3 anh em, mỗi người cũng được một khoản kha khá.',
+		textEn: '(Shocked) 100 million! Split among 3, each gets a decent amount.',
+		effects: [{ stat: 'money', value: 33000000 }],
+		next: 'ch5_burnout_start', // Redirect to Burnout Check
 	},
 	ch5_edtech_network: {
 		id: 'ch5_edtech_network',
@@ -525,6 +738,44 @@ export const chapter5Dialogues: Record<string, DialogueNode> = {
 			'Mối quan hệ (The Network): Tại đây, bạn gặp Anh N (trợ giảng điềm đạm), Anh Q (học viên giỏi, tư duy sắc bén) và Anh D (học viên lầm lì, code trâu). Bộ ba bắt đầu hình thành.',
 		textEn:
 			'The Network: Here you met Brother N (calm TA), Brother Q (sharp student), and Brother D (quiet, hardcore coder). The trio began to form.',
+		next: 'ch5_networking_start',
+	},
+
+	// NEW: Networking Event
+	ch5_networking_start: {
+		id: 'ch5_networking_start',
+		speaker: 'npc',
+		text: 'Sếp rủ đi nhậu. "Đi với anh, anh giới thiệu cho vài người hay ho". Nhưng đi bar thì tốn kém lắm.',
+		textVi:
+			'Sếp rủ đi nhậu. "Đi với anh, anh giới thiệu cho vài người hay ho". Nhưng đi bar thì tốn kém lắm.',
+		textEn:
+			'Boss invites for drinks. "Come, I\'ll introduce cool people". But bars are expensive.',
+		choices: [
+			{
+				id: 'choice_networking_yes',
+				text: 'Đi luôn: Quan hệ là tiền tệ (-1M)',
+				textVi: 'Đi luôn: Quan hệ là tiền tệ (-1M)',
+				textEn: 'Go: Network is net worth (-1M)',
+				effects: [{ stat: 'money', value: -1000000 }],
+				next: 'ch5_networking_go',
+			},
+			{
+				id: 'choice_networking_no',
+				text: 'Từ chối: Em bận học rồi (Vision +1)',
+				textVi: 'Từ chối: Em bận học rồi (Vision +1)',
+				textEn: 'Refuse: Busy studying (Vision +1)',
+				effects: [{ stat: 'vision', value: 1 }],
+				next: 'ch5_brother_v_1',
+			},
+		],
+	},
+	ch5_networking_go: {
+		id: 'ch5_networking_go',
+		speaker: 'narrator',
+		text: 'Một đêm tưng bừng. Ví đau nhưng bạn quen được vài đàn anh trong ngành.',
+		textVi:
+			'Một đêm tưng bừng. Ví đau nhưng bạn quen được vài đàn anh trong ngành.',
+		textEn: 'Wild night. Wallet hurts but you met some seniors in industry.',
 		next: 'ch5_brother_v_1',
 	},
 
@@ -611,9 +862,56 @@ export const chapter5Dialogues: Record<string, DialogueNode> = {
 				textVi: 'Em làm được. Em cần tiền.',
 				textEn: 'I can do it. I need money.',
 				effects: [{ stat: 'steelMind', value: 2 }],
+				next: 'ch5_skip_gym_start',
+			},
+		],
+	},
+
+	// NEW: Skip Gym Event
+	ch5_skip_gym_start: {
+		id: 'ch5_skip_gym_start',
+		speaker: 'player',
+		text: '(Suy nghĩ) Deadline dí sát cổ. Lịch tập Gym đã đóng tiền rồi. Đi tập hay ở lại cày?',
+		textVi:
+			'(Suy nghĩ) Deadline dí sát cổ. Lịch tập Gym đã đóng tiền rồi. Đi tập hay ở lại cày?',
+		textEn:
+			'(Thinking) Deadline close. Gym paid. Go workout or stay and grind?',
+		choices: [
+			{
+				id: 'choice_skip_gym_work',
+				text: 'Bỏ tập cày code: Xong việc mới có tiền (+100k)',
+				textVi: 'Bỏ tập cày code: Xong việc mới có tiền (+100k)',
+				textEn: 'Skip gym, grind code: Finish work get money (+100k)',
+				effects: [{ stat: 'money', value: 100000 }],
+				next: 'ch5_skip_gym_work',
+			},
+			{
+				id: 'choice_skip_gym_go',
+				text: 'Đi tập: Sức khỏe là vàng (Health +1)',
+				textVi: 'Đi tập: Sức khỏe là vàng (Health +1)',
+				textEn: 'Go gym: Health is gold (Health +1)',
+				effects: [{ stat: 'health', value: 1 }],
 				next: 'ch5_english',
 			},
 		],
+	},
+	ch5_skip_gym_work: {
+		id: 'ch5_skip_gym_work',
+		speaker: 'narrator',
+		text: 'Bạn cày xong task. Người mỏi nhừ nhưng ví dày thêm một chút.',
+		textVi: 'Bạn cày xong task. Người mỏi nhừ nhưng ví dày thêm một chút.',
+		textEn: 'Task done. Body aches but wallet thicker.',
+		next: 'ch5_end',
+	},
+	ch5_end: {
+		id: 'ch5_end',
+		speaker: 'narrator',
+		text: 'Bạn thu dọn đồ đạc vào chiếc thùng các-tông. Tạm biệt cái cubicle chật hẹp. Bạn bước ra khỏi tòa nhà cao tầng, hít một hơi thật sâu. Tự do, nhưng đầy rủi ro.',
+		textVi:
+			'Bạn thu dọn đồ đạc vào chiếc thùng các-tông. Tạm biệt cái cubicle chật hẹp. Bạn bước ra khỏi tòa nhà cao tầng, hít một hơi thật sâu. Tự do, nhưng đầy rủi ro.',
+		textEn:
+			'You packed belongings into a cardboard box. Goodbye cramped cubicle. You walked out of the high-rise, taking a deep breath. Freedom, but risky.',
+		next: 'chapter_6_start',
 	},
 	ch5_english: {
 		id: 'ch5_english',
@@ -633,6 +931,66 @@ export const chapter5Dialogues: Record<string, DialogueNode> = {
 			'Bỏ việc. Làm Remote/Freelance. Thu nhập USD. Đón mẹ về phụng dưỡng. Chứng minh bố đúng.',
 		textEn:
 			'Quit job. Remote/Freelance. USD income. Brought Mom home. Proved Father right.',
+		next: 'ch5_mom_sick_check',
+	},
+	// NEW: Mom Sick Consequence
+	ch5_mom_sick_check: {
+		id: 'ch5_mom_sick_check',
+		speaker: 'narrator',
+		text: 'Vừa đón mẹ lên thì mẹ đổ bệnh. Căn bệnh mãn tính tái phát.',
+		textVi: 'Vừa đón mẹ lên thì mẹ đổ bệnh. Căn bệnh mãn tính tái phát.',
+		textEn: 'Just brought Mom up when she fell ill. Chronic illness relapsed.',
+		choices: [
+			{
+				id: 'choice_mom_sick_ok',
+				text: 'Kiểm tra tình hình...',
+				textVi: 'Kiểm tra tình hình...',
+				textEn: 'Check situation...',
+				condition: {
+					type: 'flag',
+					key: 'sent_money_mom',
+					operator: '==',
+					value: true,
+				},
+				next: 'ch5_mom_sick_ok',
+			},
+			{
+				id: 'choice_mom_sick_bad',
+				text: 'Kiểm tra tình hình...',
+				textVi: 'Kiểm tra tình hình...',
+				textEn: 'Check situation...',
+				condition: {
+					type: 'flag',
+					key: 'sent_money_mom',
+					operator: '!=',
+					value: true,
+				},
+				next: 'ch5_mom_sick_bad',
+			},
+		],
+	},
+	ch5_mom_sick_ok: {
+		id: 'ch5_mom_sick_ok',
+		speaker: 'narrator',
+		text: 'May mắn là mẹ đã dùng số tiền bạn gửi trước đó để mua thuốc điều trị đều đặn. Bệnh tình không quá nghiêm trọng.',
+		textVi:
+			'May mắn là mẹ đã dùng số tiền bạn gửi trước đó để mua thuốc điều trị đều đặn. Bệnh tình không quá nghiêm trọng.',
+		textEn:
+			'Luckily Mom used the money you sent to buy medicine regularly. Condition is not too serious.',
+		next: 'ch5_runtime_status',
+	},
+	ch5_mom_sick_bad: {
+		id: 'ch5_mom_sick_bad',
+		speaker: 'narrator',
+		text: 'Do không có thuốc điều trị đều đặn, bệnh tình trở nặng. Bạn phải đưa mẹ đi cấp cứu. Viện phí tốn kém.',
+		textVi:
+			'Do không có thuốc điều trị đều đặn, bệnh tình trở nặng. Bạn phải đưa mẹ đi cấp cứu. Viện phí tốn kém.',
+		textEn:
+			'Due to lack of regular medicine, condition worsened. You had to rush Mom to ER. Expensive hospital bills.',
+		effects: [
+			{ stat: 'money', value: -20000000 },
+			{ stat: 'stress', value: 10 },
+		],
 		next: 'ch5_runtime_status',
 	},
 	ch5_runtime_status: {

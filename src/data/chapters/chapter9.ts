@@ -23,7 +23,7 @@ export const chapter9: Chapter = {
 			nameEn: 'Billionaire Moment',
 			background: '/assets/sprites/backgrounds/skyscraper_office_top.png',
 			music: '/assets/audio/music/chapters/ch9_legacy.mp3',
-			dialogueStart: 'ch9_billionaire_1',
+			dialogueStart: 'ch9_intro', // Changed from ch9_billionaire_1
 		},
 		{
 			id: 'ch9_gift',
@@ -61,14 +61,7 @@ export const chapter9: Chapter = {
 				textEn: 'Visit old hill in Lao Cai',
 				effects: [{ stat: 'humanity', value: 1 }], // Nostalgia
 			},
-			{
-				id: 'ch9_todo_sign_check',
-				text: 'Ký séc tài trợ cho quỹ Sandbox',
-				textVi: 'Ký séc tài trợ cho quỹ Sandbox',
-				textEn: 'Sign check for Sandbox Foundation',
-				effects: [{ stat: 'vision', value: 1 }], // Legacy
-				cost: { money: 1000000000 },
-			},
+
 			{
 				id: 'ch9_todo_teach_kids',
 				text: 'Dạy trẻ em nghèo học code',
@@ -145,6 +138,25 @@ export const chapter9: Chapter = {
 				textVi: 'Đọc sách lịch sử',
 				textEn: 'Read history books',
 				effects: [{ stat: 'vision', value: 1 }], // Knowledge
+			},
+			{
+				id: 'ch9_todo_write_book',
+				text: 'Viết sách (Legacy)',
+				textVi: 'Viết sách (Legacy)',
+				textEn: 'Write book (Legacy)',
+				effects: [{ stat: 'vision', value: 2 }],
+				cost: { health: 1 },
+			},
+			{
+				id: 'ch9_todo_teach_uni',
+				text: 'Giảng dạy tại Đại học',
+				textVi: 'Giảng dạy tại Đại học',
+				textEn: 'Teach at University',
+				effects: [
+					{ stat: 'humanity', value: 2 },
+					{ stat: 'vision', value: 1 },
+				],
+				cost: { stress: 1 },
 			},
 			{
 				id: 'ch9_todo_walk_bi',
@@ -395,6 +407,18 @@ export const chapter9: Chapter = {
 };
 
 export const chapter9Dialogues: Record<string, DialogueNode> = {
+	// NEW: Intro
+	ch9_intro: {
+		id: 'ch9_intro',
+		speaker: 'narrator',
+		text: 'Tóc đã điểm bạc. Những giải thưởng, bằng khen treo đầy tường nhưng phủ bụi. Bạn ngồi trên chiếc ghế bành, nhìn ngắm hoàng hôn của cuộc đời.',
+		textVi:
+			'Tóc đã điểm bạc. Những giải thưởng, bằng khen treo đầy tường nhưng phủ bụi. Bạn ngồi trên chiếc ghế bành, nhìn ngắm hoàng hôn của cuộc đời.',
+		textEn:
+			'Hair turned gray. Awards and certificates fill the wall but dusty. You sit in armchair, watching the sunset of life.',
+		next: 'ch9_billionaire_1',
+	},
+
 	// 9.1 Billionaire
 	ch9_billionaire_1: {
 		id: 'ch9_billionaire_1',
@@ -404,7 +428,52 @@ export const chapter9Dialogues: Record<string, DialogueNode> = {
 			'55 tuổi. Tạp chí Forbes vinh danh bạn trong Top 10 người giàu nhất. Net Worth > 1 tỷ USD. Bạn đang ngồi trong văn phòng trên tầng 68, nhìn xuống thành phố bé tí hon.',
 		textEn:
 			'55 years old. Forbes honored you in Top 10 richest. Net Worth > $1B. Sitting in 68th floor office, looking down at tiny city.',
-		next: 'ch9_billionaire_hands',
+		next: 'ch9_hermit_check', // Redirect to Hermit Check
+	},
+
+	// NEW: Hermit Check
+	ch9_hermit_check: {
+		id: 'ch9_hermit_check',
+		speaker: 'narrator',
+		text: 'Bạn nhìn lại cuộc đời mình. Có ai bên cạnh không?',
+		textVi: 'Bạn nhìn lại cuộc đời mình. Có ai bên cạnh không?',
+		textEn: 'You look back at your life. Is anyone by your side?',
+		choices: [
+			{
+				id: 'choice_hermit_trigger',
+				text: '...',
+				textVi: '...',
+				textEn: '...',
+				condition: {
+					type: 'stat',
+					key: 'humanity',
+					operator: '<',
+					value: 10,
+				},
+				next: 'ch9_lonely_death',
+			},
+			{
+				id: 'choice_hermit_pass',
+				text: 'Vẫn còn những người thân yêu',
+				textVi: 'Vẫn còn những người thân yêu',
+				textEn: 'Still have loved ones',
+				next: 'ch9_billionaire_hands',
+			},
+		],
+	},
+	ch9_lonely_death: {
+		id: 'ch9_lonely_death',
+		speaker: 'narrator',
+		text: 'Bạn nhận ra mình cô độc hoàn toàn. Vợ con đã bỏ đi (hoặc không bao giờ có). Bạn bè xa lánh. Bạn chết già trong căn biệt thự rộng lớn lạnh lẽo.',
+		textVi:
+			'Bạn nhận ra mình cô độc hoàn toàn. Vợ con đã bỏ đi (hoặc không bao giờ có). Bạn bè xa lánh. Bạn chết già trong căn biệt thự rộng lớn lạnh lẽo.',
+		textEn:
+			'You realize you are completely alone. Wife and kids left (or never existed). Friends estranged. You die of old age in a cold, vast mansion.',
+		effects: [
+			{ stat: 'humanity', value: -100 },
+			{ stat: 'stress', value: 100 },
+		],
+		next: 'ending_calculation', // Trigger Soulless Tycoon likely
 	},
 	ch9_billionaire_hands: {
 		id: 'ch9_billionaire_hands',
@@ -424,7 +493,67 @@ export const chapter9Dialogues: Record<string, DialogueNode> = {
 			'Tiền chỉ là con số trong Database. Di sản (Legacy) mới là thật. Bạn đã phá vỡ vòng lặp (Break the Loop) thất bại của gia đình.',
 		textEn:
 			"Money is just a number in Database. Legacy is real. You broke the family's Loop of failure.",
-		next: 'ch9_gift_1',
+		next: 'ch9_teaching_start', // Redirect to Teaching
+	},
+
+	// NEW: Teaching & Writing
+	ch9_teaching_start: {
+		id: 'ch9_teaching_start',
+		speaker: 'narrator',
+		text: 'Trường Đại học cũ mời bạn về làm giảng viên thỉnh giảng. Chia sẻ kinh nghiệm thực chiến cho sinh viên.',
+		textVi:
+			'Trường Đại học cũ mời bạn về làm giảng viên thỉnh giảng. Chia sẻ kinh nghiệm thực chiến cho sinh viên.',
+		textEn:
+			'Old University invites you as guest lecturer. Share battle-tested experience with students.',
+		choices: [
+			{
+				id: 'choice_teach_accept',
+				text: 'Nhận lời: Truyền lửa (Vision ++, Humanity ++)',
+				textVi: 'Nhận lời: Truyền lửa (Vision ++, Humanity ++)',
+				textEn: 'Accept: Pass the torch (Vision ++, Humanity ++)',
+				effects: [
+					{ stat: 'vision', value: 2 },
+					{ stat: 'humanity', value: 2 },
+				],
+				next: 'ch9_writing_start',
+			},
+			{
+				id: 'choice_teach_refuse',
+				text: 'Từ chối: Nghỉ ngơi thôi (Steel Mind +1)',
+				textVi: 'Từ chối: Nghỉ ngơi thôi (Steel Mind +1)',
+				textEn: 'Refuse: Just rest (Steel Mind +1)',
+				effects: [{ stat: 'steelMind', value: 1 }],
+				next: 'ch9_writing_start',
+			},
+		],
+	},
+	ch9_writing_start: {
+		id: 'ch9_writing_start',
+		speaker: 'player',
+		text: '(Suy nghĩ) Một nhà xuất bản muốn bạn viết hồi ký. Bạn sẽ viết gì?',
+		textVi: '(Suy nghĩ) Một nhà xuất bản muốn bạn viết hồi ký. Bạn sẽ viết gì?',
+		textEn: '(Thinking) A publisher wants your memoir. What will you write?',
+		choices: [
+			{
+				id: 'choice_write_truth',
+				text: 'Sự thật trần trụi: Cả thất bại và sai lầm (Humanity ++)',
+				textVi: 'Sự thật trần trụi: Cả thất bại và sai lầm (Humanity ++)',
+				textEn: 'Naked truth: Failures and mistakes (Humanity ++)',
+				effects: [{ stat: 'humanity', value: 2 }],
+				next: 'ch9_gift_1',
+			},
+			{
+				id: 'choice_write_pr',
+				text: 'Câu chuyện thành công: PR bản thân (Money ++, Vision -)',
+				textVi: 'Câu chuyện thành công: PR bản thân (Money ++, Vision -)',
+				textEn: 'Success story: Self PR (Money ++, Vision -)',
+				effects: [
+					{ stat: 'money', value: 500000000 },
+					{ stat: 'vision', value: -1 },
+				],
+				next: 'ch9_gift_1',
+			},
+		],
 	},
 
 	// 9.2 Gift for Father
@@ -486,7 +615,68 @@ export const chapter9Dialogues: Record<string, DialogueNode> = {
 			'Thành lập quỹ "Sandbox Foundation". Tài trợ cho những đứa trẻ nghèo vùng cao (như Lào Cai quê mình) có đam mê công nghệ. Trao cho chúng chiếc máy tính đầu tiên, giống như bố đã trao cho bạn năm xưa.',
 		textEn:
 			'Founded "Sandbox Foundation". Fund poor highland kids (like in Lao Cai) with tech passion. Give them their first PC, just like Dad gave you years ago.',
-		next: 'ch9_ending_monologue',
+		next: 'ch9_foundation_start',
+	},
+
+	// NEW: Foundation Event
+	ch9_foundation_start: {
+		id: 'ch9_foundation_start',
+		speaker: 'player',
+		text: '(Suy nghĩ) Quỹ Sandbox Foundation cần nguồn vốn ban đầu để hoạt động. 10 tỷ đồng để mua máy tính cho trẻ em nghèo.',
+		textVi:
+			'(Suy nghĩ) Quỹ Sandbox Foundation cần nguồn vốn ban đầu để hoạt động. 10 tỷ đồng để mua máy tính cho trẻ em nghèo.',
+		textEn:
+			'(Thinking) Sandbox Foundation needs seed capital. 10 billion to buy PCs for poor kids.',
+		choices: [
+			{
+				id: 'choice_foundation_sign',
+				text: 'Ký séc: Trao cơ hội đổi đời (-10B, Vision +1)',
+				textVi: 'Ký séc: Trao cơ hội đổi đời (-10B, Vision +1)',
+				textEn: 'Sign check: Give life-changing chance (-10B, Vision +1)',
+				condition: {
+					type: 'stat',
+					key: 'humanity',
+					operator: '>=',
+					value: 30,
+				},
+				effects: [
+					{ stat: 'money', value: -10000000000 },
+					{ stat: 'vision', value: 1 },
+				],
+				next: 'ch9_foundation_sign',
+			},
+			{
+				id: 'choice_foundation_skip',
+				text: 'Từ chối: Tiền của tôi là của tôi (Vision -2, Humanity -5)',
+				textVi: 'Từ chối: Tiền của tôi là của tôi (Vision -2, Humanity -5)',
+				textEn: 'Refuse: My money is mine (Vision -2, Humanity -5)',
+				effects: [
+					{ stat: 'vision', value: -2 },
+					{ stat: 'humanity', value: -5 },
+				],
+				next: 'ch9_foundation_reject',
+			},
+		],
+	},
+	ch9_foundation_sign: {
+		id: 'ch9_foundation_sign',
+		speaker: 'narrator',
+		text: 'Chữ ký của bạn trị giá 10 tỷ. Nhưng nụ cười của những đứa trẻ nhận học bổng trị giá hơn thế nhiều. Bạn cảm thấy nhẹ lòng.',
+		textVi:
+			'Chữ ký của bạn trị giá 10 tỷ. Nhưng nụ cười của những đứa trẻ nhận học bổng trị giá hơn thế nhiều. Bạn cảm thấy nhẹ lòng.',
+		textEn:
+			'Your signature is worth 10 billion. But the smiles of scholarship kids are worth much more. You feel relieved.',
+		next: 'ch9_ending_calc',
+	},
+	ch9_foundation_reject: {
+		id: 'ch9_foundation_reject',
+		speaker: 'narrator',
+		text: 'Bạn cất bút đi. "Tại sao phải cho đi? Mình đã đổ mồ hôi sôi nước mắt mới có được". Bạn giữ được tiền, nhưng đánh mất sự tôn trọng cuối cùng của xã hội.',
+		textVi:
+			'Bạn cất bút đi. "Tại sao phải cho đi? Mình đã đổ mồ hôi sôi nước mắt mới có được". Bạn giữ được tiền, nhưng đánh mất sự tôn trọng cuối cùng của xã hội.',
+		textEn:
+			'You put the pen away. "Why give? I worked hard for this". You kept the money, but lost the last shred of social respect.',
+		next: 'ch9_ending_calc',
 	},
 	ch9_ending_monologue: {
 		id: 'ch9_ending_monologue',

@@ -257,7 +257,7 @@ export interface GameState {
 	} | null;
 	settings: GameSettings;
 	events: RandomEvent[];
-	ending: EndingType;
+	ending: EndingType | null;
 }
 
 // Game Settings (Language, Volume, Text Speed)
@@ -271,6 +271,7 @@ export interface GameSettings {
 // Ending Type
 export type EndingType =
 	| 'SUCCESS' // Brilliant success - wealthy and famous
+	| 'SOULLESS_TYCOON' // Wealthy but lost humanity
 	| 'BANKRUPTCY' // Money went negative
 	| 'BURNOUT' // Health/stress critical
 	| 'LEGACY' // Built lasting impact

@@ -148,14 +148,22 @@ export default function GameScreen() {
 	useEffect(() => {
 		if (isLoading) return; // Don't check during initial load
 
+		// Check for bankruptcy
 		if (stats.money < 0) {
 			// Trigger bankruptcy ending
-			setTimeout(() => {
-				// Navigate to ending screen with bankruptcy type (React Router for cross-platform)
-				navigate('/ending?type=BANKRUPTCY');
-			}, 1000); // Small delay to let player see the money go negative
+			navigate('/ending');
 		}
-	}, [stats.money, isLoading, navigate]);
+
+		// Check for Burnout
+		if (stats.stress > 90) {
+			navigate('/ending');
+		}
+
+		// Check for Health Failure
+		if (stats.health < 10) {
+			navigate('/ending');
+		}
+	}, [stats.money, stats.stress, stats.health, isLoading, navigate]);
 
 	// Sync local modal state with global night phase
 	useEffect(() => {
