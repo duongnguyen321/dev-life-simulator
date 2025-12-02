@@ -39,6 +39,37 @@ export default function StatsBar({ stats, collapsed = false }: StatsBarProps) {
 						value={stats.vision}
 						color='#805ad5'
 					/>
+
+					{/* Health */}
+					<StatItem
+						name='Health'
+						nameVi='Sức Khỏe'
+						value={stats.health}
+						color='#48bb78'
+					/>
+
+					{/* Stress */}
+					<StatItem
+						name='Stress'
+						nameVi='Căng Thẳng'
+						value={stats.stress}
+						color='#e53e3e'
+					/>
+
+					{/* Money */}
+					<div className='stat-item mt-2 pt-2 border-t border-gray-700'>
+						<div className='flex justify-between items-center'>
+							<span
+								className='text-xs text-text-primary'
+								style={{ fontSize: '0.625rem' }}
+							>
+								Tiền Bạc
+							</span>
+							<span className='text-xs text-yellow-400 font-bold'>
+								${stats.money.toLocaleString()}
+							</span>
+						</div>
+					</div>
 				</div>
 			)}
 

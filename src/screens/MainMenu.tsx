@@ -25,12 +25,14 @@ export default function MainMenu() {
 	};
 
 	const handleNewGame = () => {
+		audioManager.resumeContext();
 		audioManager.playSFX('ui/button_click');
 		navigate('/game');
 	};
 
 	const handleContinue = async () => {
 		if (hasAutoSave) {
+			audioManager.resumeContext();
 			audioManager.playSFX('ui/button_click');
 			navigate('/game?continue=true');
 		}

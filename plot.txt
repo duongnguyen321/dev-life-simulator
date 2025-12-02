@@ -82,6 +82,59 @@ _Chủ đề: Vị vua không ngai và Thế giới hoàn hảo giả tạo._
   - _Nhận thức:_ Bạn nhận ra "vương quốc" của bố, dù hoành tráng, vẫn chỉ là một cái ao làng. Thế giới ngoài kia rộng lớn và tàn khốc hơn nhiều. (Vision +1).
 - **Quyết định:** Hết lớp 5, bạn xin bố cho xuống Hà Nội học. Bạn muốn bơi ra biển lớn. Bố đồng ý, mắt ánh lên niềm tự hào nhưng cũng thoáng chút lo âu.
 
+#### 1.5. NIGHTLY EVENTS (CƠ CHẾ ĐÊM - CHAPTER 1)
+
+**1. TODO List Pool (Danh sách việc cần làm - Tuổi thơ)**
+*Game sẽ random 10 task từ pool này mỗi đêm:*
+- [ ] Chạy thi với đà điểu (Sức khỏe +1, Nguy cơ ngã sấp mặt)
+- [ ] Nghe bố kể chuyện công trường (Vision +1, Buồn ngủ)
+- [ ] Trốn ngủ trưa đi bắt ve sầu (Sức khỏe -1, Happiness +2)
+- [ ] Đọc sách "Mười vạn câu hỏi vì sao" (Knowledge +1)
+- [ ] Vẽ tranh "Ngôi nhà mơ ước" (Creativity +1)
+- [ ] Giúp mẹ tưới lan (Humanity +1)
+- [ ] Ra lệnh cho người làm (Ego +1, Humanity -1)
+- [ ] Khám phá khu rừng sau nhà (Curiosity +1, Nguy cơ bị ong đốt)
+- [ ] Ngồi xem các chú công nhân đổ bê tông (Steel Mind +1)
+- [ ] Ngủ sớm giữ sức khỏe (Health +1)
+- [ ] Lén lấy trộm kẹo trong tủ (Happiness +1, Humanity -1)
+- [ ] Tập xe đạp 4 bánh (Sức khỏe +1)
+- [ ] Chơi trốn tìm với chú chó Bi (Happiness +1)
+- [ ] Hỏi bố: "Tại sao nhà mình to thế?" (Vision +1)
+- [ ] Đòi mua đồ chơi mới (Tiền bố -, Happiness +1)
+- [ ] Xé sách vở làm máy bay giấy (Knowledge -1, Creativity +1)
+- [ ] Nhìn lên bầu trời sao (Vision +1)
+- [ ] Tập viết chữ đẹp (Skill: Writing +1)
+- [ ] Bắt nạt bạn cùng lớp (Ego +1, Humanity -1)
+- [ ] Chia sẻ đồ ăn sáng cho bạn (Humanity +1)
+
+**2. Dream Questions Pool (Giấc mơ - Tuổi thơ)**
+*Game sẽ random 1 câu hỏi từ pool này mỗi đêm:*
+1.  **Giấc mơ về Tòa tháp:** Bạn thấy một tòa tháp cao chọc trời được xây bằng những khối gỗ. Gió thổi mạnh làm nó rung lắc.
+    -   A. Mặc kệ nó đổ (Vô cảm)
+    -   B. Lao vào giữ chân tháp (Dũng cảm, Steel Mind +1)
+    -   C. Gọi bố ơi cứu con (Phụ thuộc)
+    -   D. Tìm thêm gỗ để chèn vào chân tháp (Tư duy giải quyết vấn đề, Vision +1)
+2.  **Giấc mơ về Con chim gãy cánh:** Một con chim non rơi xuống trước mặt bạn.
+    -   A. Mặc kệ (Vô cảm)
+    -   B. Chữa trị cho nó (Humanity +1)
+    -   C. Mang về nuôi trong lồng (Possessive, Ego +1)
+    -   D. Nướng lên ăn (Cruel, Humanity -2)
+3.  **Giấc mơ về Kho báu:** Bạn tìm thấy một hương rương vàng trong hang đá.
+    -   A. Mặc kệ (Không tham lam)
+    -   B. Mang về đưa cho mẹ (Hiếu thảo, Humanity +1)
+    -   C. Giấu đi làm của riêng (Tham lam, Tiền ảo +)
+    -   D. Chia cho các bạn (Hào phóng, Leadership +1)
+4.  **Giấc mơ về Người khổng lồ:** Bố biến thành người khổng lồ, nhưng đang gánh một quả núi trên lưng.
+    -   A. Mặc kệ (Vô tâm)
+    -   B. Chạy lại đỡ cùng bố (Hiếu thảo, Sức khỏe ảo -)
+    -   C. Đứng cổ vũ bố (Tinh thần +)
+    -   D. Sợ hãi bỏ chạy (Nhút nhát, Steel Mind -1)
+5.  **Giấc mơ về Dòng sông:** Bạn đang đứng trước một dòng sông chảy xiết.
+    -   A. Quay đầu lại (An toàn)
+    -   B. Tìm cầu để đi qua (Thông minh, Logic +1)
+    -   C. Bơi qua (Mạo hiểm, Sức khỏe +1)
+    -   D. Chờ nước rút (Kiên nhẫn)
+
 ---
 
 ### CHƯƠNG 2: EXCEPTION HANDLING (XỬ LÝ NGOẠI LỆ)
@@ -133,6 +186,59 @@ _Chủ đề: Sự sụp đổ của thần tượng và Bài học về sự v�
 - **Refactoring:** Bố không đi trốn, không nát rượu. Bố ở nhà thuê, bình tĩnh vẽ lại bản đồ cuộc đời. Bố phân tích lại từng sai lầm của mình như một Developer review lại code lỗi.
 - **Định hướng:** Bố nhìn thấy sự lên ngôi của Internet. Bố bảo: _"Xây cầu có thể sập vì thiên tai, vì cơ chế. Nhưng xây phần mềm thì con nắm quyền kiểm soát trong tay. Nếu sai, con có thể sửa (Debug). Học lập trình đi con."_
 - **Hành động:** Bố vay mượn mua cho bạn một bộ máy tính cũ. Bố là người đầu tiên đặt tay bạn lên bàn phím, dù bố không biết một dòng code nào. Bố dạy bạn tư duy hệ thống (System Thinking) áp dụng vào code.
+
+#### 2.6. NIGHTLY EVENTS (CƠ CHẾ ĐÊM - CHAPTER 2)
+
+**1. TODO List Pool (Danh sách việc cần làm - Thời niên thiếu)**
+*Game sẽ random 10 task từ pool này mỗi đêm:*
+- [ ] Ôn thi học kỳ (Knowledge +1, Stress +1)
+- [ ] Giúp mẹ nấu cơm bằng bếp rơm (Humanity +1, Skill: Cooking +1)
+- [ ] Phớt lờ lời bàn tán của bạn bè (Steel Mind +1, Stress -1)
+- [ ] Đọc sách trong thư viện trường (Knowledge +1)
+- [ ] Đi bộ đi học để tiết kiệm tiền xe (Health +1, Money +)
+- [ ] Leo lên mái nhà sửa chỗ dột (Skill: Handyman +1)
+- [ ] An ủi mẹ khi mẹ khóc (Humanity +1)
+- [ ] Ngồi mơ mộng về ngôi nhà cũ (Vision +1, Happiness -1)
+- [ ] Đánh nhau với bọn bắt nạt (Steel Mind +1, Nguy cơ bị thương)
+- [ ] Trốn vào góc nhà khóc một mình (Stress -1, Steel Mind -1)
+- [ ] Bán đồ chơi cũ lấy tiền (Money +, Happiness -1)
+- [ ] Nghe bố phân tích về thất bại (Vision +1)
+- [ ] Chơi với con chó hàng xóm (Humanity +1)
+- [ ] Thử liên lạc với bạn cũ (Nguy cơ bị bơ -> Stress +1)
+- [ ] Viết nhật ký (Stress -1)
+- [ ] Học cách mặc cả ngoài chợ (Skill: Negotiation +1)
+- [ ] Nhịn ăn sáng tiết kiệm tiền (Money +, Health -1)
+- [ ] Nhìn ngắm những chiếc xe sang chạy qua (Vision +1, Envy +1)
+- [ ] Tự hứa với bản thân sẽ giàu có (Steel Mind +1)
+- [ ] Giúp đỡ một con mèo hoang (Humanity +1)
+
+**2. Dream Questions Pool (Giấc mơ - Thời niên thiếu)**
+*Game sẽ random 1 câu hỏi từ pool này mỗi đêm:*
+1.  **Câu hỏi Định mệnh (Session 2.4):** Bạn có sẵn sàng đổi 10 năm tuổi thọ để lấy lại sự thịnh vượng cho gia đình ngay lập tức?
+    -   A. Đổi ngay (Hy sinh, Health -10, Money +++)
+    -   B. Không, tự mình sẽ kiếm lại (Tự trọng, Steel Mind +2)
+    -   C. Chỉ đổi nếu bố mẹ trẻ lại (Hiếu thảo)
+    -   D. Đổi mạng của người khác được không? (Tàn nhẫn, Humanity -5)
+2.  **Giấc mơ về Ngôi nhà cũ:** Bạn thấy mình đang ở trong căn biệt thự 4000m2, nhưng nó đang bốc cháy.
+    -   A. Chạy ra ngoài (Sống sót)
+    -   B. Cố cứu những con thú cưng (Humanity +1)
+    -   C. Cố cứu két sắt (Tham lam)
+    -   D. Đứng nhìn nó cháy và cười (Điên loạn/Giác ngộ, Steel Mind +2)
+3.  **Giấc mơ về Bố:** Bố đang đứng trên vách núi, định nhảy xuống.
+    -   A. Hét lên gọi bố (Sợ hãi)
+    -   B. Chạy lại kéo bố (Dũng cảm)
+    -   C. Đẩy bố xuống (Ác độc, Humanity -10)
+    -   D. Nói: "Bố nợ con một lời xin lỗi" (Oán trách)
+4.  **Giấc mơ về Đám bạn cũ:** Bạn bè cũ đang tiệc tùng, họ mời bạn vào nhưng bắt bạn làm bồi bàn.
+    -   A. Đồng ý làm để kiếm tiền (Nhẫn nhục, Money +)
+    -   B. Hất khay nước vào mặt chúng nó (Tự trọng, Steel Mind +1)
+    -   C. Bỏ đi (Lảng tránh)
+    -   D. Xin họ cho ăn thừa (Hèn hạ, Ego -5)
+5.  **Giấc mơ về Tương lai:** Bạn thấy mình 10 năm sau, đang ngồi code trong một căn phòng tối tăm.
+    -   A. Chấp nhận số phận (An phận)
+    -   B. Đập tan màn hình (Phản kháng)
+    -   C. Viết một con virus hủy diệt thế giới (Hận thù)
+    -   D. Bật đèn lên và mở cửa sổ (Hy vọng, Vision +1)
 
 ---
 
@@ -186,6 +292,59 @@ _Chủ đề: Sóng gió, Hy vọng giả tạo và Sự kiên định._
 - **Kết thúc:** Lại có biến cố ở công trình (vấn đề pháp lý đất đai). Dự án bị đình chỉ. Bố lại phải về tay trắng. Sự tự tin của bố bắt đầu rạn nứt thực sự. Những vết nhăn hằn sâu hơn.
 - **(Tấm vé thông hành):** Kết thúc lớp 12, giữa bộn bề khó khăn của gia đình, bạn nhận giấy báo trúng tuyển Học viện. Đây là tấm vé thông hành đầu tiên để bạn bước vào thế giới của 'Mã nguồn', rời xa những công trình xây dựng đầy bụi bặm của bố.
 
+#### 3.6. NIGHTLY EVENTS (CƠ CHẾ ĐÊM - CHAPTER 3)
+
+**1. TODO List Pool (Danh sách việc cần làm - Thời cấp 3 & Đại dịch)**
+*Game sẽ random 10 task từ pool này mỗi đêm:*
+- [ ] Cày code thâu đêm (Skill: Coding +1, Health -1)
+- [ ] Sửa máy tính hộ hàng xóm kiếm tiền (Money +, Skill: Hardware +1)
+- [ ] Trốn học đi net (Fun +1, Knowledge -1)
+- [ ] Học tiếng Anh online (Skill: English +1)
+- [ ] Chăm sóc Miu (Humanity +1)
+- [ ] Trốn trong phòng khi chủ nợ đến (Steel Mind +1, Stress +1)
+- [ ] Ăn mì tôm trừ bữa (Health -1, Money +)
+- [ ] Đọc blog công nghệ (Knowledge +1)
+- [ ] Thử hack một trang web dạo (Skill: Security +1, Nguy cơ bị phát hiện)
+- [ ] Viết thư tình cho crush (Humanity +1, Nguy cơ bị từ chối)
+- [ ] Dọn dẹp nhà cửa giúp mẹ (Humanity +1)
+- [ ] Nghe nhạc rap để giải tỏa (Stress -1)
+- [ ] Debug code suốt 3 tiếng đồng hồ (Skill: Coding +2, Stress +1)
+- [ ] Mơ về cánh cổng đại học (Vision +1)
+- [ ] Dạy em trai học bài (Humanity +1)
+- [ ] Bán vật phẩm game online (Money +)
+- [ ] Cãi nhau với bố mẹ về tiền bạc (Stress +1, Humanity -1)
+- [ ] Xem phim cùng cả nhà (Happiness +1)
+- [ ] Luyện gõ phím 10 ngón (Skill: Typing +1)
+- [ ] Ngủ nướng ngày Chủ nhật (Health +1)
+
+**2. Dream Questions Pool (Giấc mơ - Thời cấp 3)**
+*Game sẽ random 1 câu hỏi từ pool này mỗi đêm:*
+1.  **Giấc mơ về Code:** Bạn thấy những dòng code đang rơi xuống như trong Matrix.
+    -   A. Cố gắng đọc hiểu chúng (Skill: Coding +1)
+    -   B. Điều khiển chúng (Vision +1)
+    -   C. Sợ hãi bỏ chạy (Stress +1)
+    -   D. Biến chúng thành tiền (Tham vọng)
+2.  **Giấc mơ về Chủ nợ:** Chủ nợ đang đuổi theo bạn.
+    -   A. Chạy trốn (Sợ hãi)
+    -   B. Đứng lại đối mặt (Dũng cảm, Steel Mind +1)
+    -   C. Biến thành siêu nhân đánh lại (Ảo tưởng)
+    -   D. Trả tiền cho họ (Mong muốn giải thoát)
+3.  **Giấc mơ về Miu:** Miu biết nói tiếng người.
+    -   A. Trò chuyện với Miu (Humanity +1)
+    -   B. Bảo Miu đi kiếm tiền (Thực dụng)
+    -   C. Sợ hãi (Yếu đuối)
+    -   D. Ôm Miu ngủ (Tình cảm)
+4.  **Giấc mơ về Chiếc xe LuxSA:** Chiếc xe biến thành một con quái vật nuốt chửng gia đình.
+    -   A. Phá hủy chiếc xe (Hận thù vật chất)
+    -   B. Cứu gia đình (Humanity +1)
+    -   C. Lái nó đi (Kiểm soát, Steel Mind +1)
+    -   D. Bán nó đi (Thực tế)
+5.  **Giấc mơ về Đại học:** Bạn thấy cổng trường đại học đóng sầm trước mặt.
+    -   A. Leo rào vào (Quyết tâm)
+    -   B. Ngồi khóc (Yếu đuối)
+    -   C. Tìm đường khác (Linh hoạt, Vision +1)
+    -   D. Phá cổng (Nổi loạn)
+
 ---
 
 ### CHƯƠNG 4: RUNTIME ERROR (LỖI THỜI GIAN CHẠY)
@@ -231,6 +390,59 @@ _Chủ đề: Sự tan vỡ, Nỗi nhục và Sự trưởng thành đau đớn.
 - **Đặt tên:** Bạn đặt tên nó là **Bi**.
   - _Hồi ức:_ **Bi** là tên chú chó Alaska khổng lồ, đẹp nhất, trung thành nhất mà bố từng nuôi thời hoàng kim ở dinh thự 4.000m².
   - _Biểu tượng:_ Chú chó Corgi chân ngắn này mang cái tên của một người khổng lồ. Nó là sự tiếp nối. Nó là lời nhắc nhở về một quá khứ huy hoàng mà bạn quyết tâm sẽ khôi phục lại. Nó là người bạn mới trong hành trình cô độc sắp tới.
+
+#### 4.5. NIGHTLY EVENTS (CƠ CHẾ ĐÊM - CHAPTER 4)
+
+**1. TODO List Pool (Danh sách việc cần làm - Thời Đại học & Ra trường)**
+*Game sẽ random 10 task từ pool này mỗi đêm:*
+- [ ] Bùng học để làm dự án Freelance (Money +, Knowledge -1)
+- [ ] Ăn cơm bụi lề đường (Health -1, Happiness +1)
+- [ ] Gọi điện về cho mẹ (Humanity +1)
+- [ ] Lờ đi cuộc gọi của bố (Steel Mind +1, Humanity -1)
+- [ ] Làm thêm ở quán cà phê (Money +, Stress +1)
+- [ ] Thức trắng đêm ôn thi (Knowledge +1, Health -1)
+- [ ] Đi hẹn hò (Happiness +1, Money -)
+- [ ] Mua bàn phím cơ mới (Money -, Happiness +1)
+- [ ] Đóng góp code cho Open Source (Skill: Coding +1, Reputation +1)
+- [ ] Cảm thấy cô đơn trong phòng trọ (Stress +1)
+- [ ] Nhận nuôi bé Bi (Corgi) (Money -, Happiness +2)
+- [ ] Dắt Bi đi dạo công viên (Health +1, Stress -1)
+- [ ] Từ chối nhận tiền của bố (Steel Mind +1, Money -)
+- [ ] Học một Framework mới (Skill: Coding +1)
+- [ ] Đi nhậu với bạn bè (Fun +1, Health -1)
+- [ ] Nộp đơn xin thực tập (Career +1)
+- [ ] Fix bug cho khách lúc 2h sáng (Money +, Health -1)
+- [ ] Đọc sách Self-help (Vision +1)
+- [ ] Tự nấu một bữa cơm tử tế (Health +1, Skill: Cooking +1)
+- [ ] Nằm nhìn trần nhà và suy ngẫm về cuộc đời (Vision +1, Stress +1)
+
+**2. Dream Questions Pool (Giấc mơ - Thời sinh viên)**
+*Game sẽ random 1 câu hỏi từ pool này mỗi đêm:*
+1.  **Giấc mơ về Tờ đơn ly hôn:** Bạn thấy tờ đơn ly hôn của bố mẹ bay trong gió.
+    -   A. Cố gắng bắt lấy và xé nó (Hàn gắn)
+    -   B. Mặc kệ nó bay đi (Chấp nhận)
+    -   C. Ký tên mình vào đó (Tuyệt vọng)
+    -   D. Đốt nó đi (Giận dữ)
+2.  **Giấc mơ về Bi:** Bạn thấy Bi biến thành người khổng lồ bảo vệ bạn.
+    -   A. Leo lên lưng Bi (An toàn)
+    -   B. Cùng Bi chiến đấu (Dũng cảm)
+    -   C. Bảo Bi tấn công kẻ thù (Hung hăng)
+    -   D. Cho Bi ăn (Quan tâm)
+3.  **Giấc mơ về Tiền:** Bạn thấy mình bơi trong bể tiền như Scrooge McDuck.
+    -   A. Tận hưởng (Tham lam)
+    -   B. Chìm nghỉm (Áp lực)
+    -   C. Chia tiền cho mọi người (Hào phóng)
+    -   D. Đốt tiền để sưởi ấm (Ngông cuồng, Vision +1)
+4.  **Giấc mơ về Bố mẹ:** Bố và Mẹ đứng ở hai bên bờ vực thẳm, bạn ở giữa.
+    -   A. Chạy về phía Mẹ (Tình cảm)
+    -   B. Chạy về phía Bố (Lý trí)
+    -   C. Nhảy xuống vực (Trốn chạy)
+    -   D. Xây cầu nối hai bờ (Hàn gắn, Vision +2)
+5.  **Giấc mơ về Code lỗi:** Bạn thấy một đoạn code đỏ lòm lỗi khắp nơi.
+    -   A. Fix từng dòng (Kiên nhẫn, Steel Mind +1)
+    -   B. Xóa hết viết lại (Quyết đoán)
+    -   C. Đập bàn phím (Nóng giận)
+    -   D. Nhờ người khác fix hộ (Phụ thuộc)
 
 ---
 
@@ -331,6 +543,59 @@ _Chủ đề: Những người thầy, Những người sếp và Sự lựa ch�
   3.  Lấy lại danh dự cho cái tên của gia đình.
 - **Kết quả:** Thu nhập tăng vọt (tính bằng USD). Bạn bắt đầu tích lũy vốn liếng.
 
+#### 5.7. NIGHTLY EVENTS (CƠ CHẾ ĐÊM - CHAPTER 5)
+
+**1. TODO List Pool (Danh sách việc cần làm - Thời Junior Dev)**
+*Game sẽ random 10 task từ pool này mỗi đêm:*
+- [ ] Chạy xe 20km đi làm trong mưa (Health -1, Steel Mind +1)
+- [ ] Ở lại công ty fix bug muộn (Career +1, Health -1)
+- [ ] Tranh luận với Senior Dev (Steel Mind +1, Career -)
+- [ ] Nghe anh S chia sẻ về sản phẩm (Vision +1)
+- [ ] Đi nhậu với anh N, Q, D (Teamwork +1, Money -)
+- [ ] Rải CV tìm việc mới (Career +1)
+- [ ] Học Kubernetes cuối tuần (Skill: DevOps +1)
+- [ ] Ngủ gầm bàn tại văn phòng (Health -1, Dedication +1)
+- [ ] Mua vest đi phỏng vấn (Money -, Charisma +1)
+- [ ] Than thở về lương thấp (Stress +1)
+- [ ] Hướng dẫn Fresher mới vào (Leadership +1)
+- [ ] Refactor code rác (Skill: Coding +1, Stress +1)
+- [ ] Ăn mì tôm qua ngày (Health -1)
+- [ ] Gọi điện cho mẹ báo bình an (Humanity +1)
+- [ ] Chơi với Bi sau giờ làm (Happiness +1)
+- [ ] Mơ mộng làm CTO (Vision +1)
+- [ ] Lờ đi dấu hiệu đau lưng (Health -1)
+- [ ] Tiết kiệm tiền mua Laptop xịn (Money +)
+- [ ] Đọc sách "Clean Code" (Skill: Coding +1)
+- [ ] Cảm thấy kiệt sức (Stress +2)
+
+**2. Dream Questions Pool (Giấc mơ - Thời đi làm)**
+*Game sẽ random 1 câu hỏi từ pool này mỗi đêm:*
+1.  **Giấc mơ về Con đường:** Bạn đang đi trên con đường dài vô tận, hai bên là vực thẳm.
+    -   A. Đi tiếp (Kiên trì)
+    -   B. Quay lại (Bỏ cuộc)
+    -   C. Nhảy xuống vực (Tuyệt vọng)
+    -   D. Mọc cánh bay lên (Sáng tạo, Vision +1)
+2.  **Giấc mơ về Anh S:** Anh S biến thành một bức tượng vàng.
+    -   A. Quỳ lạy (Sùng bái)
+    -   B. Đập vỡ (Phá bỏ thần tượng, Steel Mind +1)
+    -   C. Đứng nhìn (Quan sát)
+    -   D. Biến thành tượng giống anh ấy (Sao chép)
+3.  **Giấc mơ về Bug:** Một con bọ khổng lồ đang ăn mã nguồn của bạn.
+    -   A. Giết nó (Fix bug)
+    -   B. Cho nó ăn tiếp (Mặc kệ)
+    -   C. Nghiên cứu nó (Tò mò)
+    -   D. Biến nó thành tính năng (Lươn lẹo, Skill: Soft Skill +1)
+4.  **Giấc mơ về Phỏng vấn:** Bạn đang phỏng vấn nhưng không mặc quần áo.
+    -   A. Xấu hổ che đậy (Tự ti)
+    -   B. Tự tin trả lời tiếp (Mặt dày, Steel Mind +2)
+    -   C. Bỏ chạy (Sợ hãi)
+    -   D. Biến mọi người cũng không mặc gì (Hài hước)
+5.  **Giấc mơ về Lửa:** Văn phòng đang cháy.
+    -   A. Cứu Server (Trách nhiệm)
+    -   B. Cứu đồng nghiệp (Humanity +1)
+    -   C. Cứu bản thân (Bản năng)
+    -   D. Đổ thêm dầu vào lửa (Phá hoại, Stress -)
+
 ---
 
 ### CHƯƠNG 6: DEPLOYMENT & CRASH (TRIỂN KHAI & VẤP NGÃ)
@@ -384,6 +649,59 @@ _Chủ đề: Khởi nghiệp, Tình bạn và Cú tát của thị trường._
 - **Mục tiêu:** Đi để tìm "Long mạch" (Insight) thật sự của thị trường toàn cầu, chuẩn bị cho cú nhảy vọt về AI/Robot sau này.
 - **Giác ngộ:** _Công nghệ chỉ là công cụ. Giải quyết nỗi đau (Pain Point) của con người mới là mục đích._ Bố xây cầu để người ta đi, không phải để ngắm. Phần mềm cũng vậy.
 
+#### 6.5. NIGHTLY EVENTS (CƠ CHẾ ĐÊM - CHAPTER 6)
+
+**1. TODO List Pool (Danh sách việc cần làm - Thời Startup)**
+*Game sẽ random 10 task từ pool này mỗi đêm:*
+- [ ] Pitching với nhà đầu tư (Vision +1, Stress +1)
+- [ ] Phỏng vấn ứng viên (Leadership +1)
+- [ ] Sa thải nhân viên yếu kém (Steel Mind +1, Humanity -1)
+- [ ] Ăn mừng Launching sản phẩm (Happiness +1, Money -)
+- [ ] Xử lý Server sập lúc 3h sáng (Stress +2, Reputation +)
+- [ ] Tranh luận với Co-founder (Stress +1, Teamwork -)
+- [ ] Kiểm tra số dư tài khoản công ty (Stress +1)
+- [ ] Viết báo cáo Post-mortem (Knowledge +1)
+- [ ] Bỏ bữa tối gia đình để làm việc (Work +1, Family -)
+- [ ] Mua cà phê cho cả team (Money -, Morale +)
+- [ ] Đọc tin tức về đối thủ (Vision +1, Stress +1)
+- [ ] Thiền định giảm stress (Health +1, Stress -1)
+- [ ] Ngủ trưa 15 phút (Health +1)
+- [ ] Review code của Junior (Skill: Coding +1)
+- [ ] Brainstorm tính năng mới (Creativity +1)
+- [ ] Trả lương muộn (Reputation -, Stress +1)
+- [ ] Uống rượu một mình tại văn phòng (Stress -1, Health -1)
+- [ ] Xem lại ảnh cũ của team (Nostalgia +1)
+- [ ] Bỏ qua bug để kịp deadline (Risk: High, Speed +)
+- [ ] Gọi điện xin lời khuyên từ Mentor cũ (Wisdom +1)
+
+**2. Dream Questions Pool (Giấc mơ - Thời Khủng hoảng)**
+*Game sẽ random 1 câu hỏi từ pool này mỗi đêm:*
+1.  **Giấc mơ về Sa thải:** Bạn đang cầm cây bút để ký quyết định sa thải người bạn thân nhất.
+    -   A. Ký ngay (Lạnh lùng, Steel Mind +1)
+    -   B. Xé tờ giấy (Tình cảm, Humanity +1)
+    -   C. Nhờ người khác ký hộ (Hèn nhát)
+    -   D. Tự sa thải chính mình (Trốn chạy)
+2.  **Giấc mơ về Shark:** Một con cá mập đang bơi quanh bạn, trên lưng nó chở đầy tiền.
+    -   A. Leo lên lưng nó (Mạo hiểm)
+    -   B. Bơi đi chỗ khác (An toàn)
+    -   C. Giết nó lấy tiền (Tàn nhẫn)
+    -   D. Cho nó ăn thịt mình (Hy sinh)
+3.  **Giấc mơ về Sản phẩm:** Sản phẩm của bạn biến thành một con quái vật Frankenstein.
+    -   A. Yêu thương nó (Mù quáng)
+    -   B. Giết nó để làm lại (Dũng cảm, Vision +1)
+    -   C. Giấu nó đi (Sợ hãi)
+    -   D. Bán nó cho rạp xiếc (Thực dụng)
+4.  **Giấc mơ về Đỉnh núi:** Bạn đang đứng trên đỉnh núi cao nhất, nhưng chỉ có một mình.
+    -   A. Hét lên sung sướng (Thỏa mãn)
+    -   B. Nhìn xuống tìm bạn bè (Cô đơn, Humanity +1)
+    -   C. Xây một lâu đài ở đó (Kiêu ngạo)
+    -   D. Nhảy xuống (Trống rỗng)
+5.  **Giấc mơ về Đồng hồ:** Bạn thấy kim đồng hồ quay ngược.
+    -   A. Quay về thời trẻ trâu (Hối tiếc)
+    -   B. Giữ chặt kim đồng hồ (Sợ già)
+    -   C. Đập vỡ đồng hồ (Sống cho hiện tại)
+    -   D. Chỉnh lại giờ (Kiểm soát)
+
 ---
 
 ### CHƯƠNG 7: SCALING (MỞ RỘNG QUY MÔ)
@@ -409,6 +727,60 @@ _Chủ đề: Cân bằng, Gia đình và Sự trưởng thành thực sự._
 - **Hành động:** Bạn mua chiếc ô tô mơ ước (Volvo/Mercedes).
   - _Ý nghĩa:_ Không phải chiếc LuxSA để "làm màu" như bố ngày xưa. Mà là chiếc xe an toàn nhất thế giới để chở vợ con.
 - **Bài học:** Bạn học cách "Tắt máy" (Shutdown). Về nhà là bố, không phải là CEO. Bạn hiểu rằng gia đình là "Backend" vững chắc nhất để "Frontend" sự nghiệp tỏa sáng.
+
+
+#### 7.3. NIGHTLY EVENTS (CƠ CHẾ ĐÊM - CHAPTER 7)
+
+**1. TODO List Pool (Danh sách việc cần làm - Thời Gia đình)**
+*Game sẽ random 10 task từ pool này mỗi đêm:*
+- [ ] Về nhà ăn tối sớm (Family +1, Work -)
+- [ ] Đọc truyện cổ tích cho con ngủ (Family +1, Stress -1)
+- [ ] Đi họp phụ huynh (Family +1, Time -)
+- [ ] Mua quà bất ngờ cho vợ (Happiness +1, Money -)
+- [ ] Duyệt báo cáo tài chính quý (Vision +1)
+- [ ] Phê duyệt kế hoạch tuyển dụng mới (Leadership +1)
+- [ ] Xử lý khủng hoảng truyền thông (Stress +2, Reputation +)
+- [ ] Đi tập Gym (Health +1)
+- [ ] Đưa cả nhà đi du lịch (Happiness +2, Money -)
+- [ ] Đầu tư chứng khoán (Money +, Risk: Medium)
+- [ ] Mentor cho các Founder trẻ (Reputation +1)
+- [ ] Từ chối tiệc rượu để về nhà (Health +1, Family +1)
+- [ ] Mua xe an toàn (Volvo) (Safety +1, Money -)
+- [ ] Tranh luận với vợ về cân bằng cuộc sống (Stress +1, Family -)
+- [ ] Xem con chập chững biết đi (Happiness +3)
+- [ ] Ủy quyền công việc cho cấp dưới (Leadership +1, Stress -1)
+- [ ] Kiểm tra huyết áp (Health -1)
+- [ ] Quyên góp từ thiện (Humanity +1, Money -)
+- [ ] Lên kế hoạch Company Retreat (Morale +1)
+- [ ] Ngồi trong xe 10 phút trước khi vào nhà (Stress -1)
+
+**2. Dream Questions Pool (Giấc mơ - Thời Trung niên)**
+*Game sẽ random 1 câu hỏi từ pool này mỗi đêm:*
+1.  **Giấc mơ về Đứa trẻ:** Bạn thấy con mình đang khóc vì không nhận ra bố.
+    -   A. Chạy lại ôm con (Tình cảm, Family +1)
+    -   B. Đưa tiền cho con (Thực dụng, Family -1)
+    -   C. Nhờ vợ dỗ (Trốn tránh)
+    -   D. Biến thành chú hề (Sáng tạo, Happiness +1)
+2.  **Giấc mơ về Cân bằng:** Bạn đang đi trên dây, một tay cầm tiền, một tay bế con.
+    -   A. Vứt tiền giữ con (Family +2, Money -)
+    -   B. Vứt con giữ tiền (Tàn nhẫn, Money +)
+    -   C. Cố giữ cả hai (Tham lam, Stress +2)
+    -   D. Nhảy xuống lưới an toàn (Thông minh, Vision +1)
+3.  **Giấc mơ về Chiếc xe:** Bạn đang lái chiếc Volvo nhưng phanh không ăn.
+    -   A. Đâm vào vách núi để dừng lại (Hy sinh)
+    -   B. Cứ lái tiếp xem sao (Mạo hiểm)
+    -   C. Nhảy ra khỏi xe (Sống sót)
+    -   D. Biến chiếc xe thành máy bay (Vision +1)
+4.  **Giấc mơ về Tóc bạc:** Bạn soi gương thấy mình già đi 20 tuổi.
+    -   A. Nhuộm tóc (Chối bỏ)
+    -   B. Mỉm cười chấp nhận (An nhiên, Steel Mind +1)
+    -   C. Đập vỡ gương (Sợ hãi)
+    -   D. Đi tìm thuốc trường sinh (Hão huyền)
+5.  **Giấc mơ về Bữa tối:** Một bữa tối thịnh soạn nhưng không có ai ngồi ăn cùng.
+    -   A. Ăn một mình (Cô đơn)
+    -   B. Mời người lạ vào ăn (Hào phóng, Humanity +1)
+    -   C. Hất đổ bàn ăn (Giận dữ)
+    -   D. Gọi điện cho vợ con (Hàn gắn, Family +1)
 
 ---
 
@@ -446,6 +818,60 @@ _Chủ đề: Đạo đức, Sự lựa chọn và Vòng lặp vô tận._
 - **Cú lội ngược dòng:** Thị trường khó tính như Mỹ và Nhật mở cửa đón nhận phiên bản 2.0. Họ không mua robot, họ mua _niềm tin_ vào người đứng đầu.
 - **Thắng lợi:** Nhà máy mọc lên khắp nơi. Bạn thắng, không phải bằng thủ thuật (Growth Hacking), mà bằng sự tử tế (Integrity). Bạn đã phá vỡ lời nguyền của gia đình.
 
+
+#### 8.4. NIGHTLY EVENTS (CƠ CHẾ ĐÊM - CHAPTER 8)
+
+**1. TODO List Pool (Danh sách việc cần làm - Thời Khủng hoảng & Di sản)**
+*Game sẽ random 10 task từ pool này mỗi đêm:*
+- [ ] Đọc tài liệu nghiên cứu AI (Knowledge +1)
+- [ ] Gặp gỡ quan chức chính phủ (Reputation +1, Stress +1)
+- [ ] Duyệt ngân sách R&D cho Robot (Vision +1, Money -)
+- [ ] Đối mặt với tình huống khó xử về đạo đức (Steel Mind +1, Humanity +1)
+- [ ] Vào viện thăm Bố (Humanity +1, Stress +1)
+- [ ] Phớt lờ báo chí tiêu cực (Steel Mind +1)
+- [ ] Tổ chức họp báo (Reputation +/-, Stress +2)
+- [ ] Sa thải thanh tra an toàn (Risk: High, Speed +)
+- [ ] Thuê Giám đốc Đạo đức (Reputation +1, Money -)
+- [ ] Thiền định về ý nghĩa cuộc sống (Wisdom +1)
+- [ ] Review mã nguồn lõi của AI (Skill: Coding +1)
+- [ ] Dành thời gian cho con cái đã lớn (Family +1)
+- [ ] Quyên góp cho nghiên cứu đại học (Reputation +1, Money -)
+- [ ] Nghỉ phép dài hạn (Health +1, Career -)
+- [ ] Viết hồi ký (Legacy +1)
+- [ ] Xem tin tức về AI cướp việc làm (Stress +1)
+- [ ] Tham vấn luật sư (Money -, Safety +1)
+- [ ] Uống thuốc ngủ (Health -1)
+- [ ] Nhìn chằm chằm vào nút "Thu hồi" (Stress +2)
+- [ ] Nhớ lại sự cố "Stack Overflow" của Bố (Wisdom +1)
+
+**2. Dream Questions Pool (Giấc mơ - Thời Thiên nga đen)**
+*Game sẽ random 1 câu hỏi từ pool này mỗi đêm:*
+1.  **Giấc mơ về Robot:** Bạn thấy một con Robot có khuôn mặt giống hệt mình.
+    -   A. Bắt tay nó (Hòa hợp)
+    -   B. Tắt nguồn nó (Sợ hãi)
+    -   C. Hỏi nó: "Ngươi có linh hồn không?" (Triết học, Wisdom +1)
+    -   D. Ra lệnh cho nó (Kiểm soát)
+2.  **Giấc mơ về Tòa án:** Bạn đứng trước tòa án lương tâm.
+    -   A. Nhận tội (Hối lỗi, Humanity +1)
+    -   B. Biện hộ (Lý trí)
+    -   C. Đổ lỗi cho người khác (Hèn nhát)
+    -   D. Im lặng (Khắc kỷ, Steel Mind +1)
+3.  **Giấc mơ về Bố:** Bố trẻ lại như ngày xưa, đang xây cầu.
+    -   A. Chạy lại phụ bố (Hiếu thảo)
+    -   B. Bảo bố dừng lại (Cảnh báo)
+    -   C. Đứng nhìn từ xa (Hoài niệm)
+    -   D. Phá cây cầu (Ám ảnh)
+4.  **Giấc mơ về Cánh bướm:** Một con bướm đen đậu lên vai bạn.
+    -   A. Đuổi nó đi (Xua đuổi vận rủi)
+    -   B. Ngắm nhìn nó (Chấp nhận số phận, Wisdom +1)
+    -   C. Bắt nó ép vào sổ (Kiểm soát)
+    -   D. Biến thành bướm bay đi (Giải thoát)
+5.  **Giấc mơ về Nút đỏ:** Trước mặt bạn là nút "Reset Game".
+    -   A. Bấm nút (Làm lại cuộc đời)
+    -   B. Không bấm (Chấp nhận quá khứ, Steel Mind +2)
+    -   C. Phá hủy cái nút (Quyết đoán)
+    -   D. Đứng nhìn mãi (Do dự)
+
 ---
 
 ### CHƯƠNG 9: SANDBOX MODE (CHẾ ĐỘ TỰ DO)
@@ -480,6 +906,60 @@ _Chủ đề: Di sản và Sự trở về._
 - **Thông điệp cuối cùng (End Credits):**
   _"Cuộc đời là một dự án Open Source. Chúng ta không thể chọn nơi mình sinh ra (Initial Commit), nhưng chúng ta có thể viết lại mã nguồn của chính mình (Refactor) và để lại một di sản tốt đẹp cho thế hệ sau (Documentation)."_
   _"Tôi không phải là tỷ phú. Tôi là một Developer."_
+
+
+#### 9.4. NIGHTLY EVENTS (CƠ CHẾ ĐÊM - CHAPTER 9)
+
+**1. TODO List Pool (Danh sách việc cần làm - Thời Viên mãn)**
+*Game sẽ random 10 task từ pool này mỗi đêm:*
+- [ ] Chơi với cháu nội (Happiness +2, Energy -)
+- [ ] Về thăm đồi cũ ở Lào Cai (Nostalgia +1)
+- [ ] Ký séc tài trợ cho quỹ Sandbox (Legacy +1, Money -)
+- [ ] Dạy trẻ em nghèo học code (Legacy +1)
+- [ ] Ngồi ngắm hoàng hôn trong vườn (Peace +1)
+- [ ] Gọi điện hỏi thăm bạn bè cũ (Humanity +1)
+- [ ] Xem lại album ảnh gia đình (Nostalgia +1)
+- [ ] Viết thư cho bản thân năm 20 tuổi (Wisdom +1)
+- [ ] Ngủ trưa (Health +1)
+- [ ] Nghe nhạc thính phòng (Peace +1)
+- [ ] Trồng một cái cây (Legacy +1)
+- [ ] Cho lời khuyên một Startup trẻ (Wisdom +1)
+- [ ] Quyên góp quần áo cũ (Humanity +1)
+- [ ] Đọc sách lịch sử (Knowledge +1)
+- [ ] Dắt Bi đi dạo quanh hồ (Health +1)
+- [ ] Nấu ăn cho cả đại gia đình (Happiness +1)
+- [ ] Xem thời sự và mỉm cười (Peace +1)
+- [ ] Quên kính lão ở đâu đó (Memory -1)
+- [ ] Kể chuyện "ngày xưa" cho con cháu (Legacy +1)
+- [ ] Chỉ đơn giản là hít thở (Peace +1)
+
+**2. Dream Questions Pool (Giấc mơ - Thời Hoàng hôn)**
+*Game sẽ random 1 câu hỏi từ pool này mỗi đêm:*
+1.  **Giấc mơ về Điểm kết thúc:** Bạn thấy một cánh cửa trắng xóa.
+    -   A. Bước qua (Chấp nhận cái chết)
+    -   B. Quay lại nhìn (Lưu luyến)
+    -   C. Đóng cửa lại (Chưa sẵn sàng)
+    -   D. Vẽ lên cánh cửa (Sáng tạo đến phút cuối)
+2.  **Giấc mơ về Di sản:** Bạn thấy tên mình được khắc trên một bức tượng.
+    -   A. Mỉm cười (Tự hào)
+    -   B. Đập bỏ nó (Khiêm tốn, Wisdom +1)
+    -   C. Khắc thêm tên những người khác (Biết ơn, Humanity +1)
+    -   D. Sợ hãi vì nó quá to (Áp lực)
+3.  **Giấc mơ về Tuổi thơ:** Bạn trở lại làm đứa trẻ 5 tuổi ở Lào Cai.
+    -   A. Chạy đi tìm Bố (Nostalgia)
+    -   B. Chơi với những con thú (Vui vẻ)
+    -   C. Nói với bản thân: "Mọi chuyện sẽ ổn thôi" (An ủi)
+    -   D. Cố gắng thay đổi quá khứ (Hối tiếc)
+4.  **Giấc mơ về Vũ trụ:** Bạn bay lơ lửng giữa các vì sao.
+    -   A. Tìm kiếm sự sống khác (Tò mò)
+    -   B. Tận hưởng sự im lặng (Bình yên)
+    -   C. Sợ hãi bóng tối (Cô đơn)
+    -   D. Trở thành một vì sao (Hòa nhập)
+5.  **Giấc mơ về Dòng Code cuối cùng:** Bạn đang viết dòng code cuối cùng của cuộc đời.
+    -   A. `return 0;` (Kết thúc hoàn hảo)
+    -   B. `while(true) continue;` (Bất tử/Vòng lặp)
+    -   C. `throw new Error("Not finished");` (Chưa cam lòng)
+    -   D. `print("Thank you for playing");` (Biết ơn)
 
 ---
 

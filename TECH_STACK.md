@@ -771,7 +771,7 @@ export const PixelDialogBox = ({ speaker, text, choices }: DialogProps) => {
 				backgroundSize: '100% 100%',
 				imageRendering: 'pixelated',
 				padding: '40px',
-				fontFamily: '"Press Start 2P", monospace',
+				fontFamily: '"Xanh Mono", monospace',
 				fontSize: '14px',
 				color: '#E2E8F0',
 			}}
@@ -807,7 +807,7 @@ export const PixelDialogBox = ({ speaker, text, choices }: DialogProps) => {
 								imageRendering: 'pixelated',
 								border: 'none',
 								padding: '15px 30px',
-								fontFamily: '"Press Start 2P", monospace',
+								fontFamily: '"Xanh Mono", monospace',
 								fontSize: '12px',
 								color: '#FFF',
 								cursor: 'pointer',
@@ -850,7 +850,7 @@ export const StatsBar = ({ steelMind, humanity, vision }: StatsBarProps) => {
 				style={{
 					fontSize: '10px',
 					marginBottom: '5px',
-					fontFamily: '"Press Start 2P"',
+					fontFamily: '"Xanh Mono"',
 				}}
 			>
 				{label}
@@ -882,7 +882,7 @@ export const StatsBar = ({ steelMind, humanity, vision }: StatsBarProps) => {
 						left: '50%',
 						transform: 'translate(-50%, -50%)',
 						fontSize: '10px',
-						fontFamily: '"Press Start 2P"',
+						fontFamily: '"Xanh Mono"',
 						color: '#FFF',
 						textShadow: '2px 2px 0 #000',
 					}}
@@ -1095,7 +1095,7 @@ Audio: Howler.js
 Assets:
   - Free pixel art from itch.io, CraftPix, Kenney.nl
   - Custom edits với Piskel/LibreSprite
-  - Pixel fonts: "Press Start 2P" (Google Fonts)
+  - Pixel fonts: "Xanh Mono" (Google Fonts)
 
 File Structure:
   - Sprites organized by type (characters/backgrounds/ui/props)
@@ -1131,7 +1131,7 @@ File Structure:
 
 ### **Free Pixel Fonts**
 
-- ["Press Start 2P"](https://fonts.google.com/specimen/Press+Start+2P) - Google Fonts
+- ["Xanh Mono"](https://fonts.google.com/specimen/Press+Start+2P) - Google Fonts
 - [Pixel Font Collection](https://www.dafont.com/bitmap.php)
 - [VT323](https://fonts.google.com/specimen/VT323) - Terminal style
 

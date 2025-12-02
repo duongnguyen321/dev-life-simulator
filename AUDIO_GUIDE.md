@@ -367,7 +367,7 @@ class AudioManager {
 	// Preload music for a chapter
 	preloadChapterMusic(chapter: number) {
 		const track = new Howl({
-			src: [`/audio/music/chapters/ch${chapter}_theme.ogg`],
+			src: [`/audio/music/chapters/ch${chapter}_theme.mp3`],
 			volume: 0.6,
 			loop: true,
 			preload: true,

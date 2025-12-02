@@ -10,10 +10,10 @@ export const characters: Record<string, Character> = {
 		role: 'The Developer',
 		description: 'A developer on a journey from childhood to success',
 		sprites: {
-			idle: '/assets/sprites/characters/player/idle.png',
-			happy: '/assets/sprites/characters/player/happy.png',
-			sad: '/assets/sprites/characters/player/sad.png',
-			neutral: '/assets/sprites/characters/player/neutral.png',
+			idle: '/assets/sprites/characters/player/idle/standard/idle.png',
+			happy: '/assets/sprites/characters/player/happy/standard/idle.png',
+			sad: '/assets/sprites/characters/player/sad/standard/idle.png',
+			neutral: '/assets/sprites/characters/player/neutral/standard/idle.png',
 		},
 	},
 
@@ -27,9 +27,9 @@ export const characters: Record<string, Character> = {
 		description:
 			'A brilliant construction entrepreneur who rose to success and fell dramatically. The first and greatest influence on your life.',
 		sprites: {
-			neutral: '/assets/sprites/characters/family/bo_neutral.png',
-			happy: '/assets/sprites/characters/family/bo_happy.png',
-			sad: '/assets/sprites/characters/family/bo_sad.png',
+			neutral: '/assets/sprites/characters/family/bo_neutral/standard/idle.png',
+			happy: '/assets/sprites/characters/family/bo_happy/standard/idle.png',
+			sad: '/assets/sprites/characters/family/bo_sad/standard/idle.png',
 		},
 	},
 
@@ -43,9 +43,9 @@ export const characters: Record<string, Character> = {
 		description:
 			'The emotional backbone of the family. Patient, sacrificing, practical.',
 		sprites: {
-			neutral: '/assets/sprites/characters/family/me_neutral.png',
-			happy: '/assets/sprites/characters/family/me_happy.png',
-			sad: '/assets/sprites/characters/family/me_sad.png',
+			neutral: '/assets/sprites/characters/family/me_neutral/standard/idle.png',
+			happy: '/assets/sprites/characters/family/me_happy/standard/idle.png',
+			sad: '/assets/sprites/characters/family/me_sad/standard/idle.png',
 		},
 	},
 
@@ -59,7 +59,8 @@ export const characters: Record<string, Character> = {
 		description:
 			'First technical mentor. Harsh but fair. Teaches the importance of clean code.',
 		sprites: {
-			neutral: '/assets/sprites/characters/mentor/anha_neutral.png',
+			neutral:
+				'/assets/sprites/characters/mentor/anh_a-neutral/standard/idle.png',
 		},
 	},
 
@@ -73,7 +74,8 @@ export const characters: Record<string, Character> = {
 		description:
 			'EdTech CEO who teaches product thinking and education philosophy.',
 		sprites: {
-			neutral: '/assets/sprites/characters/mentor/anhs_neutral.png',
+			neutral:
+				'/assets/sprites/characters/mentor/anh_s-neutral/standard/idle.png',
 		},
 	},
 
@@ -86,7 +88,8 @@ export const characters: Record<string, Character> = {
 		role: 'The Brother in Arms',
 		description: 'Former boss and friend. Values loyalty and brotherhood.',
 		sprites: {
-			neutral: '/assets/sprites/characters/mentor/anhv_neutral.png',
+			neutral:
+				'/assets/sprites/characters/mentor/anh_v-neutral/standard/idle.png',
 		},
 	},
 
@@ -100,7 +103,8 @@ export const characters: Record<string, Character> = {
 		description:
 			'Outsource company CEO. Ruthless, practical, results-oriented.',
 		sprites: {
-			neutral: '/assets/sprites/characters/mentor/anhl_neutral.png',
+			neutral:
+				'/assets/sprites/characters/mentor/anh_l-neutral/standard/idle.png',
 		},
 	},
 

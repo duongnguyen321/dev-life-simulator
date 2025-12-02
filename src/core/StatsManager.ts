@@ -9,6 +9,9 @@ class StatsManager {
 		steelMind: 50,
 		humanity: 50,
 		vision: 50,
+		health: 100,
+		stress: 0,
+		money: 1000,
 	};
 
 	// Track stat changes for ending calculation
@@ -43,6 +46,9 @@ class StatsManager {
 			steelMind: Math.max(0, Math.min(100, stats.steelMind)),
 			humanity: Math.max(0, Math.min(100, stats.humanity)),
 			vision: Math.max(0, Math.min(100, stats.vision)),
+			health: Math.max(0, Math.min(100, stats.health)),
+			stress: Math.max(0, Math.min(100, stats.stress)),
+			money: Math.max(0, stats.money),
 		};
 	}
 
@@ -152,6 +158,9 @@ class StatsManager {
 			steelMind: '#4a90e2',
 			humanity: '#f56565',
 			vision: '#805ad5',
+			health: '#48bb78',
+			stress: '#e53e3e',
+			money: '#ecc94b',
 		};
 		return colors[stat];
 	}
@@ -164,6 +173,9 @@ class StatsManager {
 			steelMind: { vi: 'Tinh Thần Thép', en: 'Steel Mind' },
 			humanity: { vi: 'Nhân Tính', en: 'Humanity' },
 			vision: { vi: 'Tầm Nhìn', en: 'Vision' },
+			health: { vi: 'Sức Khỏe', en: 'Health' },
+			stress: { vi: 'Căng Thẳng', en: 'Stress' },
+			money: { vi: 'Tiền Bạc', en: 'Money' },
 		};
 		return names[stat][language];
 	}
@@ -176,6 +188,9 @@ class StatsManager {
 			steelMind: 50,
 			humanity: 50,
 			vision: 50,
+			health: 100,
+			stress: 0,
+			money: 1000,
 		};
 		this.statHistory = [];
 	}

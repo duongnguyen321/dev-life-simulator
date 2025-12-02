@@ -16,11 +16,14 @@ interface GameStore extends GameState {
 	addToInventory: (item: string) => void;
 	removeItem: (item: string) => void;
 	unlockAchievement: (id: string) => void;
+	completeTasks: (ids: string[]) => void;
 	updateQuest: (questId: string, updates: Partial<Quest>) => void;
 	incrementPlaytime: (seconds: number) => void;
 	setPaused: (paused: boolean) => void;
 	updateSettings: (settings: Partial<GameSettings>) => void;
 	resetGame: () => void;
+	setNightPhase: (isNight: boolean) => void;
+	setPendingTransition: (transition: GameState['pendingTransition']) => void;
 }
 
 const initialState: GameState = {
@@ -31,13 +34,21 @@ const initialState: GameState = {
 		steelMind: 50,
 		humanity: 50,
 		vision: 50,
+		health: 100,
+		stress: 0,
+		money: 1000,
 	},
+	xp: 0,
+	skills: [],
 	flags: {},
 	inventory: [],
 	achievements: [],
+	completedTaskIds: [],
 	quests: [],
 	playtime: 0,
 	isPaused: false,
+	isNightPhase: false,
+	pendingTransition: null,
 	settings: {
 		language: 'vi',
 		musicVolume: 0.6,
@@ -103,6 +114,12 @@ export const useGameStore = create<GameStore>((set, get) => ({
 		});
 	},
 
+	completeTasks: (ids: string[]) => {
+		set((state) => ({
+			completedTaskIds: [...state.completedTaskIds, ...ids],
+		}));
+	},
+
 	updateQuest: (questId: string, updates: Partial<Quest>) => {
 		set((state) => ({
 			quests: state.quests.map((quest) =>
@@ -132,5 +149,13 @@ export const useGameStore = create<GameStore>((set, get) => ({
 			...initialState,
 			settings: get().settings, // Keep settings
 		});
+	},
+
+	setNightPhase: (isNight: boolean) => {
+		set({ isNightPhase: isNight });
+	},
+
+	setPendingTransition: (transition: GameState['pendingTransition']) => {
+		set({ pendingTransition: transition });
 	},
 }));

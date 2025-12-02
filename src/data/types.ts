@@ -7,6 +7,9 @@ export interface Stats {
 	steelMind: number; // 0-100: Logic/Stoicism
 	humanity: number; // 0-100: Empathy/Connection
 	vision: number; // 0-100: System Thinking/Ambition
+	health: number; // 0-100
+	stress: number; // 0-100
+	money: number;
 }
 
 // Save Data Structure
@@ -54,6 +57,7 @@ export interface DialogueNode {
 	audio?: {
 		music?: string;
 		sfx?: string;
+		sfxVol?: number;
 	};
 }
 
@@ -71,7 +75,7 @@ export interface DialogueChoice {
 
 // Stats Effect
 export interface StatsEffect {
-	stat: 'steelMind' | 'humanity' | 'vision';
+	stat: 'steelMind' | 'humanity' | 'vision' | 'health' | 'stress' | 'money';
 	value: number; // Can be positive or negative
 	description?: string;
 }
@@ -84,7 +88,7 @@ export interface FlagChange {
 
 // Condition for choices/events
 export interface Condition {
-	type: 'stat' | 'flag' | 'item';
+	type: 'stat' | 'flag' | 'item' | 'skill';
 	key: string;
 	operator: '>' | '<' | '>=' | '<=' | '==' | '!=';
 	value: number | boolean | string;
@@ -113,6 +117,47 @@ export interface Chapter {
 	themeEn: string;
 	scenes: Scene[];
 	unlockCondition?: Condition;
+	nightlyEvents?: NightlyEvents;
+}
+
+// Nightly Events
+export interface NightlyEvents {
+	todoList: TodoTask[];
+	dreamQuestions: DreamQuestion[];
+}
+
+// Todo Task
+export interface TodoTask {
+	id: string;
+	text: string;
+	textVi: string;
+	textEn: string;
+	effects?: StatsEffect[];
+	cost?: {
+		money?: number;
+		health?: number;
+		stress?: number;
+		humanity?: number;
+		vision?: number;
+		steelMind?: number;
+	};
+	reward?: {
+		money?: number;
+		health?: number;
+		stress?: number;
+		humanity?: number;
+		vision?: number;
+		steelMind?: number;
+	};
+}
+
+// Dream Question
+export interface DreamQuestion {
+	id: string;
+	text: string;
+	textVi: string;
+	textEn: string;
+	choices: DialogueChoice[];
 }
 
 // Quest Definition
@@ -157,16 +202,36 @@ export interface Achievement {
 	secret: boolean;
 	unlocked: boolean;
 	unlockedAt?: number; // timestamp
+	conditions?: Condition[]; // Auto-unlock conditions
 }
 
 // Random Event
 export interface RandomEvent {
 	id: string;
 	name: string;
+	nameVi: string;
+	nameEn: string;
 	description: string;
+	descriptionVi: string;
+	descriptionEn: string;
 	probability: number; // 0-1
 	conditions?: Condition[];
 	choices: DialogueChoice[];
+}
+
+// Skill Definition
+export interface Skill {
+	id: string;
+	name: string;
+	nameVi: string;
+	nameEn: string;
+	description: string;
+	descriptionVi: string;
+	descriptionEn: string;
+	branch: 'coding' | 'soft' | 'life';
+	cost: number; // XP cost
+	effects?: StatsEffect[];
+	requiredSkills?: string[]; // IDs of prerequisite skills
 }
 
 // Game State
@@ -175,12 +240,21 @@ export interface GameState {
 	currentScene: string;
 	currentDialogue: string;
 	stats: Stats;
+	xp: number;
+	skills: string[]; // Unlocked skill IDs
 	flags: Record<string, boolean | number | string>;
 	inventory: string[];
 	achievements: string[];
+	completedTaskIds: string[];
 	quests: Quest[];
 	playtime: number;
 	isPaused: boolean;
+	isNightPhase: boolean;
+	pendingTransition: {
+		chapterId: number;
+		sceneId: string;
+		dialogueId: string;
+	} | null;
 	settings: GameSettings;
 }
 
@@ -197,8 +271,23 @@ export interface GameSettings {
 // Ending Type
 export type EndingType =
 	| 'true-ending' // Best ending: High humanity, vision, balanced steel mind
-	| 'machine-ending' // Steel Mind > 90
-	| 'pushover-ending' // Humanity > 90
-	| 'dreamer-ending' // Vision > 90
+	| 'machine-ending' // Steel Mind > 90, Humanity < 50
+	| 'pushover-ending' // Humanity > 90, Steel Mind < 50
+	| 'dreamer-ending' // Vision > 90, Steel Mind < 50
 	| 'failure-ending' // Failed critical choices
 	| 'normal-ending'; // Balanced but not perfect
+
+// Ending Definition
+export interface EndingDefinition {
+	id: EndingType;
+	priority: number; // Higher priority is checked first. Resolves conflicts (e.g. True Ending > Machine Ending)
+	name: string;
+	nameVi: string;
+	nameEn: string;
+	description: string;
+	descriptionVi: string;
+	descriptionEn: string;
+	conditions?: Condition[]; // Specific flags, items, or skills required
+	minStats?: Partial<Stats>; // Minimum stats required
+	maxStats?: Partial<Stats>; // Maximum stats allowed (e.g. Machine Ending requires LOW Humanity)
+}

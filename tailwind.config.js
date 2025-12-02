@@ -13,7 +13,7 @@ export default {
 				'text-primary': '#e2e8f0',
 			},
 			fontFamily: {
-				pixel: ['"Press Start 2P"', 'monospace'],
+				pixel: ['"Xanh Mono"', 'monospace'],
 			},
 			keyframes: {
 				'sprite-idle': {

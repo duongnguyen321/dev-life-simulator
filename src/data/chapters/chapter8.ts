@@ -22,7 +22,7 @@ export const chapter8: Chapter = {
 			nameVi: '40-45 tuổi: Canh bạc AI & Robot',
 			nameEn: 'Age 40-45: AI Gamble & Robots',
 			background: '/assets/sprites/backgrounds/server_room_future.png',
-			music: '/assets/audio/music/chapters/ch8_epic.ogg',
+			music: '/assets/audio/music/chapters/ch8_epic.mp3',
 			dialogueStart: 'ch8_ai_1',
 		},
 		{
@@ -31,7 +31,7 @@ export const chapter8: Chapter = {
 			nameVi: '45-48 tuổi: The Recall (Cao trào)',
 			nameEn: 'Age 45-48: The Recall (Climax)',
 			background: '/assets/sprites/backgrounds/press_conference.png',
-			music: '/assets/audio/music/chapters/ch8_crisis.ogg',
+			music: '/assets/audio/music/chapters/ch8_crisis.mp3',
 			dialogueStart: 'ch8_recall_1',
 		},
 		{
@@ -40,10 +40,368 @@ export const chapter8: Chapter = {
 			nameVi: '50-52 tuổi: Phục sinh (Resurrection)',
 			nameEn: 'Age 50-52: Resurrection',
 			background: '/assets/sprites/backgrounds/skyscraper_view.png',
-			music: '/assets/audio/music/chapters/ch8_epic.ogg',
+			music: '/assets/audio/music/chapters/ch8_epic.mp3',
 			dialogueStart: 'ch8_rebirth_1',
 		},
 	],
+	nightlyEvents: {
+		todoList: [
+			{
+				id: 'ch8_todo_read_ai',
+				text: 'Đọc tài liệu nghiên cứu AI',
+				textVi: 'Đọc tài liệu nghiên cứu AI',
+				textEn: 'Read AI research papers',
+				effects: [{ stat: 'vision', value: 1 }], // Knowledge
+			},
+			{
+				id: 'ch8_todo_meet_gov',
+				text: 'Gặp gỡ quan chức chính phủ',
+				textVi: 'Gặp gỡ quan chức chính phủ',
+				textEn: 'Meet government officials',
+				effects: [{ stat: 'vision', value: 1 }], // Reputation
+				cost: { stress: 1 },
+			},
+			{
+				id: 'ch8_todo_approve_budget',
+				text: 'Duyệt ngân sách R&D cho Robot',
+				textVi: 'Duyệt ngân sách R&D cho Robot',
+				textEn: 'Approve R&D budget for Robot',
+				effects: [{ stat: 'vision', value: 1 }],
+				cost: { money: 1 },
+			},
+			{
+				id: 'ch8_todo_ethics',
+				text: 'Đối mặt với tình huống khó xử về đạo đức',
+				textVi: 'Đối mặt với tình huống khó xử về đạo đức',
+				textEn: 'Face ethical dilemma',
+				effects: [
+					{ stat: 'steelMind', value: 1 },
+					{ stat: 'humanity', value: 1 },
+				],
+			},
+			{
+				id: 'ch8_todo_visit_dad',
+				text: 'Vào viện thăm Bố',
+				textVi: 'Vào viện thăm Bố',
+				textEn: 'Visit Dad in hospital',
+				effects: [{ stat: 'humanity', value: 1 }],
+				cost: { stress: 1 },
+			},
+			{
+				id: 'ch8_todo_ignore_press',
+				text: 'Phớt lờ báo chí tiêu cực',
+				textVi: 'Phớt lờ báo chí tiêu cực',
+				textEn: 'Ignore negative press',
+				effects: [{ stat: 'steelMind', value: 1 }],
+			},
+			{
+				id: 'ch8_todo_press_conf',
+				text: 'Tổ chức họp báo',
+				textVi: 'Tổ chức họp báo',
+				textEn: 'Hold press conference',
+				effects: [{ stat: 'vision', value: 1 }], // Reputation
+				cost: { stress: 2 },
+			},
+			{
+				id: 'ch8_todo_fire_inspector',
+				text: 'Sa thải thanh tra an toàn',
+				textVi: 'Sa thải thanh tra an toàn',
+				textEn: 'Fire safety inspector',
+				effects: [{ stat: 'vision', value: 1 }], // Speed
+				cost: { stress: 1 }, // Risk High
+			},
+			{
+				id: 'ch8_todo_hire_ethics',
+				text: 'Thuê Giám đốc Đạo đức',
+				textVi: 'Thuê Giám đốc Đạo đức',
+				textEn: 'Hire Ethics Director',
+				effects: [{ stat: 'vision', value: 1 }], // Reputation
+				cost: { money: 1 },
+			},
+			{
+				id: 'ch8_todo_meditate_life',
+				text: 'Thiền định về ý nghĩa cuộc sống',
+				textVi: 'Thiền định về ý nghĩa cuộc sống',
+				textEn: 'Meditate on life meaning',
+				effects: [{ stat: 'vision', value: 1 }], // Wisdom
+			},
+			{
+				id: 'ch8_todo_review_core',
+				text: 'Review mã nguồn lõi của AI',
+				textVi: 'Review mã nguồn lõi của AI',
+				textEn: 'Review AI core source code',
+				effects: [{ stat: 'vision', value: 1 }], // Skill Coding
+			},
+			{
+				id: 'ch8_todo_family_time',
+				text: 'Dành thời gian cho con cái đã lớn',
+				textVi: 'Dành thời gian cho con cái đã lớn',
+				textEn: 'Time with grown-up kids',
+				effects: [{ stat: 'humanity', value: 1 }],
+			},
+			{
+				id: 'ch8_todo_donate_uni',
+				text: 'Quyên góp cho nghiên cứu đại học',
+				textVi: 'Quyên góp cho nghiên cứu đại học',
+				textEn: 'Donate to university research',
+				effects: [{ stat: 'vision', value: 1 }], // Reputation
+				cost: { money: 1 },
+			},
+			{
+				id: 'ch8_todo_long_leave',
+				text: 'Nghỉ phép dài hạn',
+				textVi: 'Nghỉ phép dài hạn',
+				textEn: 'Long leave',
+				reward: { health: 1 },
+				cost: { vision: 1 }, // Career -
+			},
+			{
+				id: 'ch8_todo_write_memoir',
+				text: 'Viết hồi ký',
+				textVi: 'Viết hồi ký',
+				textEn: 'Write memoir',
+				effects: [{ stat: 'vision', value: 1 }], // Legacy
+			},
+			{
+				id: 'ch8_todo_watch_news',
+				text: 'Xem tin tức về AI cướp việc làm',
+				textVi: 'Xem tin tức về AI cướp việc làm',
+				textEn: 'Watch news about AI taking jobs',
+				cost: { stress: 1 },
+			},
+			{
+				id: 'ch8_todo_consult_lawyer',
+				text: 'Tham vấn luật sư',
+				textVi: 'Tham vấn luật sư',
+				textEn: 'Consult lawyer',
+				cost: { money: 1 },
+				effects: [{ stat: 'steelMind', value: 1 }], // Safety
+			},
+			{
+				id: 'ch8_todo_sleeping_pill',
+				text: 'Uống thuốc ngủ',
+				textVi: 'Uống thuốc ngủ',
+				textEn: 'Take sleeping pills',
+				cost: { health: 1 },
+			},
+			{
+				id: 'ch8_todo_stare_button',
+				text: 'Nhìn chằm chằm vào nút "Thu hồi"',
+				textVi: 'Nhìn chằm chằm vào nút "Thu hồi"',
+				textEn: 'Stare at "Recall" button',
+				cost: { stress: 2 },
+			},
+			{
+				id: 'ch8_todo_remember_dad',
+				text: 'Nhớ lại sự cố "Stack Overflow" của Bố',
+				textVi: 'Nhớ lại sự cố "Stack Overflow" của Bố',
+				textEn: 'Remember Dad\'s "Stack Overflow" incident',
+				effects: [{ stat: 'vision', value: 1 }], // Wisdom
+			},
+		],
+		dreamQuestions: [
+			{
+				id: 'ch8_dream_robot',
+				text: 'Bạn thấy một con Robot có khuôn mặt giống hệt mình.',
+				textVi: 'Bạn thấy một con Robot có khuôn mặt giống hệt mình.',
+				textEn: 'You see a Robot with your face.',
+				choices: [
+					{
+						id: 'ch8_dream_robot_shake',
+						text: 'Bắt tay nó',
+						textVi: 'Bắt tay nó',
+						textEn: 'Shake hands',
+						next: '',
+						effects: [{ stat: 'vision', value: 1 }], // Harmony
+					},
+					{
+						id: 'ch8_dream_robot_off',
+						text: 'Tắt nguồn nó',
+						textVi: 'Tắt nguồn nó',
+						textEn: 'Turn it off',
+						next: '',
+						effects: [{ stat: 'steelMind', value: 1 }], // Fear
+					},
+					{
+						id: 'ch8_dream_robot_ask',
+						text: 'Hỏi nó: "Ngươi có linh hồn không?"',
+						textVi: 'Hỏi nó: "Ngươi có linh hồn không?"',
+						textEn: 'Ask: "Do you have a soul?"',
+						next: '',
+						effects: [{ stat: 'vision', value: 1 }], // Wisdom
+					},
+					{
+						id: 'ch8_dream_robot_order',
+						text: 'Ra lệnh cho nó',
+						textVi: 'Ra lệnh cho nó',
+						textEn: 'Order it',
+						next: '',
+						effects: [{ stat: 'steelMind', value: 1 }], // Control
+					},
+				],
+			},
+			{
+				id: 'ch8_dream_court',
+				text: 'Bạn đứng trước tòa án lương tâm.',
+				textVi: 'Bạn đứng trước tòa án lương tâm.',
+				textEn: 'Standing before court of conscience.',
+				choices: [
+					{
+						id: 'ch8_dream_court_guilty',
+						text: 'Nhận tội',
+						textVi: 'Nhận tội',
+						textEn: 'Plead guilty',
+						next: '',
+						effects: [{ stat: 'humanity', value: 1 }],
+					},
+					{
+						id: 'ch8_dream_court_defend',
+						text: 'Biện hộ',
+						textVi: 'Biện hộ',
+						textEn: 'Defend',
+						next: '',
+						effects: [{ stat: 'vision', value: 1 }], // Reason
+					},
+					{
+						id: 'ch8_dream_court_blame',
+						text: 'Đổ lỗi cho người khác',
+						textVi: 'Đổ lỗi cho người khác',
+						textEn: 'Blame others',
+						next: '',
+						effects: [{ stat: 'steelMind', value: -1 }], // Cowardice
+					},
+					{
+						id: 'ch8_dream_court_silent',
+						text: 'Im lặng',
+						textVi: 'Im lặng',
+						textEn: 'Silence',
+						next: '',
+						effects: [{ stat: 'steelMind', value: 1 }], // Stoic
+					},
+				],
+			},
+			{
+				id: 'ch8_dream_dad',
+				text: 'Bố trẻ lại như ngày xưa, đang xây cầu.',
+				textVi: 'Bố trẻ lại như ngày xưa, đang xây cầu.',
+				textEn: 'Dad young again, building a bridge.',
+				choices: [
+					{
+						id: 'ch8_dream_dad_help',
+						text: 'Chạy lại phụ bố',
+						textVi: 'Chạy lại phụ bố',
+						textEn: 'Help him',
+						next: '',
+						effects: [{ stat: 'humanity', value: 1 }],
+					},
+					{
+						id: 'ch8_dream_dad_stop',
+						text: 'Bảo bố dừng lại',
+						textVi: 'Bảo bố dừng lại',
+						textEn: 'Tell him to stop',
+						next: '',
+						effects: [{ stat: 'vision', value: 1 }], // Warning
+					},
+					{
+						id: 'ch8_dream_dad_watch',
+						text: 'Đứng nhìn từ xa',
+						textVi: 'Đứng nhìn từ xa',
+						textEn: 'Watch from afar',
+						next: '',
+						effects: [{ stat: 'humanity', value: 1 }], // Nostalgia
+					},
+					{
+						id: 'ch8_dream_dad_destroy',
+						text: 'Phá cây cầu',
+						textVi: 'Phá cây cầu',
+						textEn: 'Destroy bridge',
+						next: '',
+						effects: [{ stat: 'steelMind', value: 1 }], // Obsession
+					},
+				],
+			},
+			{
+				id: 'ch8_dream_butterfly',
+				text: 'Một con bướm đen đậu lên vai bạn.',
+				textVi: 'Một con bướm đen đậu lên vai bạn.',
+				textEn: 'Black butterfly lands on your shoulder.',
+				choices: [
+					{
+						id: 'ch8_dream_butterfly_shoo',
+						text: 'Đuổi nó đi',
+						textVi: 'Đuổi nó đi',
+						textEn: 'Shoo it away',
+						next: '',
+						effects: [{ stat: 'steelMind', value: 1 }],
+					},
+					{
+						id: 'ch8_dream_butterfly_watch',
+						text: 'Ngắm nhìn nó',
+						textVi: 'Ngắm nhìn nó',
+						textEn: 'Watch it',
+						next: '',
+						effects: [{ stat: 'vision', value: 1 }], // Wisdom
+					},
+					{
+						id: 'ch8_dream_butterfly_catch',
+						text: 'Bắt nó ép vào sổ',
+						textVi: 'Bắt nó ép vào sổ',
+						textEn: 'Catch and press it',
+						next: '',
+						effects: [{ stat: 'steelMind', value: 1 }], // Control
+					},
+					{
+						id: 'ch8_dream_butterfly_fly',
+						text: 'Biến thành bướm bay đi',
+						textVi: 'Biến thành bướm bay đi',
+						textEn: 'Turn into butterfly and fly',
+						next: '',
+						effects: [{ stat: 'vision', value: 1 }], // Freedom
+					},
+				],
+			},
+			{
+				id: 'ch8_dream_reset',
+				text: 'Trước mặt bạn là nút "Reset Game".',
+				textVi: 'Trước mặt bạn là nút "Reset Game".',
+				textEn: 'In front of you is "Reset Game" button.',
+				choices: [
+					{
+						id: 'ch8_dream_reset_press',
+						text: 'Bấm nút',
+						textVi: 'Bấm nút',
+						textEn: 'Press it',
+						next: '',
+						effects: [{ stat: 'vision', value: -1 }], // Redo
+					},
+					{
+						id: 'ch8_dream_reset_ignore',
+						text: 'Không bấm',
+						textVi: 'Không bấm',
+						textEn: "Don't press",
+						next: '',
+						effects: [{ stat: 'steelMind', value: 2 }], // Accept past
+					},
+					{
+						id: 'ch8_dream_reset_destroy',
+						text: 'Phá hủy cái nút',
+						textVi: 'Phá hủy cái nút',
+						textEn: 'Destroy button',
+						next: '',
+						effects: [{ stat: 'steelMind', value: 1 }],
+					},
+					{
+						id: 'ch8_dream_reset_stare',
+						text: 'Đứng nhìn mãi',
+						textVi: 'Đứng nhìn mãi',
+						textEn: 'Stare at it',
+						next: '',
+						effects: [{ stat: 'stress', value: 1 }], // Hesitation
+					},
+				],
+			},
+		],
+	},
 };
 
 export const chapter8Dialogues: Record<string, DialogueNode> = {

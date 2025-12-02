@@ -78,7 +78,7 @@ export class GameFlow {
 		}
 
 		// Play SFX for choice
-		audioManager.playSFX('/assets/audio/sfx/choice.ogg');
+		audioManager.playSFX('choice');
 
 		// Go to next dialogue
 		if (choice.next) {
@@ -110,8 +110,29 @@ export class GameFlow {
 		const currentScene = this.getCurrentScene();
 		if (currentScene && !dialogueId.startsWith(currentScene.id)) {
 			// Try to find the matching scene
-			const newScene = this.findSceneByDialogue(dialogueId);
-			if (newScene) {
+			const result = this.findSceneByDialogue(dialogueId);
+			if (result) {
+				const { scene: newScene, chapterId } = result;
+
+				// CHECK FOR CHAPTER TRANSITION
+				if (chapterId !== store.currentChapter) {
+					console.log(
+						`Chapter transition detected: ${store.currentChapter} -> ${chapterId}`
+					);
+					// Trigger Night Phase
+					store.setPendingTransition({
+						chapterId,
+						sceneId: newScene.id,
+						dialogueId,
+					});
+					store.setNightPhase(true);
+
+					// DO NOT update state yet. Wait for night phase completion.
+					return;
+				}
+
+				// Normal Scene Transition (Same Chapter)
+				store.setCurrentChapter(chapterId);
 				store.setCurrentScene(newScene.id);
 
 				// Change music if needed
@@ -131,14 +152,32 @@ export class GameFlow {
 		return chapter.scenes.find((s) => s.id === store.currentScene);
 	}
 
-	// Find scene by dialogue ID
-	static findSceneByDialogue(dialogueId: string): any {
+	// Find scene and chapter by dialogue ID
+	static findSceneByDialogue(
+		dialogueId: string
+	): { scene: any; chapterId: number } | null {
 		// Search all chapters for a scene with this dialogue
 		for (const chapter of Object.values(chapters)) {
-			for (const scene of chapter.scenes) {
-				if (dialogueId.startsWith(scene.id.substring(0, 3))) {
-					return scene;
+			// Check if dialogue ID starts with chapter prefix (e.g., "ch2_")
+			// This is safer than scene ID matching
+			const chapterPrefix = `ch${chapter.id}_`;
+			if (dialogueId.startsWith(chapterPrefix)) {
+				// Find the specific scene within this chapter
+				// We assume scene IDs usually match the start of dialogue IDs or we find the scene that contains this dialogue
+				// Since we don't have a direct mapping, we'll look for the scene that matches the dialogue prefix best
+				// OR we can just rely on the fact that we found the chapter, and now we need the scene.
+
+				// Better approach: Iterate scenes and check if dialogue ID starts with scene ID (more specific)
+				for (const scene of chapter.scenes) {
+					// e.g. dialogue "ch2_fpt_1" starts with scene "ch2_fpt"
+					if (dialogueId.startsWith(scene.id)) {
+						return { scene, chapterId: chapter.id };
+					}
 				}
+
+				// Fallback: If no specific scene matches (e.g. generic dialogue),
+				// return the first scene of the chapter or keep current if valid?
+				// For now, let's assume strict naming convention: sceneId + "_"
 			}
 		}
 		return null;

@@ -22,7 +22,7 @@ export const chapter9: Chapter = {
 			nameVi: 'Khoảnh khắc Tỷ phú',
 			nameEn: 'Billionaire Moment',
 			background: '/assets/sprites/backgrounds/skyscraper_office_top.png',
-			music: '/assets/audio/music/chapters/ch9_legacy.ogg',
+			music: '/assets/audio/music/chapters/ch9_legacy.mp3',
 			dialogueStart: 'ch9_billionaire_1',
 		},
 		{
@@ -31,7 +31,7 @@ export const chapter9: Chapter = {
 			nameVi: 'Món quà cho Bố',
 			nameEn: 'Gift for Father',
 			background: '/assets/sprites/backgrounds/fortress_rebuilt.png',
-			music: '/assets/audio/music/chapters/ch9_legacy.ogg',
+			music: '/assets/audio/music/chapters/ch9_legacy.mp3',
 			dialogueStart: 'ch9_gift_1',
 		},
 		{
@@ -40,10 +40,358 @@ export const chapter9: Chapter = {
 			nameVi: 'Thế giới mở',
 			nameEn: 'Open World',
 			background: '/assets/sprites/backgrounds/sunset_hill.png',
-			music: '/assets/audio/music/chapters/ch9_legacy.ogg',
+			music: '/assets/audio/music/chapters/ch9_legacy.mp3',
 			dialogueStart: 'ch9_ending_1',
 		},
 	],
+	nightlyEvents: {
+		todoList: [
+			{
+				id: 'ch9_todo_grandchild',
+				text: 'Chơi với cháu nội',
+				textVi: 'Chơi với cháu nội',
+				textEn: 'Play with grandchild',
+				effects: [{ stat: 'humanity', value: 2 }], // Happiness
+				cost: { health: 1 }, // Energy -
+			},
+			{
+				id: 'ch9_todo_visit_hill',
+				text: 'Về thăm đồi cũ ở Lào Cai',
+				textVi: 'Về thăm đồi cũ ở Lào Cai',
+				textEn: 'Visit old hill in Lao Cai',
+				effects: [{ stat: 'humanity', value: 1 }], // Nostalgia
+			},
+			{
+				id: 'ch9_todo_sign_check',
+				text: 'Ký séc tài trợ cho quỹ Sandbox',
+				textVi: 'Ký séc tài trợ cho quỹ Sandbox',
+				textEn: 'Sign check for Sandbox Foundation',
+				effects: [{ stat: 'vision', value: 1 }], // Legacy
+				cost: { money: 1 },
+			},
+			{
+				id: 'ch9_todo_teach_kids',
+				text: 'Dạy trẻ em nghèo học code',
+				textVi: 'Dạy trẻ em nghèo học code',
+				textEn: 'Teach poor kids to code',
+				effects: [{ stat: 'vision', value: 1 }], // Legacy
+			},
+			{
+				id: 'ch9_todo_sunset',
+				text: 'Ngồi ngắm hoàng hôn trong vườn',
+				textVi: 'Ngồi ngắm hoàng hôn trong vườn',
+				textEn: 'Watch sunset in garden',
+				reward: { stress: -1 }, // Peace
+			},
+			{
+				id: 'ch9_todo_call_friends',
+				text: 'Gọi điện hỏi thăm bạn bè cũ',
+				textVi: 'Gọi điện hỏi thăm bạn bè cũ',
+				textEn: 'Call old friends',
+				effects: [{ stat: 'humanity', value: 1 }],
+			},
+			{
+				id: 'ch9_todo_album',
+				text: 'Xem lại album ảnh gia đình',
+				textVi: 'Xem lại album ảnh gia đình',
+				textEn: 'Review family album',
+				effects: [{ stat: 'humanity', value: 1 }], // Nostalgia
+			},
+			{
+				id: 'ch9_todo_write_letter',
+				text: 'Viết thư cho bản thân năm 20 tuổi',
+				textVi: 'Viết thư cho bản thân năm 20 tuổi',
+				textEn: 'Write letter to 20-year-old self',
+				effects: [{ stat: 'vision', value: 1 }], // Wisdom
+			},
+			{
+				id: 'ch9_todo_nap',
+				text: 'Ngủ trưa',
+				textVi: 'Ngủ trưa',
+				textEn: 'Nap',
+				reward: { health: 1 },
+			},
+			{
+				id: 'ch9_todo_music',
+				text: 'Nghe nhạc thính phòng',
+				textVi: 'Nghe nhạc thính phòng',
+				textEn: 'Listen to chamber music',
+				reward: { stress: -1 }, // Peace
+			},
+			{
+				id: 'ch9_todo_plant_tree',
+				text: 'Trồng một cái cây',
+				textVi: 'Trồng một cái cây',
+				textEn: 'Plant a tree',
+				effects: [{ stat: 'vision', value: 1 }], // Legacy
+			},
+			{
+				id: 'ch9_todo_advice_startup',
+				text: 'Cho lời khuyên một Startup trẻ',
+				textVi: 'Cho lời khuyên một Startup trẻ',
+				textEn: 'Advise young Startup',
+				effects: [{ stat: 'vision', value: 1 }], // Wisdom
+			},
+			{
+				id: 'ch9_todo_donate_clothes',
+				text: 'Quyên góp quần áo cũ',
+				textVi: 'Quyên góp quần áo cũ',
+				textEn: 'Donate old clothes',
+				effects: [{ stat: 'humanity', value: 1 }],
+			},
+			{
+				id: 'ch9_todo_read_history',
+				text: 'Đọc sách lịch sử',
+				textVi: 'Đọc sách lịch sử',
+				textEn: 'Read history books',
+				effects: [{ stat: 'vision', value: 1 }], // Knowledge
+			},
+			{
+				id: 'ch9_todo_walk_bi',
+				text: 'Dắt Bi đi dạo quanh hồ',
+				textVi: 'Dắt Bi đi dạo quanh hồ',
+				textEn: 'Walk Bi around lake',
+				reward: { health: 1 },
+			},
+			{
+				id: 'ch9_todo_cook_family',
+				text: 'Nấu ăn cho cả đại gia đình',
+				textVi: 'Nấu ăn cho cả đại gia đình',
+				textEn: 'Cook for big family',
+				effects: [{ stat: 'humanity', value: 1 }], // Happiness
+			},
+			{
+				id: 'ch9_todo_watch_news_smile',
+				text: 'Xem thời sự và mỉm cười',
+				textVi: 'Xem thời sự và mỉm cười',
+				textEn: 'Watch news and smile',
+				reward: { stress: -1 }, // Peace
+			},
+			{
+				id: 'ch9_todo_forget_glasses',
+				text: 'Quên kính lão ở đâu đó',
+				textVi: 'Quên kính lão ở đâu đó',
+				textEn: 'Forget reading glasses',
+				effects: [{ stat: 'vision', value: -1 }], // Memory -
+			},
+			{
+				id: 'ch9_todo_tell_story',
+				text: 'Kể chuyện "ngày xưa" cho con cháu',
+				textVi: 'Kể chuyện "ngày xưa" cho con cháu',
+				textEn: 'Tell "old days" stories to grandkids',
+				effects: [{ stat: 'vision', value: 1 }], // Legacy
+			},
+			{
+				id: 'ch9_todo_breathe',
+				text: 'Chỉ đơn giản là hít thở',
+				textVi: 'Chỉ đơn giản là hít thở',
+				textEn: 'Just breathe',
+				reward: { stress: -1 }, // Peace
+			},
+		],
+		dreamQuestions: [
+			{
+				id: 'ch9_dream_end',
+				text: 'Bạn thấy một cánh cửa trắng xóa.',
+				textVi: 'Bạn thấy một cánh cửa trắng xóa.',
+				textEn: 'You see a white door.',
+				choices: [
+					{
+						id: 'ch9_dream_end_enter',
+						text: 'Bước qua',
+						textVi: 'Bước qua',
+						textEn: 'Step through',
+						next: '',
+						effects: [{ stat: 'steelMind', value: 1 }], // Acceptance
+					},
+					{
+						id: 'ch9_dream_end_look_back',
+						text: 'Quay lại nhìn',
+						textVi: 'Quay lại nhìn',
+						textEn: 'Look back',
+						next: '',
+						effects: [{ stat: 'humanity', value: 1 }], // Attachment
+					},
+					{
+						id: 'ch9_dream_end_close',
+						text: 'Đóng cửa lại',
+						textVi: 'Đóng cửa lại',
+						textEn: 'Close door',
+						next: '',
+						effects: [{ stat: 'steelMind', value: -1 }], // Not ready
+					},
+					{
+						id: 'ch9_dream_end_draw',
+						text: 'Vẽ lên cánh cửa',
+						textVi: 'Vẽ lên cánh cửa',
+						textEn: 'Draw on door',
+						next: '',
+						effects: [{ stat: 'vision', value: 1 }], // Creativity
+					},
+				],
+			},
+			{
+				id: 'ch9_dream_legacy',
+				text: 'Bạn thấy tên mình được khắc trên một bức tượng.',
+				textVi: 'Bạn thấy tên mình được khắc trên một bức tượng.',
+				textEn: 'You see your name carved on a statue.',
+				choices: [
+					{
+						id: 'ch9_dream_legacy_smile',
+						text: 'Mỉm cười',
+						textVi: 'Mỉm cười',
+						textEn: 'Smile',
+						next: '',
+						effects: [{ stat: 'steelMind', value: 1 }], // Pride
+					},
+					{
+						id: 'ch9_dream_legacy_break',
+						text: 'Đập bỏ nó',
+						textVi: 'Đập bỏ nó',
+						textEn: 'Break it',
+						next: '',
+						effects: [{ stat: 'vision', value: 1 }], // Humility/Wisdom
+					},
+					{
+						id: 'ch9_dream_legacy_add',
+						text: 'Khắc thêm tên những người khác',
+						textVi: 'Khắc thêm tên những người khác',
+						textEn: 'Carve others names',
+						next: '',
+						effects: [{ stat: 'humanity', value: 1 }], // Gratitude
+					},
+					{
+						id: 'ch9_dream_legacy_scared',
+						text: 'Sợ hãi vì nó quá to',
+						textVi: 'Sợ hãi vì nó quá to',
+						textEn: 'Scared it is too big',
+						next: '',
+						effects: [{ stat: 'stress', value: 1 }],
+					},
+				],
+			},
+			{
+				id: 'ch9_dream_childhood',
+				text: 'Bạn trở lại làm đứa trẻ 5 tuổi ở Lào Cai.',
+				textVi: 'Bạn trở lại làm đứa trẻ 5 tuổi ở Lào Cai.',
+				textEn: 'You are a 5-year-old in Lao Cai again.',
+				choices: [
+					{
+						id: 'ch9_dream_childhood_dad',
+						text: 'Chạy đi tìm Bố',
+						textVi: 'Chạy đi tìm Bố',
+						textEn: 'Run to find Dad',
+						next: '',
+						effects: [{ stat: 'humanity', value: 1 }], // Nostalgia
+					},
+					{
+						id: 'ch9_dream_childhood_play',
+						text: 'Chơi với những con thú',
+						textVi: 'Chơi với những con thú',
+						textEn: 'Play with animals',
+						next: '',
+						effects: [{ stat: 'humanity', value: 1 }], // Joy
+					},
+					{
+						id: 'ch9_dream_childhood_self',
+						text: 'Nói với bản thân: "Mọi chuyện sẽ ổn thôi"',
+						textVi: 'Nói với bản thân: "Mọi chuyện sẽ ổn thôi"',
+						textEn: 'Tell self: "It will be okay"',
+						next: '',
+						effects: [{ stat: 'steelMind', value: 1 }], // Comfort
+					},
+					{
+						id: 'ch9_dream_childhood_change',
+						text: 'Cố gắng thay đổi quá khứ',
+						textVi: 'Cố gắng thay đổi quá khứ',
+						textEn: 'Try to change past',
+						next: '',
+						effects: [{ stat: 'stress', value: 1 }], // Regret
+					},
+				],
+			},
+			{
+				id: 'ch9_dream_space',
+				text: 'Bạn bay lơ lửng giữa các vì sao.',
+				textVi: 'Bạn bay lơ lửng giữa các vì sao.',
+				textEn: 'Floating among stars.',
+				choices: [
+					{
+						id: 'ch9_dream_space_search',
+						text: 'Tìm kiếm sự sống khác',
+						textVi: 'Tìm kiếm sự sống khác',
+						textEn: 'Search for other life',
+						next: '',
+						effects: [{ stat: 'vision', value: 1 }], // Curiosity
+					},
+					{
+						id: 'ch9_dream_space_silence',
+						text: 'Tận hưởng sự im lặng',
+						textVi: 'Tận hưởng sự im lặng',
+						textEn: 'Enjoy silence',
+						next: '',
+						effects: [{ stat: 'steelMind', value: 1 }], // Peace
+					},
+					{
+						id: 'ch9_dream_space_scared',
+						text: 'Sợ hãi bóng tối',
+						textVi: 'Sợ hãi bóng tối',
+						textEn: 'Scared of darkness',
+						next: '',
+						effects: [{ stat: 'stress', value: 1 }], // Loneliness
+					},
+					{
+						id: 'ch9_dream_space_become',
+						text: 'Trở thành một vì sao',
+						textVi: 'Trở thành một vì sao',
+						textEn: 'Become a star',
+						next: '',
+						effects: [{ stat: 'vision', value: 1 }], // Unity
+					},
+				],
+			},
+			{
+				id: 'ch9_dream_code_final',
+				text: 'Bạn đang viết dòng code cuối cùng của cuộc đời.',
+				textVi: 'Bạn đang viết dòng code cuối cùng của cuộc đời.',
+				textEn: 'Writing the final line of code of your life.',
+				choices: [
+					{
+						id: 'ch9_dream_code_return',
+						text: 'return 0;',
+						textVi: 'return 0;',
+						textEn: 'return 0;',
+						next: '',
+						effects: [{ stat: 'steelMind', value: 1 }], // Perfect end
+					},
+					{
+						id: 'ch9_dream_code_while',
+						text: 'while(true) continue;',
+						textVi: 'while(true) continue;',
+						textEn: 'while(true) continue;',
+						next: '',
+						effects: [{ stat: 'vision', value: 1 }], // Immortality/Loop
+					},
+					{
+						id: 'ch9_dream_code_throw',
+						text: 'throw new Error("Not finished");',
+						textVi: 'throw new Error("Not finished");',
+						textEn: 'throw new Error("Not finished");',
+						next: '',
+						effects: [{ stat: 'stress', value: 1 }], // Unfinished
+					},
+					{
+						id: 'ch9_dream_code_print',
+						text: 'print("Thank you for playing");',
+						textVi: 'print("Thank you for playing");',
+						textEn: 'print("Thank you for playing");',
+						next: '',
+						effects: [{ stat: 'humanity', value: 1 }], // Gratitude
+					},
+				],
+			},
+		],
+	},
 };
 
 export const chapter9Dialogues: Record<string, DialogueNode> = {

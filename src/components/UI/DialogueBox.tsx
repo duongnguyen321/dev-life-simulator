@@ -8,6 +8,7 @@ interface DialogueBoxProps {
 	text: string;
 	choices?: DialogueChoice[];
 	onNext?: () => void;
+	onChoice?: (choice: DialogueChoice) => void;
 }
 
 export default function DialogueBox({
@@ -15,6 +16,7 @@ export default function DialogueBox({
 	text,
 	choices = [],
 	onNext,
+	onChoice,
 }: DialogueBoxProps) {
 	const { settings } = useGameStore();
 
@@ -35,7 +37,21 @@ export default function DialogueBox({
 		}
 
 		// Navigate to next dialogue
-		if (onNext) {
+		if (onChoice) {
+			onChoice(choice);
+		} else if (onNext) {
+			onNext();
+		}
+	};
+
+	const handleCopyText = (e: React.MouseEvent) => {
+		e.stopPropagation(); // Prevent triggering next
+		navigator.clipboard.writeText(text);
+		// Optional: Show toast or feedback
+	};
+
+	const handleContainerClick = () => {
+		if (choices.length === 0 && onNext) {
 			onNext();
 		}
 	};
@@ -45,12 +61,13 @@ export default function DialogueBox({
 			initial={{ y: 100, opacity: 0 }}
 			animate={{ y: 0, opacity: 1 }}
 			transition={{ duration: 0.3 }}
-			className='pixel-dialog-box relative mx-auto mb-8 w-11/12 max-w-4xl'
+			className='pixel-dialog-box relative mx-auto mb-8 w-11/12 max-w-4xl cursor-pointer'
+			onClick={handleContainerClick}
 			style={{
 				backgroundColor: 'rgba(26, 32, 44, 0.95)',
 				border: '4px solid #4a90e2',
 				padding: '2rem',
-				fontFamily: '"Press Start 2P", monospace',
+				fontFamily: '"Xanh Mono", monospace',
 			}}
 		>
 			{/* Speaker Name */}
@@ -63,9 +80,11 @@ export default function DialogueBox({
 				</div>
 			)}
 
-			{/* Dialogue Text */}
+			{/* Dialogue Text - Click to Copy */}
 			<div
-				className='dialogue-text leading-loose text-text-primary'
+				className='dialogue-text leading-loose text-text-primary hover:text-white transition-colors'
+				onClick={handleCopyText}
+				title='Click to copy'
 				style={{ fontSize: '1rem', lineHeight: '1.8' }}
 			>
 				{text}
@@ -79,7 +98,10 @@ export default function DialogueBox({
 							key={choice.id}
 							whileHover={{ scale: 1.02, x: 10 }}
 							whileTap={{ scale: 0.98 }}
-							onClick={() => handleChoiceClick(choice)}
+							onClick={(e) => {
+								e.stopPropagation();
+								handleChoiceClick(choice);
+							}}
 							className='choice-button text-left px-4 py-3 bg-bg-secondary border-2 border-vision hover:bg-vision hover:text-bg-primary transition-all duration-200'
 							style={{ fontSize: '0.875rem' }}
 						>
@@ -89,14 +111,15 @@ export default function DialogueBox({
 				</div>
 			)}
 
-			{/* Continue Indicator (if no choices) */}
+			{/* Next Button / Indicator */}
 			{choices.length === 0 && (
 				<motion.div
-					animate={{ opacity: [0.3, 1, 0.3] }}
+					animate={{ y: [0, 5, 0] }}
 					transition={{ duration: 1.5, repeat: Infinity }}
-					className='absolute bottom-4 right-4 text-text-primary text-xs'
+					className='absolute bottom-4 right-4 flex items-center gap-2 text-text-primary text-xs hover:text-white'
 				>
-					▼
+					<span>Next</span>
+					<span>▼</span>
 				</motion.div>
 			)}
 		</motion.div>

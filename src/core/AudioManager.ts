@@ -19,6 +19,15 @@ class AudioManager {
 		Howler.volume(0.7);
 	}
 
+	/**
+	 * Resume AudioContext if suspended (browser autoplay policy)
+	 */
+	resumeContext(): void {
+		if (Howler.ctx && Howler.ctx.state === 'suspended') {
+			Howler.ctx.resume();
+		}
+	}
+
 	// ==========================================
 	// MUSIC MANAGEMENT
 	// ==========================================
@@ -27,8 +36,24 @@ class AudioManager {
 	 * Preload music for a chapter
 	 */
 	preloadChapterMusic(chapter: number): void {
-		const trackPath = `/audio/music/chapters/ch${chapter}_theme.ogg`;
-		const trackName = `chapter_${chapter}`;
+		const chapterThemes: Record<number, string> = {
+			1: 'ch1_childhood',
+			2: 'ch2_collapse',
+			3: 'ch3_hope',
+			4: 'ch4_sadness',
+			5: 'ch5_work',
+			6: 'ch6_ambition',
+			7: 'ch7_balance',
+			8: 'ch8_crisis',
+			9: 'ch9_legacy',
+		};
+
+		const filename = chapterThemes[chapter] || `ch${chapter}_theme`;
+		// Update path to match user's data structure
+		const trackPath = `/assets/audio/music/chapters/${filename}.mp3`;
+
+		// Use the path as the key, because that's what GameScreen passes to playMusic
+		const trackName = trackPath;
 
 		if (!this.music.has(trackName)) {
 			const track = new Howl({
@@ -36,11 +61,15 @@ class AudioManager {
 				volume: this._musicVolume,
 				loop: true,
 				preload: true,
+				html5: true,
 			});
 			this.music.set(trackName, track);
 		}
 	}
 
+	/**
+	 * Play background music with crossfade
+	 */
 	/**
 	 * Play background music with crossfade
 	 */
@@ -50,7 +79,21 @@ class AudioManager {
 			return;
 		}
 
-		const track = this.music.get(name);
+		let track = this.music.get(name);
+
+		// Auto-load if not found and looks like a path
+		if (!track && (name.startsWith('/') || name.startsWith('http'))) {
+			console.log(`Auto-loading music: ${name}`);
+			track = new Howl({
+				src: [name],
+				volume: this._musicVolume,
+				loop: true,
+				html5: true,
+				preload: true,
+			});
+			this.music.set(name, track);
+		}
+
 		if (!track) {
 			console.warn(`Music track "${name}" not found. Preload it first.`);
 			return;
@@ -99,9 +142,26 @@ class AudioManager {
 		let sound = this.sfx.get(name);
 
 		if (!sound) {
+			// SFX Mapping for mixed extensions
+			const sfxMapping: Record<string, string> = {
+				achievement: 'achievement.mp3',
+				choice: 'choice.wav',
+				click: 'click.wav',
+				load: 'load.mp3',
+				menu_close: 'menu_close.wav',
+				menu_open: 'menu_open.wav',
+				page_turn: 'page_turn.wav',
+				save: 'save.ogg',
+				stat_down: 'stat_down.wav',
+				stat_up: 'stat_up.wav',
+				'ui/choice_select': 'ui/choice_select.wav',
+			};
+
+			const filename = sfxMapping[name] || `${name}.wav`; // Default to .wav
+
 			// Auto-load SFX on first play
 			sound = new Howl({
-				src: [`/audio/sfx/${name}.wav`],
+				src: [`/audio/sfx/${filename}`],
 				volume: volume ?? this._sfxVolume,
 			});
 			this.sfx.set(name, sound);
@@ -114,10 +174,25 @@ class AudioManager {
 	 * Preload SFX
 	 */
 	preloadSFX(names: string[]): void {
+		const sfxMapping: Record<string, string> = {
+			achievement: 'achievement.mp3',
+			choice: 'choice.wav',
+			click: 'click.wav',
+			load: 'load.mp3',
+			menu_close: 'menu_close.wav',
+			menu_open: 'menu_open.wav',
+			page_turn: 'page_turn.wav',
+			save: 'save.ogg',
+			stat_down: 'stat_down.wav',
+			stat_up: 'stat_up.wav',
+			'ui/choice_select': 'ui/choice_select.wav',
+		};
+
 		names.forEach((name) => {
 			if (!this.sfx.has(name)) {
+				const filename = sfxMapping[name] || `${name}.wav`;
 				const sound = new Howl({
-					src: [`/audio/sfx/${name}.wav`],
+					src: [`/audio/sfx/${filename}`],
 					volume: this._sfxVolume,
 					preload: true,
 				});
