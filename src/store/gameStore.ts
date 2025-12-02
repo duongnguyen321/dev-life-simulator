@@ -7,19 +7,20 @@ import type { GameState, Stats, Quest, GameSettings } from '@/data/types';
 
 interface GameStore extends GameState {
 	// Actions
-	setChapter: (chapter: number) => void;
-	setScene: (scene: string) => void;
-	setDialogue: (dialogue: string) => void;
+	setCurrentChapter: (chapter: number) => void;
+	setCurrentScene: (scene: string) => void;
+	setCurrentDialogue: (dialogue: string) => void;
 	updateStats: (stats: Partial<Stats>) => void;
+	updateStat: (stat: keyof Stats, value: number) => void;
 	setFlag: (key: string, value: boolean | number | string) => void;
-	addItem: (item: string) => void;
+	addToInventory: (item: string) => void;
 	removeItem: (item: string) => void;
 	unlockAchievement: (id: string) => void;
 	updateQuest: (questId: string, updates: Partial<Quest>) => void;
 	incrementPlaytime: (seconds: number) => void;
 	setPaused: (paused: boolean) => void;
 	updateSettings: (settings: Partial<GameSettings>) => void;
-	reset: () => void;
+	resetGame: () => void;
 }
 
 const initialState: GameState = {
@@ -47,59 +48,89 @@ const initialState: GameState = {
 	},
 };
 
-export const useGameStore = create<GameStore>((set) => ({
+export const useGameStore = create<GameStore>((set, get) => ({
 	...initialState,
 
-	setChapter: (chapter) => set({ currentChapter: chapter }),
+	setCurrentChapter: (chapter: number) => {
+		set({ currentChapter: chapter });
+	},
 
-	setScene: (scene) => set({ currentScene: scene }),
+	setCurrentScene: (scene: string) => {
+		set({ currentScene: scene });
+	},
 
-	setDialogue: (dialogue) => set({ currentDialogue: dialogue }),
+	setCurrentDialogue: (dialogue: string) => {
+		set({ currentDialogue: dialogue });
+	},
 
-	updateStats: (newStats) =>
+	updateStats: (newStats: Partial<Stats>) => {
 		set((state) => ({
 			stats: { ...state.stats, ...newStats },
-		})),
+		}));
+	},
 
-	setFlag: (key, value) =>
+	updateStat: (stat: keyof Stats, value: number) => {
+		set((state) => ({
+			stats: {
+				...state.stats,
+				[stat]: Math.max(0, Math.min(100, state.stats[stat] + value)),
+			},
+		}));
+	},
+
+	setFlag: (key: string, value: boolean | number | string) => {
 		set((state) => ({
 			flags: { ...state.flags, [key]: value },
-		})),
+		}));
+	},
 
-	addItem: (item) =>
+	addToInventory: (item: string) => {
 		set((state) => ({
 			inventory: [...state.inventory, item],
-		})),
+		}));
+	},
 
-	removeItem: (item) =>
+	removeItem: (item: string) => {
 		set((state) => ({
 			inventory: state.inventory.filter((i) => i !== item),
-		})),
+		}));
+	},
 
-	unlockAchievement: (id) =>
+	unlockAchievement: (id: string) => {
 		set((state) => {
 			if (state.achievements.includes(id)) return state;
 			return { achievements: [...state.achievements, id] };
-		}),
+		});
+	},
 
-	updateQuest: (questId, updates) =>
+	updateQuest: (questId: string, updates: Partial<Quest>) => {
 		set((state) => ({
 			quests: state.quests.map((quest) =>
 				quest.id === questId ? { ...quest, ...updates } : quest
 			),
-		})),
+		}));
+	},
 
-	incrementPlaytime: (seconds) =>
+	incrementPlaytime: (seconds: number) => {
 		set((state) => ({
 			playtime: state.playtime + seconds,
-		})),
+		}));
+	},
 
-	setPaused: (paused) => set({ isPaused: paused }),
+	setPaused: (paused: boolean) => {
+		set({ isPaused: paused });
+	},
 
-	updateSettings: (newSettings) =>
+	updateSettings: (newSettings: Partial<GameSettings>) => {
 		set((state) => ({
 			settings: { ...state.settings, ...newSettings },
-		})),
+		}));
+	},
 
-	reset: () => set(initialState),
+	resetGame: () => {
+		set({
+			...initialState,
+			settings: get().settings, // Keep settings
+		});
+	},
 }));

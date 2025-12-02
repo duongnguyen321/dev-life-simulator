@@ -61,7 +61,7 @@ interface StatItemProps {
 	color: string;
 }
 
-function StatItem({ name, nameVi, value, color }: StatItemProps) {
+function StatItem({ name: _name, nameVi, value, color }: StatItemProps) {
 	return (
 		<div className='stat-item'>
 			<div className='flex justify-between items-center mb-1'>

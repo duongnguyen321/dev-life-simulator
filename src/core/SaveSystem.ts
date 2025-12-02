@@ -3,7 +3,7 @@
 // ==========================================
 
 import localforage from 'localforage';
-import type { SaveData, Stats } from '@/data/types';
+import type { SaveData } from '@/data/types';
 
 class SaveSystem {
 	private store: LocalForage;

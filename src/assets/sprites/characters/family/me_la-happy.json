@@ -1,0 +1,401 @@
+{
+	"version": 2,
+	"bodyType": "female",
+	"selections": {
+		"body": {
+			"itemId": "body",
+			"variant": "light",
+			"name": "Body color (light)"
+		},
+		"head": {
+			"itemId": "heads_human_male",
+			"variant": "light",
+			"name": "Human male (light)"
+		},
+		"expression": {
+			"itemId": "face_happy",
+			"variant": "light",
+			"name": "Happy (light)"
+		},
+		"clothes": {
+			"itemId": "torso_clothes_sleeveless_tanktop",
+			"variant": "bluegray",
+			"name": "Tanktop (bluegray)"
+		},
+		"legs": {
+			"itemId": "legs_pants",
+			"variant": "bluegray",
+			"name": "Pants (bluegray)"
+		},
+		"shoes": {
+			"itemId": "feet_boots_basic",
+			"variant": "black",
+			"name": "Basic Boots (black)"
+		},
+		"hair": {
+			"itemId": "hair_sara",
+			"variant": "redhead",
+			"name": "Sara (redhead)"
+		}
+	},
+	"selectedAnimation": "spellcast",
+	"showTransparencyGrid": false,
+	"applyTransparencyMask": false,
+	"matchBodyColorEnabled": true,
+	"compactDisplay": false,
+	"enabledLicenses": {
+		"CC0": true,
+		"CC-BY-SA": true,
+		"CC-BY": true,
+		"OGA-BY": true,
+		"GPL": true
+	},
+	"enabledAnimations": {
+		"spellcast": false,
+		"thrust": false,
+		"walk": false,
+		"slash": false,
+		"shoot": false,
+		"hurt": false,
+		"climb": false,
+		"idle": false,
+		"jump": false,
+		"sit": false,
+		"emote": false,
+		"run": false,
+		"watering": false,
+		"combat": false,
+		"1h_slash": false,
+		"1h_backslash": false,
+		"1h_halfslash": false
+	},
+	"url": "https://liberatedpixelcup.github.io/Universal-LPC-Spritesheet-Character-Generator/#sex=female&body=Body_color_light&head=Human_male_light&expression=Happy_light&clothes=Tanktop_bluegray&legs=Pants_bluegray&shoes=Basic_Boots_black&hair=Sara_redhead",
+	"layers": [
+		{
+			"itemId": "hair_sara",
+			"variant": "redhead",
+			"zPos": 9,
+			"layerNum": 2,
+			"yPos": 0,
+			"isCustom": false,
+			"fileName": "hair/sara/adult/bg/spellcast/redhead.png",
+			"supportedAnimations": [
+				"spellcast",
+				"thrust",
+				"walk",
+				"slash",
+				"shoot",
+				"hurt",
+				"climb",
+				"idle",
+				"jump",
+				"sit",
+				"emote",
+				"run",
+				"combat_idle",
+				"backslash",
+				"halfslash"
+			]
+		},
+		{
+			"itemId": "body",
+			"variant": "light",
+			"zPos": 10,
+			"layerNum": 1,
+			"yPos": 0,
+			"isCustom": false,
+			"fileName": "body/bodies/female/spellcast/light.png",
+			"supportedAnimations": [
+				"spellcast",
+				"thrust",
+				"walk",
+				"slash",
+				"shoot",
+				"hurt",
+				"climb",
+				"idle",
+				"jump",
+				"sit",
+				"emote",
+				"run",
+				"combat_idle",
+				"backslash",
+				"halfslash"
+			]
+		},
+		{
+			"itemId": "legs_pants",
+			"variant": "bluegray",
+			"zPos": 20,
+			"layerNum": 1,
+			"yPos": 0,
+			"isCustom": false,
+			"fileName": "legs/pants/thin/spellcast/bluegray.png",
+			"supportedAnimations": [
+				"spellcast",
+				"thrust",
+				"walk",
+				"slash",
+				"shoot",
+				"hurt",
+				"climb",
+				"idle",
+				"jump",
+				"sit",
+				"emote",
+				"run",
+				"combat_idle",
+				"backslash",
+				"halfslash"
+			]
+		},
+		{
+			"itemId": "feet_boots_basic",
+			"variant": "black",
+			"zPos": 25,
+			"layerNum": 1,
+			"yPos": 0,
+			"isCustom": false,
+			"fileName": "feet/boots/basic/thin/spellcast/black.png",
+			"supportedAnimations": [
+				"spellcast",
+				"thrust",
+				"walk",
+				"slash",
+				"shoot",
+				"hurt",
+				"climb",
+				"idle",
+				"jump",
+				"sit",
+				"emote",
+				"run",
+				"combat_idle",
+				"backslash",
+				"halfslash"
+			]
+		},
+		{
+			"itemId": "torso_clothes_sleeveless_tanktop",
+			"variant": "bluegray",
+			"zPos": 35,
+			"layerNum": 1,
+			"yPos": 0,
+			"isCustom": false,
+			"fileName": "torso/clothes/sleeveless/tanktop/female/spellcast/bluegray.png",
+			"supportedAnimations": [
+				"spellcast",
+				"thrust",
+				"walk",
+				"slash",
+				"shoot",
+				"hurt"
+			]
+		},
+		{
+			"itemId": "heads_human_male",
+			"variant": "light",
+			"zPos": 100,
+			"layerNum": 1,
+			"yPos": 0,
+			"isCustom": false,
+			"fileName": "head/heads/human/male/spellcast/light.png",
+			"supportedAnimations": [
+				"spellcast",
+				"thrust",
+				"walk",
+				"slash",
+				"shoot",
+				"hurt",
+				"climb",
+				"idle",
+				"jump",
+				"sit",
+				"emote",
+				"run",
+				"combat_idle",
+				"backslash",
+				"halfslash"
+			]
+		},
+		{
+			"itemId": "face_happy",
+			"variant": "light",
+			"zPos": 101,
+			"layerNum": 1,
+			"yPos": 0,
+			"isCustom": false,
+			"fileName": "head/faces/male/happy/spellcast/light.png",
+			"supportedAnimations": [
+				"spellcast",
+				"thrust",
+				"walk",
+				"slash",
+				"shoot",
+				"hurt",
+				"climb",
+				"idle",
+				"jump",
+				"sit",
+				"emote",
+				"run",
+				"combat_idle",
+				"backslash",
+				"halfslash"
+			]
+		},
+		{
+			"itemId": "hair_sara",
+			"variant": "redhead",
+			"zPos": 120,
+			"layerNum": 1,
+			"yPos": 0,
+			"isCustom": false,
+			"fileName": "hair/sara/adult/fg/spellcast/redhead.png",
+			"supportedAnimations": [
+				"spellcast",
+				"thrust",
+				"walk",
+				"slash",
+				"shoot",
+				"hurt",
+				"climb",
+				"idle",
+				"jump",
+				"sit",
+				"emote",
+				"run",
+				"combat_idle",
+				"backslash",
+				"halfslash"
+			]
+		}
+	],
+	"credits": [
+		{
+			"fileName": "body/bodies/female/spellcast/light.png",
+			"file": "body/bodies/female",
+			"notes": "see details at https://opengameart.org/content/lpc-character-bases",
+			"authors": [
+				"Benjamin K. Smith (BenCreating)",
+				"bluecarrot16",
+				"TheraHedwig",
+				"Evert",
+				"MuffinElZangano",
+				"Durrani",
+				"Pierre Vigier (pvigier)",
+				"ElizaWy",
+				"Matthew Krohn (makrohn)",
+				"Johannes Sjölund (wulax)",
+				"Stephen Challener (Redshrike)"
+			],
+			"licenses": ["OGA-BY 3.0", "CC-BY-SA 3.0", "GPL 3.0"],
+			"urls": [
+				"https://opengameart.org/content/liberated-pixel-cup-lpc-base-assets-sprites-map-tiles",
+				"https://opengameart.org/content/lpc-medieval-fantasy-character-sprites",
+				"https://opengameart.org/content/lpc-ladies",
+				"https://opengameart.org/content/lpc-7-womens-shirts",
+				"https://opengameart.org/content/lpc-jump-expanded",
+				"https://opengameart.org/content/lpc-be-seated",
+				"https://opengameart.org/content/lpc-revised-character-basics",
+				"https://gitlab.com/vagabondgame/lpc-characters",
+				"https://opengameart.org/content/lpc-male-jumping-animation-by-durrani",
+				"https://opengameart.org/content/lpc-runcycle-and-diagonal-walkcycle"
+			]
+		},
+		{
+			"fileName": "head/heads/human/male/spellcast/light.png",
+			"file": "head/heads/human/male",
+			"notes": "original head by Redshrike, tweaks by BenCreating, modular version by bluecarrot16",
+			"authors": [
+				"bluecarrot16",
+				"Benjamin K. Smith (BenCreating)",
+				"Stephen Challener (Redshrike)"
+			],
+			"licenses": ["OGA-BY 3.0", "CC-BY-SA 3.0", "GPL 3.0"],
+			"urls": [
+				"https://opengameart.org/content/liberated-pixel-cup-lpc-base-assets-sprites-map-tiles",
+				"https://opengameart.org/content/lpc-character-bases"
+			]
+		},
+		{
+			"fileName": "head/faces/male/happy/spellcast/light.png",
+			"file": "head/faces",
+			"notes": "Original by Redshrike, Expressions by ElizaWy, mapped to all frames by JaidynReiman",
+			"authors": ["JaidynReiman", "ElizaWy", "Stephen Challener (Redshrike)"],
+			"licenses": ["OGA-BY 3.0"],
+			"urls": [
+				"https://github.com/ElizaWy/LPC/tree/main/Characters/Head",
+				"https://opengameart.org/content/ulpc-expanded-expressions"
+			]
+		},
+		{
+			"fileName": "torso/clothes/sleeveless/tanktop/female/spellcast/bluegray.png",
+			"file": "torso/clothes/sleeveless/tanktop/female",
+			"notes": "\"pirate shirt\" by MadMarcel, edited to all poses by makrohn, cleanup and re-drawing by ElizaWy, edits for v3 bases and further cleanup by bluecarrot16",
+			"authors": [
+				"bluecarrot16",
+				"ElizaWy",
+				"Matthew Krohn (makrohn)",
+				"Marcel van de Steeg (MadMarcel)",
+				"Stephen Challener (Redshrike)",
+				"Johannes Sjölund (wulax)"
+			],
+			"licenses": ["OGA-BY 3.0", "CC-BY-SA 3.0", "GPL 3.0"],
+			"urls": [
+				"https://opengameart.org/content/lpc-female-orcogregoblintroll-base-walkcycle",
+				"https://opengameart.org/content/lpc-7-womens-shirts",
+				"http://opengameart.org/content/lpc-clothing-updates"
+			]
+		},
+		{
+			"fileName": "legs/pants/thin/spellcast/bluegray.png",
+			"file": "legs/pants/thin",
+			"notes": "original male pants by wulax, edited for female by Joe White, recolors and edits to v3 base by bluecarrot16, teen legs by ElizaWy derived from base, climb/jump/run/sit/emotes/revised combat by JaidynReiman based on ElizaWy's LPC Revised",
+			"authors": [
+				"bluecarrot16",
+				"JaidynReiman",
+				"ElizaWy",
+				"Joe White",
+				"Matthew Krohn (makrohn)",
+				"Johannes Sjölund (wulax)",
+				"Stephen Challener (Redshrike)"
+			],
+			"licenses": ["OGA-BY 3.0", "GPL 3.0", "CC-BY-SA 3.0"],
+			"urls": [
+				"https://opengameart.org/content/liberated-pixel-cup-lpc-base-assets-sprites-map-tiles",
+				"https://opengameart.org/content/lpc-medieval-fantasy-character-sprites",
+				"http://opengameart.org/content/lpc-clothing-updates",
+				"https://opengameart.org/content/lpc-expanded-pants"
+			]
+		},
+		{
+			"fileName": "feet/boots/basic/thin/spellcast/black.png",
+			"file": "feet/boots/basic",
+			"notes": "original by Nila122, edited for male and v3 bases by bluecarrot16, Jump/Sit/Emote/Run/Revised Combat by JaidynReiman",
+			"authors": ["JaidynReiman", "bluecarrot16", "Nila122"],
+			"licenses": ["OGA-BY 3.0", "CC-BY-SA 3.0", "GPL 2.0", "GPL 3.0"],
+			"urls": [
+				"https://opengameart.org/content/lpc-clothes-and-hair",
+				"https://opengameart.org/content/lpc-expanded-socks-shoes"
+			]
+		},
+		{
+			"fileName": "hair/sara/adult/fg/spellcast/redhead.png",
+			"file": "hair/sara",
+			"notes": "",
+			"authors": [
+				"Stephen Challener (Redshrike)",
+				"William.Thompsonj",
+				"Mandi Paugh",
+				"bluecarrot16"
+			],
+			"licenses": ["OGA-BY 3.0", "CC-BY 3.0"],
+			"urls": [
+				"https://opengameart.org/content/lpc-sara",
+				"https://opengameart.org/content/lpc-hair",
+				"https://opengameart.org/content/lpc-expanded-xlong-hair"
+			]
+		}
+	]
+}

@@ -6,8 +6,13 @@ import Scene from '@/components/Sprites/Scene';
 import { audioManager } from '@/core/AudioManager';
 
 export default function GameScreen() {
-	const { currentChapter, currentScene, currentDialogue, stats, settings } =
-		useGameStore();
+	const {
+		currentChapter: _currentChapter,
+		currentScene: _currentScene,
+		currentDialogue: _currentDialogue,
+		stats,
+		settings: _settings,
+	} = useGameStore();
 
 	const [isLoading, setIsLoading] = useState(true);
 

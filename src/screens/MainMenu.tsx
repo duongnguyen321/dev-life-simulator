@@ -6,7 +6,7 @@ import { audioManager } from '@/core/AudioManager';
 
 export default function MainMenu() {
 	const navigate = useNavigate();
-	const [saves, setSaves] = useState<Array<any | null>>([]);
+	const [_saves, setSaves] = useState<Array<any | null>>([]);
 	const [hasAutoSave, setHasAutoSave] = useState(false);
 
 	useEffect(() => {

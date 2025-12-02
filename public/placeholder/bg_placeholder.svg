@@ -1,0 +1,9 @@
+<svg width="800" height="600" xmlns="http://www.w3.org/2000/svg">
+  <rect width="800" height="600" fill="#2d3748"/>
+  <text x="400" y="300" font-family="monospace" font-size="24" fill="#ffffff" text-anchor="middle">
+    Placeholder Background
+  </text>
+  <text x="400" y="340" font-family="monospace" font-size="16" fill="#a0aec0" text-anchor="middle">
+    Replace with actual game asset
+  </text>
+</svg>

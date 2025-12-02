@@ -1,0 +1,336 @@
+{
+	"version": 2,
+	"bodyType": "pregnant",
+	"selections": {
+		"body": {
+			"itemId": "body",
+			"variant": "amber",
+			"name": "Body color (amber)"
+		},
+		"head": {
+			"itemId": "heads_human_male",
+			"variant": "amber",
+			"name": "Human male (amber)"
+		},
+		"legs": {
+			"itemId": "legs_pants",
+			"variant": "bluegray",
+			"name": "Pants (bluegray)"
+		},
+		"shoes": {
+			"itemId": "feet_boots_basic",
+			"variant": "black",
+			"name": "Basic Boots (black)"
+		},
+		"clothes": {
+			"itemId": "torso_clothes_shortsleeve",
+			"variant": "sky",
+			"name": "Shortsleeve (sky)"
+		},
+		"hair": {
+			"itemId": "hair_parted2",
+			"variant": "raven",
+			"name": "Parted 2 (raven)"
+		}
+	},
+	"selectedAnimation": "spellcast",
+	"showTransparencyGrid": false,
+	"applyTransparencyMask": false,
+	"matchBodyColorEnabled": true,
+	"compactDisplay": false,
+	"enabledLicenses": {
+		"CC0": true,
+		"CC-BY-SA": true,
+		"CC-BY": true,
+		"OGA-BY": true,
+		"GPL": true
+	},
+	"enabledAnimations": {
+		"spellcast": false,
+		"thrust": false,
+		"walk": false,
+		"slash": false,
+		"shoot": false,
+		"hurt": false,
+		"climb": false,
+		"idle": false,
+		"jump": false,
+		"sit": false,
+		"emote": false,
+		"run": false,
+		"watering": false,
+		"combat": false,
+		"1h_slash": false,
+		"1h_backslash": false,
+		"1h_halfslash": false
+	},
+	"url": "https://liberatedpixelcup.github.io/Universal-LPC-Spritesheet-Character-Generator/#sex=pregnant&body=Body_color_amber&head=Human_male_amber&legs=Pants_bluegray&shoes=Basic_Boots_black&clothes=Shortsleeve_sky&hair=Parted_2_raven",
+	"layers": [
+		{
+			"itemId": "body",
+			"variant": "amber",
+			"zPos": 10,
+			"layerNum": 1,
+			"yPos": 0,
+			"isCustom": false,
+			"fileName": "body/bodies/pregnant/spellcast/amber.png",
+			"supportedAnimations": [
+				"spellcast",
+				"thrust",
+				"walk",
+				"slash",
+				"shoot",
+				"hurt",
+				"climb",
+				"idle",
+				"jump",
+				"sit",
+				"emote",
+				"run",
+				"combat_idle",
+				"backslash",
+				"halfslash"
+			]
+		},
+		{
+			"itemId": "legs_pants",
+			"variant": "bluegray",
+			"zPos": 20,
+			"layerNum": 1,
+			"yPos": 0,
+			"isCustom": false,
+			"fileName": "legs/pants/thin/spellcast/bluegray.png",
+			"supportedAnimations": [
+				"spellcast",
+				"thrust",
+				"walk",
+				"slash",
+				"shoot",
+				"hurt",
+				"climb",
+				"idle",
+				"jump",
+				"sit",
+				"emote",
+				"run",
+				"combat_idle",
+				"backslash",
+				"halfslash"
+			]
+		},
+		{
+			"itemId": "feet_boots_basic",
+			"variant": "black",
+			"zPos": 25,
+			"layerNum": 1,
+			"yPos": 0,
+			"isCustom": false,
+			"fileName": "feet/boots/basic/thin/spellcast/black.png",
+			"supportedAnimations": [
+				"spellcast",
+				"thrust",
+				"walk",
+				"slash",
+				"shoot",
+				"hurt",
+				"climb",
+				"idle",
+				"jump",
+				"sit",
+				"emote",
+				"run",
+				"combat_idle",
+				"backslash",
+				"halfslash"
+			]
+		},
+		{
+			"itemId": "torso_clothes_shortsleeve",
+			"variant": "sky",
+			"zPos": 35,
+			"layerNum": 1,
+			"yPos": 0,
+			"isCustom": false,
+			"fileName": "torso/clothes/shortsleeve/shortsleeve/pregnant/spellcast/sky.png",
+			"supportedAnimations": [
+				"spellcast",
+				"thrust",
+				"walk",
+				"slash",
+				"shoot",
+				"hurt",
+				"climb",
+				"idle",
+				"jump",
+				"sit",
+				"emote",
+				"run",
+				"combat_idle",
+				"backslash",
+				"halfslash"
+			]
+		},
+		{
+			"itemId": "heads_human_male",
+			"variant": "amber",
+			"zPos": 100,
+			"layerNum": 1,
+			"yPos": 0,
+			"isCustom": false,
+			"fileName": "head/heads/human/male/spellcast/amber.png",
+			"supportedAnimations": [
+				"spellcast",
+				"thrust",
+				"walk",
+				"slash",
+				"shoot",
+				"hurt",
+				"climb",
+				"idle",
+				"jump",
+				"sit",
+				"emote",
+				"run",
+				"combat_idle",
+				"backslash",
+				"halfslash"
+			]
+		},
+		{
+			"itemId": "hair_parted2",
+			"variant": "raven",
+			"zPos": 120,
+			"layerNum": 1,
+			"yPos": 0,
+			"isCustom": false,
+			"fileName": "hair/parted2/adult/spellcast/raven.png",
+			"supportedAnimations": [
+				"spellcast",
+				"thrust",
+				"walk",
+				"slash",
+				"shoot",
+				"hurt",
+				"climb",
+				"idle",
+				"jump",
+				"sit",
+				"emote",
+				"run",
+				"combat_idle",
+				"backslash",
+				"halfslash"
+			]
+		}
+	],
+	"credits": [
+		{
+			"fileName": "body/bodies/pregnant/spellcast/amber.png",
+			"file": "body/bodies/pregnant",
+			"notes": "see details at https://opengameart.org/content/lpc-character-bases; Pregnant Revised Run/Combat Idle/Emotes by JaidynReiman (based on ElizaWy's LPC Revised)",
+			"authors": [
+				"bluecarrot16",
+				"JaidynReiman",
+				"Evert",
+				"TheraHedwig",
+				"MuffinElZangano",
+				"Durrani",
+				"Benjamin K. Smith (BenCreating)",
+				"Pierre Vigier (pvigier)",
+				"Eliza Wyatt (ElizaWy)",
+				"Matthew Krohn (makrohn)",
+				"Johannes Sjölund (wulax)",
+				"Stephen Challener (Redshrike)"
+			],
+			"licenses": ["CC-BY-SA 3.0", "GPL 3.0"],
+			"urls": [
+				"https://opengameart.org/content/liberated-pixel-cup-lpc-base-assets-sprites-map-tiles",
+				"https://opengameart.org/content/lpc-medieval-fantasy-character-sprites",
+				"https://opengameart.org/content/lpc-ladies",
+				"https://opengameart.org/content/lpc-pregnancy-bases-maternity-wear",
+				"https://opengameart.org/content/lpc-7-womens-shirts",
+				"https://opengameart.org/content/lpc-jump-expanded",
+				"https://gitlab.com/vagabondgame/lpc-characters",
+				"https://opengameart.org/content/lpc-jump-expanded",
+				"https://opengameart.org/content/lpc-male-jumping-animation-by-durrani",
+				"https://opengameart.org/content/lpc-runcycle-and-diagonal-walkcycle"
+			]
+		},
+		{
+			"fileName": "head/heads/human/male/spellcast/amber.png",
+			"file": "head/heads/human/male",
+			"notes": "original head by Redshrike, tweaks by BenCreating, modular version by bluecarrot16",
+			"authors": [
+				"bluecarrot16",
+				"Benjamin K. Smith (BenCreating)",
+				"Stephen Challener (Redshrike)"
+			],
+			"licenses": ["OGA-BY 3.0", "CC-BY-SA 3.0", "GPL 3.0"],
+			"urls": [
+				"https://opengameart.org/content/liberated-pixel-cup-lpc-base-assets-sprites-map-tiles",
+				"https://opengameart.org/content/lpc-character-bases"
+			]
+		},
+		{
+			"fileName": "legs/pants/thin/spellcast/bluegray.png",
+			"file": "legs/pants/thin",
+			"notes": "original male pants by wulax, edited for female by Joe White, recolors and edits to v3 base by bluecarrot16, teen legs by ElizaWy derived from base, climb/jump/run/sit/emotes/revised combat by JaidynReiman based on ElizaWy's LPC Revised",
+			"authors": [
+				"bluecarrot16",
+				"JaidynReiman",
+				"ElizaWy",
+				"Joe White",
+				"Matthew Krohn (makrohn)",
+				"Johannes Sjölund (wulax)",
+				"Stephen Challener (Redshrike)"
+			],
+			"licenses": ["OGA-BY 3.0", "GPL 3.0", "CC-BY-SA 3.0"],
+			"urls": [
+				"https://opengameart.org/content/liberated-pixel-cup-lpc-base-assets-sprites-map-tiles",
+				"https://opengameart.org/content/lpc-medieval-fantasy-character-sprites",
+				"http://opengameart.org/content/lpc-clothing-updates",
+				"https://opengameart.org/content/lpc-expanded-pants"
+			]
+		},
+		{
+			"fileName": "feet/boots/basic/thin/spellcast/black.png",
+			"file": "feet/boots/basic",
+			"notes": "original by Nila122, edited for male and v3 bases by bluecarrot16, Jump/Sit/Emote/Run/Revised Combat by JaidynReiman",
+			"authors": ["JaidynReiman", "bluecarrot16", "Nila122"],
+			"licenses": ["OGA-BY 3.0", "CC-BY-SA 3.0", "GPL 2.0", "GPL 3.0"],
+			"urls": [
+				"https://opengameart.org/content/lpc-clothes-and-hair",
+				"https://opengameart.org/content/lpc-expanded-socks-shoes"
+			]
+		},
+		{
+			"fileName": "torso/clothes/shortsleeve/shortsleeve/pregnant/spellcast/sky.png",
+			"file": "torso/clothes/shortsleeve/shortsleeve/pregnant",
+			"notes": "body by Redshrike, t-shirt by ElizaWy derived from base; pregnant tanktop by ElizaWy; tanktop edited by bluecarrot16 to make other pregnant shirts and match v3 bases",
+			"authors": [
+				"bluecarrot16",
+				"ElizaWy",
+				"Stephen Challener (Redshrike)",
+				"Johannes Sjölund (wulax)"
+			],
+			"licenses": ["OGA-BY 3.0", "GPL 3.0"],
+			"urls": [
+				"https://opengameart.org/content/liberated-pixel-cup-lpc-base-assets-sprites-map-tiles",
+				"https://opengameart.org/content/lpc-pregnancy-bases-maternity-wear",
+				"https://opengameart.org/content/lpc-revised-character-basics",
+				"http://opengameart.org/content/lpc-clothing-updates"
+			]
+		},
+		{
+			"fileName": "hair/parted2/adult/spellcast/raven.png",
+			"file": "hair/parted2",
+			"notes": "",
+			"authors": ["Skorpio", "bluecarrot16"],
+			"licenses": ["CC-BY-SA 3.0", "GPL 3.0"],
+			"urls": [
+				"https://opengameart.org/content/lpc-skorpios-scifi-sprite-pack",
+				"https://opengameart.org/content/lpc-hair"
+			]
+		}
+	]
+}
