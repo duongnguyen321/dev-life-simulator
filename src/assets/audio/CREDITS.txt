@@ -1,0 +1,92 @@
+=== DEVLIFE SIMULATOR - MUSIC CREDITS ===
+
+This file contains attributions for all audio assets used in DevLife Simulator.
+All assets are used in accordance with their respective licenses.
+
+=== BACKGROUND MUSIC ===
+
+[Chapter music tracks will be added as they are sourced]
+
+Recommended sources:
+- OpenGameArt.org (CC0, CC-BY, CC-BY-SA licenses)
+- Bensound.com (Free with attribution)
+- FreePD.com (CC0 Public Domain)
+- Chosic.com (Various CC licenses)
+
+=== SOUND EFFECTS ===
+
+UI Sounds:
+- [To be added from Freesound.org, Mixkit, or Zapsplat]
+
+Stats Change Sounds:
+- [To be added]
+
+Achievement Sounds:
+- [To be added]
+
+=== MUSIC MAPPING (From AUDIO_GUIDE.md) ===
+
+Chapter 1 (Ages 0-10) - "Biến Số Khởi Tạo":
+- Mood: Nostalgic, Innocent, Wonder
+- Suggested: Pixel Memories (8-bit nostalgic), Childhood Dreams (soft piano)
+
+Chapter 2 (Ages 11-15) - "Exception Handling":
+- Mood: Collapse, Despair, Cold Reality
+- Suggested: Aftermath (calm sad piano), Bleakwood (dark ambient)
+
+Chapter 3 (Ages 16-18) - "Hello World & Bugs":
+- Mood: Persistence, Coding montage, Small victories
+- Suggested: 8-Bit Adventure, Pixel Drift (chill chiptune)
+
+Chapter 4 (Ages 19-21) - "Runtime Error":
+- Mood: Humiliation, Determination, Isolation
+- Suggested: Drops (emotional piano), Sad Reality
+
+Chapter 5 (Ages 22-24) - "Refactoring":
+- Mood: Grind, Determination, Growth
+- Suggested: Morning Rush (lo-fi), Code Warrior
+
+Chapter 6 (Ages 25-30) - "Deployment & Crash":
+- Mood: Excitement → Hope → Failure → Determination
+- Suggested: Arcade Blitz, System Crash (glitch)
+
+Chapter 7 (Ages 32-38) - "Scaling":
+- Mood: Balance, Maturity, Family warmth
+- Suggested: Brightwood, Home (warm piano)
+
+Chapter 8 (Ages 40-52) - "The Black Swan":
+- Mood: Epic stakes, Moral dilemma, Triumph
+- Suggested: Future Vision, Phoenix Rising
+
+Chapter 9 (Ages 55+) - "Sandbox Mode":
+- Mood: Reflection, Legacy, Peaceful
+- Suggested: Quiet Reflection, Full Circle, Legacy
+
+=== LICENSE NOTES ===
+
+CC0 (Public Domain):
+- No attribution required
+- Can be used commercially
+- Examples: FreePD.com tracks
+
+CC-BY (Attribution):
+- Attribution required (Artist name + Source link)
+- Can be used commercially
+- Examples: Bensound tracks
+
+CC-BY-SA (Attribution + Share Alike):
+- Attribution required
+- Derivatives must use same license
+- Examples: Some OpenGameArt tracks
+
+=== ATTRIBUTION TEMPLATE ===
+
+When adding a track, use this format:
+
+Track Name: "[Track Name]"
+Artist: [Artist Name]
+Source: [URL]
+License: [License Type]
+Attribution: "[Required attribution text if CC-BY]"
+
+===

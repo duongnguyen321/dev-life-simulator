@@ -1,0 +1,65 @@
+/* Pixel Art Rendering */
+.pixel-art {
+	image-rendering: pixelated;
+	image-rendering: -moz-crisp-edges;
+	image-rendering: crisp-edges;
+	-ms-interpolation-mode: nearest-neighbor;
+}
+
+/* Sprite Animations */
+.sprite-idle {
+	animation: sprite-idle 1s steps(2) infinite;
+}
+
+.sprite-walk {
+	animation: sprite-walk 0.6s steps(4) infinite;
+}
+
+@keyframes sprite-idle {
+	from {
+		background-position-x: 0;
+	}
+	to {
+		background-position-x: -64px;
+	}
+}
+
+@keyframes sprite-walk {
+	from {
+		background-position-x: 0;
+	}
+	to {
+		background-position-x: -256px;
+	}
+}
+
+/* Retro Effects */
+.scanlines {
+	position: relative;
+}
+
+.scanlines::before {
+	content: '';
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+	background: linear-gradient(rgba(18, 16, 16, 0) 50%, rgba(0, 0, 0, 0.25) 50%);
+	background-size: 100% 4px;
+	pointer-events: none;
+	z-index: 10;
+}
+
+/* Pixel Font */
+.pixel-font {
+	font-family: 'Press Start 2P', monospace;
+	line-height: 1.8;
+	letter-spacing: 0.05em;
+}
+
+/* Smooth pixel scaling */
+.pixel-perfect {
+	image-rendering: pixelated;
+	object-fit: contain;
+}
