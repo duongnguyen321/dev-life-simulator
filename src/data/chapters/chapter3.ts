@@ -78,7 +78,7 @@ export const chapter3: Chapter = {
 				textVi: 'Sửa máy tính hộ hàng xóm',
 				textEn: "Fix neighbor's PC",
 				effects: [{ stat: 'vision', value: 1 }],
-				reward: { money: 1 },
+				reward: { money: 100000 },
 			},
 			{
 				id: 'ch3_todo_net_cafe',
@@ -116,7 +116,7 @@ export const chapter3: Chapter = {
 				textVi: 'Ăn mì tôm trừ bữa',
 				textEn: 'Eat instant noodles for meal',
 				cost: { health: 1 },
-				reward: { money: 1 },
+				reward: { money: 20000 },
 			},
 			{
 				id: 'ch3_todo_read_blog',
@@ -182,7 +182,7 @@ export const chapter3: Chapter = {
 				text: 'Bán vật phẩm game online',
 				textVi: 'Bán vật phẩm game online',
 				textEn: 'Sell online game items',
-				reward: { money: 1 },
+				reward: { money: 200000 },
 			},
 			{
 				id: 'ch3_todo_argue_parents',
@@ -501,6 +501,42 @@ export const chapter3Dialogues: Record<string, DialogueNode> = {
 			'Một lần bố tạt qua nhà, dúi vào tay bạn 500k. Bố gầy rộc đi, quần áo lấm lem bụi đường. "Cầm lấy mà tiêu vặt," bố nói rồi vội vã đi ngay.',
 		textEn:
 			'Once father stopped by, shoved 500k into your hand. He looked haggard, clothes dusty. "Take it for pocket money," he said and left in a hurry.',
+		next: 'ch3_debt_choice',
+	},
+	ch3_debt_choice: {
+		id: 'ch3_debt_choice',
+		speaker: 'player',
+		text: 'Bạn sẽ làm gì?',
+		textVi: 'Bạn sẽ làm gì?',
+		textEn: 'What will you do?',
+		choices: [
+			{
+				id: 'choice_accept_money',
+				text: 'Nhận tiền (Bố làm vất vả lắm rồi)',
+				textVi: 'Nhận tiền (Bố làm vất vả lắm rồi)',
+				textEn: 'Accept the money (Father worked so hard)',
+				effects: [{ stat: 'money', value: 500000 }],
+				next: 'ch3_hope_1',
+			},
+			{
+				id: 'choice_refuse_money',
+				text: 'Từ chối (Bố cần tiền hơn con)',
+				textVi: 'Từ chối (Bố cần tiền hơn con)',
+				textEn: 'Refuse (Father needs it more)',
+				effects: [{ stat: 'humanity', value: 2 }],
+				next: 'ch3_debt_refuse',
+			},
+		],
+	},
+	ch3_debt_refuse: {
+		id: 'ch3_debt_refuse',
+		speaker: 'narrator',
+		text: 'Bạn đẩy tay bố ra. "Con tự lo được, bố giữ tiền đi." Bố nhìn bạn, mắt ngấn lệ, rồi gật đầu. Bố ôm bạn thật chặt, không nói gì.',
+		textVi:
+			'Bạn đẩy tay bố ra. "Con tự lo được, bố giữ tiền đi." Bố nhìn bạn, mắt ngấn lệ, rồi gật đầu. Bố ôm bạn thật chặt, không nói gì.',
+		textEn:
+			'You pushed his hand away. "I can manage, Dad. Keep the money." Father looked at you, eyes watering, then nodded. He hugged you tightly, saying nothing.',
+		effects: [{ stat: 'steelMind', value: 1 }],
 		next: 'ch3_hope_1',
 	},
 
@@ -623,7 +659,55 @@ export const chapter3Dialogues: Record<string, DialogueNode> = {
 			'Sau 4 tháng "tu luyện" trong phòng kín, bạn nhận được job freelance đầu tiên: Cắt HTML/CSS cho một landing page đơn giản. Thù lao: 300.000 VNĐ.',
 		textEn:
 			'After 4 months of "cultivation" in isolation, you got your first freelance job: HTML/CSS for a simple landing page. Pay: 300,000 VND.',
-		effects: [{ stat: 'steelMind', value: 2 }],
+		next: 'ch3_covid_job_choice',
+	},
+	ch3_covid_job_choice: {
+		id: 'ch3_covid_job_choice',
+		speaker: 'player',
+		text: 'Bạn sẽ quyết định như thế nào?',
+		textVi: 'Bạn sẽ quyết định như thế nào?',
+		textEn: 'What will you decide?',
+		choices: [
+			{
+				id: 'choice_accept_job',
+				text: 'Nhận job (Cơ hội để kiếm tiền)',
+				textVi: 'Nhận job (Cơ hội để kiếm tiền)',
+				textEn: 'Accept the job (Opportunity to earn money)',
+				effects: [
+					{ stat: 'steelMind', value: 2 },
+					{ stat: 'money', value: 300000 },
+				],
+				next: 'ch3_covid_accept',
+			},
+			{
+				id: 'choice_refuse_job',
+				text: 'Từ chối (Chưa đủ kỹ năng, cần học thêm)',
+				textVi: 'Từ chối (Chưa đủ kỹ năng, cần học thêm)',
+				textEn: 'Refuse (Not skilled enough, need to learn more)',
+				effects: [{ stat: 'vision', value: 2 }],
+				next: 'ch3_covid_refuse',
+			},
+		],
+	},
+	ch3_covid_accept: {
+		id: 'ch3_covid_accept',
+		speaker: 'narrator',
+		text: 'Bạn nhận job và làm việc suốt 3 ngày liền. Kết quả không hoàn hảo nhưng khách hàng chấp nhận. Đây là bước đầu tiên trong sự nghiệp lập trình viên của bạn.',
+		textVi:
+			'Bạn nhận job và làm việc suốt 3 ngày liền. Kết quả không hoàn hảo nhưng khách hàng chấp nhận. Đây là bước đầu tiên trong sự nghiệp lập trình viên của bạn.',
+		textEn:
+			"You accepted and worked for 3 days straight. Result wasn't perfect but client accepted it. This is your first step as a programmer.",
+		next: 'ch3_covid_end',
+	},
+	ch3_covid_refuse: {
+		id: 'ch3_covid_refuse',
+		speaker: 'narrator',
+		text: 'Bạn từ chối và dành thêm 2 tháng để học sâu hơn về JavaScript và React. Sau đó bạn tự tin nhận các job phức tạp hơn với thù lao cao hơn.',
+		textVi:
+			'Bạn từ chối và dành thêm 2 tháng để học sâu hơn về JavaScript và React. Sau đó bạn tự tin nhận các job phức tạp hơn với thù lao cao hơn.',
+		textEn:
+			'You refused and spent 2 more months learning JavaScript and React deeply. Later you confidently took more complex jobs with higher pay.',
+		effects: [{ stat: 'steelMind', value: 1 }],
 		next: 'ch3_covid_end',
 	},
 	ch3_covid_end: {

@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { useGameStore } from '@/store/gameStore';
 import type { TodoTask, Stats } from '@/data/types';
@@ -22,9 +22,17 @@ export default function TodoListModal({
 		new Set()
 	);
 
+	// Reset selection when modal opens or tasks change
+	useEffect(() => {
+		if (isOpen) {
+			setSelectedTaskIds(new Set());
+		}
+	}, [isOpen, tasks]);
+
 	// Calculate projected stats based on selection
 	const calculateProjectedStats = () => {
 		const projected = { ...stats };
+
 		selectedTaskIds.forEach((id) => {
 			const task = tasks.find((t) => t.id === id);
 			if (task) {
@@ -39,12 +47,18 @@ export default function TodoListModal({
 				if (task.reward) {
 					Object.entries(task.reward).forEach(([key, value]) => {
 						const k = key as keyof Stats;
-						projected[k] = Math.min(100, projected[k] + (value as number));
-						if (k === 'money') projected[k] = stats.money + (value as number); // Money has no cap
+						if (k === 'money') {
+							// Money has no cap, use projected value
+							projected[k] = projected[k] + (value as number);
+						} else {
+							// Other stats capped at 100
+							projected[k] = Math.min(100, projected[k] + (value as number));
+						}
 					});
 				}
 			}
 		});
+
 		return projected;
 	};
 
@@ -190,7 +204,12 @@ export default function TodoListModal({
 														<div className='text-green-400'>
 															Reward:{' '}
 															{Object.entries(task.reward)
-																.map(([k, v]) => `${k} +${v}`)
+																.map(([k, v]) => {
+																	const numVal = v as number;
+																	return `${k} ${
+																		numVal >= 0 ? '+' : ''
+																	}${numVal.toLocaleString()}`;
+																})
 																.join(', ')}
 														</div>
 													)}

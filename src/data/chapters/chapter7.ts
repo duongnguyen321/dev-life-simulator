@@ -43,7 +43,7 @@ export const chapter7: Chapter = {
 				textVi: 'Về nhà ăn tối sớm',
 				textEn: 'Home early for dinner',
 				effects: [{ stat: 'humanity', value: 1 }],
-				cost: { money: 1 }, // Opportunity cost of not working? Or maybe just time. Let's say no cost for now or maybe money -1 if skipping work.
+				cost: { money: 100000 }, // Opportunity cost of not working? Or maybe just time. Let's say no cost for now or maybe money -1 if skipping work.
 			},
 			{
 				id: 'ch7_todo_read_story',
@@ -66,7 +66,7 @@ export const chapter7: Chapter = {
 				textVi: 'Mua quà bất ngờ cho vợ',
 				textEn: 'Surprise gift for wife',
 				effects: [{ stat: 'humanity', value: 1 }],
-				cost: { money: 1 },
+				cost: { money: 1000000 },
 			},
 			{
 				id: 'ch7_todo_review_finance',
@@ -103,14 +103,14 @@ export const chapter7: Chapter = {
 				textVi: 'Đưa cả nhà đi du lịch',
 				textEn: 'Family travel',
 				effects: [{ stat: 'humanity', value: 2 }],
-				cost: { money: 1 },
+				cost: { money: 5000000 },
 			},
 			{
 				id: 'ch7_todo_invest_stock',
 				text: 'Đầu tư chứng khoán',
 				textVi: 'Đầu tư chứng khoán',
 				textEn: 'Invest in stocks',
-				reward: { money: 1 },
+				reward: { money: 100000 },
 				cost: { stress: 1 }, // Risk
 			},
 			{
@@ -134,7 +134,7 @@ export const chapter7: Chapter = {
 				textVi: 'Mua xe an toàn (Volvo)',
 				textEn: 'Buy safe car (Volvo)',
 				effects: [{ stat: 'steelMind', value: 1 }],
-				cost: { money: 1 },
+				cost: { money: 2000000000 },
 			},
 			{
 				id: 'ch7_todo_argue_wife',
@@ -171,7 +171,7 @@ export const chapter7: Chapter = {
 				textVi: 'Quyên góp từ thiện',
 				textEn: 'Donate to charity',
 				effects: [{ stat: 'humanity', value: 1 }],
-				cost: { money: 1 },
+				cost: { money: 10000000 },
 			},
 			{
 				id: 'ch7_todo_plan_retreat',

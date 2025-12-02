@@ -256,38 +256,37 @@ export interface GameState {
 		dialogueId: string;
 	} | null;
 	settings: GameSettings;
+	events: RandomEvent[];
+	ending: EndingType;
 }
 
-// Game Settings
+// Game Settings (Language, Volume, Text Speed)
 export interface GameSettings {
-	language: 'vi' | 'en';
+	language: 'en' | 'vi';
 	musicVolume: number; // 0-1
 	sfxVolume: number; // 0-1
 	textSpeed: number; // 0-100
-	autoAdvance: boolean;
-	skipRead: boolean;
 }
 
 // Ending Type
 export type EndingType =
-	| 'true-ending' // Best ending: High humanity, vision, balanced steel mind
-	| 'machine-ending' // Steel Mind > 90, Humanity < 50
-	| 'pushover-ending' // Humanity > 90, Steel Mind < 50
-	| 'dreamer-ending' // Vision > 90, Steel Mind < 50
-	| 'failure-ending' // Failed critical choices
-	| 'normal-ending'; // Balanced but not perfect
+	| 'SUCCESS' // Brilliant success - wealthy and famous
+	| 'BANKRUPTCY' // Money went negative
+	| 'BURNOUT' // Health/stress critical
+	| 'LEGACY' // Built lasting impact
+	| 'BALANCED' // Healthy work-life balance
+	| 'TRAGEDY'; // Lost what mattered
 
 // Ending Definition
 export interface EndingDefinition {
 	id: EndingType;
-	priority: number; // Higher priority is checked first. Resolves conflicts (e.g. True Ending > Machine Ending)
+	priority: number; // Higher priority is checked first
 	name: string;
 	nameVi: string;
 	nameEn: string;
 	description: string;
 	descriptionVi: string;
 	descriptionEn: string;
-	conditions?: Condition[]; // Specific flags, items, or skills required
-	minStats?: Partial<Stats>; // Minimum stats required
-	maxStats?: Partial<Stats>; // Maximum stats allowed (e.g. Machine Ending requires LOW Humanity)
+	condition: (stats: Stats, flags: Record<string, any>) => boolean;
+	imageUrl?: string;
 }

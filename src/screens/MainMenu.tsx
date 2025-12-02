@@ -3,18 +3,22 @@ import { motion } from 'framer-motion';
 import { useState, useEffect } from 'react';
 import { saveSystem } from '@/core/SaveSystem';
 import { audioManager } from '@/core/AudioManager';
+import SettingsModal from '@/components/UI/SettingsModal';
+import LoadGameModal from '@/components/UI/LoadGameModal';
 
 export default function MainMenu() {
 	const navigate = useNavigate();
 	const [_saves, setSaves] = useState<Array<any | null>>([]);
 	const [hasAutoSave, setHasAutoSave] = useState(false);
+	const [showSettings, setShowSettings] = useState(false);
+	const [showLoadGame, setShowLoadGame] = useState(false);
 
 	useEffect(() => {
 		// Load save info
 		loadSaveInfo();
 
 		// Play menu music
-		audioManager.playMusic('menu');
+		audioManager.playMusic('ending');
 	}, []);
 
 	const loadSaveInfo = async () => {
@@ -24,10 +28,18 @@ export default function MainMenu() {
 		setHasAutoSave(autoSave !== null);
 	};
 
-	const handleNewGame = () => {
+	const handleNewGame = async () => {
 		audioManager.resumeContext();
 		audioManager.playSFX('ui/button_click');
-		navigate('/game');
+
+		// Clear auto-save and reset game state for a truly new game
+		await saveSystem.deleteAutoSave();
+
+		// Import and reset game store
+		const { useGameStore } = await import('@/store/gameStore');
+		useGameStore.getState().resetGame();
+
+		navigate('/game?newgame=true');
 	};
 
 	const handleContinue = async () => {
@@ -66,9 +78,9 @@ export default function MainMenu() {
 					Continue
 				</MenuButton>
 
-				<MenuButton onClick={() => {}}>Load Game</MenuButton>
+				<MenuButton onClick={() => setShowLoadGame(true)}>Load Game</MenuButton>
 
-				<MenuButton onClick={() => {}}>Settings</MenuButton>
+				<MenuButton onClick={() => setShowSettings(true)}>Settings</MenuButton>
 
 				<MenuButton onClick={() => {}}>Credits</MenuButton>
 			</motion.div>
@@ -81,6 +93,16 @@ export default function MainMenu() {
 			>
 				Version 1.0.0 - Made with ❤️ and Code
 			</motion.div>
+
+			{/* Modals */}
+			<SettingsModal
+				isOpen={showSettings}
+				onClose={() => setShowSettings(false)}
+			/>
+			<LoadGameModal
+				isOpen={showLoadGame}
+				onClose={() => setShowLoadGame(false)}
+			/>
 		</div>
 	);
 }

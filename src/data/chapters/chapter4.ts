@@ -52,7 +52,7 @@ export const chapter4: Chapter = {
 				textVi: 'Bùng học làm freelance',
 				textEn: 'Skip class for freelance work',
 				effects: [{ stat: 'vision', value: 1 }],
-				reward: { money: 1 },
+				reward: { money: 200000 },
 			},
 			{
 				id: 'ch4_todo_adopt_bi',
@@ -60,7 +60,7 @@ export const chapter4: Chapter = {
 				textVi: 'Nhận nuôi Bi (Corgi)',
 				textEn: 'Adopt Bi (Corgi)',
 				effects: [{ stat: 'humanity', value: 1 }],
-				cost: { money: 1 },
+				cost: { money: 100000 },
 			},
 			{
 				id: 'ch4_todo_code_hard',
@@ -76,7 +76,7 @@ export const chapter4: Chapter = {
 				textVi: 'Ăn mì tôm qua ngày',
 				textEn: 'Survive on instant noodles',
 				cost: { health: 1 },
-				reward: { money: 1 },
+				reward: { money: 20000 },
 			},
 			{
 				id: 'ch4_todo_call_mom',
@@ -166,7 +166,7 @@ export const chapter4: Chapter = {
 				textVi: 'Mua bàn phím cơ xịn',
 				textEn: 'Buy mechanical keyboard',
 				effects: [{ stat: 'vision', value: 1 }],
-				cost: { money: 1 },
+				cost: { money: 500000 },
 			},
 			{
 				id: 'ch4_todo_skip_shower',

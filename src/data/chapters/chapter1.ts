@@ -107,7 +107,7 @@ export const chapter1: Chapter = {
 				textVi: 'Tháo tung đồ chơi ra xem',
 				textEn: 'Disassemble toys',
 				effects: [{ stat: 'vision', value: 1 }],
-				cost: { money: 1 }, // Tốn tiền mua đồ chơi mới
+				cost: { money: 100000 }, // Tốn tiền mua đồ chơi mới
 			},
 			{
 				id: 'ch1_todo_climb_tree',
@@ -151,7 +151,7 @@ export const chapter1: Chapter = {
 				text: 'Xin tiền bố mua kẹo',
 				textVi: 'Xin tiền bố mua kẹo',
 				textEn: 'Ask Dad for candy money',
-				reward: { money: 1 },
+				reward: { money: 50000 },
 			},
 			{
 				id: 'ch1_todo_hide_seek',

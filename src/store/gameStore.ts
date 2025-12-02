@@ -36,7 +36,7 @@ const initialState: GameState = {
 		vision: 50,
 		health: 100,
 		stress: 0,
-		money: 1000,
+		money: 500000, // Start with 500k
 	},
 	xp: 0,
 	skills: [],
@@ -81,12 +81,25 @@ export const useGameStore = create<GameStore>((set, get) => ({
 	},
 
 	updateStat: (stat: keyof Stats, value: number) => {
-		set((state) => ({
-			stats: {
-				...state.stats,
-				[stat]: Math.max(0, Math.min(100, state.stats[stat] + value)),
-			},
-		}));
+		set((state) => {
+			const currentValue = state.stats[stat];
+			let newValue: number;
+
+			if (stat === 'money') {
+				// Money has no cap, can go negative or very high
+				newValue = currentValue + value;
+			} else {
+				// Other stats capped between 0-100
+				newValue = Math.max(0, Math.min(100, currentValue + value));
+			}
+
+			return {
+				stats: {
+					...state.stats,
+					[stat]: newValue,
+				},
+			};
+		});
 	},
 
 	setFlag: (key: string, value: boolean | number | string) => {

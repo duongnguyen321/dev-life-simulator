@@ -78,7 +78,7 @@ export const chapter5: Chapter = {
 				textVi: 'Fix bug hộ Senior',
 				textEn: 'Fix bug for Senior',
 				effects: [{ stat: 'vision', value: 1 }],
-				reward: { money: 1 }, // Bonus?
+				reward: { money: 100000 }, // Bonus?
 			},
 			{
 				id: 'ch5_todo_ot_no_pay',
@@ -102,7 +102,7 @@ export const chapter5: Chapter = {
 				textVi: 'Đi nhậu với sếp',
 				textEn: 'Drink with boss',
 				effects: [{ stat: 'vision', value: 1 }], // Networking
-				cost: { health: 1, money: 1 },
+				cost: { health: 1, money: 1000000 },
 			},
 			{
 				id: 'ch5_todo_refactor_legacy',
@@ -125,7 +125,7 @@ export const chapter5: Chapter = {
 				textVi: 'Bỏ tập Gym vì deadline',
 				textEn: 'Skip Gym for deadline',
 				cost: { health: 1 },
-				reward: { money: 1 }, // Done work
+				reward: { money: 100000 }, // Done work
 			},
 			{
 				id: 'ch5_todo_call_mom_salary',
@@ -133,14 +133,14 @@ export const chapter5: Chapter = {
 				textVi: 'Gửi lương về cho mẹ',
 				textEn: 'Send salary to Mom',
 				effects: [{ stat: 'humanity', value: 1 }],
-				cost: { money: 1 },
+				cost: { money: 2000000 },
 			},
 			{
 				id: 'ch5_todo_date_fail',
 				text: 'Đi date nhưng chỉ nói về code',
 				textVi: 'Đi date nhưng chỉ nói về code',
 				textEn: 'Date but only talk code',
-				cost: { money: 1, humanity: 1 }, // Fail
+				cost: { money: 200000, humanity: 1 }, // Fail
 			},
 			{
 				id: 'ch5_todo_buy_course',
@@ -148,7 +148,7 @@ export const chapter5: Chapter = {
 				textVi: 'Mua khóa học Udemy',
 				textEn: 'Buy Udemy course',
 				effects: [{ stat: 'vision', value: 1 }],
-				cost: { money: 1 },
+				cost: { money: 100000 },
 			},
 			{
 				id: 'ch5_todo_argue_pm',
@@ -216,7 +216,7 @@ export const chapter5: Chapter = {
 				text: 'Tiết kiệm tiền mua Mac',
 				textVi: 'Tiết kiệm tiền mua Mac',
 				textEn: 'Save for Mac',
-				reward: { money: 1 },
+				reward: { money: 500000 },
 				cost: { humanity: 1 }, // Stingy
 			},
 		],

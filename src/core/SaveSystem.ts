@@ -44,7 +44,7 @@ class SaveSystem {
 				vision: 50,
 				health: 100,
 				stress: 0,
-				money: 1000,
+				money: 500000,
 			},
 			inventory: data.inventory || [],
 			flags: data.flags || {},
@@ -128,7 +128,7 @@ class SaveSystem {
 				vision: 50,
 				health: 100,
 				stress: 0,
-				money: 1000,
+				money: 10000,
 			},
 			inventory: data.inventory || [],
 			flags: data.flags || {},
@@ -145,6 +145,58 @@ class SaveSystem {
 	 */
 	async loadAutoSave(): Promise<SaveData | null> {
 		return await this.store.getItem<SaveData>('autosave');
+	}
+
+	/**
+	 * Delete auto-save
+	 */
+	async deleteAutoSave(): Promise<void> {
+		await this.store.removeItem('autosave');
+	}
+
+	/**
+	 * Load game from save data and apply to game store
+	 */
+	async loadGame(saveId: string | number): Promise<boolean> {
+		try {
+			let saveData: SaveData | null = null;
+
+			if (saveId === 'autosave' || saveId === 'auto') {
+				saveData = await this.loadAutoSave();
+			} else if (typeof saveId === 'number') {
+				saveData = await this.load(saveId);
+			}
+
+			if (!saveData) {
+				console.error('Save data not found');
+				return false;
+			}
+
+			// Import and update game store
+			const { useGameStore } = await import('@/store/gameStore');
+			const store = useGameStore.getState();
+
+			store.setCurrentChapter(saveData.chapter);
+			store.setCurrentScene(saveData.scene);
+			store.updateStats(saveData.stats);
+
+			if (saveData.inventory) {
+				saveData.inventory.forEach((item) => store.addToInventory(item));
+			}
+			if (saveData.flags) {
+				Object.entries(saveData.flags).forEach(([key, value]) => {
+					store.setFlag(key, value);
+				});
+			}
+			if (saveData.achievements) {
+				saveData.achievements.forEach((id) => store.unlockAchievement(id));
+			}
+
+			return true;
+		} catch (error) {
+			console.error('Failed to load game:', error);
+			return false;
+		}
 	}
 
 	// ==========================================

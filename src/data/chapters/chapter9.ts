@@ -67,7 +67,7 @@ export const chapter9: Chapter = {
 				textVi: 'Ký séc tài trợ cho quỹ Sandbox',
 				textEn: 'Sign check for Sandbox Foundation',
 				effects: [{ stat: 'vision', value: 1 }], // Legacy
-				cost: { money: 1 },
+				cost: { money: 1000000000 },
 			},
 			{
 				id: 'ch9_todo_teach_kids',

@@ -116,9 +116,6 @@ export class GameFlow {
 
 				// CHECK FOR CHAPTER TRANSITION
 				if (chapterId !== store.currentChapter) {
-					console.log(
-						`Chapter transition detected: ${store.currentChapter} -> ${chapterId}`
-					);
 					// Trigger Night Phase
 					store.setPendingTransition({
 						chapterId,

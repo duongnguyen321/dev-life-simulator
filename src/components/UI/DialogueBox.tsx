@@ -1,4 +1,5 @@
 import { motion } from 'framer-motion';
+import { useState, useEffect, useRef } from 'react';
 import type { DialogueChoice } from '@/data/types';
 import { audioManager } from '@/core/AudioManager';
 import { useGameStore } from '@/store/gameStore';
@@ -19,13 +20,54 @@ export default function DialogueBox({
 	onChoice,
 }: DialogueBoxProps) {
 	const { settings } = useGameStore();
+	const [displayedText, setDisplayedText] = useState('');
+	const [isTyping, setIsTyping] = useState(true); // Always start typing
+	const [isProcessing, setIsProcessing] = useState(false);
+	const typingTimeoutRef = useRef<NodeJS.Timeout | null>(null);
+
+	// Typing effect
+	useEffect(() => {
+		setDisplayedText('');
+		setIsTyping(true);
+		setIsProcessing(false); // Reset processing state on new text OR new choices
+		let currentIndex = 0;
+
+		const typeNextChar = () => {
+			if (currentIndex < text.length) {
+				setDisplayedText(text.slice(0, currentIndex + 1));
+				currentIndex++;
+
+				const baseDelay = Math.random() * 30 + 20;
+				const speedFactor = (100 - settings.textSpeed) / 50;
+				const delay = baseDelay * Math.max(0.1, speedFactor);
+
+				typingTimeoutRef.current = setTimeout(typeNextChar, delay);
+			} else {
+				setIsTyping(false);
+			}
+		};
+
+		typeNextChar();
+
+		return () => {
+			if (typingTimeoutRef.current) clearTimeout(typingTimeoutRef.current);
+		};
+	}, [text, settings.textSpeed, choices.length]);
 
 	const handleChoiceClick = (choice: DialogueChoice) => {
+		if (isProcessing) {
+			return;
+		}
+
+		setIsProcessing(true);
 		audioManager.playSFX('ui/choice_select');
 
 		// Apply stat effects if any
 		if (choice.effects) {
-			// TODO: Apply effects via statsManager
+			const { updateStat } = useGameStore.getState();
+			choice.effects.forEach((effect) => {
+				updateStat(effect.stat, effect.value);
+			});
 		}
 
 		// Apply flag changes if any
@@ -44,14 +86,26 @@ export default function DialogueBox({
 		}
 	};
 
-	const handleCopyText = (e: React.MouseEvent) => {
-		e.stopPropagation(); // Prevent triggering next
-		navigator.clipboard.writeText(text);
-		// Optional: Show toast or feedback
-	};
+	const handleContainerClick = (e: React.MouseEvent) => {
+		// 0. Prevent if already processing
+		if (isProcessing) {
+			return;
+		}
 
-	const handleContainerClick = () => {
-		if (choices.length === 0 && onNext) {
+		// 1. If choices exist, NEVER advance - user must pick a choice
+		if (choices.length > 0) {
+			return;
+		}
+
+		// 2. If still typing, don't advance - must wait for typing to finish
+		if (isTyping) {
+			return;
+		}
+
+		// 4. Advance to next
+		setIsProcessing(true);
+		if (onNext) {
+			audioManager.playSFX('ui/button_click');
 			onNext();
 		}
 	};
@@ -61,8 +115,12 @@ export default function DialogueBox({
 			initial={{ y: 100, opacity: 0 }}
 			animate={{ y: 0, opacity: 1 }}
 			transition={{ duration: 0.3 }}
-			className='pixel-dialog-box relative mx-auto mb-8 w-11/12 max-w-4xl cursor-pointer'
-			onClick={handleContainerClick}
+			className={`pixel-dialog-box relative mx-auto mb-8 w-11/12 max-w-4xl ${
+				choices.length === 0 && !isTyping ? 'cursor-pointer' : 'cursor-default'
+			}`}
+			onClick={
+				choices.length === 0 && !isTyping ? handleContainerClick : undefined
+			}
 			style={{
 				backgroundColor: 'rgba(26, 32, 44, 0.95)',
 				border: '4px solid #4a90e2',
@@ -80,39 +138,73 @@ export default function DialogueBox({
 				</div>
 			)}
 
-			{/* Dialogue Text - Click to Copy */}
+			{/* Dialogue Text */}
 			<div
-				className='dialogue-text leading-loose text-text-primary hover:text-white transition-colors'
-				onClick={handleCopyText}
-				title='Click to copy'
+				className='dialogue-text leading-loose text-text-primary transition-colors min-h-[4.5rem] select-text'
 				style={{ fontSize: '1rem', lineHeight: '1.8' }}
 			>
-				{text}
+				{displayedText}
+				{isTyping && <span className='animate-pulse'>|</span>}
 			</div>
 
 			{/* Choices */}
-			{choices.length > 0 && (
-				<div className='choices-container mt-6 flex flex-col gap-3'>
-					{choices.map((choice) => (
-						<motion.button
-							key={choice.id}
-							whileHover={{ scale: 1.02, x: 10 }}
-							whileTap={{ scale: 0.98 }}
-							onClick={(e) => {
-								e.stopPropagation();
-								handleChoiceClick(choice);
-							}}
-							className='choice-button text-left px-4 py-3 bg-bg-secondary border-2 border-vision hover:bg-vision hover:text-bg-primary transition-all duration-200'
-							style={{ fontSize: '0.875rem' }}
-						>
-							▶ {settings.language === 'vi' ? choice.textVi : choice.textEn}
-						</motion.button>
-					))}
+			{!isTyping && choices.length > 0 && displayedText === text && (
+				<div className='choices-container mt-6 flex flex-col gap-3 animate-fade-in'>
+					{choices.map((choice) => {
+						// Check if this choice is affordable
+						const { stats } = useGameStore.getState();
+						let canAfford = true;
+						let insufficientResource = '';
+
+						if (choice.effects) {
+							for (const effect of choice.effects) {
+								// Negative effect values = cost
+								if (effect.value < 0) {
+									const currentValue = stats[effect.stat];
+									const cost = Math.abs(effect.value);
+									if (currentValue < cost) {
+										canAfford = false;
+										insufficientResource = effect.stat;
+										break;
+									}
+								}
+							}
+						}
+
+						return (
+							<motion.button
+								key={choice.id}
+								whileHover={canAfford ? { scale: 1.02, x: 10 } : {}}
+								whileTap={canAfford ? { scale: 0.98 } : {}}
+								onClick={(e) => {
+									e.stopPropagation();
+									if (canAfford) {
+										handleChoiceClick(choice);
+									}
+								}}
+								disabled={!canAfford}
+								className={`choice-button text-left px-4 py-3 border-2 transition-all duration-200 ${
+									canAfford
+										? 'bg-bg-secondary border-vision hover:bg-vision hover:text-bg-primary cursor-pointer'
+										: 'bg-gray-900/50 border-gray-700 opacity-50 cursor-not-allowed'
+								}`}
+								style={{ fontSize: '0.875rem' }}
+								title={!canAfford ? `Insufficient ${insufficientResource}` : ''}
+							>
+								▶ {settings.language === 'vi' ? choice.textVi : choice.textEn}
+								{!canAfford && (
+									<span className='text-red-400 text-xs ml-2'>
+										(Insufficient {insufficientResource})
+									</span>
+								)}
+							</motion.button>
+						);
+					})}
 				</div>
 			)}
 
 			{/* Next Button / Indicator */}
-			{choices.length === 0 && (
+			{!isTyping && choices.length === 0 && (
 				<motion.div
 					animate={{ y: [0, 5, 0] }}
 					transition={{ duration: 1.5, repeat: Infinity }}

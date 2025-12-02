@@ -146,7 +146,7 @@ export const chapter2: Chapter = {
 				text: 'Nhịn ăn sáng tiết kiệm tiền',
 				textVi: 'Nhịn ăn sáng tiết kiệm tiền',
 				textEn: 'Skip breakfast to save money',
-				reward: { money: 1 },
+				reward: { money: 20000 },
 				cost: { health: 1 },
 			},
 			{
@@ -176,7 +176,7 @@ export const chapter2: Chapter = {
 				text: 'Mò cua bắt ốc',
 				textVi: 'Mò cua bắt ốc',
 				textEn: 'Catch crabs and snails',
-				reward: { money: 1 },
+				reward: { money: 5000 },
 				cost: { health: 1 },
 			},
 			{
@@ -667,9 +667,9 @@ export const chapter2Dialogues: Record<string, DialogueNode> = {
 	ch2_mentor_1: {
 		id: 'ch2_mentor_1',
 		speaker: 'narrator',
-		text: 'Bố giải quyết xong vụ kiện tụng (dù vẫn nợ đầm đìa), đón mẹ con lên Hà Nội. Bố không đi trốn, không nát rượu. Bố bình tĩnh vẽ lại bản đồ cuộc đời.',
+		text: 'Bố giải quyết xong vụ kiện tụng (dù vẫn nợ đầm đìa), cùng về Hà Nội với mẹ con. Bố không đi trốn, không nát rượu. Bố bình tĩnh vẽ lại bản đồ cuộc đời.',
 		textVi:
-			'Bố giải quyết xong vụ kiện tụng (dù vẫn nợ đầm đìa), đón mẹ con lên Hà Nội. Bố không đi trốn, không nát rượu. Bố bình tĩnh vẽ lại bản đồ cuộc đời.',
+			'Bố giải quyết xong vụ kiện tụng (dù vẫn nợ đầm đìa), cùng về Hà Nội với mẹ con. Bố không đi trốn, không nát rượu. Bố bình tĩnh vẽ lại bản đồ cuộc đời.',
 		textEn:
 			"Father settled lawsuits (still in debt), brought family to Hanoi. Didn't run, didn't drink. Calmly redrew life map.",
 		next: 'ch2_mentor_2',

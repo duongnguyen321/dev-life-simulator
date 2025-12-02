@@ -67,7 +67,7 @@ export const chapter8: Chapter = {
 				textVi: 'Duyệt ngân sách R&D cho Robot',
 				textEn: 'Approve R&D budget for Robot',
 				effects: [{ stat: 'vision', value: 1 }],
-				cost: { money: 1 },
+				cost: { money: 1000000000 },
 			},
 			{
 				id: 'ch8_todo_ethics',
@@ -116,7 +116,7 @@ export const chapter8: Chapter = {
 				textVi: 'Thuê Giám đốc Đạo đức',
 				textEn: 'Hire Ethics Director',
 				effects: [{ stat: 'vision', value: 1 }], // Reputation
-				cost: { money: 1 },
+				cost: { money: 100000000 },
 			},
 			{
 				id: 'ch8_todo_meditate_life',
@@ -145,7 +145,7 @@ export const chapter8: Chapter = {
 				textVi: 'Quyên góp cho nghiên cứu đại học',
 				textEn: 'Donate to university research',
 				effects: [{ stat: 'vision', value: 1 }], // Reputation
-				cost: { money: 1 },
+				cost: { money: 10000000 },
 			},
 			{
 				id: 'ch8_todo_long_leave',
@@ -174,7 +174,7 @@ export const chapter8: Chapter = {
 				text: 'Tham vấn luật sư',
 				textVi: 'Tham vấn luật sư',
 				textEn: 'Consult lawyer',
-				cost: { money: 1 },
+				cost: { money: 1000000 },
 				effects: [{ stat: 'steelMind', value: 1 }], // Safety
 			},
 			{

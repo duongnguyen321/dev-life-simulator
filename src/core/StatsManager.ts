@@ -11,7 +11,7 @@ class StatsManager {
 		vision: 50,
 		health: 100,
 		stress: 0,
-		money: 1000,
+		money: 10000,
 	};
 
 	// Track stat changes for ending calculation
@@ -190,7 +190,7 @@ class StatsManager {
 			vision: 50,
 			health: 100,
 			stress: 0,
-			money: 1000,
+			money: 10000,
 		};
 		this.statHistory = [];
 	}

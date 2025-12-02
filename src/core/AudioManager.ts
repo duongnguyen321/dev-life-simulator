@@ -82,16 +82,27 @@ class AudioManager {
 		let track = this.music.get(name);
 
 		// Auto-load if not found and looks like a path
-		if (!track && (name.startsWith('/') || name.startsWith('http'))) {
-			console.log(`Auto-loading music: ${name}`);
-			track = new Howl({
-				src: [name],
-				volume: this._musicVolume,
-				loop: true,
-				html5: true,
-				preload: true,
-			});
-			this.music.set(name, track);
+		if (!track) {
+			// Special mappings
+			const musicMapping: Record<string, string> = {
+				menu: '/assets/audio/music/menu.mp3',
+				ending: '/assets/audio/music/ending.mp3',
+			};
+
+			const path =
+				musicMapping[name] ||
+				(name.startsWith('/') || name.startsWith('http') ? name : null);
+
+			if (path) {
+				track = new Howl({
+					src: [path],
+					volume: this._musicVolume,
+					loop: true,
+					html5: true,
+					preload: true,
+				});
+				this.music.set(name, track);
+			}
 		}
 
 		if (!track) {

@@ -77,7 +77,7 @@ export const chapter6: Chapter = {
 				textVi: 'Tổ chức Team Building',
 				textEn: 'Organize Team Building',
 				effects: [{ stat: 'humanity', value: 1 }],
-				cost: { money: 1 },
+				cost: { money: 10000000 },
 			},
 			{
 				id: 'ch6_todo_fire_staff',
@@ -108,7 +108,7 @@ export const chapter6: Chapter = {
 				textVi: 'Mua thêm Server',
 				textEn: 'Buy more Servers',
 				effects: [{ stat: 'vision', value: 1 }],
-				cost: { money: 1 },
+				cost: { money: 10000000 },
 			},
 			{
 				id: 'ch6_todo_work_weekend',
@@ -124,7 +124,7 @@ export const chapter6: Chapter = {
 				textVi: 'Cafe với nhà đầu tư',
 				textEn: 'Coffee with investor',
 				effects: [{ stat: 'vision', value: 1 }],
-				cost: { money: 1 },
+				cost: { money: 200000 },
 			},
 			{
 				id: 'ch6_todo_check_competitor',
@@ -138,7 +138,7 @@ export const chapter6: Chapter = {
 				text: 'Duyệt bảng lương',
 				textVi: 'Duyệt bảng lương',
 				textEn: 'Approve payroll',
-				cost: { money: 2 },
+				cost: { money: 100000000 },
 				reward: { stress: -1 }, // Relief
 			},
 			{

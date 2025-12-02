@@ -1,4 +1,5 @@
 import { useEffect, useState, useCallback } from 'react';
+import { useNavigate, useSearchParams } from 'react-router-dom';
 import { useGameStore } from '@/store/gameStore';
 import DialogueBox from '@/components/UI/DialogueBox';
 import StatsBar from '@/components/UI/StatsBar';
@@ -13,6 +14,8 @@ import { characters } from '@/data/characters';
 import type { DialogueChoice, TodoTask, DreamQuestion } from '@/data/types';
 
 export default function GameScreen() {
+	const navigate = useNavigate();
+	const [searchParams] = useSearchParams();
 	const {
 		currentChapter,
 		currentScene: currentSceneId,
@@ -59,13 +62,100 @@ export default function GameScreen() {
 		setDailyTasks(shuffled.slice(0, 10));
 	}, [chapter, completedTaskIds]);
 
-	// Initialize game
+	// Initialize game - load auto-save if available
 	useEffect(() => {
-		if (currentChapter === 1 && currentSceneId === 'start') {
-			GameFlow.startNewGame();
-		}
-		setIsLoading(false);
+		const initializeGame = async () => {
+			// Check URL params (using React Router for cross-platform)
+			const isNewGame = searchParams.get('newgame') === 'true';
+
+			if (isNewGame) {
+				// Starting a brand new game - don't load auto-save
+				GameFlow.startNewGame();
+				setIsLoading(false);
+				return;
+			}
+
+			// Try to load auto-save
+			const { saveSystem } = await import('@/core/SaveSystem');
+			const autoSaveData = await saveSystem.loadAutoSave();
+
+			if (autoSaveData) {
+				// Restore game state from auto-save
+				const store = useGameStore.getState();
+				store.setCurrentChapter(autoSaveData.chapter);
+				store.setCurrentScene(autoSaveData.scene);
+				// Try to find a suitable starting dialogue for the scene
+				const sceneDialogues = Object.keys(allDialogues).filter((key) =>
+					key.startsWith(autoSaveData.scene)
+				);
+				const startDialogue = sceneDialogues[0] || 'intro';
+				store.setCurrentDialogue(startDialogue);
+				store.updateStats(autoSaveData.stats);
+				if (autoSaveData.inventory) {
+					autoSaveData.inventory.forEach((item) => store.addToInventory(item));
+				}
+				if (autoSaveData.flags) {
+					Object.entries(autoSaveData.flags).forEach(([key, value]) => {
+						store.setFlag(key, value);
+					});
+				}
+				if (autoSaveData.achievements) {
+					autoSaveData.achievements.forEach((id) =>
+						store.unlockAchievement(id)
+					);
+				}
+			} else {
+				// No auto-save, start new game
+				GameFlow.startNewGame();
+			}
+
+			setIsLoading(false);
+		};
+
+		initializeGame();
 	}, []); // Run once on mount
+
+	// Auto-save on state changes
+	useEffect(() => {
+		const autoSaveGame = async () => {
+			// Don't save during initial load
+			if (isLoading) return;
+
+			const { saveSystem } = await import('@/core/SaveSystem');
+			const store = useGameStore.getState();
+
+			await saveSystem.autoSave({
+				playerName: 'Player',
+				chapter: currentChapter,
+				scene: currentSceneId,
+				stats: stats,
+				inventory: store.inventory,
+				flags: store.flags,
+				achievements: store.achievements,
+				playtime: store.playtime,
+			});
+		};
+
+		// Debounce auto-save to avoid too frequent saves
+		const timeoutId = setTimeout(() => {
+			autoSaveGame();
+		}, 1000);
+
+		return () => clearTimeout(timeoutId);
+	}, [currentChapter, currentSceneId, currentDialogueId, stats, isLoading]);
+
+	// Bankruptcy detection - monitor money stat
+	useEffect(() => {
+		if (isLoading) return; // Don't check during initial load
+
+		if (stats.money < 0) {
+			// Trigger bankruptcy ending
+			setTimeout(() => {
+				// Navigate to ending screen with bankruptcy type (React Router for cross-platform)
+				navigate('/ending?type=BANKRUPTCY');
+			}, 1000); // Small delay to let player see the money go negative
+		}
+	}, [stats.money, isLoading, navigate]);
 
 	// Sync local modal state with global night phase
 	useEffect(() => {
@@ -78,9 +168,29 @@ export default function GameScreen() {
 	// Play scene music
 	useEffect(() => {
 		if (scene?.music) {
+			// Try to resume context immediately (might work if already interacted)
+			audioManager.resumeContext();
 			audioManager.playMusic(scene.music);
 		}
 	}, [scene?.music]);
+
+	// Global click listener to resume audio context (fix for autoplay policy)
+	useEffect(() => {
+		const handleInteraction = () => {
+			audioManager.resumeContext();
+		};
+		// Use document for web, will need platform-specific handling for React Native
+		if (typeof document !== 'undefined') {
+			document.addEventListener('click', handleInteraction);
+			document.addEventListener('keydown', handleInteraction);
+		}
+		return () => {
+			if (typeof document !== 'undefined') {
+				document.removeEventListener('click', handleInteraction);
+				document.removeEventListener('keydown', handleInteraction);
+			}
+		};
+	}, []);
 
 	const handleChoice = (choice: DialogueChoice) => {
 		audioManager.resumeContext();
@@ -90,6 +200,8 @@ export default function GameScreen() {
 	const handleSleepClick = () => {
 		audioManager.resumeContext();
 		audioManager.playSFX('ui/button_click');
+
+		// Always generate new daily tasks when opening sleep modal
 		generateDailyTasks();
 		setShowSleepModal(true);
 	};
@@ -213,9 +325,7 @@ export default function GameScreen() {
 					<div className='absolute bottom-1/3 left-1/2 transform -translate-x-1/2 z-0'>
 						<Sprite
 							src={characterSprite}
-							scale={4} // Scale up the 64x64 sprite
-							frameWidth={64}
-							frameHeight={64}
+							scale={4} // Scale up
 						/>
 					</div>
 				)}
