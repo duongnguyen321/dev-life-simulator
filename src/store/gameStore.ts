@@ -77,7 +77,7 @@ const getInitialState = (): GameState => ({
 		humanity: 50,
 		vision: 50,
 		health: 100,
-		stress: 0,
+		stress: 20,
 		money: 500000, // Start with 500k
 	},
 	xp: 0,
