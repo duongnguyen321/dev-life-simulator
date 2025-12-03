@@ -487,6 +487,7 @@ export enum AchievementID {
 	ACH_HACKER = 'ach_hacker',
 	ACH_TEACHER = 'ach_teacher',
 	ACH_POLITICIAN = 'ach_politician',
+	ACH_PERFECT_CHILD = 'ach_perfect_child',
 }
 
 export enum EndingID {
@@ -511,6 +512,12 @@ export enum ItemID {
 	ITEM_PHILOSOPHY_BOOK = 'item_philosophy_book',
 	ITEM_CHARITY = 'item_charity',
 	ITEM_VOLUNTEER = 'item_volunteer',
+	// Family Support Items
+	ITEM_PAY_DEBT = 'item_pay_debt',
+	ITEM_BUY_VILLA = 'item_buy_villa',
+	ITEM_DAD_CAR = 'item_dad_car',
+	ITEM_MOM_CAR = 'item_mom_car',
+	ITEM_SIBLING_UNI = 'item_sibling_uni',
 }
 
 export enum SkillID {
@@ -782,6 +789,12 @@ export enum FlagID {
 	SKIPPED_CLASS = 'skipped_class',
 	SPAGHETTI_CODE = 'spaghetti_code',
 	WORK_HOURS_WEEK = 'work_hours_week',
+	// Family Support Flags
+	FAMILY_DEBT_PAID = 'family_debt_paid',
+	FAMILY_VILLA_BOUGHT = 'family_villa_bought',
+	FAMILY_DAD_CAR = 'family_dad_car',
+	FAMILY_MOM_CAR = 'family_mom_car',
+	FAMILY_SIBLING_UNI = 'family_sibling_uni',
 }
 
 export enum ConditionType {

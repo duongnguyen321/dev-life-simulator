@@ -1,5 +1,12 @@
 import type { Achievement } from './types';
-import { AchievementID, ConditionType, FlagID, Operator, SkillID, StatID } from './enum';
+import {
+	AchievementID,
+	ConditionType,
+	FlagID,
+	Operator,
+	SkillID,
+	StatID,
+} from './enum';
 
 export const achievements: Achievement[] = [
 	{
@@ -13,7 +20,12 @@ export const achievements: Achievement[] = [
 		secret: false,
 		unlocked: false,
 		conditions: [
-			{ type: ConditionType.FLAG, key: 'hello_world_written', operator: Operator.EQUAL, value: true },
+			{
+				type: ConditionType.FLAG,
+				key: 'hello_world_written',
+				operator: Operator.EQUAL,
+				value: true,
+			},
 		],
 	},
 	{
@@ -27,7 +39,12 @@ export const achievements: Achievement[] = [
 		secret: false,
 		unlocked: false,
 		conditions: [
-			{ type: ConditionType.FLAG, key: FlagID.BUG_CRASH_TRIGGERED, operator: Operator.EQUAL, value: true },
+			{
+				type: ConditionType.FLAG,
+				key: FlagID.BUG_CRASH_TRIGGERED,
+				operator: Operator.EQUAL,
+				value: true,
+			},
 		],
 	},
 	{
@@ -41,7 +58,12 @@ export const achievements: Achievement[] = [
 		secret: false,
 		unlocked: false,
 		conditions: [
-			{ type: ConditionType.FLAG, key: FlagID.SPAGHETTI_CODE, operator: Operator.EQUAL, value: true },
+			{
+				type: ConditionType.FLAG,
+				key: FlagID.SPAGHETTI_CODE,
+				operator: Operator.EQUAL,
+				value: true,
+			},
 		],
 	},
 	{
@@ -55,7 +77,12 @@ export const achievements: Achievement[] = [
 		secret: false,
 		unlocked: false,
 		conditions: [
-			{ type: ConditionType.FLAG, key: FlagID.BUGS_FIXED, operator: Operator.GTE, value: 100 },
+			{
+				type: ConditionType.FLAG,
+				key: FlagID.BUGS_FIXED,
+				operator: Operator.GTE,
+				value: 100,
+			},
 		],
 	},
 	{
@@ -69,7 +96,12 @@ export const achievements: Achievement[] = [
 		secret: false,
 		unlocked: false,
 		conditions: [
-			{ type: ConditionType.FLAG, key: FlagID.NIGHT_OWL_STREAK, operator: Operator.GTE, value: 3 },
+			{
+				type: ConditionType.FLAG,
+				key: FlagID.NIGHT_OWL_STREAK,
+				operator: Operator.GTE,
+				value: 3,
+			},
 		],
 	},
 	{
@@ -83,7 +115,12 @@ export const achievements: Achievement[] = [
 		secret: false,
 		unlocked: false,
 		conditions: [
-			{ type: ConditionType.FLAG, key: FlagID.COFFEE_CONSUMED, operator: Operator.GTE, value: 1000 },
+			{
+				type: ConditionType.FLAG,
+				key: FlagID.COFFEE_CONSUMED,
+				operator: Operator.GTE,
+				value: 1000,
+			},
 		],
 	},
 	{
@@ -97,7 +134,12 @@ export const achievements: Achievement[] = [
 		secret: false,
 		unlocked: false,
 		conditions: [
-			{ type: ConditionType.FLAG, key: FlagID.FREELANCE_INCOME, operator: Operator.GTE, value: 1000 },
+			{
+				type: ConditionType.FLAG,
+				key: FlagID.FREELANCE_INCOME,
+				operator: Operator.GTE,
+				value: 1000,
+			},
 		],
 	},
 	{
@@ -111,7 +153,12 @@ export const achievements: Achievement[] = [
 		secret: false,
 		unlocked: false,
 		conditions: [
-			{ type: ConditionType.FLAG, key: FlagID.IS_FOUNDER, operator: Operator.EQUAL, value: true },
+			{
+				type: ConditionType.FLAG,
+				key: FlagID.IS_FOUNDER,
+				operator: Operator.EQUAL,
+				value: true,
+			},
 		],
 	},
 	{
@@ -144,7 +191,12 @@ export const achievements: Achievement[] = [
 		secret: false,
 		unlocked: false,
 		conditions: [
-			{ type: ConditionType.FLAG, key: FlagID.IS_BANKRUPT, operator: Operator.EQUAL, value: true },
+			{
+				type: ConditionType.FLAG,
+				key: FlagID.IS_BANKRUPT,
+				operator: Operator.EQUAL,
+				value: true,
+			},
 		],
 	},
 	{
@@ -158,8 +210,18 @@ export const achievements: Achievement[] = [
 		secret: false,
 		unlocked: false,
 		conditions: [
-			{ type: ConditionType.FLAG, key: FlagID.IS_BANKRUPT, operator: Operator.EQUAL, value: true },
-			{ type: ConditionType.STAT, key: StatID.MONEY, operator: Operator.GTE, value: 1000000 },
+			{
+				type: ConditionType.FLAG,
+				key: FlagID.IS_BANKRUPT,
+				operator: Operator.EQUAL,
+				value: true,
+			},
+			{
+				type: ConditionType.STAT,
+				key: StatID.MONEY,
+				operator: Operator.GTE,
+				value: 1000000,
+			},
 		],
 	},
 	{
@@ -173,8 +235,18 @@ export const achievements: Achievement[] = [
 		secret: false,
 		unlocked: false,
 		conditions: [
-			{ type: ConditionType.FLAG, key: FlagID.IS_MARRIED, operator: Operator.EQUAL, value: true },
-			{ type: ConditionType.FLAG, key: FlagID.HAS_CHILD, operator: Operator.EQUAL, value: true },
+			{
+				type: ConditionType.FLAG,
+				key: FlagID.IS_MARRIED,
+				operator: Operator.EQUAL,
+				value: true,
+			},
+			{
+				type: ConditionType.FLAG,
+				key: FlagID.HAS_CHILD,
+				operator: Operator.EQUAL,
+				value: true,
+			},
 		],
 	},
 	{
@@ -188,7 +260,12 @@ export const achievements: Achievement[] = [
 		secret: false,
 		unlocked: false,
 		conditions: [
-			{ type: ConditionType.FLAG, key: FlagID.FORGOT_BIRTHDAY_STREAK, operator: Operator.GTE, value: 3 },
+			{
+				type: ConditionType.FLAG,
+				key: FlagID.FORGOT_BIRTHDAY_STREAK,
+				operator: Operator.GTE,
+				value: 3,
+			},
 		],
 	},
 	{
@@ -202,7 +279,12 @@ export const achievements: Achievement[] = [
 		secret: false,
 		unlocked: false,
 		conditions: [
-			{ type: ConditionType.FLAG, key: FlagID.WORK_HOURS_WEEK, operator: Operator.GTE, value: 100 },
+			{
+				type: ConditionType.FLAG,
+				key: FlagID.WORK_HOURS_WEEK,
+				operator: Operator.GTE,
+				value: 100,
+			},
 		],
 	},
 	{
@@ -216,7 +298,12 @@ export const achievements: Achievement[] = [
 		secret: false,
 		unlocked: false,
 		conditions: [
-			{ type: ConditionType.STAT, key: StatID.MONEY, operator: Operator.GTE, value: 1000000 },
+			{
+				type: ConditionType.STAT,
+				key: StatID.MONEY,
+				operator: Operator.GTE,
+				value: 1000000,
+			},
 		],
 	},
 	{
@@ -230,7 +317,12 @@ export const achievements: Achievement[] = [
 		secret: false,
 		unlocked: false,
 		conditions: [
-			{ type: ConditionType.STAT, key: StatID.MONEY, operator: Operator.GTE, value: 1000000000 },
+			{
+				type: ConditionType.STAT,
+				key: StatID.MONEY,
+				operator: Operator.GTE,
+				value: 1000000000,
+			},
 		],
 	},
 	{
@@ -244,7 +336,12 @@ export const achievements: Achievement[] = [
 		secret: false,
 		unlocked: false,
 		conditions: [
-			{ type: ConditionType.FLAG, key: FlagID.DONATED_FORTUNE, operator: Operator.EQUAL, value: true },
+			{
+				type: ConditionType.FLAG,
+				key: FlagID.DONATED_FORTUNE,
+				operator: Operator.EQUAL,
+				value: true,
+			},
 		],
 	},
 	{
@@ -258,7 +355,12 @@ export const achievements: Achievement[] = [
 		secret: false,
 		unlocked: false,
 		conditions: [
-			{ type: ConditionType.FLAG, key: FlagID.JOB_TITLE, operator: Operator.EQUAL, value: 'Tech Lead' },
+			{
+				type: ConditionType.FLAG,
+				key: FlagID.JOB_TITLE,
+				operator: Operator.EQUAL,
+				value: 'Tech Lead',
+			},
 		],
 	},
 	{
@@ -272,7 +374,12 @@ export const achievements: Achievement[] = [
 		secret: false,
 		unlocked: false,
 		conditions: [
-			{ type: ConditionType.FLAG, key: FlagID.MENTEE_PROMOTED, operator: Operator.EQUAL, value: true },
+			{
+				type: ConditionType.FLAG,
+				key: FlagID.MENTEE_PROMOTED,
+				operator: Operator.EQUAL,
+				value: true,
+			},
 		],
 	},
 	{
@@ -286,7 +393,12 @@ export const achievements: Achievement[] = [
 		secret: false,
 		unlocked: false,
 		conditions: [
-			{ type: ConditionType.FLAG, key: FlagID.COUNTRIES_WORKED, operator: Operator.GTE, value: 3 },
+			{
+				type: ConditionType.FLAG,
+				key: FlagID.COUNTRIES_WORKED,
+				operator: Operator.GTE,
+				value: 3,
+			},
 		],
 	},
 	{
@@ -299,7 +411,14 @@ export const achievements: Achievement[] = [
 		descriptionEn: 'Own 5 cars.',
 		secret: false,
 		unlocked: false,
-		conditions: [{ type: ConditionType.FLAG, key: FlagID.CARS_OWNED, operator: Operator.GTE, value: 5 }],
+		conditions: [
+			{
+				type: ConditionType.FLAG,
+				key: FlagID.CARS_OWNED,
+				operator: Operator.GTE,
+				value: 5,
+			},
+		],
 	},
 	{
 		id: AchievementID.ACH_DOG_LOVER,
@@ -312,7 +431,12 @@ export const achievements: Achievement[] = [
 		secret: false,
 		unlocked: false,
 		conditions: [
-			{ type: ConditionType.FLAG, key: FlagID.DOG_LOYALTY, operator: Operator.EQUAL, value: true },
+			{
+				type: ConditionType.FLAG,
+				key: FlagID.DOG_LOYALTY,
+				operator: Operator.EQUAL,
+				value: true,
+			},
 		],
 	},
 	{
@@ -326,7 +450,12 @@ export const achievements: Achievement[] = [
 		secret: false,
 		unlocked: false,
 		conditions: [
-			{ type: ConditionType.FLAG, key: FlagID.IS_DIVORCED, operator: Operator.EQUAL, value: true },
+			{
+				type: ConditionType.FLAG,
+				key: FlagID.IS_DIVORCED,
+				operator: Operator.EQUAL,
+				value: true,
+			},
 		],
 	},
 	{
@@ -340,8 +469,18 @@ export const achievements: Achievement[] = [
 		secret: false,
 		unlocked: false,
 		conditions: [
-			{ type: ConditionType.FLAG, key: FlagID.AGE, operator: Operator.GTE, value: 50 },
-			{ type: ConditionType.FLAG, key: FlagID.IS_MARRIED, operator: Operator.EQUAL, value: false },
+			{
+				type: ConditionType.FLAG,
+				key: FlagID.AGE,
+				operator: Operator.GTE,
+				value: 50,
+			},
+			{
+				type: ConditionType.FLAG,
+				key: FlagID.IS_MARRIED,
+				operator: Operator.EQUAL,
+				value: false,
+			},
 		],
 	},
 	{
@@ -355,7 +494,12 @@ export const achievements: Achievement[] = [
 		secret: false,
 		unlocked: false,
 		conditions: [
-			{ type: ConditionType.FLAG, key: FlagID.GITHUB_STARS, operator: Operator.GTE, value: 10000 },
+			{
+				type: ConditionType.FLAG,
+				key: FlagID.GITHUB_STARS,
+				operator: Operator.GTE,
+				value: 10000,
+			},
 		],
 	},
 	{
@@ -369,7 +513,12 @@ export const achievements: Achievement[] = [
 		secret: false,
 		unlocked: false,
 		conditions: [
-			{ type: ConditionType.FLAG, key: FlagID.BOOKS_READ, operator: Operator.GTE, value: 100 },
+			{
+				type: ConditionType.FLAG,
+				key: FlagID.BOOKS_READ,
+				operator: Operator.GTE,
+				value: 100,
+			},
 		],
 	},
 	{
@@ -382,7 +531,14 @@ export const achievements: Achievement[] = [
 		descriptionEn: 'Maintain 6-pack abs while working in IT.',
 		secret: false,
 		unlocked: false,
-		conditions: [{ type: ConditionType.STAT, key: StatID.HEALTH, operator: Operator.GTE, value: 90 }],
+		conditions: [
+			{
+				type: ConditionType.STAT,
+				key: StatID.HEALTH,
+				operator: Operator.GTE,
+				value: 90,
+			},
+		],
 	},
 	{
 		id: AchievementID.ACH_MASTER_CHEF,
@@ -395,7 +551,12 @@ export const achievements: Achievement[] = [
 		secret: false,
 		unlocked: false,
 		conditions: [
-			{ type: ConditionType.SKILL, key: SkillID.SKILL_COOKING, operator: Operator.EQUAL, value: true },
+			{
+				type: ConditionType.SKILL,
+				key: SkillID.SKILL_COOKING,
+				operator: Operator.EQUAL,
+				value: true,
+			},
 		],
 	},
 	{
@@ -409,7 +570,12 @@ export const achievements: Achievement[] = [
 		secret: false,
 		unlocked: false,
 		conditions: [
-			{ type: ConditionType.FLAG, key: FlagID.KNOWS_INSTRUMENT, operator: Operator.EQUAL, value: true },
+			{
+				type: ConditionType.FLAG,
+				key: FlagID.KNOWS_INSTRUMENT,
+				operator: Operator.EQUAL,
+				value: true,
+			},
 		],
 	},
 	{
@@ -423,7 +589,12 @@ export const achievements: Achievement[] = [
 		secret: false,
 		unlocked: false,
 		conditions: [
-			{ type: ConditionType.FLAG, key: FlagID.GAMES_BEATEN, operator: Operator.GTE, value: 50 },
+			{
+				type: ConditionType.FLAG,
+				key: FlagID.GAMES_BEATEN,
+				operator: Operator.GTE,
+				value: 50,
+			},
 		],
 	},
 	{
@@ -437,7 +608,12 @@ export const achievements: Achievement[] = [
 		secret: false,
 		unlocked: false,
 		conditions: [
-			{ type: ConditionType.SKILL, key: SkillID.SKILL_SECURITY, operator: Operator.EQUAL, value: true },
+			{
+				type: ConditionType.SKILL,
+				key: SkillID.SKILL_SECURITY,
+				operator: Operator.EQUAL,
+				value: true,
+			},
 		],
 	},
 	{
@@ -451,8 +627,18 @@ export const achievements: Achievement[] = [
 		secret: false,
 		unlocked: false,
 		conditions: [
-			{ type: ConditionType.STAT, key: StatID.VISION, operator: Operator.GTE, value: 80 }, // Coding > 80 (mapped to Vision?)
-			{ type: ConditionType.STAT, key: StatID.HUMANITY, operator: Operator.GTE, value: 70 }, // Communication > 70 (mapped to Humanity?)
+			{
+				type: ConditionType.STAT,
+				key: StatID.VISION,
+				operator: Operator.GTE,
+				value: 80,
+			}, // Coding > 80 (mapped to Vision?)
+			{
+				type: ConditionType.STAT,
+				key: StatID.HUMANITY,
+				operator: Operator.GTE,
+				value: 70,
+			}, // Communication > 70 (mapped to Humanity?)
 		],
 	},
 	{
@@ -466,7 +652,58 @@ export const achievements: Achievement[] = [
 		secret: false,
 		unlocked: false,
 		conditions: [
-			{ type: ConditionType.FLAG, key: FlagID.IS_POLITICIAN, operator: Operator.EQUAL, value: true },
+			{
+				type: ConditionType.FLAG,
+				key: FlagID.IS_POLITICIAN,
+				operator: Operator.EQUAL,
+				value: true,
+			},
+		],
+	},
+	{
+		id: AchievementID.ACH_PERFECT_CHILD,
+		name: 'Perfect Child',
+		nameVi: 'Con Nhà Người Ta',
+		nameEn: 'Perfect Child',
+		description:
+			'Hoàn thành tất cả tâm nguyện của gia đình (Trả nợ, Mua nhà, Mua xe, Lo cho em).',
+		descriptionVi:
+			'Hoàn thành tất cả tâm nguyện của gia đình (Trả nợ, Mua nhà, Mua xe, Lo cho em).',
+		descriptionEn:
+			'Fulfill all family wishes (Pay debt, Buy house, Buy cars, Support sibling).',
+		secret: true,
+		unlocked: false,
+		conditions: [
+			{
+				type: ConditionType.FLAG,
+				key: FlagID.FAMILY_DEBT_PAID,
+				operator: Operator.EQUAL,
+				value: true,
+			},
+			{
+				type: ConditionType.FLAG,
+				key: FlagID.FAMILY_VILLA_BOUGHT,
+				operator: Operator.EQUAL,
+				value: true,
+			},
+			{
+				type: ConditionType.FLAG,
+				key: FlagID.FAMILY_DAD_CAR,
+				operator: Operator.EQUAL,
+				value: true,
+			},
+			{
+				type: ConditionType.FLAG,
+				key: FlagID.FAMILY_MOM_CAR,
+				operator: Operator.EQUAL,
+				value: true,
+			},
+			{
+				type: ConditionType.FLAG,
+				key: FlagID.FAMILY_SIBLING_UNI,
+				operator: Operator.EQUAL,
+				value: true,
+			},
 		],
 	},
 ];

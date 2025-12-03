@@ -432,33 +432,39 @@ export default function GameScreen() {
 					<StatsBar stats={stats} />
 				</div>
 
-				{/* Sleep Button */}
-				<div className='absolute top-4 left-4 z-30 flex gap-2'>
+				{/* Sleep Button & Controls */}
+				<div className='absolute top-4 left-4 z-30 flex flex-wrap gap-2 max-w-[calc(100%-280px)]'>
 					<button
 						onClick={handleExit}
-						className='px-4 py-2 bg-gray-800/80 border-2 border-gray-600 text-white pixel-font hover:bg-gray-700 transition-colors rounded shadow-lg flex items-center gap-2'
+						className='px-3 py-2 md:px-4 md:py-2 bg-gray-800/80 border-2 border-gray-600 text-white pixel-font hover:bg-gray-700 transition-colors rounded shadow-lg flex items-center gap-2 text-sm md:text-base'
 					>
 						<span>🏠</span>
-						<span>{settings.language === 'vi' ? 'Menu' : 'Menu'}</span>
+						<span className='hidden sm:inline'>
+							{settings.language === 'vi' ? 'Menu' : 'Menu'}
+						</span>
 					</button>
 					<button
 						onClick={handleSleepClick}
 						disabled={isReflection || currentDialogueId === 'SLEEP_FLOW'}
-						className={`px-4 py-2 border-2 text-white pixel-font transition-colors rounded shadow-lg flex items-center gap-2 ${
+						className={`px-3 py-2 md:px-4 md:py-2 border-2 text-white pixel-font transition-colors rounded shadow-lg flex items-center gap-2 text-sm md:text-base ${
 							isReflection || currentDialogueId === 'SLEEP_FLOW'
 								? 'bg-gray-700 border-gray-500 opacity-50 cursor-not-allowed'
 								: 'bg-indigo-900/80 border-indigo-400 hover:bg-indigo-800'
 						}`}
 					>
 						<span>🌙</span>
-						<span>{settings.language === 'vi' ? 'Đi Ngủ' : 'Sleep'}</span>
+						<span className='hidden sm:inline'>
+							{settings.language === 'vi' ? 'Đi Ngủ' : 'Sleep'}
+						</span>
 					</button>
 					<button
 						onClick={() => setShowSkillModal(true)}
-						className='px-4 py-2 bg-emerald-900/80 border-2 border-emerald-400 text-white pixel-font hover:bg-emerald-800 transition-colors rounded shadow-lg flex items-center gap-2'
+						className='px-3 py-2 md:px-4 md:py-2 bg-emerald-900/80 border-2 border-emerald-400 text-white pixel-font hover:bg-emerald-800 transition-colors rounded shadow-lg flex items-center gap-2 text-sm md:text-base'
 					>
 						<span>⚡</span>
-						<span>{settings.language === 'vi' ? 'Kỹ Năng' : 'Skills'}</span>
+						<span className='hidden sm:inline'>
+							{settings.language === 'vi' ? 'Kỹ Năng' : 'Skills'}
+						</span>
 					</button>
 
 					{/* Dev: Skip/Prev Chapter */}

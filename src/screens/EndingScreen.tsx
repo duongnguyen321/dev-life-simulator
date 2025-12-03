@@ -7,14 +7,11 @@ import { audioManager } from '@/core/AudioManager';
 
 export default function EndingScreen() {
 	const navigate = useNavigate();
-	const {
-		stats,
-		achievements: unlockedAchievements,
-		settings,
-	} = useGameStore();
+	const gameState = useGameStore();
+	const { stats, achievements: unlockedAchievements, settings } = gameState;
 
 	const ending = EndingSystem.calculateEnding(stats);
-	const analysis = EndingSystem.analyzeEnding(stats);
+	const analysis = EndingSystem.analyzeEnding(gameState);
 	const lifeScore = EndingSystem.calculateLifeScore(stats);
 	const isVi = settings.language === 'vi';
 
@@ -120,12 +117,13 @@ export default function EndingScreen() {
 							</div>
 
 							{/* Analysis Section */}
-							<div className='bg-gray-900/80 p-6 rounded-xl border border-gray-700 shadow-lg'>
+							<div className='bg-gray-900/80 p-6 rounded-xl border border-gray-700 shadow-lg space-y-6'>
 								<h2 className='text-xl font-pixel text-game-accent mb-6 border-b border-gray-700 pb-2'>
 									Game Analysis
 								</h2>
 
-								<div className='space-y-6'>
+								{/* Archetype & Future */}
+								<div className='space-y-4'>
 									<div>
 										<div className='text-gray-500 text-xs uppercase tracking-wider mb-1'>
 											{isVi ? 'Kiểu người (Archetype)' : 'Archetype'}
@@ -143,43 +141,112 @@ export default function EndingScreen() {
 											{isVi ? analysis.futureVi : analysis.futureEn}
 										</div>
 									</div>
+								</div>
 
-									<div>
-										<div className='text-gray-500 text-xs uppercase tracking-wider mb-1'>
-											{isVi ? 'Lời khuyên (Advice)' : 'Advice'}
-										</div>
-										<div className='text-gray-300 italic text-sm border-l-2 border-game-accent pl-3 py-1 bg-gray-800/30 rounded-r'>
-											"{isVi ? analysis.adviceVi : analysis.adviceEn}"
-										</div>
+								{/* Skill Analysis */}
+								<div className='pt-4 border-t border-gray-700'>
+									<div className='text-gray-500 text-xs uppercase tracking-wider mb-2'>
+										{isVi ? 'Chuyên môn (Expertise)' : 'Expertise'}
 									</div>
-
-									{(isVi ? analysis.commentsVi : analysis.commentsEn).length >
-										0 && (
-										<div className='pt-4 border-t border-gray-700'>
-											<div className='text-gray-500 text-xs uppercase mb-2'>
-												{isVi ? 'Chi tiết (Details)' : 'Details'}
+									<div className='flex items-center justify-between mb-2'>
+										<span className='text-game-accent font-pixel text-sm'>
+											{analysis.skillAnalysis.specialistType}
+										</span>
+										<span className='text-xs text-gray-400 uppercase'>
+											{analysis.skillAnalysis.dominantBranch}
+										</span>
+									</div>
+									<div className='space-y-1'>
+										{analysis.skillAnalysis.topSkills.map((skill, idx) => (
+											<div
+												key={idx}
+												className='text-xs text-gray-300 bg-gray-800 px-2 py-1 rounded'
+											>
+												{skill}
 											</div>
-											<ul className='space-y-2'>
-												{(isVi ? analysis.commentsVi : analysis.commentsEn).map(
-													(comment, idx) => (
-														<li
-															key={idx}
-															className='text-yellow-400 text-xs flex items-start bg-yellow-400/5 p-2 rounded border border-yellow-400/20'
-														>
-															<span className='mr-2'>•</span>
-															{comment}
-														</li>
-													)
-												)}
-											</ul>
-										</div>
-									)}
+										))}
+									</div>
+								</div>
+
+								{/* Playstyle */}
+								<div className='pt-4 border-t border-gray-700'>
+									<div className='text-gray-500 text-xs uppercase tracking-wider mb-1'>
+										{isVi ? 'Phong cách chơi (Playstyle)' : 'Playstyle'}
+									</div>
+									<div className='text-white font-medium mb-1'>
+										{isVi
+											? analysis.playstyle.titleVi
+											: analysis.playstyle.titleEn}
+									</div>
+									<div className='text-gray-400 text-xs italic'>
+										{isVi
+											? analysis.playstyle.descriptionVi
+											: analysis.playstyle.descriptionEn}
+									</div>
+								</div>
+
+								{/* Advice */}
+								<div className='pt-4 border-t border-gray-700'>
+									<div className='text-gray-500 text-xs uppercase tracking-wider mb-1'>
+										{isVi ? 'Lời khuyên (Advice)' : 'Advice'}
+									</div>
+									<div className='text-gray-300 italic text-sm border-l-2 border-game-accent pl-3 py-1 bg-gray-800/30 rounded-r'>
+										"{isVi ? analysis.adviceVi : analysis.adviceEn}"
+									</div>
 								</div>
 							</div>
 						</div>
 
-						{/* Right Column: Achievements (7 cols) */}
+						{/* Right Column: Achievements & Highlights (7 cols) */}
 						<div className='lg:col-span-7 space-y-6'>
+							{/* Key Moments / Highlights */}
+							{(isVi ? analysis.keyMomentsVi : analysis.keyMomentsEn).length >
+								0 && (
+								<div className='bg-gray-900/50 p-6 rounded-xl border border-gray-700 backdrop-blur-sm'>
+									<h2 className='text-xl font-pixel text-white mb-4'>
+										{isVi ? 'Dấu ấn đáng nhớ' : 'Key Moments'}
+									</h2>
+									<div className='grid grid-cols-1 sm:grid-cols-2 gap-3'>
+										{(isVi ? analysis.keyMomentsVi : analysis.keyMomentsEn).map(
+											(moment, idx) => (
+												<div
+													key={idx}
+													className='flex items-center p-3 bg-gray-800/50 rounded-lg border border-gray-700'
+												>
+													<span className='text-sm text-gray-200'>
+														{moment}
+													</span>
+												</div>
+											)
+										)}
+									</div>
+								</div>
+							)}
+
+							{/* Detailed Comments */}
+							{(isVi ? analysis.commentsVi : analysis.commentsEn).length >
+								0 && (
+								<div className='bg-gray-900/50 p-6 rounded-xl border border-gray-700 backdrop-blur-sm'>
+									<h2 className='text-xl font-pixel text-white mb-4'>
+										{isVi ? 'Chi tiết' : 'Details'}
+									</h2>
+									<ul className='space-y-2'>
+										{(isVi ? analysis.commentsVi : analysis.commentsEn).map(
+											(comment, idx) => (
+												<li
+													key={idx}
+													className='text-yellow-400 text-sm flex items-start bg-yellow-400/5 p-3 rounded border border-yellow-400/20'
+												>
+													<span className='mr-2'>•</span>
+													{comment}
+												</li>
+											)
+										)}
+									</ul>
+								</div>
+							)}
+
+							{/* Achievements */}
 							<div className='bg-gray-900/50 p-6 rounded-xl border border-gray-700 backdrop-blur-sm'>
 								<h2 className='text-xl font-pixel text-white mb-6 flex items-center justify-between'>
 									<span>Achievements</span>

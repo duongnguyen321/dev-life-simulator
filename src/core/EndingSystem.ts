@@ -3,7 +3,9 @@
 // Calculates and displays game endings
 // ==========================================
 
-import type { Stats } from '@/data/types';
+import type { GameState, Stats } from '@/data/types';
+import { skills as allSkills } from '@/data/skills';
+import { FlagID } from '@/data/enum';
 
 export interface EndingResult {
 	type: string;
@@ -16,6 +18,20 @@ export interface EndingResult {
 	image?: string;
 }
 
+export interface SkillAnalysis {
+	topSkills: string[]; // Names of top 3 skills
+	dominantBranch: 'coding' | 'soft' | 'life' | 'balanced';
+	specialistType: 'Specialist' | 'Generalist';
+	totalLevels: number;
+}
+
+export interface PlaystyleAnalysis {
+	titleVi: string;
+	titleEn: string;
+	descriptionVi: string;
+	descriptionEn: string;
+}
+
 export interface EndingAnalysis {
 	personalityVi: string;
 	personalityEn: string;
@@ -25,6 +41,10 @@ export interface EndingAnalysis {
 	adviceEn: string;
 	commentsVi: string[];
 	commentsEn: string[];
+	skillAnalysis: SkillAnalysis;
+	playstyle: PlaystyleAnalysis;
+	keyMomentsVi: string[];
+	keyMomentsEn: string[];
 }
 
 export class EndingSystem {
@@ -34,7 +54,7 @@ export class EndingSystem {
 		// 1. BAD ENDINGS (Priority)
 
 		// Bankruptcy
-		if (money < 0) {
+		if (money < 100) {
 			return {
 				type: 'bankruptcy-ending',
 				title: 'Bankrupt',
@@ -50,7 +70,7 @@ export class EndingSystem {
 		}
 
 		// Burnout / Health Failure
-		if (health <= 0 || stress >= 100) {
+		if (health <= 10 || stress >= 80) {
 			return {
 				type: 'burnout-ending',
 				title: 'Burnout',
@@ -83,7 +103,89 @@ export class EndingSystem {
 			};
 		}
 
-		// Philanthropist: High Money + High Humanity
+		// Tragic Benefactor: High Money + High Humanity + Low Health
+		if (money > 10000000000 && humanity > 80 && health < 20) {
+			return {
+				type: 'tragic-benefactor-ending',
+				title: 'The Tragic Benefactor',
+				titleVi: 'Mạnh Thường Quân Bạc Mệnh',
+				titleEn: 'The Tragic Benefactor',
+				description:
+					'Bạn đã dành cả đời để kiếm tiền và giúp đỡ người khác, nhưng lại quên chăm sóc chính mình. Bạn ra đi khi còn quá trẻ, để lại niềm tiếc thương vô hạn.',
+				descriptionVi:
+					'Bạn đã dành cả đời để kiếm tiền và giúp đỡ người khác, nhưng lại quên chăm sóc chính mình. Bạn ra đi khi còn quá trẻ, để lại niềm tiếc thương vô hạn cho cộng đồng.',
+				descriptionEn:
+					'You spent your life making money and helping others, but forgot to take care of yourself. You passed away too young, leaving behind infinite grief.',
+			};
+		}
+
+		// 2. SPECIAL ENDINGS (New Granular Types)
+
+		// The Startup Founder: High Money (>5B) + High Vision (>80) + High Stress (>60)
+		if (money > 5000000000 && vision > 80 && stress > 60) {
+			return {
+				type: 'startup-founder-ending',
+				title: 'The Startup Founder',
+				titleVi: 'Nhà Sáng Lập',
+				titleEn: 'The Startup Founder',
+				description:
+					'Bạn đã xây dựng đế chế của riêng mình. Thành công rực rỡ, nhưng áp lực cũng không hề nhỏ.',
+				descriptionVi:
+					'Bạn đã xây dựng đế chế của riêng mình. Thành công rực rỡ, nhưng áp lực cũng không hề nhỏ. Bạn là nguồn cảm hứng cho giới trẻ khởi nghiệp.',
+				descriptionEn:
+					'You built your own empire. Brilliant success, but immense pressure. You are an inspiration for young entrepreneurs.',
+			};
+		}
+
+		// The Academic/Researcher: High Steel Mind (>90) + Money < 1B
+		if (steelMind > 90 && money < 1000000000) {
+			return {
+				type: 'academic-ending',
+				title: 'The Researcher',
+				titleVi: 'Nhà Nghiên Cứu',
+				titleEn: 'The Researcher',
+				description:
+					'Bạn không quan tâm đến tiền bạc. Niềm vui của bạn là khám phá những chân trời tri thức mới.',
+				descriptionVi:
+					'Bạn không quan tâm đến tiền bạc. Niềm vui của bạn là khám phá những chân trời tri thức mới. Những công trình của bạn đặt nền móng cho tương lai.',
+				descriptionEn:
+					'You care little for money. Your joy is exploring new horizons of knowledge. Your works lay the foundation for the future.',
+			};
+		}
+
+		// The Tech Lead: Balanced High Skills (Steel Mind > 70, Humanity > 60) + Moderate Money
+		if (steelMind > 70 && humanity > 60 && money > 500000000) {
+			return {
+				type: 'tech-lead-ending',
+				title: 'The Tech Lead',
+				titleVi: 'Trưởng Nhóm Kỹ Thuật',
+				titleEn: 'The Tech Lead',
+				description:
+					'Bạn là trụ cột của team. Vừa giỏi kỹ thuật, vừa khéo léo trong quản lý con người.',
+				descriptionVi:
+					'Bạn là trụ cột của team. Vừa giỏi kỹ thuật, vừa khéo léo trong quản lý con người. Bạn được đồng nghiệp tin tưởng và sếp trọng dụng.',
+				descriptionEn:
+					'You are the pillar of the team. Skilled in tech and adept at people management. Trusted by colleagues and valued by bosses.',
+			};
+		}
+
+		// The Freelancer: Low Stress (<40) + Moderate Money
+		if (stress < 40 && money > 200000000) {
+			return {
+				type: 'freelancer-ending',
+				title: 'The Digital Nomad',
+				titleVi: 'Du Mục Kỹ Thuật Số',
+				titleEn: 'The Digital Nomad',
+				description:
+					'Bạn chọn tự do thay vì danh vọng. Làm việc ở bất cứ đâu, sống cuộc đời mình muốn.',
+				descriptionVi:
+					'Bạn chọn tự do thay vì danh vọng. Làm việc ở bất cứ đâu, sống cuộc đời mình muốn. Sáng cà phê Đà Lạt, chiều ngắm hoàng hôn Phú Quốc.',
+				descriptionEn:
+					'You chose freedom over fame. Work from anywhere, live the life you want. Morning coffee in Da Lat, evening sunset in Phu Quoc.',
+			};
+		}
+
+		// Philanthropist: High Money + High Humanity (Moved down priority)
 		if (money > 10000000000 && humanity > 80) {
 			return {
 				type: 'philanthropist-ending',
@@ -116,6 +218,22 @@ export class EndingSystem {
 		}
 
 		// 3. NORMAL ENDINGS
+
+		// Legend Ending: All stats > 90
+		if (steelMind >= 90 && humanity >= 90 && vision >= 90) {
+			return {
+				type: 'legend-ending',
+				title: 'The Legend',
+				titleVi: 'Huyền Thoại',
+				titleEn: 'The Legend',
+				description:
+					'Bạn là một huyền thoại sống. Cân bằng hoàn hảo, tài năng xuất chúng, và nhân cách cao đẹp.',
+				descriptionVi:
+					'Bạn là một huyền thoại sống. Cân bằng hoàn hảo, tài năng xuất chúng, và nhân cách cao đẹp. Tên tuổi của bạn sẽ được nhắc đến mãi về sau.',
+				descriptionEn:
+					'You are a living legend. Perfectly balanced, exceptionally talented, and of noble character. Your name will be remembered forever.',
+			};
+		}
 
 		// True Ending: All stats 70-90, balanced
 		if (
@@ -249,12 +367,17 @@ export class EndingSystem {
 		return Math.max(0, Math.round(score));
 	}
 
-	static analyzeEnding(stats: Stats): EndingAnalysis {
+	static analyzeEnding(gameState: GameState): EndingAnalysis {
+		const { stats, skills, playtime, flags, achievements } = gameState;
 		const { steelMind, humanity, vision, money, health, stress } = stats;
 		const commentsVi: string[] = [];
 		const commentsEn: string[] = [];
+		const keyMomentsVi: string[] = [];
+		const keyMomentsEn: string[] = [];
 
-		// 1. Archetype Analysis (More granular than Personality)
+		// ==========================================
+		// 1. ARCHETYPE ANALYSIS
+		// ==========================================
 		let personalityVi = 'Người cân bằng';
 		let personalityEn = 'The Balanced';
 		const maxStat = Math.max(steelMind, humanity, vision);
@@ -282,9 +405,55 @@ export class EndingSystem {
 			personalityEn = 'The Project Manager';
 		}
 
-		// 2. Future Prediction
+		// ==========================================
+		// 2. FUTURE PREDICTION & CAREER RANK
+		// ==========================================
 		let futureVi = 'Một tương lai ổn định, không quá nhiều biến động.';
 		let futureEn = 'A stable future, without too many fluctuations.';
+
+		// Career Rank Analysis
+		let rankVi = 'Thực Tập Sinh';
+		let rankEn = 'Intern';
+		const totalStats = steelMind + humanity + vision;
+		if (totalStats > 250) {
+			rankVi = 'Ông Trùm Công Nghệ';
+			rankEn = 'Tech Mogul';
+		} else if (totalStats > 200) {
+			rankVi = 'Giám Đốc Kỹ Thuật (CTO)';
+			rankEn = 'CTO';
+		} else if (totalStats > 150) {
+			rankVi = 'Kỹ Sư Cao Cấp (Principal)';
+			rankEn = 'Principal Engineer';
+		} else if (totalStats > 100) {
+			rankVi = 'Kỹ Sư Chính (Senior)';
+			rankEn = 'Senior Engineer';
+		} else {
+			rankVi = 'Kỹ Sư (Junior)';
+			rankEn = 'Junior Engineer';
+		}
+
+		commentsVi.push(`🏆 Cấp bậc sự nghiệp: ${rankVi}`);
+		commentsEn.push(`🏆 Career Rank: ${rankEn}`);
+
+		// Wealth Tier Analysis
+		let wealthVi = 'Đủ ăn đủ mặc';
+		let wealthEn = 'Survival Mode';
+		if (money > 100000000000) {
+			wealthVi = 'Tài Phiệt';
+			wealthEn = 'Tycoon';
+		} else if (money > 10000000000) {
+			wealthVi = 'Triệu Phú Tự Thân';
+			wealthEn = 'Self-made Millionaire';
+		} else if (money > 1000000000) {
+			wealthVi = 'Tự Do Tài Chính';
+			wealthEn = 'Financially Free';
+		} else if (money > 100000000) {
+			wealthVi = 'Sung Túc';
+			wealthEn = 'Comfortable';
+		}
+
+		commentsVi.push(`💰 Tình trạng tài chính: ${wealthVi}`);
+		commentsEn.push(`💰 Financial Status: ${wealthEn}`);
 
 		if (money > 10000000000) {
 			futureVi =
@@ -314,7 +483,9 @@ export class EndingSystem {
 			futureEn += " You will solve some of humanity's toughest problems.";
 		}
 
-		// 3. Advice
+		// ==========================================
+		// 3. ADVICE
+		// ==========================================
 		let adviceVi = 'Hãy tiếp tục phát huy thế mạnh của mình.';
 		let adviceEn = 'Continue to leverage your strengths.';
 		const minStat = Math.min(steelMind, humanity, vision);
@@ -336,7 +507,9 @@ export class EndingSystem {
 				"Don't just look at the present. Look up and see further into the next 5-10 years.";
 		}
 
-		// 4. Specific Comments (Detailed Feedback)
+		// ==========================================
+		// 4. SPECIFIC COMMENTS (Granular)
+		// ==========================================
 		if (stress > 80) {
 			commentsVi.push(
 				'⚠️ Báo động đỏ: Bạn đang đánh đổi sức khỏe tâm thần lấy thành công. Hãy dừng lại trước khi quá muộn.'
@@ -402,6 +575,161 @@ export class EndingSystem {
 			);
 		}
 
+		// New Granular Comments
+		if (steelMind > 80 && humanity < 40) {
+			commentsVi.push(
+				'🤖 Code Monkey: Bạn code rất giỏi, nhưng giao tiếp là một thảm họa.'
+			);
+			commentsEn.push(
+				'🤖 Code Monkey: You code well, but your communication is a disaster.'
+			);
+		}
+
+		if (humanity > 80 && steelMind < 40) {
+			commentsVi.push(
+				'🗣️ Thánh Chém Gió: Bạn nói rất hay, nhưng kỹ thuật thì... ba chấm.'
+			);
+			commentsEn.push(
+				'🗣️ Smooth Talker: You talk a big game, but your tech skills are... lacking.'
+			);
+		}
+
+		if (money > 5000000000 && flags[FlagID.FAMILY_DEBT_PAID]) {
+			commentsVi.push(
+				'🏠 Trụ cột gia đình: Bạn đã lo lắng chu toàn cho cả gia đình lớn.'
+			);
+			commentsEn.push(
+				'🏠 Family Pillar: You have taken excellent care of your extended family.'
+			);
+		}
+
+		// ==========================================
+		// 5. SKILL ANALYSIS
+		// ==========================================
+		const skillAnalysis: SkillAnalysis = {
+			topSkills: [],
+			dominantBranch: 'balanced',
+			specialistType: 'Generalist',
+			totalLevels: 0,
+		};
+
+		const branchLevels = { coding: 0, soft: 0, life: 0 };
+		const learnedSkills = Object.entries(skills)
+			.map(([id, level]) => {
+				const skillDef = allSkills.find((s) => s.id === id);
+				if (skillDef) {
+					branchLevels[skillDef.branch] += level;
+					skillAnalysis.totalLevels += level;
+					return { ...skillDef, level };
+				}
+				return null;
+			})
+			.filter((s) => s !== null && s.level > 0)
+			.sort((a, b) => b!.level - a!.level);
+
+		// Top 3 skills
+		skillAnalysis.topSkills = learnedSkills
+			.slice(0, 3)
+			.map((s) => (stats.money > 0 ? s!.nameEn : s!.nameVi)); // Use EN name if not bankrupt? Logic check: just use EN for now or pass lang
+
+		// Dominant Branch
+		const maxBranchLevel = Math.max(
+			branchLevels.coding,
+			branchLevels.soft,
+			branchLevels.life
+		);
+		if (maxBranchLevel === 0) {
+			skillAnalysis.dominantBranch = 'balanced';
+		} else if (branchLevels.coding === maxBranchLevel) {
+			skillAnalysis.dominantBranch = 'coding';
+		} else if (branchLevels.soft === maxBranchLevel) {
+			skillAnalysis.dominantBranch = 'soft';
+		} else {
+			skillAnalysis.dominantBranch = 'life';
+		}
+
+		// Specialist Type
+		const total = skillAnalysis.totalLevels;
+		if (total > 0) {
+			if (maxBranchLevel / total > 0.6) {
+				skillAnalysis.specialistType = 'Specialist';
+			} else {
+				skillAnalysis.specialistType = 'Generalist';
+			}
+		}
+
+		// ==========================================
+		// 6. PLAYSTYLE ANALYSIS
+		// ==========================================
+		const playstyle: PlaystyleAnalysis = {
+			titleVi: 'Người chơi bình thường',
+			titleEn: 'Casual Player',
+			descriptionVi: 'Bạn chơi game với tốc độ vừa phải, tận hưởng cốt truyện.',
+			descriptionEn: 'You play at a moderate pace, enjoying the story.',
+		};
+
+		const hoursPlayed = playtime / 3600;
+		const achievementCount = achievements.length;
+
+		if (hoursPlayed < 1 && achievementCount < 5) {
+			playstyle.titleVi = 'Speedrunner';
+			playstyle.titleEn = 'Speedrunner';
+			playstyle.descriptionVi =
+				'Bạn lướt qua cuộc đời như một cơn gió. Nhanh, gọn, lẹ.';
+			playstyle.descriptionEn =
+				'You breeze through life like the wind. Fast and efficient.';
+		} else if (achievementCount > 20) {
+			playstyle.titleVi = 'Nhà Sưu Tầm';
+			playstyle.titleEn = 'The Collector';
+			playstyle.descriptionVi =
+				'Bạn muốn trải nghiệm tất cả mọi thứ game có thể mang lại.';
+			playstyle.descriptionEn =
+				'You want to experience everything the game has to offer.';
+		} else if (hoursPlayed > 5) {
+			playstyle.titleVi = 'Người Suy Ngẫm';
+			playstyle.titleEn = 'The Thinker';
+			playstyle.descriptionVi =
+				'Bạn dành nhiều thời gian để suy nghĩ về từng lựa chọn.';
+			playstyle.descriptionEn =
+				'You spend a lot of time thinking about each choice.';
+		}
+
+		// ==========================================
+		// 7. KEY MOMENTS (FLAGS)
+		// ==========================================
+		if (flags[FlagID.COFFEE_CONSUMED]) {
+			const count = flags[FlagID.COFFEE_CONSUMED] as number;
+			if (count > 50) {
+				keyMomentsVi.push(`☕ Đã uống ${count} ly cà phê (Nghiện nặng)`);
+				keyMomentsEn.push(`☕ Drank ${count} cups of coffee (Addicted)`);
+			} else if (count > 10) {
+				keyMomentsVi.push(`☕ Đã uống ${count} ly cà phê`);
+				keyMomentsEn.push(`☕ Drank ${count} cups of coffee`);
+			}
+		}
+
+		if (flags[FlagID.BOOKS_READ]) {
+			const count = flags[FlagID.BOOKS_READ] as number;
+			keyMomentsVi.push(`📚 Đã đọc ${count} cuốn sách chuyên ngành`);
+			keyMomentsEn.push(`📚 Read ${count} tech books`);
+		}
+
+		if (flags[FlagID.GAMES_BEATEN]) {
+			const count = flags[FlagID.GAMES_BEATEN] as number;
+			keyMomentsVi.push(`🎮 Đã phá đảo ${count} tựa game AAA`);
+			keyMomentsEn.push(`🎮 Beat ${count} AAA games`);
+		}
+
+		if (flags[FlagID.KNOWS_INSTRUMENT]) {
+			keyMomentsVi.push('🎸 Đã học chơi đàn Guitar');
+			keyMomentsEn.push('🎸 Learned to play Guitar');
+		}
+
+		if (flags[FlagID.CARS_OWNED]) {
+			keyMomentsVi.push('🏎️ Đã sở hữu siêu xe');
+			keyMomentsEn.push('🏎️ Owned a luxury car');
+		}
+
 		return {
 			personalityVi,
 			personalityEn,
@@ -411,6 +739,10 @@ export class EndingSystem {
 			adviceEn,
 			commentsVi,
 			commentsEn,
+			skillAnalysis,
+			playstyle,
+			keyMomentsVi,
+			keyMomentsEn,
 		};
 	}
 }
