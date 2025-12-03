@@ -17,10 +17,14 @@ export interface EndingResult {
 }
 
 export interface EndingAnalysis {
-	personality: string;
-	future: string;
-	advice: string;
-	comments: string[];
+	personalityVi: string;
+	personalityEn: string;
+	futureVi: string;
+	futureEn: string;
+	adviceVi: string;
+	adviceEn: string;
+	commentsVi: string[];
+	commentsEn: string[];
 }
 
 export class EndingSystem {
@@ -61,7 +65,57 @@ export class EndingSystem {
 			};
 		}
 
-		// 2. NORMAL ENDINGS
+		// 2. SPECIAL ENDINGS
+
+		// Legend Ending: All stats > 90
+		if (steelMind >= 90 && humanity >= 90 && vision >= 90) {
+			return {
+				type: 'legend-ending',
+				title: 'The Legend',
+				titleVi: 'Huyền Thoại',
+				titleEn: 'The Legend',
+				description:
+					'Bạn là một huyền thoại sống. Cân bằng hoàn hảo, tài năng xuất chúng, và nhân cách cao đẹp.',
+				descriptionVi:
+					'Bạn là một huyền thoại sống. Cân bằng hoàn hảo, tài năng xuất chúng, và nhân cách cao đẹp. Tên tuổi của bạn sẽ được nhắc đến mãi về sau.',
+				descriptionEn:
+					'You are a living legend. Perfectly balanced, exceptionally talented, and of noble character. Your name will be remembered forever.',
+			};
+		}
+
+		// Philanthropist: High Money + High Humanity
+		if (money > 10000000000 && humanity > 80) {
+			return {
+				type: 'philanthropist-ending',
+				title: 'The Philanthropist',
+				titleVi: 'Nhà Từ Thiện',
+				titleEn: 'The Philanthropist',
+				description:
+					'Bạn dùng sự giàu có của mình để thay đổi thế giới. Bạn không chỉ là một doanh nhân, bạn là một ân nhân.',
+				descriptionVi:
+					'Bạn dùng sự giàu có của mình để thay đổi thế giới. Bạn không chỉ là một doanh nhân, bạn là một ân nhân của cộng đồng.',
+				descriptionEn:
+					'You use your wealth to change the world. You are not just an entrepreneur, you are a benefactor.',
+			};
+		}
+
+		// Workaholic: High Money + High Stress + Low Health
+		if (money > 5000000000 && stress > 80 && health < 50) {
+			return {
+				type: 'workaholic-ending',
+				title: 'The Workaholic',
+				titleVi: 'Kẻ Nghiện Việc',
+				titleEn: 'The Workaholic',
+				description:
+					'Bạn rất giàu, nhưng cái giá phải trả là quá đắt. Bạn có tiền, nhưng không có thời gian để tiêu nó.',
+				descriptionVi:
+					'Bạn rất giàu, nhưng cái giá phải trả là quá đắt. Bạn có tiền, nhưng không có thời gian để tiêu nó. Bạn sống để làm việc, chứ không phải làm việc để sống.',
+				descriptionEn:
+					'You are very rich, but the price was too high. You have money, but no time to spend it. You live to work, not work to live.',
+			};
+		}
+
+		// 3. NORMAL ENDINGS
 
 		// True Ending: All stats 70-90, balanced
 		if (
@@ -134,6 +188,29 @@ export class EndingSystem {
 			};
 		}
 
+		// Average Joe: Stats 40-60
+		if (
+			steelMind >= 40 &&
+			steelMind <= 60 &&
+			humanity >= 40 &&
+			humanity <= 60 &&
+			vision >= 40 &&
+			vision <= 60
+		) {
+			return {
+				type: 'average-joe-ending',
+				title: 'The Average Joe',
+				titleVi: 'Người Bình Thường',
+				titleEn: 'The Average Joe',
+				description:
+					'Bạn có một sự nghiệp bình thường, không quá nổi bật nhưng cũng không thất bại. Một cuộc sống an toàn.',
+				descriptionVi:
+					'Bạn có một sự nghiệp bình thường, không quá nổi bật nhưng cũng không thất bại. Một cuộc sống an toàn, êm đềm và ít sóng gió.',
+				descriptionEn:
+					'You have a normal career, not too outstanding but not a failure either. A safe and quiet life.',
+			};
+		}
+
 		// Normal Ending: Default
 		return {
 			type: 'normal-ending',
@@ -149,105 +226,191 @@ export class EndingSystem {
 		};
 	}
 
+	static calculateLifeScore(stats: Stats): number {
+		const { steelMind, humanity, vision, money, health, stress } = stats;
+
+		let score = 0;
+
+		// Base stats (max 300)
+		score += steelMind + humanity + vision;
+
+		// Health bonus (max 100)
+		score += health;
+
+		// Stress penalty (max -100)
+		score -= stress;
+
+		// Money bonus (logarithmic scale)
+		if (money > 0) {
+			score += Math.min(100, Math.log10(money) * 10);
+		}
+
+		// Cap at 1000 for display purposes, but can go higher theoretically
+		return Math.max(0, Math.round(score));
+	}
+
 	static analyzeEnding(stats: Stats): EndingAnalysis {
 		const { steelMind, humanity, vision, money, health, stress } = stats;
-		const comments: string[] = [];
+		const commentsVi: string[] = [];
+		const commentsEn: string[] = [];
 
-		// 1. Personality Analysis
-		let personality = 'Người cân bằng';
+		// 1. Archetype Analysis (More granular than Personality)
+		let personalityVi = 'Người cân bằng';
+		let personalityEn = 'The Balanced';
 		const maxStat = Math.max(steelMind, humanity, vision);
 
-		if (
-			maxStat === steelMind &&
-			steelMind > humanity + 10 &&
-			steelMind > vision + 10
-		) {
-			personality = 'Người duy lý (The Logician)';
-		} else if (
-			maxStat === humanity &&
-			humanity > steelMind + 10 &&
-			humanity > vision + 10
-		) {
-			personality = 'Người tình cảm (The Empath)';
-		} else if (
-			maxStat === vision &&
-			vision > steelMind + 10 &&
-			vision > humanity + 10
-		) {
-			personality = 'Người nhìn xa (The Visionary)';
-		} else if (steelMind < 30 && humanity < 30 && vision < 30) {
-			personality = 'Người lạc lối (The Lost Soul)';
+		if (steelMind >= 80 && humanity >= 80 && vision >= 80) {
+			personalityVi = 'Nhà Lãnh Đạo Toàn Diện';
+			personalityEn = 'The Holistic Leader';
+		} else if (steelMind > humanity + 20 && steelMind > vision + 20) {
+			personalityVi = 'Cỗ Máy Logic';
+			personalityEn = 'The Logic Engine';
+		} else if (humanity > steelMind + 20 && humanity > vision + 20) {
+			personalityVi = 'Người Kết Nối';
+			personalityEn = 'The Connector';
+		} else if (vision > steelMind + 20 && vision > humanity + 20) {
+			personalityVi = 'Nhà Tiên Tri Công Nghệ';
+			personalityEn = 'The Tech Prophet';
+		} else if (steelMind > 60 && vision > 60 && humanity < 40) {
+			personalityVi = 'Kiến Trúc Sư Hệ Thống';
+			personalityEn = 'The System Architect';
+		} else if (humanity > 60 && vision > 60 && steelMind < 40) {
+			personalityVi = 'Người Truyền Cảm Hứng';
+			personalityEn = 'The Inspirer';
+		} else if (steelMind > 60 && humanity > 60 && vision < 40) {
+			personalityVi = 'Quản Lý Dự Án';
+			personalityEn = 'The Project Manager';
 		}
 
 		// 2. Future Prediction
-		let future = 'Một tương lai ổn định, không quá nhiều biến động.';
+		let futureVi = 'Một tương lai ổn định, không quá nhiều biến động.';
+		let futureEn = 'A stable future, without too many fluctuations.';
+
 		if (money > 10000000000) {
-			// 10B
-			future =
-				'Bạn sẽ sống sung túc cả đời, nhưng hãy cẩn thận với những kẻ đào mỏ.';
+			futureVi =
+				'Bạn sẽ trở thành một "cá mập" trong giới đầu tư, dùng tiền đẻ ra tiền.';
+			futureEn =
+				'You will become a "shark" in the investment world, making money work for you.';
+		} else if (money > 1000000000) {
+			futureVi = 'Bạn sống sung túc, có thể nghỉ hưu sớm nếu muốn.';
+			futureEn = 'You live comfortably and can retire early if you want.';
 		} else if (money < 100000000) {
-			// 100M
-			future =
-				'Tài chính sẽ là gánh nặng lớn. Bạn cần học cách quản lý tiền bạc tốt hơn.';
+			futureVi =
+				'Tài chính sẽ là gánh nặng lớn. Bạn có thể phải làm thêm nghề tay trái.';
+			futureEn = 'Finance will be a heavy burden. You might need a side job.';
 		}
 
 		if (vision > 80) {
-			future += ' Bạn có thể sẽ khởi nghiệp thêm nhiều lần nữa.';
+			futureVi += ' Tên tuổi của bạn sẽ gắn liền với những sản phẩm đột phá.';
+			futureEn += ' Your name will be associated with breakthrough products.';
 		} else if (humanity > 80) {
-			future += ' Bạn sẽ được bao quanh bởi những người bạn trung thành.';
+			futureVi +=
+				' Bạn sẽ được bao quanh bởi những người bạn trung thành và gia đình hạnh phúc.';
+			futureEn +=
+				' You will be surrounded by loyal friends and a happy family.';
+		} else if (steelMind > 80) {
+			futureVi +=
+				' Bạn sẽ giải quyết được những bài toán hóc búa nhất của nhân loại.';
+			futureEn += " You will solve some of humanity's toughest problems.";
 		}
 
 		// 3. Advice
-		let advice = 'Hãy tiếp tục phát huy thế mạnh của mình.';
+		let adviceVi = 'Hãy tiếp tục phát huy thế mạnh của mình.';
+		let adviceEn = 'Continue to leverage your strengths.';
 		const minStat = Math.min(steelMind, humanity, vision);
 
 		if (minStat === steelMind) {
-			advice =
-				'Đừng để cảm xúc chi phối quá nhiều. Hãy học cách suy nghĩ logic hơn.';
+			adviceVi =
+				'Đừng để cảm xúc chi phối quá nhiều. Hãy rèn luyện tư duy phản biện và logic.';
+			adviceEn =
+				"Don't let emotions rule you. Practice critical thinking and logic.";
 		} else if (minStat === humanity) {
-			advice =
-				'Thành công không có nghĩa lý gì nếu bạn cô đơn. Hãy mở lòng hơn.';
+			adviceVi =
+				'Thành công không có nghĩa lý gì nếu bạn cô đơn. Hãy dành thời gian cho người thân.';
+			adviceEn =
+				'Success means nothing if you are lonely. Make time for loved ones.';
 		} else if (minStat === vision) {
-			advice = 'Đừng chỉ nhìn vào hiện tại. Hãy ngẩng đầu lên và nhìn xa hơn.';
+			adviceVi =
+				'Đừng chỉ nhìn vào hiện tại. Hãy ngẩng đầu lên và nhìn xa hơn về 5, 10 năm tới.';
+			adviceEn =
+				"Don't just look at the present. Look up and see further into the next 5-10 years.";
 		}
 
-		// 4. Specific Comments (Edge Cases)
+		// 4. Specific Comments (Detailed Feedback)
 		if (stress > 80) {
-			comments.push(
-				'⚠️ Mức độ Stress báo động: Bạn đã ép bản thân quá mức. Hãy học cách nghỉ ngơi.'
+			commentsVi.push(
+				'⚠️ Báo động đỏ: Bạn đang đánh đổi sức khỏe tâm thần lấy thành công. Hãy dừng lại trước khi quá muộn.'
+			);
+			commentsEn.push(
+				"⚠️ Red Alert: You are trading mental health for success. Stop before it's too late."
+			);
+		} else if (stress < 30) {
+			commentsVi.push(
+				'🧘 Tâm bất biến: Bạn giữ được cái đầu lạnh đáng nể giữa dòng đời vạn biến.'
+			);
+			commentsEn.push(
+				"🧘 Zen Master: You keep an incredibly cool head amidst life's chaos."
 			);
 		}
+
 		if (health < 30) {
-			comments.push(
-				'⚠️ Sức khỏe yếu: Tiền bạc không mua được sức khỏe. Hãy trân trọng cơ thể mình.'
+			commentsVi.push(
+				'🏥 Sức khỏe yếu: Tiền bạc không mua được sức khỏe. Hãy đi khám tổng quát ngay.'
+			);
+			commentsEn.push(
+				"🏥 Poor Health: Money can't buy health. Go for a checkup immediately."
+			);
+		} else if (health > 80) {
+			commentsVi.push(
+				'💪 Iron Man: Sức khỏe phi thường giúp bạn chinh phục mọi thử thách.'
+			);
+			commentsEn.push(
+				'💪 Iron Man: Extraordinary health helps you conquer every challenge.'
 			);
 		}
+
 		if (money < 0) {
-			comments.push('💸 Nợ nần: Bạn cần một kế hoạch trả nợ nghiêm túc.');
+			commentsVi.push(
+				'💸 Vỡ nợ: Bạn cần một kế hoạch tài chính cực kỳ nghiêm ngặt để vực dậy.'
+			);
+			commentsEn.push(
+				'💸 Bankrupt: You need an extremely strict financial plan to recover.'
+			);
 		} else if (money > 50000000000) {
-			comments.push(
-				'💰 Phú quý: Bạn nằm trong top 1% giàu có. Đừng quên làm từ thiện.'
+			commentsVi.push(
+				'👑 Vua Midas: Chạm tay vào đâu cũng ra vàng. Đừng quên chia sẻ may mắn đó.'
+			);
+			commentsEn.push(
+				"👑 King Midas: Everything you touch turns to gold. Don't forget to share that luck."
 			);
 		}
 
 		const statGap = maxStat - minStat;
 		if (statGap > 50) {
-			comments.push(
-				'⚖️ Mất cân bằng: Cuộc sống của bạn đang bị lệch quá nhiều về một phía.'
+			commentsVi.push(
+				'⚖️ Mất cân bằng nghiêm trọng: Bạn đang phát triển lệch lạc. Hãy cẩn thận với điểm mù của mình.'
 			);
-		}
-
-		if (steelMind < 20 || humanity < 20 || vision < 20) {
-			comments.push(
-				'📉 Điểm yếu chí mạng: Một trong các chỉ số của bạn quá thấp, kìm hãm sự phát triển.'
+			commentsEn.push(
+				'⚖️ Serious Imbalance: You are developing unevenly. Beware of your blind spots.'
+			);
+		} else if (statGap < 10) {
+			commentsVi.push(
+				'✨ Sự cân bằng hoàn hảo: Bạn là mẫu người toàn diện hiếm có.'
+			);
+			commentsEn.push(
+				'✨ Perfect Balance: You are a rare, well-rounded individual.'
 			);
 		}
 
 		return {
-			personality,
-			future,
-			advice,
-			comments,
+			personalityVi,
+			personalityEn,
+			futureVi,
+			futureEn,
+			adviceVi,
+			adviceEn,
+			commentsVi,
+			commentsEn,
 		};
 	}
 }

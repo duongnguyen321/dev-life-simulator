@@ -7,10 +7,16 @@ import { audioManager } from '@/core/AudioManager';
 
 export default function EndingScreen() {
 	const navigate = useNavigate();
-	const { stats, achievements: unlockedAchievements } = useGameStore();
+	const {
+		stats,
+		achievements: unlockedAchievements,
+		settings,
+	} = useGameStore();
 
 	const ending = EndingSystem.calculateEnding(stats);
 	const analysis = EndingSystem.analyzeEnding(stats);
+	const lifeScore = EndingSystem.calculateLifeScore(stats);
+	const isVi = settings.language === 'vi';
 
 	useEffect(() => {
 		// Play ending music
@@ -18,20 +24,33 @@ export default function EndingScreen() {
 	}, []);
 
 	return (
-		<div className='min-h-screen w-full bg-gradient-to-b from-game-bg-primary to-game-bg-secondary overflow-y-auto'>
+		<div className='h-screen w-full bg-gradient-to-b from-game-bg-primary to-game-bg-secondary overflow-y-auto'>
 			<div className='container mx-auto px-4 py-12'>
 				<div className='max-w-6xl mx-auto space-y-12'>
 					{/* Header Section */}
 					<div className='text-center space-y-6 animate-fade-in'>
 						<div className='text-game-accent text-xl font-pixel tracking-widest'>
-							{ending.type.toUpperCase()} ENDING
+							{ending.type.toUpperCase().replace(/-/g, ' ')}
 						</div>
 						<h1 className='text-4xl md:text-6xl font-pixel text-white'>
-							{ending.titleVi}
+							{isVi ? ending.titleVi : ending.titleEn}
 						</h1>
 						<p className='text-lg md:text-xl text-gray-300 leading-relaxed max-w-3xl mx-auto'>
-							{ending.descriptionVi}
+							{isVi ? ending.descriptionVi : ending.descriptionEn}
 						</p>
+
+						{/* Life Score Display */}
+						<div className='mt-8 inline-block relative group'>
+							<div className='absolute -inset-1 bg-gradient-to-r from-yellow-400 to-purple-600 rounded-lg blur opacity-25 group-hover:opacity-75 transition duration-1000 group-hover:duration-200'></div>
+							<div className='relative px-8 py-4 bg-gray-900 ring-1 ring-gray-800 rounded-lg leading-none flex items-center'>
+								<span className='text-gray-400 font-pixel mr-4'>
+									Life Score:
+								</span>
+								<span className='text-4xl font-pixel text-transparent bg-clip-text bg-gradient-to-r from-yellow-400 to-purple-500'>
+									{lifeScore}
+								</span>
+							</div>
+						</div>
 					</div>
 
 					{/* Main Content Grid */}
@@ -69,6 +88,35 @@ export default function EndingScreen() {
 										</div>
 									</div>
 								</div>
+								<div className='mt-4 grid grid-cols-3 gap-4 border-t border-gray-800 pt-4'>
+									<div className='text-center'>
+										<div className='text-green-500 text-xs uppercase mb-1'>
+											Health
+										</div>
+										<div className='text-xl font-pixel text-white'>
+											{stats.health}
+										</div>
+									</div>
+									<div className='text-center'>
+										<div className='text-red-500 text-xs uppercase mb-1'>
+											Stress
+										</div>
+										<div className='text-xl font-pixel text-white'>
+											{stats.stress}
+										</div>
+									</div>
+									<div className='text-center'>
+										<div className='text-yellow-500 text-xs uppercase mb-1'>
+											Money
+										</div>
+										<div
+											className='text-sm font-pixel text-white truncate'
+											title={stats.money.toLocaleString()}
+										>
+											${(stats.money / 1000000).toFixed(1)}M
+										</div>
+									</div>
+								</div>
 							</div>
 
 							{/* Analysis Section */}
@@ -80,46 +128,49 @@ export default function EndingScreen() {
 								<div className='space-y-6'>
 									<div>
 										<div className='text-gray-500 text-xs uppercase tracking-wider mb-1'>
-											Tính cách (Personality)
+											{isVi ? 'Kiểu người (Archetype)' : 'Archetype'}
 										</div>
 										<div className='text-white text-lg font-medium text-game-highlight'>
-											{analysis.personality}
+											{isVi ? analysis.personalityVi : analysis.personalityEn}
 										</div>
 									</div>
 
 									<div>
 										<div className='text-gray-500 text-xs uppercase tracking-wider mb-1'>
-											Tương lai (Future)
+											{isVi ? 'Tương lai (Future)' : 'Future'}
 										</div>
 										<div className='text-gray-300 text-sm leading-relaxed'>
-											{analysis.future}
+											{isVi ? analysis.futureVi : analysis.futureEn}
 										</div>
 									</div>
 
 									<div>
 										<div className='text-gray-500 text-xs uppercase tracking-wider mb-1'>
-											Lời khuyên (Advice)
+											{isVi ? 'Lời khuyên (Advice)' : 'Advice'}
 										</div>
 										<div className='text-gray-300 italic text-sm border-l-2 border-game-accent pl-3 py-1 bg-gray-800/30 rounded-r'>
-											"{analysis.advice}"
+											"{isVi ? analysis.adviceVi : analysis.adviceEn}"
 										</div>
 									</div>
 
-									{analysis.comments.length > 0 && (
+									{(isVi ? analysis.commentsVi : analysis.commentsEn).length >
+										0 && (
 										<div className='pt-4 border-t border-gray-700'>
 											<div className='text-gray-500 text-xs uppercase mb-2'>
-												Ghi chú (Notes)
+												{isVi ? 'Chi tiết (Details)' : 'Details'}
 											</div>
 											<ul className='space-y-2'>
-												{analysis.comments.map((comment, idx) => (
-													<li
-														key={idx}
-														className='text-yellow-400 text-xs flex items-start bg-yellow-400/5 p-2 rounded border border-yellow-400/20'
-													>
-														<span className='mr-2'>•</span>
-														{comment}
-													</li>
-												))}
+												{(isVi ? analysis.commentsVi : analysis.commentsEn).map(
+													(comment, idx) => (
+														<li
+															key={idx}
+															className='text-yellow-400 text-xs flex items-start bg-yellow-400/5 p-2 rounded border border-yellow-400/20'
+														>
+															<span className='mr-2'>•</span>
+															{comment}
+														</li>
+													)
+												)}
 											</ul>
 										</div>
 									)}
@@ -154,12 +205,16 @@ export default function EndingScreen() {
 													className={`font-pixel text-xs mb-1 truncate ${
 														isUnlocked ? 'text-game-accent' : 'text-gray-500'
 													}`}
-													title={ach.nameVi}
+													title={isVi ? ach.nameVi : ach.nameEn}
 												>
-													{ach.nameVi}
+													{isVi ? ach.nameVi : ach.nameEn}
 												</div>
 												<div className='text-[10px] text-gray-400 line-clamp-2 leading-tight'>
-													{isUnlocked ? ach.descriptionVi : '???'}
+													{isUnlocked
+														? isVi
+															? ach.descriptionVi
+															: ach.descriptionEn
+														: '???'}
 												</div>
 											</div>
 										);
@@ -171,8 +226,15 @@ export default function EndingScreen() {
 
 					{/* Footer Section */}
 					<div className='text-center space-y-8 animate-fade-in delay-200 pt-8 border-t border-gray-800'>
-						<div className='text-gray-500 italic font-medium'>
-							"Cuộc đời là Open Source. Refactor nó và để lại Di sản."
+						<div className='space-y-2'>
+							<div className='text-gray-500 italic font-medium'>
+								"Cuộc đời là Open Source. Refactor nó và để lại Di sản."
+							</div>
+							<div className='text-gray-600 text-xs uppercase tracking-widest opacity-70'>
+								{isVi
+									? 'Game dựa trên câu chuyện có thật 100% không cắt gọt chỉnh sửa'
+									: 'Based on a 100% true story, uncut and unedited'}
+							</div>
 						</div>
 
 						<div className='flex flex-col sm:flex-row gap-4 justify-center'>

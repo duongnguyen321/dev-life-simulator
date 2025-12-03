@@ -3,6 +3,7 @@ import { useGameStore } from '@/store/gameStore';
 import { skills } from '@/data/skills';
 import { shopItems } from '@/data/items';
 import type { Skill, ShopItem } from '@/data/types';
+import { StatID } from '@/data/enum';
 
 interface SkillModalProps {
 	isOpen: boolean;
@@ -17,6 +18,7 @@ export default function SkillModal({ isOpen, onClose }: SkillModalProps) {
 		buyItem,
 		inventory,
 		settings,
+		updateStat,
 	} = useGameStore();
 	const [activeTab, setActiveTab] = useState<
 		'coding' | 'soft' | 'life' | 'shop'
@@ -25,13 +27,14 @@ export default function SkillModal({ isOpen, onClose }: SkillModalProps) {
 	if (!isOpen) return null;
 
 	const filteredSkills = skills.filter((s) => s.branch === activeTab);
+	const isDev = import.meta.env.DEV;
 
 	const handleUpgrade = (skill: Skill) => {
 		const currentLevel = skillLevels[skill.id] || 0;
 		const maxLevel = skill.maxLevel || 10;
 		if (currentLevel >= maxLevel) return;
 
-		const cost = skill.baseCost * Math.pow(2, currentLevel);
+		const cost = isDev ? 0 : skill.baseCost * Math.pow(2, currentLevel);
 		if (stats.money < cost) return;
 
 		// Check requirements
@@ -108,8 +111,9 @@ export default function SkillModal({ isOpen, onClose }: SkillModalProps) {
 
 				{/* Content */}
 				<div className='flex-1 overflow-y-auto p-6 grid grid-cols-1 md:grid-cols-2 gap-4'>
-					{activeTab === 'shop'
-						? shopItems.map((item) => {
+					{activeTab === 'shop' ? (
+						<>
+							{shopItems.map((item) => {
 								const ownedCount = inventory.filter(
 									(i) => i === item.id
 								).length;
@@ -180,95 +184,129 @@ export default function SkillModal({ isOpen, onClose }: SkillModalProps) {
 										</div>
 									</div>
 								);
-						  })
-						: filteredSkills.map((skill) => {
-								const currentLevel = skillLevels[skill.id] || 0;
-								const maxLevel = skill.maxLevel || 10;
-								const isMaxed = currentLevel >= maxLevel;
-								const cost = skill.baseCost * Math.pow(2, currentLevel);
-								const canAfford = stats.money >= cost;
+							})}
 
-								const requirementsMet = skill.requiredSkills
-									? skill.requiredSkills.every(
-											(reqId) => (skillLevels[reqId] || 0) > 0
-									  )
-									: true;
-
-								return (
-									<div
-										key={skill.id}
-										className={`p-4 rounded border-2 flex flex-col justify-between ${
-											currentLevel > 0
-												? 'bg-game-bg-secondary border-game-highlight'
-												: requirementsMet
-												? 'bg-gray-800 border-gray-600'
-												: 'bg-gray-900 border-gray-800 opacity-50'
-										}`}
-									>
-										<div>
-											<div className='flex justify-between items-start mb-2'>
-												<h3
-													className={`font-pixel text-lg ${
-														currentLevel > 0
-															? 'text-game-highlight'
-															: 'text-white'
-													}`}
-												>
-													{settings.language === 'vi'
-														? skill.nameVi
-														: skill.nameEn}
-												</h3>
-												<span className='text-xs bg-gray-700 text-white px-2 py-1 rounded font-bold'>
-													Lvl {currentLevel}/{maxLevel}
-												</span>
-											</div>
-											<p className='text-sm text-gray-400 mb-4'>
-												{settings.language === 'vi'
-													? skill.descriptionVi
-													: skill.descriptionEn}
-											</p>
-
-											{/* Effects */}
-											{skill.effects && (
-												<div className='flex flex-wrap gap-2 mb-4'>
-													{skill.effects.map((effect, idx) => (
-														<span
-															key={idx}
-															className={`text-xs px-2 py-1 rounded ${
-																effect.value > 0
-																	? 'bg-green-900/50 text-green-400'
-																	: 'bg-red-900/50 text-red-400'
-															}`}
-														>
-															{effect.stat.toUpperCase()}:{' '}
-															{effect.value > 0 ? '+' : ''}
-															{effect.value}
-														</span>
-													))}
-												</div>
-											)}
+							{/* Dev Only: Lùa Gà Button */}
+							{isDev && (
+								<div className='p-4 rounded border-2 flex flex-col justify-between bg-purple-900/20 border-purple-500'>
+									<div>
+										<div className='flex justify-between items-start mb-2'>
+											<h3 className='font-pixel text-lg text-purple-400'>
+												Lùa Gà (Dev Only)
+											</h3>
 										</div>
-
-										<div className='mt-auto'>
-											<button
-												onClick={() => handleUpgrade(skill)}
-												disabled={isMaxed || !canAfford || !requirementsMet}
-												className={`w-full py-2 rounded font-pixel transition-all ${
-													!isMaxed && canAfford && requirementsMet
-														? 'bg-game-accent text-white hover:bg-opacity-80'
-														: 'bg-gray-700 text-gray-500 cursor-not-allowed'
-												}`}
-											>
-												{!requirementsMet
-													? 'LOCKED'
-													: isMaxed
-													? 'MAX LEVEL'
-													: `UPGRADE (${formatMoney(cost)})`}
-											</button>
+										<p className='text-sm text-gray-400 mb-4'>
+											Bán khóa học làm giàu không khó.
+										</p>
+										<div className='flex flex-wrap gap-2 mb-4'>
+											<span className='text-xs px-2 py-1 rounded bg-green-900/50 text-green-400'>
+												MONEY: +1,000,000,000
+											</span>
 										</div>
 									</div>
-								);
-						  })}
+									<div className='mt-auto'>
+										<button
+											onClick={() => updateStat(StatID.MONEY, 1000000000)}
+											className='w-full py-2 rounded font-pixel transition-all bg-purple-600 text-white hover:bg-purple-500'
+										>
+											LÙA GÀ
+										</button>
+									</div>
+								</div>
+							)}
+						</>
+					) : (
+						filteredSkills.map((skill) => {
+							const currentLevel = skillLevels[skill.id] || 0;
+							const maxLevel = skill.maxLevel || 10;
+							const isMaxed = currentLevel >= maxLevel;
+							const cost = isDev
+								? 0
+								: skill.baseCost * Math.pow(2, currentLevel);
+							const canAfford = stats.money >= cost;
+
+							const requirementsMet = skill.requiredSkills
+								? skill.requiredSkills.every(
+										(reqId) => (skillLevels[reqId] || 0) > 0
+								  )
+								: true;
+
+							return (
+								<div
+									key={skill.id}
+									className={`p-4 rounded border-2 flex flex-col justify-between ${
+										currentLevel > 0
+											? 'bg-game-bg-secondary border-game-highlight'
+											: requirementsMet
+											? 'bg-gray-800 border-gray-600'
+											: 'bg-gray-900 border-gray-800 opacity-50'
+									}`}
+								>
+									<div>
+										<div className='flex justify-between items-start mb-2'>
+											<h3
+												className={`font-pixel text-lg ${
+													currentLevel > 0
+														? 'text-game-highlight'
+														: 'text-white'
+												}`}
+											>
+												{settings.language === 'vi'
+													? skill.nameVi
+													: skill.nameEn}
+											</h3>
+											<span className='text-xs bg-gray-700 text-white px-2 py-1 rounded font-bold'>
+												Lvl {currentLevel}/{maxLevel}
+											</span>
+										</div>
+										<p className='text-sm text-gray-400 mb-4'>
+											{settings.language === 'vi'
+												? skill.descriptionVi
+												: skill.descriptionEn}
+										</p>
+
+										{/* Effects */}
+										{skill.effects && (
+											<div className='flex flex-wrap gap-2 mb-4'>
+												{skill.effects.map((effect, idx) => (
+													<span
+														key={idx}
+														className={`text-xs px-2 py-1 rounded ${
+															effect.value > 0
+																? 'bg-green-900/50 text-green-400'
+																: 'bg-red-900/50 text-red-400'
+														}`}
+													>
+														{effect.stat.toUpperCase()}:{' '}
+														{effect.value > 0 ? '+' : ''}
+														{effect.value}
+													</span>
+												))}
+											</div>
+										)}
+									</div>
+
+									<div className='mt-auto'>
+										<button
+											onClick={() => handleUpgrade(skill)}
+											disabled={isMaxed || !canAfford || !requirementsMet}
+											className={`w-full py-2 rounded font-pixel transition-all ${
+												!isMaxed && canAfford && requirementsMet
+													? 'bg-yellow-600 text-white hover:bg-opacity-80'
+													: 'bg-gray-700 text-gray-500 cursor-not-allowed'
+											}`}
+										>
+											{!requirementsMet
+												? 'LOCKED'
+												: isMaxed
+												? 'MAX LEVEL'
+												: `UPGRADE (${formatMoney(cost)})`}
+										</button>
+									</div>
+								</div>
+							);
+						})
+					)}
 				</div>
 			</div>
 		</div>

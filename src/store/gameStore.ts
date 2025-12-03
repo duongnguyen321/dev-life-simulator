@@ -251,7 +251,10 @@ export const useGameStore = create<GameStore>()(
 				if (currentLevel >= maxLevel) return;
 
 				// Calculate cost: Base * 2^Level
-				const cost = skill.baseCost * Math.pow(2, currentLevel);
+				// Free in Dev
+				const cost = import.meta.env.DEV
+					? 0
+					: skill.baseCost * Math.pow(2, currentLevel);
 
 				if (stats.money < cost) return;
 
@@ -279,8 +282,11 @@ export const useGameStore = create<GameStore>()(
 				const item = shopItems.find((i: any) => i.id === id);
 				if (!item) return;
 
+				// Free in Dev
+				const cost = import.meta.env.DEV ? 0 : item.cost;
+
 				// Check Money
-				if (stats.money < item.cost) return;
+				if (stats.money < cost) return;
 
 				// Check Max Own
 				if (item.maxOwn) {
@@ -289,7 +295,7 @@ export const useGameStore = create<GameStore>()(
 				}
 
 				// Deduct Money
-				get().updateStat(StatID.MONEY, -item.cost);
+				get().updateStat(StatID.MONEY, -cost);
 
 				// Apply Effects
 				if (item.effects) {

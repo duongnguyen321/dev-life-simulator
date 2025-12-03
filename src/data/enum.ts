@@ -507,6 +507,10 @@ export enum ItemID {
 	ITEM_GYM_SESSION = 'item_gym_session',
 	ITEM_GUITAR = 'item_guitar',
 	ITEM_LUXURY_CAR = 'item_luxury_car',
+	ITEM_MEDITATION = 'item_meditation',
+	ITEM_PHILOSOPHY_BOOK = 'item_philosophy_book',
+	ITEM_CHARITY = 'item_charity',
+	ITEM_VOLUNTEER = 'item_volunteer',
 }
 
 export enum SkillID {

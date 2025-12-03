@@ -9,10 +9,13 @@ import LoadGameModal from '@/components/UI/LoadGameModal';
 
 export default function MainMenu() {
 	const navigate = useNavigate();
+	const { settings } = useGameStore();
 	const [_saves, setSaves] = useState<Array<any | null>>([]);
 	const [hasAutoSave, setHasAutoSave] = useState(false);
 	const [showSettings, setShowSettings] = useState(false);
 	const [showLoadGame, setShowLoadGame] = useState(false);
+
+	const isVi = settings.language === 'vi';
 
 	useEffect(() => {
 		// Load save info
@@ -81,17 +84,22 @@ export default function MainMenu() {
 				<MenuButton onClick={() => setShowLoadGame(true)}>Load Game</MenuButton>
 
 				<MenuButton onClick={() => setShowSettings(true)}>Settings</MenuButton>
-
-				<MenuButton onClick={() => {}}>Credits</MenuButton>
 			</motion.div>
 
 			<motion.div
 				initial={{ opacity: 0 }}
 				animate={{ opacity: 1 }}
 				transition={{ delay: 1, duration: 0.5 }}
-				className='absolute bottom-8 text-text-primary opacity-50 text-sm'
+				className='absolute bottom-8 text-center space-y-2'
 			>
-				Version 1.0.0 - Made with ❤️ and Code
+				<div className='text-text-primary opacity-50 text-sm'>
+					Version 1.0.0 - Made with ❤️ and Code
+				</div>
+				<div className='text-text-primary opacity-40 text-xs uppercase tracking-widest'>
+					{isVi
+						? 'Game dựa trên câu chuyện có thật 100% không cắt gọt chỉnh sửa'
+						: 'Based on a 100% true story, uncut and unedited'}
+				</div>
 			</motion.div>
 
 			{/* Modals */}

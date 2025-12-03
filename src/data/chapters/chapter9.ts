@@ -603,10 +603,6 @@ export const chapter9Dialogues: Record<Chapter9DialogueID, DialogueNode> = {
 			'Bạn nhận ra mình cô độc hoàn toàn. Vợ con đã bỏ đi (hoặc không bao giờ có). Bạn bè xa lánh. Bạn chết già trong căn biệt thự rộng lớn lạnh lẽo.',
 		textEn:
 			'You realize you are completely alone. Wife and kids left (or never existed). Friends estranged. You die of old age in a cold, vast mansion.',
-		effects: [
-			{ stat: StatID.HUMANITY, value: -100 },
-			{ stat: StatID.STRESS, value: 100 },
-		],
 		next: Chapter9DialogueID.CH9_TEACHING_START, // Trigger Soulless Tycoon likely
 	},
 	[Chapter9DialogueID.CH9_BILLIONAIRE_HANDS]: {
