@@ -4,7 +4,8 @@
 // Theme: Sóng gió, Hy vọng giả tạo và Sự kiên định
 // ==========================================
 
-import type { Chapter, DialogueNode } from '../types';
+import { Chapter3DialogueID, Chapter3SceneID, Chapter3TodoID, Chapter4DialogueID, ConditionType, StatID } from '../enum';
+import { type Chapter, type DialogueNode } from '../types';
 
 export const chapter3: Chapter = {
 	id: 3,
@@ -17,60 +18,60 @@ export const chapter3: Chapter = {
 	themeEn: 'Turbulence, False Hope, and Persistence',
 	scenes: [
 		{
-			id: 'ch3_dorm',
+			id: Chapter3SceneID.CH3_DORM,
 			name: 'Khu tập thể cũ',
 			nameVi: 'Lớp 10: Khu tập thể & Miu',
 			nameEn: 'Grade 10: Old Dorm & Miu',
 			background: '/assets/sprites/backgrounds/dorm_old.png',
 			music: '/assets/audio/music/chapters/ch3_struggle.mp3',
-			dialogueStart: 'ch3_dorm_1',
+			dialogueStart: Chapter3DialogueID.CH3_DORM_1,
 		},
 		{
-			id: 'ch3_debt',
+			id: Chapter3SceneID.CH3_DEBT,
 			name: 'Chủ nợ',
 			nameVi: 'Biến cố chủ nợ',
 			nameEn: 'Debt Collectors',
 			background: '/assets/sprites/backgrounds/dorm_night.png',
 			music: '/assets/audio/music/chapters/ch3_struggle.mp3',
-			dialogueStart: 'ch3_debt_1',
+			dialogueStart: Chapter3DialogueID.CH3_DEBT_1,
 		},
 		{
-			id: 'ch3_hope',
+			id: Chapter3SceneID.CH3_HOPE,
 			name: 'Hy vọng lóe lên',
 			nameVi: 'Lớp 11: Hy vọng lóe lên (VinFast LuxSA)',
 			nameEn: 'Grade 11: Flashing Hope (VinFast LuxSA)',
 			background: '/assets/sprites/backgrounds/bedroom_pc.png',
 			music: '/assets/audio/music/chapters/ch3_hope.mp3',
-			dialogueStart: 'ch3_intro', // Changed from ch3_hope_1
+			dialogueStart: Chapter3DialogueID.CH3_INTRO, // Changed from ch3_hope_1
 		},
 		{
-			id: 'ch3_hack',
+			id: Chapter3SceneID.CH3_HACK,
 			name: 'Công ty Ma',
 			nameVi: 'Tầm nhìn của Bố (The Legacy Code)',
 			nameEn: "Father's Vision (The Legacy Code)",
 			background: '/assets/sprites/backgrounds/dorm_room.png',
 			music: '/assets/audio/music/chapters/ch3_struggle.mp3',
-			dialogueStart: 'ch3_legacy_1', // Assuming it uses the same dialogue start as the original 'ch3_legacy'
+			dialogueStart: Chapter3DialogueID.CH3_LEGACY_1, // Assuming it uses the same dialogue start as the original 'ch3_legacy'
 		},
 		{
-			id: 'ch3_covid',
+			id: Chapter3SceneID.CH3_COVID,
 			name: 'Đại dịch COVID',
 			nameVi: 'Lớp 11-12: Đại dịch COVID',
 			nameEn: 'Grade 11-12: COVID Pandemic',
 			background: '/assets/sprites/backgrounds/home_covid.png',
 			music: '/assets/audio/music/chapters/ch3_struggle.mp3',
-			dialogueStart: 'ch3_covid_1',
+			dialogueStart: Chapter3DialogueID.CH3_COVID_1,
 		},
 	],
 	nightlyEvents: {
 		todoList: [
 			{
-				id: 'ch3_todo_code_night',
+				id: Chapter3TodoID.CH3_TODO_CODE_NIGHT,
 				text: 'Cày code thâu đêm',
 				textVi: 'Cày code thâu đêm',
 				textEn: 'Code all night',
-				effects: [{ stat: 'vision', value: 1 }],
-				cost: { health: 2 }, // Increased Health cost
+				effects: [{ stat: StatID.VISION, value: 5 }],
+				cost: { health: 5, stress: 5 },
 			},
 
 			{
@@ -78,30 +79,33 @@ export const chapter3: Chapter = {
 				text: 'Trốn học đi net',
 				textVi: 'Trốn học đi net',
 				textEn: 'Skip school for internet cafe',
-				effects: [{ stat: 'vision', value: -1 }],
-				reward: { stress: -1 },
+				effects: [
+					{ stat: StatID.VISION, value: -5 },
+					{ stat: StatID.MONEY, value: -50000 },
+				],
+				reward: { stress: -10 },
 			},
 			{
 				id: 'ch3_todo_learn_english',
 				text: 'Học tiếng Anh online',
 				textVi: 'Học tiếng Anh online',
 				textEn: 'Learn English online',
-				effects: [{ stat: 'vision', value: 1 }],
+				effects: [{ stat: StatID.VISION, value: 5 }],
 			},
 			{
 				id: 'ch3_todo_care_miu',
 				text: 'Chăm sóc Miu',
 				textVi: 'Chăm sóc Miu',
 				textEn: 'Take care of Miu',
-				effects: [{ stat: 'humanity', value: 1 }],
+				effects: [{ stat: StatID.HUMANITY, value: 5 }],
 			},
 			{
 				id: 'ch3_todo_hide_debt',
 				text: 'Trốn trong phòng khi chủ nợ đến',
 				textVi: 'Trốn trong phòng khi chủ nợ đến',
 				textEn: 'Hide in room from debt collectors',
-				effects: [{ stat: 'steelMind', value: 1 }],
-				cost: { stress: 1 },
+				effects: [{ stat: StatID.STEELMIND, value: 5 }],
+				cost: { stress: 10 },
 			},
 
 			{
@@ -109,59 +113,59 @@ export const chapter3: Chapter = {
 				text: 'Đọc blog công nghệ',
 				textVi: 'Đọc blog công nghệ',
 				textEn: 'Read tech blogs',
-				effects: [{ stat: 'vision', value: 1 }],
+				effects: [{ stat: StatID.VISION, value: 3 }],
 			},
 			{
 				id: 'ch3_todo_hack',
 				text: 'Thử hack một trang web dạo',
 				textVi: 'Thử hack một trang web dạo',
 				textEn: 'Try hacking a random site',
-				effects: [{ stat: 'vision', value: 1 }],
-				cost: { stress: 1, humanity: 1 }, // Added Humanity cost
+				effects: [{ stat: StatID.VISION, value: 5 }],
+				cost: { stress: 5, humanity: 2 },
 			},
 			{
 				id: 'ch3_todo_love_letter',
 				text: 'Viết thư tình cho crush',
 				textVi: 'Viết thư tình cho crush',
 				textEn: 'Write love letter to crush',
-				effects: [{ stat: 'humanity', value: 1 }],
-				cost: { stress: 1 },
+				effects: [{ stat: StatID.HUMANITY, value: 5 }],
+				cost: { stress: 5 },
 			},
 			{
 				id: 'ch3_todo_clean_house',
 				text: 'Dọn dẹp nhà cửa giúp mẹ',
 				textVi: 'Dọn dẹp nhà cửa giúp mẹ',
 				textEn: 'Clean house for Mom',
-				effects: [{ stat: 'humanity', value: 1 }],
+				effects: [{ stat: StatID.HUMANITY, value: 5 }],
 			},
 			{
 				id: 'ch3_todo_rap',
-				text: 'Nghe nhạc rap để giải tỏa',
-				textVi: 'Nghe nhạc rap để giải tỏa',
-				textEn: 'Listen to rap to relieve stress',
-				reward: { stress: -1 },
+				text: 'Nghe nhạc Đen Vâu để giải tỏa',
+				textVi: 'Nghe nhạc Đen Vâu để giải tỏa',
+				textEn: 'Listen to Đen Vâu to relieve stress',
+				reward: { stress: -5 },
 			},
 			{
 				id: 'ch3_todo_debug',
 				text: 'Debug code suốt 3 tiếng',
 				textVi: 'Debug code suốt 3 tiếng',
 				textEn: 'Debug code for 3 hours',
-				effects: [{ stat: 'vision', value: 2 }],
-				cost: { stress: 1 },
+				effects: [{ stat: StatID.VISION, value: 8 }],
+				cost: { stress: 5, health: 2 },
 			},
 			{
 				id: 'ch3_todo_dream_uni',
 				text: 'Mơ về cánh cổng đại học',
 				textVi: 'Mơ về cánh cổng đại học',
 				textEn: 'Dream of university gates',
-				effects: [{ stat: 'vision', value: 1 }],
+				effects: [{ stat: StatID.VISION, value: 3 }],
 			},
 			{
 				id: 'ch3_todo_teach_bro',
 				text: 'Dạy em trai học bài',
 				textVi: 'Dạy em trai học bài',
 				textEn: 'Teach younger brother',
-				effects: [{ stat: 'humanity', value: 1 }],
+				effects: [{ stat: StatID.HUMANITY, value: 5 }],
 			},
 
 			{
@@ -169,28 +173,28 @@ export const chapter3: Chapter = {
 				text: 'Cãi nhau với bố mẹ về tiền bạc',
 				textVi: 'Cãi nhau với bố mẹ về tiền bạc',
 				textEn: 'Argue with parents about money',
-				cost: { stress: 1, humanity: 1 },
+				cost: { stress: 10, humanity: 5 },
 			},
 			{
 				id: 'ch3_todo_watch_movie',
 				text: 'Xem phim cùng cả nhà',
 				textVi: 'Xem phim cùng cả nhà',
 				textEn: 'Watch movie with family',
-				reward: { stress: -1 },
+				reward: { stress: -5, humanity: 3 },
 			},
 			{
 				id: 'ch3_todo_typing',
 				text: 'Luyện gõ phím 10 ngón',
 				textVi: 'Luyện gõ phím 10 ngón',
 				textEn: 'Practice touch typing',
-				effects: [{ stat: 'vision', value: 1 }],
+				effects: [{ stat: StatID.VISION, value: 3 }],
 			},
 			{
 				id: 'ch3_todo_sleep_sun',
 				text: 'Ngủ nướng ngày Chủ nhật',
 				textVi: 'Ngủ nướng ngày Chủ nhật',
 				textEn: 'Sleep in on Sunday',
-				reward: { health: 1 },
+				reward: { health: 5, stress: -5 },
 			},
 		],
 		dreamQuestions: [
@@ -206,7 +210,7 @@ export const chapter3: Chapter = {
 						textVi: 'Cố gắng đọc hiểu chúng',
 						textEn: 'Try to read them',
 						next: '',
-						effects: [{ stat: 'vision', value: 1 }],
+						effects: [{ stat: StatID.VISION, value: 1 }],
 					},
 					{
 						id: 'ch3_dream_code_control',
@@ -214,7 +218,7 @@ export const chapter3: Chapter = {
 						textVi: 'Điều khiển chúng',
 						textEn: 'Control them',
 						next: '',
-						effects: [{ stat: 'vision', value: 1 }],
+						effects: [{ stat: StatID.VISION, value: 1 }],
 					},
 					{
 						id: 'ch3_dream_code_run',
@@ -222,7 +226,7 @@ export const chapter3: Chapter = {
 						textVi: 'Sợ hãi bỏ chạy',
 						textEn: 'Run away in fear',
 						next: '',
-						effects: [{ stat: 'stress', value: 1 }],
+						effects: [{ stat: StatID.STRESS, value: 1 }],
 					},
 					{
 						id: 'ch3_dream_code_money',
@@ -230,7 +234,7 @@ export const chapter3: Chapter = {
 						textVi: 'Biến chúng thành tiền',
 						textEn: 'Turn them into money',
 						next: '',
-						effects: [{ stat: 'vision', value: 1 }],
+						effects: [{ stat: StatID.VISION, value: 1 }],
 					},
 				],
 			},
@@ -246,7 +250,7 @@ export const chapter3: Chapter = {
 						textVi: 'Chạy trốn',
 						textEn: 'Run away',
 						next: '',
-						effects: [{ stat: 'stress', value: 1 }],
+						effects: [{ stat: StatID.STRESS, value: 1 }],
 					},
 					{
 						id: 'ch3_dream_debt_face',
@@ -254,7 +258,7 @@ export const chapter3: Chapter = {
 						textVi: 'Đứng lại đối mặt',
 						textEn: 'Stand and face them',
 						next: '',
-						effects: [{ stat: 'steelMind', value: 1 }],
+						effects: [{ stat: StatID.STEELMIND, value: 1 }],
 					},
 					{
 						id: 'ch3_dream_debt_super',
@@ -262,7 +266,7 @@ export const chapter3: Chapter = {
 						textVi: 'Biến thành siêu nhân đánh lại',
 						textEn: 'Turn into superman and fight',
 						next: '',
-						effects: [{ stat: 'vision', value: 1 }],
+						effects: [{ stat: StatID.VISION, value: 1 }],
 					},
 					{
 						id: 'ch3_dream_debt_pay',
@@ -270,7 +274,7 @@ export const chapter3: Chapter = {
 						textVi: 'Trả tiền cho họ',
 						textEn: 'Pay them',
 						next: '',
-						effects: [{ stat: 'stress', value: -1 }],
+						effects: [{ stat: StatID.STRESS, value: -1 }],
 					},
 				],
 			},
@@ -286,7 +290,7 @@ export const chapter3: Chapter = {
 						textVi: 'Trò chuyện với Miu',
 						textEn: 'Talk to Miu',
 						next: '',
-						effects: [{ stat: 'humanity', value: 1 }],
+						effects: [{ stat: StatID.HUMANITY, value: 1 }],
 					},
 					{
 						id: 'ch3_dream_miu_money',
@@ -294,7 +298,7 @@ export const chapter3: Chapter = {
 						textVi: 'Bảo Miu đi kiếm tiền',
 						textEn: 'Tell Miu to earn money',
 						next: '',
-						effects: [{ stat: 'vision', value: 1 }],
+						effects: [{ stat: StatID.VISION, value: 1 }],
 					},
 					{
 						id: 'ch3_dream_miu_fear',
@@ -302,7 +306,7 @@ export const chapter3: Chapter = {
 						textVi: 'Sợ hãi',
 						textEn: 'Be scared',
 						next: '',
-						effects: [{ stat: 'steelMind', value: -1 }],
+						effects: [{ stat: StatID.STEELMIND, value: -1 }],
 					},
 					{
 						id: 'ch3_dream_miu_hug',
@@ -310,7 +314,7 @@ export const chapter3: Chapter = {
 						textVi: 'Ôm Miu ngủ',
 						textEn: 'Hug Miu to sleep',
 						next: '',
-						effects: [{ stat: 'humanity', value: 1 }],
+						effects: [{ stat: StatID.HUMANITY, value: 1 }],
 					},
 				],
 			},
@@ -327,7 +331,7 @@ export const chapter3: Chapter = {
 						textVi: 'Phá hủy chiếc xe',
 						textEn: 'Destroy the car',
 						next: '',
-						effects: [{ stat: 'stress', value: 1 }],
+						effects: [{ stat: StatID.STRESS, value: 1 }],
 					},
 					{
 						id: 'ch3_dream_luxsa_save',
@@ -335,7 +339,7 @@ export const chapter3: Chapter = {
 						textVi: 'Cứu gia đình',
 						textEn: 'Save the family',
 						next: '',
-						effects: [{ stat: 'humanity', value: 1 }],
+						effects: [{ stat: StatID.HUMANITY, value: 1 }],
 					},
 					{
 						id: 'ch3_dream_luxsa_drive',
@@ -343,7 +347,7 @@ export const chapter3: Chapter = {
 						textVi: 'Lái nó đi',
 						textEn: 'Drive it away',
 						next: '',
-						effects: [{ stat: 'steelMind', value: 1 }],
+						effects: [{ stat: StatID.STEELMIND, value: 1 }],
 					},
 					{
 						id: 'ch3_dream_luxsa_sell',
@@ -351,7 +355,7 @@ export const chapter3: Chapter = {
 						textVi: 'Bán nó đi',
 						textEn: 'Sell it',
 						next: '',
-						effects: [{ stat: 'vision', value: 1 }],
+						effects: [{ stat: StatID.VISION, value: 1 }],
 					},
 				],
 			},
@@ -367,7 +371,7 @@ export const chapter3: Chapter = {
 						textVi: 'Leo rào vào',
 						textEn: 'Climb over the fence',
 						next: '',
-						effects: [{ stat: 'steelMind', value: 1 }],
+						effects: [{ stat: StatID.STEELMIND, value: 1 }],
 					},
 					{
 						id: 'ch3_dream_uni_cry',
@@ -375,7 +379,7 @@ export const chapter3: Chapter = {
 						textVi: 'Ngồi khóc',
 						textEn: 'Sit and cry',
 						next: '',
-						effects: [{ stat: 'steelMind', value: -1 }],
+						effects: [{ stat: StatID.STEELMIND, value: -1 }],
 					},
 					{
 						id: 'ch3_dream_uni_path',
@@ -383,7 +387,7 @@ export const chapter3: Chapter = {
 						textVi: 'Tìm đường khác',
 						textEn: 'Find another way',
 						next: '',
-						effects: [{ stat: 'vision', value: 1 }],
+						effects: [{ stat: StatID.VISION, value: 1 }],
 					},
 					{
 						id: 'ch3_dream_uni_break',
@@ -391,41 +395,336 @@ export const chapter3: Chapter = {
 						textVi: 'Phá cổng',
 						textEn: 'Break the gate',
 						next: '',
-						effects: [{ stat: 'steelMind', value: 1 }],
+						effects: [{ stat: StatID.STEELMIND, value: 1 }],
 					},
 				],
 			},
 		],
 	},
+	reflectionQuotes: [
+		{
+			id: 'ch3_reflect_sleep_1',
+			text: 'Học lập trình đến khuya, đầu óc tràn ngập code...',
+			textVi: 'Học lập trình đến khuya, đầu óc tràn ngập code...',
+			textEn: 'Coding until late, head full of code...',
+			type: ConditionType.SLEEP,
+			choices: [
+				{
+					id: 'ch3_reflect_sleep_1_rest',
+					text: 'Ngủ thôi, code mệt rồi',
+					textVi: 'Ngủ thôi, code mệt rồi',
+					textEn: 'Sleep now, tired of coding',
+					next: '',
+				},
+				{
+					id: 'ch3_reflect_sleep_1_break',
+					text: 'Cần nghỉ để tránh bug',
+					textVi: 'Cần nghỉ để tránh bug',
+					textEn: 'Need rest to avoid bugs',
+					next: '',
+				},
+			],
+		},
+		{
+			id: 'ch3_reflect_success_1',
+			text: 'Mỗi dòng code là một bước tiến lên... nhưng sao dài quá.',
+			textVi: 'Mỗi dòng code là một bước tiến lên... nhưng sao dài quá.',
+			textEn: "Each line of code is progress... but it's so long.",
+			type: ConditionType.SUCCESS,
+			choices: [
+				{
+					id: 'ch3_reflect_success_1_continue',
+					text: 'Cố gắng thêm một chút',
+					textVi: 'Cố gắng thêm một chút',
+					textEn: 'Try a bit more',
+					next: '',
+				},
+				{
+					id: 'ch3_reflect_success_1_tomorrow',
+					text: 'Mai tiếp tục, giờ cần ngủ',
+					textVi: 'Mai tiếp tục, giờ cần ngủ',
+					textEn: 'Continue tomorrow, need sleep now',
+					next: '',
+				},
+			],
+		},
+		{
+			id: 'ch3_reflect_sleep_2',
+			text: 'Debug cả ngày vẫn chưa xong... mắt đã mỏi lắm rồi.',
+			textVi: 'Debug cả ngày vẫn chưa xong... mắt đã mỏi lắm rồi.',
+			textEn: 'Debugging all day still not done... eyes are so tired.',
+			type: ConditionType.SLEEP,
+			choices: [
+				{
+					id: 'ch3_reflect_sleep_2_rest',
+					text: ' Nghỉ ngơi thôi',
+					textVi: 'Nghỉ ngơi thôi',
+					textEn: 'Time to rest',
+					next: '',
+				},
+				{
+					id: 'ch3_reflect_sleep_2_long_day',
+					text: 'Hôm nay là một ngày dài',
+					textVi: 'Hôm nay là một ngày dài',
+					textEn: 'Today was a long day',
+					next: '',
+				},
+			],
+		},
+		{
+			id: 'ch3_reflect_success_2',
+			text: 'Developer đầu tiên... con đường này mới chỉ bắt đầu.',
+			textVi: 'Developer đầu tiên... con đường này mới chỉ bắt đầu.',
+			textEn: 'First developer steps... the journey just started.',
+			type: ConditionType.SUCCESS,
+			choices: [
+				{
+					id: 'ch3_reflect_success_2_excited',
+					text: 'Phấn khích với tương lai',
+					textVi: 'Phấn khích với tương lai',
+					textEn: 'Excited for the future',
+					next: '',
+				},
+				{
+					id: 'ch3_reflect_success_2_scared',
+					text: 'Nhưng cũng lo lắng quá',
+					textVi: 'Nhưng cũng lo lắng quá',
+					textEn: 'But also quite worried',
+					next: '',
+				},
+			],
+		},
+		{
+			id: 'ch3_reflect_sleep_3',
+			text: 'Học quá nhiều có thể burnout... cần cân bằng.',
+			textVi: 'Học quá nhiều có thể burnout... cần cân bằng.',
+			textEn: 'Learning too much can burnout... need balance.',
+			type: ConditionType.SLEEP,
+			choices: [
+				{
+					id: 'ch3_reflect_sleep_3_balance',
+					text: 'Cân bằng cuộc sống',
+					textVi: 'Cân bằng cuộc sống',
+					textEn: 'Balance life',
+					next: '',
+				},
+				{
+					id: 'ch3_reflect_sleep_3_sleep',
+					text: 'Đi ngủ để khôi phục',
+					textVi: 'Đi ngủ để khôi phục',
+					textEn: 'Sleep to recover',
+					next: '',
+				},
+			],
+		},
+	],
 };
 
-export const chapter3Dialogues: Record<string, DialogueNode> = {
+export const chapter3Dialogues: Record<Chapter3DialogueID, DialogueNode> = {
 	// NEW: Intro
-	ch3_intro: {
-		id: 'ch3_intro',
+	[Chapter3DialogueID.CH3_INTRO]: {
 		speaker: 'narrator',
 		text: 'Tiếng bàn phím lạch cạch thay thế tiếng ve sầu. Những dòng code chạy dài trên màn hình đen. Bạn tìm thấy sự bình yên trong logic của máy tính.',
 		textVi:
 			'Tiếng bàn phím lạch cạch thay thế tiếng ve sầu. Những dòng code chạy dài trên màn hình đen. Bạn tìm thấy sự bình yên trong logic của máy tính.',
 		textEn:
 			'Clacking keyboard replaced cicadas. Lines of code running on black screen. You found peace in computer logic.',
-		next: 'ch3_dorm_1',
+		next: Chapter3DialogueID.CH3_LEARN_LANG_CHOICE,
+	},
+
+	// NEW: Programming Learning Session
+	[Chapter3DialogueID.CH3_LEARN_LANG_CHOICE]: {
+		speaker: 'player',
+		text: 'Ngôn ngữ lập trình đầu tiên nên học gì?',
+		textVi: 'Ngôn ngữ lập trình đầu tiên nên học gì?',
+		textEn: 'Which programming language should I learn first?',
+		choices: [
+			{
+				id: 'choice_python',
+				text: 'Python: Dễ học, phổ biến',
+				textVi: 'Python: Dễ học, phổ biến',
+				textEn: 'Python: Easy, popular',
+				effects: [{ stat: StatID.VISION, value: 5 }],
+				next: Chapter3DialogueID.CH3_LEARN_LOOPS,
+			},
+			{
+				id: 'choice_javascript',
+				text: 'JavaScript: Web development',
+				textVi: 'JavaScript: Web development',
+				textEn: 'JavaScript: Web development',
+				effects: [{ stat: StatID.VISION, value: 5 }],
+				next: Chapter3DialogueID.CH3_LEARN_LOOPS,
+			},
+			{
+				id: 'choice_cpp',
+				text: 'C++: Học nền tảng vững',
+				textVi: 'C++: Học nền tảng vững',
+				textEn: 'C++: Strong foundation',
+				effects: [
+					{ stat: StatID.VISION, value: 8 },
+					{ stat: StatID.STRESS, value: 2 },
+				],
+				next: Chapter3DialogueID.CH3_LEARN_LOOPS,
+			},
+		],
+	},
+	[Chapter3DialogueID.CH3_LEARN_LOOPS]: {
+		speaker: 'narrator',
+		text: 'Vòng lặp (Loop) là gì? Bạn sẽ học như thế nào?',
+		textVi: 'Vòng lặp (Loop) là gì? Bạn sẽ học như thế nào?',
+		textEn: 'What are loops? How will you learn?',
+		choices: [
+			{
+				id: 'choice_loops_practice',
+				text: 'Làm bài tập thực hành ngay',
+				textVi: 'Làm bài tập thực hành ngay',
+				textEn: 'Practice exercises immediately',
+				effects: [{ stat: StatID.VISION, value: 5 }],
+				next: Chapter3DialogueID.CH3_LEARN_DEBUG,
+			},
+			{
+				id: 'choice_loops_theory',
+				text: 'Đọc kỹ lý thuyết trước',
+				textVi: 'Đọc kỹ lý thuyết trước',
+				textEn: 'Read theory first',
+				effects: [{ stat: StatID.VISION, value: 3 }],
+				next: Chapter3DialogueID.CH3_LEARN_DEBUG,
+			},
+			{
+				id: 'choice_loops_video',
+				text: 'Xem video hướng dẫn',
+				textVi: 'Xem video hướng dẫn',
+				textEn: 'Watch tutorial videos',
+				effects: [{ stat: StatID.VISION, value: 3 }],
+				next: Chapter3DialogueID.CH3_LEARN_DEBUG,
+			},
+		],
+	},
+	[Chapter3DialogueID.CH3_LEARN_DEBUG]: {
+		speaker: 'narrator',
+		text: 'Code bị lỗi. Màn hình đỏ rực. Stack trace dài như sợi mì.',
+		textVi: 'Code bị lỗi. Màn hình đỏ rực. Stack trace dài như sợi mì.',
+		textEn: 'Code has error. Red screen. Long stack trace.',
+		choices: [
+			{
+				id: 'choice_debug_google',
+				text: 'Google error message',
+				textVi: 'Google error message',
+				textEn: 'Google error message',
+				effects: [{ stat: StatID.VISION, value: 5 }],
+				next: Chapter3DialogueID.CH3_LEARN_TIME,
+			},
+			{
+				id: 'choice_debug_ask',
+				text: 'Hỏi anh senior (trên diễn đàn)',
+				textVi: 'Hỏi anh senior (trên diễn đàn)',
+				textEn: 'Ask senior (on forum)',
+				effects: [{ stat: StatID.HUMANITY, value: 3 }],
+				next: Chapter3DialogueID.CH3_LEARN_TIME,
+			},
+			{
+				id: 'choice_debug_cry',
+				text: 'Khóc và viết lại từ đầu',
+				textVi: 'Khóc và viết lại từ đầu',
+				textEn: 'Cry and rewrite',
+				effects: [{ stat: StatID.STRESS, value: 5 }],
+				next: Chapter3DialogueID.CH3_LEARN_TIME,
+			},
+		],
+	},
+	[Chapter3DialogueID.CH3_LEARN_TIME]: {
+		speaker: 'player',
+		text: 'Học code + đi học + gia đình. Làm sao quản lý thời gian?',
+		textVi: 'Học code + đi học + gia đình. Làm sao quản lý thời gian?',
+		textEn: 'Coding + school + family. How to manage time?',
+		choices: [
+			{
+				id: 'choice_time_night',
+				text: 'Thức đêm học code',
+				textVi: 'Thức đêm học code',
+				textEn: 'Stay up late coding',
+				effects: [
+					{ stat: StatID.VISION, value: 5 },
+					{ stat: StatID.HEALTH, value: -2 },
+				],
+				next: Chapter3DialogueID.CH3_LEARN_RESOURCES,
+			},
+			{
+				id: 'choice_time_morning',
+				text: 'Dậy sớm 5h sáng',
+				textVi: 'Dậy sớm 5h sáng',
+				textEn: 'Wake at 5am',
+				effects: [
+					{ stat: StatID.VISION, value: 5 },
+					{ stat: StatID.STEELMIND, value: 3 },
+				],
+				next: Chapter3DialogueID.CH3_LEARN_RESOURCES,
+			},
+			{
+				id: 'choice_time_weekend',
+				text: 'Chỉ học cuối tuần',
+				textVi: 'Chỉ học cuối tuần',
+				textEn: 'Only weekends',
+				effects: [{ stat: StatID.VISION, value: 3 }],
+				next: Chapter3DialogueID.CH3_LEARN_RESOURCES,
+			},
+		],
+	},
+	[Chapter3DialogueID.CH3_LEARN_RESOURCES]: {
+		speaker: 'narrator',
+		text: 'Nguồn học nào tốt nhất cho người mới?',
+		textVi: 'Nguồn học nào tốt nhất cho người mới?',
+		textEn: 'Best learning resources for beginners?',
+		choices: [
+			{
+				id: 'choice_resource_paid',
+				text: 'Học trung tâm F8 của anh S (-5 triệu)',
+				textVi: 'Học trung tâm F8 của anh S (-5 triệu)',
+				textEn: 'F8 Center with Mr. S (-5M)',
+				effects: [
+					{ stat: StatID.VISION, value: 25 },
+					{ stat: StatID.MONEY, value: -5000000 },
+				],
+				next: Chapter3DialogueID.CH3_DORM_1,
+			},
+			{
+				id: 'choice_resource_tutor',
+				text: 'Học kèm 1-1 anh A (Unicode) (-2 triệu)',
+				textVi: 'Học kèm 1-1 anh A (Unicode) (-2 triệu)',
+				textEn: '1-on-1 with Mr. A (Unicode) (-2M)',
+				effects: [
+					{ stat: StatID.VISION, value: 40 },
+					{ stat: StatID.STRESS, value: 15 },
+					{ stat: StatID.MONEY, value: -2000000 },
+				],
+				next: Chapter3DialogueID.CH3_DORM_1,
+			},
+			{
+				id: 'choice_resource_free',
+				text: 'Xem Youtube kênh F8 (Free)',
+				textVi: 'Xem Youtube kênh F8 (Free)',
+				textEn: 'Watch F8 Youtube (Free)',
+				effects: [
+					{ stat: StatID.VISION, value: 10 },
+					{ stat: StatID.MONEY, value: 0 },
+				],
+				next: Chapter3DialogueID.CH3_DORM_1,
+			},
+		],
 	},
 	// 3.1 Khu tập thể & Miu
-	ch3_dorm_1: {
-		id: 'ch3_dorm_1',
+	[Chapter3DialogueID.CH3_DORM_1]: {
 		speaker: 'narrator',
 		text: 'Căn nhà thuê ở khu tập thể Thành Công. Tường mốc xanh, mùa mưa nước dột tứ bề, phải lấy xô chậu hứng. Bạn sống cùng mẹ và em trai V.',
 		textVi:
 			'Căn nhà thuê ở khu tập thể Thành Công. Tường mốc xanh, mùa mưa nước dột tứ bề, phải lấy xô chậu hứng. Bạn sống cùng mẹ và em trai V.',
 		textEn:
 			'Rented house in Thanh Cong dorm. Moldy walls, leaking roof requiring buckets when it rained. You lived with mom and brother V.',
-		next: 'ch3_crush_start', // Redirect to Crush Event
+		next: Chapter3DialogueID.CH3_CRUSH_START, // Redirect to Crush Event
 	},
 
 	// NEW: First Crush Event
-	ch3_crush_start: {
-		id: 'ch3_crush_start',
+	[Chapter3DialogueID.CH3_CRUSH_START]: {
 		speaker: 'narrator',
 		text: 'Lớp 10. Một cô bạn cùng lớp mượn vở bạn chép bài. Cô ấy cười rất xinh, làm tim bạn lệch một nhịp.',
 		textVi:
@@ -435,51 +734,49 @@ export const chapter3Dialogues: Record<string, DialogueNode> = {
 		choices: [
 			{
 				id: 'choice_crush_confess',
-				text: 'Tỏ tình: Liều ăn nhiều (Humanity +2, Stress +2)',
-				textVi: 'Tỏ tình: Liều ăn nhiều (Humanity +2, Stress +2)',
-				textEn: 'Confess: High risk high reward (Humanity +2, Stress +2)',
+				text: 'Tỏ tình: Liều ăn nhiều (Humanity +5, Stress +5)',
+				textVi: 'Tỏ tình: Liều ăn nhiều (Humanity +5, Stress +5)',
+				textEn: 'Confess: High risk high reward (Humanity +5, Stress +5)',
 				effects: [
-					{ stat: 'humanity', value: 2 },
-					{ stat: 'stress', value: 2 },
+					{ stat: StatID.HUMANITY, value: 5 },
+					{ stat: StatID.STRESS, value: 5 },
 				],
-				next: 'ch3_crush_reject',
+				next: Chapter3DialogueID.CH3_CRUSH_REJECT,
 			},
 			{
 				id: 'choice_crush_hide',
-				text: 'Giấu kín: Yêu đơn phương (Stress +1)',
-				textVi: 'Giấu kín: Yêu đơn phương (Stress +1)',
-				textEn: 'Hide it: Unrequited love (Stress +1)',
-				effects: [{ stat: 'stress', value: 1 }],
-				next: 'ch3_fix_pc_start',
+				text: 'Giấu kín: Yêu đơn phương (Stress +3)',
+				textVi: 'Giấu kín: Yêu đơn phương (Stress +3)',
+				textEn: 'Hide it: Unrequited love (Stress +3)',
+				effects: [{ stat: StatID.STRESS, value: 3 }],
+				next: Chapter3DialogueID.CH3_FIX_PC_START,
 			},
 			{
 				id: 'choice_crush_ignore',
-				text: 'Lơ đi: Code là chân ái (Vision +1, Humanity -1)',
-				textVi: 'Lơ đi: Code là chân ái (Vision +1, Humanity -1)',
-				textEn: 'Ignore: Code is true love (Vision +1, Humanity -1)',
+				text: 'Lơ đi: Code là chân ái (Vision +3, Humanity -2)',
+				textVi: 'Lơ đi: Code là chân ái (Vision +3, Humanity -2)',
+				textEn: 'Ignore: Code is true love (Vision +3, Humanity -2)',
 				effects: [
-					{ stat: 'vision', value: 1 },
-					{ stat: 'humanity', value: -1 },
+					{ stat: StatID.VISION, value: 3 },
+					{ stat: StatID.HUMANITY, value: -2 },
 				],
-				next: 'ch3_fix_pc_start',
+				next: Chapter3DialogueID.CH3_FIX_PC_START,
 			},
 		],
 	},
-	ch3_crush_reject: {
-		id: 'ch3_crush_reject',
+	[Chapter3DialogueID.CH3_CRUSH_REJECT]: {
 		speaker: 'narrator',
 		text: 'Cô ấy bối rối: "Tớ chỉ coi cậu là bạn tốt thôi". Bạn quê độ, muốn độn thổ.',
 		textVi:
 			'Cô ấy bối rối: "Tớ chỉ coi cậu là bạn tốt thôi". Bạn quê độ, muốn độn thổ.',
 		textEn:
 			'She was confused: "I only see you as a good friend". You felt embarrassed.',
-		effects: [{ stat: 'steelMind', value: 1 }],
-		next: 'ch3_fix_pc_start',
+		effects: [{ stat: StatID.STEELMIND, value: 3 }],
+		next: Chapter3DialogueID.CH3_FIX_PC_START,
 	},
 
 	// NEW: Fix PC Event
-	ch3_fix_pc_start: {
-		id: 'ch3_fix_pc_start',
+	[Chapter3DialogueID.CH3_FIX_PC_START]: {
 		speaker: 'player',
 		text: '(Suy nghĩ) Hàng xóm nhờ sửa máy tính. Họ hứa trả 500k. Máy cũ rích, bụi bặm.',
 		textVi:
@@ -492,114 +789,104 @@ export const chapter3Dialogues: Record<string, DialogueNode> = {
 				text: 'Sửa giúp: Kiếm thêm thu nhập (+500k)',
 				textVi: 'Sửa giúp: Kiếm thêm thu nhập (+500k)',
 				textEn: 'Fix it: Earn extra income (+500k)',
-				// effects: [{ stat: 'money', value: 500000 }], // Removed direct reward
-				next: 'ch3_fix_pc_twist', // Redirect to twist
+				// effects: [{ stat: StatID.MONEY, value: 500000 }], // Removed direct reward
+				next: Chapter3DialogueID.CH3_FIX_PC_TWIST, // Redirect to twist
 			},
 			{
 				id: 'choice_fix_pc_no',
-				text: 'Từ chối: Tập trung học (Vision +1)',
-				textVi: 'Từ chối: Tập trung học (Vision +1)',
-				textEn: 'Refuse: Focus on study (Vision +1)',
-				effects: [{ stat: 'vision', value: 1 }],
-				next: 'ch3_debt_1',
+				text: 'Từ chối: Tập trung học (Vision +3)',
+				textVi: 'Từ chối: Tập trung học (Vision +3)',
+				textEn: 'Refuse: Focus on study (Vision +3)',
+				effects: [{ stat: StatID.VISION, value: 3 }],
+				next: Chapter3DialogueID.CH3_DEBT_1,
 			},
 		],
 	},
-	ch3_fix_pc_twist: {
-		id: 'ch3_fix_pc_twist',
+	[Chapter3DialogueID.CH3_FIX_PC_TWIST]: {
 		speaker: 'narrator',
 		text: 'Bạn hì hục cả buổi chiều. Máy chạy ngon lành. Hàng xóm rút tờ 500k ra trả, nhưng lỡ tay làm rơi xuống cống. Bạn vớt lên được... 1/5 tờ tiền.',
 		textVi:
 			'Bạn hì hục cả buổi chiều. Máy chạy ngon lành. Hàng xóm rút tờ 500k ra trả, nhưng lỡ tay làm rơi xuống cống. Bạn vớt lên được... 1/5 tờ tiền.',
 		textEn:
 			'You toiled all afternoon. PC runs great. Neighbor pulled out 500k bill, but dropped it into sewer. You fished out... 1/5 of the bill.',
-		next: 'ch3_fix_pc_success',
+		next: Chapter3DialogueID.CH3_FIX_PC_SUCCESS,
 	},
-	ch3_fix_pc_success: {
-		id: 'ch3_fix_pc_success',
+	[Chapter3DialogueID.CH3_FIX_PC_SUCCESS]: {
 		speaker: 'narrator',
 		text: 'Hàng xóm ái ngại đưa tạm bạn 100k tiền lẻ. "Thôi cầm tạm uống nước nhé cháu". Công cốc.',
 		textVi:
 			'Hàng xóm ái ngại đưa tạm bạn 100k tiền lẻ. "Thôi cầm tạm uống nước nhé cháu". Công cốc.',
 		textEn:
 			'Neighbor awkwardly gave you 100k small change. "Take this for water". Wasted effort.',
-		effects: [{ stat: 'money', value: 100000 }],
-		next: 'ch3_debt_1',
+		effects: [{ stat: StatID.MONEY, value: 100000 }],
+		next: Chapter3DialogueID.CH3_DEBT_1,
 	},
 
 	// 3.2 Biến cố chủ nợ
-	ch3_debt_1: {
-		id: 'ch3_debt_1',
+	[Chapter3DialogueID.CH3_DEBT_1]: {
 		speaker: 'narrator',
 		text: 'Một buổi tối, chủ nợ tìm được địa chỉ. Họ đập cửa, la hét, dọa dẫm. Bạn và em trai V co rúm trong góc nhà.',
 		textVi:
 			'Một buổi tối, chủ nợ tìm được địa chỉ. Họ đập cửa, la hét, dọa dẫm. Bạn và em trai V co rúm trong góc nhà.',
 		textEn:
 			'One evening, debt collectors found the address. Banging doors, screaming, threatening. You and brother V cowered in the corner.',
-		next: 'ch3_debt_2',
+		next: Chapter3DialogueID.CH3_DEBT_2,
 	},
-	ch3_debt_2: {
-		id: 'ch3_debt_2',
+	[Chapter3DialogueID.CH3_DEBT_2]: {
 		speaker: 'npc',
 		text: '"Mở cửa ra! Trốn chui trốn lủi mãi được à? Ông Q đâu, ra đây nói chuyện!"',
 		textVi:
 			'"Mở cửa ra! Trốn chui trốn lủi mãi được à? Ông Q đâu, ra đây nói chuyện!"',
 		textEn: '"Open up! Can\'t hide forever! Mr. Q, come out and talk!"',
-		next: 'ch3_debt_father',
+		next: Chapter3DialogueID.CH3_DEBT_FATHER,
 	},
-	ch3_debt_father: {
-		id: 'ch3_debt_father',
+	[Chapter3DialogueID.CH3_DEBT_FATHER]: {
 		speaker: 'boQ',
 		text: '(Run rẩy) "Các anh cho tôi khất... Tôi không chạy đi đâu cả. Xin các anh đừng làm con tôi sợ."',
 		textVi:
 			'(Run rẩy) "Các anh cho tôi khất... Tôi không chạy đi đâu cả. Xin các anh đừng làm con tôi sợ."',
 		textEn:
 			'(Trembling) "Please give me time... I\'m not running. Please don\'t scare my son."',
-		next: 'ch3_debt_escape',
+		next: Chapter3DialogueID.CH3_DEBT_ESCAPE,
 	},
-	ch3_debt_escape: {
-		id: 'ch3_debt_escape',
+	[Chapter3DialogueID.CH3_DEBT_ESCAPE]: {
 		speaker: 'narrator',
 		text: 'Ngay trong đêm đó, cả nhà phải di tản. Đồ đạc ném vội lên xe ba gác, chạy trốn như những kẻ tội phạm.',
 		textVi:
 			'Ngay trong đêm đó, cả nhà phải di tản. Đồ đạc ném vội lên xe ba gác, chạy trốn như những kẻ tội phạm.',
 		textEn:
 			'That very night, family evacuated. Belongings thrown onto a tricycle, fleeing like criminals.',
-		next: 'ch3_debt_miu',
+		next: Chapter3DialogueID.CH3_DEBT_MIU,
 	},
-	ch3_debt_miu: {
-		id: 'ch3_debt_miu',
+	[Chapter3DialogueID.CH3_DEBT_MIU]: {
 		speaker: 'narrator',
 		text: 'Bố chấp nhận đi làm xa ở miền Trung để trả nợ. Trước khi đi, bố mang về một con chó lai nhỏ xíu, lông vàng, tên là Miu. "Nó xấu xí nhưng trung thành," bố nói, mắt đỏ hoe.',
 		textVi:
 			'Bố chấp nhận đi làm xa ở miền Trung để trả nợ. Trước khi đi, bố mang về một con chó lai nhỏ xíu, lông vàng, tên là Miu. "Nó xấu xí nhưng trung thành," bố nói, mắt đỏ hoe.',
 		textEn:
 			'Father went to work far away in Central region. Before leaving, he brought home a small yellow mixed-breed dog named Miu. "He\'s ugly but loyal," father said, eyes red.',
-		next: 'ch3_debt_quote',
+		next: Chapter3DialogueID.CH3_DEBT_QUOTE,
 	},
-	ch3_debt_quote: {
-		id: 'ch3_debt_quote',
+	[Chapter3DialogueID.CH3_DEBT_QUOTE]: {
 		speaker: 'boQ',
 		text: 'Bố đi vắng, Miu sẽ thay bố bảo vệ con, nghe con tâm sự. Đàn ông không được khóc, buồn thì nói với nó.',
 		textVi:
 			'Bố đi vắng, Miu sẽ thay bố bảo vệ con, nghe con tâm sự. Đàn ông không được khóc, buồn thì nói với nó.',
 		textEn:
 			"I'm away, Miu will protect you. Men don't cry, if you are sad, talk to him.",
-		effects: [{ stat: 'humanity', value: 2 }],
-		next: 'ch3_debt_visit',
+		effects: [{ stat: StatID.HUMANITY, value: 5 }],
+		next: Chapter3DialogueID.CH3_DEBT_VISIT,
 	},
-	ch3_debt_visit: {
-		id: 'ch3_debt_visit',
+	[Chapter3DialogueID.CH3_DEBT_VISIT]: {
 		speaker: 'narrator',
 		text: 'Một lần bố tạt qua nhà, dúi vào tay bạn 500k. Bố gầy rộc đi, quần áo lấm lem bụi đường. "Cầm lấy mà tiêu vặt," bố nói rồi vội vã đi ngay.',
 		textVi:
 			'Một lần bố tạt qua nhà, dúi vào tay bạn 500k. Bố gầy rộc đi, quần áo lấm lem bụi đường. "Cầm lấy mà tiêu vặt," bố nói rồi vội vã đi ngay.',
 		textEn:
 			'Once father stopped by, shoved 500k into your hand. He looked haggard, clothes dusty. "Take it for pocket money," he said and left in a hurry.',
-		next: 'ch3_debt_choice',
+		next: Chapter3DialogueID.CH3_DEBT_CHOICE,
 	},
-	ch3_debt_choice: {
-		id: 'ch3_debt_choice',
+	[Chapter3DialogueID.CH3_DEBT_CHOICE]: {
 		speaker: 'player',
 		text: 'Bạn sẽ làm gì?',
 		textVi: 'Bạn sẽ làm gì?',
@@ -610,34 +897,32 @@ export const chapter3Dialogues: Record<string, DialogueNode> = {
 				text: 'Nhận tiền (Bố làm vất vả lắm rồi)',
 				textVi: 'Nhận tiền (Bố làm vất vả lắm rồi)',
 				textEn: 'Accept the money (Father worked so hard)',
-				effects: [{ stat: 'money', value: 500000 }],
-				next: 'ch3_noodle_start',
+				effects: [{ stat: StatID.MONEY, value: 500000 }],
+				next: Chapter3DialogueID.CH3_NOODLE_START,
 			},
 			{
 				id: 'choice_refuse_money',
 				text: 'Từ chối (Bố cần tiền hơn con)',
 				textVi: 'Từ chối (Bố cần tiền hơn con)',
 				textEn: 'Refuse (Father needs it more)',
-				effects: [{ stat: 'humanity', value: 2 }],
-				next: 'ch3_debt_refuse',
+				effects: [{ stat: StatID.HUMANITY, value: 5 }],
+				next: Chapter3DialogueID.CH3_DEBT_REFUSE,
 			},
 		],
 	},
-	ch3_debt_refuse: {
-		id: 'ch3_debt_refuse',
+	[Chapter3DialogueID.CH3_DEBT_REFUSE]: {
 		speaker: 'narrator',
 		text: 'Bạn đẩy tay bố ra. "Con tự lo được, bố giữ tiền đi." Bố nhìn bạn, mắt ngấn lệ, rồi gật đầu. Bố ôm bạn thật chặt, không nói gì.',
 		textVi:
 			'Bạn đẩy tay bố ra. "Con tự lo được, bố giữ tiền đi." Bố nhìn bạn, mắt ngấn lệ, rồi gật đầu. Bố ôm bạn thật chặt, không nói gì.',
 		textEn:
 			'You pushed his hand away. "I can manage, Dad. Keep the money." Father looked at you, eyes watering, then nodded. He hugged you tightly, saying nothing.',
-		effects: [{ stat: 'steelMind', value: 1 }],
-		next: 'ch3_noodle_start',
+		effects: [{ stat: StatID.STEELMIND, value: 3 }],
+		next: Chapter3DialogueID.CH3_NOODLE_START,
 	},
 
 	// NEW: Eat Noodle Event
-	ch3_noodle_start: {
-		id: 'ch3_noodle_start',
+	[Chapter3DialogueID.CH3_NOODLE_START]: {
 		speaker: 'player',
 		text: '(Suy nghĩ) Đói quá. Trong túi còn ít tiền. Ăn gì đây?',
 		textVi: '(Suy nghĩ) Đói quá. Trong túi còn ít tiền. Ăn gì đây?',
@@ -648,105 +933,96 @@ export const chapter3Dialogues: Record<string, DialogueNode> = {
 				text: 'Mì tôm: Tiết kiệm là quốc sách (+20k)',
 				textVi: 'Mì tôm: Tiết kiệm là quốc sách (+20k)',
 				textEn: 'Instant noodles: Saving is policy (+20k)',
-				effects: [{ stat: 'money', value: 20000 }],
-				next: 'ch3_noodle_save',
+				effects: [{ stat: StatID.MONEY, value: 20000 }],
+				next: Chapter3DialogueID.CH3_NOODLE_SAVE,
 			},
 			{
 				id: 'choice_noodle_eat',
-				text: 'Cơm rang: Ăn no mới có sức học (Health +1)',
-				textVi: 'Cơm rang: Ăn no mới có sức học (Health +1)',
-				textEn: 'Fried rice: Eat well to study well (Health +1)',
-				effects: [{ stat: 'health', value: 1 }],
-				next: 'ch3_noodle_eat',
+				text: 'Cơm rang: Ăn no mới có sức học (Health +3)',
+				textVi: 'Cơm rang: Ăn no mới có sức học (Health +3)',
+				textEn: 'Fried rice: Eat well to study well (Health +3)',
+				effects: [{ stat: StatID.HEALTH, value: 3 }],
+				next: Chapter3DialogueID.CH3_NOODLE_EAT,
 			},
 		],
 	},
-	ch3_noodle_save: {
-		id: 'ch3_noodle_save',
+	[Chapter3DialogueID.CH3_NOODLE_SAVE]: {
 		speaker: 'narrator',
 		text: 'Gói mì tôm 3k. Nước sôi miễn phí. Bạn tiết kiệm được một khoản nhỏ.',
 		textVi:
 			'Gói mì tôm 3k. Nước sôi miễn phí. Bạn tiết kiệm được một khoản nhỏ.',
 		textEn: '3k noodle pack. Free boiling water. You saved a small amount.',
-		next: 'ch3_hope_1',
+		next: Chapter3DialogueID.CH3_HOPE_1,
 	},
-	ch3_noodle_eat: {
-		id: 'ch3_noodle_eat',
+	[Chapter3DialogueID.CH3_NOODLE_EAT]: {
 		speaker: 'narrator',
 		text: 'Đĩa cơm rang nóng hổi. Bạn cảm thấy tràn trề năng lượng.',
 		textVi: 'Đĩa cơm rang nóng hổi. Bạn cảm thấy tràn trề năng lượng.',
 		textEn: 'Hot fried rice. You feel full of energy.',
-		next: 'ch3_hope_1',
+		next: Chapter3DialogueID.CH3_HOPE_1,
 	},
 
 	// 3.3 Hy vọng lóe lên
-	ch3_hope_1: {
-		id: 'ch3_hope_1',
+	[Chapter3DialogueID.CH3_HOPE_1]: {
 		speaker: 'narrator',
 		text: 'Lớp 11. Công việc của bố tiến triển tốt. Bố được chia thưởng dự án và quyết định trả góp mua một chiếc VinFast LuxSA.',
 		textVi:
 			'Lớp 11. Công việc của bố tiến triển tốt. Bố được chia thưởng dự án và quyết định trả góp mua một chiếc VinFast LuxSA.',
 		textEn:
 			"Grade 11. Father's work went well. Got bonus, decided to buy a VinFast LuxSA on installment.",
-		next: 'ch3_hope_2',
+		next: Chapter3DialogueID.CH3_HOPE_2,
 	},
-	ch3_hope_2: {
-		id: 'ch3_hope_2',
+	[Chapter3DialogueID.CH3_HOPE_2]: {
 		speaker: 'narrator',
 		text: 'Không phải để khoe khoang. Bố cần một "bộ mặt" để giao dịch. Chiếc xe là biểu tượng cho sự trở lại của lòng tự trọng.',
 		textVi:
 			'Không phải để khoe khoang. Bố cần một "bộ mặt" để giao dịch. Chiếc xe là biểu tượng cho sự trở lại của lòng tự trọng.',
 		textEn:
 			'Not to show off. He needed a "face" for business. The car was a symbol of returned self-esteem.',
-		next: 'ch3_hope_crash',
+		next: Chapter3DialogueID.CH3_HOPE_CRASH,
 	},
-	ch3_hope_crash: {
-		id: 'ch3_hope_crash',
+	[Chapter3DialogueID.CH3_HOPE_CRASH]: {
 		speaker: 'narrator',
 		text: 'Nhưng tai nạn định mệnh ập đến. Sếp tổng công ty bố đột ngột qua đời. Công ty loạn lạc. Nợ lương, nợ thưởng. Chiếc LuxSA trở thành cục nợ khổng lồ.',
 		textVi:
 			'Nhưng tai nạn định mệnh ập đến. Sếp tổng công ty bố đột ngột qua đời. Công ty loạn lạc. Nợ lương, nợ thưởng. Chiếc LuxSA trở thành cục nợ khổng lồ.',
 		textEn:
 			'But fate struck. Boss died of stroke. Company in chaos. Salary/bonus frozen. The LuxSA became a giant debt burden.',
-		next: 'ch3_legacy_1',
+		next: Chapter3DialogueID.CH3_LEGACY_1,
 	},
 
 	// 3.4 Công ty Ma
-	ch3_legacy_1: {
-		id: 'ch3_legacy_1',
+	[Chapter3DialogueID.CH3_LEGACY_1]: {
 		speaker: 'narrator',
 		text: 'Dù túng quẫn, bố vẫn âm thầm duy trì một công ty xây dựng "Ma" (không hoạt động). Bạn hỏi tại sao tốn tiền vô ích.',
 		textVi:
 			'Dù túng quẫn, bố vẫn âm thầm duy trì một công ty xây dựng "Ma" (không hoạt động). Bạn hỏi tại sao tốn tiền vô ích.',
 		textEn:
 			'Despite poverty, father kept a "Ghost" construction company running. You asked why waste money.',
-		next: 'ch3_legacy_quote',
+		next: Chapter3DialogueID.CH3_LEGACY_QUOTE,
 	},
-	ch3_legacy_quote: {
-		id: 'ch3_legacy_quote',
+	[Chapter3DialogueID.CH3_LEGACY_QUOTE]: {
 		speaker: 'boQ',
 		text: 'Để sau này con ra trường, con sẽ có một công ty thâm niên 5-7 năm. Khách hàng sẽ tin con hơn. Bố đang lót đường cho con.',
 		textVi:
 			'Để sau này con ra trường, con sẽ có một công ty thâm niên 5-7 năm. Khách hàng sẽ tin con hơn. Bố đang lót đường cho con.',
 		textEn:
 			"So when you graduate, you have a 5-7 year old company. Clients will trust you. I'm paving the way for you.",
-		effects: [{ stat: 'vision', value: 2 }],
-		next: 'ch3_covid_1',
+		effects: [{ stat: StatID.VISION, value: 5 }],
+		next: Chapter3DialogueID.CH3_COVID_1,
 	},
 
 	// 3.5 COVID
-	ch3_covid_1: {
-		id: 'ch3_covid_1',
+	[Chapter3DialogueID.CH3_COVID_1]: {
 		speaker: 'narrator',
 		text: 'Đại dịch COVID bùng phát. Hà Nội giãn cách. Mẹ mất thu nhập. Bố thất nghiệp, chiếc LuxSA phủ bụi.',
 		textVi:
 			'Đại dịch COVID bùng phát. Hà Nội giãn cách. Mẹ mất thu nhập. Bố thất nghiệp, chiếc LuxSA phủ bụi.',
 		textEn:
 			'COVID pandemic. Hanoi lockdown. Mom lost income. Father unemployed, LuxSA dusty.',
-		next: 'ch3_covid_2',
+		next: Chapter3DialogueID.CH3_COVID_2,
 	},
-	ch3_end: {
-		id: 'ch3_end',
+	[Chapter3DialogueID.CH3_END]: {
 		speaker: 'narrator',
 		text: 'Giấy báo trúng tuyển Đại học trên tay. Bạn xếp gọn chiếc máy tính vào ba lô. Chuyến tàu đêm đưa bạn rời xa thị trấn nhỏ, hướng về ánh đèn thành phố.',
 		textVi:
@@ -755,20 +1031,18 @@ export const chapter3Dialogues: Record<string, DialogueNode> = {
 			'University acceptance letter in hand. You packed the computer into the backpack. Night train took you away from small town, towards city lights.',
 		next: 'chapter_4_start',
 	},
-	ch3_covid_2: {
-		id: 'ch3_covid_2',
+	[Chapter3DialogueID.CH3_COVID_2]: {
 		speaker: 'narrator',
 		text: 'Bạn tận dụng thời gian cày nát các khóa học lập trình trên Udemy, Coursera. 14 tiếng mỗi ngày bên màn hình máy tính cũ kỹ.',
 		textVi:
 			'Bạn tận dụng thời gian cày nát các khóa học lập trình trên Udemy, Coursera. 14 tiếng mỗi ngày bên màn hình máy tính cũ kỹ.',
 		textEn:
 			'You devoured coding courses on Udemy, Coursera. 14 hours a day by the old PC.',
-		next: 'ch3_sell_items_start',
+		next: Chapter3DialogueID.CH3_SELL_ITEMS_START,
 	},
 
 	// NEW: Sell Items Event
-	ch3_sell_items_start: {
-		id: 'ch3_sell_items_start',
+	[Chapter3DialogueID.CH3_SELL_ITEMS_START]: {
 		speaker: 'player',
 		text: '(Suy nghĩ) Tài khoản game của mình có vài món đồ hiếm. Có người hỏi mua giá 500k.',
 		textVi:
@@ -777,39 +1051,37 @@ export const chapter3Dialogues: Record<string, DialogueNode> = {
 		choices: [
 			{
 				id: 'choice_sell_items_yes',
-				text: 'Bán hết: Cầm cự qua ngày (+500k, Humanity -1)',
-				textVi: 'Bán hết: Cầm cự qua ngày (+500k, Humanity -1)',
-				textEn: 'Sell all: Survive the day (+500k, Humanity -1)',
+				text: 'Bán hết: Cầm cự qua ngày (+500k, Humanity -3)',
+				textVi: 'Bán hết: Cầm cự qua ngày (+500k, Humanity -3)',
+				textEn: 'Sell all: Survive the day (+500k, Humanity -3)',
 				effects: [
-					{ stat: 'money', value: 500000 },
-					{ stat: 'humanity', value: -1 },
+					{ stat: StatID.MONEY, value: 500000 },
+					{ stat: StatID.HUMANITY, value: -3 },
 				],
-				next: 'ch3_gamble_start', // Redirect to Gamble Chain
+				next: Chapter3DialogueID.CH3_GAMBLE_START, // Redirect to Gamble Chain
 			},
 			{
 				id: 'choice_sell_items_no',
-				text: 'Giữ lại: Kỷ niệm tuổi thơ (Humanity +1)',
-				textVi: 'Giữ lại: Kỷ niệm tuổi thơ (Humanity +1)',
-				textEn: 'Keep it: Childhood memories (Humanity +1)',
-				effects: [{ stat: 'humanity', value: 1 }],
-				next: 'ch3_covid_father',
+				text: 'Giữ lại: Kỷ niệm tuổi thơ (Humanity +3)',
+				textVi: 'Giữ lại: Kỷ niệm tuổi thơ (Humanity +3)',
+				textEn: 'Keep it: Childhood memories (Humanity +3)',
+				effects: [{ stat: StatID.HUMANITY, value: 3 }],
+				next: Chapter3DialogueID.CH3_COVID_FATHER,
 			},
 		],
 	},
-	ch3_sell_items_sell: {
-		id: 'ch3_sell_items_sell',
+	[Chapter3DialogueID.CH3_SELL_ITEMS_SELL]: {
 		speaker: 'narrator',
 		text: 'Giao dịch thành công. Bạn có thêm tiền để trang trải, nhưng lòng hơi tiếc nuối.',
 		textVi:
 			'Giao dịch thành công. Bạn có thêm tiền để trang trải, nhưng lòng hơi tiếc nuối.',
 		textEn:
 			'Transaction successful. Extra money for expenses, but a bit regretful.',
-		next: 'ch3_covid_father',
+		next: Chapter3DialogueID.CH3_COVID_FATHER,
 	},
 
 	// NEW: Gamble Chain
-	ch3_gamble_start: {
-		id: 'ch3_gamble_start',
+	[Chapter3DialogueID.CH3_GAMBLE_START]: {
 		speaker: 'npc',
 		text: 'Thằng bạn rủ rê: "Mày có 500k à? Đánh con lô đi, tối nay về là có 2 triệu mua màn hình mới."',
 		textVi:
@@ -822,20 +1094,19 @@ export const chapter3Dialogues: Record<string, DialogueNode> = {
 				text: 'Chơi luôn: Liều ăn nhiều (Money ??)',
 				textVi: 'Chơi luôn: Liều ăn nhiều (Money ??)',
 				textEn: 'Bet it: High risk (Money ??)',
-				next: 'ch3_gamble_lose', // Most likely lose
+				next: Chapter3DialogueID.CH3_GAMBLE_LOSE, // Most likely lose
 			},
 			{
 				id: 'choice_gamble_no',
-				text: 'Thôi: Cờ bạc là bác thằng bần (Steel Mind +1)',
-				textVi: 'Thôi: Cờ bạc là bác thằng bần (Steel Mind +1)',
-				textEn: 'No: Gambling is ruin (Steel Mind +1)',
-				effects: [{ stat: 'steelMind', value: 1 }],
-				next: 'ch3_covid_father',
+				text: 'Thôi: Cờ bạc là bác thằng bần (Steel Mind +3)',
+				textVi: 'Thôi: Cờ bạc là bác thằng bần (Steel Mind +3)',
+				textEn: 'No: Gambling is ruin (Steel Mind +3)',
+				effects: [{ stat: StatID.STEELMIND, value: 3 }],
+				next: Chapter3DialogueID.CH3_COVID_FATHER,
 			},
 		],
 	},
-	ch3_gamble_lose: {
-		id: 'ch3_gamble_lose',
+	[Chapter3DialogueID.CH3_GAMBLE_LOSE]: {
 		speaker: 'narrator',
 		text: 'Tối hôm đó, kết quả về... trượt lòi mắt. Bạn mất trắng 500k. Cảm giác cay cú và hối hận xâm chiếm.',
 		textVi:
@@ -843,24 +1114,22 @@ export const chapter3Dialogues: Record<string, DialogueNode> = {
 		textEn:
 			'That night, result came... lost. You lost 500k. Anger and regret took over.',
 		effects: [
-			{ stat: 'money', value: -500000 },
-			{ stat: 'stress', value: 3 },
-			{ stat: 'steelMind', value: -1 },
+			{ stat: StatID.MONEY, value: -500000 },
+			{ stat: StatID.STRESS, value: 10 },
+			{ stat: StatID.STEELMIND, value: -3 },
 		],
-		next: 'ch3_covid_father',
+		next: Chapter3DialogueID.CH3_COVID_FATHER,
 	},
-	ch3_covid_father: {
-		id: 'ch3_covid_father',
+	[Chapter3DialogueID.CH3_COVID_FATHER]: {
 		speaker: 'boQ',
 		text: 'Bố nhìn bạn, thở dài: "Con nghỉ ngơi chút đi. Đừng cố quá như bố ngày xưa."',
 		textVi:
 			'Bố nhìn bạn, thở dài: "Con nghỉ ngơi chút đi. Đừng cố quá như bố ngày xưa."',
 		textEn:
 			'Father looked at you, sighing: "Rest a bit, son. Don\'t push too hard like I did."',
-		next: 'ch3_covid_reply',
+		next: Chapter3DialogueID.CH3_COVID_REPLY,
 	},
-	ch3_covid_reply: {
-		id: 'ch3_covid_reply',
+	[Chapter3DialogueID.CH3_COVID_REPLY]: {
 		speaker: 'player',
 		text: 'Bạn sẽ trả lời sao?',
 		textVi: 'Bạn sẽ trả lời sao?',
@@ -871,33 +1140,31 @@ export const chapter3Dialogues: Record<string, DialogueNode> = {
 				text: 'Con phải cố, đây là cơ hội duy nhất',
 				textVi: 'Con phải cố, đây là cơ hội duy nhất',
 				textEn: 'I must push, this is the only chance',
-				effects: [{ stat: 'steelMind', value: 1 }],
-				next: 'ch3_covid_freelance',
+				effects: [{ stat: StatID.STEELMIND, value: 3 }],
+				next: Chapter3DialogueID.CH3_COVID_FREELANCE,
 			},
 			{
 				id: 'choice_reassure_reply',
 				text: 'Con ổn mà bố, con thích lập trình',
 				textVi: 'Con ổn mà bố, con thích lập trình',
 				textEn: "I'm fine Dad, I love coding",
-				effects: [{ stat: 'vision', value: 1 }],
-				next: 'ch3_covid_freelance',
+				effects: [{ stat: StatID.VISION, value: 3 }],
+				next: Chapter3DialogueID.CH3_COVID_FREELANCE,
 			},
 		],
 	},
-	ch3_covid_freelance: {
-		id: 'ch3_covid_freelance',
+	[Chapter3DialogueID.CH3_COVID_FREELANCE]: {
 		speaker: 'narrator',
 		text: 'Sau 4 tháng "tu luyện" trong phòng kín, bạn nhận được job freelance đầu tiên: Cắt HTML/CSS cho một landing page đơn giản. Thù lao: 300.000 VNĐ.',
 		textVi:
 			'Sau 4 tháng "tu luyện" trong phòng kín, bạn nhận được job freelance đầu tiên: Cắt HTML/CSS cho một landing page đơn giản. Thù lao: 300.000 VNĐ.',
 		textEn:
 			'After 4 months of "cultivation" in isolation, you got your first freelance job: HTML/CSS for a simple landing page. Pay: 300,000 VND.',
-		next: 'ch3_blackhat_start', // Redirect to Black Hat
+		next: Chapter3DialogueID.CH3_BLACKHAT_START, // Redirect to Black Hat
 	},
 
 	// NEW: Black Hat Event
-	ch3_blackhat_start: {
-		id: 'ch3_blackhat_start',
+	[Chapter3DialogueID.CH3_BLACKHAT_START]: {
 		speaker: 'npc',
 		text: 'Một người lạ trên diễn đàn nhắn tin: "Viết cho anh con tool lấy cắp cookie Facebook. Trả 2 triệu."',
 		textVi:
@@ -907,28 +1174,27 @@ export const chapter3Dialogues: Record<string, DialogueNode> = {
 		choices: [
 			{
 				id: 'choice_blackhat_accept',
-				text: 'Nhận lời: Đang túng quá (Money +2M, Humanity -10)',
-				textVi: 'Nhận lời: Đang túng quá (Money +2M, Humanity -10)',
-				textEn: 'Accept: Desperate (Money +2M, Humanity -10)',
+				text: 'Nhận lời: Đang túng quá (Money +2M, Humanity -20)',
+				textVi: 'Nhận lời: Đang túng quá (Money +2M, Humanity -20)',
+				textEn: 'Accept: Desperate (Money +2M, Humanity -20)',
 				effects: [
-					{ stat: 'money', value: 2000000 },
-					{ stat: 'humanity', value: -10 },
-					{ stat: 'stress', value: 2 }, // Fear of police
+					{ stat: StatID.MONEY, value: 2000000 },
+					{ stat: StatID.HUMANITY, value: -20 },
+					{ stat: StatID.STRESS, value: 5 }, // Fear of police
 				],
-				next: 'ch3_covid_job_choice',
+				next: Chapter3DialogueID.CH3_COVID_JOB_CHOICE,
 			},
 			{
 				id: 'choice_blackhat_refuse',
-				text: 'Từ chối: Đạo đức nghề nghiệp (Steel Mind +2)',
-				textVi: 'Từ chối: Đạo đức nghề nghiệp (Steel Mind +2)',
-				textEn: 'Refuse: Professional ethics (Steel Mind +2)',
-				effects: [{ stat: 'steelMind', value: 2 }],
-				next: 'ch3_covid_job_choice',
+				text: 'Từ chối: Đạo đức nghề nghiệp (Steel Mind +5)',
+				textVi: 'Từ chối: Đạo đức nghề nghiệp (Steel Mind +5)',
+				textEn: 'Refuse: Professional ethics (Steel Mind +5)',
+				effects: [{ stat: StatID.STEELMIND, value: 5 }],
+				next: Chapter3DialogueID.CH3_COVID_JOB_CHOICE,
 			},
 		],
 	},
-	ch3_covid_job_choice: {
-		id: 'ch3_covid_job_choice',
+	[Chapter3DialogueID.CH3_COVID_JOB_CHOICE]: {
 		speaker: 'player',
 		text: 'Bạn sẽ quyết định như thế nào?',
 		textVi: 'Bạn sẽ quyết định như thế nào?',
@@ -940,60 +1206,56 @@ export const chapter3Dialogues: Record<string, DialogueNode> = {
 				textVi: 'Nhận job (Cơ hội để kiếm tiền)',
 				textEn: 'Accept the job (Opportunity to earn money)',
 				effects: [
-					{ stat: 'steelMind', value: 2 },
-					{ stat: 'money', value: 300000 },
+					{ stat: StatID.STEELMIND, value: 5 },
+					{ stat: StatID.MONEY, value: 300000 },
 				],
-				next: 'ch3_covid_accept',
+				next: Chapter3DialogueID.CH3_COVID_ACCEPT,
 			},
 			{
 				id: 'choice_refuse_job',
 				text: 'Từ chối (Chưa đủ kỹ năng, cần học thêm)',
 				textVi: 'Từ chối (Chưa đủ kỹ năng, cần học thêm)',
 				textEn: 'Refuse (Not skilled enough, need to learn more)',
-				effects: [{ stat: 'vision', value: 2 }],
-				next: 'ch3_covid_refuse',
+				effects: [{ stat: StatID.VISION, value: 5 }],
+				next: Chapter3DialogueID.CH3_COVID_REFUSE,
 			},
 		],
 	},
-	ch3_covid_accept: {
-		id: 'ch3_covid_accept',
+	[Chapter3DialogueID.CH3_COVID_ACCEPT]: {
 		speaker: 'narrator',
 		text: 'Bạn nhận job và làm việc suốt 3 ngày liền. Kết quả không hoàn hảo nhưng khách hàng chấp nhận. Đây là bước đầu tiên trong sự nghiệp lập trình viên của bạn.',
 		textVi:
 			'Bạn nhận job và làm việc suốt 3 ngày liền. Kết quả không hoàn hảo nhưng khách hàng chấp nhận. Đây là bước đầu tiên trong sự nghiệp lập trình viên của bạn.',
 		textEn:
 			"You accepted and worked for 3 days straight. Result wasn't perfect but client accepted it. This is your first step as a programmer.",
-		next: 'ch3_covid_end',
+		next: Chapter3DialogueID.CH3_COVID_END,
 	},
-	ch3_covid_refuse: {
-		id: 'ch3_covid_refuse',
+	[Chapter3DialogueID.CH3_COVID_REFUSE]: {
 		speaker: 'narrator',
 		text: 'Bạn từ chối và dành thêm 2 tháng để học sâu hơn về JavaScript và React. Sau đó bạn tự tin nhận các job phức tạp hơn với thù lao cao hơn.',
 		textVi:
 			'Bạn từ chối và dành thêm 2 tháng để học sâu hơn về JavaScript và React. Sau đó bạn tự tin nhận các job phức tạp hơn với thù lao cao hơn.',
 		textEn:
 			'You refused and spent 2 more months learning JavaScript and React deeply. Later you confidently took more complex jobs with higher pay.',
-		effects: [{ stat: 'steelMind', value: 1 }],
-		next: 'ch3_covid_end',
+		effects: [{ stat: StatID.STEELMIND, value: 3 }],
+		next: Chapter3DialogueID.CH3_COVID_END,
 	},
-	ch3_covid_end: {
-		id: 'ch3_covid_end',
+	[Chapter3DialogueID.CH3_COVID_END]: {
 		speaker: 'narrator',
 		text: 'Hết dịch, bố lại đi làm dự án resort. Lại thất bại vì vấn đề pháp lý. Bố về tay trắng. Sự tự tin rạn nứt thực sự.',
 		textVi:
 			'Hết dịch, bố lại đi làm dự án resort. Lại thất bại vì vấn đề pháp lý. Bố về tay trắng. Sự tự tin rạn nứt thực sự.',
 		textEn:
 			'Post-COVID, father joined resort project. Failed due to legal issues. Returned empty handed. Confidence truly cracked.',
-		next: 'ch3_ptit_admission',
+		next: Chapter3DialogueID.CH3_PTIT_ADMISSION,
 	},
-	ch3_ptit_admission: {
-		id: 'ch3_ptit_admission',
+	[Chapter3DialogueID.CH3_PTIT_ADMISSION]: {
 		speaker: 'narrator',
 		text: 'Kết thúc lớp 12, giữa bộn bề khó khăn, bạn nhận giấy báo trúng tuyển Học viện. Đây là tấm vé thông hành đầu tiên để bạn bước vào thế giới của "Mã nguồn", rời xa những công trình xây dựng đầy bụi bặm của bố.',
 		textVi:
 			'Kết thúc lớp 12, giữa bộn bề khó khăn, bạn nhận giấy báo trúng tuyển Học viện. Đây là tấm vé thông hành đầu tiên để bạn bước vào thế giới của "Mã nguồn", rời xa những công trình xây dựng đầy bụi bặm của bố.',
 		textEn:
 			'End of Grade 12, amidst difficulties, you got admitted to the Academy. This is your first ticket into the world of "Source Code", away from father\'s dusty construction sites.',
-		next: 'ch4_funeral_1',
+		next: Chapter4DialogueID.CH4_START,
 	},
 };

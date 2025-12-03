@@ -2,10 +2,11 @@ import { useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useGameStore } from '@/store/gameStore';
 import { EndingSystem } from '@/core/EndingSystem';
+import { achievements as allAchievements } from '@/data/achievements';
 
 export default function EndingScreen() {
 	const navigate = useNavigate();
-	const { stats } = useGameStore();
+	const { stats, achievements: unlockedAchievements } = useGameStore();
 
 	const ending = EndingSystem.calculateEnding(stats);
 
@@ -45,6 +46,41 @@ export default function EndingScreen() {
 					<div className='bg-game-bg-secondary p-6 rounded-lg border-2 border-game-vision'>
 						<div className='text-game-vision text-sm mb-2'>Vision</div>
 						<div className='text-3xl font-pixel'>{stats.vision}</div>
+					</div>
+				</div>
+
+				{/* Achievements */}
+				<div className='mt-12 max-w-4xl mx-auto'>
+					<h2 className='text-2xl font-pixel text-white mb-6'>
+						Achievements Unlocked
+					</h2>
+					<div className='grid grid-cols-2 md:grid-cols-4 gap-4'>
+						{allAchievements.map((ach) => {
+							const isUnlocked = unlockedAchievements.includes(ach.id);
+							if (!isUnlocked && ach.secret) return null; // Don't show secret locked achievements
+
+							return (
+								<div
+									key={ach.id}
+									className={`p-4 rounded border-2 ${
+										isUnlocked
+											? 'bg-game-bg-secondary border-game-accent'
+											: 'bg-gray-800 border-gray-700 opacity-50'
+									}`}
+								>
+									<div
+										className={`font-pixel text-sm mb-1 ${
+											isUnlocked ? 'text-game-accent' : 'text-gray-500'
+										}`}
+									>
+										{ach.nameVi}
+									</div>
+									<div className='text-xs text-gray-400'>
+										{isUnlocked ? ach.descriptionVi : '???'}
+									</div>
+								</div>
+							);
+						})}
 					</div>
 				</div>
 

@@ -33,6 +33,22 @@ export const allDialogues: Record<string, DialogueNode> = {
 	...chapter9Dialogues,
 };
 
+// Add reflection quotes to allDialogues
+Object.values(chapters).forEach((chapter) => {
+	if (chapter.reflectionQuotes) {
+		chapter.reflectionQuotes.forEach((quote) => {
+			allDialogues[quote.id] = {
+				id: quote.id,
+				text: quote.text,
+				textVi: quote.textVi,
+				textEn: quote.textEn,
+				choices: quote.choices,
+				speaker: 'player', // Reflection is internal monologue
+			};
+		});
+	}
+});
+
 export const getChapter = (id: number): Chapter | undefined => chapters[id];
 
 export const getDialogue = (id: string): DialogueNode | undefined =>

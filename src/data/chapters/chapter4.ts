@@ -4,7 +4,8 @@
 // Theme: Sự tan vỡ, Nỗi nhục và Sự trưởng thành đau đớn
 // ==========================================
 
-import type { Chapter, DialogueNode } from '../types';
+import { Chapter4DialogueID, Chapter4SceneID, Chapter4TodoID, Chapter5DialogueID, ConditionType, FlagID, Operator, StatID } from '../enum';
+import { type Chapter, type DialogueNode } from '../types';
 
 export const chapter4: Chapter = {
 	id: 4,
@@ -17,42 +18,42 @@ export const chapter4: Chapter = {
 	themeEn: 'Brokenness, Humiliation, and Painful Growth',
 	scenes: [
 		{
-			id: 'ch4_funeral',
+			id: Chapter4SceneID.CH4_FUNERAL,
 			name: 'Đám giỗ tủi nhục',
 			nameVi: 'Năm 2 ĐH: Đám giỗ tủi nhục',
 			nameEn: 'Year 2 Uni: Humiliating Funeral',
 			background: '/assets/sprites/backgrounds/funeral_countryside.png',
 			music: '/assets/audio/music/chapters/ch4_sadness.mp3',
-			dialogueStart: 'ch4_start',
+			dialogueStart: Chapter4DialogueID.CH4_START,
 		},
 		{
-			id: 'ch4_divorce',
+			id: Chapter4SceneID.CH4_DIVORCE,
 			name: 'Lá đơn ly hôn',
 			nameVi: 'Lá đơn ly hôn (System Failure)',
 			nameEn: 'The Divorce Papers (System Failure)',
 			background: '/assets/sprites/backgrounds/university_gate.png',
 			music: '/assets/audio/music/chapters/ch4_energetic.mp3',
-			dialogueStart: 'ch4_divorce_1',
+			dialogueStart: Chapter4DialogueID.CH4_DIVORCE_1,
 		},
 		{
-			id: 'ch4_independence',
+			id: Chapter4SceneID.CH4_INDEPENDENCE,
 			name: 'Tự lập',
 			nameVi: 'Năm 3 ĐH: Tự lập & Bi',
 			nameEn: 'Year 3 Uni: Independence & Bi',
 			background: '/assets/sprites/backgrounds/dorm_room_pc.png',
 			music: '/assets/audio/music/chapters/ch4_sadness.mp3',
-			dialogueStart: 'ch4_independence_1',
+			dialogueStart: Chapter4DialogueID.CH4_INDEPENDENCE_1,
 		},
 	],
 	nightlyEvents: {
 		todoList: [
 			{
-				id: 'ch4_todo_code_hard',
+				id: Chapter4TodoID.CH4_TODO_CODE_HARD,
 				text: 'Cày code 16 tiếng/ngày',
 				textVi: 'Cày code 16 tiếng/ngày',
 				textEn: 'Code 16 hours/day',
-				effects: [{ stat: 'vision', value: 2 }],
-				cost: { health: 2, stress: 2 }, // Increased costs
+				effects: [{ stat: StatID.VISION, value: 8 }],
+				cost: { health: 5, stress: 5 }, // Increased costs
 			},
 
 			{
@@ -60,82 +61,82 @@ export const chapter4: Chapter = {
 				text: 'Gọi điện cho mẹ',
 				textVi: 'Gọi điện cho mẹ',
 				textEn: 'Call Mom',
-				effects: [{ stat: 'humanity', value: 1 }],
+				effects: [{ stat: StatID.HUMANITY, value: 5 }],
 			},
 			{
 				id: 'ch4_todo_ignore_dad',
 				text: 'Lờ đi cuộc gọi của bố',
 				textVi: 'Lờ đi cuộc gọi của bố',
 				textEn: "Ignore Dad's call",
-				effects: [{ stat: 'steelMind', value: 1 }],
-				cost: { humanity: 2 }, // Increased Humanity cost
+				effects: [{ stat: StatID.STEELMIND, value: 5 }],
+				cost: { humanity: 5 }, // Increased Humanity cost
 			},
 			{
 				id: 'ch4_todo_hackathon',
 				text: 'Tham gia Hackathon',
 				textVi: 'Tham gia Hackathon',
 				textEn: 'Join Hackathon',
-				effects: [{ stat: 'vision', value: 1 }],
-				cost: { stress: 1 },
+				effects: [{ stat: StatID.VISION, value: 5 }],
+				cost: { stress: 3 },
 			},
 			{
 				id: 'ch4_todo_fix_bug_friend',
 				text: 'Sửa bug giúp bạn',
 				textVi: 'Sửa bug giúp bạn',
 				textEn: 'Fix bug for friend',
-				effects: [{ stat: 'humanity', value: 1 }],
+				effects: [{ stat: StatID.HUMANITY, value: 5 }],
 			},
 			{
 				id: 'ch4_todo_play_lol',
 				text: 'Chơi LoL giải trí',
 				textVi: 'Chơi LoL giải trí',
 				textEn: 'Play LoL for fun',
-				reward: { stress: -1 },
+				reward: { stress: -5 },
 			},
 			{
 				id: 'ch4_todo_read_clean_code',
 				text: 'Đọc sách "Clean Code"',
 				textVi: 'Đọc sách "Clean Code"',
 				textEn: 'Read "Clean Code"',
-				effects: [{ stat: 'vision', value: 1 }],
+				effects: [{ stat: StatID.VISION, value: 3 }],
 			},
 			{
 				id: 'ch4_todo_drink_coffee',
 				text: 'Uống cafe đen đá không đường',
 				textVi: 'Uống cafe đen đá không đường',
 				textEn: 'Drink black coffee no sugar',
-				effects: [{ stat: 'vision', value: 1 }],
-				cost: { health: 1 },
+				effects: [{ stat: StatID.VISION, value: 2 }],
+				cost: { health: 2 },
 			},
 			{
 				id: 'ch4_todo_sleep_lab',
 				text: 'Ngủ lại phòng Lab',
 				textVi: 'Ngủ lại phòng Lab',
 				textEn: 'Sleep in Lab',
-				effects: [{ stat: 'vision', value: 1 }],
-				cost: { health: 1 },
+				effects: [{ stat: StatID.VISION, value: 5 }],
+				cost: { health: 3 },
 			},
 			{
 				id: 'ch4_todo_flirt',
 				text: 'Tán tỉnh em khóa dưới',
 				textVi: 'Tán tỉnh em khóa dưới',
 				textEn: 'Flirt with junior',
-				effects: [{ stat: 'humanity', value: 1 }],
+				effects: [{ stat: StatID.HUMANITY, value: 3 }],
 			},
 			{
 				id: 'ch4_todo_argue_team',
 				text: 'Cãi nhau với team',
 				textVi: 'Cãi nhau với team',
 				textEn: 'Argue with team',
-				effects: [{ stat: 'steelMind', value: 1 }],
-				cost: { stress: 1 },
+				effects: [{ stat: StatID.STEELMIND, value: 3 }],
+				cost: { stress: 3 },
 			},
 			{
 				id: 'ch4_todo_dream_silicon',
 				text: 'Mơ về Silicon Valley',
 				textVi: 'Mơ về Silicon Valley',
 				textEn: 'Dream of Silicon Valley',
-				effects: [{ stat: 'vision', value: 1 }],
+				effects: [{ stat: StatID.VISION, value: 3 }],
 			},
 
 			{
@@ -143,30 +144,30 @@ export const chapter4: Chapter = {
 				text: 'Lười tắm',
 				textVi: 'Lười tắm',
 				textEn: 'Skip shower',
-				effects: [{ stat: 'vision', value: 1 }], // Tiết kiệm thời gian code
-				cost: { humanity: 1 },
+				effects: [{ stat: StatID.VISION, value: 2 }], // Tiết kiệm thời gian code
+				cost: { humanity: 2 },
 			},
 			{
 				id: 'ch4_todo_mentor',
 				text: 'Mentor cho sinh viên năm nhất',
 				textVi: 'Mentor cho sinh viên năm nhất',
 				textEn: 'Mentor freshman',
-				effects: [{ stat: 'humanity', value: 1 }],
+				effects: [{ stat: StatID.HUMANITY, value: 5 }],
 			},
 			{
 				id: 'ch4_todo_apply_intern',
 				text: 'Nộp CV thực tập',
 				textVi: 'Nộp CV thực tập',
 				textEn: 'Apply for internship',
-				effects: [{ stat: 'vision', value: 1 }],
+				effects: [{ stat: StatID.VISION, value: 3 }],
 			},
 			{
 				id: 'ch4_todo_cry_toilet',
 				text: 'Khóc trong nhà vệ sinh',
 				textVi: 'Khóc trong nhà vệ sinh',
 				textEn: 'Cry in toilet',
-				reward: { stress: -1 },
-				cost: { steelMind: 1 },
+				reward: { stress: -5 },
+				cost: { steelMind: 2 },
 			},
 		],
 		dreamQuestions: [
@@ -182,7 +183,7 @@ export const chapter4: Chapter = {
 						textVi: 'Khóc vì tủi thân',
 						textEn: 'Cry out of self-pity',
 						next: '',
-						effects: [{ stat: 'humanity', value: 1 }],
+						effects: [{ stat: StatID.HUMANITY, value: 5 }],
 					},
 					{
 						id: 'ch4_dream_funeral_stoic',
@@ -190,7 +191,7 @@ export const chapter4: Chapter = {
 						textVi: 'Lạnh lùng không cảm xúc',
 						textEn: 'Cold and emotionless',
 						next: '',
-						effects: [{ stat: 'steelMind', value: 1 }],
+						effects: [{ stat: StatID.STEELMIND, value: 5 }],
 					},
 					{
 						id: 'ch4_dream_funeral_regret',
@@ -198,7 +199,7 @@ export const chapter4: Chapter = {
 						textVi: 'Thương bố',
 						textEn: 'Pity Dad',
 						next: '',
-						effects: [{ stat: 'humanity', value: 1 }],
+						effects: [{ stat: StatID.HUMANITY, value: 5 }],
 					},
 					{
 						id: 'ch4_dream_funeral_run',
@@ -206,7 +207,7 @@ export const chapter4: Chapter = {
 						textVi: 'Chạy trốn khỏi đám đông',
 						textEn: 'Run away from crowd',
 						next: '',
-						effects: [{ stat: 'stress', value: 1 }],
+						effects: [{ stat: StatID.STRESS, value: 3 }],
 					},
 				],
 			},
@@ -222,7 +223,7 @@ export const chapter4: Chapter = {
 						textVi: 'Cho nó ăn',
 						textEn: 'Feed it',
 						next: '',
-						effects: [{ stat: 'humanity', value: 1 }],
+						effects: [{ stat: StatID.HUMANITY, value: 5 }],
 					},
 					{
 						id: 'ch4_dream_bi_train',
@@ -230,7 +231,7 @@ export const chapter4: Chapter = {
 						textVi: 'Huấn luyện nó nghiêm khắc',
 						textEn: 'Train it strictly',
 						next: '',
-						effects: [{ stat: 'vision', value: 1 }],
+						effects: [{ stat: StatID.VISION, value: 3 }],
 					},
 					{
 						id: 'ch4_dream_bi_ignore',
@@ -238,7 +239,7 @@ export const chapter4: Chapter = {
 						textVi: 'Lờ nó đi',
 						textEn: 'Ignore it',
 						next: '',
-						effects: [{ stat: 'steelMind', value: 1 }],
+						effects: [{ stat: StatID.STEELMIND, value: 3 }],
 					},
 					{
 						id: 'ch4_dream_bi_sell',
@@ -246,7 +247,7 @@ export const chapter4: Chapter = {
 						textVi: 'Bán nó lấy tiền',
 						textEn: 'Sell it for money',
 						next: '',
-						effects: [{ stat: 'money', value: 1 }], // Cruel
+						effects: [{ stat: StatID.MONEY, value: 1000000 }], // Cruel
 					},
 				],
 			},
@@ -262,7 +263,7 @@ export const chapter4: Chapter = {
 						textVi: 'Cười hạnh phúc',
 						textEn: 'Smile happily',
 						next: '',
-						effects: [{ stat: 'humanity', value: 1 }],
+						effects: [{ stat: StatID.HUMANITY, value: 5 }],
 					},
 					{
 						id: 'ch4_dream_grad_empty',
@@ -270,7 +271,7 @@ export const chapter4: Chapter = {
 						textVi: 'Cảm thấy trống rỗng',
 						textEn: 'Feel empty',
 						next: '',
-						effects: [{ stat: 'steelMind', value: 1 }],
+						effects: [{ stat: StatID.STEELMIND, value: 3 }],
 					},
 					{
 						id: 'ch4_dream_grad_proud',
@@ -278,7 +279,7 @@ export const chapter4: Chapter = {
 						textVi: 'Tự hào vì đã vượt qua',
 						textEn: 'Proud to have overcome',
 						next: '',
-						effects: [{ stat: 'vision', value: 1 }],
+						effects: [{ stat: StatID.VISION, value: 5 }],
 					},
 					{
 						id: 'ch4_dream_grad_scared',
@@ -286,7 +287,7 @@ export const chapter4: Chapter = {
 						textVi: 'Sợ hãi tương lai',
 						textEn: 'Scared of future',
 						next: '',
-						effects: [{ stat: 'stress', value: 1 }],
+						effects: [{ stat: StatID.STRESS, value: 3 }],
 					},
 				],
 			},
@@ -302,7 +303,7 @@ export const chapter4: Chapter = {
 						textVi: 'Tự tin trả lời',
 						textEn: 'Answer confidently',
 						next: '',
-						effects: [{ stat: 'vision', value: 1 }],
+						effects: [{ stat: StatID.VISION, value: 5 }],
 					},
 					{
 						id: 'ch4_dream_interview_nervous',
@@ -310,7 +311,7 @@ export const chapter4: Chapter = {
 						textVi: 'Run rẩy không nói nên lời',
 						textEn: 'Tremble speechless',
 						next: '',
-						effects: [{ stat: 'stress', value: 1 }],
+						effects: [{ stat: StatID.STRESS, value: 3 }],
 					},
 					{
 						id: 'ch4_dream_interview_lie',
@@ -318,7 +319,7 @@ export const chapter4: Chapter = {
 						textVi: 'Nói dối để được nhận',
 						textEn: 'Lie to get hired',
 						next: '',
-						effects: [{ stat: 'steelMind', value: 1 }],
+						effects: [{ stat: StatID.STEELMIND, value: 3 }],
 					},
 					{
 						id: 'ch4_dream_interview_honest',
@@ -326,7 +327,7 @@ export const chapter4: Chapter = {
 						textVi: 'Thành thật về điểm yếu',
 						textEn: 'Honest about weaknesses',
 						next: '',
-						effects: [{ stat: 'humanity', value: 1 }],
+						effects: [{ stat: StatID.HUMANITY, value: 5 }],
 					},
 				],
 			},
@@ -342,7 +343,7 @@ export const chapter4: Chapter = {
 						textVi: 'Trang trí nó',
 						textEn: 'Decorate it',
 						next: '',
-						effects: [{ stat: 'vision', value: 1 }],
+						effects: [{ stat: StatID.VISION, value: 3 }],
 					},
 					{
 						id: 'ch4_dream_room_sleep',
@@ -350,7 +351,7 @@ export const chapter4: Chapter = {
 						textVi: 'Nằm ngủ',
 						textEn: 'Sleep',
 						next: '',
-						effects: [{ stat: 'health', value: 1 }],
+						effects: [{ stat: StatID.HEALTH, value: 3 }],
 					},
 					{
 						id: 'ch4_dream_room_cry',
@@ -358,7 +359,7 @@ export const chapter4: Chapter = {
 						textVi: 'Khóc một mình',
 						textEn: 'Cry alone',
 						next: '',
-						effects: [{ stat: 'stress', value: -1 }],
+						effects: [{ stat: StatID.STRESS, value: -3 }],
 					},
 					{
 						id: 'ch4_dream_room_work',
@@ -366,68 +367,189 @@ export const chapter4: Chapter = {
 						textVi: 'Bật máy tính làm việc',
 						textEn: 'Turn on PC and work',
 						next: '',
-						effects: [{ stat: 'vision', value: 1 }],
+						effects: [{ stat: StatID.VISION, value: 5 }],
 					},
 				],
 			},
 		],
 	},
+	reflectionQuotes: [
+		{
+			id: 'ch4_reflect_sleep_1',
+			text: 'Chia tay rồi... trái tim đau nhưng vẫn phải tiếp tục.',
+			textVi: 'Chia tay rồi... trái tim đau nhưng vẫn phải tiếp tục.',
+			textEn: 'Break up done... heart hurts but must continue.',
+			type: ConditionType.SLEEP,
+			choices: [
+				{
+					id: 'ch4_reflect_sleep_1_cry',
+					text: 'Khóc và đi ngủ',
+					textVi: 'Khóc và đi ngủ',
+					textEn: 'Cry and sleep',
+					next: '',
+					effects: [{ stat: StatID.STRESS, value: -5 }],
+				},
+				{
+					id: 'ch4_reflect_sleep_1_forget',
+					text: 'Ngủ để quên đi',
+					textVi: 'Ngủ để quên đi',
+					textEn: 'Sleep to forget',
+					next: '',
+					effects: [{ stat: StatID.STEELMIND, value: 3 }],
+				},
+			],
+		},
+		{
+			id: 'ch4_reflect_success_1',
+			text: 'Thất bại trong tình yêu... nhưng sự nghiệp vẫn phải phấn đấu.',
+			textVi: 'Thất bại trong tình yêu... nhưng sự nghiệp vẫn phải phấn đấu.',
+			textEn: 'Failed in love... but career must strive on.',
+			type: ConditionType.SUCCESS,
+			choices: [
+				{
+					id: 'ch4_reflect_success_1_focus',
+					text: 'Tập trung vào công việc',
+					textVi: 'Tập trung vào công việc',
+					textEn: 'Focus on work',
+					next: '',
+					effects: [{ stat: StatID.VISION, value: 5 }],
+				},
+				{
+					id: 'ch4_reflect_success_1_hurt',
+					text: 'Nhưng vẫn còn đau lắm',
+					textVi: 'Nhưng vẫn còn đau lắm',
+					textEn: 'But still hurts so much',
+					next: '',
+					effects: [{ stat: StatID.HUMANITY, value: 3 }],
+				},
+			],
+		},
+		{
+			id: 'ch4_reflect_sleep_2',
+			text: 'Công việc bù đầu, tình cảm tan vỡ... cần nghỉ ngơi.',
+			textVi: 'Công việc bù đầu, tình cảm tan vỡ... cần nghỉ ngơi.',
+			textEn: 'Work overwhelming, love broken... need rest.',
+			type: ConditionType.SLEEP,
+			choices: [
+				{
+					id: 'ch4_reflect_sleep_2_rest',
+					text: 'Nghỉ ngơi để hồi phục',
+					textVi: 'Nghỉ ngơi để hồi phục',
+					textEn: 'Rest to recover',
+					next: '',
+					effects: [{ stat: StatID.HEALTH, value: 3 }],
+				},
+				{
+					id: 'ch4_reflect_sleep_2_tired',
+					text: 'Mệt mỏi quá rồi',
+					textVi: 'Mệt mỏi quá rồi',
+					textEn: 'So exhausted',
+					next: '',
+					effects: [{ stat: StatID.STRESS, value: -2 }],
+				},
+			],
+		},
+		{
+			id: 'ch4_reflect_success_2',
+			text: 'Trưởng thành đau đớn... nhưng đó là cách duy nhất để mạnh mẽ.',
+			textVi: 'Trưởng thành đau đớn... nhưng đó là cách duy nhất để mạnh mẽ.',
+			textEn: "Painful growth... but it's the only way to be strong.",
+			type: ConditionType.SUCCESS,
+			choices: [
+				{
+					id: 'ch4_reflect_success_2_accept',
+					text: 'Chấp nhận và tiếp tục',
+					textVi: 'Chấp nhận và tiếp tục',
+					textEn: 'Accept and continue',
+					next: '',
+					effects: [{ stat: StatID.STEELMIND, value: 5 }],
+				},
+				{
+					id: 'ch4_reflect_success_2_rest',
+					text: 'Nhưng giờ cần nghỉ ngơi',
+					textVi: 'Nhưng giờ cần nghỉ ngơi',
+					textEn: 'But need rest now',
+					next: '',
+					effects: [{ stat: StatID.HEALTH, value: 2 }],
+				},
+			],
+		},
+		{
+			id: 'ch4_reflect_sleep_3',
+			text: 'Một ngày đầy nước mắt... đã đến lúc ngủ.',
+			textVi: 'Một ngày đầy nước mắt... đã đến lúc ngủ.',
+			textEn: 'A day full of tears... time to sleep.',
+			type: ConditionType.SLEEP,
+			choices: [
+				{
+					id: 'ch4_reflect_sleep_3_sleep',
+					text: 'Đi ngủ thôi',
+					textVi: 'Đi ngủ thôi',
+					textEn: 'Just sleep',
+					next: '',
+					effects: [{ stat: StatID.HEALTH, value: 2 }],
+				},
+				{
+					id: 'ch4_reflect_sleep_3_tomorrow',
+					text: 'Mai sẽ tốt hơn',
+					textVi: 'Mai sẽ tốt hơn',
+					textEn: 'Tomorrow will be better',
+					next: '',
+					effects: [{ stat: StatID.VISION, value: 3 }],
+				},
+			],
+		},
+	],
 };
 
-export const chapter4Dialogues: Record<string, DialogueNode> = {
-	ch4_end: {
-		id: 'ch4_end',
+export const chapter4Dialogues: Record<Chapter4DialogueID, DialogueNode> = {
+	[Chapter4DialogueID.CH4_END]: {
 		speaker: 'narrator',
 		text: 'Lễ tốt nghiệp kết thúc. Bạn ném chiếc mũ cử nhân lên trời, nhưng trong lòng trĩu nặng lo âu. Ngày mai, bạn chính thức thất nghiệp.',
 		textVi:
 			'Lễ tốt nghiệp kết thúc. Bạn ném chiếc mũ cử nhân lên trời, nhưng trong lòng trĩu nặng lo âu. Ngày mai, bạn chính thức thất nghiệp.',
 		textEn:
 			'Graduation ceremony ended. You threw the cap in the sky, but heart heavy with worry. Tomorrow, you are officially unemployed.',
-		next: 'chapter_5_start',
+		next: Chapter5DialogueID.CH5_INTRO,
 	},
-	ch4_start: {
-		id: 'ch4_start',
+	[Chapter4DialogueID.CH4_START]: {
 		speaker: 'narrator',
 		text: 'Hà Nội ồn ào và bụi bặm. Giảng đường Đại học rộng lớn đến choáng ngợp. Bạn cảm thấy mình thật nhỏ bé giữa dòng người hối hả.',
 		textVi:
 			'Hà Nội ồn ào và bụi bặm. Giảng đường Đại học rộng lớn đến choáng ngợp. Bạn cảm thấy mình thật nhỏ bé giữa dòng người hối hả.',
 		textEn:
 			'Hanoi is noisy and dusty. The University lecture hall is overwhelmingly large. You feel so small amidst the rushing crowd.',
-		next: 'ch4_funeral_1',
+		next: Chapter4DialogueID.CH4_FUNERAL_1,
 	},
 	// 4.1 Đám giỗ
-	ch4_funeral_1: {
-		id: 'ch4_funeral_1',
+	[Chapter4DialogueID.CH4_FUNERAL_1]: {
 		speaker: 'narrator',
 		text: 'Năm 2 Đại học. Bà nội mất. Đám giỗ quan trọng nhất dòng họ. Các chú bác lái xe hơi bóng loáng về cổng làng.',
 		textVi:
 			'Năm 2 Đại học. Bà nội mất. Đám giỗ quan trọng nhất dòng họ. Các chú bác lái xe hơi bóng loáng về cổng làng.',
 		textEn:
 			'Year 2 Uni. Grandma passed. Important funeral. Uncles drove shiny cars to the village gate.',
-		next: 'ch4_funeral_2',
+		next: Chapter4DialogueID.CH4_FUNERAL_2,
 	},
-	ch4_funeral_2: {
-		id: 'ch4_funeral_2',
+	[Chapter4DialogueID.CH4_FUNERAL_2]: {
 		speaker: 'narrator',
 		text: 'Gia đình bạn - từng giàu nhất - giờ phải đi nhờ xe họ hàng (LuxSA đã bán). Bố ngồi ghế phụ, im lặng suốt đường đi.',
 		textVi:
 			'Gia đình bạn - từng giàu nhất - giờ phải đi nhờ xe họ hàng (LuxSA đã bán). Bố ngồi ghế phụ, im lặng suốt đường đi.',
 		textEn:
 			'Your family - once richest - hitched a ride (LuxSA sold). Father sat in passenger seat, silent all the way.',
-		next: 'ch4_funeral_3',
+		next: Chapter4DialogueID.CH4_FUNERAL_3,
 	},
-	ch4_funeral_3: {
-		id: 'ch4_funeral_3',
+	[Chapter4DialogueID.CH4_FUNERAL_3]: {
 		speaker: 'npc',
 		text: 'Họ hàng xì xào: "Đấy, ngày xưa hống hách cho lắm vào. Giờ thì sáng mắt ra. Đúng là không ai giàu ba họ."',
 		textVi:
 			'Họ hàng xì xào: "Đấy, ngày xưa hống hách cho lắm vào. Giờ thì sáng mắt ra. Đúng là không ai giàu ba họ."',
 		textEn:
 			'Relatives whispered: "See, used to be so arrogant. Now look at them. Wealth never lasts three generations."',
-		next: 'ch4_funeral_reaction',
+		next: Chapter4DialogueID.CH4_FUNERAL_REACTION,
 	},
-	ch4_funeral_reaction: {
-		id: 'ch4_funeral_reaction',
+	[Chapter4DialogueID.CH4_FUNERAL_REACTION]: {
 		speaker: 'player',
 		text: 'Bạn sẽ phản ứng thế nào?',
 		textVi: 'Bạn sẽ phản ứng thế nào?',
@@ -438,79 +560,73 @@ export const chapter4Dialogues: Record<string, DialogueNode> = {
 				text: '(Im lặng, nắm chặt tay)',
 				textVi: '(Im lặng, nắm chặt tay)',
 				textEn: '(Silence, clenching fists)',
-				effects: [{ stat: 'steelMind', value: 1 }],
-				next: 'ch4_funeral_oath',
+				effects: [{ stat: StatID.STEELMIND, value: 1 }],
+				next: Chapter4DialogueID.CH4_FUNERAL_OATH,
 			},
 			{
 				id: 'choice_polite_reply',
 				text: 'Cháu cảm ơn, gia đình cháu vẫn ổn',
 				textVi: 'Cháu cảm ơn, gia đình cháu vẫn ổn',
 				textEn: 'Thanks, we are fine',
-				effects: [{ stat: 'humanity', value: 1 }],
-				next: 'ch4_funeral_oath',
+				effects: [{ stat: StatID.HUMANITY, value: 1 }],
+				next: Chapter4DialogueID.CH4_FUNERAL_OATH,
 			},
 		],
 	},
-	ch4_funeral_oath: {
-		id: 'ch4_funeral_oath',
+	[Chapter4DialogueID.CH4_FUNERAL_OATH]: {
 		speaker: 'player',
 		text: '(Thề thốt) Sẽ có ngày mình lấy lại tất cả những gì đã mất.',
 		textVi: '(Thề thốt) Sẽ có ngày mình lấy lại tất cả những gì đã mất.',
 		textEn: '(Oath) I will take back everything that was lost.',
 		effects: [
-			{ stat: 'steelMind', value: 2 },
-			{ stat: 'humanity', value: -1 },
+			{ stat: StatID.STEELMIND, value: 2 },
+			{ stat: StatID.HUMANITY, value: -1 },
 		],
-		next: 'ch4_divorce_1',
+		next: Chapter4DialogueID.CH4_DIVORCE_1,
 	},
 
 	// 4.2 Ly hôn
-	ch4_divorce_1: {
-		id: 'ch4_divorce_1',
+	[Chapter4DialogueID.CH4_DIVORCE_1]: {
 		speaker: 'narrator',
 		text: 'Ngay sau đám giỗ, vì nhục, bố lại lao vào dự án mới ở vùng sâu vùng xa bất chấp lời can ngăn. Mẹ không chịu nổi sự bấp bênh nữa.',
 		textVi:
 			'Ngay sau đám giỗ, vì nhục, bố lại lao vào dự án mới ở vùng sâu vùng xa bất chấp lời can ngăn. Mẹ không chịu nổi sự bấp bênh nữa.',
 		textEn:
 			"After funeral, humiliated, father joined risky remote project despite warnings. Mom couldn't take the insecurity.",
-		next: 'ch4_divorce_2',
+		next: Chapter4DialogueID.CH4_DIVORCE_2,
 	},
-	ch4_divorce_2: {
-		id: 'ch4_divorce_2',
+	[Chapter4DialogueID.CH4_DIVORCE_2]: {
 		speaker: 'npc',
 		text: '"Mẹ không chịu nổi nữa rồi. Mẹ đi đây. Con ở lại chăm sóc bố và em."',
 		textVi:
 			'"Mẹ không chịu nổi nữa rồi. Mẹ đi đây. Con ở lại chăm sóc bố và em."',
 		textEn:
 			'"I can\'t take it anymore. I\'m leaving. You stay and take care of dad and your brother."',
-		next: 'ch4_divorce_reaction',
+		next: Chapter4DialogueID.CH4_DIVORCE_REACTION,
 	},
-	ch4_divorce_reaction: {
-		id: 'ch4_divorce_reaction',
+	[Chapter4DialogueID.CH4_DIVORCE_REACTION]: {
 		speaker: 'narrator',
 		text: 'Mẹ xách vali đi, để lại căn nhà trống hoác. Bạn cầm tờ giấy ly hôn, không khóc, chỉ thấy mệt mỏi rã rời. Hệ thống gia đình Crash hoàn toàn (Unrecoverable Error).',
 		textVi:
 			'Mẹ xách vali đi, để lại căn nhà trống hoác. Bạn cầm tờ giấy ly hôn, không khóc, chỉ thấy mệt mỏi rã rời. Hệ thống gia đình Crash hoàn toàn (Unrecoverable Error).',
 		textEn:
 			"Mom packed and left, leaving an empty house. You held the divorce paper, didn't cry, just exhausted. Family system Crashed completely (Unrecoverable Error).",
-		next: 'ch4_independence_1',
+		next: Chapter4DialogueID.CH4_INDEPENDENCE_1,
 	},
 
 	// 4.3 Tự lập & Bi
-	ch4_independence_1: {
-		id: 'ch4_independence_1',
+	[Chapter4DialogueID.CH4_INDEPENDENCE_1]: {
 		speaker: 'narrator',
 		text: 'Bạn chuyển ra ở riêng tại một phòng trọ 15m2 ở Triều Khúc. Mùa hè 40 độ, không điều hòa. Bạn làm bạn với gián và mì tôm.',
 		textVi:
 			'Bạn chuyển ra ở riêng tại một phòng trọ 15m2 ở Triều Khúc. Mùa hè 40 độ, không điều hòa. Bạn làm bạn với gián và mì tôm.',
 		textEn:
 			'You moved out to a 15m2 room in Trieu Khuc. 40 degrees summer, no AC. Friends with cockroaches and instant noodles.',
-		next: 'ch4_noodle_start',
+		next: Chapter4DialogueID.CH4_NOODLE_START,
 	},
 
 	// NEW: Eat Noodle Event
-	ch4_noodle_start: {
-		id: 'ch4_noodle_start',
+	[Chapter4DialogueID.CH4_NOODLE_START]: {
 		speaker: 'player',
 		text: '(Suy nghĩ) Cuối tháng rồi. Ví rỗng tuếch. Lại là bài toán muôn thuở: Ăn gì?',
 		textVi:
@@ -523,43 +639,40 @@ export const chapter4Dialogues: Record<string, DialogueNode> = {
 				text: 'Mì tôm: Người bạn trung thành (+20k)',
 				textVi: 'Mì tôm: Người bạn trung thành (+20k)',
 				textEn: 'Instant noodles: Loyal friend (+20k)',
-				effects: [{ stat: 'money', value: 20000 }],
-				next: 'ch4_noodle_save',
+				effects: [{ stat: StatID.MONEY, value: 20000 }],
+				next: Chapter4DialogueID.CH4_NOODLE_SAVE,
 			},
 			{
 				id: 'choice_noodle_eat',
-				text: 'Bún chả: Tự thưởng cho mình (Health +1)',
-				textVi: 'Bún chả: Tự thưởng cho mình (Health +1)',
-				textEn: 'Bun cha: Treat myself (Health +1)',
-				effects: [{ stat: 'health', value: 1 }],
-				next: 'ch4_noodle_eat',
+				text: 'Bún chả: Tự thưởng cho mình (Health +3)',
+				textVi: 'Bún chả: Tự thưởng cho mình (Health +3)',
+				textEn: 'Bun cha: Treat myself (Health +3)',
+				effects: [{ stat: StatID.HEALTH, value: 3 }],
+				next: Chapter4DialogueID.CH4_NOODLE_EAT,
 			},
 		],
 	},
-	ch4_noodle_save: {
-		id: 'ch4_noodle_save',
+	[Chapter4DialogueID.CH4_NOODLE_SAVE]: {
 		speaker: 'narrator',
 		text: 'Gói mì tôm Hảo Hảo chua cay. Vừa ăn vừa hít hà. Tiết kiệm là quốc sách.',
 		textVi:
 			'Gói mì tôm Hảo Hảo chua cay. Vừa ăn vừa hít hà. Tiết kiệm là quốc sách.',
 		textEn:
 			'Spicy Hao Hao noodles. Slurping and sniffing. Saving is national policy.',
-		next: 'ch4_club_start', // Redirect to Club
+		next: Chapter4DialogueID.CH4_CLUB_START, // Redirect to Club
 	},
-	ch4_noodle_eat: {
-		id: 'ch4_noodle_eat',
+	[Chapter4DialogueID.CH4_NOODLE_EAT]: {
 		speaker: 'narrator',
 		text: 'Một suất bún chả đầy đặn. Hương vị thịt nướng làm bạn quên đi cái nóng 40 độ.',
 		textVi:
 			'Một suất bún chả đầy đặn. Hương vị thịt nướng làm bạn quên đi cái nóng 40 độ.',
 		textEn:
 			'A full portion of Bun Cha. Grilled meat aroma makes you forget the 40-degree heat.',
-		next: 'ch4_club_start', // Redirect to Club
+		next: Chapter4DialogueID.CH4_CLUB_START, // Redirect to Club
 	},
 
 	// NEW: Club Activity
-	ch4_club_start: {
-		id: 'ch4_club_start',
+	[Chapter4DialogueID.CH4_CLUB_START]: {
 		speaker: 'narrator',
 		text: 'Trường Đại học có rất nhiều CLB. Bạn đứng trước bàn tuyển thành viên.',
 		textVi:
@@ -568,37 +681,36 @@ export const chapter4Dialogues: Record<string, DialogueNode> = {
 		choices: [
 			{
 				id: 'choice_club_code',
-				text: 'CLB Lập trình: Nơi hội tụ tinh hoa (Vision +1, Network ++)',
-				textVi: 'CLB Lập trình: Nơi hội tụ tinh hoa (Vision +1, Network ++)',
-				textEn: 'Coding Club: Elite gathering (Vision +1, Network ++)',
-				effects: [{ stat: 'vision', value: 1 }],
-				next: 'ch4_job_start',
+				text: 'CLB Lập trình: Nơi hội tụ tinh hoa (Vision +3, Network ++)',
+				textVi: 'CLB Lập trình: Nơi hội tụ tinh hoa (Vision +3, Network ++)',
+				textEn: 'Coding Club: Elite gathering (Vision +3, Network ++)',
+				effects: [{ stat: StatID.VISION, value: 3 }],
+				next: Chapter4DialogueID.CH4_JOB_START,
 			},
 			{
 				id: 'choice_club_social',
-				text: 'CLB Tình nguyện: Kết nối cộng đồng (Humanity +2, Money -50k)',
-				textVi: 'CLB Tình nguyện: Kết nối cộng đồng (Humanity +2, Money -50k)',
-				textEn: 'Volunteer Club: Community connect (Humanity +2, Money -50k)',
+				text: 'CLB Tình nguyện: Kết nối cộng đồng (Humanity +5, Money -100k)',
+				textVi: 'CLB Tình nguyện: Kết nối cộng đồng (Humanity +5, Money -100k)',
+				textEn: 'Volunteer Club: Community connect (Humanity +5, Money -100k)',
 				effects: [
-					{ stat: 'humanity', value: 2 },
-					{ stat: 'money', value: -500000 },
+					{ stat: StatID.HUMANITY, value: 5 },
+					{ stat: StatID.MONEY, value: -100000 },
 				],
-				next: 'ch4_job_start',
+				next: Chapter4DialogueID.CH4_JOB_START,
 			},
 			{
 				id: 'choice_club_solo',
-				text: 'Không tham gia: Dành thời gian tự học (Steel Mind +1)',
-				textVi: 'Không tham gia: Dành thời gian tự học (Steel Mind +1)',
-				textEn: 'Join none: Time for self-study (Steel Mind +1)',
-				effects: [{ stat: 'steelMind', value: 1 }],
-				next: 'ch4_job_start',
+				text: 'Không tham gia: Dành thời gian tự học (Steel Mind +3)',
+				textVi: 'Không tham gia: Dành thời gian tự học (Steel Mind +3)',
+				textEn: 'Join none: Time for self-study (Steel Mind +3)',
+				effects: [{ stat: StatID.STEELMIND, value: 3 }],
+				next: Chapter4DialogueID.CH4_JOB_START,
 			},
 		],
 	},
 
 	// NEW: Part-time Job
-	ch4_job_start: {
-		id: 'ch4_job_start',
+	[Chapter4DialogueID.CH4_JOB_START]: {
 		speaker: 'player',
 		text: '(Suy nghĩ) Tiền sinh hoạt phí bố gửi không đủ. Mình cần kiếm thêm việc làm thêm.',
 		textVi:
@@ -608,32 +720,31 @@ export const chapter4Dialogues: Record<string, DialogueNode> = {
 		choices: [
 			{
 				id: 'choice_job_tutor',
-				text: 'Gia sư: Dạy toán cho trẻ con (Money +500k, Humanity +1)',
-				textVi: 'Gia sư: Dạy toán cho trẻ con (Money +500k, Humanity +1)',
-				textEn: 'Tutor: Teach math to kids (Money +500k, Humanity +1)',
+				text: 'Gia sư: Dạy toán cho trẻ con (Money +1.5M, Humanity +3)',
+				textVi: 'Gia sư: Dạy toán cho trẻ con (Money +1.5M, Humanity +3)',
+				textEn: 'Tutor: Teach math to kids (Money +1.5M, Humanity +3)',
 				effects: [
-					{ stat: 'money', value: 500000 },
-					{ stat: 'humanity', value: 1 },
+					{ stat: StatID.MONEY, value: 1500000 },
+					{ stat: StatID.HUMANITY, value: 3 },
 				],
-				next: 'ch4_exam_start',
+				next: Chapter4DialogueID.CH4_EXAM_START,
 			},
 			{
 				id: 'choice_job_waiter',
-				text: 'Phục vụ bàn: Việc nhẹ lương thấp (Money +300k, Stress +2)',
-				textVi: 'Phục vụ bàn: Việc nhẹ lương thấp (Money +300k, Stress +2)',
-				textEn: 'Waiter: Low pay hard work (Money +300k, Stress +2)',
+				text: 'Phục vụ bàn: Việc nhẹ lương thấp (Money +800k, Stress +5)',
+				textVi: 'Phục vụ bàn: Việc nhẹ lương thấp (Money +800k, Stress +5)',
+				textEn: 'Waiter: Low pay hard work (Money +800k, Stress +5)',
 				effects: [
-					{ stat: 'money', value: 300000 },
-					{ stat: 'stress', value: 2 },
+					{ stat: StatID.MONEY, value: 800000 },
+					{ stat: StatID.STRESS, value: 5 },
 				],
-				next: 'ch4_exam_start',
+				next: Chapter4DialogueID.CH4_EXAM_START,
 			},
 		],
 	},
 
 	// NEW: Exam & Cheating Chain
-	ch4_exam_start: {
-		id: 'ch4_exam_start',
+	[Chapter4DialogueID.CH4_EXAM_START]: {
 		speaker: 'narrator',
 		text: 'Kỳ thi cuối kỳ môn Cấu trúc dữ liệu & Giải thuật. Đề bài cực khó. Bạn bí ở câu cuối cùng.',
 		textVi:
@@ -646,20 +757,19 @@ export const chapter4Dialogues: Record<string, DialogueNode> = {
 				text: 'Quay cóp: Nhìn bài bạn bên cạnh (Risk: High)',
 				textVi: 'Quay cóp: Nhìn bài bạn bên cạnh (Risk: High)',
 				textEn: 'Cheat: Peek at neighbor (Risk: High)',
-				next: 'ch4_cheat_caught', // Collapse
+				next: Chapter4DialogueID.CH4_CHEAT_CAUGHT, // Collapse
 			},
 			{
 				id: 'choice_exam_honest',
-				text: 'Tự làm: Chấp nhận điểm thấp (Steel Mind +1)',
-				textVi: 'Tự làm: Chấp nhận điểm thấp (Steel Mind +1)',
-				textEn: 'Do yourself: Accept low score (Steel Mind +1)',
-				effects: [{ stat: 'steelMind', value: 1 }],
-				next: 'ch4_independence_rat_race',
+				text: 'Tự làm: Chấp nhận điểm thấp (Steel Mind +3)',
+				textVi: 'Tự làm: Chấp nhận điểm thấp (Steel Mind +3)',
+				textEn: 'Do yourself: Accept low score (Steel Mind +3)',
+				effects: [{ stat: StatID.STEELMIND, value: 3 }],
+				next: Chapter4DialogueID.CH4_INDEPENDENCE_RAT_RACE,
 			},
 		],
 	},
-	ch4_cheat_caught: {
-		id: 'ch4_cheat_caught',
+	[Chapter4DialogueID.CH4_CHEAT_CAUGHT]: {
 		speaker: 'narrator',
 		text: 'Giám thị bắt gặp bạn đang liếc bài. Bạn bị lập biên bản, đình chỉ thi. Điểm F. Bố mẹ nhận được thông báo về hạnh kiểm.',
 		textVi:
@@ -667,26 +777,24 @@ export const chapter4Dialogues: Record<string, DialogueNode> = {
 		textEn:
 			'Proctor caught you peeking. Record made, suspended. Grade F. Parents notified about conduct.',
 		effects: [
-			{ stat: 'vision', value: -2 },
-			{ stat: 'humanity', value: -2 },
-			{ stat: 'stress', value: 3 },
+			{ stat: StatID.VISION, value: -5 },
+			{ stat: StatID.HUMANITY, value: -5 },
+			{ stat: StatID.STRESS, value: 10 },
 		],
-		next: 'ch4_independence_rat_race',
+		next: Chapter4DialogueID.CH4_INDEPENDENCE_RAT_RACE,
 	},
-	ch4_independence_rat_race: {
-		id: 'ch4_independence_rat_race',
+	[Chapter4DialogueID.CH4_INDEPENDENCE_RAT_RACE]: {
 		speaker: 'narrator',
 		text: 'Nhìn dòng người chen chúc tắc đường mỗi sáng, bạn nhận ra mình đã chính thức gia nhập "Rat Race". Cuộc đua của những chú chuột.',
 		textVi:
 			'Nhìn dòng người chen chúc tắc đường mỗi sáng, bạn nhận ra mình đã chính thức gia nhập "Rat Race". Cuộc đua của những chú chuột.',
 		textEn:
 			'Watching the traffic jam every morning, you realized you officially joined the "Rat Race".',
-		next: 'ch4_freelance_start',
+		next: Chapter4DialogueID.CH4_FREELANCE_START,
 	},
 
 	// NEW: Freelance Event
-	ch4_freelance_start: {
-		id: 'ch4_freelance_start',
+	[Chapter4DialogueID.CH4_FREELANCE_START]: {
 		speaker: 'player',
 		text: '(Suy nghĩ) Có job freelance gấp. Deadline ngày mai. Nhưng mai lại có tiết học quan trọng.',
 		textVi:
@@ -699,42 +807,39 @@ export const chapter4Dialogues: Record<string, DialogueNode> = {
 				text: 'Bùng học làm job: Tiền quan trọng hơn (+5M)',
 				textVi: 'Bùng học làm job: Tiền quan trọng hơn (+5M)',
 				textEn: 'Skip class: Money is more important (+5M)',
-				effects: [{ stat: 'money', value: 5000000 }],
-				flags: [{ key: 'skipped_class', value: true }],
-				next: 'ch4_freelance_do',
+				effects: [{ stat: StatID.MONEY, value: 5000000 }],
+				flags: [{ key: FlagID.SKIPPED_CLASS, value: true }],
+				next: Chapter4DialogueID.CH4_FREELANCE_DO,
 			},
 			{
 				id: 'choice_freelance_skip',
-				text: 'Đi học: Kiến thức là nền tảng (Vision +1)',
-				textVi: 'Đi học: Kiến thức là nền tảng (Vision +1)',
-				textEn: 'Go to class: Knowledge is foundation (Vision +1)',
-				effects: [{ stat: 'vision', value: 1 }],
-				flags: [{ key: 'skipped_class', value: false }],
-				next: 'ch4_independence_money',
+				text: 'Đi học: Kiến thức là nền tảng (Vision +3)',
+				textVi: 'Đi học: Kiến thức là nền tảng (Vision +3)',
+				textEn: 'Go to class: Knowledge is foundation (Vision +3)',
+				effects: [{ stat: StatID.VISION, value: 3 }],
+				flags: [{ key: FlagID.SKIPPED_CLASS, value: false }],
+				next: Chapter4DialogueID.CH4_INDEPENDENCE_MONEY,
 			},
 		],
 	},
-	ch4_freelance_do: {
-		id: 'ch4_freelance_do',
+	[Chapter4DialogueID.CH4_FREELANCE_DO]: {
 		speaker: 'narrator',
 		text: 'Bạn cày thâu đêm để kịp deadline. Sáng hôm sau ngủ gục, bỏ lỡ buổi điểm danh.',
 		textVi:
 			'Bạn cày thâu đêm để kịp deadline. Sáng hôm sau ngủ gục, bỏ lỡ buổi điểm danh.',
 		textEn:
 			'You worked all night to meet deadline. Overslept next morning, missed roll call.',
-		next: 'ch4_independence_money',
+		next: Chapter4DialogueID.CH4_INDEPENDENCE_MONEY,
 	},
-	ch4_independence_money: {
-		id: 'ch4_independence_money',
+	[Chapter4DialogueID.CH4_INDEPENDENCE_MONEY]: {
 		speaker: 'boQ',
 		text: '"Bố gửi con ít tiền sinh hoạt phí. Cầm lấy đi, đừng lo cho bố."',
 		textVi: '"Bố gửi con ít tiền sinh hoạt phí. Cầm lấy đi, đừng lo cho bố."',
 		textEn:
 			'"I sent you some living allowance. Take it, don\'t worry about me."',
-		next: 'ch4_independence_choice',
+		next: Chapter4DialogueID.CH4_INDEPENDENCE_CHOICE,
 	},
-	ch4_independence_choice: {
-		id: 'ch4_independence_choice',
+	[Chapter4DialogueID.CH4_INDEPENDENCE_CHOICE]: {
 		speaker: 'player',
 		text: 'Bạn đã kiếm được tiền từ outsource. Bạn sẽ nói gì?',
 		textVi: 'Bạn đã kiếm được tiền từ outsource. Bạn sẽ nói gì?',
@@ -745,25 +850,23 @@ export const chapter4Dialogues: Record<string, DialogueNode> = {
 				text: 'Con tự lo được (Từ chối)',
 				textVi: 'Con tự lo được (Từ chối)',
 				textEn: 'I can handle myself (Refuse)',
-				effects: [{ stat: 'steelMind', value: 1 }],
-				next: 'ch4_independence_quote',
+				effects: [{ stat: StatID.STEELMIND, value: 3 }],
+				next: Chapter4DialogueID.CH4_INDEPENDENCE_QUOTE,
 			},
 		],
 	},
-	ch4_independence_quote: {
-		id: 'ch4_independence_quote',
+	[Chapter4DialogueID.CH4_INDEPENDENCE_QUOTE]: {
 		speaker: 'player',
 		text: 'Bố cứ lo cho em. Con tự lo được. Con không cần tiền của bố nữa. Con là Developer mà, con có thể tự build cuộc đời mình.',
 		textVi:
 			'Bố cứ lo cho em. Con tự lo được. Con không cần tiền của bố nữa. Con là Developer mà, con có thể tự build cuộc đời mình.',
 		textEn:
 			"Take care of younger brother. I can handle myself. I don't need your money anymore. I am a Developer, I can build my own life.",
-		next: 'ch4_keyboard_start',
+		next: Chapter4DialogueID.CH4_KEYBOARD_START,
 	},
 
 	// NEW: Buy Keyboard Event
-	ch4_keyboard_start: {
-		id: 'ch4_keyboard_start',
+	[Chapter4DialogueID.CH4_KEYBOARD_START]: {
 		speaker: 'player',
 		text: '(Suy nghĩ) Bàn phím hỏng nút Enter. Bạn muốn mua một chiếc bàn phím cơ xịn để code cho sướng tay. Giá 2 triệu.',
 		textVi:
@@ -777,65 +880,60 @@ export const chapter4Dialogues: Record<string, DialogueNode> = {
 				textVi: 'Mua luôn: Đầu tư cho công cụ (-2M)',
 				textEn: 'Buy now: Invest in tools (-2M)',
 				condition: {
-					type: 'stat',
-					key: 'money',
-					operator: '>=',
+					type: ConditionType.STAT,
+					key: StatID.MONEY,
+					operator: Operator.GTE,
 					value: 2000000,
 				},
-				effects: [{ stat: 'money', value: -2000000 }],
-				next: 'ch4_keyboard_buy',
+				effects: [{ stat: StatID.MONEY, value: -2000000 }],
+				next: Chapter4DialogueID.CH4_KEYBOARD_BUY,
 			},
 			{
 				id: 'choice_keyboard_skip',
-				text: 'Dùng tạm phím cũ: Vẫn gõ được là được (Steel Mind +1)',
-				textVi: 'Dùng tạm phím cũ: Vẫn gõ được là được (Steel Mind +1)',
-				textEn: 'Use old one: Still works (Steel Mind +1)',
-				effects: [{ stat: 'steelMind', value: 1 }],
-				next: 'ch4_bi_1',
+				text: 'Dùng tạm phím cũ: Vẫn gõ được là được (Steel Mind +3)',
+				textVi: 'Dùng tạm phím cũ: Vẫn gõ được là được (Steel Mind +3)',
+				textEn: 'Use old one: Still works (Steel Mind +3)',
+				effects: [{ stat: StatID.STEELMIND, value: 3 }],
+				next: Chapter4DialogueID.CH4_BI_1,
 			},
 		],
 	},
-	ch4_keyboard_buy: {
-		id: 'ch4_keyboard_buy',
+	[Chapter4DialogueID.CH4_KEYBOARD_BUY]: {
 		speaker: 'narrator',
 		text: 'Cảm giác gõ phím cơ thật sướng. Code như bay. Tiền nào của nấy.',
 		textVi: 'Cảm giác gõ phím cơ thật sướng. Code như bay. Tiền nào của nấy.',
 		textEn:
 			'Mechanical keyboard feels great. Coding like flying. You get what you pay for.',
-		next: 'ch4_bi_1',
+		next: Chapter4DialogueID.CH4_BI_1,
 	},
-	ch4_bi_1: {
-		id: 'ch4_bi_1',
+	[Chapter4DialogueID.CH4_BI_1]: {
 		speaker: 'narrator',
 		text: 'Trong lần bố về thăm em, bạn nhận ra con Miu không còn đó nữa. Bạn hỏi bố, bố lảng tránh...',
 		textVi:
 			'Trong lần bố về thăm em, bạn nhận ra con Miu không còn đó nữa. Bạn hỏi bố, bố lảng tránh...',
 		textEn:
 			'When father visited, you noticed Miu was gone. You asked, father evaded...',
-		next: 'ch4_bi_truth',
+		next: Chapter4DialogueID.CH4_BI_TRUTH,
 	},
-	ch4_bi_truth: {
-		id: 'ch4_bi_truth',
+	[Chapter4DialogueID.CH4_BI_TRUTH]: {
 		speaker: 'narrator',
 		text: 'Có lẽ bố đã bán nó trong phút túng quẫn, hoặc vì đi làm xa không ai chăm sóc. Bạn không dám trách. Bạn hiểu cái nghèo nó bào mòn con người ta thế nào. Nhưng trong lòng bạn có một lỗ hổng lớn.',
 		textVi:
 			'Có lẽ bố đã bán nó trong phút túng quẫn, hoặc vì đi làm xa không ai chăm sóc. Bạn không dám trách. Bạn hiểu cái nghèo nó bào mòn con người ta thế nào. Nhưng trong lòng bạn có một lỗ hổng lớn.',
 		textEn:
 			'Perhaps father sold it in desperation, or abandoned due to no caretaker. You dared not blame. You understood how poverty erodes people. But a huge void formed in your heart.',
-		next: 'ch4_bi_birthday',
+		next: Chapter4DialogueID.CH4_BI_BIRTHDAY,
 	},
-	ch4_bi_birthday: {
-		id: 'ch4_bi_birthday',
+	[Chapter4DialogueID.CH4_BI_BIRTHDAY]: {
 		speaker: 'narrator',
 		text: 'Sinh nhật 21 tuổi. Nhận được khoản thanh toán đầu tiên từ dự án outsource cho khách hàng Mỹ. Việc đầu tiên bạn làm: Mua một chú chó Corgi.',
 		textVi:
 			'Sinh nhật 21 tuổi. Nhận được khoản thanh toán đầu tiên từ dự án outsource cho khách hàng Mỹ. Việc đầu tiên bạn làm: Mua một chú chó Corgi.',
 		textEn:
 			'21st birthday. Got first payment from US outsource project. First thing you did: Buy a Corgi puppy.',
-		next: 'ch4_bi_birthday_choice',
+		next: Chapter4DialogueID.CH4_BI_BIRTHDAY_CHOICE,
 	},
-	ch4_bi_birthday_choice: {
-		id: 'ch4_bi_birthday_choice',
+	[Chapter4DialogueID.CH4_BI_BIRTHDAY_CHOICE]: {
 		speaker: 'player',
 		text: '(Suy nghĩ) Một chú chó Corgi lai đang được rao bán. Giá 500k (tiền vía). Nhìn nó giống hệt con Miu ngày xưa.',
 		textVi:
@@ -845,62 +943,59 @@ export const chapter4Dialogues: Record<string, DialogueNode> = {
 		choices: [
 			{
 				id: 'choice_adopt_bi',
-				text: 'Nhận nuôi: Thêm bạn thêm vui (-500k, Humanity +2)',
-				textVi: 'Nhận nuôi: Thêm bạn thêm vui (-500k, Humanity +2)',
-				textEn: 'Adopt: More friends more fun (-500k, Humanity +2)',
+				text: 'Nhận nuôi: Thêm bạn thêm vui (-500k, Humanity +5)',
+				textVi: 'Nhận nuôi: Thêm bạn thêm vui (-500k, Humanity +5)',
+				textEn: 'Adopt: More friends more fun (-500k, Humanity +5)',
 				condition: {
-					type: 'stat',
-					key: 'humanity',
-					operator: '>=',
+					type: ConditionType.STAT,
+					key: StatID.HUMANITY,
+					operator: Operator.GTE,
 					value: 15,
 				},
 				effects: [
-					{ stat: 'money', value: -500000 },
-					{ stat: 'humanity', value: 2 },
+					{ stat: StatID.MONEY, value: -500000 },
+					{ stat: StatID.HUMANITY, value: 5 },
 				],
-				next: 'ch4_bi_naming',
+				next: Chapter4DialogueID.CH4_BI_NAMING,
 			},
 			{
 				id: 'choice_skip_bi',
-				text: 'Thôi: Mình còn chưa lo xong thân mình (Steel Mind +1)',
-				textVi: 'Thôi: Mình còn chưa lo xong thân mình (Steel Mind +1)',
-				textEn: "No: Can't even take care of myself (Steel Mind +1)",
-				effects: [{ stat: 'steelMind', value: 1 }],
-				next: 'ch4_bi_reject',
+				text: 'Thôi: Mình còn chưa lo xong thân mình (Steel Mind +3)',
+				textVi: 'Thôi: Mình còn chưa lo xong thân mình (Steel Mind +3)',
+				textEn: "No: Can't even take care of myself (Steel Mind +3)",
+				effects: [{ stat: StatID.STEELMIND, value: 3 }],
+				next: Chapter4DialogueID.CH4_BI_REJECT,
 			},
 		],
 	},
-	ch4_bi_naming: {
-		id: 'ch4_bi_naming',
+	[Chapter4DialogueID.CH4_BI_NAMING]: {
 		speaker: 'narrator',
 		text: 'Chú chó chân ngắn này mang cái tên của một người khổng lồ. Bi - tên chú Alaska đẹp nhất, trung thành nhất từng bảo vệ căn cứ địa 4.000m² ngày xưa.',
 		textVi:
 			'Chú chó chân ngắn này mang cái tên của một người khổng lồ. Bi - tên chú Alaska đẹp nhất, trung thành nhất từng bảo vệ căn cứ địa 4.000m² ngày xưa.',
 		textEn:
 			'This short-legged dog carries the name of a giant. Bi - the most beautiful, most loyal Alaska who guarded the 4,000m² fortress in golden days.',
-		next: 'ch4_bi_meaning',
+		next: Chapter4DialogueID.CH4_BI_MEANING,
 	},
-	ch4_bi_meaning: {
-		id: 'ch4_bi_meaning',
+	[Chapter4DialogueID.CH4_BI_MEANING]: {
 		speaker: 'narrator',
 		text: 'Nó là sự tiếp nối. Nó là lời nhắc nhở về quá khứ huy hoàng mà bạn quyết tâm sẽ khôi phục lại. Nó là người bạn mới trong hành trình cô độc sắp tới.',
 		textVi:
 			'Nó là sự tiếp nối. Nó là lời nhắc nhở về quá khứ huy hoàng mà bạn quyết tâm sẽ khôi phục lại. Nó là người bạn mới trong hành trình cô độc sắp tới.',
 		textEn:
 			'It was a continuation. A reminder of the glorious past you vowed to restore. A new companion for the lonely journey ahead.',
-		effects: [{ stat: 'vision', value: 1 }],
+		effects: [{ stat: StatID.VISION, value: 3 }],
 		choices: [
 			{
 				id: 'choice_welcome_bi',
 				text: 'Chào mừng Bi (New Companion)',
 				textVi: 'Chào mừng Bi (New Companion)',
 				textEn: 'Welcome Bi (New Companion)',
-				next: 'ch4_bonus_start',
+				next: Chapter4DialogueID.CH4_BONUS_START,
 			},
 		],
 	},
-	ch4_bi_reject: {
-		id: 'ch4_bi_reject',
+	[Chapter4DialogueID.CH4_BI_REJECT]: {
 		speaker: 'narrator',
 		text: 'Bạn quay lưng bỏ đi. Chú chó nhìn theo, ánh mắt buồn rười rượi. Đêm đó, bạn mơ thấy con Miu đang cào cửa xin vào, nhưng bạn đã khóa chặt cửa.',
 		textVi:
@@ -908,34 +1003,31 @@ export const chapter4Dialogues: Record<string, DialogueNode> = {
 		textEn:
 			'You turned away. The dog watched with sad eyes. That night, you dreamt of Miu scratching the door, but you locked it tight.',
 		effects: [
-			{ stat: 'humanity', value: -2 },
-			{ stat: 'stress', value: 1 },
+			{ stat: StatID.HUMANITY, value: -5 },
+			{ stat: StatID.STRESS, value: 3 },
 		],
-		next: 'ch4_bonus_start',
+		next: Chapter4DialogueID.CH4_BONUS_START,
 	},
 	// NEW: Year End Bonus & Retake Fee
-	ch4_bonus_start: {
-		id: 'ch4_bonus_start',
+	[Chapter4DialogueID.CH4_BONUS_START]: {
 		speaker: 'narrator',
 		text: 'Cuối năm, công ty thưởng Tết. Bạn nhận được khoản thưởng hiệu suất vượt mong đợi.',
 		textVi:
 			'Cuối năm, công ty thưởng Tết. Bạn nhận được khoản thưởng hiệu suất vượt mong đợi.',
 		textEn:
 			'Year end, company Tet bonus. You received a performance bonus exceeding expectations.',
-		next: 'ch4_bonus_receive',
+		next: Chapter4DialogueID.CH4_BONUS_RECEIVE,
 	},
-	ch4_bonus_receive: {
-		id: 'ch4_bonus_receive',
+	[Chapter4DialogueID.CH4_BONUS_RECEIVE]: {
 		speaker: 'player',
 		text: '(Vui sướng) 20 triệu! Một khoản tiền lớn đối với sinh viên mới ra trường.',
 		textVi:
 			'(Vui sướng) 20 triệu! Một khoản tiền lớn đối với sinh viên mới ra trường.',
 		textEn: '(Joyful) 20 million! A huge amount for a fresh graduate.',
-		effects: [{ stat: 'money', value: 20000000 }],
-		next: 'ch4_retake_fee_check',
+		effects: [{ stat: StatID.MONEY, value: 20000000 }],
+		next: Chapter4DialogueID.CH4_RETAKE_FEE_CHECK,
 	},
-	ch4_retake_fee_check: {
-		id: 'ch4_retake_fee_check',
+	[Chapter4DialogueID.CH4_RETAKE_FEE_CHECK]: {
 		speaker: 'narrator',
 		text: 'Kết quả học tập cuối kỳ đã có.',
 		textVi: 'Kết quả học tập cuối kỳ đã có.',
@@ -943,61 +1035,196 @@ export const chapter4Dialogues: Record<string, DialogueNode> = {
 		choices: [
 			{
 				id: 'choice_view_results_fail',
-				text: 'Xem kết quả...',
-				textVi: 'Xem kết quả...',
-				textEn: 'View results...',
+				text: 'Kiểu gì chả đỗ...',
+				textVi: 'Kiểu gì chả đỗ...',
+				textEn: 'I will pass the course anyway...',
 				condition: {
-					type: 'flag',
-					key: 'skipped_class',
-					operator: '==',
+					type: ConditionType.FLAG,
+					key: FlagID.SKIPPED_CLASS,
+					operator: Operator.EQUAL,
 					value: true,
 				},
-				next: 'ch4_retake_fee_fail',
+				next: Chapter4DialogueID.CH4_RETAKE_FEE_FAIL,
 			},
 			{
 				id: 'choice_view_results_pass',
-				text: 'Xem kết quả...',
-				textVi: 'Xem kết quả...',
-				textEn: 'View results...',
+				text: 'Dạo này bận làm, không biết có ổn không...',
+				textVi: 'Dạo này bận làm, không biết có ổn không...',
+				textEn: "I'm busy these days, I don't know if it's okay...",
 				condition: {
-					type: 'flag',
-					key: 'skipped_class',
-					operator: '!=',
+					type: ConditionType.FLAG,
+					key: FlagID.SKIPPED_CLASS,
+					operator: Operator.NOT_EQUAL,
 					value: true,
 				},
-				next: 'ch4_retake_fee_pass',
+				next: Chapter4DialogueID.CH4_RETAKE_FEE_PASS,
 			},
 		],
 	},
-	ch4_retake_fee_fail: {
-		id: 'ch4_retake_fee_fail',
+	[Chapter4DialogueID.CH4_RETAKE_FEE_FAIL]: {
 		speaker: 'narrator',
 		text: 'Do nghỉ quá số buổi quy định, bạn bị cấm thi môn Chuyên ngành. Phải đóng tiền học lại.',
 		textVi:
 			'Do nghỉ quá số buổi quy định, bạn bị cấm thi môn Chuyên ngành. Phải đóng tiền học lại.',
 		textEn:
 			'Due to excessive absences, you are banned from the Major exam. Must pay retake fee.',
-		next: 'ch4_retake_fee_pay',
+		next: Chapter4DialogueID.CH4_RETAKE_FEE_PAY,
 	},
-	ch4_retake_fee_pay: {
-		id: 'ch4_retake_fee_pay',
+	[Chapter4DialogueID.CH4_RETAKE_FEE_PAY]: {
 		speaker: 'player',
 		text: '(Thở dài) 2 triệu tiền học lại. Coi như mất toi mấy ngày lương freelance.',
 		textVi:
 			'(Thở dài) 2 triệu tiền học lại. Coi như mất toi mấy ngày lương freelance.',
 		textEn: '(Sigh) 2 million retake fee. Lost a few days of freelance salary.',
 		effects: [
-			{ stat: 'money', value: -2000000 },
-			{ stat: 'stress', value: 5 },
+			{ stat: StatID.MONEY, value: -2000000 },
+			{ stat: StatID.STRESS, value: 10 },
 		],
-		next: 'ch5_cv_1',
+		next: Chapter4DialogueID.CH4_CV_START,
 	},
-	ch4_retake_fee_pass: {
-		id: 'ch4_retake_fee_pass',
+	[Chapter4DialogueID.CH4_RETAKE_FEE_PASS]: {
 		speaker: 'narrator',
 		text: 'Bạn qua môn trót lọt. May mà vẫn đi học đầy đủ.',
 		textVi: 'Bạn qua môn trót lọt. May mà vẫn đi học đầy đủ.',
 		textEn: 'You passed. Luckily you attended classes.',
-		next: 'ch5_cv_1',
+		next: Chapter4DialogueID.CH4_CV_START,
+	},
+	// NEW: CV & Interview Preparation Session
+	[Chapter4DialogueID.CH4_CV_START]: {
+		speaker: 'narrator',
+		text: 'Sắp tốt nghiệp. Bạn bắt đầu viết CV đầu tiên. Mục "Kinh nghiệm" trống trơn.',
+		textVi:
+			'Sắp tốt nghiệp. Bạn bắt đầu viết CV đầu tiên. Mục "Kinh nghiệm" trống trơn.',
+		textEn: 'Graduation near. Writing first CV. "Experience" section empty.',
+		choices: [
+			{
+				id: 'choice_cv_lie',
+				text: 'Chém gió: Ghi thêm dự án ảo (Risk: Medium)',
+				textVi: 'Chém gió: Ghi thêm dự án ảo (Risk: Medium)',
+				textEn: 'Exaggerate: Add fake projects (Risk: Medium)',
+				effects: [{ stat: StatID.VISION, value: 3 }],
+				next: Chapter4DialogueID.CH4_CV_SKILLS,
+			},
+			{
+				id: 'choice_cv_honest',
+				text: 'Trung thực: Chỉ ghi những gì đã học',
+				textVi: 'Trung thực: Chỉ ghi những gì đã học',
+				textEn: 'Honest: Only list what learned',
+				effects: [{ stat: StatID.HUMANITY, value: 3 }],
+				next: Chapter4DialogueID.CH4_CV_SKILLS,
+			},
+			{
+				id: 'choice_cv_template',
+				text: 'Dùng mẫu CV đẹp: Hình thức bù nội dung',
+				textVi: 'Dùng mẫu CV đẹp: Hình thức bù nội dung',
+				textEn: 'Use nice template: Style over substance',
+				effects: [{ stat: StatID.VISION, value: 3 }],
+				next: Chapter4DialogueID.CH4_CV_SKILLS,
+			},
+		],
+	},
+	[Chapter4DialogueID.CH4_CV_SKILLS]: {
+		speaker: 'player',
+		text: 'Phần kỹ năng (Skills) nên ghi gì?',
+		textVi: 'Phần kỹ năng (Skills) nên ghi gì?',
+		textEn: 'What to put in Skills section?',
+		choices: [
+			{
+				id: 'choice_skills_all',
+				text: 'Liệt kê tất cả: HTML, CSS, JS, C++, Python...',
+				textVi: 'Liệt kê tất cả: HTML, CSS, JS, C++, Python...',
+				textEn: 'List all: HTML, CSS, JS, C++, Python...',
+				effects: [{ stat: StatID.VISION, value: -3 }], // Too broad
+				next: Chapter4DialogueID.CH4_INTERVIEW_PREP,
+			},
+			{
+				id: 'choice_skills_focus',
+				text: 'Tập trung: JavaScript & React',
+				textVi: 'Tập trung: JavaScript & React',
+				textEn: 'Focus: JavaScript & React',
+				effects: [{ stat: StatID.VISION, value: 5 }],
+				next: Chapter4DialogueID.CH4_INTERVIEW_PREP,
+			},
+			{
+				id: 'choice_skills_soft',
+				text: 'Thêm kỹ năng mềm: Teamwork, Communication',
+				textVi: 'Thêm kỹ năng mềm: Teamwork, Communication',
+				textEn: 'Add soft skills: Teamwork, Communication',
+				effects: [{ stat: StatID.HUMANITY, value: 3 }],
+				next: Chapter4DialogueID.CH4_INTERVIEW_PREP,
+			},
+		],
+	},
+	[Chapter4DialogueID.CH4_INTERVIEW_PREP]: {
+		speaker: 'narrator',
+		text: 'Chuẩn bị phỏng vấn thử (Mock Interview). Câu hỏi: "Điểm yếu lớn nhất của bạn là gì?"',
+		textVi:
+			'Chuẩn bị phỏng vấn thử (Mock Interview). Câu hỏi: "Điểm yếu lớn nhất của bạn là gì?"',
+		textEn: 'Mock Interview. Question: "What is your biggest weakness?"',
+		choices: [
+			{
+				id: 'choice_weakness_perfectionist',
+				text: 'Em là người cầu toàn (Câu trả lời sáo rỗng)',
+				textVi: 'Em là người cầu toàn (Câu trả lời sáo rỗng)',
+				textEn: 'I am a perfectionist (Cliché)',
+				effects: [{ stat: StatID.VISION, value: -3 }],
+				next: Chapter4DialogueID.CH4_INTERVIEW_SALARY,
+			},
+			{
+				id: 'choice_weakness_honest',
+				text: 'Em thiếu kinh nghiệm thực tế (Thật thà)',
+				textVi: 'Em thiếu kinh nghiệm thực tế (Thật thà)',
+				textEn: 'I lack real experience (Honest)',
+				effects: [{ stat: StatID.HUMANITY, value: 3 }],
+				next: Chapter4DialogueID.CH4_INTERVIEW_SALARY,
+			},
+			{
+				id: 'choice_weakness_fix',
+				text: 'Em hay quên nhưng đang dùng Note để khắc phục',
+				textVi: 'Em hay quên nhưng đang dùng Note để khắc phục',
+				textEn: 'I forget things but use Note to fix',
+				effects: [{ stat: StatID.VISION, value: 3 }],
+				next: Chapter4DialogueID.CH4_INTERVIEW_SALARY,
+			},
+		],
+	},
+	[Chapter4DialogueID.CH4_INTERVIEW_SALARY]: {
+		speaker: 'narrator',
+		text: 'Câu hỏi: "Em mong muốn mức lương bao nhiêu?"',
+		textVi: 'Câu hỏi: "Em mong muốn mức lương bao nhiêu?"',
+		textEn: 'Question: "What is your expected salary?"',
+		choices: [
+			{
+				id: 'choice_salary_high',
+				text: '15 triệu: Em tự tin vào khả năng',
+				textVi: '15 triệu: Em tự tin vào khả năng',
+				textEn: '15 million: Confident in ability',
+				effects: [{ stat: StatID.STEELMIND, value: 3 }],
+				next: Chapter4DialogueID.CH4_INTERVIEW_END,
+			},
+			{
+				id: 'choice_salary_market',
+				text: '8-10 triệu: Theo thị trường',
+				textVi: '8-10 triệu: Theo thị trường',
+				textEn: '8-10 million: Market rate',
+				effects: [{ stat: StatID.VISION, value: 3 }],
+				next: Chapter4DialogueID.CH4_INTERVIEW_END,
+			},
+			{
+				id: 'choice_salary_learn',
+				text: 'Em quan trọng việc học hỏi hơn lương',
+				textVi: 'Em quan trọng việc học hỏi hơn lương',
+				textEn: 'Learning is more important than salary',
+				effects: [{ stat: StatID.HUMANITY, value: 3 }],
+				next: Chapter4DialogueID.CH4_INTERVIEW_END,
+			},
+		],
+	},
+	[Chapter4DialogueID.CH4_INTERVIEW_END]: {
+		speaker: 'narrator',
+		text: 'Bạn đã sẵn sàng cho cuộc chiến tìm việc thực sự.',
+		textVi: 'Bạn đã sẵn sàng cho cuộc chiến tìm việc thực sự.',
+		textEn: 'You are ready for the real job hunt battle.',
+		next: Chapter4DialogueID.CH4_END,
 	},
 };

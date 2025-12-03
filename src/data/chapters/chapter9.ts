@@ -4,7 +4,8 @@
 // Theme: Di sản, Sự viên mãn và Vòng lặp
 // ==========================================
 
-import type { Chapter, DialogueNode } from '../types';
+import { Chapter9DialogueID, Chapter9SceneID, Chapter9TodoID, ConditionType, Operator, StatID } from '../enum';
+import { type Chapter, type DialogueNode,  } from '../types';
 
 export const chapter9: Chapter = {
 	id: 9,
@@ -17,49 +18,49 @@ export const chapter9: Chapter = {
 	themeEn: 'Legacy, Fulfillment, and The Loop',
 	scenes: [
 		{
-			id: 'ch9_billionaire',
+			id: Chapter9SceneID.CH9_BILLIONAIRE,
 			name: 'Tỷ phú',
 			nameVi: 'Khoảnh khắc Tỷ phú',
 			nameEn: 'Billionaire Moment',
 			background: '/assets/sprites/backgrounds/skyscraper_office_top.png',
 			music: '/assets/audio/music/chapters/ch9_legacy.mp3',
-			dialogueStart: 'ch9_intro', // Changed from ch9_billionaire_1
+			dialogueStart: Chapter9DialogueID.CH9_INTRO, // Changed from ch9_billionaire_1
 		},
 		{
-			id: 'ch9_gift',
+			id: Chapter9SceneID.CH9_GIFT,
 			name: 'Món quà cho Bố',
 			nameVi: 'Món quà cho Bố',
 			nameEn: 'Gift for Father',
 			background: '/assets/sprites/backgrounds/fortress_rebuilt.png',
 			music: '/assets/audio/music/chapters/ch9_legacy.mp3',
-			dialogueStart: 'ch9_gift_1',
+			dialogueStart: Chapter9DialogueID.CH9_GIFT_1,
 		},
 		{
-			id: 'ch9_ending',
+			id: Chapter9SceneID.CH9_ENDING,
 			name: 'Kết thúc',
 			nameVi: 'Thế giới mở',
 			nameEn: 'Open World',
 			background: '/assets/sprites/backgrounds/sunset_hill.png',
 			music: '/assets/audio/music/chapters/ch9_legacy.mp3',
-			dialogueStart: 'ch9_ending_1',
+			dialogueStart: Chapter9DialogueID.CH9_ENDING_1,
 		},
 	],
 	nightlyEvents: {
 		todoList: [
 			{
-				id: 'ch9_todo_grandchild',
+				id: Chapter9TodoID.CH9_TODO_GRANDCHILD,
 				text: 'Chơi với cháu nội',
 				textVi: 'Chơi với cháu nội',
 				textEn: 'Play with grandchild',
-				effects: [{ stat: 'humanity', value: 2 }], // Happiness
-				cost: { health: 1 }, // Energy -
+				effects: [{ stat: StatID.HUMANITY, value: 5 }], // Happiness
+				cost: { health: 2 }, // Energy -
 			},
 			{
 				id: 'ch9_todo_visit_hill',
 				text: 'Về thăm đồi cũ ở Lào Cai',
 				textVi: 'Về thăm đồi cũ ở Lào Cai',
 				textEn: 'Visit old hill in Lao Cai',
-				effects: [{ stat: 'humanity', value: 1 }], // Nostalgia
+				effects: [{ stat: StatID.HUMANITY, value: 3 }], // Nostalgia
 			},
 
 			{
@@ -67,85 +68,85 @@ export const chapter9: Chapter = {
 				text: 'Dạy trẻ em nghèo học code',
 				textVi: 'Dạy trẻ em nghèo học code',
 				textEn: 'Teach poor kids to code',
-				effects: [{ stat: 'vision', value: 1 }], // Legacy
+				effects: [{ stat: StatID.VISION, value: 3 }], // Legacy
 			},
 			{
 				id: 'ch9_todo_sunset',
 				text: 'Ngồi ngắm hoàng hôn trong vườn',
 				textVi: 'Ngồi ngắm hoàng hôn trong vườn',
 				textEn: 'Watch sunset in garden',
-				reward: { stress: -1 }, // Peace
+				reward: { stress: -3 }, // Peace
 			},
 			{
 				id: 'ch9_todo_call_friends',
 				text: 'Gọi điện hỏi thăm bạn bè cũ',
 				textVi: 'Gọi điện hỏi thăm bạn bè cũ',
 				textEn: 'Call old friends',
-				effects: [{ stat: 'humanity', value: 1 }],
+				effects: [{ stat: StatID.HUMANITY, value: 3 }],
 			},
 			{
 				id: 'ch9_todo_album',
 				text: 'Xem lại album ảnh gia đình',
 				textVi: 'Xem lại album ảnh gia đình',
 				textEn: 'Review family album',
-				effects: [{ stat: 'humanity', value: 1 }], // Nostalgia
+				effects: [{ stat: StatID.HUMANITY, value: 3 }], // Nostalgia
 			},
 			{
 				id: 'ch9_todo_write_letter',
 				text: 'Viết thư cho bản thân năm 20 tuổi',
 				textVi: 'Viết thư cho bản thân năm 20 tuổi',
 				textEn: 'Write letter to 20-year-old self',
-				effects: [{ stat: 'vision', value: 1 }], // Wisdom
+				effects: [{ stat: StatID.VISION, value: 3 }], // Wisdom
 			},
 			{
 				id: 'ch9_todo_nap',
 				text: 'Ngủ trưa',
 				textVi: 'Ngủ trưa',
 				textEn: 'Nap',
-				reward: { health: 1 },
+				reward: { health: 3 },
 			},
 			{
 				id: 'ch9_todo_music',
 				text: 'Nghe nhạc thính phòng',
 				textVi: 'Nghe nhạc thính phòng',
 				textEn: 'Listen to chamber music',
-				reward: { stress: -1 }, // Peace
+				reward: { stress: -3 }, // Peace
 			},
 			{
 				id: 'ch9_todo_plant_tree',
 				text: 'Trồng một cái cây',
 				textVi: 'Trồng một cái cây',
 				textEn: 'Plant a tree',
-				effects: [{ stat: 'vision', value: 1 }], // Legacy
+				effects: [{ stat: StatID.VISION, value: 3 }], // Legacy
 			},
 			{
 				id: 'ch9_todo_advice_startup',
 				text: 'Cho lời khuyên một Startup trẻ',
 				textVi: 'Cho lời khuyên một Startup trẻ',
 				textEn: 'Advise young Startup',
-				effects: [{ stat: 'vision', value: 1 }], // Wisdom
+				effects: [{ stat: StatID.VISION, value: 3 }], // Wisdom
 			},
 			{
 				id: 'ch9_todo_donate_clothes',
 				text: 'Quyên góp quần áo cũ',
 				textVi: 'Quyên góp quần áo cũ',
 				textEn: 'Donate old clothes',
-				effects: [{ stat: 'humanity', value: 1 }],
+				effects: [{ stat: StatID.HUMANITY, value: 3 }],
 			},
 			{
 				id: 'ch9_todo_read_history',
 				text: 'Đọc sách lịch sử',
 				textVi: 'Đọc sách lịch sử',
 				textEn: 'Read history books',
-				effects: [{ stat: 'vision', value: 1 }], // Knowledge
+				effects: [{ stat: StatID.VISION, value: 3 }], // Knowledge
 			},
 			{
 				id: 'ch9_todo_write_book',
 				text: 'Viết sách (Legacy)',
 				textVi: 'Viết sách (Legacy)',
 				textEn: 'Write book (Legacy)',
-				effects: [{ stat: 'vision', value: 2 }],
-				cost: { health: 1 },
+				effects: [{ stat: StatID.VISION, value: 10 }], // Increased Vision reward
+				cost: { health: 3 },
 			},
 			{
 				id: 'ch9_todo_teach_uni',
@@ -153,52 +154,52 @@ export const chapter9: Chapter = {
 				textVi: 'Giảng dạy tại Đại học',
 				textEn: 'Teach at University',
 				effects: [
-					{ stat: 'humanity', value: 2 },
-					{ stat: 'vision', value: 1 },
+					{ stat: StatID.HUMANITY, value: 5 }, // Increased Humanity reward
+					{ stat: StatID.VISION, value: 3 },
 				],
-				cost: { stress: 1 },
+				cost: { stress: 2 },
 			},
 			{
 				id: 'ch9_todo_walk_bi',
 				text: 'Dắt Bi đi dạo quanh hồ',
 				textVi: 'Dắt Bi đi dạo quanh hồ',
 				textEn: 'Walk Bi around lake',
-				reward: { health: 1 },
+				reward: { health: 3 },
 			},
 			{
 				id: 'ch9_todo_cook_family',
 				text: 'Nấu ăn cho cả đại gia đình',
 				textVi: 'Nấu ăn cho cả đại gia đình',
 				textEn: 'Cook for big family',
-				effects: [{ stat: 'humanity', value: 1 }], // Happiness
+				effects: [{ stat: StatID.HUMANITY, value: 5 }], // Happiness
 			},
 			{
 				id: 'ch9_todo_watch_news_smile',
 				text: 'Xem thời sự và mỉm cười',
 				textVi: 'Xem thời sự và mỉm cười',
 				textEn: 'Watch news and smile',
-				reward: { stress: -1 }, // Peace
+				reward: { stress: -3 }, // Peace
 			},
 			{
 				id: 'ch9_todo_forget_glasses',
 				text: 'Quên kính lão ở đâu đó',
 				textVi: 'Quên kính lão ở đâu đó',
 				textEn: 'Forget reading glasses',
-				effects: [{ stat: 'vision', value: -1 }], // Memory -
+				effects: [{ stat: StatID.VISION, value: -2 }], // Memory -
 			},
 			{
 				id: 'ch9_todo_tell_story',
 				text: 'Kể chuyện "ngày xưa" cho con cháu',
 				textVi: 'Kể chuyện "ngày xưa" cho con cháu',
 				textEn: 'Tell "old days" stories to grandkids',
-				effects: [{ stat: 'vision', value: 1 }], // Legacy
+				effects: [{ stat: StatID.VISION, value: 3 }], // Legacy
 			},
 			{
 				id: 'ch9_todo_breathe',
 				text: 'Chỉ đơn giản là hít thở',
 				textVi: 'Chỉ đơn giản là hít thở',
 				textEn: 'Just breathe',
-				reward: { stress: -1 }, // Peace
+				reward: { stress: -3 }, // Peace
 			},
 		],
 		dreamQuestions: [
@@ -214,7 +215,7 @@ export const chapter9: Chapter = {
 						textVi: 'Bước qua',
 						textEn: 'Step through',
 						next: '',
-						effects: [{ stat: 'steelMind', value: 1 }], // Acceptance
+						effects: [{ stat: StatID.STEELMIND, value: 5 }], // Acceptance
 					},
 					{
 						id: 'ch9_dream_end_look_back',
@@ -222,7 +223,7 @@ export const chapter9: Chapter = {
 						textVi: 'Quay lại nhìn',
 						textEn: 'Look back',
 						next: '',
-						effects: [{ stat: 'humanity', value: 1 }], // Attachment
+						effects: [{ stat: StatID.HUMANITY, value: 5 }], // Attachment
 					},
 					{
 						id: 'ch9_dream_end_close',
@@ -230,7 +231,7 @@ export const chapter9: Chapter = {
 						textVi: 'Đóng cửa lại',
 						textEn: 'Close door',
 						next: '',
-						effects: [{ stat: 'steelMind', value: -1 }], // Not ready
+						effects: [{ stat: StatID.STEELMIND, value: -3 }], // Not ready
 					},
 					{
 						id: 'ch9_dream_end_draw',
@@ -238,7 +239,7 @@ export const chapter9: Chapter = {
 						textVi: 'Vẽ lên cánh cửa',
 						textEn: 'Draw on door',
 						next: '',
-						effects: [{ stat: 'vision', value: 1 }], // Creativity
+						effects: [{ stat: StatID.VISION, value: 5 }], // Creativity
 					},
 				],
 			},
@@ -254,7 +255,7 @@ export const chapter9: Chapter = {
 						textVi: 'Mỉm cười',
 						textEn: 'Smile',
 						next: '',
-						effects: [{ stat: 'steelMind', value: 1 }], // Pride
+						effects: [{ stat: StatID.STEELMIND, value: 3 }], // Pride
 					},
 					{
 						id: 'ch9_dream_legacy_break',
@@ -262,7 +263,7 @@ export const chapter9: Chapter = {
 						textVi: 'Đập bỏ nó',
 						textEn: 'Break it',
 						next: '',
-						effects: [{ stat: 'vision', value: 1 }], // Humility/Wisdom
+						effects: [{ stat: StatID.VISION, value: 5 }], // Humility/Wisdom
 					},
 					{
 						id: 'ch9_dream_legacy_add',
@@ -270,7 +271,7 @@ export const chapter9: Chapter = {
 						textVi: 'Khắc thêm tên những người khác',
 						textEn: 'Carve others names',
 						next: '',
-						effects: [{ stat: 'humanity', value: 1 }], // Gratitude
+						effects: [{ stat: StatID.HUMANITY, value: 5 }], // Gratitude
 					},
 					{
 						id: 'ch9_dream_legacy_scared',
@@ -278,7 +279,7 @@ export const chapter9: Chapter = {
 						textVi: 'Sợ hãi vì nó quá to',
 						textEn: 'Scared it is too big',
 						next: '',
-						effects: [{ stat: 'stress', value: 1 }],
+						effects: [{ stat: StatID.STRESS, value: 3 }],
 					},
 				],
 			},
@@ -294,7 +295,7 @@ export const chapter9: Chapter = {
 						textVi: 'Chạy đi tìm Bố',
 						textEn: 'Run to find Dad',
 						next: '',
-						effects: [{ stat: 'humanity', value: 1 }], // Nostalgia
+						effects: [{ stat: StatID.HUMANITY, value: 5 }], // Nostalgia
 					},
 					{
 						id: 'ch9_dream_childhood_play',
@@ -302,7 +303,7 @@ export const chapter9: Chapter = {
 						textVi: 'Chơi với những con thú',
 						textEn: 'Play with animals',
 						next: '',
-						effects: [{ stat: 'humanity', value: 1 }], // Joy
+						effects: [{ stat: StatID.HUMANITY, value: 3 }], // Joy
 					},
 					{
 						id: 'ch9_dream_childhood_self',
@@ -310,7 +311,7 @@ export const chapter9: Chapter = {
 						textVi: 'Nói với bản thân: "Mọi chuyện sẽ ổn thôi"',
 						textEn: 'Tell self: "It will be okay"',
 						next: '',
-						effects: [{ stat: 'steelMind', value: 1 }], // Comfort
+						effects: [{ stat: StatID.STEELMIND, value: 5 }], // Comfort
 					},
 					{
 						id: 'ch9_dream_childhood_change',
@@ -318,7 +319,7 @@ export const chapter9: Chapter = {
 						textVi: 'Cố gắng thay đổi quá khứ',
 						textEn: 'Try to change past',
 						next: '',
-						effects: [{ stat: 'stress', value: 1 }], // Regret
+						effects: [{ stat: StatID.STRESS, value: 3 }], // Regret
 					},
 				],
 			},
@@ -334,7 +335,7 @@ export const chapter9: Chapter = {
 						textVi: 'Tìm kiếm sự sống khác',
 						textEn: 'Search for other life',
 						next: '',
-						effects: [{ stat: 'vision', value: 1 }], // Curiosity
+						effects: [{ stat: StatID.VISION, value: 5 }], // Curiosity
 					},
 					{
 						id: 'ch9_dream_space_silence',
@@ -342,7 +343,7 @@ export const chapter9: Chapter = {
 						textVi: 'Tận hưởng sự im lặng',
 						textEn: 'Enjoy silence',
 						next: '',
-						effects: [{ stat: 'steelMind', value: 1 }], // Peace
+						effects: [{ stat: StatID.STEELMIND, value: 5 }], // Peace
 					},
 					{
 						id: 'ch9_dream_space_scared',
@@ -350,7 +351,7 @@ export const chapter9: Chapter = {
 						textVi: 'Sợ hãi bóng tối',
 						textEn: 'Scared of darkness',
 						next: '',
-						effects: [{ stat: 'stress', value: 1 }], // Loneliness
+						effects: [{ stat: StatID.STRESS, value: 3 }], // Loneliness
 					},
 					{
 						id: 'ch9_dream_space_become',
@@ -358,7 +359,7 @@ export const chapter9: Chapter = {
 						textVi: 'Trở thành một vì sao',
 						textEn: 'Become a star',
 						next: '',
-						effects: [{ stat: 'vision', value: 1 }], // Unity
+						effects: [{ stat: StatID.VISION, value: 10 }], // Unity
 					},
 				],
 			},
@@ -374,7 +375,7 @@ export const chapter9: Chapter = {
 						textVi: 'return 0;',
 						textEn: 'return 0;',
 						next: '',
-						effects: [{ stat: 'steelMind', value: 1 }], // Perfect end
+						effects: [{ stat: StatID.STEELMIND, value: 10 }], // Perfect end
 					},
 					{
 						id: 'ch9_dream_code_while',
@@ -382,7 +383,7 @@ export const chapter9: Chapter = {
 						textVi: 'while(true) continue;',
 						textEn: 'while(true) continue;',
 						next: '',
-						effects: [{ stat: 'vision', value: 1 }], // Immortality/Loop
+						effects: [{ stat: StatID.VISION, value: 10 }], // Immortality/Loop
 					},
 					{
 						id: 'ch9_dream_code_throw',
@@ -390,7 +391,7 @@ export const chapter9: Chapter = {
 						textVi: 'throw new Error("Not finished");',
 						textEn: 'throw new Error("Not finished");',
 						next: '',
-						effects: [{ stat: 'stress', value: 1 }], // Unfinished
+						effects: [{ stat: StatID.STRESS, value: 5 }], // Unfinished
 					},
 					{
 						id: 'ch9_dream_code_print',
@@ -398,42 +399,168 @@ export const chapter9: Chapter = {
 						textVi: 'print("Thank you for playing");',
 						textEn: 'print("Thank you for playing");',
 						next: '',
-						effects: [{ stat: 'humanity', value: 1 }], // Gratitude
+						effects: [{ stat: StatID.HUMANITY, value: 10 }], // Gratitude
 					},
 				],
 			},
 		],
 	},
+	reflectionQuotes: [
+		{
+			id: 'ch9_reflect_sleep_1',
+			text: 'Nhìn lại chặng đường đã đi... từ đỉnh cao đến vực sâu rồi lại lên.',
+			textVi:
+				'Nhìn lại chặng đường đã đi... từ đỉnh cao đến vực sâu rồi lại lên.',
+			textEn:
+				'Looking back at the journey... from peak to valley and up again.',
+			type: ConditionType.SLEEP,
+			choices: [
+				{
+					id: 'ch9_reflect_sleep_1_grateful',
+					text: 'Biết ơn hành trình này',
+					textVi: 'Biết ơn hành trình này',
+					textEn: 'Grateful for this journey',
+					next: '',
+					effects: [{ stat: StatID.HUMANITY, value: 5 }],
+				},
+				{
+					id: 'ch9_reflect_sleep_1_peace',
+					text: 'Bình yên với quá khứ',
+					textVi: 'Bình yên với quá khứ',
+					textEn: 'At peace with past',
+					next: '',
+					effects: [{ stat: StatID.STEELMIND, value: 5 }],
+				},
+			],
+		},
+		{
+			id: 'ch9_reflect_success_1',
+			text: 'Di sản để lại cho con... không chỉ là tiền bạc.',
+			textVi: 'Di sản để lại cho con... không chỉ là tiền bạc.',
+			textEn: 'Legacy for child... not just money.',
+			type: ConditionType.SUCCESS,
+			choices: [
+				{
+					id: 'ch9_reflect_success_1_values',
+					text: 'Giá trị quan trọng hơn',
+					textVi: 'Giá trị quan trọng hơn',
+					textEn: 'Values more important',
+					next: '',
+					effects: [{ stat: StatID.VISION, value: 5 }],
+				},
+				{
+					id: 'ch9_reflect_success_1_both',
+					text: 'Cả hai đều cần',
+					textVi: 'Cả hai đều cần',
+					textEn: 'Both are needed',
+					next: '',
+					effects: [{ stat: StatID.HUMANITY, value: 3 }],
+				},
+			],
+		},
+		{
+			id: 'ch9_reflect_sleep_2',
+			text: 'Cuộc đời như vòng lặp... nhưng mỗi vòng lại khác.',
+			textVi: 'Cuộc đời như vòng lặp... nhưng mỗi vòng lại khác.',
+			textEn: 'Life like a loop... but each iteration different.',
+			type: ConditionType.SLEEP,
+			choices: [
+				{
+					id: 'ch9_reflect_sleep_2_accept',
+					text: 'Chấp nhận chu kỳ',
+					textVi: 'Chấp nhận chu kỳ',
+					textEn: 'Accept the cycle',
+					next: '',
+					effects: [{ stat: StatID.STEELMIND, value: 5 }],
+				},
+				{
+					id: 'ch9_reflect_sleep_2_rest',
+					text: 'Nghỉ ngơi trong vòng lặp',
+					textVi: 'Nghỉ ngơi trong vòng lặp',
+					textEn: 'Rest in the loop',
+					next: '',
+					effects: [{ stat: StatID.HEALTH, value: 3 }],
+				},
+			],
+		},
+		{
+			id: 'ch9_reflect_success_2',
+			text: 'Thành công... nhưng có đáng với những gì đã đánh đổi?',
+			textVi: 'Thành công... nhưng có đáng với những gì đã đánh đổi?',
+			textEn: 'Success... but was it worth what was traded?',
+			type: ConditionType.SUCCESS,
+			choices: [
+				{
+					id: 'ch9_reflect_success_2_worth',
+					text: 'Đáng giá',
+					textVi: 'Đáng giá',
+					textEn: 'Worth it',
+					next: '',
+					effects: [{ stat: StatID.VISION, value: 5 }],
+				},
+				{
+					id: 'ch9_reflect_success_2_regret',
+					text: 'Có những tiếc nuối',
+					textVi: 'Có những tiếc nuối',
+					textEn: 'Some regrets',
+					next: '',
+					effects: [{ stat: StatID.HUMANITY, value: 3 }],
+				},
+			],
+		},
+		{
+			id: 'ch9_reflect_sleep_3',
+			text: 'Viên mãn... nhưng cũng mệt mỏi.',
+			textVi: 'Viên mãn... nhưng cũng mệt mỏi.',
+			textEn: 'Fulfilled... but also tired.',
+			type: ConditionType.SLEEP,
+			choices: [
+				{
+					id: 'ch9_reflect_sleep_3_rest',
+					text: 'Được nghỉ ngơi rồi',
+					textVi: 'Được nghỉ ngơi rồi',
+					textEn: 'Can rest now',
+					next: '',
+					effects: [{ stat: StatID.HEALTH, value: 5 }],
+				},
+				{
+					id: 'ch9_reflect_sleep_3_peace',
+					text: 'Ngủ một giấc bình yên',
+					textVi: 'Ngủ một giấc bình yên',
+					textEn: 'Sleep peacefully',
+					next: '',
+					effects: [{ stat: StatID.STEELMIND, value: 5 }],
+				},
+			],
+		},
+	],
 };
 
-export const chapter9Dialogues: Record<string, DialogueNode> = {
+export const chapter9Dialogues: Record<Chapter9DialogueID, DialogueNode> = {
 	// NEW: Intro
-	ch9_intro: {
-		id: 'ch9_intro',
+	[Chapter9DialogueID.CH9_INTRO]: {
 		speaker: 'narrator',
 		text: 'Tóc đã điểm bạc. Những giải thưởng, bằng khen treo đầy tường nhưng phủ bụi. Bạn ngồi trên chiếc ghế bành, nhìn ngắm hoàng hôn của cuộc đời.',
 		textVi:
 			'Tóc đã điểm bạc. Những giải thưởng, bằng khen treo đầy tường nhưng phủ bụi. Bạn ngồi trên chiếc ghế bành, nhìn ngắm hoàng hôn của cuộc đời.',
 		textEn:
 			'Hair turned gray. Awards and certificates fill the wall but dusty. You sit in armchair, watching the sunset of life.',
-		next: 'ch9_billionaire_1',
+		next: Chapter9DialogueID.CH9_BILLIONAIRE_1,
 	},
 
 	// 9.1 Billionaire
-	ch9_billionaire_1: {
-		id: 'ch9_billionaire_1',
+	[Chapter9DialogueID.CH9_BILLIONAIRE_1]: {
 		speaker: 'narrator',
 		text: '55 tuổi. Tạp chí Forbes vinh danh bạn trong Top 10 người giàu nhất. Net Worth > 1 tỷ USD. Bạn đang ngồi trong văn phòng trên tầng 68, nhìn xuống thành phố bé tí hon.',
 		textVi:
 			'55 tuổi. Tạp chí Forbes vinh danh bạn trong Top 10 người giàu nhất. Net Worth > 1 tỷ USD. Bạn đang ngồi trong văn phòng trên tầng 68, nhìn xuống thành phố bé tí hon.',
 		textEn:
 			'55 years old. Forbes honored you in Top 10 richest. Net Worth > $1B. Sitting in 68th floor office, looking down at tiny city.',
-		next: 'ch9_hermit_check', // Redirect to Hermit Check
+		next: Chapter9DialogueID.CH9_HERMIT_CHECK, // Redirect to Hermit Check
 	},
 
 	// NEW: Hermit Check
-	ch9_hermit_check: {
-		id: 'ch9_hermit_check',
+	[Chapter9DialogueID.CH9_HERMIT_CHECK]: {
 		speaker: 'narrator',
 		text: 'Bạn nhìn lại cuộc đời mình. Có ai bên cạnh không?',
 		textVi: 'Bạn nhìn lại cuộc đời mình. Có ai bên cạnh không?',
@@ -445,24 +572,23 @@ export const chapter9Dialogues: Record<string, DialogueNode> = {
 				textVi: '...',
 				textEn: '...',
 				condition: {
-					type: 'stat',
-					key: 'humanity',
-					operator: '<',
+					type: ConditionType.STAT,
+					key: StatID.HUMANITY,
+					operator: Operator.LT,
 					value: 10,
 				},
-				next: 'ch9_lonely_death',
+				next: Chapter9DialogueID.CH9_LONELY_DEATH,
 			},
 			{
 				id: 'choice_hermit_pass',
 				text: 'Vẫn còn những người thân yêu',
 				textVi: 'Vẫn còn những người thân yêu',
 				textEn: 'Still have loved ones',
-				next: 'ch9_billionaire_hands',
+				next: Chapter9DialogueID.CH9_BILLIONAIRE_HANDS,
 			},
 		],
 	},
-	ch9_lonely_death: {
-		id: 'ch9_lonely_death',
+	[Chapter9DialogueID.CH9_LONELY_DEATH]: {
 		speaker: 'narrator',
 		text: 'Bạn nhận ra mình cô độc hoàn toàn. Vợ con đã bỏ đi (hoặc không bao giờ có). Bạn bè xa lánh. Bạn chết già trong căn biệt thự rộng lớn lạnh lẽo.',
 		textVi:
@@ -470,35 +596,32 @@ export const chapter9Dialogues: Record<string, DialogueNode> = {
 		textEn:
 			'You realize you are completely alone. Wife and kids left (or never existed). Friends estranged. You die of old age in a cold, vast mansion.',
 		effects: [
-			{ stat: 'humanity', value: -100 },
-			{ stat: 'stress', value: 100 },
+			{ stat: StatID.HUMANITY, value: -100 },
+			{ stat: StatID.STRESS, value: 100 },
 		],
 		next: 'ending_calculation', // Trigger Soulless Tycoon likely
 	},
-	ch9_billionaire_hands: {
-		id: 'ch9_billionaire_hands',
+	[Chapter9DialogueID.CH9_BILLIONAIRE_HANDS]: {
 		speaker: 'player',
 		text: '(Nhìn đôi bàn tay) Từ lấm lem bùn đất năm 6 tuổi, gõ Hello World năm 16 tuổi, đến ký lệnh thu hồi sinh tử năm 48 tuổi. Bố từng muốn làm Kiến trúc sư xây cầu, còn mình đã trở thành Kiến trúc sư của một hệ sinh thái số.',
 		textVi:
 			'(Nhìn đôi bàn tay) Từ lấm lem bùn đất năm 6 tuổi, gõ Hello World năm 16 tuổi, đến ký lệnh thu hồi sinh tử năm 48 tuổi. Bố từng muốn làm Kiến trúc sư xây cầu, còn mình đã trở thành Kiến trúc sư của một hệ sinh thái số.',
 		textEn:
 			'(Looking at hands) From muddy at 6, typing Hello World at 16, to signing life-or-death recall at 48. Dad wanted to be a Bridge Architect, I became a Digital Ecosystem Architect.',
-		next: 'ch9_billionaire_2',
+		next: Chapter9DialogueID.CH9_BILLIONAIRE_2,
 	},
-	ch9_billionaire_2: {
-		id: 'ch9_billionaire_2',
+	[Chapter9DialogueID.CH9_BILLIONAIRE_2]: {
 		speaker: 'narrator',
 		text: 'Tiền chỉ là con số trong Database. Di sản (Legacy) mới là thật. Bạn đã phá vỡ vòng lặp (Break the Loop) thất bại của gia đình.',
 		textVi:
 			'Tiền chỉ là con số trong Database. Di sản (Legacy) mới là thật. Bạn đã phá vỡ vòng lặp (Break the Loop) thất bại của gia đình.',
 		textEn:
 			"Money is just a number in Database. Legacy is real. You broke the family's Loop of failure.",
-		next: 'ch9_teaching_start', // Redirect to Teaching
+		next: Chapter9DialogueID.CH9_TEACHING_START, // Redirect to Teaching
 	},
 
 	// NEW: Teaching & Writing
-	ch9_teaching_start: {
-		id: 'ch9_teaching_start',
+	[Chapter9DialogueID.CH9_TEACHING_START]: {
 		speaker: 'narrator',
 		text: 'Trường Đại học cũ mời bạn về làm giảng viên thỉnh giảng. Chia sẻ kinh nghiệm thực chiến cho sinh viên.',
 		textVi:
@@ -512,23 +635,22 @@ export const chapter9Dialogues: Record<string, DialogueNode> = {
 				textVi: 'Nhận lời: Truyền lửa (Vision ++, Humanity ++)',
 				textEn: 'Accept: Pass the torch (Vision ++, Humanity ++)',
 				effects: [
-					{ stat: 'vision', value: 2 },
-					{ stat: 'humanity', value: 2 },
+					{ stat: StatID.VISION, value: 5 },
+					{ stat: StatID.HUMANITY, value: 5 },
 				],
-				next: 'ch9_writing_start',
+				next: Chapter9DialogueID.CH9_WRITING_START,
 			},
 			{
 				id: 'choice_teach_refuse',
-				text: 'Từ chối: Nghỉ ngơi thôi (Steel Mind +1)',
-				textVi: 'Từ chối: Nghỉ ngơi thôi (Steel Mind +1)',
-				textEn: 'Refuse: Just rest (Steel Mind +1)',
-				effects: [{ stat: 'steelMind', value: 1 }],
-				next: 'ch9_writing_start',
+				text: 'Từ chối: Nghỉ ngơi thôi (Steel Mind +3)',
+				textVi: 'Từ chối: Nghỉ ngơi thôi (Steel Mind +3)',
+				textEn: 'Refuse: Just rest (Steel Mind +3)',
+				effects: [{ stat: StatID.STEELMIND, value: 3 }],
+				next: Chapter9DialogueID.CH9_WRITING_START,
 			},
 		],
 	},
-	ch9_writing_start: {
-		id: 'ch9_writing_start',
+	[Chapter9DialogueID.CH9_WRITING_START]: {
 		speaker: 'player',
 		text: '(Suy nghĩ) Một nhà xuất bản muốn bạn viết hồi ký. Bạn sẽ viết gì?',
 		textVi: '(Suy nghĩ) Một nhà xuất bản muốn bạn viết hồi ký. Bạn sẽ viết gì?',
@@ -539,8 +661,8 @@ export const chapter9Dialogues: Record<string, DialogueNode> = {
 				text: 'Sự thật trần trụi: Cả thất bại và sai lầm (Humanity ++)',
 				textVi: 'Sự thật trần trụi: Cả thất bại và sai lầm (Humanity ++)',
 				textEn: 'Naked truth: Failures and mistakes (Humanity ++)',
-				effects: [{ stat: 'humanity', value: 2 }],
-				next: 'ch9_gift_1',
+				effects: [{ stat: StatID.HUMANITY, value: 5 }],
+				next: Chapter9DialogueID.CH9_GIFT_1,
 			},
 			{
 				id: 'choice_write_pr',
@@ -548,128 +670,119 @@ export const chapter9Dialogues: Record<string, DialogueNode> = {
 				textVi: 'Câu chuyện thành công: PR bản thân (Money ++, Vision -)',
 				textEn: 'Success story: Self PR (Money ++, Vision -)',
 				effects: [
-					{ stat: 'money', value: 500000000 },
-					{ stat: 'vision', value: -1 },
+					{ stat: StatID.MONEY, value: 500000000 },
+					{ stat: StatID.VISION, value: -3 },
 				],
-				next: 'ch9_gift_1',
+				next: Chapter9DialogueID.CH9_GIFT_1,
 			},
 		],
 	},
 
 	// 9.2 Gift for Father
-	ch9_gift_1: {
-		id: 'ch9_gift_1',
+	[Chapter9DialogueID.CH9_GIFT_1]: {
 		speaker: 'narrator',
 		text: 'Đưa bố về Lào Cai. Mua lại quả đồi năm xưa. Xây khu nghỉ dưỡng sinh thái yên bình (không phải pháo đài phô trương).',
 		textVi:
 			'Đưa bố về Lào Cai. Mua lại quả đồi năm xưa. Xây khu nghỉ dưỡng sinh thái yên bình (không phải pháo đài phô trương).',
 		textEn:
 			'Took father to Lao Cai. Bought back the hill. Built peaceful eco-resort (not showy fortress).',
-		next: 'ch9_gift_dialogue',
+		next: Chapter9DialogueID.CH9_GIFT_DIALOGUE,
 	},
-	ch9_gift_dialogue: {
-		id: 'ch9_gift_dialogue',
+	[Chapter9DialogueID.CH9_GIFT_DIALOGUE]: {
 		speaker: 'player',
 		text: 'Bố, con đã sửa xong cái bug lớn nhất của đời bố rồi.',
 		textVi: 'Bố, con đã sửa xong cái bug lớn nhất của đời bố rồi.',
 		textEn: 'Dad, I fixed the biggest bug of your life.',
-		next: 'ch9_gift_father',
+		next: Chapter9DialogueID.CH9_GIFT_FATHER,
 	},
-	ch9_gift_father: {
-		id: 'ch9_gift_father',
+	[Chapter9DialogueID.CH9_GIFT_FATHER]: {
 		speaker: 'boQ',
 		text: '(Rưng rưng) "Con giỏi hơn bố. Con có cái Tầm nhìn mà bố không có. Bố tự hào về con."',
 		textVi:
 			'(Rưng rưng) "Con giỏi hơn bố. Con có cái Tầm nhìn mà bố không có. Bố tự hào về con."',
 		textEn:
 			'(Teary) "You are better than me. You have the Vision I lacked. I\'m proud of you."',
-		next: 'ch9_gift_reaction',
+		next: Chapter9DialogueID.CH9_GIFT_REACTION,
 	},
-	ch9_gift_reaction: {
-		id: 'ch9_gift_reaction',
+	[Chapter9DialogueID.CH9_GIFT_REACTION]: {
 		speaker: 'player',
 		text: 'Bạn cảm thấy nhẹ nhõm. Gánh nặng quá khứ đã được trút bỏ.',
 		textVi: 'Bạn cảm thấy nhẹ nhõm. Gánh nặng quá khứ đã được trút bỏ.',
 		textEn: 'You felt relieved. The burden of the past was lifted.',
-		effects: [{ stat: 'humanity', value: 2 }],
-		next: 'ch9_gift_bi',
+		effects: [{ stat: StatID.HUMANITY, value: 5 }],
+		next: Chapter9DialogueID.CH9_GIFT_BI,
 	},
-	ch9_gift_bi: {
-		id: 'ch9_gift_bi',
+	[Chapter9DialogueID.CH9_GIFT_BI]: {
 		speaker: 'narrator',
 		text: 'Chú chó Bi (đời con cháu của con Corgi ngày xưa) chạy nhảy trong sân, như cái bóng của quá khứ ùa về nhưng trọn vẹn hơn.',
 		textVi:
 			'Chú chó Bi (đời con cháu của con Corgi ngày xưa) chạy nhảy trong sân, như cái bóng của quá khứ ùa về nhưng trọn vẹn hơn.',
 		textEn:
 			'Bi the dog (descendant of old Corgi) running in yard, like shadow of the past returning but more complete.',
-		effects: [{ stat: 'humanity', value: 5 }],
-		next: 'ch9_ending_1',
+		effects: [{ stat: StatID.HUMANITY, value: 10 }],
+		next: Chapter9DialogueID.CH9_ENDING_1,
 	},
 
 	// 9.3 Ending
-	ch9_ending_1: {
-		id: 'ch9_ending_1',
+	[Chapter9DialogueID.CH9_ENDING_1]: {
 		speaker: 'narrator',
 		text: 'Thành lập quỹ "Sandbox Foundation". Tài trợ cho những đứa trẻ nghèo vùng cao (như Lào Cai quê mình) có đam mê công nghệ. Trao cho chúng chiếc máy tính đầu tiên, giống như bố đã trao cho bạn năm xưa.',
 		textVi:
 			'Thành lập quỹ "Sandbox Foundation". Tài trợ cho những đứa trẻ nghèo vùng cao (như Lào Cai quê mình) có đam mê công nghệ. Trao cho chúng chiếc máy tính đầu tiên, giống như bố đã trao cho bạn năm xưa.',
 		textEn:
 			'Founded "Sandbox Foundation". Fund poor highland kids (like in Lao Cai) with tech passion. Give them their first PC, just like Dad gave you years ago.',
-		next: 'ch9_foundation_start',
+		next: Chapter9DialogueID.CH9_FOUNDATION_START,
 	},
 
 	// NEW: Foundation Event
-	ch9_foundation_start: {
-		id: 'ch9_foundation_start',
+	[Chapter9DialogueID.CH9_FOUNDATION_START]: {
 		speaker: 'player',
-		text: '(Suy nghĩ) Quỹ Sandbox Foundation cần nguồn vốn ban đầu để hoạt động. 10 tỷ đồng để mua máy tính cho trẻ em nghèo.',
+		text: '(Suy nghĩ) Quỹ Sandbox Foundation cần nguồn vốn ban đầu để hoạt động. 50 tỷ đồng để mua máy tính cho trẻ em nghèo.',
 		textVi:
-			'(Suy nghĩ) Quỹ Sandbox Foundation cần nguồn vốn ban đầu để hoạt động. 10 tỷ đồng để mua máy tính cho trẻ em nghèo.',
+			'(Suy nghĩ) Quỹ Sandbox Foundation cần nguồn vốn ban đầu để hoạt động. 50 tỷ đồng để mua máy tính cho trẻ em nghèo.',
 		textEn:
-			'(Thinking) Sandbox Foundation needs seed capital. 10 billion to buy PCs for poor kids.',
+			'(Thinking) Sandbox Foundation needs seed capital. 50 billion to buy PCs for poor kids.',
 		choices: [
 			{
 				id: 'choice_foundation_sign',
-				text: 'Ký séc: Trao cơ hội đổi đời (-10B, Vision +1)',
-				textVi: 'Ký séc: Trao cơ hội đổi đời (-10B, Vision +1)',
-				textEn: 'Sign check: Give life-changing chance (-10B, Vision +1)',
+				text: 'Ký séc: Trao cơ hội đổi đời (-50B, Vision +10)',
+				textVi: 'Ký séc: Trao cơ hội đổi đời (-50B, Vision +10)',
+				textEn: 'Sign check: Give life-changing chance (-50B, Vision +10)',
 				condition: {
-					type: 'stat',
-					key: 'humanity',
-					operator: '>=',
-					value: 30,
+					type: ConditionType.STAT,
+					key: StatID.HUMANITY,
+					operator: Operator.GTE,
+					value: 50,
 				},
 				effects: [
-					{ stat: 'money', value: -10000000000 },
-					{ stat: 'vision', value: 1 },
+					{ stat: StatID.MONEY, value: -50000000000 },
+					{ stat: StatID.VISION, value: 10 },
 				],
-				next: 'ch9_foundation_sign',
+				next: Chapter9DialogueID.CH9_FOUNDATION_SIGN,
 			},
 			{
 				id: 'choice_foundation_skip',
-				text: 'Từ chối: Tiền của tôi là của tôi (Vision -2, Humanity -5)',
-				textVi: 'Từ chối: Tiền của tôi là của tôi (Vision -2, Humanity -5)',
-				textEn: 'Refuse: My money is mine (Vision -2, Humanity -5)',
+				text: 'Từ chối: Tiền của tôi là của tôi (Vision -5, Humanity -20)',
+				textVi: 'Từ chối: Tiền của tôi là của tôi (Vision -5, Humanity -20)',
+				textEn: 'Refuse: My money is mine (Vision -5, Humanity -20)',
 				effects: [
-					{ stat: 'vision', value: -2 },
-					{ stat: 'humanity', value: -5 },
+					{ stat: StatID.VISION, value: -5 },
+					{ stat: StatID.HUMANITY, value: -20 },
 				],
-				next: 'ch9_foundation_reject',
+				next: Chapter9DialogueID.CH9_FOUNDATION_REJECT,
 			},
 		],
 	},
-	ch9_foundation_sign: {
-		id: 'ch9_foundation_sign',
+	[Chapter9DialogueID.CH9_FOUNDATION_SIGN]: {
 		speaker: 'narrator',
-		text: 'Chữ ký của bạn trị giá 10 tỷ. Nhưng nụ cười của những đứa trẻ nhận học bổng trị giá hơn thế nhiều. Bạn cảm thấy nhẹ lòng.',
+		text: 'Chữ ký của bạn trị giá 50 tỷ. Nhưng nụ cười của những đứa trẻ nhận học bổng trị giá hơn thế nhiều. Bạn cảm thấy nhẹ lòng.',
 		textVi:
-			'Chữ ký của bạn trị giá 10 tỷ. Nhưng nụ cười của những đứa trẻ nhận học bổng trị giá hơn thế nhiều. Bạn cảm thấy nhẹ lòng.',
+			'Chữ ký của bạn trị giá 50 tỷ. Nhưng nụ cười của những đứa trẻ nhận học bổng trị giá hơn thế nhiều. Bạn cảm thấy nhẹ lòng.',
 		textEn:
-			'Your signature is worth 10 billion. But the smiles of scholarship kids are worth much more. You feel relieved.',
+			'Your signature is worth 50 billion. But the smiles of scholarship kids are worth much more. You feel relieved.',
 		next: 'ch9_ending_calc',
 	},
-	ch9_foundation_reject: {
-		id: 'ch9_foundation_reject',
+	[Chapter9DialogueID.CH9_FOUNDATION_REJECT]: {
 		speaker: 'narrator',
 		text: 'Bạn cất bút đi. "Tại sao phải cho đi? Mình đã đổ mồ hôi sôi nước mắt mới có được". Bạn giữ được tiền, nhưng đánh mất sự tôn trọng cuối cùng của xã hội.',
 		textVi:
@@ -678,23 +791,21 @@ export const chapter9Dialogues: Record<string, DialogueNode> = {
 			'You put the pen away. "Why give? I worked hard for this". You kept the money, but lost the last shred of social respect.',
 		next: 'ch9_ending_calc',
 	},
-	ch9_ending_monologue: {
-		id: 'ch9_ending_monologue',
+	[Chapter9DialogueID.CH9_ENDING_MONOLOGUE]: {
 		speaker: 'player',
 		text: 'Cuộc đời là một dự án Open Source vĩ đại. Chúng ta không thể chọn nơi mình sinh ra (Initial Commit), nhưng chúng ta có thể viết lại mã nguồn của chính mình (Refactor) mỗi ngày. Lỗi lầm (Bug) là không thể tránh khỏi, nhưng quan trọng là ta có dũng cảm để sửa nó (Fix) hay không. Và cuối cùng, hãy để lại một di sản tốt đẹp cho thế hệ sau (Documentation).',
 		textVi:
 			'Cuộc đời là một dự án Open Source vĩ đại. Chúng ta không thể chọn nơi mình sinh ra (Initial Commit), nhưng chúng ta có thể viết lại mã nguồn của chính mình (Refactor) mỗi ngày. Lỗi lầm (Bug) là không thể tránh khỏi, nhưng quan trọng là ta có dũng cảm để sửa nó (Fix) hay không. Và cuối cùng, hãy để lại một di sản tốt đẹp cho thế hệ sau (Documentation).',
 		textEn:
 			'Life is a grand Open Source project. We cannot choose where we are born (Initial Commit), but we can rewrite our own source code (Refactor) every day. Bugs are inevitable, but what matters is if we have the courage to Fix them. And finally, leave a good legacy for the next generation (Documentation).',
-		next: 'ch9_ending_final',
+		next: Chapter9DialogueID.CH9_ENDING_FINAL,
 	},
-	ch9_ending_final: {
-		id: 'ch9_ending_final',
+	[Chapter9DialogueID.CH9_ENDING_FINAL]: {
 		speaker: 'player',
 		text: 'Tôi không phải là tỷ phú. Tôi là một Developer.',
 		textVi: 'Tôi không phải là tỷ phú. Tôi là một Developer.',
 		textEn: 'I am not a billionaire. I am a Developer.',
-		effects: [{ stat: 'vision', value: 10 }],
+		effects: [{ stat: StatID.VISION, value: 20 }],
 		next: 'ending_calculation',
 	},
 };

@@ -3,15 +3,16 @@
 // ==========================================
 
 import type { Stats, StatsEffect } from '@/data/types';
+import { StatID } from '@/data/enum';
 
 class StatsManager {
 	private stats: Stats = {
-		steelMind: 50,
-		humanity: 50,
-		vision: 50,
-		health: 100,
-		stress: 0,
-		money: 10000,
+		[StatID.STEELMIND]: 50,
+		[StatID.HUMANITY]: 50,
+		[StatID.VISION]: 50,
+		[StatID.HEALTH]: 100,
+		[StatID.STRESS]: 0,
+		[StatID.MONEY]: 10000,
 	};
 
 	// Track stat changes for ending calculation
@@ -43,12 +44,12 @@ class StatsManager {
 
 	setAllStats(stats: Stats): void {
 		this.stats = {
-			steelMind: Math.max(0, Math.min(100, stats.steelMind)),
-			humanity: Math.max(0, Math.min(100, stats.humanity)),
-			vision: Math.max(0, Math.min(100, stats.vision)),
-			health: Math.max(0, Math.min(100, stats.health)),
-			stress: Math.max(0, Math.min(100, stats.stress)),
-			money: Math.max(0, stats.money),
+			[StatID.STEELMIND]: Math.max(0, Math.min(100, stats[StatID.STEELMIND])),
+			[StatID.HUMANITY]: Math.max(0, Math.min(100, stats[StatID.HUMANITY])),
+			[StatID.VISION]: Math.max(0, Math.min(100, stats[StatID.VISION])),
+			[StatID.HEALTH]: Math.max(0, Math.min(100, stats[StatID.HEALTH])),
+			[StatID.STRESS]: Math.max(0, Math.min(100, stats[StatID.STRESS])),
+			[StatID.MONEY]: Math.max(0, stats[StatID.MONEY]),
 		};
 	}
 
@@ -99,7 +100,9 @@ class StatsManager {
 	 * Calculate which ending the player gets based on stats
 	 */
 	calculateEnding(): string {
-		const { steelMind, humanity, vision } = this.stats;
+		const steelMind = this.stats[StatID.STEELMIND];
+		const humanity = this.stats[StatID.HUMANITY];
+		const vision = this.stats[StatID.VISION];
 
 		// BAD ENDINGS (Extreme stats)
 		if (steelMind > 90) {
@@ -135,15 +138,15 @@ class StatsManager {
 	 */
 	getDominantTrait(): keyof Stats {
 		if (
-			this.stats.steelMind >= this.stats.humanity &&
-			this.stats.steelMind >= this.stats.vision
+			this.stats[StatID.STEELMIND] >= this.stats[StatID.HUMANITY] &&
+			this.stats[StatID.STEELMIND] >= this.stats[StatID.VISION]
 		) {
-			return 'steelMind';
+			return StatID.STEELMIND;
 		}
-		if (this.stats.humanity >= this.stats.vision) {
-			return 'humanity';
+		if (this.stats[StatID.HUMANITY] >= this.stats[StatID.VISION]) {
+			return StatID.HUMANITY;
 		}
-		return 'vision';
+		return StatID.VISION;
 	}
 
 	// ==========================================
@@ -155,12 +158,12 @@ class StatsManager {
 	 */
 	getStatColor(stat: keyof Stats): string {
 		const colors = {
-			steelMind: '#4a90e2',
-			humanity: '#f56565',
-			vision: '#805ad5',
-			health: '#48bb78',
-			stress: '#e53e3e',
-			money: '#ecc94b',
+			[StatID.STEELMIND]: '#4a90e2',
+			[StatID.HUMANITY]: '#f56565',
+			[StatID.VISION]: '#805ad5',
+			[StatID.HEALTH]: '#48bb78',
+			[StatID.STRESS]: '#e53e3e',
+			[StatID.MONEY]: '#ecc94b',
 		};
 		return colors[stat];
 	}
@@ -170,12 +173,12 @@ class StatsManager {
 	 */
 	getStatName(stat: keyof Stats, language: 'vi' | 'en' = 'vi'): string {
 		const names = {
-			steelMind: { vi: 'Tinh Thần Thép', en: 'Steel Mind' },
-			humanity: { vi: 'Nhân Tính', en: 'Humanity' },
-			vision: { vi: 'Tầm Nhìn', en: 'Vision' },
-			health: { vi: 'Sức Khỏe', en: 'Health' },
-			stress: { vi: 'Căng Thẳng', en: 'Stress' },
-			money: { vi: 'Tiền Bạc', en: 'Money' },
+			[StatID.STEELMIND]: { vi: 'Tinh Thần Thép', en: 'Steel Mind' },
+			[StatID.HUMANITY]: { vi: 'Nhân Tính', en: 'Humanity' },
+			[StatID.VISION]: { vi: 'Tầm Nhìn', en: 'Vision' },
+			[StatID.HEALTH]: { vi: 'Sức Khỏe', en: 'Health' },
+			[StatID.STRESS]: { vi: 'Căng Thẳng', en: 'Stress' },
+			[StatID.MONEY]: { vi: 'Tiền Bạc', en: 'Money' },
 		};
 		return names[stat][language];
 	}
@@ -185,12 +188,12 @@ class StatsManager {
 	 */
 	reset(): void {
 		this.stats = {
-			steelMind: 50,
-			humanity: 50,
-			vision: 50,
-			health: 100,
-			stress: 0,
-			money: 10000,
+			[StatID.STEELMIND]: 50,
+			[StatID.HUMANITY]: 50,
+			[StatID.VISION]: 50,
+			[StatID.HEALTH]: 100,
+			[StatID.STRESS]: 0,
+			[StatID.MONEY]: 10000,
 		};
 		this.statHistory = [];
 	}

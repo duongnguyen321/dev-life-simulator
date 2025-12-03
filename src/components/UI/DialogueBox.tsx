@@ -10,6 +10,7 @@ interface DialogueBoxProps {
 	choices?: DialogueChoice[];
 	onNext?: () => void;
 	onChoice?: (choice: DialogueChoice) => void;
+	isReflection?: boolean;
 }
 
 export default function DialogueBox({
@@ -18,6 +19,7 @@ export default function DialogueBox({
 	choices = [],
 	onNext,
 	onChoice,
+	isReflection = false,
 }: DialogueBoxProps) {
 	const { settings } = useGameStore();
 	const [displayedText, setDisplayedText] = useState('');
@@ -62,22 +64,6 @@ export default function DialogueBox({
 		setIsProcessing(true);
 		audioManager.playSFX('ui/choice_select');
 
-		// Apply stat effects if any
-		if (choice.effects) {
-			const { updateStat } = useGameStore.getState();
-			choice.effects.forEach((effect) => {
-				updateStat(effect.stat, effect.value);
-			});
-		}
-
-		// Apply flag changes if any
-		if (choice.flags) {
-			const { setFlag } = useGameStore.getState();
-			choice.flags.forEach((flag) => {
-				setFlag(flag.key, flag.value);
-			});
-		}
-
 		// Navigate to next dialogue
 		if (onChoice) {
 			onChoice(choice);
@@ -86,7 +72,7 @@ export default function DialogueBox({
 		}
 	};
 
-	const handleContainerClick = (e: React.MouseEvent) => {
+	const handleContainerClick = () => {
 		// 0. Prevent if already processing
 		if (isProcessing) {
 			return;
@@ -122,10 +108,13 @@ export default function DialogueBox({
 				choices.length === 0 && !isTyping ? handleContainerClick : undefined
 			}
 			style={{
-				backgroundColor: 'rgba(26, 32, 44, 0.95)',
-				border: '4px solid #4a90e2',
+				backgroundColor: isReflection
+					? 'rgba(20, 20, 35, 0.95)' // Darker, dream-like for reflection
+					: 'rgba(26, 32, 44, 0.95)',
+				border: isReflection ? '4px solid #a78bfa' : '4px solid #4a90e2', // Purple for reflection
 				padding: '2rem',
 				fontFamily: '"Xanh Mono", monospace',
+				boxShadow: isReflection ? '0 0 20px rgba(167, 139, 250, 0.3)' : 'none',
 			}}
 		>
 			{/* Speaker Name */}

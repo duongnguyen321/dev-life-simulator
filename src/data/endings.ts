@@ -3,10 +3,11 @@
 // ==========================================
 
 import type { EndingDefinition, Stats } from './types';
+import { EndingID } from './enum';
 
 export const endings: EndingDefinition[] = [
 	{
-		id: 'BANKRUPTCY',
+		id: EndingID.BANKRUPTCY,
 		name: 'Bankruptcy',
 		nameVi: 'Phá Sản',
 		nameEn: 'Bankruptcy',
@@ -19,7 +20,7 @@ export const endings: EndingDefinition[] = [
 		condition: (stats: Stats) => stats.money < 0,
 	},
 	{
-		id: 'BURNOUT',
+		id: EndingID.BURNOUT,
 		name: 'Burnout',
 		nameVi: 'Kiệt Sức',
 		nameEn: 'Burnout',
@@ -33,7 +34,7 @@ export const endings: EndingDefinition[] = [
 		condition: (stats: Stats) => stats.health <= 0 || stats.stress >= 100,
 	},
 	{
-		id: 'BALANCED',
+		id: EndingID.BALANCED,
 		name: 'Balanced Life',
 		nameVi: 'Cuộc Sống Cân Bằng',
 		nameEn: 'Balanced Life',
@@ -56,7 +57,7 @@ export const endings: EndingDefinition[] = [
 			stats.money >= 500000,
 	},
 	{
-		id: 'LEGACY',
+		id: EndingID.LEGACY,
 		name: 'Legacy',
 		nameVi: 'Di Sản',
 		nameEn: 'Legacy',
@@ -74,7 +75,7 @@ export const endings: EndingDefinition[] = [
 			(flags.foundedCompany || flags.mentored || flags.donated),
 	},
 	{
-		id: 'SOULLESS_TYCOON',
+		id: EndingID.SOULLESS_TYCOON,
 		name: 'Soulless Tycoon',
 		nameVi: 'Tỷ Phú Vô Cảm',
 		nameEn: 'Soulless Tycoon',
@@ -89,7 +90,7 @@ export const endings: EndingDefinition[] = [
 			stats.money >= 10000000000 && stats.humanity < 30,
 	},
 	{
-		id: 'SUCCESS',
+		id: EndingID.SUCCESS,
 		name: 'Brilliant Success',
 		nameVi: 'Thành Công Rực Rỡ',
 		nameEn: 'Brilliant Success',
@@ -106,7 +107,7 @@ export const endings: EndingDefinition[] = [
 			stats.humanity >= 30,
 	},
 	{
-		id: 'TRAGEDY',
+		id: EndingID.TRAGEDY,
 		name: 'Tragedy',
 		nameVi: 'Bi Kịch',
 		nameEn: 'Tragedy',

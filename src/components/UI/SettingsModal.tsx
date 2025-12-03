@@ -110,6 +110,27 @@ export default function SettingsModal({ isOpen, onClose }: SettingsModalProps) {
 								className='w-full h-2 bg-gray-700 rounded-lg appearance-none cursor-pointer accent-steel-mind'
 							/>
 						</div>
+
+						{/* Text Speed */}
+						<div className='space-y-2'>
+							<div className='flex justify-between text-text-primary pixel-font'>
+								<span>
+									{settings.language === 'vi' ? 'Tốc độ chữ' : 'Text Speed'}
+								</span>
+								<span>{settings.textSpeed}%</span>
+							</div>
+							<input
+								type='range'
+								min='0'
+								max='100'
+								step='10'
+								value={settings.textSpeed}
+								onChange={(e) =>
+									updateSettings({ textSpeed: parseInt(e.target.value) })
+								}
+								className='w-full h-2 bg-gray-700 rounded-lg appearance-none cursor-pointer accent-steel-mind'
+							/>
+						</div>
 					</div>
 
 					<div className='mt-8 flex justify-center'>

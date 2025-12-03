@@ -1,8 +1,9 @@
 import type { RandomEvent } from './types';
+import { FlagID, RandomEventID, StatID } from './enum';
 
 export const randomEvents: RandomEvent[] = [
 	{
-		id: 'evt_server_crash',
+		id: RandomEventID.EVT_SERVER_CRASH,
 		name: 'Server Crash',
 		nameVi: 'Server Crash lúc 2h sáng',
 		nameEn: 'Server Crash at 2 AM',
@@ -12,31 +13,32 @@ export const randomEvents: RandomEvent[] = [
 		probability: 0.1,
 		choices: [
 			{
-				id: 'evt_server_crash_ignore',
+				id: RandomEventID.EVT_SERVER_CRASH_IGNORE,
 				text: 'Kệ, sáng mai sửa',
 				textVi: 'Kệ, sáng mai sửa',
 				textEn: 'Ignore, fix tomorrow',
 				next: '',
 				effects: [
-					{ stat: 'steelMind', value: 1 },
-					{ stat: 'vision', value: -2 }, // Uy tín -2 -> Vision? Or maybe money. Let's map to Vision for Reputation.
+					{ stat: StatID.STEELMIND, value: 5 },
+					{ stat: StatID.VISION, value: -10 }, // Uy tín -2 -> Vision? Or maybe money. Let's map to Vision for Reputation.
 				],
+				flags: [{ key: FlagID.BUG_CRASH_TRIGGERED, value: true }],
 			},
 			{
-				id: 'evt_server_crash_fix',
+				id: RandomEventID.EVT_SERVER_CRASH_FIX,
 				text: 'Dậy sửa ngay',
 				textVi: 'Dậy sửa ngay',
 				textEn: 'Wake up and fix',
 				next: '',
 				effects: [
-					{ stat: 'health', value: -1 },
-					{ stat: 'vision', value: 2 },
+					{ stat: StatID.HEALTH, value: -5 },
+					{ stat: StatID.VISION, value: 5 },
 				],
 			},
 		],
 	},
 	{
-		id: 'evt_headhunter',
+		id: RandomEventID.EVT_HEADHUNTER,
 		name: 'Headhunter Call',
 		nameVi: 'Headhunter gọi điện mời lương x2',
 		nameEn: 'Headhunter offers x2 salary',
@@ -46,30 +48,30 @@ export const randomEvents: RandomEvent[] = [
 		probability: 0.05,
 		choices: [
 			{
-				id: 'evt_headhunter_accept',
+				id: RandomEventID.EVT_HEADHUNTER_ACCEPT,
 				text: 'Đi phỏng vấn',
 				textVi: 'Đi phỏng vấn',
 				textEn: 'Go for interview',
 				next: '',
 				effects: [
-					{ stat: 'money', value: 3 },
-					{ stat: 'humanity', value: -1 }, // Loyalty -
+					{ stat: StatID.MONEY, value: 50000000 },
+					{ stat: StatID.HUMANITY, value: -10 }, // Loyalty -
 				],
 			},
 			{
-				id: 'evt_headhunter_reject',
+				id: RandomEventID.EVT_HEADHUNTER_REJECT,
 				text: 'Từ chối',
 				textVi: 'Từ chối',
 				textEn: 'Reject',
 				next: '',
 				effects: [
-					{ stat: 'humanity', value: 1 }, // Loyalty +
+					{ stat: StatID.HUMANITY, value: 10 }, // Loyalty +
 				],
 			},
 		],
 	},
 	{
-		id: 'evt_staff_quit',
+		id: RandomEventID.EVT_STAFF_QUIT,
 		name: 'Staff Quit',
 		nameVi: 'Nhân viên giỏi đòi nghỉ việc',
 		nameEn: 'Top talent wants to quit',
@@ -79,25 +81,25 @@ export const randomEvents: RandomEvent[] = [
 		probability: 0.05,
 		choices: [
 			{
-				id: 'evt_staff_quit_raise',
+				id: RandomEventID.EVT_STAFF_QUIT_RAISE,
 				text: 'Tăng lương giữ lại',
 				textVi: 'Tăng lương giữ lại',
 				textEn: 'Raise salary to keep',
 				next: '',
-				effects: [{ stat: 'money', value: -1 }],
+				effects: [{ stat: StatID.MONEY, value: -5000000 }],
 			},
 			{
-				id: 'evt_staff_quit_bye',
+				id: RandomEventID.EVT_STAFF_QUIT_BYE,
 				text: 'Chúc may mắn',
 				textVi: 'Chúc may mắn',
 				textEn: 'Good luck',
 				next: '',
-				effects: [{ stat: 'vision', value: -1 }], // Team morale?
+				effects: [{ stat: StatID.VISION, value: -5 }], // Team morale?
 			},
 		],
 	},
 	{
-		id: 'evt_copycat',
+		id: RandomEventID.EVT_COPYCAT,
 		name: 'Copycat',
 		nameVi: 'Đối thủ sao chép sản phẩm',
 		nameEn: 'Competitor copies product',
@@ -107,28 +109,28 @@ export const randomEvents: RandomEvent[] = [
 		probability: 0.05,
 		choices: [
 			{
-				id: 'evt_copycat_sue',
+				id: RandomEventID.EVT_COPYCAT_SUE,
 				text: 'Kiện',
 				textVi: 'Kiện',
 				textEn: 'Sue',
 				next: '',
 				effects: [
-					{ stat: 'money', value: -1 },
-					{ stat: 'stress', value: 1 },
+					{ stat: StatID.MONEY, value: -10000000 },
+					{ stat: StatID.STRESS, value: 10 },
 				],
 			},
 			{
-				id: 'evt_copycat_improve',
+				id: RandomEventID.EVT_COPYCAT_IMPROVE,
 				text: 'Cải tiến sản phẩm',
 				textVi: 'Cải tiến sản phẩm',
 				textEn: 'Improve product',
 				next: '',
-				effects: [{ stat: 'vision', value: 1 }],
+				effects: [{ stat: StatID.VISION, value: 5 }],
 			},
 		],
 	},
 	{
-		id: 'evt_dad_sick',
+		id: RandomEventID.EVT_DAD_SICK,
 		name: 'Dad Sick',
 		nameVi: 'Bố ốm nặng',
 		nameEn: 'Dad is very sick',
@@ -138,31 +140,31 @@ export const randomEvents: RandomEvent[] = [
 		probability: 0.05,
 		choices: [
 			{
-				id: 'evt_dad_sick_care',
+				id: RandomEventID.EVT_DAD_SICK_CARE,
 				text: 'Về chăm sóc',
 				textVi: 'Về chăm sóc',
 				textEn: 'Go home to care',
 				next: '',
 				effects: [
-					{ stat: 'humanity', value: 2 },
-					{ stat: 'vision', value: -1 }, // Project delayed
+					{ stat: StatID.HUMANITY, value: 10 },
+					{ stat: StatID.VISION, value: -5 }, // Project delayed
 				],
 			},
 			{
-				id: 'evt_dad_sick_nurse',
+				id: RandomEventID.EVT_DAD_SICK_NURSE,
 				text: 'Thuê y tá xịn',
 				textVi: 'Thuê y tá xịn',
 				textEn: 'Hire expensive nurse',
 				next: '',
 				effects: [
-					{ stat: 'money', value: -1 },
-					{ stat: 'vision', value: 1 }, // Project on time
+					{ stat: StatID.MONEY, value: -20000000 },
+					{ stat: StatID.VISION, value: 5 }, // Project on time
 				],
 			},
 		],
 	},
 	{
-		id: 'evt_ex_lover',
+		id: RandomEventID.EVT_EX_LOVER,
 		name: 'Ex Lover',
 		nameVi: 'Gặp lại người yêu cũ',
 		nameEn: 'Meet ex-lover',
@@ -172,25 +174,25 @@ export const randomEvents: RandomEvent[] = [
 		probability: 0.05,
 		choices: [
 			{
-				id: 'evt_ex_lover_coffee',
+				id: RandomEventID.EVT_EX_LOVER_COFFEE,
 				text: 'Cà phê xã giao',
 				textVi: 'Cà phê xã giao',
 				textEn: 'Social coffee',
 				next: '',
-				effects: [{ stat: 'stress', value: 1 }], // Emotional stir
+				effects: [{ stat: StatID.STRESS, value: 5 }], // Emotional stir
 			},
 			{
-				id: 'evt_ex_lover_ignore',
+				id: RandomEventID.EVT_EX_LOVER_IGNORE,
 				text: 'Lơ đi',
 				textVi: 'Lơ đi',
 				textEn: 'Ignore',
 				next: '',
-				effects: [{ stat: 'steelMind', value: 1 }],
+				effects: [{ stat: StatID.STEELMIND, value: 5 }],
 			},
 		],
 	},
 	{
-		id: 'evt_bitcoin',
+		id: RandomEventID.EVT_BITCOIN,
 		name: 'Bitcoin Investment',
 		nameVi: 'Đầu tư Bitcoin',
 		nameEn: 'Invest in Bitcoin',
@@ -200,25 +202,25 @@ export const randomEvents: RandomEvent[] = [
 		probability: 0.05,
 		choices: [
 			{
-				id: 'evt_bitcoin_all_in',
+				id: RandomEventID.EVT_BITCOIN_ALL_IN,
 				text: 'All-in',
 				textVi: 'All-in',
 				textEn: 'All-in',
 				next: '',
-				effects: [{ stat: 'stress', value: 2 }], // High risk
+				effects: [{ stat: StatID.STRESS, value: 20 }], // High risk
 			},
 			{
-				id: 'evt_bitcoin_skip',
+				id: RandomEventID.EVT_BITCOIN_SKIP,
 				text: 'Bỏ qua',
 				textVi: 'Bỏ qua',
 				textEn: 'Skip',
 				next: '',
-				effects: [{ stat: 'steelMind', value: 1 }], // Safe
+				effects: [{ stat: StatID.STEELMIND, value: 5 }], // Safe
 			},
 		],
 	},
 	{
-		id: 'evt_data_scandal',
+		id: RandomEventID.EVT_DATA_SCANDAL,
 		name: 'Data Scandal',
 		nameVi: 'Scandal dữ liệu người dùng',
 		nameEn: 'User Data Scandal',
@@ -228,28 +230,28 @@ export const randomEvents: RandomEvent[] = [
 		probability: 0.05,
 		choices: [
 			{
-				id: 'evt_data_scandal_hide',
+				id: RandomEventID.EVT_DATA_SCANDAL_HIDE,
 				text: 'Che giấu',
 				textVi: 'Che giấu',
 				textEn: 'Hide it',
 				next: '',
-				effects: [{ stat: 'stress', value: 2 }], // Risk of jail
+				effects: [{ stat: StatID.STRESS, value: 20 }], // Risk of jail
 			},
 			{
-				id: 'evt_data_scandal_apologize',
+				id: RandomEventID.EVT_DATA_SCANDAL_APOLOGIZE,
 				text: 'Công khai xin lỗi',
 				textVi: 'Công khai xin lỗi',
 				textEn: 'Public apology',
 				next: '',
 				effects: [
-					{ stat: 'vision', value: -1 }, // Temp rep loss
-					{ stat: 'humanity', value: 1 }, // Long term gain
+					{ stat: StatID.VISION, value: -10 }, // Temp rep loss
+					{ stat: StatID.HUMANITY, value: 10 }, // Long term gain
 				],
 			},
 		],
 	},
 	{
-		id: 'evt_ddos',
+		id: RandomEventID.EVT_DDOS,
 		name: 'DDoS Attack',
 		nameVi: 'Server bị DDoS',
 		nameEn: 'Server DDoS Attack',
@@ -259,31 +261,31 @@ export const randomEvents: RandomEvent[] = [
 		probability: 0.05,
 		choices: [
 			{
-				id: 'evt_ddos_service',
+				id: RandomEventID.EVT_DDOS_SERVICE,
 				text: 'Mua dịch vụ chống DDoS',
 				textVi: 'Mua dịch vụ chống DDoS',
 				textEn: 'Buy anti-DDoS service',
 				next: '',
 				effects: [
-					{ stat: 'money', value: -1 },
-					{ stat: 'steelMind', value: 1 }, // Safe
+					{ stat: StatID.MONEY, value: -5000000 },
+					{ stat: StatID.STEELMIND, value: 5 }, // Safe
 				],
 			},
 			{
-				id: 'evt_ddos_script',
+				id: RandomEventID.EVT_DDOS_SCRIPT,
 				text: 'Tự viết script chặn IP',
 				textVi: 'Tự viết script chặn IP',
 				textEn: 'Write IP block script',
 				next: '',
 				effects: [
-					{ stat: 'vision', value: 2 }, // Skill +
-					{ stat: 'stress', value: 1 }, // Risk
+					{ stat: StatID.VISION, value: 10 }, // Skill +
+					{ stat: StatID.STRESS, value: 5 }, // Risk
 				],
 			},
 		],
 	},
 	{
-		id: 'evt_confession',
+		id: RandomEventID.EVT_CONFESSION,
 		name: 'Confession',
 		nameVi: 'Nhân viên nữ tỏ tình',
 		nameEn: 'Female staff confesses',
@@ -293,25 +295,25 @@ export const randomEvents: RandomEvent[] = [
 		probability: 0.05,
 		choices: [
 			{
-				id: 'evt_confession_accept',
+				id: RandomEventID.EVT_CONFESSION_ACCEPT,
 				text: 'Đồng ý',
 				textVi: 'Đồng ý',
 				textEn: 'Accept',
 				next: '',
-				effects: [{ stat: 'stress', value: 1 }], // Drama risk
+				effects: [{ stat: StatID.STRESS, value: 10 }], // Drama risk
 			},
 			{
-				id: 'evt_confession_reject',
+				id: RandomEventID.EVT_CONFESSION_REJECT,
 				text: 'Từ chối khéo',
 				textVi: 'Từ chối khéo',
 				textEn: 'Polite rejection',
 				next: '',
-				effects: [{ stat: 'steelMind', value: 1 }],
+				effects: [{ stat: StatID.STEELMIND, value: 5 }],
 			},
 		],
 	},
 	{
-		id: 'evt_stock_crash',
+		id: RandomEventID.EVT_STOCK_CRASH,
 		name: 'Stock Crash',
 		nameVi: 'Cổ phiếu công ty tụt dốc',
 		nameEn: 'Company stock crashes',
@@ -321,28 +323,28 @@ export const randomEvents: RandomEvent[] = [
 		probability: 0.05,
 		choices: [
 			{
-				id: 'evt_stock_crash_buy',
+				id: RandomEventID.EVT_STOCK_CRASH_BUY,
 				text: 'Mua vào (Buy the dip)',
 				textVi: 'Mua vào (Buy the dip)',
 				textEn: 'Buy the dip',
 				next: '',
-				effects: [{ stat: 'stress', value: 2 }], // High risk
+				effects: [{ stat: StatID.STRESS, value: 15 }], // High risk
 			},
 			{
-				id: 'evt_stock_crash_sell',
+				id: RandomEventID.EVT_STOCK_CRASH_SELL,
 				text: 'Bán cắt lỗ',
 				textVi: 'Bán cắt lỗ',
 				textEn: 'Cut loss',
 				next: '',
 				effects: [
-					{ stat: 'money', value: -1 },
-					{ stat: 'steelMind', value: 1 }, // Safe
+					{ stat: StatID.MONEY, value: -20000000 },
+					{ stat: StatID.STEELMIND, value: 5 }, // Safe
 				],
 			},
 		],
 	},
 	{
-		id: 'evt_tedx',
+		id: RandomEventID.EVT_TEDX,
 		name: 'TEDx Invite',
 		nameVi: 'Được mời làm diễn giả TEDx',
 		nameEn: 'Invited to TEDx',
@@ -352,31 +354,31 @@ export const randomEvents: RandomEvent[] = [
 		probability: 0.05,
 		choices: [
 			{
-				id: 'evt_tedx_join',
+				id: RandomEventID.EVT_TEDX_JOIN,
 				text: 'Tham gia',
 				textVi: 'Tham gia',
 				textEn: 'Join',
 				next: '',
 				effects: [
-					{ stat: 'vision', value: 3 }, // Reputation
-					{ stat: 'stress', value: 1 }, // Time
+					{ stat: StatID.VISION, value: 15 }, // Reputation
+					{ stat: StatID.STRESS, value: 5 }, // Time
 				],
 			},
 			{
-				id: 'evt_tedx_reject',
+				id: RandomEventID.EVT_TEDX_REJECT,
 				text: 'Từ chối vì bận code',
 				textVi: 'Từ chối vì bận code',
 				textEn: 'Reject (busy coding)',
 				next: '',
 				effects: [
-					{ stat: 'steelMind', value: 1 },
-					{ stat: 'vision', value: -1 }, // Missed PR
+					{ stat: StatID.STEELMIND, value: 5 },
+					{ stat: StatID.VISION, value: -5 }, // Missed PR
 				],
 			},
 		],
 	},
 	{
-		id: 'evt_zero_day',
+		id: RandomEventID.EVT_ZERO_DAY,
 		name: 'Zero-day Exploit',
 		nameVi: 'Phát hiện lỗ hổng Zero-day',
 		nameEn: 'Zero-day Exploit Found',
@@ -386,28 +388,28 @@ export const randomEvents: RandomEvent[] = [
 		probability: 0.05,
 		choices: [
 			{
-				id: 'evt_zero_day_report',
+				id: RandomEventID.EVT_ZERO_DAY_REPORT,
 				text: 'Báo cáo cho tác giả',
 				textVi: 'Báo cáo cho tác giả',
 				textEn: 'Report to author',
 				next: '',
-				effects: [{ stat: 'vision', value: 1 }], // Community rep
+				effects: [{ stat: StatID.VISION, value: 10 }], // Community rep
 			},
 			{
-				id: 'evt_zero_day_exploit',
+				id: RandomEventID.EVT_ZERO_DAY_EXPLOIT,
 				text: 'Giữ kín để exploit (Black Hat)',
 				textVi: 'Giữ kín để exploit (Black Hat)',
 				textEn: 'Keep to exploit (Black Hat)',
 				next: '',
 				effects: [
-					{ stat: 'money', value: 3 },
-					{ stat: 'humanity', value: -3 }, // Unethical
+					{ stat: StatID.MONEY, value: 100000000 },
+					{ stat: StatID.HUMANITY, value: -20 }, // Unethical
 				],
 			},
 		],
 	},
 	{
-		id: 'evt_team_building',
+		id: RandomEventID.EVT_TEAM_BUILDING,
 		name: 'Team Building',
 		nameVi: 'Team Building đi biển',
 		nameEn: 'Beach Team Building',
@@ -417,31 +419,31 @@ export const randomEvents: RandomEvent[] = [
 		probability: 0.05,
 		choices: [
 			{
-				id: 'evt_team_building_go',
+				id: RandomEventID.EVT_TEAM_BUILDING_GO,
 				text: 'Đi và quẩy hết mình',
 				textVi: 'Đi và quẩy hết mình',
 				textEn: 'Go and party',
 				next: '',
 				effects: [
-					{ stat: 'humanity', value: 2 }, // Bonding
-					{ stat: 'health', value: -1 },
+					{ stat: StatID.HUMANITY, value: 10 }, // Bonding
+					{ stat: StatID.HEALTH, value: -5 },
 				],
 			},
 			{
-				id: 'evt_team_building_stay',
+				id: RandomEventID.EVT_TEAM_BUILDING_STAY,
 				text: 'Ở nhà làm việc',
 				textVi: 'Ở nhà làm việc',
 				textEn: 'Stay home and work',
 				next: '',
 				effects: [
-					{ stat: 'vision', value: 1 }, // Productivity
-					{ stat: 'humanity', value: -1 }, // Morale -
+					{ stat: StatID.VISION, value: 5 }, // Productivity
+					{ stat: StatID.HUMANITY, value: -5 }, // Morale -
 				],
 			},
 		],
 	},
 	{
-		id: 'evt_bad_debt',
+		id: RandomEventID.EVT_BAD_DEBT,
 		name: 'Bad Debt',
 		nameVi: 'Khách hàng quỵt tiền',
 		nameEn: 'Client refuses to pay',
@@ -451,28 +453,28 @@ export const randomEvents: RandomEvent[] = [
 		probability: 0.05,
 		choices: [
 			{
-				id: 'evt_bad_debt_thug',
+				id: RandomEventID.EVT_BAD_DEBT_THUG,
 				text: 'Thuê đòi nợ thuê',
 				textVi: 'Thuê đòi nợ thuê',
 				textEn: 'Hire thugs',
 				next: '',
 				effects: [
-					{ stat: 'humanity', value: -1 },
-					{ stat: 'money', value: 1 }, // Fast money
+					{ stat: StatID.HUMANITY, value: -10 },
+					{ stat: StatID.MONEY, value: 10000000 }, // Fast money
 				],
 			},
 			{
-				id: 'evt_bad_debt_sue',
+				id: RandomEventID.EVT_BAD_DEBT_SUE,
 				text: 'Kiện ra tòa',
 				textVi: 'Kiện ra tòa',
 				textEn: 'Sue in court',
 				next: '',
-				effects: [{ stat: 'stress', value: 1 }], // Time consuming
+				effects: [{ stat: StatID.STRESS, value: 10 }], // Time consuming
 			},
 		],
 	},
 	{
-		id: 'evt_cat_server',
+		id: RandomEventID.EVT_CAT_SERVER,
 		name: 'Cat vs Server',
 		nameVi: 'Mèo của văn phòng đái vào server',
 		nameEn: 'Office cat pees on server',
@@ -482,28 +484,28 @@ export const randomEvents: RandomEvent[] = [
 		probability: 0.05,
 		choices: [
 			{
-				id: 'evt_cat_server_fire',
+				id: RandomEventID.EVT_CAT_SERVER_FIRE,
 				text: 'Đuổi việc con mèo',
 				textVi: 'Đuổi việc con mèo',
 				textEn: 'Fire the cat',
 				next: '',
-				effects: [{ stat: 'humanity', value: -1 }], // Team hates it
+				effects: [{ stat: StatID.HUMANITY, value: -10 }], // Team hates it
 			},
 			{
-				id: 'evt_cat_server_buy',
+				id: RandomEventID.EVT_CAT_SERVER_BUY,
 				text: 'Mua server mới',
 				textVi: 'Mua server mới',
 				textEn: 'Buy new server',
 				next: '',
 				effects: [
-					{ stat: 'money', value: -1 },
-					{ stat: 'humanity', value: 1 }, // Keep mascot
+					{ stat: StatID.MONEY, value: -20000000 },
+					{ stat: StatID.HUMANITY, value: 5 }, // Keep mascot
 				],
 			},
 		],
 	},
 	{
-		id: 'evt_land_fever',
+		id: RandomEventID.EVT_LAND_FEVER,
 		name: 'Land Fever',
 		nameVi: 'Sốt đất ở quê',
 		nameEn: 'Land Fever in hometown',
@@ -513,28 +515,28 @@ export const randomEvents: RandomEvent[] = [
 		probability: 0.05,
 		choices: [
 			{
-				id: 'evt_land_fever_trade',
+				id: RandomEventID.EVT_LAND_FEVER_TRADE,
 				text: 'Về quê buôn đất',
 				textVi: 'Về quê buôn đất',
 				textEn: 'Trade land',
 				next: '',
 				effects: [
-					{ stat: 'money', value: 3 },
-					{ stat: 'vision', value: -1 }, // Skill drops
+					{ stat: StatID.MONEY, value: 200000000 },
+					{ stat: StatID.VISION, value: -10 }, // Skill drops
 				],
 			},
 			{
-				id: 'evt_land_fever_ignore',
+				id: RandomEventID.EVT_LAND_FEVER_IGNORE,
 				text: 'Kệ, tập trung làm Tech',
 				textVi: 'Kệ, tập trung làm Tech',
 				textEn: 'Ignore, focus on Tech',
 				next: '',
-				effects: [{ stat: 'vision', value: 1 }],
+				effects: [{ stat: StatID.VISION, value: 5 }],
 			},
 		],
 	},
 	{
-		id: 'evt_friend_loan',
+		id: RandomEventID.EVT_FRIEND_LOAN,
 		name: 'Friend Loan',
 		nameVi: 'Bạn cũ vay tiền',
 		nameEn: 'Old friend asks for loan',
@@ -544,28 +546,28 @@ export const randomEvents: RandomEvent[] = [
 		probability: 0.05,
 		choices: [
 			{
-				id: 'evt_friend_loan_give',
+				id: RandomEventID.EVT_FRIEND_LOAN_GIVE,
 				text: 'Cho vay',
 				textVi: 'Cho vay',
 				textEn: 'Lend',
 				next: '',
 				effects: [
-					{ stat: 'humanity', value: 1 },
-					{ stat: 'money', value: -1 }, // Risk losing
+					{ stat: StatID.HUMANITY, value: 10 },
+					{ stat: StatID.MONEY, value: -50000000 }, // Risk losing
 				],
 			},
 			{
-				id: 'evt_friend_loan_reject',
+				id: RandomEventID.EVT_FRIEND_LOAN_REJECT,
 				text: 'Say No',
 				textVi: 'Say No',
 				textEn: 'Say No',
 				next: '',
-				effects: [{ stat: 'steelMind', value: 1 }], // Lose friend
+				effects: [{ stat: StatID.STEELMIND, value: 5 }], // Lose friend
 			},
 		],
 	},
 	{
-		id: 'evt_back_pain',
+		id: RandomEventID.EVT_BACK_PAIN,
 		name: 'Back Pain',
 		nameVi: 'Bị đau lưng thoát vị đĩa đệm',
 		nameEn: 'Herniated Disc Back Pain',
@@ -575,31 +577,31 @@ export const randomEvents: RandomEvent[] = [
 		probability: 0.05,
 		choices: [
 			{
-				id: 'evt_back_pain_gym',
+				id: RandomEventID.EVT_BACK_PAIN_GYM,
 				text: 'Đi tập Gym/Yoga',
 				textVi: 'Đi tập Gym/Yoga',
 				textEn: 'Go to Gym/Yoga',
 				next: '',
 				effects: [
-					{ stat: 'health', value: 1 },
-					{ stat: 'stress', value: 1 }, // Time consuming
+					{ stat: StatID.HEALTH, value: 10 },
+					{ stat: StatID.STRESS, value: 5 }, // Time consuming
 				],
 			},
 			{
-				id: 'evt_back_pain_pill',
+				id: RandomEventID.EVT_BACK_PAIN_PILL,
 				text: 'Uống thuốc giảm đau làm tiếp',
 				textVi: 'Uống thuốc giảm đau làm tiếp',
 				textEn: 'Take painkillers and work',
 				next: '',
 				effects: [
-					{ stat: 'health', value: -3 },
-					{ stat: 'vision', value: 1 }, // Done early
+					{ stat: StatID.HEALTH, value: -15 },
+					{ stat: StatID.VISION, value: 5 }, // Done early
 				],
 			},
 		],
 	},
 	{
-		id: 'evt_shark_buy',
+		id: RandomEventID.EVT_SHARK_BUY,
 		name: 'Shark Buyout',
 		nameVi: 'Cá mập muốn mua lại công ty',
 		nameEn: 'Shark wants to buyout',
@@ -609,25 +611,25 @@ export const randomEvents: RandomEvent[] = [
 		probability: 0.05,
 		choices: [
 			{
-				id: 'evt_shark_buy_sell',
+				id: RandomEventID.EVT_SHARK_BUY_SELL,
 				text: 'Bán luôn',
 				textVi: 'Bán luôn',
 				textEn: 'Sell now',
 				next: '',
-				effects: [{ stat: 'money', value: 10 }], // End game early?
+				effects: [{ stat: StatID.MONEY, value: 10000000000 }], // End game early?
 			},
 			{
-				id: 'evt_shark_buy_next',
+				id: RandomEventID.EVT_SHARK_BUY_NEXT,
 				text: 'Next',
 				textVi: 'Next',
 				textEn: 'Next',
 				next: '',
-				effects: [{ stat: 'steelMind', value: 1 }], // Hard path
+				effects: [{ stat: StatID.STEELMIND, value: 5 }], // Hard path
 			},
 		],
 	},
 	{
-		id: 'evt_leak_code',
+		id: RandomEventID.EVT_LEAK_CODE,
 		name: 'Code Leak',
 		nameVi: 'Nhân viên làm lộ source code',
 		nameEn: 'Staff leaks source code',
@@ -637,28 +639,29 @@ export const randomEvents: RandomEvent[] = [
 		probability: 0.05,
 		choices: [
 			{
-				id: 'evt_leak_code_fire',
+				id: RandomEventID.EVT_LEAK_CODE_FIRE,
 				text: 'Đuổi việc và kiện',
 				textVi: 'Đuổi việc và kiện',
 				textEn: 'Fire and sue',
 				next: '',
-				effects: [{ stat: 'steelMind', value: 1 }],
+				effects: [{ stat: StatID.STEELMIND, value: 5 }],
+				flags: [{ key: FlagID.SPAGHETTI_CODE, value: true }], // Assuming leak was due to bad code? A bit stretch but okay for now.
 			},
 			{
-				id: 'evt_leak_code_forgive',
+				id: RandomEventID.EVT_LEAK_CODE_FORGIVE,
 				text: 'Tha thứ và đào tạo lại',
 				textVi: 'Tha thứ và đào tạo lại',
 				textEn: 'Forgive and retrain',
 				next: '',
 				effects: [
-					{ stat: 'humanity', value: 2 },
-					{ stat: 'stress', value: 1 }, // Risk
+					{ stat: StatID.HUMANITY, value: 10 },
+					{ stat: StatID.STRESS, value: 5 }, // Risk
 				],
 			},
 		],
 	},
 	{
-		id: 'evt_internet_cut',
+		id: RandomEventID.EVT_INTERNET_CUT,
 		name: 'Internet Cut',
 		nameVi: 'Internet bị cá mập cắn cáp',
 		nameEn: 'Shark bites internet cable',
@@ -668,31 +671,31 @@ export const randomEvents: RandomEvent[] = [
 		probability: 0.05,
 		choices: [
 			{
-				id: 'evt_internet_cut_break',
+				id: RandomEventID.EVT_INTERNET_CUT_BREAK,
 				text: 'Cho nhân viên nghỉ',
 				textVi: 'Cho nhân viên nghỉ',
 				textEn: 'Let staff rest',
 				next: '',
 				effects: [
-					{ stat: 'humanity', value: 1 }, // Team happy
-					{ stat: 'vision', value: -1 }, // Delayed
+					{ stat: StatID.HUMANITY, value: 5 }, // Team happy
+					{ stat: StatID.VISION, value: -5 }, // Delayed
 				],
 			},
 			{
-				id: 'evt_internet_cut_4g',
+				id: RandomEventID.EVT_INTERNET_CUT_4G,
 				text: 'Bắt dùng 4G làm việc',
 				textVi: 'Bắt dùng 4G làm việc',
 				textEn: 'Force 4G usage',
 				next: '',
 				effects: [
-					{ stat: 'humanity', value: -1 }, // Team hates
-					{ stat: 'vision', value: 1 }, // Done
+					{ stat: StatID.HUMANITY, value: -5 }, // Team hates
+					{ stat: StatID.VISION, value: 5 }, // Done
 				],
 			},
 		],
 	},
 	{
-		id: 'evt_wife_nag',
+		id: RandomEventID.EVT_WIFE_NAG,
 		name: 'Wife Nags',
 		nameVi: 'Vợ cằn nhằn vì đi làm về muộn',
 		nameEn: 'Wife nags about late work',
@@ -702,28 +705,28 @@ export const randomEvents: RandomEvent[] = [
 		probability: 0.05,
 		choices: [
 			{
-				id: 'evt_wife_nag_argue',
+				id: RandomEventID.EVT_WIFE_NAG_ARGUE,
 				text: 'Cãi nhau',
 				textVi: 'Cãi nhau',
 				textEn: 'Argue',
 				next: '',
-				effects: [{ stat: 'humanity', value: -1 }], // Happiness -
+				effects: [{ stat: StatID.HUMANITY, value: -5 }], // Happiness -
 			},
 			{
-				id: 'evt_wife_nag_gift',
+				id: RandomEventID.EVT_WIFE_NAG_GIFT,
 				text: 'Mua quà xin lỗi',
 				textVi: 'Mua quà xin lỗi',
 				textEn: 'Buy apology gift',
 				next: '',
 				effects: [
-					{ stat: 'money', value: -1 },
-					{ stat: 'humanity', value: 1 }, // Happiness +
+					{ stat: StatID.MONEY, value: -5000000 },
+					{ stat: StatID.HUMANITY, value: 5 }, // Happiness +
 				],
 			},
 		],
 	},
 	{
-		id: 'evt_kid_youtuber',
+		id: RandomEventID.EVT_KID_YOUTUBER,
 		name: 'Kid YouTuber',
 		nameVi: 'Con muốn học làm YouTuber',
 		nameEn: 'Kid wants to be YouTuber',
@@ -733,28 +736,28 @@ export const randomEvents: RandomEvent[] = [
 		probability: 0.05,
 		choices: [
 			{
-				id: 'evt_kid_youtuber_forbid',
+				id: RandomEventID.EVT_KID_YOUTUBER_FORBID,
 				text: 'Cấm đoán',
 				textVi: 'Cấm đoán',
 				textEn: 'Forbid',
 				next: '',
-				effects: [{ stat: 'humanity', value: -1 }], // Relationship -
+				effects: [{ stat: StatID.HUMANITY, value: -5 }], // Relationship -
 			},
 			{
-				id: 'evt_kid_youtuber_support',
+				id: RandomEventID.EVT_KID_YOUTUBER_SUPPORT,
 				text: 'Ủng hộ và đầu tư',
 				textVi: 'Ủng hộ và đầu tư',
 				textEn: 'Support and invest',
 				next: '',
 				effects: [
-					{ stat: 'vision', value: 1 },
-					{ stat: 'money', value: -1 },
+					{ stat: StatID.VISION, value: 5 },
+					{ stat: StatID.MONEY, value: -20000000 },
 				],
 			},
 		],
 	},
 	{
-		id: 'evt_mentor_jobless',
+		id: RandomEventID.EVT_MENTOR_JOBLESS,
 		name: 'Jobless Mentor',
 		nameVi: 'Gặp lại Mentor cũ đang thất nghiệp',
 		nameEn: 'Meet jobless old Mentor',
@@ -764,28 +767,28 @@ export const randomEvents: RandomEvent[] = [
 		probability: 0.05,
 		choices: [
 			{
-				id: 'evt_mentor_jobless_hire',
+				id: RandomEventID.EVT_MENTOR_JOBLESS_HIRE,
 				text: 'Mời về làm cố vấn',
 				textVi: 'Mời về làm cố vấn',
 				textEn: 'Hire as advisor',
 				next: '',
 				effects: [
-					{ stat: 'humanity', value: 2 },
-					{ stat: 'money', value: -1 }, // High salary
+					{ stat: StatID.HUMANITY, value: 10 },
+					{ stat: StatID.MONEY, value: -30000000 }, // High salary
 				],
 			},
 			{
-				id: 'evt_mentor_jobless_ignore',
+				id: RandomEventID.EVT_MENTOR_JOBLESS_IGNORE,
 				text: 'Lơ đi',
 				textVi: 'Lơ đi',
 				textEn: 'Ignore',
 				next: '',
-				effects: [{ stat: 'steelMind', value: 1 }],
+				effects: [{ stat: StatID.STEELMIND, value: 5 }],
 			},
 		],
 	},
 	{
-		id: 'evt_boycott',
+		id: RandomEventID.EVT_BOYCOTT,
 		name: 'Boycott',
 		nameVi: 'Cộng đồng mạng tẩy chay sản phẩm',
 		nameEn: 'Netizens boycott product',
@@ -795,28 +798,28 @@ export const randomEvents: RandomEvent[] = [
 		probability: 0.05,
 		choices: [
 			{
-				id: 'evt_boycott_kol',
+				id: RandomEventID.EVT_BOYCOTT_KOL,
 				text: 'Thuê KOL tẩy trắng',
 				textVi: 'Thuê KOL tẩy trắng',
 				textEn: 'Hire KOL to whitewash',
 				next: '',
-				effects: [{ stat: 'money', value: -1 }], // Fast
+				effects: [{ stat: StatID.MONEY, value: -50000000 }], // Fast
 			},
 			{
-				id: 'evt_boycott_data',
+				id: RandomEventID.EVT_BOYCOTT_DATA,
 				text: 'Chứng minh bằng dữ liệu',
 				textVi: 'Chứng minh bằng dữ liệu',
 				textEn: 'Prove with data',
 				next: '',
 				effects: [
-					{ stat: 'vision', value: 1 }, // Sustainable
-					{ stat: 'stress', value: 1 }, // Slow
+					{ stat: StatID.VISION, value: 5 }, // Sustainable
+					{ stat: StatID.STRESS, value: 5 }, // Slow
 				],
 			},
 		],
 	},
 	{
-		id: 'evt_party_invite',
+		id: RandomEventID.EVT_PARTY_INVITE,
 		name: 'Party Invite',
 		nameVi: 'Được mời vào Đảng',
 		nameEn: 'Invited to Party',
@@ -826,31 +829,31 @@ export const randomEvents: RandomEvent[] = [
 		probability: 0.05,
 		choices: [
 			{
-				id: 'evt_party_invite_join',
+				id: RandomEventID.EVT_PARTY_INVITE_JOIN,
 				text: 'Vào',
 				textVi: 'Vào',
 				textEn: 'Join',
 				next: '',
 				effects: [
-					{ stat: 'vision', value: 1 }, // Power +
-					{ stat: 'steelMind', value: -1 }, // Freedom -
+					{ stat: StatID.VISION, value: 10 }, // Power +
+					{ stat: StatID.STEELMIND, value: -5 }, // Freedom -
 				],
 			},
 			{
-				id: 'evt_party_invite_out',
+				id: RandomEventID.EVT_PARTY_INVITE_OUT,
 				text: 'Ở ngoài',
 				textVi: 'Ở ngoài',
 				textEn: 'Stay out',
 				next: '',
 				effects: [
-					{ stat: 'steelMind', value: 1 }, // Freedom +
-					{ stat: 'vision', value: -1 }, // Hard for gov projects
+					{ stat: StatID.STEELMIND, value: 5 }, // Freedom +
+					{ stat: StatID.VISION, value: -5 }, // Hard for gov projects
 				],
 			},
 		],
 	},
 	{
-		id: 'evt_stroke',
+		id: RandomEventID.EVT_STROKE,
 		name: 'Mini Stroke',
 		nameVi: 'Sức khỏe báo động đỏ (Đột quỵ nhẹ)',
 		nameEn: 'Health Red Alert (Mini Stroke)',
@@ -860,25 +863,25 @@ export const randomEvents: RandomEvent[] = [
 		probability: 0.05,
 		choices: [
 			{
-				id: 'evt_stroke_retire',
+				id: RandomEventID.EVT_STROKE_RETIRE,
 				text: 'Nghỉ hưu sớm',
 				textVi: 'Nghỉ hưu sớm',
 				textEn: 'Retire early',
 				next: '',
-				effects: [{ stat: 'health', value: 1 }], // End game: Retired
+				effects: [{ stat: StatID.HEALTH, value: 20 }], // End game: Retired
 			},
 			{
-				id: 'evt_stroke_reduce',
+				id: RandomEventID.EVT_STROKE_REDUCE,
 				text: 'Giảm khối lượng việc',
 				textVi: 'Giảm khối lượng việc',
 				textEn: 'Reduce workload',
 				next: '',
-				effects: [{ stat: 'vision', value: -1 }], // Balance
+				effects: [{ stat: StatID.VISION, value: -10 }], // Balance
 			},
 		],
 	},
 	{
-		id: 'evt_old_hdd',
+		id: RandomEventID.EVT_OLD_HDD,
 		name: 'Old HDD',
 		nameVi: 'Tìm thấy ổ cứng chứa Bitcoin từ năm 2010',
 		nameEn: 'Found old HDD with 2010 Bitcoin',
@@ -888,25 +891,25 @@ export const randomEvents: RandomEvent[] = [
 		probability: 0.01, // Rare
 		choices: [
 			{
-				id: 'evt_old_hdd_sell',
+				id: RandomEventID.EVT_OLD_HDD_SELL,
 				text: 'Bán hết',
 				textVi: 'Bán hết',
 				textEn: 'Sell all',
 				next: '',
-				effects: [{ stat: 'money', value: 10 }], // Rich
+				effects: [{ stat: StatID.MONEY, value: 5000000000 }], // Rich
 			},
 			{
-				id: 'evt_old_hdd_hold',
+				id: RandomEventID.EVT_OLD_HDD_HOLD,
 				text: 'Hold to die',
 				textVi: 'Hold to die',
 				textEn: 'Hold to die',
 				next: '',
-				effects: [{ stat: 'stress', value: 2 }], // Risk
+				effects: [{ stat: StatID.STRESS, value: 10 }], // Risk
 			},
 		],
 	},
 	{
-		id: 'evt_singularity',
+		id: RandomEventID.EVT_SINGULARITY,
 		name: 'Singularity',
 		nameVi: 'AI tự nhận thức (Singularity)',
 		nameEn: 'AI Sentience (Singularity)',
@@ -916,20 +919,20 @@ export const randomEvents: RandomEvent[] = [
 		probability: 0.01, // Rare
 		choices: [
 			{
-				id: 'evt_singularity_off',
+				id: RandomEventID.EVT_SINGULARITY_OFF,
 				text: 'Tắt nguồn nó',
 				textVi: 'Tắt nguồn nó',
 				textEn: 'Turn it off',
 				next: '',
-				effects: [{ stat: 'steelMind', value: 1 }], // Safe
+				effects: [{ stat: StatID.STEELMIND, value: 5 }], // Safe
 			},
 			{
-				id: 'evt_singularity_talk',
+				id: RandomEventID.EVT_SINGULARITY_TALK,
 				text: 'Trò chuyện với nó',
 				textVi: 'Trò chuyện với nó',
 				textEn: 'Talk to it',
 				next: '',
-				effects: [{ stat: 'vision', value: 5 }], // Secret Ending
+				effects: [{ stat: StatID.VISION, value: 20 }], // Secret Ending
 			},
 		],
 	},

@@ -1,8 +1,9 @@
 import type { Achievement } from './types';
+import { AchievementID, ConditionType, FlagID, Operator, SkillID, StatID } from './enum';
 
 export const achievements: Achievement[] = [
 	{
-		id: 'ach_hello_world',
+		id: AchievementID.ACH_HELLO_WORLD,
 		name: 'Hello World',
 		nameVi: 'Hello World',
 		nameEn: 'Hello World',
@@ -11,10 +12,12 @@ export const achievements: Achievement[] = [
 		descriptionEn: 'Write the first line of code.',
 		secret: false,
 		unlocked: false,
-		// Triggered by event/dialogue
+		conditions: [
+			{ type: ConditionType.FLAG, key: 'hello_world_written', operator: Operator.EQUAL, value: true },
+		],
 	},
 	{
-		id: 'ach_first_blood',
+		id: AchievementID.ACH_FIRST_BLOOD,
 		name: 'First Blood',
 		nameVi: 'First Blood',
 		nameEn: 'First Blood',
@@ -23,10 +26,12 @@ export const achievements: Achievement[] = [
 		descriptionEn: 'Cause the first system-crashing bug.',
 		secret: false,
 		unlocked: false,
-		// Triggered by event
+		conditions: [
+			{ type: ConditionType.FLAG, key: FlagID.BUG_CRASH_TRIGGERED, operator: Operator.EQUAL, value: true },
+		],
 	},
 	{
-		id: 'ach_spaghetti_chef',
+		id: AchievementID.ACH_SPAGHETTI_CHEF,
 		name: 'Spaghetti Chef',
 		nameVi: 'Spaghetti Chef',
 		nameEn: 'Spaghetti Chef',
@@ -35,10 +40,12 @@ export const achievements: Achievement[] = [
 		descriptionEn: 'Write code so messy no one understands.',
 		secret: false,
 		unlocked: false,
-		// Triggered by event
+		conditions: [
+			{ type: ConditionType.FLAG, key: FlagID.SPAGHETTI_CODE, operator: Operator.EQUAL, value: true },
+		],
 	},
 	{
-		id: 'ach_bug_hunter',
+		id: AchievementID.ACH_BUG_HUNTER,
 		name: 'Bug Hunter',
 		nameVi: 'Bug Hunter',
 		nameEn: 'Bug Hunter',
@@ -48,11 +55,11 @@ export const achievements: Achievement[] = [
 		secret: false,
 		unlocked: false,
 		conditions: [
-			{ type: 'flag', key: 'bugs_fixed', operator: '>=', value: 100 },
+			{ type: ConditionType.FLAG, key: FlagID.BUGS_FIXED, operator: Operator.GTE, value: 100 },
 		],
 	},
 	{
-		id: 'ach_night_owl',
+		id: AchievementID.ACH_NIGHT_OWL,
 		name: 'Night Owl',
 		nameVi: 'Cú Đêm',
 		nameEn: 'Night Owl',
@@ -61,10 +68,12 @@ export const achievements: Achievement[] = [
 		descriptionEn: 'Code continuously from 10 PM to 5 AM.',
 		secret: false,
 		unlocked: false,
-		// Triggered by event
+		conditions: [
+			{ type: ConditionType.FLAG, key: FlagID.NIGHT_OWL_STREAK, operator: Operator.GTE, value: 3 },
+		],
 	},
 	{
-		id: 'ach_coffee_addict',
+		id: AchievementID.ACH_COFFEE_ADDICT,
 		name: 'Coffee Addict',
 		nameVi: 'Nghiện Cafe',
 		nameEn: 'Coffee Addict',
@@ -74,11 +83,11 @@ export const achievements: Achievement[] = [
 		secret: false,
 		unlocked: false,
 		conditions: [
-			{ type: 'flag', key: 'coffee_consumed', operator: '>=', value: 1000 },
+			{ type: ConditionType.FLAG, key: FlagID.COFFEE_CONSUMED, operator: Operator.GTE, value: 1000 },
 		],
 	},
 	{
-		id: 'ach_freelancer',
+		id: AchievementID.ACH_FREELANCER,
 		name: 'Freelancer',
 		nameVi: 'Freelancer',
 		nameEn: 'Freelancer',
@@ -88,11 +97,11 @@ export const achievements: Achievement[] = [
 		secret: false,
 		unlocked: false,
 		conditions: [
-			{ type: 'flag', key: 'freelance_income', operator: '>=', value: 1000 },
+			{ type: ConditionType.FLAG, key: FlagID.FREELANCE_INCOME, operator: Operator.GTE, value: 1000 },
 		],
 	},
 	{
-		id: 'ach_startup_founder',
+		id: AchievementID.ACH_STARTUP_FOUNDER,
 		name: 'Startup Founder',
 		nameVi: 'Startup Founder',
 		nameEn: 'Startup Founder',
@@ -102,11 +111,11 @@ export const achievements: Achievement[] = [
 		secret: false,
 		unlocked: false,
 		conditions: [
-			{ type: 'flag', key: 'is_founder', operator: '==', value: true },
+			{ type: ConditionType.FLAG, key: FlagID.IS_FOUNDER, operator: Operator.EQUAL, value: true },
 		],
 	},
 	{
-		id: 'ach_unicorn',
+		id: AchievementID.ACH_UNICORN,
 		name: 'Unicorn',
 		nameVi: 'Kỳ Lân',
 		nameEn: 'Unicorn',
@@ -117,15 +126,15 @@ export const achievements: Achievement[] = [
 		unlocked: false,
 		conditions: [
 			{
-				type: 'flag',
-				key: 'company_valuation',
-				operator: '>=',
+				type: ConditionType.FLAG,
+				key: FlagID.COMPANY_VALUATION,
+				operator: Operator.GTE,
 				value: 1000000000,
 			},
 		],
 	},
 	{
-		id: 'ach_bankruptcy',
+		id: AchievementID.ACH_BANKRUPTCY,
 		name: 'Bankruptcy',
 		nameVi: 'Phá Sản',
 		nameEn: 'Bankruptcy',
@@ -135,11 +144,11 @@ export const achievements: Achievement[] = [
 		secret: false,
 		unlocked: false,
 		conditions: [
-			{ type: 'flag', key: 'is_bankrupt', operator: '==', value: true },
+			{ type: ConditionType.FLAG, key: FlagID.IS_BANKRUPT, operator: Operator.EQUAL, value: true },
 		],
 	},
 	{
-		id: 'ach_phoenix',
+		id: AchievementID.ACH_PHOENIX,
 		name: 'Phoenix',
 		nameVi: 'Phượng Hoàng',
 		nameEn: 'Phoenix',
@@ -149,12 +158,12 @@ export const achievements: Achievement[] = [
 		secret: false,
 		unlocked: false,
 		conditions: [
-			{ type: 'flag', key: 'is_bankrupt', operator: '==', value: true },
-			{ type: 'stat', key: 'money', operator: '>=', value: 1000000 },
+			{ type: ConditionType.FLAG, key: FlagID.IS_BANKRUPT, operator: Operator.EQUAL, value: true },
+			{ type: ConditionType.STAT, key: StatID.MONEY, operator: Operator.GTE, value: 1000000 },
 		],
 	},
 	{
-		id: 'ach_family_man',
+		id: AchievementID.ACH_FAMILY_MAN,
 		name: 'Family Man',
 		nameVi: 'Người đàn ông của gia đình',
 		nameEn: 'Family Man',
@@ -164,12 +173,12 @@ export const achievements: Achievement[] = [
 		secret: false,
 		unlocked: false,
 		conditions: [
-			{ type: 'flag', key: 'is_married', operator: '==', value: true },
-			{ type: 'flag', key: 'has_child', operator: '==', value: true },
+			{ type: ConditionType.FLAG, key: FlagID.IS_MARRIED, operator: Operator.EQUAL, value: true },
+			{ type: ConditionType.FLAG, key: FlagID.HAS_CHILD, operator: Operator.EQUAL, value: true },
 		],
 	},
 	{
-		id: 'ach_bad_father',
+		id: AchievementID.ACH_BAD_FATHER,
 		name: 'Bad Father',
 		nameVi: 'Người cha tồi',
 		nameEn: 'Bad Father',
@@ -178,10 +187,12 @@ export const achievements: Achievement[] = [
 		descriptionEn: "Forget child's birthday 3 years in a row.",
 		secret: false,
 		unlocked: false,
-		// Event triggered
+		conditions: [
+			{ type: ConditionType.FLAG, key: FlagID.FORGOT_BIRTHDAY_STREAK, operator: Operator.GTE, value: 3 },
+		],
 	},
 	{
-		id: 'ach_iron_man',
+		id: AchievementID.ACH_IRON_MAN,
 		name: 'Iron Man',
 		nameVi: 'Người Sắt',
 		nameEn: 'Iron Man',
@@ -191,11 +202,11 @@ export const achievements: Achievement[] = [
 		secret: false,
 		unlocked: false,
 		conditions: [
-			{ type: 'flag', key: 'work_hours_week', operator: '>=', value: 100 },
+			{ type: ConditionType.FLAG, key: FlagID.WORK_HOURS_WEEK, operator: Operator.GTE, value: 100 },
 		],
 	},
 	{
-		id: 'ach_millionaire',
+		id: AchievementID.ACH_MILLIONAIRE,
 		name: 'Millionaire',
 		nameVi: 'Triệu phú',
 		nameEn: 'Millionaire',
@@ -205,11 +216,11 @@ export const achievements: Achievement[] = [
 		secret: false,
 		unlocked: false,
 		conditions: [
-			{ type: 'stat', key: 'money', operator: '>=', value: 1000000 },
+			{ type: ConditionType.STAT, key: StatID.MONEY, operator: Operator.GTE, value: 1000000 },
 		],
 	},
 	{
-		id: 'ach_billionaire',
+		id: AchievementID.ACH_BILLIONAIRE,
 		name: 'Billionaire',
 		nameVi: 'Tỷ phú',
 		nameEn: 'Billionaire',
@@ -219,11 +230,11 @@ export const achievements: Achievement[] = [
 		secret: false,
 		unlocked: false,
 		conditions: [
-			{ type: 'stat', key: 'money', operator: '>=', value: 1000000000 },
+			{ type: ConditionType.STAT, key: StatID.MONEY, operator: Operator.GTE, value: 1000000000 },
 		],
 	},
 	{
-		id: 'ach_philanthropist',
+		id: AchievementID.ACH_PHILANTHROPIST,
 		name: 'Philanthropist',
 		nameVi: 'Nhà từ thiện',
 		nameEn: 'Philanthropist',
@@ -232,10 +243,12 @@ export const achievements: Achievement[] = [
 		descriptionEn: 'Donate > 50% of assets.',
 		secret: false,
 		unlocked: false,
-		// Event triggered
+		conditions: [
+			{ type: ConditionType.FLAG, key: FlagID.DONATED_FORTUNE, operator: Operator.EQUAL, value: true },
+		],
 	},
 	{
-		id: 'ach_tech_lead',
+		id: AchievementID.ACH_TECH_LEAD,
 		name: 'Tech Lead',
 		nameVi: 'Tech Lead',
 		nameEn: 'Tech Lead',
@@ -245,11 +258,11 @@ export const achievements: Achievement[] = [
 		secret: false,
 		unlocked: false,
 		conditions: [
-			{ type: 'flag', key: 'job_title', operator: '==', value: 'Tech Lead' },
+			{ type: ConditionType.FLAG, key: FlagID.JOB_TITLE, operator: Operator.EQUAL, value: 'Tech Lead' },
 		],
 	},
 	{
-		id: 'ach_mentor',
+		id: AchievementID.ACH_MENTOR,
 		name: 'Mentor',
 		nameVi: 'Người hướng dẫn',
 		nameEn: 'Mentor',
@@ -258,10 +271,12 @@ export const achievements: Achievement[] = [
 		descriptionEn: 'Successfully mentor a Junior to Senior.',
 		secret: false,
 		unlocked: false,
-		// Event triggered
+		conditions: [
+			{ type: ConditionType.FLAG, key: FlagID.MENTEE_PROMOTED, operator: Operator.EQUAL, value: true },
+		],
 	},
 	{
-		id: 'ach_global_citizen',
+		id: AchievementID.ACH_GLOBAL_CITIZEN,
 		name: 'Global Citizen',
 		nameVi: 'Công dân toàn cầu',
 		nameEn: 'Global Citizen',
@@ -271,11 +286,11 @@ export const achievements: Achievement[] = [
 		secret: false,
 		unlocked: false,
 		conditions: [
-			{ type: 'flag', key: 'countries_worked', operator: '>=', value: 3 },
+			{ type: ConditionType.FLAG, key: FlagID.COUNTRIES_WORKED, operator: Operator.GTE, value: 3 },
 		],
 	},
 	{
-		id: 'ach_car_collector',
+		id: AchievementID.ACH_CAR_COLLECTOR,
 		name: 'Car Collector',
 		nameVi: 'Nhà sưu tập xe',
 		nameEn: 'Car Collector',
@@ -284,10 +299,10 @@ export const achievements: Achievement[] = [
 		descriptionEn: 'Own 5 cars.',
 		secret: false,
 		unlocked: false,
-		conditions: [{ type: 'flag', key: 'cars_owned', operator: '>=', value: 5 }],
+		conditions: [{ type: ConditionType.FLAG, key: FlagID.CARS_OWNED, operator: Operator.GTE, value: 5 }],
 	},
 	{
-		id: 'ach_dog_lover',
+		id: AchievementID.ACH_DOG_LOVER,
 		name: 'Dog Lover',
 		nameVi: 'Người yêu chó',
 		nameEn: 'Dog Lover',
@@ -296,10 +311,12 @@ export const achievements: Achievement[] = [
 		descriptionEn: 'Raise Miu and Bi until the end.',
 		secret: false,
 		unlocked: false,
-		// Event triggered
+		conditions: [
+			{ type: ConditionType.FLAG, key: FlagID.DOG_LOYALTY, operator: Operator.EQUAL, value: true },
+		],
 	},
 	{
-		id: 'ach_broken_heart',
+		id: AchievementID.ACH_BROKEN_HEART,
 		name: 'Broken Heart',
 		nameVi: 'Trái tim tan vỡ',
 		nameEn: 'Broken Heart',
@@ -309,11 +326,11 @@ export const achievements: Achievement[] = [
 		secret: false,
 		unlocked: false,
 		conditions: [
-			{ type: 'flag', key: 'is_divorced', operator: '==', value: true },
+			{ type: ConditionType.FLAG, key: FlagID.IS_DIVORCED, operator: Operator.EQUAL, value: true },
 		],
 	},
 	{
-		id: 'ach_forever_alone',
+		id: AchievementID.ACH_FOREVER_ALONE,
 		name: 'Forever Alone',
 		nameVi: 'Cô đơn mãi mãi',
 		nameEn: 'Forever Alone',
@@ -323,12 +340,12 @@ export const achievements: Achievement[] = [
 		secret: false,
 		unlocked: false,
 		conditions: [
-			{ type: 'flag', key: 'age', operator: '>=', value: 50 },
-			{ type: 'flag', key: 'is_married', operator: '==', value: false },
+			{ type: ConditionType.FLAG, key: FlagID.AGE, operator: Operator.GTE, value: 50 },
+			{ type: ConditionType.FLAG, key: FlagID.IS_MARRIED, operator: Operator.EQUAL, value: false },
 		],
 	},
 	{
-		id: 'ach_open_source',
+		id: AchievementID.ACH_OPEN_SOURCE,
 		name: 'Open Source Contributor',
 		nameVi: 'Open Source Contributor',
 		nameEn: 'Open Source Contributor',
@@ -338,11 +355,11 @@ export const achievements: Achievement[] = [
 		secret: false,
 		unlocked: false,
 		conditions: [
-			{ type: 'flag', key: 'github_stars', operator: '>=', value: 10000 },
+			{ type: ConditionType.FLAG, key: FlagID.GITHUB_STARS, operator: Operator.GTE, value: 10000 },
 		],
 	},
 	{
-		id: 'ach_bookworm',
+		id: AchievementID.ACH_BOOKWORM,
 		name: 'Bookworm',
 		nameVi: 'Mọt sách',
 		nameEn: 'Bookworm',
@@ -352,11 +369,11 @@ export const achievements: Achievement[] = [
 		secret: false,
 		unlocked: false,
 		conditions: [
-			{ type: 'flag', key: 'books_read', operator: '>=', value: 100 },
+			{ type: ConditionType.FLAG, key: FlagID.BOOKS_READ, operator: Operator.GTE, value: 100 },
 		],
 	},
 	{
-		id: 'ach_gym_rat',
+		id: AchievementID.ACH_GYM_RAT,
 		name: 'Gym Rat',
 		nameVi: 'Gym Rat',
 		nameEn: 'Gym Rat',
@@ -365,10 +382,10 @@ export const achievements: Achievement[] = [
 		descriptionEn: 'Maintain 6-pack abs while working in IT.',
 		secret: false,
 		unlocked: false,
-		conditions: [{ type: 'stat', key: 'health', operator: '>=', value: 90 }],
+		conditions: [{ type: ConditionType.STAT, key: StatID.HEALTH, operator: Operator.GTE, value: 90 }],
 	},
 	{
-		id: 'ach_master_chef',
+		id: AchievementID.ACH_MASTER_CHEF,
 		name: 'Master Chef',
 		nameVi: 'Vua đầu bếp',
 		nameEn: 'Master Chef',
@@ -378,11 +395,11 @@ export const achievements: Achievement[] = [
 		secret: false,
 		unlocked: false,
 		conditions: [
-			{ type: 'skill', key: 'skill_cooking', operator: '==', value: true },
+			{ type: ConditionType.SKILL, key: SkillID.SKILL_COOKING, operator: Operator.EQUAL, value: true },
 		],
 	},
 	{
-		id: 'ach_musician',
+		id: AchievementID.ACH_MUSICIAN,
 		name: 'Musician',
 		nameVi: 'Nghệ sĩ',
 		nameEn: 'Musician',
@@ -391,10 +408,12 @@ export const achievements: Achievement[] = [
 		descriptionEn: 'Play an instrument (Piano/Guitar) to relax.',
 		secret: false,
 		unlocked: false,
-		// Event triggered or skill based? Assuming event for now as no music skill
+		conditions: [
+			{ type: ConditionType.FLAG, key: FlagID.KNOWS_INSTRUMENT, operator: Operator.EQUAL, value: true },
+		],
 	},
 	{
-		id: 'ach_gamer',
+		id: AchievementID.ACH_GAMER,
 		name: 'Gamer',
 		nameVi: 'Game thủ',
 		nameEn: 'Gamer',
@@ -404,11 +423,11 @@ export const achievements: Achievement[] = [
 		secret: false,
 		unlocked: false,
 		conditions: [
-			{ type: 'flag', key: 'games_beaten', operator: '>=', value: 50 },
+			{ type: ConditionType.FLAG, key: FlagID.GAMES_BEATEN, operator: Operator.GTE, value: 50 },
 		],
 	},
 	{
-		id: 'ach_hacker',
+		id: AchievementID.ACH_HACKER,
 		name: 'Hacker',
 		nameVi: 'Hacker',
 		nameEn: 'Hacker',
@@ -418,11 +437,11 @@ export const achievements: Achievement[] = [
 		secret: false,
 		unlocked: false,
 		conditions: [
-			{ type: 'skill', key: 'skill_security', operator: '==', value: true },
+			{ type: ConditionType.SKILL, key: SkillID.SKILL_SECURITY, operator: Operator.EQUAL, value: true },
 		],
 	},
 	{
-		id: 'ach_teacher',
+		id: AchievementID.ACH_TEACHER,
 		name: 'Teacher',
 		nameVi: 'Nhà giáo',
 		nameEn: 'Teacher',
@@ -432,12 +451,12 @@ export const achievements: Achievement[] = [
 		secret: false,
 		unlocked: false,
 		conditions: [
-			{ type: 'stat', key: 'vision', operator: '>=', value: 80 }, // Coding > 80 (mapped to Vision?)
-			{ type: 'stat', key: 'humanity', operator: '>=', value: 70 }, // Communication > 70 (mapped to Humanity?)
+			{ type: ConditionType.STAT, key: StatID.VISION, operator: Operator.GTE, value: 80 }, // Coding > 80 (mapped to Vision?)
+			{ type: ConditionType.STAT, key: StatID.HUMANITY, operator: Operator.GTE, value: 70 }, // Communication > 70 (mapped to Humanity?)
 		],
 	},
 	{
-		id: 'ach_politician',
+		id: AchievementID.ACH_POLITICIAN,
 		name: 'Politician',
 		nameVi: 'Chính trị gia',
 		nameEn: 'Politician',
@@ -446,6 +465,8 @@ export const achievements: Achievement[] = [
 		descriptionEn: 'Become a parliament member.',
 		secret: false,
 		unlocked: false,
-		// Event triggered
+		conditions: [
+			{ type: ConditionType.FLAG, key: FlagID.IS_POLITICIAN, operator: Operator.EQUAL, value: true },
+		],
 	},
 ];

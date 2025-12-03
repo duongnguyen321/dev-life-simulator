@@ -51,6 +51,7 @@ class SaveSystem {
 			achievements: data.achievements || [],
 			playtime: data.playtime || 0,
 			timestamp: Date.now(),
+			preview: data.preview || '',
 		};
 
 		await this.store.setItem(`save_${slot}`, saveData);
@@ -135,6 +136,7 @@ class SaveSystem {
 			achievements: data.achievements || [],
 			playtime: data.playtime || 0,
 			timestamp: Date.now(),
+			preview: data.preview || '',
 		};
 
 		await this.store.setItem('autosave', saveData);

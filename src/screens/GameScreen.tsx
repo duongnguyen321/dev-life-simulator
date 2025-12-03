@@ -7,6 +7,8 @@ import Scene from '@/components/Sprites/Scene';
 import { Sprite } from '@/components/UI/Sprite';
 import TodoListModal from '@/components/UI/TodoListModal';
 import DreamModal from '@/components/UI/DreamModal';
+import SkillModal from '@/components/UI/SkillModal';
+import ChapterIntro from '@/components/UI/ChapterIntro';
 import { audioManager } from '@/core/AudioManager';
 import { GameFlow } from '@/core/GameFlow';
 import { chapters, allDialogues } from '@/data/chapters';
@@ -32,20 +34,26 @@ export default function GameScreen() {
 		setCurrentDialogue,
 		completedTaskIds,
 		completeTasks,
+		addXP,
 	} = useGameStore();
 
 	const [isLoading, setIsLoading] = useState(true);
 	const [showSleepModal, setShowSleepModal] = useState(false);
+	const [showSkillModal, setShowSkillModal] = useState(false);
 	const [showDreamModal, setShowDreamModal] = useState(false);
 	const [currentDream, setCurrentDream] = useState<DreamQuestion | null>(null);
 	const [isBlackout, setIsBlackout] = useState(false);
 	const [dailyTasks, setDailyTasks] = useState<TodoTask[]>([]);
+	const [showChapterIntro, setShowChapterIntro] = useState(true); // Show intro on mount/chapter change
 
 	// Derived state
 	const chapter = chapters[currentChapter];
 	const scene = chapter?.scenes.find((s) => s.id === currentSceneId);
 	const dialogue = allDialogues[currentDialogueId];
 	const speaker = dialogue?.speaker ? characters[dialogue.speaker] : null;
+
+	// Check if current dialogue is a reflection quote
+	const isReflection = currentDialogueId.includes('_reflect_');
 
 	// Helper to generate daily tasks
 	const generateDailyTasks = useCallback(() => {
@@ -144,26 +152,33 @@ export default function GameScreen() {
 		return () => clearTimeout(timeoutId);
 	}, [currentChapter, currentSceneId, currentDialogueId, stats, isLoading]);
 
+	// Show Chapter Intro when chapter changes
+	useEffect(() => {
+		setShowChapterIntro(true);
+	}, [currentChapter]);
+
 	// Bankruptcy detection - monitor money stat
 	useEffect(() => {
 		if (isLoading) return; // Don't check during initial load
 
-		// Check for bankruptcy
+		// Check for specific ending triggered by GameFlow
 		if (stats.money < 0) {
-			// Trigger bankruptcy ending
+			navigate('/ending');
+		} else if (stats.stress > 90) {
+			navigate('/ending');
+		} else if (stats.health < 10) {
+			navigate('/ending');
+		} else if (useGameStore.getState().ending) {
 			navigate('/ending');
 		}
-
-		// Check for Burnout
-		if (stats.stress > 90) {
-			navigate('/ending');
-		}
-
-		// Check for Health Failure
-		if (stats.health < 10) {
-			navigate('/ending');
-		}
-	}, [stats.money, stats.stress, stats.health, isLoading, navigate]);
+	}, [
+		stats.money,
+		stats.stress,
+		stats.health,
+		isLoading,
+		navigate,
+		useGameStore.getState().ending,
+	]);
 
 	// Sync local modal state with global night phase
 	useEffect(() => {
@@ -239,6 +254,9 @@ export default function GameScreen() {
 		// Mark tasks as completed
 		completeTasks(selectedTasks.map((t) => t.id));
 
+		// Award XP (20 XP per task)
+		addXP(selectedTasks.length * 20);
+
 		// 2. Close Todo Modal and Start Blackout
 		setShowSleepModal(false);
 		setIsBlackout(true);
@@ -275,11 +293,11 @@ export default function GameScreen() {
 		setTimeout(() => {
 			if (isNightPhase && pendingTransition) {
 				// Execute Transition
+				setNightPhase(false); // Reset night phase BEFORE changing chapter to prevent modal re-trigger
 				setCurrentChapter(pendingTransition.chapterId);
 				setCurrentScene(pendingTransition.sceneId);
 				setCurrentDialogue(pendingTransition.dialogueId);
 
-				setNightPhase(false);
 				setPendingTransition(null);
 			} else {
 				// Just a manual sleep, wake up in same scene
@@ -292,12 +310,32 @@ export default function GameScreen() {
 		}, 2000);
 	};
 
+	// Handle Exit to Main Menu
+	const handleExit = async () => {
+		const state = useGameStore.getState();
+		const currentDialogueText =
+			settings.language === 'vi' ? dialogue?.textVi : dialogue?.textEn || '...';
+
+		// Auto-save before exit
+		const { saveSystem } = await import('@/core/SaveSystem');
+		await saveSystem.autoSave({
+			chapter: state.currentChapter,
+			scene: state.currentScene,
+			stats: state.stats,
+			inventory: state.inventory,
+			flags: state.flags,
+			achievements: state.achievements,
+			playtime: state.playtime,
+			preview: currentDialogueText,
+		});
+
+		navigate('/');
+	};
+
 	if (isLoading || !chapter || !scene) {
 		return (
-			<div className='w-full h-full flex items-center justify-center bg-bg-primary'>
-				<div className='pixel-font text-2xl text-text-primary animate-pulse'>
-					Loading...
-				</div>
+			<div className='w-full h-full flex items-center justify-center bg-black text-white pixel-font'>
+				Loading...
 			</div>
 		);
 	}
@@ -320,13 +358,78 @@ export default function GameScreen() {
 				</div>
 
 				{/* Sleep Button */}
-				<button
-					onClick={handleSleepClick}
-					className='absolute top-4 left-4 z-30 px-4 py-2 bg-indigo-900/80 border-2 border-indigo-400 text-white pixel-font hover:bg-indigo-800 transition-colors rounded shadow-lg flex items-center gap-2'
-				>
-					<span>🌙</span>
-					<span>{settings.language === 'vi' ? 'Đi Ngủ' : 'Sleep'}</span>
-				</button>
+				<div className='absolute top-4 left-4 z-30 flex gap-2'>
+					<button
+						onClick={handleExit}
+						className='px-4 py-2 bg-gray-800/80 border-2 border-gray-600 text-white pixel-font hover:bg-gray-700 transition-colors rounded shadow-lg flex items-center gap-2'
+					>
+						<span>🏠</span>
+						<span>{settings.language === 'vi' ? 'Menu' : 'Menu'}</span>
+					</button>
+					<button
+						onClick={handleSleepClick}
+						className='px-4 py-2 bg-indigo-900/80 border-2 border-indigo-400 text-white pixel-font hover:bg-indigo-800 transition-colors rounded shadow-lg flex items-center gap-2'
+					>
+						<span>🌙</span>
+						<span>{settings.language === 'vi' ? 'Đi Ngủ' : 'Sleep'}</span>
+					</button>
+					<button
+						onClick={() => setShowSkillModal(true)}
+						className='px-4 py-2 bg-emerald-900/80 border-2 border-emerald-400 text-white pixel-font hover:bg-emerald-800 transition-colors rounded shadow-lg flex items-center gap-2'
+					>
+						<span>⚡</span>
+						<span>{settings.language === 'vi' ? 'Kỹ Năng' : 'Skills'}</span>
+					</button>
+
+					{/* Dev: Skip/Prev Chapter */}
+					{/* @ts-ignore */}
+					{import.meta.env.DEV && (
+						<div className='flex gap-2'>
+							<button
+								onClick={() => {
+									const prevChapterId = currentChapter - 1;
+									if (prevChapterId >= 1) {
+										const prevChapter = chapters[prevChapterId];
+										if (prevChapter) {
+											const firstScene = prevChapter.scenes[0];
+											if (firstScene) {
+												setCurrentChapter(prevChapterId);
+												setCurrentScene(firstScene.id);
+												setCurrentDialogue(firstScene.dialogueStart as string);
+												setNightPhase(false);
+												audioManager.stopMusic();
+											}
+										}
+									}
+								}}
+								className='px-4 py-2 bg-yellow-900/80 border-2 border-yellow-400 text-white pixel-font hover:bg-yellow-800 transition-colors rounded shadow-lg flex items-center gap-2'
+							>
+								<span>⏪</span>
+								<span>Prev</span>
+							</button>
+							<button
+								onClick={() => {
+									const nextChapterId = currentChapter + 1;
+									const nextChapter = chapters[nextChapterId];
+									if (nextChapter) {
+										const firstScene = nextChapter.scenes[0];
+										if (firstScene) {
+											setCurrentChapter(nextChapterId);
+											setCurrentScene(firstScene.id);
+											setCurrentDialogue(firstScene.dialogueStart as string);
+											setNightPhase(false);
+											audioManager.stopMusic(); // Stop current music
+										}
+									}
+								}}
+								className='px-4 py-2 bg-red-900/80 border-2 border-red-400 text-white pixel-font hover:bg-red-800 transition-colors rounded shadow-lg flex items-center gap-2'
+							>
+								<span>⏩</span>
+								<span>Skip</span>
+							</button>
+						</div>
+					)}
+				</div>
 
 				{/* Character Sprite */}
 				{characterSprite && (
@@ -359,6 +462,7 @@ export default function GameScreen() {
 								audioManager.resumeContext();
 								GameFlow.advanceDialogue();
 							}}
+							isReflection={isReflection}
 						/>
 					</div>
 				)}
@@ -371,6 +475,12 @@ export default function GameScreen() {
 					onClose={() => setShowSleepModal(false)}
 				/>
 
+				{/* Skill Modal */}
+				<SkillModal
+					isOpen={showSkillModal}
+					onClose={() => setShowSkillModal(false)}
+				/>
+
 				{/* Dream Modal */}
 				<DreamModal
 					isOpen={showDreamModal}
@@ -381,6 +491,14 @@ export default function GameScreen() {
 				{/* Blackout Overlay */}
 				{isBlackout && (
 					<div className='fixed inset-0 z-50 bg-black animate-fade-in' />
+				)}
+
+				{/* Chapter Intro Overlay */}
+				{showChapterIntro && chapter && (
+					<ChapterIntro
+						chapter={chapter}
+						onComplete={() => setShowChapterIntro(false)}
+					/>
 				)}
 			</Scene>
 		</div>

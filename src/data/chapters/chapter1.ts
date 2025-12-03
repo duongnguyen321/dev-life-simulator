@@ -4,7 +4,8 @@
 // Theme: Vị vua không ngai và Thế giới hoàn hảo giả tạo
 // ==========================================
 
-import type { Chapter, DialogueNode } from '../types';
+import { Chapter1DialogueID, Chapter1SceneID, Chapter1TodoID, Chapter2DialogueID, ConditionType, StatID } from '../enum';
+import { type Chapter, type DialogueNode } from '../types';
 
 export const chapter1: Chapter = {
 	id: 1,
@@ -17,134 +18,134 @@ export const chapter1: Chapter = {
 	themeEn: 'The King Without a Throne and The False Perfect World',
 	scenes: [
 		{
-			id: 'ch1_intro',
+			id: Chapter1SceneID.CH1_INTRO,
 			name: 'Ký ức 3 tuổi',
 			nameVi: 'Ký ức 3 tuổi: Người khổng lồ xây cầu',
 			nameEn: 'Age 3: The Giant Who Built Bridges',
 			background: '/assets/sprites/backgrounds/construction_site.png',
 			music: '/assets/audio/music/chapters/ch1_childhood.mp3',
-			dialogueStart: 'ch1_intro',
+			dialogueStart: Chapter1DialogueID.CH1_INTRO,
 		},
 		{
-			id: 'ch1_school',
+			id: Chapter1SceneID.CH1_SCHOOL,
 			name: 'Lớp 1-3',
 			nameVi: 'Lớp 1-3: Hoàng tử bé nơi biên ải',
 			nameEn: 'Grade 1-3: The Little Prince of the Border',
 			background: '/assets/sprites/backgrounds/school_gate.png',
 			music: '/assets/audio/music/chapters/ch1_childhood.mp3',
-			dialogueStart: 'ch1_intro', // Changed from ch1_start
+			dialogueStart: Chapter1DialogueID.CH1_INTRO, // Changed from ch1_start
 		},
 		{
-			id: 'ch1_fortress',
+			id: Chapter1SceneID.CH1_FORTRESS,
 			name: 'Căn cứ địa 4.000m²',
 			nameVi: 'Căn cứ địa 4.000m² - The Fortress',
 			nameEn: 'The 4,000m² Fortress',
 			background: '/assets/sprites/backgrounds/fortress.png',
 			music: '/assets/audio/music/chapters/ch1_childhood.mp3',
-			dialogueStart: 'ch1_fortress_1',
+			dialogueStart: Chapter1DialogueID.CH1_FORTRESS_1,
 		},
 		{
-			id: 'ch1_revelation',
+			id: Chapter1SceneID.CH1_REVELATION,
 			name: 'Mùa hè Hà Nội',
 			nameVi: 'Mùa hè Hà Nội - The Revelation',
 			nameEn: 'Summer in Hanoi - The Revelation',
 			background: '/assets/sprites/backgrounds/hanoi_city.png',
 			music: '/assets/audio/music/chapters/ch1_childhood.mp3',
-			dialogueStart: 'ch1_revelation_1',
+			dialogueStart: Chapter1DialogueID.CH1_REVELATION_1,
 		},
 	],
 	nightlyEvents: {
 		todoList: [
 			{
-				id: 'ch1_todo_garden',
+				id: Chapter1TodoID.CH1_TODO_GARDEN,
 				text: 'Khám phá khu vườn 4000m²',
 				textVi: 'Khám phá khu vườn 4000m²',
 				textEn: 'Explore the 4000m² garden',
-				effects: [{ stat: 'vision', value: 1 }],
-				cost: { health: 1 },
+				effects: [{ stat: StatID.VISION, value: 5 }],
+				cost: { health: 2 },
 			},
 			{
 				id: 'ch1_todo_stars',
 				text: 'Hỏi bố về các vì sao',
 				textVi: 'Hỏi bố về các vì sao',
 				textEn: 'Ask Dad about the stars',
-				effects: [{ stat: 'vision', value: 1 }],
-				cost: { stress: 1 },
+				effects: [{ stat: StatID.VISION, value: 5 }],
+				cost: { stress: 2 },
 			},
 			{
 				id: 'ch1_todo_mom_cook',
 				text: 'Giúp mẹ nấu ăn',
 				textVi: 'Giúp mẹ nấu ăn',
 				textEn: 'Help Mom cook',
-				effects: [{ stat: 'humanity', value: 1 }],
+				effects: [{ stat: StatID.HUMANITY, value: 5 }],
 			},
 			{
 				id: 'ch1_todo_play_bi',
 				text: 'Chơi với chó Bi',
 				textVi: 'Chơi với chó Bi',
 				textEn: 'Play with Bi the dog',
-				effects: [{ stat: 'humanity', value: 1 }],
-				reward: { stress: -1 },
+				effects: [{ stat: StatID.HUMANITY, value: 5 }],
+				reward: { stress: -5 },
 			},
 			{
 				id: 'ch1_todo_listen_adults',
 				text: 'Nghe lén người lớn nói chuyện',
 				textVi: 'Nghe lén người lớn nói chuyện',
 				textEn: 'Eavesdrop on adults',
-				effects: [{ stat: 'vision', value: 1 }],
-				cost: { stress: 1 },
+				effects: [{ stat: StatID.VISION, value: 3 }],
+				cost: { stress: 3 },
 			},
 			{
 				id: 'ch1_todo_read_comics',
 				text: 'Đọc truyện tranh',
 				textVi: 'Đọc truyện tranh',
 				textEn: 'Read comic books',
-				reward: { stress: -1 },
+				reward: { stress: -5 },
 			},
 			{
 				id: 'ch1_todo_break_toy',
 				text: 'Tháo tung đồ chơi ra xem',
 				textVi: 'Tháo tung đồ chơi ra xem',
 				textEn: 'Disassemble toys',
-				effects: [{ stat: 'vision', value: 1 }],
-				cost: { money: 100000 }, // Tốn tiền mua đồ chơi mới
+				effects: [{ stat: StatID.VISION, value: 5 }],
+				cost: { money: 50000 }, // Tốn tiền mua đồ chơi mới
 			},
 			{
 				id: 'ch1_todo_climb_tree',
 				text: 'Leo cây hái quả',
 				textVi: 'Leo cây hái quả',
 				textEn: 'Climb tree to pick fruits',
-				effects: [{ stat: 'steelMind', value: 1 }],
-				cost: { health: 1 },
+				effects: [{ stat: StatID.STEELMIND, value: 3 }],
+				cost: { health: 3 },
 			},
 			{
 				id: 'ch1_todo_watch_tv',
 				text: 'Xem hoạt hình',
 				textVi: 'Xem hoạt hình',
 				textEn: 'Watch cartoons',
-				reward: { stress: -1 },
+				reward: { stress: -3 },
 			},
 			{
 				id: 'ch1_todo_draw',
 				text: 'Vẽ tranh nguệch ngoạc',
 				textVi: 'Vẽ tranh nguệch ngoạc',
 				textEn: 'Draw doodles',
-				effects: [{ stat: 'vision', value: 1 }],
+				effects: [{ stat: StatID.VISION, value: 3 }],
 			},
 			{
 				id: 'ch1_todo_fight',
 				text: 'Đánh nhau với bạn hàng xóm',
 				textVi: 'Đánh nhau với bạn hàng xóm',
 				textEn: 'Fight with neighbor kid',
-				effects: [{ stat: 'steelMind', value: 1 }],
-				cost: { health: 2, humanity: 1 }, // Increased Health cost
+				effects: [{ stat: StatID.STEELMIND, value: 5 }],
+				cost: { health: 5, humanity: 2 }, // Reduced Health cost
 			},
 			{
 				id: 'ch1_todo_sleep_late',
 				text: 'Ngủ nướng',
 				textVi: 'Ngủ nướng',
 				textEn: 'Sleep in',
-				reward: { health: 1 },
+				reward: { health: 5 },
 			},
 			// Removed ch1_todo_ask_money - Moved to dialogue
 			{
@@ -152,50 +153,50 @@ export const chapter1: Chapter = {
 				text: 'Chơi trốn tìm',
 				textVi: 'Chơi trốn tìm',
 				textEn: 'Play hide and seek',
-				effects: [{ stat: 'vision', value: 1 }],
+				effects: [{ stat: StatID.VISION, value: 2 }],
 			},
 			{
 				id: 'ch1_todo_catch_bugs',
 				text: 'Bắt dế mèn',
 				textVi: 'Bắt dế mèn',
 				textEn: 'Catch crickets',
-				effects: [{ stat: 'steelMind', value: 1 }],
+				effects: [{ stat: StatID.STEELMIND, value: 2 }],
 			},
 			{
 				id: 'ch1_todo_cry',
 				text: 'Khóc nhè ăn vạ',
 				textVi: 'Khóc nhè ăn vạ',
 				textEn: 'Cry and throw tantrum',
-				cost: { humanity: 1 },
+				cost: { humanity: 2 },
 			},
 			{
 				id: 'ch1_todo_share_toy',
 				text: 'Chia sẻ đồ chơi',
 				textVi: 'Chia sẻ đồ chơi',
 				textEn: 'Share toys',
-				effects: [{ stat: 'humanity', value: 1 }],
+				effects: [{ stat: StatID.HUMANITY, value: 5 }],
 			},
 			{
 				id: 'ch1_todo_bully',
 				text: 'Bắt nạt bạn yếu hơn',
 				textVi: 'Bắt nạt bạn yếu hơn',
 				textEn: 'Bully weaker kids',
-				effects: [{ stat: 'steelMind', value: 1 }],
-				cost: { humanity: 3 }, // Increased Humanity cost
+				effects: [{ stat: StatID.STEELMIND, value: 3 }],
+				cost: { humanity: 5 }, // Reduced Humanity cost
 			},
 			{
 				id: 'ch1_todo_learn_math',
 				text: 'Học đếm số',
 				textVi: 'Học đếm số',
 				textEn: 'Learn to count',
-				effects: [{ stat: 'vision', value: 1 }],
+				effects: [{ stat: StatID.VISION, value: 3 }],
 			},
 			{
 				id: 'ch1_todo_dream',
 				text: 'Mơ mộng nhìn mây',
 				textVi: 'Mơ mộng nhìn mây',
 				textEn: 'Daydream watching clouds',
-				effects: [{ stat: 'vision', value: 1 }],
+				effects: [{ stat: StatID.VISION, value: 3 }],
 			},
 		],
 		dreamQuestions: [
@@ -211,7 +212,7 @@ export const chapter1: Chapter = {
 						textVi: 'Bay lên mặt trăng',
 						textEn: 'Fly to the moon',
 						next: '',
-						effects: [{ stat: 'vision', value: 1 }],
+						effects: [{ stat: StatID.VISION, value: 5 }],
 					},
 					{
 						id: 'ch1_dream_fly_home',
@@ -219,7 +220,7 @@ export const chapter1: Chapter = {
 						textVi: 'Bay quanh nhà bảo vệ bố mẹ',
 						textEn: 'Fly around house to protect parents',
 						next: '',
-						effects: [{ stat: 'humanity', value: 1 }],
+						effects: [{ stat: StatID.HUMANITY, value: 5 }],
 					},
 					{
 						id: 'ch1_dream_fly_school',
@@ -227,7 +228,7 @@ export const chapter1: Chapter = {
 						textVi: 'Bay đến trường khoe bạn bè',
 						textEn: 'Fly to school to show off',
 						next: '',
-						effects: [{ stat: 'steelMind', value: 1 }],
+						effects: [{ stat: StatID.STEELMIND, value: 3 }],
 					},
 					{
 						id: 'ch1_dream_fly_fall',
@@ -235,7 +236,7 @@ export const chapter1: Chapter = {
 						textVi: 'Sợ độ cao, không dám bay',
 						textEn: 'Scared of heights, dare not fly',
 						next: '',
-						effects: [{ stat: 'steelMind', value: -1 }],
+						effects: [{ stat: StatID.STEELMIND, value: -3 }],
 					},
 				],
 			},
@@ -251,7 +252,7 @@ export const chapter1: Chapter = {
 						textVi: 'Lấy kiếm nhựa đánh nó',
 						textEn: 'Fight it with plastic sword',
 						next: '',
-						effects: [{ stat: 'steelMind', value: 1 }],
+						effects: [{ stat: StatID.STEELMIND, value: 5 }],
 					},
 					{
 						id: 'ch1_dream_monster_friend',
@@ -259,7 +260,7 @@ export const chapter1: Chapter = {
 						textVi: 'Mời nó ăn kẹo',
 						textEn: 'Offer it candy',
 						next: '',
-						effects: [{ stat: 'humanity', value: 1 }],
+						effects: [{ stat: StatID.HUMANITY, value: 5 }],
 					},
 					{
 						id: 'ch1_dream_monster_cry',
@@ -267,7 +268,7 @@ export const chapter1: Chapter = {
 						textVi: 'Khóc gọi mẹ',
 						textEn: 'Cry for Mom',
 						next: '',
-						effects: [{ stat: 'humanity', value: 1 }],
+						effects: [{ stat: StatID.HUMANITY, value: 2 }],
 					},
 					{
 						id: 'ch1_dream_monster_ignore',
@@ -275,7 +276,7 @@ export const chapter1: Chapter = {
 						textVi: 'Trùm chăn ngủ tiếp',
 						textEn: 'Cover with blanket and sleep',
 						next: '',
-						effects: [{ stat: 'steelMind', value: 1 }],
+						effects: [{ stat: StatID.STEELMIND, value: 3 }],
 					},
 				],
 			},
@@ -291,7 +292,7 @@ export const chapter1: Chapter = {
 						textVi: 'Ra lệnh cho lính chì',
 						textEn: 'Command toy soldiers',
 						next: '',
-						effects: [{ stat: 'steelMind', value: 1 }],
+						effects: [{ stat: StatID.STEELMIND, value: 5 }],
 					},
 					{
 						id: 'ch1_dream_king_share',
@@ -299,7 +300,7 @@ export const chapter1: Chapter = {
 						textVi: 'Chia đồ chơi cho mọi người',
 						textEn: 'Share toys with everyone',
 						next: '',
-						effects: [{ stat: 'humanity', value: 1 }],
+						effects: [{ stat: StatID.HUMANITY, value: 5 }],
 					},
 					{
 						id: 'ch1_dream_king_build',
@@ -307,7 +308,7 @@ export const chapter1: Chapter = {
 						textVi: 'Xây lâu đài cao hơn nữa',
 						textEn: 'Build castle higher',
 						next: '',
-						effects: [{ stat: 'vision', value: 1 }],
+						effects: [{ stat: StatID.VISION, value: 5 }],
 					},
 					{
 						id: 'ch1_dream_king_destroy',
@@ -315,7 +316,7 @@ export const chapter1: Chapter = {
 						textVi: 'Đập phá hết',
 						textEn: 'Destroy everything',
 						next: '',
-						effects: [{ stat: 'steelMind', value: 1 }],
+						effects: [{ stat: StatID.STEELMIND, value: 3 }],
 					},
 				],
 			},
@@ -331,7 +332,7 @@ export const chapter1: Chapter = {
 						textVi: 'Tự tìm đường ra',
 						textEn: 'Find way out yourself',
 						next: '',
-						effects: [{ stat: 'vision', value: 1 }],
+						effects: [{ stat: StatID.VISION, value: 5 }],
 					},
 					{
 						id: 'ch1_dream_lost_wait',
@@ -339,7 +340,7 @@ export const chapter1: Chapter = {
 						textVi: 'Đứng yên chờ bố mẹ',
 						textEn: 'Stand still wait for parents',
 						next: '',
-						effects: [{ stat: 'steelMind', value: 1 }],
+						effects: [{ stat: StatID.STEELMIND, value: 3 }],
 					},
 					{
 						id: 'ch1_dream_lost_cry',
@@ -347,7 +348,7 @@ export const chapter1: Chapter = {
 						textVi: 'Khóc toáng lên',
 						textEn: 'Cry loudly',
 						next: '',
-						effects: [{ stat: 'humanity', value: 1 }],
+						effects: [{ stat: StatID.HUMANITY, value: 2 }],
 					},
 					{
 						id: 'ch1_dream_lost_play',
@@ -355,7 +356,7 @@ export const chapter1: Chapter = {
 						textVi: 'Mải chơi quên cả sợ',
 						textEn: 'Too busy playing to fear',
 						next: '',
-						effects: [{ stat: 'vision', value: 1 }],
+						effects: [{ stat: StatID.VISION, value: 3 }],
 					},
 				],
 			},
@@ -371,7 +372,7 @@ export const chapter1: Chapter = {
 						textVi: 'Hỏi xem mình có giàu không',
 						textEn: 'Ask if I am rich',
 						next: '',
-						effects: [{ stat: 'vision', value: 1 }],
+						effects: [{ stat: StatID.VISION, value: 5 }],
 					},
 					{
 						id: 'ch1_dream_future_hug',
@@ -379,7 +380,7 @@ export const chapter1: Chapter = {
 						textVi: 'Ôm người đó',
 						textEn: 'Hug them',
 						next: '',
-						effects: [{ stat: 'humanity', value: 1 }],
+						effects: [{ stat: StatID.HUMANITY, value: 5 }],
 					},
 					{
 						id: 'ch1_dream_future_doubt',
@@ -387,7 +388,7 @@ export const chapter1: Chapter = {
 						textVi: 'Không tin, bỏ chạy',
 						textEn: 'Disbelieve, run away',
 						next: '',
-						effects: [{ stat: 'steelMind', value: 1 }],
+						effects: [{ stat: StatID.STEELMIND, value: 3 }],
 					},
 					{
 						id: 'ch1_dream_future_gift',
@@ -395,83 +396,246 @@ export const chapter1: Chapter = {
 						textVi: 'Đòi quà',
 						textEn: 'Demand a gift',
 						next: '',
-						effects: [{ stat: 'vision', value: 1 }],
+						effects: [{ stat: StatID.VISION, value: 2 }],
 					},
 				],
 			},
 		],
 	},
+	reflectionQuotes: [
+		{
+			id: 'ch1_reflect_sleep_1',
+			text: 'Mẹ nói tuổi thơ phải ngủ đủ giấc mới cao lớn...',
+			textVi: 'Mẹ nói tuổi thơ phải ngủ đủ giấc mới cao lớn...',
+			textEn: 'Mom says children need sleep to grow tall...',
+			type: ConditionType.SLEEP,
+			choices: [
+				{
+					id: 'ch1_reflect_sleep_1_rest',
+					text: 'Đi ngủ thôi, mai còn chơi',
+					textVi: 'Đi ngủ thôi, mai còn chơi',
+					textEn: "Let's sleep, play tomorrow",
+					next: '',
+				},
+				{
+					id: 'ch1_reflect_sleep_1_tired',
+					text: 'Hôm nay chơi quá mệt rồi',
+					textVi: 'Hôm nay chơi quá mệt rồi',
+					textEn: 'Too tired from playing today',
+					next: '',
+				},
+			],
+		},
+		{
+			id: 'ch1_reflect_success_1',
+			text: 'Bố nói muốn giàu có phải cố gắng từ bé... nhưng mình còn nhỏ lắm cơ mà.',
+			textVi:
+				'Bố nói muốn giàu có phải cố gắng từ bé... nhưng mình còn nhỏ lắm cơ mà.',
+			textEn:
+				"Dad says to be rich, work hard from young... but I'm still so small.",
+			type: ConditionType.SUCCESS,
+			choices: [
+				{
+					id: 'ch1_reflect_success_1_tomorrow',
+					text: 'Để mai suy nghĩ, giờ đi ngủ',
+					textVi: 'Để mai suy nghĩ, giờ đi ngủ',
+					textEn: 'Think tomorrow, sleep now',
+					next: '',
+				},
+				{
+					id: 'ch1_reflect_success_1_dream',
+					text: 'Mơ về một ngày được giàu như bố',
+					textVi: 'Mơ về một ngày được giàu như bố',
+					textEn: 'Dream of being rich like Dad',
+					next: '',
+				},
+			],
+		},
+		{
+			id: 'ch1_reflect_sleep_2',
+			text: 'Một ngày dài ở trường học... mắt đã nhắm nghiền rồi.',
+			textVi: 'Một ngày dài ở trường học... mắt đã nhắm nghiền rồi.',
+			textEn: 'A long day at school... eyes are closing.',
+			type: ConditionType.SLEEP,
+			choices: [
+				{
+					id: 'ch1_reflect_sleep_2_rest',
+					text: 'Nghỉ ngơi thôi',
+					textVi: 'Nghỉ ngơi thôi',
+					textEn: 'Time to rest',
+					next: '',
+				},
+				{
+					id: 'ch1_reflect_sleep_2_long',
+					text: 'Hôm nay là một ngày dài',
+					textVi: 'Hôm nay là một ngày dài',
+					textEn: 'Today was a long day',
+					next: '',
+				},
+			],
+		},
+		{
+			id: 'ch1_reflect_success_2',
+			text: 'Cô giáo bảo con ngoan học giỏi sẽ thành công... nhưng học nhiều quá mệt.',
+			textVi:
+				'Cô giáo bảo con ngoan học giỏi sẽ thành công... nhưng học nhiều quá mệt.',
+			textEn:
+				'Teacher says good kids who study will succeed... but studying is tiring.',
+			type: ConditionType.SUCCESS,
+			choices: [
+				{
+					id: 'ch1_reflect_success_2_sleep',
+					text: 'Ngủ đủ mới học được',
+					textVi: 'Ngủ đủ mới học được',
+					textEn: 'Need sleep to study',
+					next: '',
+				},
+				{
+					id: 'ch1_reflect_success_2_balance',
+					text: 'Cân bằng giữa chơi và học',
+					textVi: 'Cân bằng giữa chơi và học',
+					textEn: 'Balance play and study',
+					next: '',
+				},
+			],
+		},
+		{
+			id: 'ch1_reflect_sleep_3',
+			text: 'Đã khuya rồi... bố mẹ đã ngủ từ lâu.',
+			textVi: 'Đã khuya rồi... bố mẹ đã ngủ từ lâu.',
+			textEn: "It's late... parents sleeping already.",
+			type: ConditionType.SLEEP,
+			choices: [
+				{
+					id: 'ch1_reflect_sleep_3_sleep',
+					text: 'Đi ngủ với ba mẹ',
+					textVi: 'Đi ngủ với ba mẹ',
+					textEn: 'Sleep with parents',
+					next: '',
+				},
+				{
+					id: 'ch1_reflect_sleep_3_night',
+					text: 'Đêm nay ngủ ngon nhé',
+					textVi: 'Đêm nay ngủ ngon nhé',
+					textEn: 'Good night tonight',
+					next: '',
+				},
+			],
+		},
+		{
+			id: 'ch1_reflect_success_3',
+			text: 'Lũ bạn nhìn mình với ánh mắt ngưỡng mộ... nhưng mình chỉ muốn có bạn chơi cùng thôi.',
+			textVi:
+				'Lũ bạn nhìn mình với ánh mắt ngưỡng mộ... nhưng mình chỉ muốn có bạn chơi cùng thôi.',
+			textEn:
+				'Friends look at me with admiration... but I just want friends to play with.',
+			type: ConditionType.SUCCESS,
+			choices: [
+				{
+					id: 'ch1_reflect_success_3_lonely',
+					text: 'Giàu có nhưng cô đơn',
+					textVi: 'Giàu có nhưng cô đơn',
+					textEn: 'Rich but lonely',
+					next: '',
+				},
+				{
+					id: 'ch1_reflect_success_3_tomorrow',
+					text: 'Nghĩ về điều này sau, giờ cần ngủ',
+					textVi: 'Nghĩ về điều này sau, giờ cần ngủ',
+					textEn: 'Think about this later, need sleep',
+					next: '',
+				},
+			],
+		},
+		{
+			id: 'ch1_reflect_sleep_4',
+			text: 'Tuổi thơ của mình như khu vườn bao la... nhưng cũng cần nghỉ ngơi.',
+			textVi:
+				'Tuổi thơ của mình như khu vườn bao la... nhưng cũng cần nghỉ ngơi.',
+			textEn: 'My childhood like a vast garden... but also need rest.',
+			type: ConditionType.SLEEP,
+			choices: [
+				{
+					id: 'ch1_reflect_sleep_4_rest',
+					text: 'Nghỉ ngơi để mai tiếp tục khám phá',
+					textVi: 'Nghỉ ngơi để mai tiếp tục khám phá',
+					textEn: 'Rest to explore tomorrow',
+					next: '',
+				},
+				{
+					id: 'ch1_reflect_sleep_4_dream',
+					text: 'Đi ngủ và mơ về những cuộc phiêu lưu',
+					textVi: 'Đi ngủ và mơ về những cuộc phiêu lưu',
+					textEn: 'Sleep and dream of adventures',
+					next: '',
+				},
+			],
+		},
+	],
 };
 
 // ==========================================
 // DIALOGUE NODES - Chapter 1
 // ==========================================
 
-export const chapter1Dialogues: Record<string, DialogueNode> = {
+export const chapter1Dialogues: Record<Chapter1DialogueID, DialogueNode> = {
 	// NEW: Intro
-	ch1_intro: {
-		id: 'ch1_intro',
+	[Chapter1DialogueID.CH1_INTRO]: {
 		speaker: 'narrator',
 		text: 'Những năm 2000. Tiếng ve kêu râm ran trên những tán phượng vĩ. Thế giới của bạn gói gọn trong khoảng sân nhỏ và những viên bi ve lấp lánh.',
 		textVi:
 			'Những năm 2000. Tiếng ve kêu râm ran trên những tán phượng vĩ. Thế giới của bạn gói gọn trong khoảng sân nhỏ và những viên bi ve lấp lánh.',
 		textEn:
 			'The 2000s. Cicadas buzzing on flamboyant trees. Your world is wrapped in a small courtyard and sparkling marbles.',
-		next: 'ch1_intro_1',
+		next: Chapter1DialogueID.CH1_INTRO_1,
 	},
 	// 1.1 Ký ức 3 tuổi
-	ch1_intro_1: {
-		id: 'ch1_intro_1',
+	[Chapter1DialogueID.CH1_INTRO_1]: {
 		speaker: 'narrator',
 		text: 'Ký ức đầu tiên của bạn không phải là lời ru của mẹ, mà là mùi xi măng và tiếng ầm ầm của xe lu.',
 		textVi:
 			'Ký ức đầu tiên của bạn không phải là lời ru của mẹ, mà là mùi xi măng và tiếng ầm ầm của xe lu.',
 		textEn:
 			"Your first memory was not your mother's lullaby, but the smell of cement and the rumbling of road rollers.",
-		next: 'ch1_intro_2',
+		next: Chapter1DialogueID.CH1_INTRO_2,
 	},
-	ch1_intro_2: {
-		id: 'ch1_intro_2',
+	[Chapter1DialogueID.CH1_INTRO_2]: {
 		speaker: 'narrator',
 		text: 'Bố Q là một huyền thoại trong mắt đứa trẻ 3 tuổi. Một người đàn ông da sạm nắng, tiếng nói vang như chuông, mỗi lần về nhà là mang theo mùi thuốc lá và bụi đường.',
 		textVi:
 			'Bố Q là một huyền thoại trong mắt đứa trẻ 3 tuổi. Một người đàn ông da sạm nắng, tiếng nói vang như chuông, mỗi lần về nhà là mang theo mùi thuốc lá và bụi đường.',
 		textEn:
 			'Father Q was a legend in the eyes of a 3-year-old. A sun-tanned man with a voice that rang like a bell, bringing the smell of tobacco and road dust every time he came home.',
-		next: 'ch1_intro_lore',
+		next: Chapter1DialogueID.CH1_INTRO_LORE,
 	},
-	ch1_intro_lore: {
-		id: 'ch1_intro_lore',
+	[Chapter1DialogueID.CH1_INTRO_LORE]: {
 		speaker: 'narrator',
 		text: 'Để có ngày hôm nay, bố đã trải qua 10 năm địa ngục. Bố làm thuê cho 3 công ty xây dựng cùng lúc...',
 		textVi:
 			'Để có ngày hôm nay, bố đã trải qua 10 năm địa ngục. Bố làm thuê cho 3 công ty xây dựng cùng lúc...',
 		textEn:
 			'To get here, father went through 10 years of hell. He worked for 3 construction companies simultaneously...',
-		next: 'ch1_intro_schedule',
+		next: Chapter1DialogueID.CH1_INTRO_SCHEDULE,
 	},
-	ch1_intro_schedule: {
-		id: 'ch1_intro_schedule',
+	[Chapter1DialogueID.CH1_INTRO_SCHEDULE]: {
 		speaker: 'narrator',
 		text: 'Lịch trình của bố là một cỗ máy không nghỉ: Sáng chỉ huy công trường A, chiều chạy thầu công ty B, đêm đi tiếp khách công ty C.',
 		textVi:
 			'Lịch trình của bố là một cỗ máy không nghỉ: Sáng chỉ huy công trường A, chiều chạy thầu công ty B, đêm đi tiếp khách công ty C.',
 		textEn:
 			"Father's schedule was a relentless machine: Morning at site A, afternoon bidding for company B, night entertaining for company C.",
-		next: 'ch1_father_drunk',
+		next: Chapter1DialogueID.CH1_FATHER_DRUNK,
 	},
-	ch1_father_drunk: {
-		id: 'ch1_father_drunk',
+	[Chapter1DialogueID.CH1_FATHER_DRUNK]: {
 		speaker: 'boQ',
 		text: '(Say khướt) Bố làm tất cả... ực... là vì cái nhà này. Để không ai khinh thường bố con mình nữa.',
 		textVi:
 			'(Say khướt) Bố làm tất cả... ực... là vì cái nhà này. Để không ai khinh thường bố con mình nữa.',
 		textEn:
 			'(Drunk) I do it all... *hic*... for this family. So no one looks down on us anymore.',
-		next: 'ch1_intro_lesson',
+		next: Chapter1DialogueID.CH1_INTRO_LESSON,
 	},
-	ch1_intro_lesson: {
-		id: 'ch1_intro_lesson',
+	[Chapter1DialogueID.CH1_INTRO_LESSON]: {
 		speaker: 'narrator',
 		text: 'Bạn nhìn thấy bố ngủ gục trên bàn làm việc, tay vẫn cầm chiếc bút kỹ thuật. Bạn cảm thấy gì?',
 		textVi:
@@ -481,26 +645,25 @@ export const chapter1Dialogues: Record<string, DialogueNode> = {
 		choices: [
 			{
 				id: 'choice_admire_dad',
-				text: 'Ngưỡng mộ: Thành công xây bằng mồ hôi (Steel Mind +1)',
-				textVi: 'Ngưỡng mộ: Thành công xây bằng mồ hôi (Steel Mind +1)',
-				textEn: 'Admire: Success is built on sweat (Steel Mind +1)',
-				effects: [{ stat: 'steelMind', value: 1 }],
-				next: 'ch1_ask_money_start',
+				text: 'Ngưỡng mộ: Thành công xây bằng mồ hôi (Steel Mind +3)',
+				textVi: 'Ngưỡng mộ: Thành công xây bằng mồ hôi (Steel Mind +3)',
+				textEn: 'Admire: Success is built on sweat (Steel Mind +3)',
+				effects: [{ stat: StatID.STEELMIND, value: 3 }],
+				next: Chapter1DialogueID.CH1_ASK_MONEY_START,
 			},
 			{
 				id: 'choice_pity_dad',
-				text: 'Thương bố: Bố vất vả quá (Humanity +1)',
-				textVi: 'Thương bố: Bố vất vả quá (Humanity +1)',
-				textEn: 'Pity: Father works too hard (Humanity +1)',
-				effects: [{ stat: 'humanity', value: 1 }],
-				next: 'ch1_ask_money_start',
+				text: 'Thương bố: Bố vất vả quá (Humanity +3)',
+				textVi: 'Thương bố: Bố vất vả quá (Humanity +3)',
+				textEn: 'Pity: Father works too hard (Humanity +3)',
+				effects: [{ stat: StatID.HUMANITY, value: 3 }],
+				next: Chapter1DialogueID.CH1_ASK_MONEY_START,
 			},
 		],
 	},
 
 	// NEW: Ask for Money Event
-	ch1_ask_money_start: {
-		id: 'ch1_ask_money_start',
+	[Chapter1DialogueID.CH1_ASK_MONEY_START]: {
 		speaker: 'player',
 		text: '(Suy nghĩ) Bố đang vui vẻ sau khi uống rượu xong. Mình có nên xin tiền mua kẹo không nhỉ? Mẹ thì chắc chắn không cho rồi.',
 		textVi:
@@ -513,83 +676,76 @@ export const chapter1Dialogues: Record<string, DialogueNode> = {
 				text: 'Xin bố 50k: "Bố ơi cho con tiền mua kẹo"',
 				textVi: 'Xin bố 50k: "Bố ơi cho con tiền mua kẹo"',
 				textEn: 'Ask for 50k: "Dad, can I have candy money?"',
-				effects: [{ stat: 'money', value: 50000 }],
-				next: 'ch1_ask_money_success',
+				effects: [{ stat: StatID.MONEY, value: 50000 }],
+				next: Chapter1DialogueID.CH1_ASK_MONEY_SUCCESS,
 			},
 			{
 				id: 'choice_ask_money_no',
-				text: 'Thôi ngại lắm: Bố đang mệt (Humanity +1)',
-				textVi: 'Thôi ngại lắm: Bố đang mệt (Humanity +1)',
-				textEn: 'Too shy: Dad is tired (Humanity +1)',
-				effects: [{ stat: 'humanity', value: 1 }],
-				next: 'ch1_school_1',
+				text: 'Thôi ngại lắm: Bố đang mệt (Humanity +3)',
+				textVi: 'Thôi ngại lắm: Bố đang mệt (Humanity +3)',
+				textEn: 'Too shy: Dad is tired (Humanity +3)',
+				effects: [{ stat: StatID.HUMANITY, value: 3 }],
+				next: Chapter1DialogueID.CH1_SCHOOL_1,
 			},
 		],
 	},
-	ch1_ask_money_success: {
-		id: 'ch1_ask_money_success',
+	[Chapter1DialogueID.CH1_ASK_MONEY_SUCCESS]: {
 		speaker: 'boQ',
 		text: '"Tiền đây. Cầm lấy mà mua. Đừng có nói với mẹ đấy nhé!" (Bố dúi tờ 50k vào tay bạn)',
 		textVi:
 			'"Tiền đây. Cầm lấy mà mua. Đừng có nói với mẹ đấy nhé!" (Bố dúi tờ 50k vào tay bạn)',
 		textEn:
 			'"Here. Take it. Don\'t tell your mom!" (Dad slips a 50k note into your hand)',
-		next: 'ch1_school_1',
+		next: Chapter1DialogueID.CH1_SCHOOL_1,
 	},
 
 	// 1.2 Lớp 1-3: Hoàng tử bé nơi biên ải
-	ch1_school_1: {
-		id: 'ch1_school_1',
+	[Chapter1DialogueID.CH1_SCHOOL_1]: {
 		speaker: 'narrator',
 		text: 'Gia đình bạn sống ở Lào Cai. Bố là chủ doanh nghiệp xây dựng hạ tầng "có tiếng nói nhất tỉnh". Các quan chức địa phương thường ghé nhà uống trà.',
 		textVi:
 			'Gia đình bạn sống ở Lào Cai. Bố là chủ doanh nghiệp xây dựng hạ tầng "có tiếng nói nhất tỉnh". Các quan chức địa phương thường ghé nhà uống trà.',
 		textEn:
 			'Your family lived in Lao Cai. Father was the most influential infrastructure contractor in the province. Local officials often visited for tea.',
-		next: 'ch1_school_2',
+		next: Chapter1DialogueID.CH1_SCHOOL_2,
 	},
-	ch1_school_2: {
-		id: 'ch1_school_2',
+	[Chapter1DialogueID.CH1_SCHOOL_2]: {
 		speaker: 'narrator',
 		text: 'Bạn đi học có tài xế đưa đón. Bạn bè nhìn bạn với ánh mắt ngưỡng mộ pha lẫn sợ sệt.',
 		textVi:
 			'Bạn đi học có tài xế đưa đón. Bạn bè nhìn bạn với ánh mắt ngưỡng mộ pha lẫn sợ sệt.',
 		textEn:
 			'You went to school with a chauffeur. Friends looked at you with a mix of admiration and fear.',
-		next: 'ch1_classmates_whisper',
+		next: Chapter1DialogueID.CH1_CLASSMATES_WHISPER,
 	},
-	ch1_end: {
-		id: 'ch1_end',
+	[Chapter1DialogueID.CH1_END]: {
 		speaker: 'narrator',
 		text: 'Một buổi chiều muộn, tiếng đập cửa dồn dập phá tan sự yên bình. Những người lạ mặt bước vào, và bố mẹ bạn cúi đầu im lặng.',
 		textVi:
 			'Một buổi chiều muộn, tiếng đập cửa dồn dồn dập phá tan sự yên bình. Những người lạ mặt bước vào, và bố mẹ bạn cúi đầu im lặng.',
 		textEn:
 			'Late one afternoon, frantic knocking shattered the peace. Strangers walked in, and your parents bowed their heads in silence.',
-		next: 'chapter_2_start', // Will be handled by engine to switch chapter
+		next: Chapter2DialogueID.CH2_INTRO, // Will be handled by engine to switch chapter
 	},
-	ch1_classmates_whisper: {
-		id: 'ch1_classmates_whisper',
+	[Chapter1DialogueID.CH1_CLASSMATES_WHISPER]: {
 		speaker: 'npc',
 		text: '"Con nhà đại gia đấy, đừng động vào nó. Bố nó quen cả chủ tịch tỉnh đấy."',
 		textVi:
 			'"Con nhà đại gia đấy, đừng động vào nó. Bố nó quen cả chủ tịch tỉnh đấy."',
 		textEn:
 			'"Rich kid, don\'t touch him. His dad knows the provincial chairman."',
-		next: 'ch1_school_reaction',
+		next: Chapter1DialogueID.CH1_SCHOOL_REACTION,
 	},
-	ch1_school_reaction: {
-		id: 'ch1_school_reaction',
+	[Chapter1DialogueID.CH1_SCHOOL_REACTION]: {
 		speaker: 'player',
 		text: '(Suy nghĩ) Họ sợ mình... nhưng mình chẳng có ai để chơi cùng cả.',
 		textVi: '(Suy nghĩ) Họ sợ mình... nhưng mình chẳng có ai để chơi cùng cả.',
 		textEn: '(Thinking) They fear me... but I have no one to play with.',
-		next: 'ch1_bully_start', // Redirect to Bully event
+		next: Chapter1DialogueID.CH1_BULLY_START, // Redirect to Bully event
 	},
 
 	// NEW: School Bully Event
-	ch1_bully_start: {
-		id: 'ch1_bully_start',
+	[Chapter1DialogueID.CH1_BULLY_START]: {
 		speaker: 'narrator',
 		text: 'Một đứa bạn to con trong lớp chặn đường bạn. Nó muốn trấn lột chiếc bút máy xịn của bạn.',
 		textVi:
@@ -599,82 +755,77 @@ export const chapter1Dialogues: Record<string, DialogueNode> = {
 		choices: [
 			{
 				id: 'choice_bully_fight',
-				text: 'Đánh lại: Không được bắt nạt tao! (Steel Mind +2, Health -1)',
-				textVi: 'Đánh lại: Không được bắt nạt tao! (Steel Mind +2, Health -1)',
-				textEn: "Fight back: Don't bully me! (Steel Mind +2, Health -1)",
+				text: 'Đánh lại: Không được bắt nạt tao! (Steel Mind +5, Health -2)',
+				textVi: 'Đánh lại: Không được bắt nạt tao! (Steel Mind +5, Health -2)',
+				textEn: "Fight back: Don't bully me! (Steel Mind +5, Health -2)",
 				effects: [
-					{ stat: 'steelMind', value: 2 },
-					{ stat: 'health', value: -1 },
-					{ stat: 'humanity', value: -1 },
+					{ stat: StatID.STEELMIND, value: 5 },
+					{ stat: StatID.HEALTH, value: -2 },
+					{ stat: StatID.HUMANITY, value: -2 },
 				],
-				next: 'ch1_bully_fight_result',
+				next: Chapter1DialogueID.CH1_BULLY_FIGHT_RESULT,
 			},
 			{
 				id: 'choice_bully_report',
-				text: 'Mách cô giáo: An toàn là trên hết (Vision +1)',
-				textVi: 'Mách cô giáo: An toàn là trên hết (Vision +1)',
-				textEn: 'Tell teacher: Safety first (Vision +1)',
+				text: 'Mách cô giáo: An toàn là trên hết (Vision +3)',
+				textVi: 'Mách cô giáo: An toàn là trên hết (Vision +3)',
+				textEn: 'Tell teacher: Safety first (Vision +3)',
 				effects: [
-					{ stat: 'vision', value: 1 },
-					{ stat: 'steelMind', value: -1 },
+					{ stat: StatID.VISION, value: 3 },
+					{ stat: StatID.STEELMIND, value: -2 },
 				],
-				next: 'ch1_bully_report_result',
+				next: Chapter1DialogueID.CH1_BULLY_REPORT_RESULT,
 			},
 			{
 				id: 'choice_bully_give',
-				text: 'Đưa bút: Tránh rắc rối (Humanity +1)',
-				textVi: 'Đưa bút: Tránh rắc rối (Humanity +1)',
-				textEn: 'Give pen: Avoid trouble (Humanity +1)',
+				text: 'Đưa bút: Tránh rắc rối (Humanity +3)',
+				textVi: 'Đưa bút: Tránh rắc rối (Humanity +3)',
+				textEn: 'Give pen: Avoid trouble (Humanity +3)',
 				effects: [
-					{ stat: 'humanity', value: 1 },
-					{ stat: 'steelMind', value: -2 },
+					{ stat: StatID.HUMANITY, value: 3 },
+					{ stat: StatID.STEELMIND, value: -3 },
 				],
-				next: 'ch1_school_trip',
+				next: Chapter1DialogueID.CH1_SCHOOL_TRIP,
 			},
 		],
 	},
-	ch1_bully_fight_result: {
-		id: 'ch1_bully_fight_result',
+	[Chapter1DialogueID.CH1_BULLY_FIGHT_RESULT]: {
 		speaker: 'narrator',
 		text: 'Bạn lao vào đánh nhau. Cả hai đều sứt đầu mẻ trán. Bố mẹ bị mời lên trường, nhưng bố lại cười: "Đàn ông là phải thế".',
 		textVi:
 			'Bạn lao vào đánh nhau. Cả hai đều sứt đầu mẻ trán. Bố mẹ bị mời lên trường, nhưng bố lại cười: "Đàn ông là phải thế".',
 		textEn:
 			'You fought. Both bruised. Parents called, but Dad laughed: "That\'s how men are".',
-		next: 'ch1_school_trip',
+		next: Chapter1DialogueID.CH1_SCHOOL_TRIP,
 	},
-	ch1_bully_report_result: {
-		id: 'ch1_bully_report_result',
+	[Chapter1DialogueID.CH1_BULLY_REPORT_RESULT]: {
 		speaker: 'narrator',
 		text: 'Cô giáo phạt đứa bạn kia. Nhưng từ đó, cả lớp gọi bạn là "kẻ mách lẻo". Bạn càng cô đơn hơn.',
 		textVi:
 			'Cô giáo phạt đứa bạn kia. Nhưng từ đó, cả lớp gọi bạn là "kẻ mách lẻo". Bạn càng cô đơn hơn.',
 		textEn:
 			'Teacher punished him. But class called you "tattletale". You became lonelier.',
-		next: 'ch1_school_trip',
+		next: Chapter1DialogueID.CH1_SCHOOL_TRIP,
 	},
-	ch1_school_trip: {
-		id: 'ch1_school_trip',
+	[Chapter1DialogueID.CH1_SCHOOL_TRIP]: {
 		speaker: 'narrator',
 		text: 'Cuối tuần, bố cho bạn ngồi trên chiếc Land Cruiser, đi khảo sát những con đường xuyên núi.',
 		textVi:
 			'Cuối tuần, bố cho bạn ngồi trên chiếc Land Cruiser, đi khảo sát những con đường xuyên núi.',
 		textEn:
 			'On weekends, father took you in the Land Cruiser to survey mountain roads.',
-		next: 'ch1_school_quote',
+		next: Chapter1DialogueID.CH1_SCHOOL_QUOTE,
 	},
-	ch1_school_quote: {
-		id: 'ch1_school_quote',
+	[Chapter1DialogueID.CH1_SCHOOL_QUOTE]: {
 		speaker: 'boQ',
 		text: '"Con nhìn xem, trước kia chỗ này là rừng rậm. Bố đã vẽ một đường thẳng lên bản đồ, và giờ nó là con đường nhựa. Con người có thể thay đổi địa hình, miễn là có ý chí."',
 		textVi:
 			'"Con nhìn xem, trước kia chỗ này là rừng rậm. Bố đã vẽ một đường thẳng lên bản đồ, và giờ nó là con đường nhựa. Con người có thể thay đổi địa hình, miễn là có ý chí."',
 		textEn:
 			'"Look, this used to be jungle. I drew a straight line on the map, and now it\'s an asphalt road. Humans can reshape the land, as long as they have the will."',
-		next: 'ch1_school_ego',
+		next: Chapter1DialogueID.CH1_SCHOOL_EGO,
 	},
-	ch1_school_ego: {
-		id: 'ch1_school_ego',
+	[Chapter1DialogueID.CH1_SCHOOL_EGO]: {
 		speaker: 'player',
 		text: '(Nhìn những vách núi dựng đứng) Bố mình như một vị thần dời non lấp bể.',
 		textVi:
@@ -687,23 +838,22 @@ export const chapter1Dialogues: Record<string, DialogueNode> = {
 				text: 'Tự hào: Mình là con của Bố (Ego ++)',
 				textVi: 'Tự hào: Mình là con của Bố (Ego ++)',
 				textEn: "Proud: I am Father's son (Ego ++)",
-				effects: [{ stat: 'steelMind', value: 1 }],
-				next: 'ch1_buy_toy_start',
+				effects: [{ stat: StatID.STEELMIND, value: 3 }],
+				next: Chapter1DialogueID.CH1_BUY_TOY_START,
 			},
 			{
 				id: 'choice_feel_isolated',
 				text: 'Sợ hãi: Quyền lực này thật xa lạ (Humanity ++)',
 				textVi: 'Sợ hãi: Quyền lực này thật xa lạ (Humanity ++)',
 				textEn: 'Fear: This power feels alien (Humanity ++)',
-				effects: [{ stat: 'humanity', value: 1 }],
-				next: 'ch1_buy_toy_start',
+				effects: [{ stat: StatID.HUMANITY, value: 3 }],
+				next: Chapter1DialogueID.CH1_BUY_TOY_START,
 			},
 		],
 	},
 
 	// NEW: Buy Toy Event
-	ch1_buy_toy_start: {
-		id: 'ch1_buy_toy_start',
+	[Chapter1DialogueID.CH1_BUY_TOY_START]: {
 		speaker: 'narrator',
 		text: 'Trên đường về, bạn đi ngang qua cửa hàng đồ chơi. Một con robot Gundam mới toanh đang được trưng bày. Nó đẹp lấp lánh.',
 		textVi:
@@ -717,35 +867,33 @@ export const chapter1Dialogues: Record<string, DialogueNode> = {
 				textVi: 'Mua luôn: Đắt sắt ra miếng (-100k)',
 				textEn: 'Buy it: Quality costs money (-100k)',
 				effects: [
-					{ stat: 'money', value: -100000 },
-					{ stat: 'humanity', value: 1 }, // Happiness/Childhood joy
+					{ stat: StatID.MONEY, value: -100000 },
+					{ stat: StatID.HUMANITY, value: 5 }, // Happiness/Childhood joy
 				],
-				next: 'ch1_buy_toy_success',
+				next: Chapter1DialogueID.CH1_BUY_TOY_SUCCESS,
 			},
 			{
 				id: 'choice_buy_toy_no',
-				text: 'Tiếc tiền: Thôi để dành tiền làm việc khác (Steel Mind +1)',
-				textVi: 'Tiếc tiền: Thôi để dành tiền làm việc khác (Steel Mind +1)',
-				textEn: 'Save money: Save for other things (Steel Mind +1)',
-				effects: [{ stat: 'steelMind', value: 1 }],
-				next: 'ch1_fortress_1',
+				text: 'Tiếc tiền: Thôi để dành tiền làm việc khác (Steel Mind +3)',
+				textVi: 'Tiếc tiền: Thôi để dành tiền làm việc khác (Steel Mind +3)',
+				textEn: 'Save money: Save for other things (Steel Mind +3)',
+				effects: [{ stat: StatID.STEELMIND, value: 3 }],
+				next: Chapter1DialogueID.CH1_FORTRESS_1,
 			},
 		],
 	},
-	ch1_buy_toy_success: {
-		id: 'ch1_buy_toy_success',
+	[Chapter1DialogueID.CH1_BUY_TOY_SUCCESS]: {
 		speaker: 'player',
 		text: '(Cầm con robot trên tay) Cảm giác sở hữu món đồ mình thích thật tuyệt vời. Lũ bạn sẽ lác mắt cho xem.',
 		textVi:
 			'(Cầm con robot trên tay) Cảm giác sở hữu món đồ mình thích thật tuyệt vời. Lũ bạn sẽ lác mắt cho xem.',
 		textEn:
 			'(Holding the robot) The feeling of owning what you want is amazing. Friends will be jealous.',
-		next: 'ch1_toy_showoff', // Redirect to Showoff choice
+		next: Chapter1DialogueID.CH1_TOY_SHOWOFF, // Redirect to Showoff choice
 	},
 
 	// NEW: Spoiled Prince Chain
-	ch1_toy_showoff: {
-		id: 'ch1_toy_showoff',
+	[Chapter1DialogueID.CH1_TOY_SHOWOFF]: {
 		speaker: 'player',
 		text: '(Suy nghĩ) Con robot đẹp thế này, có nên mang đến lớp khoe không nhỉ?',
 		textVi:
@@ -757,21 +905,20 @@ export const chapter1Dialogues: Record<string, DialogueNode> = {
 				text: 'Mang đi khoe: Cho chúng nó lác mắt (Ego ++)',
 				textVi: 'Mang đi khoe: Cho chúng nó lác mắt (Ego ++)',
 				textEn: 'Show off: Make them jealous (Ego ++)',
-				effects: [{ stat: 'steelMind', value: 1 }],
-				next: 'ch1_show_off_fail',
+				effects: [{ stat: StatID.STEELMIND, value: 3 }],
+				next: Chapter1DialogueID.CH1_SHOW_OFF_FAIL,
 			},
 			{
 				id: 'choice_showoff_no',
-				text: 'Để ở nhà: Sợ bị mất (Vision +1)',
-				textVi: 'Để ở nhà: Sợ bị mất (Vision +1)',
-				textEn: 'Keep at home: Fear losing it (Vision +1)',
-				effects: [{ stat: 'vision', value: 1 }],
-				next: 'ch1_fortress_1',
+				text: 'Để ở nhà: Sợ bị mất (Vision +3)',
+				textVi: 'Để ở nhà: Sợ bị mất (Vision +3)',
+				textEn: 'Keep at home: Fear losing it (Vision +3)',
+				effects: [{ stat: StatID.VISION, value: 3 }],
+				next: Chapter1DialogueID.CH1_FORTRESS_1,
 			},
 		],
 	},
-	ch1_show_off_fail: {
-		id: 'ch1_show_off_fail',
+	[Chapter1DialogueID.CH1_SHOW_OFF_FAIL]: {
 		speaker: 'narrator',
 		text: 'Bạn mang robot đến lớp. Lũ bạn xúm lại xem, tranh giành nhau. "Rắc!" - cánh tay robot bị gãy. Bạn khóc nức nở, còn lũ bạn tản ra, cười cợt.',
 		textVi:
@@ -779,78 +926,71 @@ export const chapter1Dialogues: Record<string, DialogueNode> = {
 		textEn:
 			'You brought robot to class. Kids grabbed it. "Snap!" - arm broke. You cried, they laughed.',
 		effects: [
-			{ stat: 'humanity', value: -2 },
-			{ stat: 'steelMind', value: 2 },
-			{ stat: 'stress', value: 2 },
+			{ stat: StatID.HUMANITY, value: -5 },
+			{ stat: StatID.STEELMIND, value: 5 },
+			{ stat: StatID.STRESS, value: 5 },
 		],
-		next: 'ch1_fortress_1',
+		next: Chapter1DialogueID.CH1_FORTRESS_1,
 	},
 
 	// 1.3 Lớp 4: Căn cứ địa 4.000m²
-	ch1_fortress_1: {
-		id: 'ch1_fortress_1',
+	[Chapter1DialogueID.CH1_FORTRESS_1]: {
 		speaker: 'narrator',
 		text: 'Sau nhiều năm tích cóp, bố quyết định xây dựng "di sản" của đời mình. Bố mua đứt quả đồi của ông ngoại. Một dinh thự rộng 4.000m² mọc lên.',
 		textVi:
 			'Sau nhiều năm tích cóp, bố quyết định xây dựng "di sản" của đời mình. Bố mua đứt quả đồi của ông ngoại. Một dinh thự rộng 4.000m² mọc lên.',
 		textEn:
 			'After years of saving, father decided to build his life\'s "legacy". He bought grandfather\'s hill. A 4,000m² mansion rose up.',
-		next: 'ch1_fortress_zoo',
+		next: Chapter1DialogueID.CH1_FORTRESS_ZOO,
 	},
-	ch1_fortress_zoo: {
-		id: 'ch1_fortress_zoo',
+	[Chapter1DialogueID.CH1_FORTRESS_ZOO]: {
 		speaker: 'narrator',
 		text: 'Nó là một pháo đài với hệ sinh thái riêng. Sân trước: Đà điểu chạy ầm ầm. Vườn sau: Công xòe đuôi múa. Trên cây: Vượn và khỉ chuyền cành.',
 		textVi:
 			'Nó là một pháo đài với hệ sinh thái riêng. Sân trước: Đà điểu chạy ầm ầm. Vườn sau: Công xòe đuôi múa. Trên cây: Vượn và khỉ chuyền cành.',
 		textEn:
 			'It was a fortress with its own ecosystem. Front yard: Thundering ostriches. Back yard: Dancing peacocks. Trees: Swinging gibbons and monkeys.',
-		next: 'ch1_fortress_guards',
+		next: Chapter1DialogueID.CH1_FORTRESS_GUARDS,
 	},
-	ch1_fortress_guards: {
-		id: 'ch1_fortress_guards',
+	[Chapter1DialogueID.CH1_FORTRESS_GUARDS]: {
 		speaker: 'boQ',
 		text: '"Đội vệ sĩ của bố đấy. 15 con chó được tuyển chọn kỹ lưỡng. Chúng trung thành hơn con người nhiều."',
 		textVi:
 			'"Đội vệ sĩ của bố đấy. 15 con chó được tuyển chọn kỹ lưỡng. Chúng trung thành hơn con người nhiều."',
 		textEn:
 			'"My guard squad. 15 carefully selected dogs. They are far more loyal than humans."',
-		next: 'ch1_fortress_guards_detail',
+		next: Chapter1DialogueID.CH1_FORTRESS_GUARDS_DETAIL,
 	},
-	ch1_fortress_guards_detail: {
-		id: 'ch1_fortress_guards_detail',
+	[Chapter1DialogueID.CH1_FORTRESS_GUARDS_DETAIL]: {
 		speaker: 'narrator',
 		text: 'Những con Ngao Tạng lầm lì như tảng đá. Những con chó Phú Quốc tinh khôn, xoáy lưng dựng ngược. Và đặc biệt là Bi.',
 		textVi:
 			'Những con Ngao Tạng lầm lì như tảng đá. Những con chó Phú Quốc tinh khôn, xoáy lưng dựng ngược. Và đặc biệt là Bi.',
 		textEn:
 			'Tibetan Mastiffs stoic as boulders. Clever Phu Quoc ridgebacks. And especially Bi.',
-		next: 'ch1_fortress_bi',
+		next: Chapter1DialogueID.CH1_FORTRESS_BI,
 	},
-	ch1_fortress_bi: {
-		id: 'ch1_fortress_bi',
+	[Chapter1DialogueID.CH1_FORTRESS_BI]: {
 		speaker: 'narrator',
 		text: 'Bi là con Alaska khổng lồ, lông mượt, đẹp nhất và trung thành nhất. Nó luôn đi theo bạn như hình với bóng trong khu vườn rộng lớn này.',
 		textVi:
 			'Bi là con Alaska khổng lồ, lông mượt, đẹp nhất và trung thành nhất. Nó luôn đi theo bạn như hình với bóng trong khu vườn rộng lớn này.',
 		textEn:
 			'Bi was a giant Alaska, silky fur, the most beautiful and loyal. He followed you like a shadow in this vast garden.',
-		next: 'ch1_fortress_feeling',
+		next: Chapter1DialogueID.CH1_FORTRESS_FEELING,
 	},
-	ch1_fortress_feeling: {
-		id: 'ch1_fortress_feeling',
+	[Chapter1DialogueID.CH1_FORTRESS_FEELING]: {
 		speaker: 'player',
 		text: '(Chạy chơi cùng Bi) Ở đây thật an toàn. Bố là luật pháp, và mọi thứ đều vận hành trơn tru.',
 		textVi:
 			'(Chạy chơi cùng Bi) Ở đây thật an toàn. Bố là luật pháp, và mọi thứ đều vận hành trơn tru.',
 		textEn:
 			'(Playing with Bi) It feels so safe here. Father is the law, and everything runs smoothly.',
-		next: 'ch1_secret_base_start', // Redirect to Secret Base
+		next: Chapter1DialogueID.CH1_SECRET_BASE_START, // Redirect to Secret Base
 	},
 
 	// NEW: Secret Base Event
-	ch1_secret_base_start: {
-		id: 'ch1_secret_base_start',
+	[Chapter1DialogueID.CH1_SECRET_BASE_START]: {
 		speaker: 'narrator',
 		text: 'Trong góc khuất nhất của khu vườn, bạn phát hiện một cái hang nhỏ dưới gốc cây cổ thụ. Một căn cứ bí mật tuyệt vời.',
 		textVi:
@@ -860,90 +1000,83 @@ export const chapter1Dialogues: Record<string, DialogueNode> = {
 		choices: [
 			{
 				id: 'choice_base_secret',
-				text: 'Giữ bí mật: Nơi này là của riêng mình (Steel Mind +1)',
-				textVi: 'Giữ bí mật: Nơi này là của riêng mình (Steel Mind +1)',
-				textEn: 'Keep secret: This is mine alone (Steel Mind +1)',
-				effects: [{ stat: 'steelMind', value: 1 }],
-				next: 'ch1_revelation_1',
+				text: 'Giữ bí mật: Nơi này là của riêng mình (Steel Mind +3)',
+				textVi: 'Giữ bí mật: Nơi này là của riêng mình (Steel Mind +3)',
+				textEn: 'Keep secret: This is mine alone (Steel Mind +3)',
+				effects: [{ stat: StatID.STEELMIND, value: 3 }],
+				next: Chapter1DialogueID.CH1_REVELATION_1,
 			},
 			{
 				id: 'choice_base_share',
-				text: 'Rủ bạn bè đến: Cùng chơi mới vui (Humanity +2, Money -50k)',
-				textVi: 'Rủ bạn bè đến: Cùng chơi mới vui (Humanity +2, Money -50k)',
-				textEn: 'Invite friends: Fun together (Humanity +2, Money -50k)',
+				text: 'Rủ bạn bè đến: Cùng chơi mới vui (Humanity +5, Money -50k)',
+				textVi: 'Rủ bạn bè đến: Cùng chơi mới vui (Humanity +5, Money -50k)',
+				textEn: 'Invite friends: Fun together (Humanity +5, Money -50k)',
 				effects: [
-					{ stat: 'humanity', value: 2 },
-					{ stat: 'money', value: -50000 }, // Snacks
+					{ stat: StatID.HUMANITY, value: 5 },
+					{ stat: StatID.MONEY, value: -50000 }, // Snacks
 				],
-				next: 'ch1_base_party',
+				next: Chapter1DialogueID.CH1_BASE_PARTY,
 			},
 		],
 	},
-	ch1_base_party: {
-		id: 'ch1_base_party',
+	[Chapter1DialogueID.CH1_BASE_PARTY]: {
 		speaker: 'narrator',
 		text: 'Bạn mua bim bim, nước ngọt mời lũ bạn. Căn cứ bí mật rộn rã tiếng cười. Lần đầu tiên bạn thấy mình không cô đơn.',
 		textVi:
 			'Bạn mua bim bim, nước ngọt mời lũ bạn. Căn cứ bí mật rộn rã tiếng cười. Lần đầu tiên bạn thấy mình không cô đơn.',
 		textEn:
 			'You bought snacks. Secret base filled with laughter. First time you felt not alone.',
-		next: 'ch1_revelation_1',
+		next: Chapter1DialogueID.CH1_REVELATION_1,
 	},
 
 	// 1.4 Lớp 5: Bước ngoặt và Sự so sánh
-	ch1_revelation_1: {
-		id: 'ch1_revelation_1',
+	[Chapter1DialogueID.CH1_REVELATION_1]: {
 		speaker: 'narrator',
 		text: 'Lớp 5. Bạn là học sinh xuất sắc nhất trường. Mùa hè năm đó, bố gửi bạn về Hà Nội ở nhà bác ruột - cũng là một đại gia bất động sản.',
 		textVi:
 			'Lớp 5. Bạn là học sinh xuất sắc nhất trường. Mùa hè năm đó, bố gửi bạn về Hà Nội ở nhà bác ruột - cũng là một đại gia bất động sản.',
 		textEn:
 			'Grade 5. Top student. That summer, father sent you to Hanoi to stay with your uncle - also a real estate tycoon.',
-		next: 'ch1_revelation_shock',
+		next: Chapter1DialogueID.CH1_REVELATION_SHOCK,
 	},
-	ch1_revelation_shock: {
-		id: 'ch1_revelation_shock',
+	[Chapter1DialogueID.CH1_REVELATION_SHOCK]: {
 		speaker: 'narrator',
 		text: 'Cú sốc văn hóa. Ở Lào Cai, bạn là vua. Ở Hà Nội, bạn thấy những tòa nhà chọc trời Keangnam, Lotte cao vút.',
 		textVi:
 			'Cú sốc văn hóa. Ở Lào Cai, bạn là vua. Ở Hà Nội, bạn thấy những tòa nhà chọc trời Keangnam, Lotte cao vút.',
 		textEn:
 			'Culture shock. In Lao Cai, you were king. In Hanoi, you saw towering Keangnam, Lotte skyscrapers.',
-		next: 'ch1_uncle_boast',
+		next: Chapter1DialogueID.CH1_UNCLE_BOAST,
 	},
-	ch1_uncle_boast: {
-		id: 'ch1_uncle_boast',
+	[Chapter1DialogueID.CH1_UNCLE_BOAST]: {
 		speaker: 'npc',
 		text: 'Bác ruột cười lớn: "Cái nhà to nhất Lào Cai của bố mày, bán đi chưa chắc mua được cái chung cư cao cấp ở đây đâu con ạ."',
 		textVi:
 			'Bác ruột cười lớn: "Cái nhà to nhất Lào Cai của bố mày, bán đi chưa chắc mua được cái chung cư cao cấp ở đây đâu con ạ."',
 		textEn:
 			'Uncle laughed: "Your dad\'s biggest house in Lao Cai, selling it might not even buy a luxury apartment here, kid."',
-		next: 'ch1_revelation_details',
+		next: Chapter1DialogueID.CH1_REVELATION_DETAILS,
 	},
-	ch1_revelation_details: {
-		id: 'ch1_revelation_details',
+	[Chapter1DialogueID.CH1_REVELATION_DETAILS]: {
 		speaker: 'narrator',
 		text: 'Những đứa trẻ hàng xóm nói tiếng Anh như gió. Những chiếc siêu xe lạ lẫm lướt qua. Bạn nhận ra điều gì?',
 		textVi:
 			'Những đứa trẻ hàng xóm nói tiếng Anh như gió. Những chiếc siêu xe lạ lẫm lướt qua. Bạn nhận ra điều gì?',
 		textEn:
 			'Neighbor kids spoke fluent English. Strange supercars glided by. What did you realize?',
-		next: 'ch1_revelation_realization',
+		next: Chapter1DialogueID.CH1_REVELATION_REALIZATION,
 	},
-	ch1_revelation_realization: {
-		id: 'ch1_revelation_realization',
+	[Chapter1DialogueID.CH1_REVELATION_REALIZATION]: {
 		speaker: 'player',
 		text: '(Suy nghĩ) Vương quốc của bố, dù hoành tráng, vẫn chỉ là một cái ao làng. Thế giới ngoài kia rộng lớn và tàn khốc hơn nhiều.',
 		textVi:
 			'(Suy nghĩ) Vương quốc của bố, dù hoành tráng, vẫn chỉ là một cái ao làng. Thế giới ngoài kia rộng lớn và tàn khốc hơn nhiều.',
 		textEn:
 			"(Thinking) Father's kingdom, however grand, is just a village pond. The world out there is much bigger and crueler.",
-		effects: [{ stat: 'vision', value: 1 }],
-		next: 'ch1_revelation_decision',
+		effects: [{ stat: StatID.VISION, value: 3 }],
+		next: Chapter1DialogueID.CH1_REVELATION_DECISION,
 	},
-	ch1_revelation_decision: {
-		id: 'ch1_revelation_decision',
+	[Chapter1DialogueID.CH1_REVELATION_DECISION]: {
 		speaker: 'player',
 		text: 'Bố ơi, hết hè con muốn xuống Hà Nội học. Con muốn bơi ra biển lớn.',
 		textVi:
@@ -953,25 +1086,24 @@ export const chapter1Dialogues: Record<string, DialogueNode> = {
 		choices: [
 			{
 				id: 'choice_hanoi',
-				text: 'Quyết tâm: Xin đi học Hà Nội (Vision +1)',
-				textVi: 'Quyết tâm: Xin đi học Hà Nội (Vision +1)',
-				textEn: 'Determined: Ask to study in Hanoi (Vision +1)',
+				text: 'Quyết tâm: Xin đi học Hà Nội (Vision +3)',
+				textVi: 'Quyết tâm: Xin đi học Hà Nội (Vision +3)',
+				textEn: 'Determined: Ask to study in Hanoi (Vision +3)',
 				effects: [
-					{ stat: 'vision', value: 1 },
-					{ stat: 'steelMind', value: 1 },
+					{ stat: StatID.VISION, value: 3 },
+					{ stat: StatID.STEELMIND, value: 3 },
 				],
-				next: 'ch1_father_agrees',
+				next: Chapter1DialogueID.CH1_FATHER_AGREES,
 			},
 		],
 	},
-	ch1_father_agrees: {
-		id: 'ch1_father_agrees',
+	[Chapter1DialogueID.CH1_FATHER_AGREES]: {
 		speaker: 'boQ',
 		text: '"Được. Bố đồng ý." Mắt bố ánh lên niềm tự hào nhưng cũng thoáng chút lo âu.',
 		textVi:
 			'"Được. Bố đồng ý." Mắt bố ánh lên niềm tự hào nhưng cũng thoáng chút lo âu.',
 		textEn:
 			'"Okay. I agree." Father\'s eyes shone with pride but also a hint of worry.',
-		next: 'ch1_end',
+		next: Chapter1DialogueID.CH1_END,
 	},
 };

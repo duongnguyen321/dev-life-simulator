@@ -6,7 +6,7 @@
 import { useGameStore } from '@/store/gameStore';
 import { chapters, allDialogues } from '@/data/chapters';
 import { audioManager } from '@/core/AudioManager';
-import type { StatsEffect } from '@/data/types';
+import type { StatsEffect, FlagChange } from '@/data/types';
 
 interface Choice {
 	id: string;
@@ -15,6 +15,7 @@ interface Choice {
 	textEn: string;
 	next?: string;
 	effects?: StatsEffect[];
+	flags?: FlagChange[];
 	condition?: any;
 }
 
@@ -38,7 +39,7 @@ export class GameFlow {
 
 		// Load first dialogue
 		const firstDialogue = allDialogues[firstScene.dialogueStart];
-		if (firstDialogue) {
+		if (firstDialogue && firstDialogue.id) {
 			store.setCurrentDialogue(firstDialogue.id);
 		}
 
@@ -77,18 +78,56 @@ export class GameFlow {
 			});
 		}
 
+		// Apply flag changes
+		if (choice.flags) {
+			choice.flags.forEach((flag) => {
+				store.setFlag(flag.key, flag.value);
+			});
+		}
+
 		// Play SFX for choice
 		audioManager.playSFX('choice');
 
 		// Go to next dialogue
 		if (choice.next) {
 			this.goToDialogue(choice.next);
+		} else {
+			// Check if we need to return from reflection
+			if (store.pendingReturnDialogue) {
+				const returnId = store.pendingReturnDialogue;
+				store.setPendingReturnDialogue(null);
+				this.goToDialogue(returnId);
+			}
 		}
 	}
 
 	// Go to specific dialogue
 	static goToDialogue(dialogueId: string): void {
 		const store = useGameStore.getState();
+		if (dialogueId === 'ending_calculation') {
+			const { stats } = store;
+			let ending: any = 'TRAGEDY'; // Default
+
+			// Logic to determine ending
+			if (stats.money > 50000000000 && stats.humanity < 30) {
+				ending = 'SOULLESS_TYCOON';
+			} else if (stats.vision > 80 && stats.humanity > 60) {
+				ending = 'LEGACY';
+			} else if (
+				stats.health > 50 &&
+				stats.stress < 50 &&
+				stats.humanity > 50 &&
+				stats.money > 5000000000
+			) {
+				ending = 'BALANCED';
+			} else if (stats.money > 10000000000 && stats.vision > 70) {
+				ending = 'SUCCESS';
+			}
+
+			store.setEnding(ending);
+			return;
+		}
+
 		const dialogue = allDialogues[dialogueId];
 
 		if (!dialogue) {
@@ -96,7 +135,46 @@ export class GameFlow {
 			return;
 		}
 
+		// REFLECTION LOGIC
+		const {
+			dialogueCountInChapter,
+			lastReflectionDialogueCount,
+			nextReflectionTrigger,
+			currentChapter,
+		} = store;
+
+		// Only trigger if:
+		// 1. Not already in a reflection (dialogueId doesn't contain 'reflect')
+		// 2. Count threshold met
+		// 3. We are not returning from a reflection (pendingReturnDialogue is null)
+		if (
+			!dialogueId.includes('reflect') &&
+			!store.pendingReturnDialogue &&
+			dialogueCountInChapter - lastReflectionDialogueCount >=
+				nextReflectionTrigger
+		) {
+			const chapter = chapters[currentChapter];
+			if (
+				chapter &&
+				chapter.reflectionQuotes &&
+				chapter.reflectionQuotes.length > 0
+			) {
+				// Pick random quote
+				const quote =
+					chapter.reflectionQuotes[
+						Math.floor(Math.random() * chapter.reflectionQuotes.length)
+					];
+
+				// Trigger Reflection
+				store.setPendingReturnDialogue(dialogueId);
+				store.setCurrentDialogue(quote.id);
+				store.setLastReflectionCount(dialogueCountInChapter);
+				return;
+			}
+		}
+
 		store.setCurrentDialogue(dialogueId);
+		store.incrementDialogueCount();
 
 		// Apply any effects
 		if (dialogue.effects) {
@@ -166,8 +244,12 @@ export class GameFlow {
 
 				// Better approach: Iterate scenes and check if dialogue ID starts with scene ID (more specific)
 				for (const scene of chapter.scenes) {
-					// e.g. dialogue "ch2_fpt_1" starts with scene "ch2_fpt"
+					// Check 1: Dialogue ID starts with scene ID (e.g. "ch2_fpt_1" starts with "ch2_fpt")
 					if (dialogueId.startsWith(scene.id)) {
+						return { scene, chapterId: chapter.id };
+					}
+					// Check 2: Dialogue ID matches the scene's starting dialogue (e.g. "ch2_intro")
+					if (dialogueId === scene.dialogueStart) {
 						return { scene, chapterId: chapter.id };
 					}
 				}
