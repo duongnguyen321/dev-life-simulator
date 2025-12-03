@@ -11,7 +11,13 @@ import type {
 	GameSettings,
 	EndingType,
 } from '@/data/types';
-import { ConditionType, Operator, StatID } from '@/data/enum';
+import {
+	Chapter1DialogueID,
+	Chapter1SceneID,
+	ConditionType,
+	Operator,
+	StatID,
+} from '@/data/enum';
 
 interface GameStore extends GameState {
 	// Actions
@@ -41,8 +47,11 @@ interface GameStore extends GameState {
 	incrementDialogueCount: () => void;
 	resetDialogueCount: () => void;
 	setLastReflectionCount: (count: number) => void;
+	setNextReflectionTrigger: (count: number) => void;
 	pendingReturnDialogue: string | null;
 	setPendingReturnDialogue: (dialogueId: string | null) => void;
+	triggerSleepAction: boolean;
+	setTriggerSleepAction: (trigger: boolean) => void;
 }
 
 import { achievements } from '@/data/achievements';
@@ -59,10 +68,10 @@ const detectLanguage = (): 'vi' | 'en' => {
 	return 'en';
 };
 
-const initialState: GameState = {
+const getInitialState = (): GameState => ({
 	currentChapter: 1,
-	currentScene: 'start',
-	currentDialogue: 'intro',
+	currentScene: Chapter1SceneID.CH1_INTRO,
+	currentDialogue: Chapter1DialogueID.CH1_INTRO,
 	stats: {
 		steelMind: 50,
 		humanity: 50,
@@ -93,14 +102,15 @@ const initialState: GameState = {
 	// Reflection Quote tracking
 	dialogueCountInChapter: 0,
 	lastReflectionDialogueCount: 0,
-	nextReflectionTrigger: Math.floor(Math.random() * 3) + 5, // Random 5-7
+	nextReflectionTrigger: Math.floor(Math.random() * 4) + 5, // Random 5-8
 	pendingReturnDialogue: null,
-};
+	triggerSleepAction: false,
+});
 
 export const useGameStore = create<GameStore>()(
 	persist(
 		(set, get) => ({
-			...initialState,
+			...getInitialState(),
 
 			setCurrentChapter: (chapter: number) => {
 				set({ currentChapter: chapter });
@@ -216,7 +226,7 @@ export const useGameStore = create<GameStore>()(
 
 			resetGame: () => {
 				set({
-					...initialState,
+					...getInitialState(),
 					settings: get().settings, // Keep settings
 				});
 			},
@@ -379,14 +389,19 @@ export const useGameStore = create<GameStore>()(
 			},
 
 			setLastReflectionCount: (count: number) => {
-				set({
-					lastReflectionDialogueCount: count,
-					nextReflectionTrigger: Math.floor(Math.random() * 3) + 5, // Random 5-7 for next
-				});
+				set({ lastReflectionDialogueCount: count });
+			},
+
+			setNextReflectionTrigger: (count: number) => {
+				set({ nextReflectionTrigger: count });
 			},
 
 			setPendingReturnDialogue: (dialogueId: string | null) => {
 				set({ pendingReturnDialogue: dialogueId });
+			},
+
+			setTriggerSleepAction: (trigger: boolean) => {
+				set({ triggerSleepAction: trigger });
 			},
 		}),
 		{

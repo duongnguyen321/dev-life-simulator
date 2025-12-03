@@ -4,7 +4,16 @@
 // Theme: Tham vọng, Sự phản bội và Cú ngã ngựa
 // ==========================================
 
-import { Chapter6DialogueID, Chapter6SceneID, Chapter6TodoID, Chapter7DialogueID, ConditionType, FlagID, Operator, StatID } from '../enum';
+import {
+	Chapter6DialogueID,
+	Chapter6SceneID,
+	Chapter6TodoID,
+	Chapter7DialogueID,
+	ConditionType,
+	FlagID,
+	Operator,
+	StatID,
+} from '../enum';
 import { type Chapter, type DialogueNode } from '../types';
 
 export const chapter6: Chapter = {
@@ -526,7 +535,7 @@ export const chapter6Dialogues: Record<Chapter6DialogueID, DialogueNode> = {
 			'Hội tụ (Reunion): Anh Q (đang làm cho Big Tech Singapore), Anh D (Tech Lead công ty Product top đầu), Anh N (Quản lý dự án thâm niên). Tất cả đều đang ở đỉnh cao sự nghiệp.',
 		textEn:
 			'Reunion: Brother Q (Big Tech Singapore), Brother D (Top Product Company Tech Lead), Brother N (Senior PM). All at the peak of their careers.',
-		next: Chapter6DialogueID.CH6_INVESTOR_START,
+		next: Chapter6DialogueID.CH6_DECISION_ARCH,
 	},
 
 	// NEW: Investor Event
@@ -1087,5 +1096,304 @@ export const chapter6Dialogues: Record<Chapter6DialogueID, DialogueNode> = {
 		textEn: '(Shouting) We are alive!',
 		effects: [{ stat: StatID.MONEY, value: 5000000000 }],
 		next: Chapter7DialogueID.CH7_INTRO,
+	},
+
+	// NEW: Developer Scenarios (Startup Tech Decisions)
+	[Chapter6DialogueID.CH6_DECISION_ARCH]: {
+		speaker: 'narrator',
+		text: 'Khởi động dự án. Chọn kiến trúc nào cho MVP (Minimum Viable Product)?',
+		textVi:
+			'Khởi động dự án. Chọn kiến trúc nào cho MVP (Minimum Viable Product)?',
+		textEn: 'Starting project. Which architecture for MVP?',
+		choices: [
+			{
+				id: 'arch_mono',
+				text: 'Monolith: Nhanh, gọn, dễ deploy (Tech Debt về sau)',
+				textVi: 'Monolith: Nhanh, gọn, dễ deploy (Tech Debt về sau)',
+				textEn: 'Monolith: Fast, simple, easy deploy (Future Tech Debt)',
+				effects: [
+					{ stat: StatID.VISION, value: 5 },
+					{ stat: StatID.MONEY, value: 10000000 }, // Save cost
+				],
+				next: Chapter6DialogueID.CH6_DECISION_DB,
+			},
+			{
+				id: 'arch_micro',
+				text: 'Microservices: Scale tốt nhưng phức tạp (Overengineering)',
+				textVi: 'Microservices: Scale tốt nhưng phức tạp (Overengineering)',
+				textEn: 'Microservices: Good Scale but complex (Overengineering)',
+				effects: [
+					{ stat: StatID.VISION, value: -10 },
+					{ stat: StatID.MONEY, value: -50000000 }, // Burn rate high
+					{ stat: StatID.STRESS, value: 10 },
+				],
+				next: Chapter6DialogueID.CH6_DECISION_DB,
+			},
+		],
+	},
+	[Chapter6DialogueID.CH6_DECISION_DB]: {
+		speaker: 'narrator',
+		text: 'Chọn Database chính cho hệ thống? Dữ liệu có cấu trúc phức tạp.',
+		textVi: 'Chọn Database chính cho hệ thống? Dữ liệu có cấu trúc phức tạp.',
+		textEn: 'Choose main Database? Data is complex structured.',
+		choices: [
+			{
+				id: 'db_sql',
+				text: 'PostgreSQL/MySQL: An toàn (ACID), Join tốt',
+				textVi: 'PostgreSQL/MySQL: An toàn (ACID), Join tốt',
+				textEn: 'PostgreSQL/MySQL: Safe (ACID), Good Join',
+				effects: [{ stat: StatID.VISION, value: 15 }],
+				next: Chapter6DialogueID.CH6_DECISION_CLOUD,
+			},
+			{
+				id: 'db_nosql',
+				text: 'MongoDB: Schemaless, Dev nhanh (Rủi ro Data Integrity)',
+				textVi: 'MongoDB: Schemaless, Dev nhanh (Rủi ro Data Integrity)',
+				textEn: 'MongoDB: Schemaless, Fast Dev (Data Integrity Risk)',
+				effects: [
+					{ stat: StatID.VISION, value: -5 },
+					{ stat: StatID.MONEY, value: 5000000 }, // Faster dev
+				],
+				next: Chapter6DialogueID.CH6_DECISION_CLOUD,
+			},
+		],
+	},
+	[Chapter6DialogueID.CH6_DECISION_CLOUD]: {
+		speaker: 'narrator',
+		text: 'Chọn Cloud Provider nào để tiết kiệm chi phí ban đầu?',
+		textVi: 'Chọn Cloud Provider nào để tiết kiệm chi phí ban đầu?',
+		textEn: 'Choose Cloud Provider to save initial cost?',
+		choices: [
+			{
+				id: 'cloud_aws',
+				text: 'AWS: Đầy đủ nhưng phức tạp, dễ tốn tiền (Vendor Lock-in)',
+				textVi: 'AWS: Đầy đủ nhưng phức tạp, dễ tốn tiền (Vendor Lock-in)',
+				textEn: 'AWS: Complete but complex, costly (Vendor Lock-in)',
+				effects: [
+					{ stat: StatID.VISION, value: 10 },
+					{ stat: StatID.MONEY, value: -20000000 },
+				],
+				next: Chapter6DialogueID.CH6_DECISION_CACHE,
+			},
+			{
+				id: 'cloud_vps',
+				text: 'VPS/DigitalOcean: Rẻ, tự config (Tốn công vận hành)',
+				textVi: 'VPS/DigitalOcean: Rẻ, tự config (Tốn công vận hành)',
+				textEn: 'VPS/DigitalOcean: Cheap, self-config (Ops effort)',
+				effects: [
+					{ stat: StatID.MONEY, value: 10000000 }, // Save money
+					{ stat: StatID.STRESS, value: 10 }, // Ops headache
+				],
+				next: Chapter6DialogueID.CH6_DECISION_CACHE,
+			},
+		],
+	},
+	[Chapter6DialogueID.CH6_DECISION_CACHE]: {
+		speaker: 'narrator',
+		text: 'Hệ thống chậm. Cần Cache. Dùng gì?',
+		textVi: 'Hệ thống chậm. Cần Cache. Dùng gì?',
+		textEn: 'System slow. Need Cache. Use what?',
+		choices: [
+			{
+				id: 'cache_redis',
+				text: 'Redis: In-memory, nhanh, phổ biến',
+				textVi: 'Redis: In-memory, nhanh, phổ biến',
+				textEn: 'Redis: In-memory, fast, popular',
+				effects: [{ stat: StatID.VISION, value: 10 }],
+				next: Chapter6DialogueID.CH6_DECISION_SCALE,
+			},
+			{
+				id: 'cache_file',
+				text: 'File Cache: Đơn giản nhưng khó Scale',
+				textVi: 'File Cache: Đơn giản nhưng khó Scale',
+				textEn: 'File Cache: Simple but hard to Scale',
+				effects: [{ stat: StatID.VISION, value: -5 }],
+				next: Chapter6DialogueID.CH6_DECISION_SCALE,
+			},
+		],
+	},
+	[Chapter6DialogueID.CH6_DECISION_SCALE]: {
+		speaker: 'narrator',
+		text: 'User tăng đột biến. Server quá tải. Scale thế nào?',
+		textVi: 'User tăng đột biến. Server quá tải. Scale thế nào?',
+		textEn: 'User spike. Server overload. How to scale?',
+		choices: [
+			{
+				id: 'scale_vert',
+				text: 'Vertical: Nâng cấp Server xịn hơn (Giới hạn phần cứng)',
+				textVi: 'Vertical: Nâng cấp Server xịn hơn (Giới hạn phần cứng)',
+				textEn: 'Vertical: Upgrade Server (Hardware Limit)',
+				effects: [
+					{ stat: StatID.MONEY, value: -10000000 },
+					{ stat: StatID.VISION, value: -5 },
+				],
+				next: Chapter6DialogueID.CH6_DECISION_HIRE,
+			},
+			{
+				id: 'scale_horiz',
+				text: 'Horizontal: Thêm nhiều Server nhỏ + Load Balancer',
+				textVi: 'Horizontal: Thêm nhiều Server nhỏ + Load Balancer',
+				textEn: 'Horizontal: Add small Servers + Load Balancer',
+				effects: [
+					{ stat: StatID.VISION, value: 15 },
+					{ stat: StatID.MONEY, value: -15000000 },
+				],
+				next: Chapter6DialogueID.CH6_DECISION_HIRE,
+			},
+		],
+	},
+	[Chapter6DialogueID.CH6_DECISION_HIRE]: {
+		speaker: 'narrator',
+		text: 'Tuyển dụng nhân viên đầu tiên (Key Member). Ưu tiên tiêu chí nào?',
+		textVi: 'Tuyển dụng nhân viên đầu tiên (Key Member). Ưu tiên tiêu chí nào?',
+		textEn: 'Hiring first Key Member. Priority?',
+		choices: [
+			{
+				id: 'hire_attitude',
+				text: 'Thái độ (Attitude) > Kỹ năng (Skill): Đào tạo được',
+				textVi: 'Thái độ (Attitude) > Kỹ năng (Skill): Đào tạo được',
+				textEn: 'Attitude > Skill: Trainable',
+				effects: [
+					{ stat: StatID.HUMANITY, value: 10 },
+					{ stat: StatID.VISION, value: -5 }, // Slow start
+				],
+				next: Chapter6DialogueID.CH6_DECISION_FIRE,
+			},
+			{
+				id: 'hire_rockstar',
+				text: 'Rockstar Developer: Code giỏi nhưng cái tôi lớn (Toxic)',
+				textVi: 'Rockstar Developer: Code giỏi nhưng cái tôi lớn (Toxic)',
+				textEn: 'Rockstar Developer: Good code but big ego (Toxic)',
+				effects: [
+					{ stat: StatID.VISION, value: 10 },
+					{ stat: StatID.HUMANITY, value: -10 },
+					{ stat: StatID.STRESS, value: 10 },
+				],
+				next: Chapter6DialogueID.CH6_DECISION_FIRE,
+			},
+		],
+	},
+	[Chapter6DialogueID.CH6_DECISION_FIRE]: {
+		speaker: 'narrator',
+		text: 'Một nhân viên làm việc kém hiệu quả, ảnh hưởng tiến độ. Xử lý sao?',
+		textVi:
+			'Một nhân viên làm việc kém hiệu quả, ảnh hưởng tiến độ. Xử lý sao?',
+		textEn: 'An employee underperforms, affecting progress. How to handle?',
+		choices: [
+			{
+				id: 'fire_fast',
+				text: 'Sa thải ngay: "Hire slow, Fire fast" (Bảo vệ team)',
+				textVi: 'Sa thải ngay: "Hire slow, Fire fast" (Bảo vệ team)',
+				textEn: 'Fire immediately: "Hire slow, Fire fast" (Protect team)',
+				effects: [
+					{ stat: StatID.STEELMIND, value: 10 },
+					{ stat: StatID.HUMANITY, value: -5 },
+				],
+				next: Chapter6DialogueID.CH6_DECISION_MENTOR,
+			},
+			{
+				id: 'fire_coach',
+				text: 'PIP (Performance Improvement Plan): Cho cơ hội sửa sai',
+				textVi: 'PIP (Performance Improvement Plan): Cho cơ hội sửa sai',
+				textEn: 'PIP: Give chance to improve',
+				effects: [
+					{ stat: StatID.HUMANITY, value: 10 },
+					{ stat: StatID.MONEY, value: -20000000 }, // Wasted salary
+				],
+				next: Chapter6DialogueID.CH6_DECISION_MENTOR,
+			},
+		],
+	},
+	[Chapter6DialogueID.CH6_DECISION_MENTOR]: {
+		speaker: 'narrator',
+		text: 'Bạn cảm thấy cô đơn và quá tải với vai trò Founder. Cần Mentor?',
+		textVi: 'Bạn cảm thấy cô đơn và quá tải với vai trò Founder. Cần Mentor?',
+		textEn: 'Lonely and overwhelmed as Founder. Need Mentor?',
+		choices: [
+			{
+				id: 'mentor_find',
+				text: 'Tìm Mentor: Chia sẻ cổ phần để đổi lấy kinh nghiệm',
+				textVi: 'Tìm Mentor: Chia sẻ cổ phần để đổi lấy kinh nghiệm',
+				textEn: 'Find Mentor: Share equity for experience',
+				effects: [
+					{ stat: StatID.VISION, value: 15 },
+					{ stat: StatID.MONEY, value: -50000000 }, // Equity value
+				],
+				next: Chapter6DialogueID.CH6_DECISION_PIVOT,
+			},
+			{
+				id: 'mentor_self',
+				text: 'Tự học: Thử và sai (Giữ 100% cổ phần)',
+				textVi: 'Tự học: Thử và sai (Giữ 100% cổ phần)',
+				textEn: 'Self-taught: Trial & Error (Keep 100% equity)',
+				effects: [
+					{ stat: StatID.STEELMIND, value: 10 },
+					{ stat: StatID.STRESS, value: 20 },
+				],
+				next: Chapter6DialogueID.CH6_DECISION_PIVOT,
+			},
+		],
+	},
+	[Chapter6DialogueID.CH6_DECISION_PIVOT]: {
+		speaker: 'narrator',
+		text: 'Sản phẩm ra mắt không đạt Product-Market Fit. User không quay lại.',
+		textVi:
+			'Sản phẩm ra mắt không đạt Product-Market Fit. User không quay lại.',
+		textEn: 'Product launch failed Product-Market Fit. Users not returning.',
+		choices: [
+			{
+				id: 'pivot_yes',
+				text: 'Pivot: Đập đi xây lại theo hướng mới (Tốn kém nhưng cần thiết)',
+				textVi:
+					'Pivot: Đập đi xây lại theo hướng mới (Tốn kém nhưng cần thiết)',
+				textEn: 'Pivot: Rebuild new direction (Costly but needed)',
+				effects: [
+					{ stat: StatID.VISION, value: 10 },
+					{ stat: StatID.MONEY, value: -100000000 }, // Burn rate
+				],
+				next: Chapter6DialogueID.CH6_DECISION_CULTURE,
+			},
+			{
+				id: 'pivot_no',
+				text: 'Persevere: Kiên trì tối ưu sản phẩm cũ (Cố đấm ăn xôi)',
+				textVi: 'Persevere: Kiên trì tối ưu sản phẩm cũ (Cố đấm ăn xôi)',
+				textEn: 'Persevere: Optimize old product (Stubborn)',
+				effects: [
+					{ stat: StatID.STEELMIND, value: 5 },
+					{ stat: StatID.MONEY, value: -50000000 }, // Slow death
+				],
+				next: Chapter6DialogueID.CH6_DECISION_CULTURE,
+			},
+		],
+	},
+	[Chapter6DialogueID.CH6_DECISION_CULTURE]: {
+		speaker: 'narrator',
+		text: 'Văn hóa công ty (Culture). Bạn muốn xây dựng kiểu nào?',
+		textVi: 'Văn hóa công ty (Culture). Bạn muốn xây dựng kiểu nào?',
+		textEn: 'Company Culture. Which type?',
+		choices: [
+			{
+				id: 'cult_family',
+				text: 'Gia đình: Yêu thương, bao dung (Thoải mái nhưng chậm)',
+				textVi: 'Gia đình: Yêu thương, bao dung (Thoải mái nhưng chậm)',
+				textEn: 'Family: Loving, forgiving (Comfortable but slow)',
+				effects: [
+					{ stat: StatID.HUMANITY, value: 15 },
+					{ stat: StatID.VISION, value: -5 },
+				],
+				next: Chapter6DialogueID.CH6_INVESTOR_START,
+			},
+			{
+				id: 'cult_sport',
+				text: 'Đội bóng chuyên nghiệp: Hiệu suất cao, đào thải khắc nghiệt',
+				textVi: 'Đội bóng chuyên nghiệp: Hiệu suất cao, đào thải khắc nghiệt',
+				textEn: 'Pro Sports Team: High performance, harsh elimination',
+				effects: [
+					{ stat: StatID.VISION, value: 15 },
+					{ stat: StatID.STRESS, value: 20 },
+				],
+				next: Chapter6DialogueID.CH6_INVESTOR_START,
+			},
+		],
 	},
 };

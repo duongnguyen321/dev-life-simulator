@@ -126,6 +126,17 @@ export enum Chapter3DialogueID {
 	CH3_COVID_REFUSE = 'ch3_covid_refuse',
 	CH3_COVID_END = 'ch3_covid_end',
 	CH3_PTIT_ADMISSION = 'ch3_ptit_admission',
+	// Scenarios
+	CH3_QUIZ_HTML_TAGS = 'ch3_quiz_html_tags',
+	CH3_QUIZ_CSS_DISPLAY = 'ch3_quiz_css_display',
+	CH3_QUIZ_JS_VAR = 'ch3_quiz_js_var',
+	CH3_QUIZ_FE_BE = 'ch3_quiz_fe_be',
+	CH3_QUIZ_API = 'ch3_quiz_api',
+	CH3_QUIZ_DEBUG_LOGIC = 'ch3_quiz_debug_logic',
+	CH3_QUIZ_HTTP = 'ch3_quiz_http',
+	CH3_QUIZ_BROWSER = 'ch3_quiz_browser',
+	CH3_QUIZ_VSCODE = 'ch3_quiz_vscode',
+	CH3_QUIZ_GIT_INIT = 'ch3_quiz_git_init',
 }
 
 export enum Chapter4DialogueID {
@@ -173,6 +184,17 @@ export enum Chapter4DialogueID {
 	CH4_INTERVIEW_PREP = 'ch4_interview_prep',
 	CH4_INTERVIEW_SALARY = 'ch4_interview_salary',
 	CH4_INTERVIEW_END = 'ch4_interview_end',
+	// Scenarios
+	CH4_SITUATION_ESTIMATE = 'ch4_situation_estimate',
+	CH4_SITUATION_GIT_CONFLICT = 'ch4_situation_git_conflict',
+	CH4_SITUATION_QA_BUG = 'ch4_situation_qa_bug',
+	CH4_SITUATION_REACT_KEY = 'ch4_situation_react_key',
+	CH4_SITUATION_REST_METHOD = 'ch4_situation_rest_method',
+	CH4_SITUATION_AUTH = 'ch4_situation_auth',
+	CH4_SITUATION_ASYNC = 'ch4_situation_async',
+	CH4_SITUATION_ENGLISH = 'ch4_situation_english',
+	CH4_SITUATION_DEPLOY = 'ch4_situation_deploy',
+	CH4_SITUATION_TEAM_LUNCH = 'ch4_situation_team_lunch',
 }
 
 export enum Chapter5DialogueID {
@@ -219,6 +241,17 @@ export enum Chapter5DialogueID {
 	CH5_MOM_SICK_OK = 'ch5_mom_sick_ok',
 	CH5_MOM_SICK_BAD = 'ch5_mom_sick_bad',
 	CH5_RUNTIME_STATUS = 'ch5_runtime_status',
+	// Scenarios
+	CH5_CHALLENGE_DB_INDEX = 'ch5_challenge_db_index',
+	CH5_CHALLENGE_STATE = 'ch5_challenge_state',
+	CH5_CHALLENGE_RENDER = 'ch5_challenge_render',
+	CH5_CHALLENGE_CLIENT = 'ch5_challenge_client',
+	CH5_CHALLENGE_INTERVIEW = 'ch5_challenge_interview',
+	CH5_CHALLENGE_OFFER = 'ch5_challenge_offer',
+	CH5_CHALLENGE_TECH_DEBT = 'ch5_challenge_tech_debt',
+	CH5_CHALLENGE_SECURITY = 'ch5_challenge_security',
+	CH5_CHALLENGE_DOCKER = 'ch5_challenge_docker',
+	CH5_CHALLENGE_CI_CD = 'ch5_challenge_ci_cd',
 }
 
 export enum Chapter6DialogueID {
@@ -260,6 +293,17 @@ export enum Chapter6DialogueID {
 	CH6_REDEMPTION_2 = 'ch6_redemption_2',
 	CH6_SERIES_A_START = 'ch6_series_a_start',
 	CH6_SERIES_A_RECEIVE = 'ch6_series_a_receive',
+	// Scenarios
+	CH6_DECISION_ARCH = 'ch6_decision_arch',
+	CH6_DECISION_DB = 'ch6_decision_db',
+	CH6_DECISION_CACHE = 'ch6_decision_cache',
+	CH6_DECISION_HIRE = 'ch6_decision_hire',
+	CH6_DECISION_FIRE = 'ch6_decision_fire',
+	CH6_DECISION_PIVOT = 'ch6_decision_pivot',
+	CH6_DECISION_SCALE = 'ch6_decision_scale',
+	CH6_DECISION_CLOUD = 'ch6_decision_cloud',
+	CH6_DECISION_MENTOR = 'ch6_decision_mentor',
+	CH6_DECISION_CULTURE = 'ch6_decision_culture',
 }
 
 export enum Chapter7DialogueID {
@@ -304,6 +348,18 @@ export enum Chapter7DialogueID {
 	CH7_DONATE_GIVE = 'ch7_donate_give',
 	CH7_DIVIDENDS_START = 'ch7_dividends_start',
 	CH7_REAL_ESTATE_START = 'ch7_real_estate_start',
+	CH7_DINNER_STAY = 'ch7_dinner_stay',
+	// Scenarios
+	CH7_SCALE_DB_SHARDING = 'ch7_scale_db_sharding',
+	CH7_SCALE_LOAD_BALANCER = 'ch7_scale_load_balancer',
+	CH7_SCALE_CACHE = 'ch7_scale_cache',
+	CH7_SCALE_CDN = 'ch7_scale_cdn',
+	CH7_SCALE_MICROSERVICES = 'ch7_scale_microservices',
+	CH7_SCALE_MONITORING = 'ch7_scale_monitoring',
+	CH7_SCALE_TEAM_STRUCTURE = 'ch7_scale_team_structure',
+	CH7_SCALE_CULTURE_FIT = 'ch7_scale_culture_fit',
+	CH7_SCALE_IPO = 'ch7_scale_ipo',
+	CH7_SCALE_EXIT = 'ch7_scale_exit',
 }
 
 export enum Chapter8DialogueID {
@@ -339,6 +395,17 @@ export enum Chapter8DialogueID {
 	CH8_DONATE_UNI_START = 'ch8_donate_uni_start',
 	CH8_DONATE_UNI_GIVE = 'ch8_donate_uni_give',
 	CH8_REBIRTH_2 = 'ch8_rebirth_2',
+	// Scenarios
+	CH8_STRATEGY_AI = 'ch8_strategy_ai',
+	CH8_STRATEGY_ETHICS = 'ch8_strategy_ethics',
+	CH8_STRATEGY_LAYOFF = 'ch8_strategy_layoff',
+	CH8_STRATEGY_GLOBAL = 'ch8_strategy_global',
+	CH8_STRATEGY_CRISIS = 'ch8_strategy_crisis',
+	CH8_STRATEGY_SUCCESSION = 'ch8_strategy_succession',
+	CH8_STRATEGY_REGULATION = 'ch8_strategy_regulation',
+	CH8_STRATEGY_INNOVATION = 'ch8_strategy_innovation',
+	CH8_STRATEGY_BOARD = 'ch8_strategy_board',
+	CH8_STRATEGY_EXIT = 'ch8_strategy_exit',
 }
 
 export enum Chapter9DialogueID {

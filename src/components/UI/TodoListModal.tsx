@@ -1,7 +1,8 @@
 import { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { useGameStore } from '@/store/gameStore';
-import type { TodoTask, Stats } from '@/data/types';
+import { type TodoTask, type Stats } from '@/data/types';
+import { StatID } from '@/data/enum';
 import { audioManager } from '@/core/AudioManager';
 
 interface TodoListModalProps {
@@ -9,6 +10,7 @@ interface TodoListModalProps {
 	tasks: TodoTask[];
 	onComplete: (selectedTasks: TodoTask[]) => void;
 	onClose: () => void;
+	isMandatory?: boolean;
 }
 
 export default function TodoListModal({
@@ -16,6 +18,7 @@ export default function TodoListModal({
 	tasks,
 	onComplete,
 	onClose,
+	isMandatory = false,
 }: TodoListModalProps) {
 	const { stats, settings } = useGameStore();
 	const [selectedTaskIds, setSelectedTaskIds] = useState<Set<string>>(
@@ -28,6 +31,27 @@ export default function TodoListModal({
 			setSelectedTaskIds(new Set());
 		}
 	}, [isOpen, tasks]);
+
+	// Helper to translate stat names
+	const getStatName = (stat: string): string => {
+		const isVi = settings.language === 'vi';
+		switch (stat) {
+			case StatID.HEALTH:
+				return isVi ? 'Sức khỏe' : 'Health';
+			case StatID.HUMANITY:
+				return isVi ? 'Nhân tính' : 'Humanity';
+			case StatID.MONEY:
+				return isVi ? 'Tiền' : 'Money';
+			case StatID.STEELMIND:
+				return isVi ? 'Tinh thần thép' : 'Steel Mind';
+			case StatID.STRESS:
+				return isVi ? 'Stress' : 'Stress';
+			case StatID.VISION:
+				return isVi ? 'Tầm nhìn' : 'Vision';
+			default:
+				return stat;
+		}
+	};
 
 	// Calculate projected stats based on selection
 	const calculateProjectedStats = () => {
@@ -110,6 +134,8 @@ export default function TodoListModal({
 
 	if (!isOpen) return null;
 
+	const isVi = settings.language === 'vi';
+
 	return (
 		<AnimatePresence>
 			<motion.div
@@ -124,12 +150,10 @@ export default function TodoListModal({
 					className='bg-bg-secondary border-4 border-steel-mind p-6 rounded-lg w-full max-w-2xl max-h-[80vh] flex flex-col'
 				>
 					<h2 className='pixel-font text-2xl text-center text-steel-mind mb-2'>
-						{settings.language === 'vi'
-							? 'NHẬT KÝ TRONG NGÀY'
-							: 'DAILY TODO LIST'}
+						{isVi ? 'NHẬT KÝ TRONG NGÀY' : 'DAILY TODO LIST'}
 					</h2>
 					<p className='text-center text-gray-400 mb-4 text-sm pixel-font'>
-						{settings.language === 'vi'
+						{isVi
 							? `Đã chọn: ${selectedTaskIds.size}/${MAX_TASKS}`
 							: `Selected: ${selectedTaskIds.size}/${MAX_TASKS}`}
 					</p>
@@ -148,7 +172,9 @@ export default function TodoListModal({
 									const k = key as keyof Stats;
 									if (projectedStats[k] < (value as number)) {
 										canAfford = false;
-										affordabilityReason = `Not enough ${k} (Need ${value})`;
+										affordabilityReason = isVi
+											? `Không đủ ${getStatName(k)} (Cần ${value})`
+											: `Not enough ${getStatName(k)} (Need ${value})`;
 										break;
 									}
 								}
@@ -159,10 +185,9 @@ export default function TodoListModal({
 							let tooltipText = '';
 							if (isDisabled) {
 								if (isLimitReached)
-									tooltipText =
-										settings.language === 'vi'
-											? 'Đã đạt giới hạn 5 việc'
-											: 'Limit reached (5/5)';
+									tooltipText = isVi
+										? 'Đã đạt giới hạn 5 việc'
+										: 'Limit reached (5/5)';
 								else if (!canAfford) tooltipText = affordabilityReason;
 							}
 
@@ -185,28 +210,26 @@ export default function TodoListModal({
 										<div className='flex justify-between items-start'>
 											<div className='flex-1'>
 												<p className='text-text-primary font-bold mb-1'>
-													{settings.language === 'vi'
-														? task.textVi
-														: task.textEn}
+													{isVi ? task.textVi : task.textEn}
 												</p>
 
 												{/* Costs & Rewards Display */}
 												<div className='flex gap-4 text-xs mt-2'>
 													{task.cost && (
 														<div className='text-red-400'>
-															Cost:{' '}
+															{isVi ? 'Chi phí: ' : 'Cost: '}
 															{Object.entries(task.cost)
-																.map(([k, v]) => `${k} -${v}`)
+																.map(([k, v]) => `${getStatName(k)} -${v}`)
 																.join(', ')}
 														</div>
 													)}
 													{task.reward && (
 														<div className='text-green-400'>
-															Reward:{' '}
+															{isVi ? 'Phần thưởng: ' : 'Reward: '}
 															{Object.entries(task.reward)
 																.map(([k, v]) => {
 																	const numVal = v as number;
-																	return `${k} ${
+																	return `${getStatName(k)} ${
 																		numVal >= 0 ? '+' : ''
 																	}${numVal.toLocaleString()}`;
 																})
@@ -215,13 +238,13 @@ export default function TodoListModal({
 													)}
 													{task.effects && (
 														<div className='text-blue-400'>
-															Effect:{' '}
+															{isVi ? 'Hiệu ứng: ' : 'Effect: '}
 															{task.effects
 																.map(
 																	(e) =>
-																		`${e.stat} ${e.value > 0 ? '+' : ''}${
-																			e.value
-																		}`
+																		`${getStatName(e.stat)} ${
+																			e.value > 0 ? '+' : ''
+																		}${e.value}`
 																)
 																.join(', ')}
 														</div>
@@ -252,12 +275,14 @@ export default function TodoListModal({
 					</div>
 
 					<div className='mt-6 flex justify-end gap-4 border-t border-gray-700 pt-4'>
-						<button
-							onClick={onClose}
-							className='px-4 py-2 text-text-primary hover:text-white pixel-font text-sm'
-						>
-							{settings.language === 'vi' ? 'ĐỂ SAU' : 'LATER'}
-						</button>
+						{!isMandatory && (
+							<button
+								onClick={onClose}
+								className='px-4 py-2 text-text-primary hover:text-white pixel-font text-sm'
+							>
+								{isVi ? 'ĐỂ SAU' : 'LATER'}
+							</button>
+						)}
 						<button
 							onClick={handleComplete}
 							disabled={selectedTaskIds.size === 0}
@@ -267,9 +292,7 @@ export default function TodoListModal({
 								${selectedTaskIds.size === 0 ? 'opacity-50 cursor-not-allowed' : ''}
 							`}
 						>
-							{settings.language === 'vi'
-								? 'HOÀN THÀNH & ĐI NGỦ'
-								: 'COMPLETE & SLEEP'}
+							{isVi ? 'HOÀN THÀNH & ĐI NGỦ' : 'COMPLETE & SLEEP'}
 						</button>
 					</div>
 				</motion.div>

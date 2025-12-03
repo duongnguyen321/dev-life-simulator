@@ -4,7 +4,15 @@
 // Theme: Cân bằng, Gia đình và Di sản
 // ==========================================
 
-import { Chapter7DialogueID, Chapter7SceneID, Chapter7TodoID, ConditionType, FlagID, Operator, StatID } from '../enum';
+import {
+	Chapter7DialogueID,
+	Chapter7SceneID,
+	Chapter7TodoID,
+	ConditionType,
+	FlagID,
+	Operator,
+	StatID,
+} from '../enum';
 import { type Chapter, type DialogueNode } from '../types';
 
 export const chapter7: Chapter = {
@@ -504,7 +512,7 @@ export const chapter7Dialogues: Record<Chapter7DialogueID, DialogueNode> = {
 			'32 tuổi. Sau cú thất bại Product, bạn không bỏ cuộc. Bạn quay về, đập đi xây lại. Đơn giản hơn, thực dụng hơn.',
 		textEn:
 			'32 years old. After Product failure, you persisted. Returned, tore down, rebuilt. Simpler, more pragmatic.',
-		next: Chapter7DialogueID.CH7_DIVIDE_STRATEGY,
+		next: Chapter7DialogueID.CH7_SCALE_DB_SHARDING,
 	},
 	[Chapter7DialogueID.CH7_DIVIDE_STRATEGY]: {
 		speaker: 'narrator',
@@ -803,7 +811,7 @@ export const chapter7Dialogues: Record<Chapter7DialogueID, DialogueNode> = {
 				textVi: 'Ở lại làm: Deadline dí rồi (Steel Mind +3)',
 				textEn: 'Stay: Deadline is close (Steel Mind +3)',
 				effects: [{ stat: StatID.STEELMIND, value: 3 }],
-				next: Chapter7DialogueID.CH7_MARRIAGE_REPLY,
+				next: Chapter7DialogueID.CH7_DINNER_STAY,
 			},
 		],
 	},
@@ -813,6 +821,15 @@ export const chapter7Dialogues: Record<Chapter7DialogueID, DialogueNode> = {
 		textVi:
 			'Bữa cơm gia đình ấm cúng. Bạn cảm thấy bình yên sau những giờ code căng thẳng.',
 		textEn: 'Cozy family dinner. You feel at peace after stressful coding.',
+		next: Chapter7DialogueID.CH7_MARRIAGE_REPLY,
+	},
+	[Chapter7DialogueID.CH7_DINNER_STAY]: {
+		speaker: 'narrator',
+		text: 'Bạn ở lại công ty ăn mì gói. Vợ nhắn tin: "Anh cứ làm việc đi, mẹ con em ngủ trước". Bạn thấy sống mũi cay cay.',
+		textVi:
+			'Bạn ở lại công ty ăn mì gói. Vợ nhắn tin: "Anh cứ làm việc đi, mẹ con em ngủ trước". Bạn thấy sống mũi cay cay.',
+		textEn:
+			'You stayed at office eating instant noodles. Wife texted: "You keep working, we sleep first". You felt a sting in your nose.',
 		next: Chapter7DialogueID.CH7_MARRIAGE_REPLY,
 	},
 	[Chapter7DialogueID.CH7_MARRIAGE_REPLY]: {
@@ -1194,5 +1211,289 @@ export const chapter7Dialogues: Record<Chapter7DialogueID, DialogueNode> = {
 			'You also decided to sell the old apartment bought when newlywed. Land price skyrocketed. You profited 2 billion.',
 		effects: [{ stat: StatID.MONEY, value: 2000000000 }],
 		next: 'ch8_intro',
+	},
+
+	// NEW: Developer Scenarios (Scaling & Architecture)
+	[Chapter7DialogueID.CH7_SCALE_DB_SHARDING]: {
+		speaker: 'narrator',
+		text: 'Database quá tải (10M users). Cần Sharding. Chọn Shard Key nào?',
+		textVi: 'Database quá tải (10M users). Cần Sharding. Chọn Shard Key nào?',
+		textEn: 'Database overloaded (10M users). Need Sharding. Choose Shard Key?',
+		choices: [
+			{
+				id: 'shard_user_id',
+				text: 'User ID: Phân tán đều, dễ query theo user (High Cardinality)',
+				textVi: 'User ID: Phân tán đều, dễ query theo user (High Cardinality)',
+				textEn:
+					'User ID: Even distribution, easy query by user (High Cardinality)',
+				effects: [{ stat: StatID.VISION, value: 15 }],
+				next: Chapter7DialogueID.CH7_SCALE_LOAD_BALANCER,
+			},
+			{
+				id: 'shard_geo',
+				text: 'Location (Geo): Tối ưu cho local, nhưng dễ lệch tải (Hotspot)',
+				textVi: 'Location (Geo): Tối ưu cho local, nhưng dễ lệch tải (Hotspot)',
+				textEn: 'Location (Geo): Optimized for local, but easy Skew (Hotspot)',
+				effects: [
+					{ stat: StatID.VISION, value: -5 },
+					{ stat: StatID.STRESS, value: 10 },
+				],
+				next: Chapter7DialogueID.CH7_SCALE_LOAD_BALANCER,
+			},
+		],
+	},
+	[Chapter7DialogueID.CH7_SCALE_LOAD_BALANCER]: {
+		speaker: 'narrator',
+		text: 'Cấu hình Load Balancer. Chọn thuật toán nào?',
+		textVi: 'Cấu hình Load Balancer. Chọn thuật toán nào?',
+		textEn: 'Config Load Balancer. Choose algorithm?',
+		choices: [
+			{
+				id: 'lb_round_robin',
+				text: 'Round Robin: Chia đều lần lượt (Không quan tâm tải server)',
+				textVi: 'Round Robin: Chia đều lần lượt (Không quan tâm tải server)',
+				textEn: 'Round Robin: Distribute evenly (Ignore server load)',
+				effects: [{ stat: StatID.VISION, value: 5 }],
+				next: Chapter7DialogueID.CH7_SCALE_CACHE,
+			},
+			{
+				id: 'lb_least_conn',
+				text: 'Least Connections: Chia cho server rảnh nhất (Tối ưu hơn)',
+				textVi: 'Least Connections: Chia cho server rảnh nhất (Tối ưu hơn)',
+				textEn: 'Least Connections: To idlest server (More optimal)',
+				effects: [{ stat: StatID.VISION, value: 15 }],
+				next: Chapter7DialogueID.CH7_SCALE_CACHE,
+			},
+		],
+	},
+	[Chapter7DialogueID.CH7_SCALE_CACHE]: {
+		speaker: 'narrator',
+		text: 'Hệ thống Cache (Redis) bị đầy. Eviction Policy là gì?',
+		textVi: 'Hệ thống Cache (Redis) bị đầy. Eviction Policy là gì?',
+		textEn: 'Cache (Redis) full. Eviction Policy?',
+		choices: [
+			{
+				id: 'cache_lru',
+				text: 'LRU (Least Recently Used): Xóa cái lâu không dùng',
+				textVi: 'LRU (Least Recently Used): Xóa cái lâu không dùng',
+				textEn: 'LRU (Least Recently Used): Remove old unused',
+				effects: [{ stat: StatID.VISION, value: 10 }],
+				next: Chapter7DialogueID.CH7_SCALE_CDN,
+			},
+			{
+				id: 'cache_random',
+				text: 'Random: Xóa ngẫu nhiên (Rủi ro xóa data hot)',
+				textVi: 'Random: Xóa ngẫu nhiên (Rủi ro xóa data hot)',
+				textEn: 'Random: Remove randomly (Risk removing hot data)',
+				effects: [{ stat: StatID.VISION, value: -5 }],
+				next: Chapter7DialogueID.CH7_SCALE_CDN,
+			},
+		],
+	},
+	[Chapter7DialogueID.CH7_SCALE_CDN]: {
+		speaker: 'narrator',
+		text: 'User quốc tế kêu load ảnh chậm. Giải pháp?',
+		textVi: 'User quốc tế kêu load ảnh chậm. Giải pháp?',
+		textEn: 'Global users complain slow image load. Solution?',
+		choices: [
+			{
+				id: 'cdn_use',
+				text: 'Dùng CDN (Cloudflare/AWS CloudFront): Tốn tiền nhưng nhanh',
+				textVi: 'Dùng CDN (Cloudflare/AWS CloudFront): Tốn tiền nhưng nhanh',
+				textEn: 'Use CDN (Cloudflare/AWS CloudFront): Costly but fast',
+				effects: [
+					{ stat: StatID.MONEY, value: -50000000 },
+					{ stat: StatID.VISION, value: 10 },
+				],
+				next: Chapter7DialogueID.CH7_SCALE_MICROSERVICES,
+			},
+			{
+				id: 'cdn_compress',
+				text: 'Nén ảnh nhỏ lại thôi (Giải pháp tạm bợ)',
+				textVi: 'Nén ảnh nhỏ lại thôi (Giải pháp tạm bợ)',
+				textEn: 'Just compress images (Temporary fix)',
+				effects: [{ stat: StatID.VISION, value: -5 }],
+				next: Chapter7DialogueID.CH7_SCALE_MICROSERVICES,
+			},
+		],
+	},
+	[Chapter7DialogueID.CH7_SCALE_MICROSERVICES]: {
+		speaker: 'narrator',
+		text: 'Monolith quá cồng kềnh. Tách Microservices thế nào?',
+		textVi: 'Monolith quá cồng kềnh. Tách Microservices thế nào?',
+		textEn: 'Monolith too heavy. How to split Microservices?',
+		choices: [
+			{
+				id: 'micro_domain',
+				text: 'Tách theo Domain (User, Order, Payment): Loose Coupling',
+				textVi: 'Tách theo Domain (User, Order, Payment): Loose Coupling',
+				textEn: 'Split by Domain (User, Order, Payment): Loose Coupling',
+				effects: [{ stat: StatID.VISION, value: 15 }],
+				next: Chapter7DialogueID.CH7_SCALE_MONITORING,
+			},
+			{
+				id: 'micro_layer',
+				text: 'Tách theo Layer (Controller, Service, Repo): Distributed Monolith',
+				textVi:
+					'Tách theo Layer (Controller, Service, Repo): Distributed Monolith',
+				textEn:
+					'Split by Layer (Controller, Service, Repo): Distributed Monolith',
+				effects: [
+					{ stat: StatID.VISION, value: -10 },
+					{ stat: StatID.STRESS, value: 10 },
+				],
+				next: Chapter7DialogueID.CH7_SCALE_MONITORING,
+			},
+		],
+	},
+	[Chapter7DialogueID.CH7_SCALE_MONITORING]: {
+		speaker: 'narrator',
+		text: 'Hệ thống chết không ai biết. Cần Monitoring.',
+		textVi: 'Hệ thống chết không ai biết. Cần Monitoring.',
+		textEn: 'System down, no one knows. Need Monitoring.',
+		choices: [
+			{
+				id: 'monitor_full',
+				text: 'Full Stack Observability (Logs, Metrics, Traces)',
+				textVi: 'Full Stack Observability (Logs, Metrics, Traces)',
+				textEn: 'Full Stack Observability (Logs, Metrics, Traces)',
+				effects: [
+					{ stat: StatID.VISION, value: 15 },
+					{ stat: StatID.MONEY, value: -20000000 },
+				],
+				next: Chapter7DialogueID.CH7_SCALE_TEAM_STRUCTURE,
+			},
+			{
+				id: 'monitor_basic',
+				text: 'Dùng Pingdom check uptime là đủ (Tiết kiệm)',
+				textVi: 'Dùng Pingdom check uptime là đủ (Tiết kiệm)',
+				textEn: 'Pingdom uptime check is enough (Save money)',
+				effects: [
+					{ stat: StatID.VISION, value: -5 },
+					{ stat: StatID.MONEY, value: 5000000 },
+				],
+				next: Chapter7DialogueID.CH7_SCALE_TEAM_STRUCTURE,
+			},
+		],
+	},
+	[Chapter7DialogueID.CH7_SCALE_TEAM_STRUCTURE]: {
+		speaker: 'narrator',
+		text: 'Team 50 người. Tổ chức thế nào để Scale?',
+		textVi: 'Team 50 người. Tổ chức thế nào để Scale?',
+		textEn: 'Team 50 people. How to organize to Scale?',
+		choices: [
+			{
+				id: 'team_squad',
+				text: 'Spotify Model (Squads, Tribes): Cross-functional, Autonomous',
+				textVi: 'Spotify Model (Squads, Tribes): Cross-functional, Autonomous',
+				textEn: 'Spotify Model (Squads, Tribes): Cross-functional, Autonomous',
+				effects: [
+					{ stat: StatID.VISION, value: 15 },
+					{ stat: StatID.HUMANITY, value: 5 },
+				],
+				next: Chapter7DialogueID.CH7_SCALE_CULTURE_FIT,
+			},
+			{
+				id: 'team_hierarchy',
+				text: 'Phân tầng truyền thống (Manager -> Lead -> Dev): Control',
+				textVi: 'Phân tầng truyền thống (Manager -> Lead -> Dev): Control',
+				textEn: 'Traditional Hierarchy (Manager -> Lead -> Dev): Control',
+				effects: [
+					{ stat: StatID.STEELMIND, value: 10 },
+					{ stat: StatID.VISION, value: -5 }, // Slow innovation
+				],
+				next: Chapter7DialogueID.CH7_SCALE_CULTURE_FIT,
+			},
+		],
+	},
+	[Chapter7DialogueID.CH7_SCALE_CULTURE_FIT]: {
+		speaker: 'narrator',
+		text: 'Tuyển Senior mới. Giỏi nhưng không hợp văn hóa (Culture Fit).',
+		textVi: 'Tuyển Senior mới. Giỏi nhưng không hợp văn hóa (Culture Fit).',
+		textEn: 'Hiring new Senior. Good but no Culture Fit.',
+		choices: [
+			{
+				id: 'cult_reject',
+				text: 'Từ chối: Văn hóa là sống còn (Bảo vệ team)',
+				textVi: 'Từ chối: Văn hóa là sống còn (Bảo vệ team)',
+				textEn: 'Reject: Culture is vital (Protect team)',
+				effects: [
+					{ stat: StatID.VISION, value: 10 },
+					{ stat: StatID.STEELMIND, value: 5 },
+				],
+				next: Chapter7DialogueID.CH7_SCALE_IPO,
+			},
+			{
+				id: 'cult_hire',
+				text: 'Tuyển: Cần người làm được việc đã (Rủi ro xung đột)',
+				textVi: 'Tuyển: Cần người làm được việc đã (Rủi ro xung đột)',
+				textEn: 'Hire: Need hands first (Conflict risk)',
+				effects: [
+					{ stat: StatID.VISION, value: -5 },
+					{ stat: StatID.STRESS, value: 15 },
+				],
+				next: Chapter7DialogueID.CH7_SCALE_IPO,
+			},
+		],
+	},
+	[Chapter7DialogueID.CH7_SCALE_IPO]: {
+		speaker: 'narrator',
+		text: 'Nhà đầu tư giục IPO (Lên sàn). Bạn thấy chưa sẵn sàng.',
+		textVi: 'Nhà đầu tư giục IPO (Lên sàn). Bạn thấy chưa sẵn sàng.',
+		textEn: 'Investors push for IPO. You feel not ready.',
+		choices: [
+			{
+				id: 'ipo_delay',
+				text: 'Trì hoãn: Cần củng cố nội lực (Mất lòng Investor)',
+				textVi: 'Trì hoãn: Cần củng cố nội lực (Mất lòng Investor)',
+				textEn: 'Delay: Strengthen core first (Upset Investor)',
+				effects: [
+					{ stat: StatID.STEELMIND, value: 10 },
+					{ stat: StatID.STRESS, value: 10 },
+				],
+				next: Chapter7DialogueID.CH7_SCALE_EXIT,
+			},
+			{
+				id: 'ipo_rush',
+				text: 'IPO luôn: Lấy tiền mở rộng tiếp (Rủi ro bong bóng)',
+				textVi: 'IPO luôn: Lấy tiền mở rộng tiếp (Rủi ro bong bóng)',
+				textEn: 'IPO now: Get money to expand (Bubble risk)',
+				effects: [
+					{ stat: StatID.MONEY, value: 5000000000 }, // Huge money
+					{ stat: StatID.STRESS, value: 20 },
+				],
+				next: Chapter7DialogueID.CH7_SCALE_EXIT,
+			},
+		],
+	},
+	[Chapter7DialogueID.CH7_SCALE_EXIT]: {
+		speaker: 'narrator',
+		text: 'Đối thủ đề nghị mua lại công ty (Exit) với giá cao.',
+		textVi: 'Đối thủ đề nghị mua lại công ty (Exit) với giá cao.',
+		textEn: 'Competitor offers to buy company (Exit) for high price.',
+		choices: [
+			{
+				id: 'exit_sell',
+				text: 'Bán: Nghỉ hưu sớm (Money ++, Vision --)',
+				textVi: 'Bán: Nghỉ hưu sớm (Money ++, Vision --)',
+				textEn: 'Sell: Early retirement (Money ++, Vision --)',
+				effects: [
+					{ stat: StatID.MONEY, value: 10000000000 },
+					{ stat: StatID.VISION, value: -20 },
+				],
+				next: Chapter7DialogueID.CH7_DIVIDE_STRATEGY,
+			},
+			{
+				id: 'exit_keep',
+				text: 'Không bán: Đây là đứa con tinh thần (Tiếp tục chiến đấu)',
+				textVi: 'Không bán: Đây là đứa con tinh thần (Tiếp tục chiến đấu)',
+				textEn: 'No sell: This is my baby (Keep fighting)',
+				effects: [
+					{ stat: StatID.HUMANITY, value: 10 },
+					{ stat: StatID.STEELMIND, value: 10 },
+				],
+				next: Chapter7DialogueID.CH7_DIVIDE_STRATEGY,
+			},
+		],
 	},
 };

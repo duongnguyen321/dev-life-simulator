@@ -1,4 +1,4 @@
-import { useEffect, useState, useCallback } from 'react';
+import { useEffect, useState, useCallback, useRef } from 'react';
 import { useNavigate, useSearchParams } from 'react-router-dom';
 import { useGameStore } from '@/store/gameStore';
 import DialogueBox from '@/components/UI/DialogueBox';
@@ -10,10 +10,17 @@ import DreamModal from '@/components/UI/DreamModal';
 import SkillModal from '@/components/UI/SkillModal';
 import ChapterIntro from '@/components/UI/ChapterIntro';
 import { audioManager } from '@/core/AudioManager';
+import { saveSystem } from '@/core/SaveSystem';
 import { GameFlow } from '@/core/GameFlow';
 import { chapters, allDialogues } from '@/data/chapters';
 import { characters } from '@/data/characters';
-import type { DialogueChoice, TodoTask, DreamQuestion } from '@/data/types';
+import {
+	type DialogueChoice,
+	type TodoTask,
+	type DreamQuestion,
+} from '@/data/types';
+import { ConditionType } from '@/data/enum';
+import { Chapter1DialogueID } from '@/data/enum';
 
 export default function GameScreen() {
 	const navigate = useNavigate();
@@ -84,7 +91,6 @@ export default function GameScreen() {
 			}
 
 			// Try to load auto-save
-			const { saveSystem } = await import('@/core/SaveSystem');
 			const autoSaveData = await saveSystem.loadAutoSave();
 
 			if (autoSaveData) {
@@ -96,7 +102,7 @@ export default function GameScreen() {
 				const sceneDialogues = Object.keys(allDialogues).filter((key) =>
 					key.startsWith(autoSaveData.scene)
 				);
-				const startDialogue = sceneDialogues[0] || 'intro';
+				const startDialogue = sceneDialogues[0] || Chapter1DialogueID.CH1_INTRO;
 				store.setCurrentDialogue(startDialogue);
 				store.updateStats(autoSaveData.stats);
 				if (autoSaveData.inventory) {
@@ -129,7 +135,6 @@ export default function GameScreen() {
 			// Don't save during initial load
 			if (isLoading) return;
 
-			const { saveSystem } = await import('@/core/SaveSystem');
 			const store = useGameStore.getState();
 
 			await saveSystem.autoSave({
@@ -215,14 +220,55 @@ export default function GameScreen() {
 		};
 	}, []);
 
+	// Handle return from Sleep Reflection
+	useEffect(() => {
+		if (currentDialogueId === 'SLEEP_FLOW') {
+			generateDailyTasks();
+			setShowSleepModal(true);
+		}
+	}, [currentDialogueId, generateDailyTasks]);
+
+	// Handle Sleep Trigger from GameFlow
+	useEffect(() => {
+		const store = useGameStore.getState();
+		if (store.triggerSleepAction) {
+			handleSleepClick();
+			store.setTriggerSleepAction(false);
+		}
+	}, [useGameStore.getState().triggerSleepAction]);
+
 	const handleChoice = (choice: DialogueChoice) => {
 		audioManager.resumeContext();
 		GameFlow.makeChoice(choice);
 	};
 
+	// Ref to store dialogue before sleep reflection
+	const preSleepDialogueRef = useRef<string | null>(null);
+
 	const handleSleepClick = () => {
 		audioManager.resumeContext();
 		audioManager.playSFX('ui/button_click');
+
+		// Check for Sleep Reflection
+		if (chapter?.reflectionQuotes) {
+			const sleepQuotes = chapter.reflectionQuotes.filter(
+				(q) => q.type === ConditionType.SLEEP
+			);
+
+			if (sleepQuotes.length > 0) {
+				// Save current dialogue to restore later
+				preSleepDialogueRef.current = currentDialogueId;
+
+				// Pick random quote
+				const quote =
+					sleepQuotes[Math.floor(Math.random() * sleepQuotes.length)];
+
+				// Set return point to special SLEEP_FLOW
+				useGameStore.getState().setPendingReturnDialogue('SLEEP_FLOW');
+				setCurrentDialogue(quote.id);
+				return;
+			}
+		}
 
 		// Always generate new daily tasks when opening sleep modal
 		generateDailyTasks();
@@ -302,6 +348,16 @@ export default function GameScreen() {
 			} else {
 				// Just a manual sleep, wake up in same scene
 				setNightPhase(false);
+
+				// Restore previous dialogue if we came from SLEEP_FLOW
+				const store = useGameStore.getState();
+				if (
+					store.currentDialogue === 'SLEEP_FLOW' &&
+					preSleepDialogueRef.current
+				) {
+					setCurrentDialogue(preSleepDialogueRef.current);
+					preSleepDialogueRef.current = null;
+				}
 			}
 
 			// Fade in
@@ -317,7 +373,6 @@ export default function GameScreen() {
 			settings.language === 'vi' ? dialogue?.textVi : dialogue?.textEn || '...';
 
 		// Auto-save before exit
-		const { saveSystem } = await import('@/core/SaveSystem');
 		await saveSystem.autoSave({
 			chapter: state.currentChapter,
 			scene: state.currentScene,
@@ -473,6 +528,7 @@ export default function GameScreen() {
 					tasks={dailyTasks}
 					onComplete={handleNightlyTasksComplete}
 					onClose={() => setShowSleepModal(false)}
+					isMandatory={isNightPhase}
 				/>
 
 				{/* Skill Modal */}

@@ -394,6 +394,7 @@ export interface GameState {
 	lastReflectionDialogueCount: number; // Last dialogue count when reflection was shown
 	nextReflectionTrigger: number; // Random 5-7, when to trigger next reflection
 	pendingReturnDialogue: string | null; // Dialogue to return to after reflection
+	triggerSleepAction: boolean; // Trigger sleep action from GameFlow
 }
 
 // Game Settings (Language, Volume, Text Speed)

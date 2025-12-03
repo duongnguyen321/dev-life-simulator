@@ -4,6 +4,8 @@
 
 import localforage from 'localforage';
 import type { SaveData } from '@/data/types';
+import { useGameStore } from '@/store/gameStore';
+import { Chapter1SceneID } from '@/data/enum';
 
 class SaveSystem {
 	private store: LocalForage;
@@ -37,7 +39,7 @@ class SaveSystem {
 			version: '1.0.0',
 			playerName: data.playerName || 'Player',
 			chapter: data.chapter || 1,
-			scene: data.scene || 'start',
+			scene: data.scene || Chapter1SceneID.CH1_INTRO,
 			stats: data.stats || {
 				steelMind: 50,
 				humanity: 50,
@@ -122,7 +124,7 @@ class SaveSystem {
 			version: '1.0.0',
 			playerName: data.playerName || 'Player',
 			chapter: data.chapter || 1,
-			scene: data.scene || 'start',
+			scene: data.scene || 'ch1_intro',
 			stats: data.stats || {
 				steelMind: 50,
 				humanity: 50,
@@ -175,7 +177,6 @@ class SaveSystem {
 			}
 
 			// Import and update game store
-			const { useGameStore } = await import('@/store/gameStore');
 			const store = useGameStore.getState();
 
 			store.setCurrentChapter(saveData.chapter);

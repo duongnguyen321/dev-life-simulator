@@ -1,16 +1,28 @@
+import { Suspense, lazy } from 'react';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
-import MainMenu from './screens/MainMenu';
-import GameScreen from './screens/GameScreen';
-import EndingScreen from './screens/EndingScreen';
+
+// Lazy load screens to split code chunks
+const MainMenu = lazy(() => import('./screens/MainMenu'));
+const GameScreen = lazy(() => import('./screens/GameScreen'));
+const EndingScreen = lazy(() => import('./screens/EndingScreen'));
+
+// Loading component
+const Loading = () => (
+	<div className='w-full h-full flex items-center justify-center bg-black text-white pixel-font'>
+		Loading...
+	</div>
+);
 
 function App() {
 	return (
 		<Router>
-			<Routes>
-				<Route path='/' element={<MainMenu />} />
-				<Route path='/game' element={<GameScreen />} />
-				<Route path='/ending' element={<EndingScreen />} />
-			</Routes>
+			<Suspense fallback={<Loading />}>
+				<Routes>
+					<Route path='/' element={<MainMenu />} />
+					<Route path='/game' element={<GameScreen />} />
+					<Route path='/ending' element={<EndingScreen />} />
+				</Routes>
+			</Suspense>
 		</Router>
 	);
 }

@@ -4,7 +4,16 @@
 // Theme: Sự tan vỡ, Nỗi nhục và Sự trưởng thành đau đớn
 // ==========================================
 
-import { Chapter4DialogueID, Chapter4SceneID, Chapter4TodoID, Chapter5DialogueID, ConditionType, FlagID, Operator, StatID } from '../enum';
+import {
+	Chapter4DialogueID,
+	Chapter4SceneID,
+	Chapter4TodoID,
+	Chapter5DialogueID,
+	ConditionType,
+	FlagID,
+	Operator,
+	StatID,
+} from '../enum';
 import { type Chapter, type DialogueNode } from '../types';
 
 export const chapter4: Chapter = {
@@ -862,7 +871,7 @@ export const chapter4Dialogues: Record<Chapter4DialogueID, DialogueNode> = {
 			'Bố cứ lo cho em. Con tự lo được. Con không cần tiền của bố nữa. Con là Developer mà, con có thể tự build cuộc đời mình.',
 		textEn:
 			"Take care of younger brother. I can handle myself. I don't need your money anymore. I am a Developer, I can build my own life.",
-		next: Chapter4DialogueID.CH4_KEYBOARD_START,
+		next: Chapter4DialogueID.CH4_SITUATION_ESTIMATE,
 	},
 
 	// NEW: Buy Keyboard Event
@@ -1226,5 +1235,277 @@ export const chapter4Dialogues: Record<Chapter4DialogueID, DialogueNode> = {
 		textVi: 'Bạn đã sẵn sàng cho cuộc chiến tìm việc thực sự.',
 		textEn: 'You are ready for the real job hunt battle.',
 		next: Chapter4DialogueID.CH4_END,
+	},
+	// NEW: Developer Scenarios (Internship/Freelance Context)
+	[Chapter4DialogueID.CH4_SITUATION_ESTIMATE]: {
+		speaker: 'narrator',
+		text: 'Một khách hàng Freelance hỏi: "Tính năng này làm mất bao lâu?". Bạn nghĩ mất khoảng 2 ngày.',
+		textVi:
+			'Một khách hàng Freelance hỏi: "Tính năng này làm mất bao lâu?". Bạn nghĩ mất khoảng 2 ngày.',
+		textEn:
+			'A Freelance client asks: "How long for this feature?". You think 2 days.',
+		choices: [
+			{
+				id: 'est_2_days',
+				text: '2 ngày: Hứa thật làm thật (Risk Delay)',
+				textVi: '2 ngày: Hứa thật làm thật (Risk Delay)',
+				textEn: '2 days: Honest promise (Risk Delay)',
+				effects: [
+					{ stat: StatID.VISION, value: -10 },
+					{ stat: StatID.STRESS, value: 10 },
+				], // Overconfident
+				next: Chapter4DialogueID.CH4_SITUATION_GIT_CONFLICT,
+			},
+			{
+				id: 'est_4_days',
+				text: '4 ngày: Quy tắc x2 (Buffer an toàn)',
+				textVi: '4 ngày: Quy tắc x2 (Buffer an toàn)',
+				textEn: '4 days: x2 Rule (Safe buffer)',
+				effects: [
+					{ stat: StatID.VISION, value: 10 },
+					{ stat: StatID.MONEY, value: 2000000 },
+				], // Professional
+				next: Chapter4DialogueID.CH4_SITUATION_GIT_CONFLICT,
+			},
+		],
+	},
+	[Chapter4DialogueID.CH4_SITUATION_GIT_CONFLICT]: {
+		speaker: 'narrator',
+		text: 'Bạn pull code về và gặp Merge Conflict đỏ lòm cả màn hình. Deadline còn 1 tiếng.',
+		textVi:
+			'Bạn pull code về và gặp Merge Conflict đỏ lòm cả màn hình. Deadline còn 1 tiếng.',
+		textEn:
+			'You pulled code and saw red Merge Conflict all over the screen. 1 hour to deadline.',
+		choices: [
+			{
+				id: 'git_force',
+				text: 'git push --force: Đè code của người khác (Nhanh nhưng ẩu)',
+				textVi: 'git push --force: Đè code của người khác (Nhanh nhưng ẩu)',
+				textEn: 'git push --force: Overwrite others (Fast but reckless)',
+				effects: [
+					{ stat: StatID.VISION, value: -20 },
+					{ stat: StatID.HUMANITY, value: -10 },
+				],
+				next: Chapter4DialogueID.CH4_SITUATION_QA_BUG,
+			},
+			{
+				id: 'git_resolve',
+				text: 'Resolve từng file: Chậm mà chắc (Chấp nhận trễ deadline)',
+				textVi: 'Resolve từng file: Chậm mà chắc (Chấp nhận trễ deadline)',
+				textEn: 'Resolve each file: Slow but sure (Accept late)',
+				effects: [
+					{ stat: StatID.STEELMIND, value: 10 },
+					{ stat: StatID.VISION, value: 5 },
+				],
+				next: Chapter4DialogueID.CH4_SITUATION_QA_BUG,
+			},
+		],
+	},
+	[Chapter4DialogueID.CH4_SITUATION_QA_BUG]: {
+		speaker: 'narrator',
+		text: 'Tester báo bug: "Tính năng không chạy". Nhưng máy bạn vẫn chạy bình thường.',
+		textVi:
+			'Tester báo bug: "Tính năng không chạy". Nhưng máy bạn vẫn chạy bình thường.',
+		textEn:
+			'Tester reported bug: "Feature not working". But it works on your machine.',
+		choices: [
+			{
+				id: 'bug_works_on_my_machine',
+				text: 'Trả lời: "Máy em vẫn chạy mà?" (Đổ lỗi môi trường)',
+				textVi: 'Trả lời: "Máy em vẫn chạy mà?" (Đổ lỗi môi trường)',
+				textEn: 'Reply: "It works on my machine?" (Blame env)',
+				effects: [{ stat: StatID.VISION, value: -10 }],
+				next: Chapter4DialogueID.CH4_SITUATION_REACT_KEY,
+			},
+			{
+				id: 'bug_check_env',
+				text: 'Hỏi version trình duyệt và check log server',
+				textVi: 'Hỏi version trình duyệt và check log server',
+				textEn: 'Ask browser version and check server log',
+				effects: [{ stat: StatID.VISION, value: 10 }],
+				next: Chapter4DialogueID.CH4_SITUATION_REACT_KEY,
+			},
+		],
+	},
+	[Chapter4DialogueID.CH4_SITUATION_REACT_KEY]: {
+		speaker: 'narrator',
+		text: 'Console đỏ lòm: "Warning: Each child in a list should have a unique key prop."',
+		textVi:
+			'Console đỏ lòm: "Warning: Each child in a list should have a unique key prop."',
+		textEn:
+			'Console red: "Warning: Each child in a list should have a unique key prop."',
+		choices: [
+			{
+				id: 'react_key_index',
+				text: 'Dùng Index của mảng (key={index}): Nhanh gọn',
+				textVi: 'Dùng Index của mảng (key={index}): Nhanh gọn',
+				textEn: 'Use Array Index (key={index}): Fast',
+				effects: [{ stat: StatID.VISION, value: -5 }], // Bad practice for dynamic lists
+				next: Chapter4DialogueID.CH4_SITUATION_REST_METHOD,
+			},
+			{
+				id: 'react_key_id',
+				text: 'Dùng ID duy nhất từ DB (key={item.id})',
+				textVi: 'Dùng ID duy nhất từ DB (key={item.id})',
+				textEn: 'Use Unique ID from DB (key={item.id})',
+				effects: [{ stat: StatID.VISION, value: 10 }],
+				next: Chapter4DialogueID.CH4_SITUATION_REST_METHOD,
+			},
+		],
+	},
+	[Chapter4DialogueID.CH4_SITUATION_REST_METHOD]: {
+		speaker: 'narrator',
+		text: 'Phỏng vấn: "Sự khác biệt giữa PUT và PATCH là gì?"',
+		textVi: 'Phỏng vấn: "Sự khác biệt giữa PUT và PATCH là gì?"',
+		textEn: 'Interview: "Difference between PUT and PATCH?"',
+		choices: [
+			{
+				id: 'rest_put_patch_same',
+				text: 'Giống nhau, đều là update dữ liệu',
+				textVi: 'Giống nhau, đều là update dữ liệu',
+				textEn: 'Same, both update data',
+				effects: [{ stat: StatID.VISION, value: -5 }],
+				next: Chapter4DialogueID.CH4_SITUATION_AUTH,
+			},
+			{
+				id: 'rest_put_replace',
+				text: 'PUT thay thế toàn bộ, PATCH sửa đổi một phần',
+				textVi: 'PUT thay thế toàn bộ, PATCH sửa đổi một phần',
+				textEn: 'PUT replaces all, PATCH modifies partial',
+				effects: [{ stat: StatID.VISION, value: 15 }],
+				next: Chapter4DialogueID.CH4_SITUATION_AUTH,
+			},
+		],
+	},
+	[Chapter4DialogueID.CH4_SITUATION_AUTH]: {
+		speaker: 'narrator',
+		text: 'Phỏng vấn: "Authentication và Authorization khác nhau thế nào?"',
+		textVi: 'Phỏng vấn: "Authentication và Authorization khác nhau thế nào?"',
+		textEn: 'Interview: "Difference between Authentication and Authorization?"',
+		choices: [
+			{
+				id: 'auth_who_what',
+				text: 'AuthN là "Bạn là ai?", AuthZ là "Bạn được làm gì?"',
+				textVi: 'AuthN là "Bạn là ai?", AuthZ là "Bạn được làm gì?"',
+				textEn: 'AuthN is "Who are you?", AuthZ is "What can you do?"',
+				effects: [{ stat: StatID.VISION, value: 15 }],
+				next: Chapter4DialogueID.CH4_SITUATION_ASYNC,
+			},
+			{
+				id: 'auth_login',
+				text: 'AuthN là Login, AuthZ là Register',
+				textVi: 'AuthN là Login, AuthZ là Register',
+				textEn: 'AuthN is Login, AuthZ is Register',
+				effects: [{ stat: StatID.VISION, value: -10 }],
+				next: Chapter4DialogueID.CH4_SITUATION_ASYNC,
+			},
+		],
+	},
+	[Chapter4DialogueID.CH4_SITUATION_ASYNC]: {
+		speaker: 'narrator',
+		text: 'Code chạy không theo thứ tự mong muốn. Bạn chọn cách xử lý bất đồng bộ nào?',
+		textVi:
+			'Code chạy không theo thứ tự mong muốn. Bạn chọn cách xử lý bất đồng bộ nào?',
+		textEn: 'Code runs out of order. Which async handling method?',
+		choices: [
+			{
+				id: 'async_callback',
+				text: 'Callback Hell: Lồng nhau 5 tầng',
+				textVi: 'Callback Hell: Lồng nhau 5 tầng',
+				textEn: 'Callback Hell: 5 levels deep',
+				effects: [{ stat: StatID.VISION, value: -5 }],
+				next: Chapter4DialogueID.CH4_SITUATION_ENGLISH,
+			},
+			{
+				id: 'async_await',
+				text: 'Async/Await: Code trông như đồng bộ, dễ đọc',
+				textVi: 'Async/Await: Code trông như đồng bộ, dễ đọc',
+				textEn: 'Async/Await: Looks synchronous, readable',
+				effects: [{ stat: StatID.VISION, value: 10 }],
+				next: Chapter4DialogueID.CH4_SITUATION_ENGLISH,
+			},
+		],
+	},
+	[Chapter4DialogueID.CH4_SITUATION_ENGLISH]: {
+		speaker: 'narrator',
+		text: 'Cần viết email xin nghỉ phép gửi sếp nước ngoài.',
+		textVi: 'Cần viết email xin nghỉ phép gửi sếp nước ngoài.',
+		textEn: 'Need to write leave email to foreign boss.',
+		choices: [
+			{
+				id: 'eng_google',
+				text: 'Google Translate: "I want to off tomorrow"',
+				textVi: 'Google Translate: "I want to off tomorrow"',
+				textEn: 'Google Translate: "I want to off tomorrow"',
+				effects: [{ stat: StatID.VISION, value: -5 }],
+				next: Chapter4DialogueID.CH4_SITUATION_DEPLOY,
+			},
+			{
+				id: 'eng_formal',
+				text: 'Formal: "I would like to request a leave of absence..."',
+				textVi: 'Formal: "I would like to request a leave of absence..."',
+				textEn: 'Formal: "I would like to request a leave of absence..."',
+				effects: [{ stat: StatID.VISION, value: 10 }],
+				next: Chapter4DialogueID.CH4_SITUATION_DEPLOY,
+			},
+		],
+	},
+	[Chapter4DialogueID.CH4_SITUATION_DEPLOY]: {
+		speaker: 'narrator',
+		text: 'Deploy lên Vercel bị lỗi build. Log báo thiếu biến môi trường (Environment Variable).',
+		textVi:
+			'Deploy lên Vercel bị lỗi build. Log báo thiếu biến môi trường (Environment Variable).',
+		textEn: 'Vercel deploy failed. Log says missing Environment Variable.',
+		choices: [
+			{
+				id: 'deploy_commit_env',
+				text: 'Commit file .env lên Git (Lộ API Key)',
+				textVi: 'Commit file .env lên Git (Lộ API Key)',
+				textEn: 'Commit .env to Git (Expose API Key)',
+				effects: [
+					{ stat: StatID.VISION, value: -20 },
+					{ stat: StatID.STEELMIND, value: -10 },
+				], // Security risk
+				next: Chapter4DialogueID.CH4_SITUATION_TEAM_LUNCH,
+			},
+			{
+				id: 'deploy_add_vercel',
+				text: 'Thêm biến vào Vercel Project Settings',
+				textVi: 'Thêm biến vào Vercel Project Settings',
+				textEn: 'Add variable to Vercel Project Settings',
+				effects: [{ stat: StatID.VISION, value: 10 }],
+				next: Chapter4DialogueID.CH4_SITUATION_TEAM_LUNCH,
+			},
+		],
+	},
+	[Chapter4DialogueID.CH4_SITUATION_TEAM_LUNCH]: {
+		speaker: 'narrator',
+		text: 'Team rủ đi ăn trưa, nhưng bạn đang dở code.',
+		textVi: 'Team rủ đi ăn trưa, nhưng bạn đang dở code.',
+		textEn: 'Team invites for lunch, but you are coding.',
+		choices: [
+			{
+				id: 'lunch_skip',
+				text: 'Ở lại code: "Em ăn bánh mì được rồi" (Anti-social)',
+				textVi: 'Ở lại code: "Em ăn bánh mì được rồi" (Anti-social)',
+				textEn: 'Stay code: "I eat bread" (Anti-social)',
+				effects: [
+					{ stat: StatID.VISION, value: 5 },
+					{ stat: StatID.HUMANITY, value: -10 },
+				],
+				next: Chapter4DialogueID.CH4_KEYBOARD_START,
+			},
+			{
+				id: 'lunch_go',
+				text: 'Đi ăn cùng team: Networking quan trọng hơn 1 dòng code',
+				textVi: 'Đi ăn cùng team: Networking quan trọng hơn 1 dòng code',
+				textEn: 'Go with team: Networking > 1 line of code',
+				effects: [
+					{ stat: StatID.HUMANITY, value: 10 },
+					{ stat: StatID.STRESS, value: -5 },
+				],
+				next: Chapter4DialogueID.CH4_KEYBOARD_START,
+			},
+		],
 	},
 };

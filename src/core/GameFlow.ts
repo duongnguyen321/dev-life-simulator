@@ -64,6 +64,13 @@ export class GameFlow {
 		// If has next dialogue, go to it
 		if (currentDialogue.next) {
 			this.goToDialogue(currentDialogue.next);
+		} else {
+			// Check if we need to return from reflection
+			if (store.pendingReturnDialogue) {
+				const returnId = store.pendingReturnDialogue;
+				store.setPendingReturnDialogue(null);
+				this.goToDialogue(returnId);
+			}
 		}
 	}
 
@@ -128,6 +135,12 @@ export class GameFlow {
 			return;
 		}
 
+		// Special flow for returning from Sleep Reflection
+		if (dialogueId === 'SLEEP_FLOW') {
+			store.setCurrentDialogue('SLEEP_FLOW');
+			return;
+		}
+
 		const dialogue = allDialogues[dialogueId];
 
 		if (!dialogue) {
@@ -159,16 +172,11 @@ export class GameFlow {
 				chapter.reflectionQuotes &&
 				chapter.reflectionQuotes.length > 0
 			) {
-				// Pick random quote
-				const quote =
-					chapter.reflectionQuotes[
-						Math.floor(Math.random() * chapter.reflectionQuotes.length)
-					];
-
-				// Trigger Reflection
-				store.setPendingReturnDialogue(dialogueId);
-				store.setCurrentDialogue(quote.id);
+				// Trigger Sleep Action instead of random quote
+				store.setTriggerSleepAction(true);
 				store.setLastReflectionCount(dialogueCountInChapter);
+				// Reset trigger for next time (5-8 dialogues)
+				store.setNextReflectionTrigger(Math.floor(Math.random() * 4) + 5);
 				return;
 			}
 		}

@@ -4,7 +4,14 @@
 // Theme: Vị vua không ngai và Thế giới hoàn hảo giả tạo
 // ==========================================
 
-import { Chapter1DialogueID, Chapter1SceneID, Chapter1TodoID, Chapter2DialogueID, ConditionType, StatID } from '../enum';
+import {
+	Chapter1DialogueID,
+	Chapter1SceneID,
+	Chapter1TodoID,
+	Chapter2DialogueID,
+	ConditionType,
+	StatID,
+} from '../enum';
 import { type Chapter, type DialogueNode } from '../types';
 
 export const chapter1: Chapter = {
@@ -582,11 +589,11 @@ export const chapter1Dialogues: Record<Chapter1DialogueID, DialogueNode> = {
 	// NEW: Intro
 	[Chapter1DialogueID.CH1_INTRO]: {
 		speaker: 'narrator',
-		text: 'Những năm 2000. Tiếng ve kêu râm ran trên những tán phượng vĩ. Thế giới của bạn gói gọn trong khoảng sân nhỏ và những viên bi ve lấp lánh.',
+		text: 'Những năm 2007. Tiếng ve kêu râm ran trên những tán phượng vĩ. Thế giới của bạn gói gọn trong khoảng sân nhỏ và những viên bi ve lấp lánh.',
 		textVi:
-			'Những năm 2000. Tiếng ve kêu râm ran trên những tán phượng vĩ. Thế giới của bạn gói gọn trong khoảng sân nhỏ và những viên bi ve lấp lánh.',
+			'Những năm 2007. Tiếng ve kêu râm ran trên những tán phượng vĩ. Thế giới của bạn gói gọn trong khoảng sân nhỏ và những viên bi ve lấp lánh.',
 		textEn:
-			'The 2000s. Cicadas buzzing on flamboyant trees. Your world is wrapped in a small courtyard and sparkling marbles.',
+			'The 2007s. Cicadas buzzing on flamboyant trees. Your world is wrapped in a small courtyard and sparkling marbles.',
 		next: Chapter1DialogueID.CH1_INTRO_1,
 	},
 	// 1.1 Ký ức 3 tuổi

@@ -4,7 +4,16 @@
 // Theme: Những người thầy, Những người sếp và Sự lựa chọn
 // ==========================================
 
-import { Chapter5DialogueID, Chapter5SceneID, Chapter5TodoID, Chapter6DialogueID, ConditionType, FlagID, Operator, StatID } from '../enum';
+import {
+	Chapter5DialogueID,
+	Chapter5SceneID,
+	Chapter5TodoID,
+	Chapter6DialogueID,
+	ConditionType,
+	FlagID,
+	Operator,
+	StatID,
+} from '../enum';
 import { type Chapter, type DialogueNode } from '../types';
 
 export const chapter5: Chapter = {
@@ -826,7 +835,7 @@ export const chapter5Dialogues: Record<Chapter5DialogueID, DialogueNode> = {
 				textVi: 'Tìm Mentor giỏi trong công ty',
 				textEn: 'Find good Mentor in company',
 				effects: [{ stat: StatID.VISION, value: 3 }],
-				next: Chapter5DialogueID.CH5_POLITICS_START,
+				next: Chapter5DialogueID.CH5_CHALLENGE_DB_INDEX,
 			},
 			{
 				id: 'choice_mentor_online',
@@ -834,7 +843,7 @@ export const chapter5Dialogues: Record<Chapter5DialogueID, DialogueNode> = {
 				textVi: 'Follow các KOLs công nghệ trên mạng',
 				textEn: 'Follow tech KOLs online',
 				effects: [{ stat: StatID.VISION, value: 3 }],
-				next: Chapter5DialogueID.CH5_POLITICS_START,
+				next: Chapter5DialogueID.CH5_CHALLENGE_DB_INDEX,
 			},
 			{
 				id: 'choice_mentor_self',
@@ -842,7 +851,7 @@ export const chapter5Dialogues: Record<Chapter5DialogueID, DialogueNode> = {
 				textVi: 'Tự mình làm Mentor cho chính mình',
 				textEn: 'Be my own Mentor',
 				effects: [{ stat: StatID.STEELMIND, value: 5 }],
-				next: Chapter5DialogueID.CH5_POLITICS_START,
+				next: Chapter5DialogueID.CH5_CHALLENGE_DB_INDEX,
 			},
 		],
 	},
@@ -1282,6 +1291,271 @@ export const chapter5Dialogues: Record<Chapter5DialogueID, DialogueNode> = {
 				textEn: 'Prepare for Startup',
 				effects: [{ stat: StatID.VISION, value: 3 }],
 				next: Chapter6DialogueID.CH6_STARTUP_1,
+			},
+		],
+	},
+
+	// NEW: Developer Scenarios (Career Growth)
+	[Chapter5DialogueID.CH5_CHALLENGE_DB_INDEX]: {
+		speaker: 'narrator',
+		text: 'Query database bị chậm (5s). Sếp giục fix gấp. Bạn làm gì?',
+		textVi: 'Query database bị chậm (5s). Sếp giục fix gấp. Bạn làm gì?',
+		textEn: 'Database query slow (5s). Boss wants quick fix. What do you do?',
+		choices: [
+			{
+				id: 'db_index_add',
+				text: 'Thêm Index bừa bãi vào mọi cột (Blind Indexing)',
+				textVi: 'Thêm Index bừa bãi vào mọi cột (Blind Indexing)',
+				textEn: 'Add Index blindly to all columns',
+				effects: [
+					{ stat: StatID.VISION, value: -5 },
+					{ stat: StatID.MONEY, value: -5000000 }, // Storage cost
+				],
+				next: Chapter5DialogueID.CH5_CHALLENGE_STATE,
+			},
+			{
+				id: 'db_analyze',
+				text: 'Analyze Query Plan & Index đúng cột (Composite Index)',
+				textVi: 'Analyze Query Plan & Index đúng cột (Composite Index)',
+				textEn: 'Analyze Query Plan & Index correctly',
+				effects: [{ stat: StatID.VISION, value: 15 }],
+				next: Chapter5DialogueID.CH5_CHALLENGE_STATE,
+			},
+		],
+	},
+	[Chapter5DialogueID.CH5_CHALLENGE_STATE]: {
+		speaker: 'narrator',
+		text: 'App React ngày càng phức tạp. State lộn xộn (Prop Drilling).',
+		textVi: 'App React ngày càng phức tạp. State lộn xộn (Prop Drilling).',
+		textEn: 'React App getting complex. Messy State (Prop Drilling).',
+		choices: [
+			{
+				id: 'state_redux',
+				text: 'Dùng Redux/Zustand: Quản lý tập trung (Scalable)',
+				textVi: 'Dùng Redux/Zustand: Quản lý tập trung (Scalable)',
+				textEn: 'Use Redux/Zustand: Centralized (Scalable)',
+				effects: [{ stat: StatID.VISION, value: 10 }],
+				next: Chapter5DialogueID.CH5_CHALLENGE_RENDER,
+			},
+			{
+				id: 'state_prop',
+				text: 'Tiếp tục truyền Props 10 tầng (Spaghetti Code)',
+				textVi: 'Tiếp tục truyền Props 10 tầng (Spaghetti Code)',
+				textEn: 'Keep passing Props 10 levels deep',
+				effects: [
+					{ stat: StatID.VISION, value: -10 },
+					{ stat: StatID.STRESS, value: 5 },
+				],
+				next: Chapter5DialogueID.CH5_CHALLENGE_RENDER,
+			},
+		],
+	},
+	[Chapter5DialogueID.CH5_CHALLENGE_RENDER]: {
+		speaker: 'narrator',
+		text: 'Component re-render quá nhiều làm lag app.',
+		textVi: 'Component re-render quá nhiều làm lag app.',
+		textEn: 'Too many re-renders causing lag.',
+		choices: [
+			{
+				id: 'render_memo',
+				text: 'Dùng useMemo/useCallback đúng chỗ',
+				textVi: 'Dùng useMemo/useCallback đúng chỗ',
+				textEn: 'Use useMemo/useCallback correctly',
+				effects: [{ stat: StatID.VISION, value: 10 }],
+				next: Chapter5DialogueID.CH5_CHALLENGE_CLIENT,
+			},
+			{
+				id: 'render_ignore',
+				text: 'Kệ nó, máy user mạnh mà',
+				textVi: 'Kệ nó, máy user mạnh mà',
+				textEn: 'Ignore it, user PC is strong',
+				effects: [{ stat: StatID.VISION, value: -10 }],
+				next: Chapter5DialogueID.CH5_CHALLENGE_CLIENT,
+			},
+		],
+	},
+	[Chapter5DialogueID.CH5_CHALLENGE_CLIENT]: {
+		speaker: 'narrator',
+		text: 'Khách hàng đổi requirement phút chót trước ngày Demo.',
+		textVi: 'Khách hàng đổi requirement phút chót trước ngày Demo.',
+		textEn: 'Client changed requirement last minute before Demo.',
+		choices: [
+			{
+				id: 'client_reject',
+				text: 'Từ chối thẳng thừng: "Không có trong hợp đồng"',
+				textVi: 'Từ chối thẳng thừng: "Không có trong hợp đồng"',
+				textEn: 'Reject: "Not in contract"',
+				effects: [
+					{ stat: StatID.STEELMIND, value: 5 },
+					{ stat: StatID.MONEY, value: -5000000 }, // Lost bonus
+				],
+				next: Chapter5DialogueID.CH5_CHALLENGE_INTERVIEW,
+			},
+			{
+				id: 'client_accept',
+				text: 'OT làm cho xong: Chiều khách (Burnout)',
+				textVi: 'OT làm cho xong: Chiều khách (Burnout)',
+				textEn: 'OT to finish: Please client (Burnout)',
+				effects: [
+					{ stat: StatID.MONEY, value: 10000000 }, // Bonus
+					{ stat: StatID.STRESS, value: 15 },
+					{ stat: StatID.HEALTH, value: -5 },
+				],
+				next: Chapter5DialogueID.CH5_CHALLENGE_INTERVIEW,
+			},
+		],
+	},
+	[Chapter5DialogueID.CH5_CHALLENGE_INTERVIEW]: {
+		speaker: 'narrator',
+		text: 'Sếp nhờ bạn phỏng vấn ứng viên Junior. Bạn hỏi gì?',
+		textVi: 'Sếp nhờ bạn phỏng vấn ứng viên Junior. Bạn hỏi gì?',
+		textEn: 'Boss asks you to interview Junior. What to ask?',
+		choices: [
+			{
+				id: 'interview_trick',
+				text: 'Hỏi mẹo đánh đố (Brain Teasers)',
+				textVi: 'Hỏi mẹo đánh đố (Brain Teasers)',
+				textEn: 'Brain Teasers',
+				effects: [{ stat: StatID.HUMANITY, value: -5 }],
+				next: Chapter5DialogueID.CH5_CHALLENGE_OFFER,
+			},
+			{
+				id: 'interview_real',
+				text: 'Hỏi về tư duy giải quyết vấn đề (Problem Solving)',
+				textVi: 'Hỏi về tư duy giải quyết vấn đề (Problem Solving)',
+				textEn: 'Problem Solving Mindset',
+				effects: [
+					{ stat: StatID.VISION, value: 5 },
+					{ stat: StatID.HUMANITY, value: 5 },
+				],
+				next: Chapter5DialogueID.CH5_CHALLENGE_OFFER,
+			},
+		],
+	},
+	[Chapter5DialogueID.CH5_CHALLENGE_OFFER]: {
+		speaker: 'narrator',
+		text: 'Nhận Offer mới. HR hỏi: "Em muốn lương Gross hay Net?"',
+		textVi: 'Nhận Offer mới. HR hỏi: "Em muốn lương Gross hay Net?"',
+		textEn: 'New Offer. HR asks: "Gross or Net salary?"',
+		choices: [
+			{
+				id: 'offer_gross',
+				text: 'Gross: Tự chủ đóng bảo hiểm/thuế (Minh bạch)',
+				textVi: 'Gross: Tự chủ đóng bảo hiểm/thuế (Minh bạch)',
+				textEn: 'Gross: Self-manage tax/insurance (Transparent)',
+				effects: [{ stat: StatID.VISION, value: 10 }],
+				next: Chapter5DialogueID.CH5_CHALLENGE_TECH_DEBT,
+			},
+			{
+				id: 'offer_net',
+				text: 'Net: Nhận tiền về tay cho gọn (Rủi ro đóng BH thấp)',
+				textVi: 'Net: Nhận tiền về tay cho gọn (Rủi ro đóng BH thấp)',
+				textEn: 'Net: Take home pay (Risk low insurance)',
+				effects: [{ stat: StatID.VISION, value: -5 }],
+				next: Chapter5DialogueID.CH5_CHALLENGE_TECH_DEBT,
+			},
+		],
+	},
+	[Chapter5DialogueID.CH5_CHALLENGE_TECH_DEBT]: {
+		speaker: 'narrator',
+		text: 'Code cũ quá nát (Spaghetti). Sếp giục ra tính năng mới.',
+		textVi: 'Code cũ quá nát (Spaghetti). Sếp giục ra tính năng mới.',
+		textEn: 'Legacy code is spaghetti. Boss pushes for new feature.',
+		choices: [
+			{
+				id: 'debt_refactor',
+				text: 'Refactor trước, Feature sau (Chậm nhưng bền)',
+				textVi: 'Refactor trước, Feature sau (Chậm nhưng bền)',
+				textEn: 'Refactor first, Feature later (Slow but sustainable)',
+				effects: [
+					{ stat: StatID.VISION, value: 10 },
+					{ stat: StatID.STRESS, value: 5 }, // Boss angry
+				],
+				next: Chapter5DialogueID.CH5_CHALLENGE_SECURITY,
+			},
+			{
+				id: 'debt_patch',
+				text: 'Code đè lên đống rác (Quick fix)',
+				textVi: 'Code đè lên đống rác (Quick fix)',
+				textEn: 'Code on top of trash (Quick fix)',
+				effects: [
+					{ stat: StatID.VISION, value: -10 },
+					{ stat: StatID.MONEY, value: 5000000 }, // Bonus speed
+				],
+				next: Chapter5DialogueID.CH5_CHALLENGE_SECURITY,
+			},
+		],
+	},
+	[Chapter5DialogueID.CH5_CHALLENGE_SECURITY]: {
+		speaker: 'narrator',
+		text: 'Trang web bị tấn công XSS (Cross-site Scripting).',
+		textVi: 'Trang web bị tấn công XSS (Cross-site Scripting).',
+		textEn: 'Website under XSS attack.',
+		choices: [
+			{
+				id: 'sec_sanitize',
+				text: 'Sanitize input & Content Security Policy (CSP)',
+				textVi: 'Sanitize input & Content Security Policy (CSP)',
+				textEn: 'Sanitize input & CSP',
+				effects: [{ stat: StatID.VISION, value: 15 }],
+				next: Chapter5DialogueID.CH5_CHALLENGE_DOCKER,
+			},
+			{
+				id: 'sec_ignore',
+				text: 'Chặn IP của hacker (Giải pháp tạm thời)',
+				textVi: 'Chặn IP của hacker (Giải pháp tạm thời)',
+				textEn: 'Block Hacker IP (Temporary)',
+				effects: [{ stat: StatID.VISION, value: -5 }],
+				next: Chapter5DialogueID.CH5_CHALLENGE_DOCKER,
+			},
+		],
+	},
+	[Chapter5DialogueID.CH5_CHALLENGE_DOCKER]: {
+		speaker: 'narrator',
+		text: 'Môi trường Dev và Prod không đồng bộ. Lỗi "Works on my machine" lại xuất hiện.',
+		textVi:
+			'Môi trường Dev và Prod không đồng bộ. Lỗi "Works on my machine" lại xuất hiện.',
+		textEn: 'Dev and Prod env sync issue. "Works on my machine" again.',
+		choices: [
+			{
+				id: 'docker_use',
+				text: 'Dùng Docker: Đóng gói môi trường (Chuẩn hóa)',
+				textVi: 'Dùng Docker: Đóng gói môi trường (Chuẩn hóa)',
+				textEn: 'Use Docker: Containerize (Standardize)',
+				effects: [{ stat: StatID.VISION, value: 10 }],
+				next: Chapter5DialogueID.CH5_CHALLENGE_CI_CD,
+			},
+			{
+				id: 'docker_manual',
+				text: 'Cài tay lại server cho giống máy mình',
+				textVi: 'Cài tay lại server cho giống máy mình',
+				textEn: 'Manually install server to match local',
+				effects: [{ stat: StatID.VISION, value: -5 }],
+				next: Chapter5DialogueID.CH5_CHALLENGE_CI_CD,
+			},
+		],
+	},
+	[Chapter5DialogueID.CH5_CHALLENGE_CI_CD]: {
+		speaker: 'narrator',
+		text: 'Deploy thủ công tốn quá nhiều thời gian và dễ lỗi.',
+		textVi: 'Deploy thủ công tốn quá nhiều thời gian và dễ lỗi.',
+		textEn: 'Manual deploy takes time and error-prone.',
+		choices: [
+			{
+				id: 'cicd_setup',
+				text: 'Thiết lập CI/CD Pipeline (Automated Test & Deploy)',
+				textVi: 'Thiết lập CI/CD Pipeline (Automated Test & Deploy)',
+				textEn: 'Setup CI/CD Pipeline',
+				effects: [{ stat: StatID.VISION, value: 15 }],
+				next: Chapter5DialogueID.CH5_POLITICS_START,
+			},
+			{
+				id: 'cicd_manual',
+				text: 'Viết script bash chạy tay cho nhanh',
+				textVi: 'Viết script bash chạy tay cho nhanh',
+				textEn: 'Write bash script to run manually',
+				effects: [{ stat: StatID.VISION, value: 5 }],
+				next: Chapter5DialogueID.CH5_POLITICS_START,
 			},
 		],
 	},

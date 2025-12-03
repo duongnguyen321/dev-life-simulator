@@ -2,6 +2,7 @@ import { useNavigate } from 'react-router-dom';
 import { motion } from 'framer-motion';
 import { useState, useEffect } from 'react';
 import { saveSystem } from '@/core/SaveSystem';
+import { useGameStore } from '@/store/gameStore';
 import { audioManager } from '@/core/AudioManager';
 import SettingsModal from '@/components/UI/SettingsModal';
 import LoadGameModal from '@/components/UI/LoadGameModal';
@@ -36,7 +37,6 @@ export default function MainMenu() {
 		await saveSystem.deleteAutoSave();
 
 		// Import and reset game store
-		const { useGameStore } = await import('@/store/gameStore');
 		useGameStore.getState().resetGame();
 
 		navigate('/game?newgame=true');

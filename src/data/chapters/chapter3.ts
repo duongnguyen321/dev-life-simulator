@@ -4,7 +4,14 @@
 // Theme: Sóng gió, Hy vọng giả tạo và Sự kiên định
 // ==========================================
 
-import { Chapter3DialogueID, Chapter3SceneID, Chapter3TodoID, Chapter4DialogueID, ConditionType, StatID } from '../enum';
+import {
+	Chapter3DialogueID,
+	Chapter3SceneID,
+	Chapter3TodoID,
+	Chapter4DialogueID,
+	ConditionType,
+	StatID,
+} from '../enum';
 import { type Chapter, type DialogueNode } from '../types';
 
 export const chapter3: Chapter = {
@@ -685,7 +692,7 @@ export const chapter3Dialogues: Record<Chapter3DialogueID, DialogueNode> = {
 					{ stat: StatID.VISION, value: 25 },
 					{ stat: StatID.MONEY, value: -5000000 },
 				],
-				next: Chapter3DialogueID.CH3_DORM_1,
+				next: Chapter3DialogueID.CH3_QUIZ_HTML_TAGS,
 			},
 			{
 				id: 'choice_resource_tutor',
@@ -697,7 +704,7 @@ export const chapter3Dialogues: Record<Chapter3DialogueID, DialogueNode> = {
 					{ stat: StatID.STRESS, value: 15 },
 					{ stat: StatID.MONEY, value: -2000000 },
 				],
-				next: Chapter3DialogueID.CH3_DORM_1,
+				next: Chapter3DialogueID.CH3_QUIZ_HTML_TAGS,
 			},
 			{
 				id: 'choice_resource_free',
@@ -708,7 +715,7 @@ export const chapter3Dialogues: Record<Chapter3DialogueID, DialogueNode> = {
 					{ stat: StatID.VISION, value: 10 },
 					{ stat: StatID.MONEY, value: 0 },
 				],
-				next: Chapter3DialogueID.CH3_DORM_1,
+				next: Chapter3DialogueID.CH3_QUIZ_HTML_TAGS,
 			},
 		],
 	},
@@ -1257,5 +1264,271 @@ export const chapter3Dialogues: Record<Chapter3DialogueID, DialogueNode> = {
 		textEn:
 			'End of Grade 12, amidst difficulties, you got admitted to the Academy. This is your first ticket into the world of "Source Code", away from father\'s dusty construction sites.',
 		next: Chapter4DialogueID.CH4_START,
+	},
+	// NEW: Developer Scenarios (Quizzes)
+	[Chapter3DialogueID.CH3_QUIZ_HTML_TAGS]: {
+		speaker: 'narrator',
+		text: 'Quiz 1: Trong một trang web chuẩn SEO, nên có bao nhiêu thẻ H1?',
+		textVi: 'Quiz 1: Trong một trang web chuẩn SEO, nên có bao nhiêu thẻ H1?',
+		textEn: 'Quiz 1: How many H1 tags should be on a standard SEO page?',
+		choices: [
+			{
+				id: 'quiz_h1_one',
+				text: 'Duy nhất 1 thẻ H1 (Best Practice)',
+				textVi: 'Duy nhất 1 thẻ H1 (Best Practice)',
+				textEn: 'Only 1 H1 tag (Best Practice)',
+				effects: [{ stat: StatID.VISION, value: 10 }],
+				next: Chapter3DialogueID.CH3_QUIZ_CSS_DISPLAY,
+			},
+			{
+				id: 'quiz_h1_many',
+				text: 'Bao nhiêu cũng được, miễn là to đẹp',
+				textVi: 'Bao nhiêu cũng được, miễn là to đẹp',
+				textEn: 'As many as needed for styling',
+				effects: [{ stat: StatID.VISION, value: -5 }],
+				next: Chapter3DialogueID.CH3_QUIZ_CSS_DISPLAY,
+			},
+			{
+				id: 'quiz_h1_none',
+				text: 'Không cần H1, dùng div font-size lớn là được',
+				textVi: 'Không cần H1, dùng div font-size lớn là được',
+				textEn: 'No H1 needed, use div with big font-size',
+				effects: [{ stat: StatID.VISION, value: -10 }],
+				next: Chapter3DialogueID.CH3_QUIZ_CSS_DISPLAY,
+			},
+		],
+	},
+	[Chapter3DialogueID.CH3_QUIZ_CSS_DISPLAY]: {
+		speaker: 'narrator',
+		text: 'Quiz 2: Mặc định, thẻ <div> có thuộc tính display là gì?',
+		textVi: 'Quiz 2: Mặc định, thẻ <div> có thuộc tính display là gì?',
+		textEn: 'Quiz 2: By default, what is the display property of a <div>?',
+		choices: [
+			{
+				id: 'quiz_css_block',
+				text: 'block (Chiếm hết chiều ngang)',
+				textVi: 'block (Chiếm hết chiều ngang)',
+				textEn: 'block (Takes full width)',
+				effects: [{ stat: StatID.VISION, value: 10 }],
+				next: Chapter3DialogueID.CH3_QUIZ_JS_VAR,
+			},
+			{
+				id: 'quiz_css_inline',
+				text: 'inline (Nằm trên cùng một dòng)',
+				textVi: 'inline (Nằm trên cùng một dòng)',
+				textEn: 'inline (Sits on same line)',
+				effects: [{ stat: StatID.VISION, value: -5 }],
+				next: Chapter3DialogueID.CH3_QUIZ_JS_VAR,
+			},
+			{
+				id: 'quiz_css_flex',
+				text: 'flex (Linh hoạt)',
+				textVi: 'flex (Linh hoạt)',
+				textEn: 'flex (Flexible)',
+				effects: [{ stat: StatID.VISION, value: -5 }],
+				next: Chapter3DialogueID.CH3_QUIZ_JS_VAR,
+			},
+		],
+	},
+	[Chapter3DialogueID.CH3_QUIZ_JS_VAR]: {
+		speaker: 'narrator',
+		text: 'Quiz 3: Sự khác biệt chính giữa var, let và const?',
+		textVi: 'Quiz 3: Sự khác biệt chính giữa var, let và const?',
+		textEn: 'Quiz 3: Main difference between var, let, and const?',
+		choices: [
+			{
+				id: 'quiz_js_scope',
+				text: 'Scope (Phạm vi) và khả năng gán lại (Reassignment)',
+				textVi: 'Scope (Phạm vi) và khả năng gán lại (Reassignment)',
+				textEn: 'Scope and Reassignment',
+				effects: [{ stat: StatID.VISION, value: 15 }],
+				next: Chapter3DialogueID.CH3_QUIZ_FE_BE,
+			},
+			{
+				id: 'quiz_js_syntax',
+				text: 'Chỉ là cú pháp, dùng cái nào cũng được',
+				textVi: 'Chỉ là cú pháp, dùng cái nào cũng được',
+				textEn: 'Just syntax, use any',
+				effects: [{ stat: StatID.VISION, value: -10 }],
+				next: Chapter3DialogueID.CH3_QUIZ_FE_BE,
+			},
+		],
+	},
+	[Chapter3DialogueID.CH3_QUIZ_FE_BE]: {
+		speaker: 'narrator',
+		text: 'Quiz 4: Frontend Developer chủ yếu làm việc với?',
+		textVi: 'Quiz 4: Frontend Developer chủ yếu làm việc với?',
+		textEn: 'Quiz 4: Frontend Developer mainly works with?',
+		choices: [
+			{
+				id: 'quiz_fe_ui',
+				text: 'Giao diện người dùng (UI) và trải nghiệm (UX) trên trình duyệt',
+				textVi:
+					'Giao diện người dùng (UI) và trải nghiệm (UX) trên trình duyệt',
+				textEn: 'User Interface (UI) and Experience (UX) in browser',
+				effects: [{ stat: StatID.VISION, value: 10 }],
+				next: Chapter3DialogueID.CH3_QUIZ_API,
+			},
+			{
+				id: 'quiz_fe_db',
+				text: 'Cơ sở dữ liệu và Server',
+				textVi: 'Cơ sở dữ liệu và Server',
+				textEn: 'Database and Server',
+				effects: [{ stat: StatID.VISION, value: -5 }],
+				next: Chapter3DialogueID.CH3_QUIZ_API,
+			},
+		],
+	},
+	[Chapter3DialogueID.CH3_QUIZ_API]: {
+		speaker: 'narrator',
+		text: 'Quiz 5: API là viết tắt của?',
+		textVi: 'Quiz 5: API là viết tắt của?',
+		textEn: 'Quiz 5: API stands for?',
+		choices: [
+			{
+				id: 'quiz_api_app',
+				text: 'Application Programming Interface',
+				textVi: 'Application Programming Interface',
+				textEn: 'Application Programming Interface',
+				effects: [{ stat: StatID.VISION, value: 10 }],
+				next: Chapter3DialogueID.CH3_QUIZ_DEBUG_LOGIC,
+			},
+			{
+				id: 'quiz_api_auto',
+				text: 'Automated Process Integration',
+				textVi: 'Automated Process Integration',
+				textEn: 'Automated Process Integration',
+				effects: [{ stat: StatID.VISION, value: -5 }],
+				next: Chapter3DialogueID.CH3_QUIZ_DEBUG_LOGIC,
+			},
+		],
+	},
+	[Chapter3DialogueID.CH3_QUIZ_DEBUG_LOGIC]: {
+		speaker: 'narrator',
+		text: "Quiz 6: Tại sao trong JS: 1 + '1' = '11'?",
+		textVi: "Quiz 6: Tại sao trong JS: 1 + '1' = '11'?",
+		textEn: "Quiz 6: Why in JS: 1 + '1' = '11'?",
+		choices: [
+			{
+				id: 'quiz_debug_coercion',
+				text: 'Type Coercion (Ép kiểu tự động): Số thành chuỗi',
+				textVi: 'Type Coercion (Ép kiểu tự động): Số thành chuỗi',
+				textEn: 'Type Coercion: Number to String',
+				effects: [{ stat: StatID.VISION, value: 15 }],
+				next: Chapter3DialogueID.CH3_QUIZ_HTTP,
+			},
+			{
+				id: 'quiz_debug_math',
+				text: 'Do lỗi của máy tính',
+				textVi: 'Do lỗi của máy tính',
+				textEn: 'Computer error',
+				effects: [{ stat: StatID.VISION, value: -5 }],
+				next: Chapter3DialogueID.CH3_QUIZ_HTTP,
+			},
+		],
+	},
+	[Chapter3DialogueID.CH3_QUIZ_HTTP]: {
+		speaker: 'narrator',
+		text: 'Quiz 7: HTTP Status 404 nghĩa là gì?',
+		textVi: 'Quiz 7: HTTP Status 404 nghĩa là gì?',
+		textEn: 'Quiz 7: What does HTTP Status 404 mean?',
+		choices: [
+			{
+				id: 'quiz_http_notfound',
+				text: 'Not Found (Không tìm thấy trang)',
+				textVi: 'Not Found (Không tìm thấy trang)',
+				textEn: 'Not Found',
+				effects: [{ stat: StatID.VISION, value: 10 }],
+				next: Chapter3DialogueID.CH3_QUIZ_BROWSER,
+			},
+			{
+				id: 'quiz_http_server',
+				text: 'Server Error (Lỗi máy chủ)',
+				textVi: 'Server Error (Lỗi máy chủ)',
+				textEn: 'Server Error',
+				effects: [{ stat: StatID.VISION, value: -5 }],
+				next: Chapter3DialogueID.CH3_QUIZ_BROWSER,
+			},
+		],
+	},
+	[Chapter3DialogueID.CH3_QUIZ_BROWSER]: {
+		speaker: 'narrator',
+		text: 'Quiz 8: Phím F12 trên trình duyệt thường dùng để làm gì?',
+		textVi: 'Quiz 8: Phím F12 trên trình duyệt thường dùng để làm gì?',
+		textEn: 'Quiz 8: What is F12 key usually used for in browser?',
+		choices: [
+			{
+				id: 'quiz_browser_dev',
+				text: 'Mở Developer Tools (Console, Network, Elements)',
+				textVi: 'Mở Developer Tools (Console, Network, Elements)',
+				textEn: 'Open Developer Tools',
+				effects: [{ stat: StatID.VISION, value: 10 }],
+				next: Chapter3DialogueID.CH3_QUIZ_VSCODE,
+			},
+			{
+				id: 'quiz_browser_refresh',
+				text: 'Refresh trang web',
+				textVi: 'Refresh trang web',
+				textEn: 'Refresh page',
+				effects: [{ stat: StatID.VISION, value: -2 }],
+				next: Chapter3DialogueID.CH3_QUIZ_VSCODE,
+			},
+		],
+	},
+	[Chapter3DialogueID.CH3_QUIZ_VSCODE]: {
+		speaker: 'narrator',
+		text: 'Quiz 9: Để format code đẹp tự động trong VS Code?',
+		textVi: 'Quiz 9: Để format code đẹp tự động trong VS Code?',
+		textEn: 'Quiz 9: To auto-format code in VS Code?',
+		choices: [
+			{
+				id: 'quiz_vscode_format',
+				text: 'Shift + Alt + F (Windows) hoặc Shift + Option + F (Mac)',
+				textVi: 'Shift + Alt + F (Windows) hoặc Shift + Option + F (Mac)',
+				textEn: 'Shift + Alt + F (Win) / Shift + Opt + F (Mac)',
+				effects: [{ stat: StatID.VISION, value: 10 }],
+				next: Chapter3DialogueID.CH3_QUIZ_GIT_INIT,
+			},
+			{
+				id: 'quiz_vscode_space',
+				text: 'Gõ phím Space từng dòng một',
+				textVi: 'Gõ phím Space từng dòng một',
+				textEn: 'Type Space line by line',
+				effects: [{ stat: StatID.VISION, value: -5 }],
+				next: Chapter3DialogueID.CH3_QUIZ_GIT_INIT,
+			},
+		],
+	},
+	[Chapter3DialogueID.CH3_QUIZ_GIT_INIT]: {
+		speaker: 'narrator',
+		text: 'Quiz 10: Lệnh nào để khởi tạo một Git repository mới?',
+		textVi: 'Quiz 10: Lệnh nào để khởi tạo một Git repository mới?',
+		textEn: 'Quiz 10: Which command initializes a new Git repository?',
+		choices: [
+			{
+				id: 'quiz_git_init',
+				text: 'git init',
+				textVi: 'git init',
+				textEn: 'git init',
+				effects: [{ stat: StatID.VISION, value: 10 }],
+				next: Chapter3DialogueID.CH3_DORM_1,
+			},
+			{
+				id: 'quiz_git_commit',
+				text: 'git commit',
+				textVi: 'git commit',
+				textEn: 'git commit',
+				effects: [{ stat: StatID.VISION, value: -5 }],
+				next: Chapter3DialogueID.CH3_DORM_1,
+			},
+			{
+				id: 'quiz_git_clone',
+				text: 'git clone (Copy repo có sẵn)',
+				textVi: 'git clone (Copy repo có sẵn)',
+				textEn: 'git clone (Copy existing repo)',
+				effects: [{ stat: StatID.VISION, value: 5 }],
+				next: Chapter3DialogueID.CH3_DORM_1,
+			},
+		],
 	},
 };

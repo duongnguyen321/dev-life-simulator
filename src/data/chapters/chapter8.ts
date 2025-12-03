@@ -4,7 +4,16 @@
 // Theme: Đột phá, Rủi ro và Sự trở lại
 // ==========================================
 
-import { Chapter8DialogueID, Chapter8SceneID, Chapter8TodoID, Chapter9DialogueID, ConditionType, FlagID, Operator, StatID } from '../enum';
+import {
+	Chapter8DialogueID,
+	Chapter8SceneID,
+	Chapter8TodoID,
+	Chapter9DialogueID,
+	ConditionType,
+	FlagID,
+	Operator,
+	StatID,
+} from '../enum';
 import { type Chapter, type DialogueNode } from '../types';
 
 export const chapter8: Chapter = {
@@ -540,7 +549,7 @@ export const chapter8Dialogues: Record<Chapter8DialogueID, DialogueNode> = {
 			'40 tuổi. Cơn sóng thần AI ập đến. ChatGPT, Copilot khiến mảng Outsource truyền thống lao đao. "Innovate or Die" (Đổi mới hay là chết).',
 		textEn:
 			'40 years old. AI Tsunami hit. ChatGPT, Copilot crushed traditional Outsource. "Innovate or Die".',
-		next: Chapter8DialogueID.CH8_AI_VISION,
+		next: Chapter8DialogueID.CH8_STRATEGY_AI,
 	},
 	[Chapter8DialogueID.CH8_AI_VISION]: {
 		speaker: 'narrator',
@@ -900,7 +909,12 @@ export const chapter8Dialogues: Record<Chapter8DialogueID, DialogueNode> = {
 				text: 'Thu hồi toàn bộ - Nghe lương tâm (Canon/True Ending)',
 				textVi: 'Thu hồi toàn bộ - Nghe lương tâm (Canon/True Ending)',
 				textEn: 'Full Recall - Follow Conscience (Canon/True Ending)',
-				condition: { type: ConditionType.STAT, key: StatID.HUMANITY, operator: Operator.GTE, value: 40 },
+				condition: {
+					type: ConditionType.STAT,
+					key: StatID.HUMANITY,
+					operator: Operator.GTE,
+					value: 40,
+				},
 				effects: [
 					{ stat: StatID.HUMANITY, value: 10 },
 					{ stat: StatID.VISION, value: 5 },
@@ -1019,5 +1033,257 @@ export const chapter8Dialogues: Record<Chapter8DialogueID, DialogueNode> = {
 		textEn:
 			'US, Japan markets opened. Victory by Integrity. Family curse broken.',
 		next: Chapter9DialogueID.CH9_INTRO,
+	},
+
+	// NEW: Developer Scenarios (CTO/Founder Strategy)
+	[Chapter8DialogueID.CH8_STRATEGY_AI]: {
+		speaker: 'narrator',
+		text: 'Chiến lược AI cho 5 năm tới. Tập trung vào đâu?',
+		textVi: 'Chiến lược AI cho 5 năm tới. Tập trung vào đâu?',
+		textEn: 'AI Strategy for next 5 years. Focus where?',
+		choices: [
+			{
+				id: 'ai_gen',
+				text: 'Generative AI (LLM): Theo trend, đốt tiền (High Risk)',
+				textVi: 'Generative AI (LLM): Theo trend, đốt tiền (High Risk)',
+				textEn: 'Generative AI (LLM): Follow trend, burn cash (High Risk)',
+				effects: [
+					{ stat: StatID.VISION, value: 5 },
+					{ stat: StatID.MONEY, value: -10000000000 },
+				],
+				next: Chapter8DialogueID.CH8_STRATEGY_ETHICS,
+			},
+			{
+				id: 'ai_trad',
+				text: 'Traditional AI (Predictive): Ứng dụng thực tế, an toàn',
+				textVi: 'Traditional AI (Predictive): Ứng dụng thực tế, an toàn',
+				textEn: 'Traditional AI (Predictive): Practical, safe',
+				effects: [{ stat: StatID.MONEY, value: 5000000000 }],
+				next: Chapter8DialogueID.CH8_STRATEGY_ETHICS,
+			},
+		],
+	},
+	[Chapter8DialogueID.CH8_STRATEGY_ETHICS]: {
+		speaker: 'narrator',
+		text: 'Áp lực ra mắt sản phẩm. Có nên bỏ qua quy trình kiểm duyệt đạo đức (AI Ethics)?',
+		textVi:
+			'Áp lực ra mắt sản phẩm. Có nên bỏ qua quy trình kiểm duyệt đạo đức (AI Ethics)?',
+		textEn: 'Pressure to launch. Skip AI Ethics review?',
+		choices: [
+			{
+				id: 'ethics_skip',
+				text: 'Bỏ qua: Tốc độ là vua (Speed > Safety)',
+				textVi: 'Bỏ qua: Tốc độ là vua (Speed > Safety)',
+				textEn: 'Skip: Speed is King (Speed > Safety)',
+				effects: [{ stat: StatID.VISION, value: -3 }], // Future risk
+				next: Chapter8DialogueID.CH8_STRATEGY_LAYOFF,
+			},
+			{
+				id: 'ethics_review',
+				text: 'Kiểm duyệt kỹ: Chậm mà chắc (Safety > Speed)',
+				textVi: 'Kiểm duyệt kỹ: Chậm mà chắc (Safety > Speed)',
+				textEn: 'Strict review: Slow but sure (Safety > Speed)',
+				effects: [{ stat: StatID.HUMANITY, value: 3 }],
+				next: Chapter8DialogueID.CH8_STRATEGY_LAYOFF,
+			},
+		],
+	},
+	[Chapter8DialogueID.CH8_STRATEGY_LAYOFF]: {
+		speaker: 'narrator',
+		text: 'AI có thể thay thế 30% nhân sự Junior. Quyết định của bạn?',
+		textVi: 'AI có thể thay thế 30% nhân sự Junior. Quyết định của bạn?',
+		textEn: 'AI can replace 30% Junior staff. Your decision?',
+		choices: [
+			{
+				id: 'layoff_replace',
+				text: 'Sa thải: Tối ưu chi phí (Money ++, Humanity --)',
+				textVi: 'Sa thải: Tối ưu chi phí (Money ++, Humanity --)',
+				textEn: 'Layoff: Optimize cost (Money ++, Humanity --)',
+				effects: [
+					{ stat: StatID.MONEY, value: 5000000000 },
+					{ stat: StatID.HUMANITY, value: -5 },
+				],
+				next: Chapter8DialogueID.CH8_STRATEGY_GLOBAL,
+			},
+			{
+				id: 'layoff_train',
+				text: 'Đào tạo lại (Reskill): Biến họ thành AI Operator',
+				textVi: 'Đào tạo lại (Reskill): Biến họ thành AI Operator',
+				textEn: 'Reskill: Turn them into AI Operators',
+				effects: [
+					{ stat: StatID.HUMANITY, value: 5 },
+					{ stat: StatID.MONEY, value: -2000000000 },
+				],
+				next: Chapter8DialogueID.CH8_STRATEGY_GLOBAL,
+			},
+		],
+	},
+	[Chapter8DialogueID.CH8_STRATEGY_GLOBAL]: {
+		speaker: 'narrator',
+		text: 'Mở rộng thị trường ra nước ngoài (Go Global).',
+		textVi: 'Mở rộng thị trường ra nước ngoài (Go Global).',
+		textEn: 'Go Global expansion.',
+		choices: [
+			{
+				id: 'global_us',
+				text: 'Thị trường Mỹ: Cạnh tranh khốc liệt, lợi nhuận cao',
+				textVi: 'Thị trường Mỹ: Cạnh tranh khốc liệt, lợi nhuận cao',
+				textEn: 'US Market: Fierce competition, high profit',
+				effects: [{ stat: StatID.VISION, value: 3 }],
+				next: Chapter8DialogueID.CH8_STRATEGY_CRISIS,
+			},
+			{
+				id: 'global_sea',
+				text: 'Đông Nam Á: Dễ thở hơn, sân nhà',
+				textVi: 'Đông Nam Á: Dễ thở hơn, sân nhà',
+				textEn: 'SEA: Easier, home turf',
+				effects: [{ stat: StatID.STEELMIND, value: 2 }],
+				next: Chapter8DialogueID.CH8_STRATEGY_CRISIS,
+			},
+		],
+	},
+	[Chapter8DialogueID.CH8_STRATEGY_CRISIS]: {
+		speaker: 'narrator',
+		text: 'Khủng hoảng dữ liệu (Data Breach). Hacker đòi tiền chuộc.',
+		textVi: 'Khủng hoảng dữ liệu (Data Breach). Hacker đòi tiền chuộc.',
+		textEn: 'Data Breach. Hacker demands ransom.',
+		choices: [
+			{
+				id: 'crisis_pay',
+				text: 'Trả tiền: Im lặng xử lý (-10B)',
+				textVi: 'Trả tiền: Im lặng xử lý (-10B)',
+				textEn: 'Pay: Silent fix (-10B)',
+				effects: [{ stat: StatID.MONEY, value: -10000000000 }],
+				next: Chapter8DialogueID.CH8_STRATEGY_SUCCESSION,
+			},
+			{
+				id: 'crisis_public',
+				text: 'Công khai xin lỗi: Chịu phạt nhưng giữ uy tín',
+				textVi: 'Công khai xin lỗi: Chịu phạt nhưng giữ uy tín',
+				textEn: 'Public apology: Fined but keep reputation',
+				effects: [{ stat: StatID.VISION, value: 3 }],
+				next: Chapter8DialogueID.CH8_STRATEGY_SUCCESSION,
+			},
+		],
+	},
+	[Chapter8DialogueID.CH8_STRATEGY_SUCCESSION]: {
+		speaker: 'narrator',
+		text: 'Bạn đã già. Cần tìm người kế nhiệm (Successor).',
+		textVi: 'Bạn đã già. Cần tìm người kế nhiệm (Successor).',
+		textEn: 'You are old. Need Successor.',
+		choices: [
+			{
+				id: 'succ_internal',
+				text: 'Chọn từ nội bộ: Người hiểu văn hóa',
+				textVi: 'Chọn từ nội bộ: Người hiểu văn hóa',
+				textEn: 'Internal: Knows culture',
+				effects: [{ stat: StatID.HUMANITY, value: 3 }],
+				next: Chapter8DialogueID.CH8_STRATEGY_REGULATION,
+			},
+			{
+				id: 'succ_external',
+				text: 'Thuê CEO chuyên nghiệp: Luồng gió mới',
+				textVi: 'Thuê CEO chuyên nghiệp: Luồng gió mới',
+				textEn: 'Hire Pro CEO: Fresh wind',
+				effects: [{ stat: StatID.VISION, value: 3 }],
+				next: Chapter8DialogueID.CH8_STRATEGY_REGULATION,
+			},
+		],
+	},
+	[Chapter8DialogueID.CH8_STRATEGY_REGULATION]: {
+		speaker: 'narrator',
+		text: 'Luật AI mới được ban hành. Siết chặt quản lý.',
+		textVi: 'Luật AI mới được ban hành. Siết chặt quản lý.',
+		textEn: 'New AI Law passed. Strict control.',
+		choices: [
+			{
+				id: 'reg_comply',
+				text: 'Tuân thủ tuyệt đối: Tốn kém nhưng bền vững',
+				textVi: 'Tuân thủ tuyệt đối: Tốn kém nhưng bền vững',
+				textEn: 'Full compliance: Costly but sustainable',
+				effects: [{ stat: StatID.STEELMIND, value: 3 }],
+				next: Chapter8DialogueID.CH8_STRATEGY_INNOVATION,
+			},
+			{
+				id: 'reg_lobby',
+				text: 'Lobby chính sách: Tìm kẽ hở',
+				textVi: 'Lobby chính sách: Tìm kẽ hở',
+				textEn: 'Lobby: Find loopholes',
+				effects: [{ stat: StatID.MONEY, value: -2000000000 }],
+				next: Chapter8DialogueID.CH8_STRATEGY_INNOVATION,
+			},
+		],
+	},
+	[Chapter8DialogueID.CH8_STRATEGY_INNOVATION]: {
+		speaker: 'narrator',
+		text: 'Công nghệ tiếp theo (Next Big Thing)?',
+		textVi: 'Công nghệ tiếp theo (Next Big Thing)?',
+		textEn: 'Next Big Thing?',
+		choices: [
+			{
+				id: 'inn_quantum',
+				text: 'Quantum Computing: Tương lai xa',
+				textVi: 'Quantum Computing: Tương lai xa',
+				textEn: 'Quantum Computing: Far future',
+				effects: [{ stat: StatID.VISION, value: 5 }],
+				next: Chapter8DialogueID.CH8_STRATEGY_BOARD,
+			},
+			{
+				id: 'inn_bio',
+				text: 'BioTech: Kết hợp AI và Sinh học',
+				textVi: 'BioTech: Kết hợp AI và Sinh học',
+				textEn: 'BioTech: AI + Biology',
+				effects: [{ stat: StatID.HUMANITY, value: 3 }],
+				next: Chapter8DialogueID.CH8_STRATEGY_BOARD,
+			},
+		],
+	},
+	[Chapter8DialogueID.CH8_STRATEGY_BOARD]: {
+		speaker: 'narrator',
+		text: 'Hội đồng quản trị đòi tăng trưởng 200%.',
+		textVi: 'Hội đồng quản trị đòi tăng trưởng 200%.',
+		textEn: 'Board demands 200% growth.',
+		choices: [
+			{
+				id: 'board_agree',
+				text: 'Đồng ý: Ép KPI nhân viên (Stress ++)',
+				textVi: 'Đồng ý: Ép KPI nhân viên (Stress ++)',
+				textEn: 'Agree: Push staff KPI (Stress ++)',
+				effects: [{ stat: StatID.STRESS, value: 5 }],
+				next: Chapter8DialogueID.CH8_STRATEGY_EXIT,
+			},
+			{
+				id: 'board_fight',
+				text: 'Phản đối: Bảo vệ nhân viên (Risk Fired)',
+				textVi: 'Phản đối: Bảo vệ nhân viên (Risk Fired)',
+				textEn: 'Fight: Protect staff (Risk Fired)',
+				effects: [{ stat: StatID.HUMANITY, value: 5 }],
+				next: Chapter8DialogueID.CH8_STRATEGY_EXIT,
+			},
+		],
+	},
+	[Chapter8DialogueID.CH8_STRATEGY_EXIT]: {
+		speaker: 'narrator',
+		text: 'Bạn muốn để lại di sản gì?',
+		textVi: 'Bạn muốn để lại di sản gì?',
+		textEn: 'What legacy to leave?',
+		choices: [
+			{
+				id: 'exit_foundation',
+				text: 'Quỹ từ thiện công nghệ: Giúp đời',
+				textVi: 'Quỹ từ thiện công nghệ: Giúp đời',
+				textEn: 'Tech Charity Foundation: Help world',
+				effects: [{ stat: StatID.HUMANITY, value: 10 }],
+				next: Chapter8DialogueID.CH8_AI_VISION,
+			},
+			{
+				id: 'exit_empire',
+				text: 'Đế chế công nghệ: Thống trị',
+				textVi: 'Đế chế công nghệ: Thống trị',
+				textEn: 'Tech Empire: Domination',
+				effects: [{ stat: StatID.VISION, value: 10 }],
+				next: Chapter8DialogueID.CH8_AI_VISION,
+			},
+		],
 	},
 };

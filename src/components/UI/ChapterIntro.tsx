@@ -16,27 +16,35 @@ export default function ChapterIntro({
 	const [showContent, setShowContent] = useState(false);
 
 	useEffect(() => {
+		// Calculate duration based on text speed
+		// Speed 100 (Fast) -> Factor 0.5 -> 2s
+		// Speed 50 (Normal) -> Factor 1.0 -> 4s
+		// Speed 0 (Slow) -> Factor 1.5 -> 6s
+		const speedFactor = Math.max(0.5, (150 - settings.textSpeed) / 100);
+		const BASE_DURATION = 4000;
+		const displayDuration = BASE_DURATION * speedFactor;
+
 		// Start animation sequence
 		const showTimer = setTimeout(() => {
 			setShowContent(true);
 		}, 500);
 
-		// Fade out after a few seconds
+		// Fade out after calculated duration
 		const hideTimer = setTimeout(() => {
 			setIsVisible(false);
-		}, 4500);
+		}, 500 + displayDuration);
 
 		// Complete callback after fade out
 		const completeTimer = setTimeout(() => {
 			onComplete();
-		}, 5500);
+		}, 500 + displayDuration + 1000);
 
 		return () => {
 			clearTimeout(showTimer);
 			clearTimeout(hideTimer);
 			clearTimeout(completeTimer);
 		};
-	}, [onComplete]);
+	}, [onComplete, settings.textSpeed]);
 
 	if (!isVisible) return null;
 

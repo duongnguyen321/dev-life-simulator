@@ -183,7 +183,8 @@ export default function DialogueBox({
 								▶ {settings.language === 'vi' ? choice.textVi : choice.textEn}
 								{!canAfford && (
 									<span className='text-red-400 text-xs ml-2'>
-										(Insufficient {insufficientResource})
+										({settings.language === 'vi' ? 'Không đủ' : 'Insufficient'}{' '}
+										{insufficientResource})
 									</span>
 								)}
 							</motion.button>
