@@ -283,28 +283,19 @@ export default function TodoListModal({
 								{isVi ? 'ĐỂ SAU' : 'LATER'}
 							</button>
 						)}
-						{selectedTaskIds.size === 0 ? (
-							<>
-								<button
-									className={`
-								px-6 py-2 bg-steel-mind text-bg-primary pixel-font font-bold rounded
-								hover:bg-blue-400 transition-colors
-								`}
-								>
-									{isVi ? 'ĐI NGỦ' : 'SLEEP'}
-								</button>
-							</>
-						) : (
-							<button
-								onClick={handleComplete}
-								className={`
+						<button
+							onClick={handleComplete}
+							className={`
 								px-6 py-2 bg-steel-mind text-bg-primary pixel-font font-bold rounded
 								hover:bg-blue-400 transition-colors
 							`}
-							>
-								{isVi ? 'HOÀN THÀNH & ĐI NGỦ' : 'COMPLETE & SLEEP'}
-							</button>
-						)}
+						>
+							{selectedTaskIds.size === 0 ? (
+								<span>{isVi ? 'ĐI NGỦ' : 'SLEEP'}</span>
+							) : (
+								<span>{isVi ? 'HOÀN THÀNH & ĐI NGỦ' : 'COMPLETE & SLEEP'}</span>
+							)}
+						</button>
 					</div>
 				</motion.div>
 			</motion.div>
