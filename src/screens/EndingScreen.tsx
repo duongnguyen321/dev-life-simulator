@@ -313,8 +313,7 @@ export default function EndingScreen() {
 							</button>
 							<button
 								onClick={() => {
-									useGameStore.getState().resetGame();
-									navigate('/game');
+									navigate('/game?newgame=true');
 								}}
 								className='px-8 py-3 bg-game-accent text-white font-pixel rounded hover:bg-opacity-90 transition-all shadow-lg hover:shadow-game-accent/20'
 							>

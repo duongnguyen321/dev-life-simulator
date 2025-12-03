@@ -2,6 +2,212 @@ import type { RandomEvent } from './types';
 import { Dialogue_END, FlagID, RandomEventID, StatID } from './enum';
 
 export const randomEvents: RandomEvent[] = [
+	// Chapter 1 Events
+	{
+		id: RandomEventID.EVT_KID_SICK,
+		name: 'Sốt Virus',
+		nameVi: 'Sốt Virus',
+		nameEn: 'Viral Fever',
+		description: 'Bạn bị sốt cao, mẹ lo lắng thức trắng đêm chăm sóc.',
+		descriptionVi: 'Bạn bị sốt cao, mẹ lo lắng thức trắng đêm chăm sóc.',
+		descriptionEn: 'High fever, mom stayed up all night caring for you.',
+		probability: 0.2,
+		minChapter: 1,
+		maxChapter: 1,
+		choices: [
+			{
+				id: RandomEventID.EVT_KID_SICK_REST,
+				text: 'Ngoan ngoãn uống thuốc',
+				textVi: 'Ngoan ngoãn uống thuốc',
+				textEn: 'Take medicine obediently',
+				next: '',
+				effects: [
+					{ stat: StatID.HEALTH, value: 5 },
+					{ stat: StatID.HUMANITY, value: 5 },
+				],
+			},
+			{
+				id: RandomEventID.EVT_KID_SICK_PLAY,
+				text: 'Đòi chơi đồ chơi',
+				textVi: 'Đòi chơi đồ chơi',
+				textEn: 'Demand toys',
+				next: '',
+				effects: [
+					{ stat: StatID.HEALTH, value: -5 },
+					{ stat: StatID.STEELMIND, value: 2 },
+				],
+			},
+		],
+	},
+	{
+		id: RandomEventID.EVT_KID_FIGHT,
+		name: 'Đại chiến đồ chơi',
+		nameVi: 'Đại chiến đồ chơi',
+		nameEn: 'Toy War',
+		description: 'Thằng bạn hàng xóm giật đồ chơi của bạn.',
+		descriptionVi: 'Thằng bạn hàng xóm giật đồ chơi của bạn.',
+		descriptionEn: 'Neighbor kid snatched your toy.',
+		probability: 0.2,
+		minChapter: 1,
+		maxChapter: 1,
+		choices: [
+			{
+				id: RandomEventID.EVT_KID_FIGHT_FIGHT,
+				text: 'Lao vào đấm',
+				textVi: 'Lao vào đấm',
+				textEn: 'Punch him',
+				next: '',
+				effects: [
+					{ stat: StatID.STEELMIND, value: 5 },
+					{ stat: StatID.HUMANITY, value: -5 },
+				],
+			},
+			{
+				id: RandomEventID.EVT_KID_FIGHT_TELL,
+				text: 'Mách mẹ',
+				textVi: 'Mách mẹ',
+				textEn: 'Tell mom',
+				next: '',
+				effects: [
+					{ stat: StatID.VISION, value: 2 },
+					{ stat: StatID.STEELMIND, value: -2 },
+				],
+			},
+		],
+	},
+	{
+		id: RandomEventID.EVT_KID_LOST,
+		name: 'Lạc ở chợ',
+		nameVi: 'Lạc ở chợ',
+		nameEn: 'Lost in Market',
+		description: 'Bạn mải xem hàng đồ chơi và lạc mất mẹ.',
+		descriptionVi: 'Bạn mải xem hàng đồ chơi và lạc mất mẹ.',
+		descriptionEn: 'Distracted by toys, lost mom.',
+		probability: 0.1,
+		minChapter: 4,
+		maxChapter: 6,
+		choices: [
+			{
+				id: RandomEventID.EVT_KID_LOST_CRY,
+				text: 'Khóc toáng lên',
+				textVi: 'Khóc toáng lên',
+				textEn: 'Cry out loud',
+				next: '',
+				effects: [{ stat: StatID.HUMANITY, value: 5 }],
+			},
+			{
+				id: RandomEventID.EVT_KID_LOST_ASK,
+				text: 'Tìm chú công an',
+				textVi: 'Tìm chú công an',
+				textEn: 'Find police',
+				next: '',
+				effects: [
+					{ stat: StatID.VISION, value: 5 },
+					{ stat: StatID.STEELMIND, value: 5 },
+				],
+			},
+		],
+	},
+	// Chapter 2 Events
+	{
+		id: RandomEventID.EVT_TEEN_NET,
+		name: 'Cám dỗ Net Cỏ',
+		nameVi: 'Cám dỗ Net Cỏ',
+		nameEn: 'Internet Cafe Temptation',
+		description: 'Lũ bạn rủ trốn học đi net. Half-Life đang hot.',
+		descriptionVi: 'Lũ bạn rủ trốn học đi net. Half-Life đang hot.',
+		descriptionEn: 'Friends invite to skip school for net. Half-Life is hot.',
+		probability: 0.2,
+		minChapter: 2,
+		maxChapter: 2,
+		choices: [
+			{
+				id: RandomEventID.EVT_TEEN_NET_PLAY,
+				text: 'Đi luôn sợ gì',
+				textVi: 'Đi luôn sợ gì',
+				textEn: 'Go for it',
+				next: '',
+				effects: [
+					{ stat: StatID.STEELMIND, value: -5 },
+					{ stat: StatID.VISION, value: 2 },
+				],
+			},
+			{
+				id: RandomEventID.EVT_TEEN_NET_STUDY,
+				text: 'Về nhà học bài',
+				textVi: 'Về nhà học bài',
+				textEn: 'Go home and study',
+				next: '',
+				effects: [{ stat: StatID.STEELMIND, value: 5 }],
+			},
+		],
+	},
+	{
+		id: RandomEventID.EVT_TEEN_CRUSH,
+		name: 'Rung động đầu đời',
+		nameVi: 'Rung động đầu đời',
+		nameEn: 'First Crush',
+		description: 'Cô bạn bàn bên cười với bạn. Tim bạn đập thình thịch.',
+		descriptionVi: 'Cô bạn bàn bên cười với bạn. Tim bạn đập thình thịch.',
+		descriptionEn: 'Girl next desk smiled. Heart pounding.',
+		probability: 0.1,
+		minChapter: 2,
+		maxChapter: 2,
+		choices: [
+			{
+				id: RandomEventID.EVT_TEEN_CRUSH_CONFESS,
+				text: 'Viết thư làm quen',
+				textVi: 'Viết thư làm quen',
+				textEn: 'Write a letter',
+				next: '',
+				effects: [
+					{ stat: StatID.STEELMIND, value: 5 },
+					{ stat: StatID.HUMANITY, value: 5 },
+				],
+			},
+			{
+				id: RandomEventID.EVT_TEEN_CRUSH_HIDE,
+				text: 'Giấu kín trong lòng',
+				textVi: 'Giấu kín trong lòng',
+				textEn: 'Keep it secret',
+				next: '',
+				effects: [{ stat: StatID.STRESS, value: 5 }],
+			},
+		],
+	},
+	{
+		id: RandomEventID.EVT_TEEN_CHEAT,
+		name: 'Bài kiểm tra 1 tiết',
+		nameVi: 'Bài kiểm tra 1 tiết',
+		nameEn: '1-Period Test',
+		description: 'Đề khó quá. Bạn có phao trong túi.',
+		descriptionVi: 'Đề khó quá. Bạn có phao trong túi.',
+		descriptionEn: 'Test is hard. You have cheat sheet.',
+		probability: 0.2,
+		minChapter: 2,
+		maxChapter: 2,
+		choices: [
+			{
+				id: RandomEventID.EVT_TEEN_CHEAT_COPY,
+				text: 'Quay cóp',
+				textVi: 'Quay cóp',
+				textEn: 'Cheat',
+				next: '',
+				effects: [
+					{ stat: StatID.STEELMIND, value: -5 },
+					{ stat: StatID.VISION, value: -2 },
+				],
+			},
+			{
+				id: RandomEventID.EVT_TEEN_CHEAT_STUDY,
+				text: 'Tự làm',
+				textVi: 'Tự làm',
+				textEn: 'Do it yourself',
+				next: '',
+				effects: [{ stat: StatID.STEELMIND, value: 5 }],
+			},
+		],
+	},
 	{
 		id: RandomEventID.EVT_SERVER_CRASH,
 		name: 'Server Crash',
@@ -11,6 +217,8 @@ export const randomEvents: RandomEvent[] = [
 		descriptionVi: 'Server sập lúc nửa đêm.',
 		descriptionEn: 'Server crashed at midnight.',
 		probability: 0.1,
+		minChapter: 3,
+		maxChapter: 4,
 		choices: [
 			{
 				id: RandomEventID.EVT_SERVER_CRASH_IGNORE,
@@ -46,6 +254,8 @@ export const randomEvents: RandomEvent[] = [
 		descriptionVi: 'Một lời mời hấp dẫn.',
 		descriptionEn: 'A tempting offer.',
 		probability: 0.05,
+		minChapter: 5,
+		maxChapter: 6,
 		choices: [
 			{
 				id: RandomEventID.EVT_HEADHUNTER_ACCEPT,
@@ -79,6 +289,8 @@ export const randomEvents: RandomEvent[] = [
 		descriptionVi: 'Nhân viên chủ chốt muốn ra đi.',
 		descriptionEn: 'Key employee wants to leave.',
 		probability: 0.05,
+		minChapter: 5,
+		maxChapter: 6,
 		choices: [
 			{
 				id: RandomEventID.EVT_STAFF_QUIT_RAISE,
@@ -107,6 +319,8 @@ export const randomEvents: RandomEvent[] = [
 		descriptionVi: 'Sản phẩm của bạn bị nhái.',
 		descriptionEn: 'Your product is cloned.',
 		probability: 0.05,
+		minChapter: 5,
+		maxChapter: 6,
 		choices: [
 			{
 				id: RandomEventID.EVT_COPYCAT_SUE,
@@ -138,6 +352,8 @@ export const randomEvents: RandomEvent[] = [
 		descriptionVi: 'Tin dữ từ gia đình.',
 		descriptionEn: 'Bad news from home.',
 		probability: 0.05,
+		minChapter: 4,
+		maxChapter: 6,
 		choices: [
 			{
 				id: RandomEventID.EVT_DAD_SICK_CARE,
@@ -172,6 +388,8 @@ export const randomEvents: RandomEvent[] = [
 		descriptionVi: 'Tình cờ gặp lại người xưa.',
 		descriptionEn: 'Accidentally meet ex.',
 		probability: 0.05,
+		minChapter: 3,
+		maxChapter: 4,
 		choices: [
 			{
 				id: RandomEventID.EVT_EX_LOVER_COFFEE,
@@ -193,13 +411,15 @@ export const randomEvents: RandomEvent[] = [
 	},
 	{
 		id: RandomEventID.EVT_BITCOIN,
-		name: 'Bitcoin Investment',
-		nameVi: 'Đầu tư Bitcoin',
-		nameEn: 'Invest in Bitcoin',
+		name: 'Bitcoin',
+		nameVi: 'Cơ hội đầu tư Bitcoin năm 2017',
+		nameEn: 'Bitcoin investment opportunity 2017',
 		description: 'Cơ hội đổi đời?',
 		descriptionVi: 'Cơ hội đổi đời?',
 		descriptionEn: 'Life changing opportunity?',
 		probability: 0.05,
+		minChapter: 3,
+		maxChapter: 4,
 		choices: [
 			{
 				id: RandomEventID.EVT_BITCOIN_ALL_IN,
@@ -228,6 +448,8 @@ export const randomEvents: RandomEvent[] = [
 		descriptionVi: 'Dữ liệu bị rò rỉ.',
 		descriptionEn: 'Data leaked.',
 		probability: 0.05,
+		minChapter: 5,
+		maxChapter: 6,
 		choices: [
 			{
 				id: RandomEventID.EVT_DATA_SCANDAL_HIDE,
@@ -259,6 +481,8 @@ export const randomEvents: RandomEvent[] = [
 		descriptionVi: 'Hệ thống bị tấn công.',
 		descriptionEn: 'System under attack.',
 		probability: 0.05,
+		minChapter: 5,
+		maxChapter: 6,
 		choices: [
 			{
 				id: RandomEventID.EVT_DDOS_SERVICE,
@@ -293,6 +517,8 @@ export const randomEvents: RandomEvent[] = [
 		descriptionVi: 'Rắc rối tình cảm nơi công sở.',
 		descriptionEn: 'Office romance trouble.',
 		probability: 0.05,
+		minChapter: 5,
+		maxChapter: 6,
 		choices: [
 			{
 				id: RandomEventID.EVT_CONFESSION_ACCEPT,
@@ -321,6 +547,8 @@ export const randomEvents: RandomEvent[] = [
 		descriptionVi: 'Thị trường biến động mạnh.',
 		descriptionEn: 'Market volatility.',
 		probability: 0.05,
+		minChapter: 5,
+		maxChapter: 6,
 		choices: [
 			{
 				id: RandomEventID.EVT_STOCK_CRASH_BUY,
@@ -352,6 +580,8 @@ export const randomEvents: RandomEvent[] = [
 		descriptionVi: 'Cơ hội chia sẻ kiến thức.',
 		descriptionEn: 'Opportunity to share knowledge.',
 		probability: 0.05,
+		minChapter: 5,
+		maxChapter: 6,
 		choices: [
 			{
 				id: RandomEventID.EVT_TEDX_JOIN,
@@ -386,6 +616,8 @@ export const randomEvents: RandomEvent[] = [
 		descriptionVi: 'Lỗ hổng trong thư viện Open Source.',
 		descriptionEn: 'Vulnerability in Open Source library.',
 		probability: 0.05,
+		minChapter: 4,
+		maxChapter: 6,
 		choices: [
 			{
 				id: RandomEventID.EVT_ZERO_DAY_REPORT,
@@ -417,6 +649,8 @@ export const randomEvents: RandomEvent[] = [
 		descriptionVi: 'Hoạt động gắn kết team.',
 		descriptionEn: 'Team bonding activity.',
 		probability: 0.05,
+		minChapter: 5,
+		maxChapter: 6,
 		choices: [
 			{
 				id: RandomEventID.EVT_TEAM_BUILDING_GO,
@@ -451,6 +685,8 @@ export const randomEvents: RandomEvent[] = [
 		descriptionVi: 'Rủi ro kinh doanh.',
 		descriptionEn: 'Business risk.',
 		probability: 0.05,
+		minChapter: 3,
+		maxChapter: 4,
 		choices: [
 			{
 				id: RandomEventID.EVT_BAD_DEBT_THUG,
@@ -482,6 +718,8 @@ export const randomEvents: RandomEvent[] = [
 		descriptionVi: 'Tai nạn hy hữu.',
 		descriptionEn: 'Rare accident.',
 		probability: 0.05,
+		minChapter: 4,
+		maxChapter: 6,
 		choices: [
 			{
 				id: RandomEventID.EVT_CAT_SERVER_FIRE,
@@ -513,6 +751,8 @@ export const randomEvents: RandomEvent[] = [
 		descriptionVi: 'Cơn sốt đất lan rộng.',
 		descriptionEn: 'Land fever spreading.',
 		probability: 0.05,
+		minChapter: 5,
+		maxChapter: 6,
 		choices: [
 			{
 				id: RandomEventID.EVT_LAND_FEVER_TRADE,
@@ -544,6 +784,8 @@ export const randomEvents: RandomEvent[] = [
 		descriptionVi: 'Vấn đề tiền bạc và tình bạn.',
 		descriptionEn: 'Money and friendship.',
 		probability: 0.05,
+		minChapter: 3,
+		maxChapter: 4,
 		choices: [
 			{
 				id: RandomEventID.EVT_FRIEND_LOAN_GIVE,
@@ -575,6 +817,8 @@ export const randomEvents: RandomEvent[] = [
 		descriptionVi: 'Bệnh nghề nghiệp.',
 		descriptionEn: 'Occupational disease.',
 		probability: 0.05,
+		minChapter: 4,
+		maxChapter: 8,
 		choices: [
 			{
 				id: RandomEventID.EVT_BACK_PAIN_GYM,
@@ -609,6 +853,8 @@ export const randomEvents: RandomEvent[] = [
 		descriptionVi: 'Lời đề nghị mua lại.',
 		descriptionEn: 'Buyout offer.',
 		probability: 0.05,
+		minChapter: 6,
+		maxChapter: 6,
 		choices: [
 			{
 				id: RandomEventID.EVT_SHARK_BUY_SELL,
@@ -637,6 +883,8 @@ export const randomEvents: RandomEvent[] = [
 		descriptionVi: 'Sự cố bảo mật nội bộ.',
 		descriptionEn: 'Internal security incident.',
 		probability: 0.05,
+		minChapter: 5,
+		maxChapter: 6,
 		choices: [
 			{
 				id: RandomEventID.EVT_LEAK_CODE_FIRE,
@@ -669,6 +917,8 @@ export const randomEvents: RandomEvent[] = [
 		descriptionVi: 'Mất mạng toàn công ty.',
 		descriptionEn: 'No internet.',
 		probability: 0.05,
+		minChapter: 3,
+		maxChapter: 4,
 		choices: [
 			{
 				id: RandomEventID.EVT_INTERNET_CUT_BREAK,
@@ -703,6 +953,7 @@ export const randomEvents: RandomEvent[] = [
 		descriptionVi: 'Mâu thuẫn gia đình.',
 		descriptionEn: 'Family conflict.',
 		probability: 0.05,
+		minChapter: 7, // Only after married (Ch6/7)
 		choices: [
 			{
 				id: RandomEventID.EVT_WIFE_NAG_ARGUE,
@@ -734,6 +985,7 @@ export const randomEvents: RandomEvent[] = [
 		descriptionVi: 'Định hướng tương lai cho con.',
 		descriptionEn: 'Future path for kid.',
 		probability: 0.05,
+		minChapter: 7, // Only after having kids (Ch7+)
 		choices: [
 			{
 				id: RandomEventID.EVT_KID_YOUTUBER_FORBID,
@@ -765,6 +1017,7 @@ export const randomEvents: RandomEvent[] = [
 		descriptionVi: 'Người thầy năm xưa gặp khó khăn.',
 		descriptionEn: 'Old mentor in trouble.',
 		probability: 0.05,
+		minChapter: 7, // Late career, successful enough to help
 		choices: [
 			{
 				id: RandomEventID.EVT_MENTOR_JOBLESS_HIRE,
@@ -796,6 +1049,7 @@ export const randomEvents: RandomEvent[] = [
 		descriptionVi: 'Khủng hoảng truyền thông.',
 		descriptionEn: 'Media crisis.',
 		probability: 0.05,
+		minChapter: 7, // Need big Company with users
 		choices: [
 			{
 				id: RandomEventID.EVT_BOYCOTT_KOL,
@@ -827,6 +1081,7 @@ export const randomEvents: RandomEvent[] = [
 		descriptionVi: 'Cơ hội chính trị.',
 		descriptionEn: 'Political opportunity.',
 		probability: 0.05,
+		minChapter: 7,
 		choices: [
 			{
 				id: RandomEventID.EVT_PARTY_INVITE_JOIN,
@@ -861,6 +1116,7 @@ export const randomEvents: RandomEvent[] = [
 		descriptionVi: 'Cảnh báo sức khỏe nghiêm trọng.',
 		descriptionEn: 'Serious health warning.',
 		probability: 0.05,
+		minChapter: 8, // Age 45+, late career
 		choices: [
 			{
 				id: RandomEventID.EVT_STROKE_RETIRE,
@@ -889,6 +1145,8 @@ export const randomEvents: RandomEvent[] = [
 		descriptionVi: 'Kho báu bị lãng quên.',
 		descriptionEn: 'Forgotten treasure.',
 		probability: 0.01, // Rare
+		minChapter: 3,
+		maxChapter: 4,
 		choices: [
 			{
 				id: RandomEventID.EVT_OLD_HDD_SELL,
@@ -916,7 +1174,8 @@ export const randomEvents: RandomEvent[] = [
 		description: 'AI bắt đầu có ý thức.',
 		descriptionVi: 'AI bắt đầu có ý thức.',
 		descriptionEn: 'AI becomes sentient.',
-		probability: 0.01, // Rare
+		probability: 0.01,
+		minChapter: 8, // AI era, late game // Rare
 		choices: [
 			{
 				id: RandomEventID.EVT_SINGULARITY_OFF,

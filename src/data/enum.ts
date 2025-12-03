@@ -645,6 +645,26 @@ export enum RandomEventID {
 	EVT_SINGULARITY = 'evt_singularity',
 	EVT_SINGULARITY_OFF = 'evt_singularity_off',
 	EVT_SINGULARITY_TALK = 'evt_singularity_talk',
+	// Chapter 1 Events
+	EVT_KID_SICK = 'evt_kid_sick',
+	EVT_KID_SICK_REST = 'evt_kid_sick_rest',
+	EVT_KID_SICK_PLAY = 'evt_kid_sick_play',
+	EVT_KID_FIGHT = 'evt_kid_fight',
+	EVT_KID_FIGHT_FIGHT = 'evt_kid_fight_fight',
+	EVT_KID_FIGHT_TELL = 'evt_kid_fight_tell',
+	EVT_KID_LOST = 'evt_kid_lost',
+	EVT_KID_LOST_CRY = 'evt_kid_lost_cry',
+	EVT_KID_LOST_ASK = 'evt_kid_lost_ask',
+	// Chapter 2 Events
+	EVT_TEEN_NET = 'evt_teen_net',
+	EVT_TEEN_NET_PLAY = 'evt_teen_net_play',
+	EVT_TEEN_NET_STUDY = 'evt_teen_net_study',
+	EVT_TEEN_CRUSH = 'evt_teen_crush',
+	EVT_TEEN_CRUSH_CONFESS = 'evt_teen_crush_confess',
+	EVT_TEEN_CRUSH_HIDE = 'evt_teen_crush_hide',
+	EVT_TEEN_CHEAT = 'evt_teen_cheat',
+	EVT_TEEN_CHEAT_COPY = 'evt_teen_cheat_copy',
+	EVT_TEEN_CHEAT_STUDY = 'evt_teen_cheat_study',
 }
 
 export enum Chapter1SceneID {

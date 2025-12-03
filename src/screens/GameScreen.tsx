@@ -9,6 +9,7 @@ import TodoListModal from '@/components/UI/TodoListModal';
 import DreamModal from '@/components/UI/DreamModal';
 import SkillModal from '@/components/UI/SkillModal';
 import ChapterIntro from '@/components/UI/ChapterIntro';
+import RandomEventModal from '@/components/UI/RandomEventModal';
 import { audioManager } from '@/core/AudioManager';
 import { saveSystem } from '@/core/SaveSystem';
 import { GameFlow } from '@/core/GameFlow';
@@ -42,6 +43,7 @@ export default function GameScreen() {
 		completedTaskIds,
 		completeTasks,
 		addXP,
+		pendingRandomEvent,
 	} = useGameStore();
 
 	const [isLoading, setIsLoading] = useState(true);
@@ -52,6 +54,7 @@ export default function GameScreen() {
 	const [isBlackout, setIsBlackout] = useState(false);
 	const [dailyTasks, setDailyTasks] = useState<TodoTask[]>([]);
 	const [showChapterIntro, setShowChapterIntro] = useState(true); // Show intro on mount/chapter change
+	const [showRandomEvent, setShowRandomEvent] = useState(false);
 
 	// Derived state
 	const chapter = chapters[currentChapter];
@@ -237,9 +240,52 @@ export default function GameScreen() {
 		}
 	}, [useGameStore.getState().triggerSleepAction]);
 
+	// Handle Random Event Trigger
+	useEffect(() => {
+		const store = useGameStore.getState();
+		if (store.pendingRandomEvent) {
+			setShowRandomEvent(true);
+		}
+	}, [useGameStore.getState().pendingRandomEvent]);
+
 	const handleChoice = (choice: DialogueChoice) => {
 		audioManager.resumeContext();
 		GameFlow.makeChoice(choice);
+	};
+
+	const handleRandomEventChoice = (choice: DialogueChoice) => {
+		const store = useGameStore.getState();
+		// Apply effects
+		if (choice.effects) {
+			choice.effects.forEach((effect) => updateStat(effect.stat, effect.value));
+		}
+		// Apply flags
+		if (choice.flags) {
+			choice.flags.forEach((flag) => store.setFlag(flag.key, flag.value));
+		}
+
+		audioManager.playSFX('choice');
+
+		// Add event to history to prevent duplicates
+		if (store.pendingRandomEvent) {
+			store.markEventSeen(store.pendingRandomEvent.id);
+		}
+
+		setShowRandomEvent(false);
+		store.setPendingRandomEvent(null);
+
+		// Resume dialogue flow
+		if (choice.next) {
+			GameFlow.goToDialogue(choice.next);
+		} else if (store.pendingReturnDialogue) {
+			// Resume from where we left off
+			const returnId = store.pendingReturnDialogue;
+			store.setPendingReturnDialogue(null);
+			GameFlow.goToDialogue(returnId);
+		} else {
+			// Fallback: just advance dialogue normally
+			GameFlow.advanceDialogue();
+		}
 	};
 
 	// Ref to store dialogue before sleep reflection
@@ -575,6 +621,13 @@ export default function GameScreen() {
 					isOpen={showDreamModal}
 					dream={currentDream}
 					onChoice={handleDreamChoice}
+				/>
+
+				{/* Random Event Modal */}
+				<RandomEventModal
+					isOpen={showRandomEvent}
+					event={pendingRandomEvent}
+					onChoice={handleRandomEventChoice}
 				/>
 
 				{/* Blackout Overlay */}

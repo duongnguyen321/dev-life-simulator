@@ -9,6 +9,7 @@ import { audioManager } from '@/core/AudioManager';
 import type { StatsEffect, FlagChange } from '@/data/types';
 import { EndingSystem } from '@/core/EndingSystem';
 import { Dialogue_END } from '@/data/enum';
+import { RandomEventManager } from '@/core/RandomEventManager';
 
 interface Choice {
 	id: string;
@@ -28,6 +29,9 @@ export class GameFlow {
 
 		// Reset state
 		store.resetGame();
+
+		// Initialize event queue
+		store.initializeEventQueue();
 
 		// Start at Chapter 1
 		const chapter1 = chapters[1];
@@ -61,6 +65,31 @@ export class GameFlow {
 		// If dialogue has choices, don't auto-advance
 		if (currentDialogue.choices && currentDialogue.choices.length > 0) {
 			return;
+		}
+
+		// Try to trigger event every 15 dialogues
+		if (
+			store.dialogueCountInChapter > 0 &&
+			store.dialogueCountInChapter % 15 === 0 &&
+			store.eventQueue.length > 0
+		) {
+			const { event, updatedQueue } = RandomEventManager.getNextEvent(
+				store.eventQueue,
+				store.stats,
+				store.flags,
+				store.currentChapter
+			);
+			if (event) {
+				store.updateEventQueue(updatedQueue);
+
+				// IMPORTANT: Save next dialogue to resume after event
+				if (currentDialogue.next) {
+					store.setPendingReturnDialogue(currentDialogue.next);
+				}
+
+				store.setPendingRandomEvent(event);
+				return; // Pause progression to show event
+			}
 		}
 
 		// If has next dialogue, go to it

@@ -10,6 +10,7 @@ import type {
 	Quest,
 	GameSettings,
 	EndingType,
+	RandomEvent,
 } from '@/data/types';
 import {
 	Chapter1DialogueID,
@@ -52,11 +53,20 @@ interface GameStore extends GameState {
 	setPendingReturnDialogue: (dialogueId: string | null) => void;
 	triggerSleepAction: boolean;
 	setTriggerSleepAction: (trigger: boolean) => void;
+	// Random Events
+	pendingRandomEvent: RandomEvent | null;
+	setPendingRandomEvent: (event: RandomEvent | null) => void;
+	eventQueue: string[]; // Queue of event IDs to show
+	eventsSeen: string[]; // Track for achievements
+	initializeEventQueue: () => void;
+	updateEventQueue: (newQueue: string[]) => void;
+	markEventSeen: (eventId: string) => void;
 }
 
 import { achievements } from '@/data/achievements';
 import { skills as allSkills } from '@/data/skills';
 import { shopItems } from '@/data/items';
+import { RandomEventManager } from '@/core/RandomEventManager';
 
 const detectLanguage = (): 'vi' | 'en' => {
 	try {
@@ -107,6 +117,10 @@ const getInitialState = (): GameState => ({
 	nextReflectionTrigger: Math.round(Math.random() * 5) + 10, // Random 10-15
 	pendingReturnDialogue: null,
 	triggerSleepAction: false,
+	// Random Events
+	pendingRandomEvent: null,
+	eventQueue: [],
+	eventsSeen: [],
 });
 
 export const useGameStore = create<GameStore>()(
@@ -401,6 +415,28 @@ export const useGameStore = create<GameStore>()(
 
 			setTriggerSleepAction: (trigger: boolean) => {
 				set({ triggerSleepAction: trigger });
+			},
+
+			setPendingRandomEvent: (event: RandomEvent | null) => {
+				set({ pendingRandomEvent: event });
+			},
+
+			initializeEventQueue: () => {
+				const state = get();
+				const queue = RandomEventManager.initializeEventQueue(
+					state.currentChapter
+				);
+				set({ eventQueue: queue, eventsSeen: [] });
+			},
+
+			updateEventQueue: (newQueue: string[]) => {
+				set({ eventQueue: newQueue });
+			},
+
+			markEventSeen: (eventId: string) => {
+				set((state) => ({
+					eventsSeen: [...state.eventsSeen, eventId],
+				}));
 			},
 		}),
 		{

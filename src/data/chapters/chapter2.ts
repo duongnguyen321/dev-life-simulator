@@ -614,7 +614,7 @@ export const chapter2Dialogues: Record<Chapter2DialogueID, DialogueNode> = {
 			'Trong góc phòng kho bụi bặm, màn hình CRT cũ kỹ bỗng sáng lên. Dòng lệnh nhấp nháy màu xanh lá. Một cánh cửa bí mật vừa hé mở.',
 		textEn:
 			'In the dusty storage corner, the old CRT monitor lit up. A green blinking cursor. A secret door just cracked open.',
-		next: Chapter3DialogueID.CH3_DORM_1,
+		next: Chapter3DialogueID.CH3_INTRO,
 	},
 	[Chapter2DialogueID.CH2_FPT_2]: {
 		speaker: 'narrator',
@@ -646,9 +646,9 @@ export const chapter2Dialogues: Record<Chapter2DialogueID, DialogueNode> = {
 		choices: [
 			{
 				id: 'choice_internet_go',
-				text: 'Đi Net: Quên hết sự đời (Money -20k)',
-				textVi: 'Đi Net: Quên hết sự đời (Money -20k)',
-				textEn: 'Go to Net: Forget everything (Money -20k)',
+				text: 'Đi Net: Quên hết sự đời',
+				textVi: 'Đi Net: Quên hết sự đời',
+				textEn: 'Go to Net: Forget everything',
 				effects: [
 					{ stat: StatID.STRESS, value: -4 },
 					{ stat: StatID.VISION, value: -2 },
@@ -658,9 +658,9 @@ export const chapter2Dialogues: Record<Chapter2DialogueID, DialogueNode> = {
 			},
 			{
 				id: 'choice_internet_stay',
-				text: 'Ở lại thư viện: Đọc sách (Stress +2)',
-				textVi: 'Ở lại thư viện: Đọc sách (Stress +2)',
-				textEn: 'Stay in library: Read books (Stress +2)',
+				text: 'Ở lại thư viện: Đọc sách',
+				textVi: 'Ở lại thư viện: Đọc sách',
+				textEn: 'Stay in library: Read books',
 				effects: [
 					{ stat: StatID.VISION, value: 2 },
 					{ stat: StatID.STRESS, value: 1 },
@@ -1013,7 +1013,7 @@ export const chapter2Dialogues: Record<Chapter2DialogueID, DialogueNode> = {
 				textVi: 'Nghe lời bố, bắt đầu học Code',
 				textEn: 'Listen to father, start coding',
 				effects: [{ stat: StatID.VISION, value: 2 }],
-				next: Chapter3DialogueID.CH3_DORM_1,
+				next: Chapter3DialogueID.CH3_INTRO,
 			},
 		],
 	},

@@ -5,15 +5,12 @@ import { saveSystem } from '@/core/SaveSystem';
 import { useGameStore } from '@/store/gameStore';
 import { audioManager } from '@/core/AudioManager';
 import SettingsModal from '@/components/UI/SettingsModal';
-import LoadGameModal from '@/components/UI/LoadGameModal';
 
 export default function MainMenu() {
 	const navigate = useNavigate();
 	const { settings } = useGameStore();
-	const [_saves, setSaves] = useState<Array<any | null>>([]);
 	const [hasAutoSave, setHasAutoSave] = useState(false);
 	const [showSettings, setShowSettings] = useState(false);
-	const [showLoadGame, setShowLoadGame] = useState(false);
 
 	const isVi = settings.language === 'vi';
 
@@ -26,9 +23,7 @@ export default function MainMenu() {
 	}, []);
 
 	const loadSaveInfo = async () => {
-		const allSaves = await saveSystem.getAllSaves();
 		const autoSave = await saveSystem.loadAutoSave();
-		setSaves(allSaves);
 		setHasAutoSave(autoSave !== null);
 	};
 
@@ -81,8 +76,6 @@ export default function MainMenu() {
 					Continue
 				</MenuButton>
 
-				<MenuButton onClick={() => setShowLoadGame(true)}>Load Game</MenuButton>
-
 				<MenuButton onClick={() => setShowSettings(true)}>Settings</MenuButton>
 			</motion.div>
 
@@ -106,10 +99,6 @@ export default function MainMenu() {
 			<SettingsModal
 				isOpen={showSettings}
 				onClose={() => setShowSettings(false)}
-			/>
-			<LoadGameModal
-				isOpen={showLoadGame}
-				onClose={() => setShowLoadGame(false)}
 			/>
 		</div>
 	);

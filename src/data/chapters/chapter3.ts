@@ -733,9 +733,9 @@ export const chapter3Dialogues: Record<Chapter3DialogueID, DialogueNode> = {
 	},
 	[Chapter3DialogueID.CH3_LEARN_RESOURCES]: {
 		speaker: 'narrator',
-		text: 'Nguồn học nào tốt nhất cho người mới?',
-		textVi: 'Nguồn học nào tốt nhất cho người mới?',
-		textEn: 'Best learning resources for beginners?',
+		text: 'Bạn kiếm được một chút tiền, giờ sẽ chọn học ở đâu?',
+		textVi: 'Bạn kiếm được một chút tiền, giờ sẽ chọn học ở đâu?',
+		textEn: 'You have some money, where will you learn?',
 		choices: [
 			{
 				id: 'choice_resource_paid',

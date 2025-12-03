@@ -91,20 +91,6 @@ class SaveSystem {
 	}
 
 	/**
-	 * Get all save slots info
-	 */
-	async getAllSaves(): Promise<Array<SaveData | null>> {
-		const saves: Array<SaveData | null> = [];
-
-		for (let slot = 1; slot <= this.MAX_SLOTS; slot++) {
-			const data = await this.store.getItem<SaveData>(`save_${slot}`);
-			saves.push(data);
-		}
-
-		return saves;
-	}
-
-	/**
 	 * Check if slot has save data
 	 */
 	async hasSave(slot: number): Promise<boolean> {
@@ -276,16 +262,12 @@ class SaveSystem {
 	 */
 	async getStorageInfo(): Promise<{
 		totalSlots: number;
-		usedSlots: number;
 		hasAutoSave: boolean;
 	}> {
-		const saves = await this.getAllSaves();
-		const usedSlots = saves.filter((s) => s !== null).length;
 		const hasAutoSave = (await this.loadAutoSave()) !== null;
 
 		return {
 			totalSlots: this.MAX_SLOTS,
-			usedSlots,
 			hasAutoSave,
 		};
 	}

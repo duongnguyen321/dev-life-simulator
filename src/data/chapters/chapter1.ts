@@ -1043,7 +1043,7 @@ export const chapter1Dialogues: Record<Chapter1DialogueID, DialogueNode> = {
 				textVi: 'Giữ bí mật: Mình sẽ giữ làm của riêng mình (Humanity -20)',
 				textEn: 'Keep secret: I will keep it for myself (Humanity -20)',
 				effects: [
-					{ stat: StatID.HUMANITY, value: -10 },
+					{ stat: StatID.HUMANITY, value: -20 },
 					{ stat: StatID.MONEY, value: 50000000 },
 				],
 				next: Chapter1DialogueID.CH1_BASE_PARTY,

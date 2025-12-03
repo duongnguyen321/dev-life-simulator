@@ -331,6 +331,8 @@ export interface RandomEvent {
 	probability: number; // 0-1
 	conditions?: Condition[];
 	choices: DialogueChoice[];
+	minChapter?: number; // Event only from this chapter onward
+	maxChapter?: number; // Event only until this chapter
 }
 
 // Skill Definition
@@ -395,6 +397,10 @@ export interface GameState {
 	nextReflectionTrigger: number; // Random 5-7, when to trigger next reflection
 	pendingReturnDialogue: string | null; // Dialogue to return to after reflection
 	triggerSleepAction: boolean; // Trigger sleep action from GameFlow
+	// Random Events
+	pendingRandomEvent: RandomEvent | null; // Event to display
+	eventQueue: string[]; // Queue of event IDs to show
+	eventsSeen: string[]; // Track for achievements
 }
 
 // Game Settings (Language, Volume, Text Speed)
