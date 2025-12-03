@@ -22,9 +22,9 @@ export const achievements: Achievement[] = [
 		conditions: [
 			{
 				type: ConditionType.FLAG,
-				key: 'hello_world_written',
-				operator: Operator.EQUAL,
-				value: true,
+				key: FlagID.BUGS_FIXED,
+				operator: Operator.GTE,
+				value: 1,
 			},
 		],
 	},

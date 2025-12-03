@@ -84,8 +84,8 @@ export const randomEvents: RandomEvent[] = [
 		descriptionVi: 'Bạn mải xem hàng đồ chơi và lạc mất mẹ.',
 		descriptionEn: 'Distracted by toys, lost mom.',
 		probability: 0.1,
-		minChapter: 4,
-		maxChapter: 6,
+		minChapter: 1,
+		maxChapter: 1,
 		choices: [
 			{
 				id: RandomEventID.EVT_KID_LOST_CRY,

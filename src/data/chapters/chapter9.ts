@@ -565,6 +565,12 @@ export const chapter9Dialogues: Record<Chapter9DialogueID, DialogueNode> = {
 		textEn:
 			'55 years old. Forbes honored you in Top 10 richest. Net Worth > $1B. Sitting in 68th floor office, looking down at tiny city.',
 		next: Chapter9DialogueID.CH9_HERMIT_CHECK, // Redirect to Hermit Check
+		effects: [
+			{
+				stat: StatID.MONEY,
+				value: 2500000000000,
+			},
+		],
 	},
 
 	// NEW: Hermit Check

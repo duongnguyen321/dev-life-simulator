@@ -44,6 +44,7 @@ export default function GameScreen() {
 		completeTasks,
 		addXP,
 		pendingRandomEvent,
+		initializeEventQueue,
 	} = useGameStore();
 
 	const [isLoading, setIsLoading] = useState(true);
@@ -407,6 +408,9 @@ export default function GameScreen() {
 				setCurrentChapter(pendingTransition.chapterId);
 				setCurrentScene(pendingTransition.sceneId);
 				setCurrentDialogue(pendingTransition.dialogueId);
+
+				// Refresh event queue for new chapter
+				initializeEventQueue();
 
 				setPendingTransition(null);
 			} else {
