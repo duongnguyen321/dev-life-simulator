@@ -4,8 +4,16 @@
 // Theme: Di sản, Sự viên mãn và Vòng lặp
 // ==========================================
 
-import { Chapter9DialogueID, Chapter9SceneID, Chapter9TodoID, ConditionType, Operator, StatID } from '../enum';
-import { type Chapter, type DialogueNode,  } from '../types';
+import {
+	Chapter9DialogueID,
+	Chapter9SceneID,
+	Chapter9TodoID,
+	ConditionType,
+	Operator,
+	StatID,
+	Dialogue_END,
+} from '../enum';
+import { type Chapter, type DialogueNode } from '../types';
 
 export const chapter9: Chapter = {
 	id: 9,
@@ -599,7 +607,7 @@ export const chapter9Dialogues: Record<Chapter9DialogueID, DialogueNode> = {
 			{ stat: StatID.HUMANITY, value: -100 },
 			{ stat: StatID.STRESS, value: 100 },
 		],
-		next: 'ending_calculation', // Trigger Soulless Tycoon likely
+		next: Chapter9DialogueID.CH9_TEACHING_START, // Trigger Soulless Tycoon likely
 	},
 	[Chapter9DialogueID.CH9_BILLIONAIRE_HANDS]: {
 		speaker: 'player',
@@ -631,9 +639,9 @@ export const chapter9Dialogues: Record<Chapter9DialogueID, DialogueNode> = {
 		choices: [
 			{
 				id: 'choice_teach_accept',
-				text: 'Nhận lời: Truyền lửa (Vision ++, Humanity ++)',
-				textVi: 'Nhận lời: Truyền lửa (Vision ++, Humanity ++)',
-				textEn: 'Accept: Pass the torch (Vision ++, Humanity ++)',
+				text: 'Nhận lời: Truyền lửa',
+				textVi: 'Nhận lời: Truyền lửa',
+				textEn: 'Accept: Pass the torch',
 				effects: [
 					{ stat: StatID.VISION, value: 5 },
 					{ stat: StatID.HUMANITY, value: 5 },
@@ -642,10 +650,16 @@ export const chapter9Dialogues: Record<Chapter9DialogueID, DialogueNode> = {
 			},
 			{
 				id: 'choice_teach_refuse',
-				text: 'Từ chối: Nghỉ ngơi thôi (Steel Mind +3)',
-				textVi: 'Từ chối: Nghỉ ngơi thôi (Steel Mind +3)',
-				textEn: 'Refuse: Just rest (Steel Mind +3)',
-				effects: [{ stat: StatID.STEELMIND, value: 3 }],
+				text: 'Từ chối: Nghỉ ngơi thôi',
+				textVi: 'Từ chối: Nghỉ ngơi thôi',
+				textEn: 'Refuse: Just rest',
+				effects: [
+					{ stat: StatID.STEELMIND, value: 3 },
+					{
+						stat: StatID.HEALTH,
+						value: 20,
+					},
+				],
 				next: Chapter9DialogueID.CH9_WRITING_START,
 			},
 		],
@@ -658,17 +672,17 @@ export const chapter9Dialogues: Record<Chapter9DialogueID, DialogueNode> = {
 		choices: [
 			{
 				id: 'choice_write_truth',
-				text: 'Sự thật trần trụi: Cả thất bại và sai lầm (Humanity ++)',
-				textVi: 'Sự thật trần trụi: Cả thất bại và sai lầm (Humanity ++)',
-				textEn: 'Naked truth: Failures and mistakes (Humanity ++)',
+				text: 'Sự thật trần trụi: Cả thất bại và sai lầm',
+				textVi: 'Sự thật trần trụi: Cả thất bại và sai lầm',
+				textEn: 'Naked truth: Failures and mistakes',
 				effects: [{ stat: StatID.HUMANITY, value: 5 }],
 				next: Chapter9DialogueID.CH9_GIFT_1,
 			},
 			{
 				id: 'choice_write_pr',
-				text: 'Câu chuyện thành công: PR bản thân (Money ++, Vision -)',
-				textVi: 'Câu chuyện thành công: PR bản thân (Money ++, Vision -)',
-				textEn: 'Success story: Self PR (Money ++, Vision -)',
+				text: 'Câu chuyện thành công: PR bản thân',
+				textVi: 'Câu chuyện thành công: PR bản thân',
+				textEn: 'Success story: Self PR',
 				effects: [
 					{ stat: StatID.MONEY, value: 500000000 },
 					{ stat: StatID.VISION, value: -3 },
@@ -745,9 +759,9 @@ export const chapter9Dialogues: Record<Chapter9DialogueID, DialogueNode> = {
 		choices: [
 			{
 				id: 'choice_foundation_sign',
-				text: 'Ký séc: Trao cơ hội đổi đời (-50B, Vision +10)',
-				textVi: 'Ký séc: Trao cơ hội đổi đời (-50B, Vision +10)',
-				textEn: 'Sign check: Give life-changing chance (-50B, Vision +10)',
+				text: 'Ký séc: Trao cơ hội đổi đời (-50B)',
+				textVi: 'Ký séc: Trao cơ hội đổi đời (-50B)',
+				textEn: 'Sign check: Give life-changing chance (-50B)',
 				condition: {
 					type: ConditionType.STAT,
 					key: StatID.HUMANITY,
@@ -762,12 +776,12 @@ export const chapter9Dialogues: Record<Chapter9DialogueID, DialogueNode> = {
 			},
 			{
 				id: 'choice_foundation_skip',
-				text: 'Từ chối: Tiền của tôi là của tôi (Vision -5, Humanity -20)',
-				textVi: 'Từ chối: Tiền của tôi là của tôi (Vision -5, Humanity -20)',
-				textEn: 'Refuse: My money is mine (Vision -5, Humanity -20)',
+				text: 'Từ chối: Tiền của tôi là của tôi',
+				textVi: 'Từ chối: Tiền của tôi là của tôi',
+				textEn: 'Refuse: My money is mine',
 				effects: [
 					{ stat: StatID.VISION, value: -5 },
-					{ stat: StatID.HUMANITY, value: -20 },
+					{ stat: StatID.HUMANITY, value: -30 },
 				],
 				next: Chapter9DialogueID.CH9_FOUNDATION_REJECT,
 			},
@@ -780,7 +794,7 @@ export const chapter9Dialogues: Record<Chapter9DialogueID, DialogueNode> = {
 			'Chữ ký của bạn trị giá 50 tỷ. Nhưng nụ cười của những đứa trẻ nhận học bổng trị giá hơn thế nhiều. Bạn cảm thấy nhẹ lòng.',
 		textEn:
 			'Your signature is worth 50 billion. But the smiles of scholarship kids are worth much more. You feel relieved.',
-		next: 'ch9_ending_calc',
+		next: Chapter9DialogueID.CH9_ENDING_MONOLOGUE,
 	},
 	[Chapter9DialogueID.CH9_FOUNDATION_REJECT]: {
 		speaker: 'narrator',
@@ -789,7 +803,7 @@ export const chapter9Dialogues: Record<Chapter9DialogueID, DialogueNode> = {
 			'Bạn cất bút đi. "Tại sao phải cho đi? Mình đã đổ mồ hôi sôi nước mắt mới có được". Bạn giữ được tiền, nhưng đánh mất sự tôn trọng cuối cùng của xã hội.',
 		textEn:
 			'You put the pen away. "Why give? I worked hard for this". You kept the money, but lost the last shred of social respect.',
-		next: 'ch9_ending_calc',
+		next: Chapter9DialogueID.CH9_ENDING_MONOLOGUE,
 	},
 	[Chapter9DialogueID.CH9_ENDING_MONOLOGUE]: {
 		speaker: 'player',
@@ -806,6 +820,6 @@ export const chapter9Dialogues: Record<Chapter9DialogueID, DialogueNode> = {
 		textVi: 'Tôi không phải là tỷ phú. Tôi là một Developer.',
 		textEn: 'I am not a billionaire. I am a Developer.',
 		effects: [{ stat: StatID.VISION, value: 20 }],
-		next: 'ending_calculation',
+		next: Dialogue_END.END,
 	},
 };

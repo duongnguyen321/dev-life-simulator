@@ -256,8 +256,24 @@ export default function GameScreen() {
 			);
 
 			if (sleepQuotes.length > 0) {
-				// Save current dialogue to restore later
-				preSleepDialogueRef.current = currentDialogueId;
+				// Determine the dialogue to return to after sleep
+				// IMPORTANT: Read from store directly to get the latest dialogue ID
+				const store = useGameStore.getState();
+
+				// If pendingReturnDialogue is set (by GameFlow auto-trigger), use that
+				// Otherwise, get the NEXT dialogue from the current dialogue's data
+				let restoreDialogue = store.pendingReturnDialogue;
+
+				if (!restoreDialogue) {
+					const currentDialogueData = allDialogues[store.currentDialogue];
+					if (currentDialogueData?.next) {
+						restoreDialogue = currentDialogueData.next as string;
+					} else {
+						restoreDialogue = store.currentDialogue;
+					}
+				}
+
+				preSleepDialogueRef.current = restoreDialogue;
 
 				// Pick random quote
 				const quote =
@@ -276,6 +292,10 @@ export default function GameScreen() {
 	};
 
 	const handleNightlyTasksComplete = (selectedTasks: TodoTask[]) => {
+		setShowSleepModal(false);
+		setIsBlackout(true);
+		audioManager.playSFX('achievement'); // Success sound
+
 		// 1. Apply effects of selected tasks
 		selectedTasks.forEach((task) => {
 			if (task.cost) {
@@ -304,9 +324,6 @@ export default function GameScreen() {
 		addXP(selectedTasks.length * 20);
 
 		// 2. Close Todo Modal and Start Blackout
-		setShowSleepModal(false);
-		setIsBlackout(true);
-		audioManager.playSFX('achievement'); // Success sound
 
 		// 3. Pick a random dream after a short delay
 		setTimeout(() => {
@@ -331,6 +348,7 @@ export default function GameScreen() {
 		}
 
 		setShowDreamModal(false);
+		setShowSleepModal(false);
 		handleWakeUp();
 	};
 
@@ -363,6 +381,8 @@ export default function GameScreen() {
 			// Fade in
 			setIsBlackout(false);
 			setCurrentDream(null);
+			setShowSleepModal(false);
+			setShowDreamModal(false);
 		}, 2000);
 	};
 
@@ -423,7 +443,12 @@ export default function GameScreen() {
 					</button>
 					<button
 						onClick={handleSleepClick}
-						className='px-4 py-2 bg-indigo-900/80 border-2 border-indigo-400 text-white pixel-font hover:bg-indigo-800 transition-colors rounded shadow-lg flex items-center gap-2'
+						disabled={isReflection || currentDialogueId === 'SLEEP_FLOW'}
+						className={`px-4 py-2 border-2 text-white pixel-font transition-colors rounded shadow-lg flex items-center gap-2 ${
+							isReflection || currentDialogueId === 'SLEEP_FLOW'
+								? 'bg-gray-700 border-gray-500 opacity-50 cursor-not-allowed'
+								: 'bg-indigo-900/80 border-indigo-400 hover:bg-indigo-800'
+						}`}
 					>
 						<span>🌙</span>
 						<span>{settings.language === 'vi' ? 'Đi Ngủ' : 'Sleep'}</span>
@@ -515,6 +540,10 @@ export default function GameScreen() {
 							onChoice={handleChoice}
 							onNext={() => {
 								audioManager.resumeContext();
+								// Clear query params when advancing dialogue
+								if (searchParams.get('newgame')) {
+									navigate('/game', { replace: true });
+								}
 								GameFlow.advanceDialogue();
 							}}
 							isReflection={isReflection}
@@ -527,8 +556,6 @@ export default function GameScreen() {
 					isOpen={showSleepModal}
 					tasks={dailyTasks}
 					onComplete={handleNightlyTasksComplete}
-					onClose={() => setShowSleepModal(false)}
-					isMandatory={isNightPhase}
 				/>
 
 				{/* Skill Modal */}

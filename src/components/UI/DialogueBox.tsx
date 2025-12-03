@@ -109,9 +109,9 @@ export default function DialogueBox({
 			}
 			style={{
 				backgroundColor: isReflection
-					? 'rgba(20, 20, 35, 0.95)' // Darker, dream-like for reflection
+					? 'rgba(20, 20, 35, 0.95)'
 					: 'rgba(26, 32, 44, 0.95)',
-				border: isReflection ? '4px solid #a78bfa' : '4px solid #4a90e2', // Purple for reflection
+				border: isReflection ? '4px solid #a78bfa' : '4px solid #4a90e2',
 				padding: '2rem',
 				fontFamily: '"Xanh Mono", monospace',
 				boxShadow: isReflection ? '0 0 20px rgba(167, 139, 250, 0.3)' : 'none',
@@ -163,19 +163,16 @@ export default function DialogueBox({
 						return (
 							<motion.button
 								key={choice.id}
-								whileHover={canAfford ? { scale: 1.02, x: 10 } : {}}
-								whileTap={canAfford ? { scale: 0.98 } : {}}
+								whileHover={{ scale: 1.02, x: 10 }}
+								whileTap={{ scale: 0.98 }}
 								onClick={(e) => {
 									e.stopPropagation();
-									if (canAfford) {
-										handleChoiceClick(choice);
-									}
+									handleChoiceClick(choice);
 								}}
-								disabled={!canAfford}
 								className={`choice-button text-left px-4 py-3 border-2 transition-all duration-200 ${
 									canAfford
 										? 'bg-bg-secondary border-vision hover:bg-vision hover:text-bg-primary cursor-pointer'
-										: 'bg-gray-900/50 border-gray-700 opacity-50 cursor-not-allowed'
+										: 'bg-gray-900/50 border-red-900/50 hover:border-red-500 cursor-pointer'
 								}`}
 								style={{ fontSize: '0.875rem' }}
 								title={!canAfford ? `Insufficient ${insufficientResource}` : ''}
@@ -183,8 +180,8 @@ export default function DialogueBox({
 								▶ {settings.language === 'vi' ? choice.textVi : choice.textEn}
 								{!canAfford && (
 									<span className='text-red-400 text-xs ml-2'>
-										({settings.language === 'vi' ? 'Không đủ' : 'Insufficient'}{' '}
-										{insufficientResource})
+										({settings.language === 'vi' ? 'Không đủ' : 'Insufficient'}){' '}
+										{insufficientResource}
 									</span>
 								)}
 							</motion.button>

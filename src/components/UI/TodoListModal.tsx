@@ -9,16 +9,12 @@ interface TodoListModalProps {
 	isOpen: boolean;
 	tasks: TodoTask[];
 	onComplete: (selectedTasks: TodoTask[]) => void;
-	onClose: () => void;
-	isMandatory?: boolean;
 }
 
 export default function TodoListModal({
 	isOpen,
 	tasks,
 	onComplete,
-	onClose,
-	isMandatory = false,
 }: TodoListModalProps) {
 	const { stats, settings } = useGameStore();
 	const [selectedTaskIds, setSelectedTaskIds] = useState<Set<string>>(
@@ -180,7 +176,7 @@ export default function TodoListModal({
 								}
 							}
 
-							const isDisabled = !isSelected && (isLimitReached || !canAfford);
+							const isDisabled = !isSelected && isLimitReached;
 
 							let tooltipText = '';
 							if (isDisabled) {
@@ -188,7 +184,8 @@ export default function TodoListModal({
 									tooltipText = isVi
 										? 'Đã đạt giới hạn 5 việc'
 										: 'Limit reached (5/5)';
-								else if (!canAfford) tooltipText = affordabilityReason;
+							} else if (!canAfford) {
+								tooltipText = affordabilityReason;
 							}
 
 							return (
@@ -203,6 +200,8 @@ export default function TodoListModal({
 													? 'border-green-500 bg-green-900/20'
 													: isDisabled
 													? 'border-gray-800 opacity-50 cursor-not-allowed bg-gray-900/50'
+													: !canAfford
+													? 'border-red-900/50 bg-red-900/10 hover:border-red-500'
 													: 'border-gray-600 hover:border-vision bg-bg-primary'
 											}
 										`}
@@ -275,14 +274,6 @@ export default function TodoListModal({
 					</div>
 
 					<div className='mt-6 flex justify-end gap-4 border-t border-gray-700 pt-4'>
-						{!isMandatory && (
-							<button
-								onClick={onClose}
-								className='px-4 py-2 text-text-primary hover:text-white pixel-font text-sm'
-							>
-								{isVi ? 'ĐỂ SAU' : 'LATER'}
-							</button>
-						)}
 						<button
 							onClick={handleComplete}
 							className={`

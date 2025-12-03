@@ -48,3 +48,151 @@ body {
 	-ms-user-select: text;
 	user-select: text;
 }
+
+/* ===========================================
+   MOBILE RESPONSIVE DESIGN
+   =========================================== */
+
+/* Prevent iOS zoom on input focus */
+input,
+textarea,
+select,
+button {
+	font-size: 16px !important;
+}
+
+/* Touch-friendly minimum sizes */
+button,
+.clickable,
+.choice-button {
+	min-height: 44px;
+	min-width: 44px;
+	cursor: pointer;
+}
+
+/* Mobile First: 0-767px */
+@media screen and (max-width: 767px) {
+	body {
+		font-size: 14px;
+	}
+
+	/* Dialogue box mobile */
+	.pixel-dialog-box {
+		width: 95% !important;
+		max-width: 95% !important;
+		padding: 1rem !important;
+		margin-bottom: 1rem !important;
+	}
+
+	.dialogue-text {
+		font-size: 0.875rem !important;
+		line-height: 1.6 !important;
+		min-height: 3rem !important;
+	}
+
+	.speaker-name {
+		font-size: 0.75rem !important;
+	}
+
+	.choice-button {
+		padding: 0.75rem 1rem !important;
+		font-size: 0.875rem !important;
+	}
+
+	/* Stats bar mobile */
+	.stats-bar {
+		min-width: 100% !important;
+		width: 100% !important;
+		padding: 0.75rem !important;
+		margin-bottom: 0.5rem;
+	}
+
+	.stat-item {
+		margin-bottom: 0.5rem;
+	}
+
+	/* Modals mobile */
+	.modal-container {
+		width: 95vw !important;
+		max-width: 95vw !important;
+		max-height: 90vh !important;
+		padding: 1rem !important;
+	}
+
+	/* Game screen layout mobile */
+	.game-layout {
+		flex-direction: column !important;
+	}
+
+	.game-content {
+		width: 100% !important;
+	}
+}
+
+/* Tablet: 768px - 1024px */
+@media screen and (min-width: 768px) and (max-width: 1024px) {
+	.pixel-dialog-box {
+		width: 85% !important;
+		max-width: 600px !important;
+	}
+
+	.stats-bar {
+		min-width: 200px !important;
+	}
+
+	.modal-container {
+		width: 80vw !important;
+		max-width: 80vw !important;
+	}
+}
+
+/* Landscape mobile optimization */
+@media screen and (max-height: 500px) and (orientation: landscape) {
+	.pixel-dialog-box {
+		padding: 0.75rem !important;
+		margin-bottom: 0.5rem !important;
+	}
+
+	.dialogue-text {
+		min-height: 2rem !important;
+		line-height: 1.4 !important;
+	}
+
+	.stats-bar {
+		padding: 0.5rem !important;
+	}
+
+	.modal-container {
+		max-height: 95vh !important;
+		padding: 0.75rem !important;
+	}
+}
+
+/* High DPI displays */
+@media (-webkit-min-device-pixel-ratio: 2), (min-resolution: 192dpi) {
+	body {
+		-webkit-font-smoothing: antialiased;
+		-moz-osx-font-smoothing: grayscale;
+	}
+}
+
+/* Utility classes for responsive design */
+@media screen and (max-width: 767px) {
+	.hide-mobile {
+		display: none !important;
+	}
+
+	.stack-mobile {
+		flex-direction: column !important;
+	}
+}
+
+.show-mobile {
+	display: none;
+}
+
+@media screen and (max-width: 767px) {
+	.show-mobile {
+		display: block !important;
+	}
+}

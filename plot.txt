@@ -33,6 +33,22 @@ Mọi lựa chọn, mọi câu thoại, mọi hành động của người chơi
   - _Biểu hiện:_ Bạn không nhìn cái cây, bạn nhìn thấy cả khu rừng. Bạn không sửa lỗi, bạn thiết kế lại hệ thống.
   - _Mặt tối:_ Nếu quá cao (>90), bạn trở thành kẻ mộng mơ viển vông (The Dreamer), xa rời thực tế, dễ mắc bệnh "Over-engineering" và sụp đổ vì những tham vọng không tưởng.
 
+### 3. Cơ chế Ngủ & Suy ngẫm (Sleep & Reflection Mechanism)
+
+Đây là hệ thống độc đáo xuất hiện xuyên suốt toàn bộ 9 chapters:
+
+- **Trigger:** Sau mỗi 5-8 dialogues (random), khi người chơi chọn "Sleep" (Ngủ), có cơ hội cao xuất hiện Reflection Quote.
+- **Reflection Quote:** Là những suy ngẫm nội tâm sâu sắc của nhân vật về những gì đã trải qua.
+  - Ví dụ Chapter 1: "Thế giới này rộng lớn hơn mình nghĩ..."
+  - Ví dụ Chapter 3: "Developer đầu tiên... con đường này mới chỉ bắt đầu."
+  - Ví dụ Chapter 8: "Bố từng đứng ở ngã ba đường này. Và bố đã chọn sai..."
+- **Interactive:** Player có thể chọn cách phản ứng với suy ngẫm, mỗi lựa chọn ảnh hưởng đến stats khác nhau.
+- **Purpose:** 
+  - Tạo khoảng lặng để người chơi suy ngẫm về hành trình
+  - Liên kết các sự kiện đã qua với bài học tương lai
+  - Điều chỉnh stats một cách tinh tế qua nội tâm nhân vật
+- **Implementation:** Mỗi Chapter có 3-5 reflection quotes riêng, phù hợp với theme và timeline của chapter đó.
+
 ---
 
 ## II. HÀNH TRÌNH CỐT TRUYỆN CHI TIẾT (FULL NARRATIVE)
@@ -294,6 +310,14 @@ _Chủ đề: Sóng gió, Hy vọng giả tạo và Sự kiên định._
 
 #### 3.6. NIGHTLY EVENTS (CƠ CHẾ ĐÊM - CHAPTER 3)
 
+**0. Reflection Quotes (Trích dẫn Suy ngẫm)**
+*Hệ thống này được kích hoạt ngẫu nhiên sau mỗi 5-8 dialogues:*
+- Khi người chơi chọn "Sleep" (Ngủ), có cơ hội xuất hiện reflection quote
+- Đây là những suy ngẫm nội tâm của nhân vật về những gì đã trải qua
+- Ví dụ Chapter 3: "Developer đầu tiên... con đường này mới chỉ bắt đầu."
+- Player có thể chọn cách phản ứng với suy ngẫm, ảnh hưởng đến stats
+- Cơ chế này xuất hiện xuyên suốt tất cả chapters (1-9)
+
 **1. TODO List Pool (Danh sách việc cần làm - Thời cấp 3 & Đại dịch)**
 *Game sẽ random 10 task từ pool này mỗi đêm:*
 - [ ] Cày code thâu đêm (Skill: Coding +1, Health -1)
@@ -316,8 +340,31 @@ _Chủ đề: Sóng gió, Hy vọng giả tạo và Sự kiên định._
 - [ ] Xem phim cùng cả nhà (Happiness +1)
 - [ ] Luyện gõ phím 10 ngón (Skill: Typing +1)
 - [ ] Ngủ nướng ngày Chủ nhật (Health +1)
+- [ ] Làm bài quiz HTML/CSS cơ bản (Knowledge +1, Vision +1)
+- [ ] Học về API và Frontend/Backend (Vision +2)
+- [ ] Thử xây dựng website đầu tiên (Vision +3, Stress +2)
 
-**2. Dream Questions Pool (Giấc mơ - Thời cấp 3)**
+**2. Developer Quizzes & Scenarios (Câu hỏi/Kịch bản Lập trình viên)**
+*Hệ thống quiz xuất hiện trong gameplay để kiểm tra kiến thức coding:*
+- **Quiz HTML Tags:** Trong trang web chuẩn SEO, nên có bao nhiêu thẻ H1?
+  - Đúng: Chỉ 1 (Vision +5)
+  - Sai: Nhiều hoặc Không có (Knowledge +1)
+- **Quiz CSS Display:** Mặc định, thẻ <div> có thuộc tính display là gì?
+  - Đúng: block (Vision +5)
+  - Sai: inline, flex (Knowledge +1)
+- **Quiz JavaScript Variables:** Sự khác biệt giữa var, let và const?
+  - Đúng: Scope và khả năng gán lại (Vision +5)
+  - Sai: Chỉ là cú pháp khác (Knowledge +1)
+- **Quiz Frontend/Backend:** Frontend Developer chủ yếu làm việc với?
+  - Đúng: Giao diện người dùng (UI/UX) (Vision +5)
+  - Sai: Database (Knowledge +1)
+- **Quiz API:** API là viết tắt của?
+  - Đúng: Application Programming Interface (Vision +5)
+  - Sai: Các đáp án sai (Knowledge +1)
+
+*Lưu ý: Hệ thống quiz này xuất hiện đan xen trong cốt truyện, không chỉ trong nightly events*
+
+**3. Dream Questions Pool (Giấc mơ - Thời cấp 3)**
 *Game sẽ random 1 câu hỏi từ pool này mỗi đêm:*
 1.  **Giấc mơ về Code:** Bạn thấy những dòng code đang rơi xuống như trong Matrix.
     -   A. Cố gắng đọc hiểu chúng (Skill: Coding +1)
@@ -480,11 +527,13 @@ _Chủ đề: Những người thầy, Những người sếp và Sự lựa ch�
 - **Bài học từ Anh S:** Anh S không chỉ dạy bạn về code, anh dạy bạn về tư duy sản phẩm (Product Mindset).
   - _"Làm giáo dục là trồng người. Code sai có thể sửa, nhưng tư duy sai sẽ làm hỏng cả một thế hệ."_
 - **Thành tựu:** Bạn tham gia xây dựng hệ thống học trực tuyến chịu tải hàng triệu học sinh. Bạn cảm thấy mình đang làm điều có ích.
-- **Mối quan hệ (The Network):**
-  - **Anh N:** Một người anh trợ giảng (TA) điềm đạm, cùng làm việc với bạn tại trung tâm.
-  - **Anh Q:** Một học viên của trung tâm. Bạn thấy Q học giỏi, tư duy sắc bén nên chủ động làm thân với suy nghĩ "sau này có gì cần sẽ nhờ được".
-  - **Anh D:** Cũng là một học viên xuất sắc khác, lầm lì nhưng code cực "trâu".
-  - _Kết nối:_ Sau khóa học, Anh Q cũng xin ở lại làm trợ giảng cùng bạn và Anh N. Bộ ba bắt đầu hình thành.
+- **Mối quan hệ (The Network) - Chi tiết hình thành:**
+  - **Anh N:** Một người anh trợ giảng (TA) điềm đạm, làm việc cùng bạn tại trung tâm từ đầu.
+  - **Anh Q:** Ban đầu là học viên xuất sắc của trung tâm. Bạn chủ động làm thân vì thấy Q học giỏi, tư duy sắc bén, nghĩ "sau này có gì cần sẽ nhờ được".
+  - **Anh D:** Cũng là học viên xuất sắc khác, lầm lì nhưng code cực "trâu" (mạnh mẽ).
+  - _Kết nối quan trọng:_ Sau khi hoàn thành khóa học, Anh Q cũng xin ở lại làm trợ giảng (TA) cùng bạn và Anh N. Bộ ba N-Q-Player bắt đầu làm việc cùng nhau, tạo nền tảng cho Dream Team sau này.
+  - Anh D tuy không làm TA nhưng vẫn giữ liên lạc chặt chẽ, thường xuyên trao đổi kỹ thuật.
+  - _Ý nghĩa:_ Đây là lần đầu tiên bạn chủ động xây dựng network, không phải vì cảm tính mà vì tư duy chiến lược.
 
 #### 5.3. Cuộc gọi từ Anh V (The Callback)
 
@@ -501,14 +550,18 @@ _Chủ đề: Những người thầy, Những người sếp và Sự lựa ch�
 
 - **Bối cảnh:** Sau khi rời dự án của Anh V (hoặc dự án thất bại/hết vốn), bạn lại rơi vào cảnh thất nghiệp. Nhưng lần này vị thế đã khác. Bạn đã có kinh nghiệm.
 - **Mục tiêu:** Bạn nhắm đến công ty Outsource của Anh L - nơi nổi tiếng là "lò xay" nhưng lương cao và cơ hội học hỏi cực lớn.
-- **Chuẩn bị:**
-  - Bạn không spam CV nữa. Bạn dành 3 ngày để research về công ty Anh L.
-  - Bạn viết lại CV, tập trung vào những con số: "Tối ưu 50% performance", "Chịu tải 1 triệu user".
-- **Phỏng vấn:**
-  - Anh L trực tiếp phỏng vấn. Không hỏi lý thuyết suông. Anh quăng cho bạn cái laptop: _"Code thử cái thuật toán này xem. 15 phút."_
-  - Bạn toát mồ hôi hột. Nhưng bản năng sinh tồn trỗi dậy. Bạn code điên cuồng.
-  - _Kết quả:_ Code chạy. Anh L gật đầu: _"Được. Mai đi làm. Lương X triệu. Chịu được nhiệt không?"_
-  - _Bạn:_ _"Em cần tiền. Em làm được."_ (Steel Mind +1, Vision +1).
+- **Chuẩn bị (Chi tiết):**
+  - Bạn không spam CV nữa. Bạn dành 3 ngày để research kỹ về công ty Anh L: công nghệ họ dùng, khách hàng lớn, văn hóa làm việc.
+  - Bạn viết lại CV hoàn toàn mới, tập trung vào con số cụ thể: "Tối ưu 50% performance", "Chịu tải 1 triệu user đồng thời".
+  - Bạn chuẩn bị sẵn code samples và GitHub profile ngăn nắp.
+- **Phỏng vấn (Cảnh chi tiết):**
+  - Anh L trực tiếp phỏng vấn. Không hỏi lý thuyết suông kiểu "Pattern nào tốt nhất?".
+  - Anh quăng cho bạn cái laptop ngay tại chỗ: _"Code thử cái thuật toán này xem. 15 phút. Không tra Google."_
+  - Bạn toát mồ hôi hột. Tay run run gõ phím. Nhưng bản năng sinh tồn trỗi dậy. Bạn nhớ lại những đêm thức code, những lần debug đến sáng.
+  - _Kết quả:_ Code chạy đúng, tuy chưa tối ưu lắm. Anh L gật đầu, ánh mắt đánh giá:
+  - Anh L: _"Được. Mai đi làm. Lương X triệu (số tiền cụ thể hơn bạn kỳ vọng). Chịu được nhiệt không?"_
+  - Bạn (kiên định): _"Em cần tiền. Em làm được."_ (Steel Mind +1, Vision +1).
+  - _Ý nghĩa:_ Đây là lần đầu tiên bạn được "săn đón" chứ không phải "xin việc". Bạn hiểu giá trị của mình.
 
 #### 5.4. Anh L và Lò luyện Outsource
 
@@ -542,6 +595,11 @@ _Chủ đề: Những người thầy, Những người sếp và Sự lựa ch�
   2.  Chứng minh cho bố Q thấy con đường bố chọn cho con là đúng.
   3.  Lấy lại danh dự cho cái tên của gia đình.
 - **Kết quả:** Thu nhập tăng vọt (tính bằng USD). Bạn bắt đầu tích lũy vốn liếng.
+- **Công cụ và Workflow:**
+  - Tools: Slack, Jira, GitHub, VSCode, Docker
+  - Meeting: Zoom standup 9h sáng (múi giờ client), async communication
+  - Challenge: Timezone khác biệt (làm đêm cho US market), cultural differences
+  - Advantage: Focus time không bị interrupt, flexible schedule
 
 #### 5.7. NIGHTLY EVENTS (CƠ CHẾ ĐÊM - CHAPTER 5)
 
@@ -1222,41 +1280,39 @@ _Ghi lại hành trình phát triển kỹ năng qua từng giai đoạn._
 - **Triết lý:** Code tốt nhất là code không cần phải viết (No-code/Low-code/Reuse).
 
 ---
-
 ## V. HỆ THỐNG SỰ KIỆN NGẪU NHIÊN (RANDOM ENCOUNTERS)
 
 _Các sự kiện này xuất hiện ngẫu nhiên trong game, yêu cầu người chơi lựa chọn._
 
+### Core Random Events (Implemented):
+
 1.  **Server Crash lúc 2h sáng:**
-    - _A. Kệ, sáng mai sửa:_ (Steel Mind +1, Uy tín -2).
-    - _B. Dậy sửa ngay:_ (Sức khỏe -1, Uy tín +2).
+    -   A. Kệ, sáng mai sửa: (Steel Mind +1, Uy tín -2).
+    -   B. Dậy sửa ngay: (Sức khỏe -1, Uy tín +2).
 2.  **Headhunter gọi điện mời lương x2:**
-    - _A. Đi phỏng vấn:_ (Tiền +++, Trung thành -).
-    - _B. Từ chối:_ (Trung thành +, Tiền giữ nguyên).
+    -   A. Đi phỏng vấn: (Tiền +++, Trung thành -).
+    -   B. Từ chối: (Trung thành +, Tiền giữ nguyên).
 3.  **Nhân viên giỏi đòi nghỉ việc:**
-    - _A. Tăng lương giữ lại:_ (Lợi nhuận -).
-    - _B. Chúc may mắn:_ (Team morale ?).
+    -   A. Tăng lương giữ lại: (Lợi nhuận -, Humanity +).
+    -   B. Chúc may mắn: (Vision -).
 4.  **Đối thủ sao chép sản phẩm:**
-    - _A. Kiện:_ (Tốn tiền, Tốn thời gian).
-    - _B. Cải tiến sản phẩm:_ (Vision +1).
+    -   A. Kiện: (Tốn tiền, Tốn thời gian).
+    -   B. Cải tiến sản phẩm: (Vision +1).
 5.  **Bố ốm nặng:**
-    - _A. Về chăm sóc:_ (Humanity +2, Dự án chậm).
-    - _B. Thuê y tá xịn:_ (Tiền -, Dự án đúng tiến độ).
+    -   A. Về chăm sóc: (Humanity +2, Dự án chậm).
+    -   B. Thuê y tá xịn: (Tiền -, Dự án đúng tiến độ).
 6.  **Gặp lại người yêu cũ:**
-    - _A. Cà phê xã giao:_ (Cảm xúc xao động).
-    - _B. Lơ đi:_ (Steel Mind +1).
+    -   A. Cà phê xã giao: (Cảm xúc xao động).
+    -   B. Lơ đi: (Steel Mind +1).
 7.  **Đầu tư Bitcoin:**
-    - _A. All-in:_ (Rủi ro cực cao).
-    - _B. Bỏ qua:_ (An toàn).
+    -   A. All-in: (Rủi ro cực cao, Tiền +++).
+    -   B. Bỏ qua: (An toàn, Steel Mind +).
 8.  **Scandal dữ liệu người dùng:**
-    - _A. Che giấu:_ (Nguy cơ tù tội).
-    - _B. Công khai xin lỗi:_ (Uy tín giảm tạm thời, Tăng dài hạn).
-
----
-
+    -   A. Che giấu: (Nguy cơ tù tội, Vision ---).
+    -   B. Công khai xin lỗi: (Uy tín giảm tạm thời, Tăng dài hạn).
 9.  **Server bị DDoS:**
-    - _A. Mua dịch vụ chống DDoS:_ (Tiền -, An toàn).
-    - _B. Tự viết script chặn IP:_ (Kỹ năng +2, Rủi ro chặn nhầm user thật).
+    -   A. Mua dịch vụ chống DDoS: (Tiền -, An toàn).
+    -   B. Tự viết script chặn IP: (Kỹ năng +2, Rủi ro chặn nhầm user thật).
 10. **Nhân viên nữ tỏ tình:**
     - _A. Đồng ý:_ (Mở khóa Romance Route, Rủi ro Drama công sở).
     - _B. Từ chối khéo:_ (Steel Mind +1).
@@ -1424,6 +1480,8 @@ _Các huy hiệu người chơi có thể đạt được._
 
 - **Điều kiện:** Steel Mind > 95, Humanity < 20.
 - **Kết cục:** Bạn trở thành tỷ phú công nghệ lạnh lùng nhất thế giới. Công ty thống trị toàn cầu. Nhưng bạn cô độc hoàn toàn. Bố mẹ mất không về kịp. Vợ con bỏ đi. Bạn chết già trong căn phòng server lạnh lẽo, xung quanh là robot.
+- **Trigger Points:** Chọn quá nhiều lựa chọn Steel Mind trong chapters 6-8, bỏ qua gia đình, sa thải nhân viên không thương tiếc.
+- **Warning Signs:** Vợ con bắt đầu xa cách, nhân viên sợ bạn hơn là yêu quý, nhìn bản thân trong gương không còn nhận ra.
 
 ### 2. The Saint (Thánh nhân)
 
@@ -1433,9 +1491,32 @@ _Các huy hiệu người chơi có thể đạt được._
 ### 3. The Dreamer (Kẻ mộng mơ)
 
 - **Điều kiện:** Vision > 95, Steel Mind < 40.
-- **Kết cục:** Bạn theo đuổi những dự án viển vông (như thang máy lên mặt trăng). Đốt hết tiền của nhà đầu tư. Bị coi là kẻ lừa đảo (như Elizabeth Holmes). Cuối đời sống trong ảo vọng.
+- **Kết cục:** Bạn theo đuổi những dự án viễn vông (như thang máy lên mặt trăng). Đốt hết tiền của nhà đầu tư. Bị coi là kẻ lừa đảo (như Elizabeth Holmes). Cuối đời sống trong ảo vọng.
+- **Trigger Points:** Đầu tư vào quá nhiều dự án "crazy" không khả thi, bỏ qua Unit Economics, over-engineering mọi sản phẩm.
+- **Warning Signs:** Nhà đầu tư rút lui, team bắt đầu nghi ngờ, sản phẩm không ai dùng dù "tuyệt vời".
 
-### 4. The Balanced Architect (Kiến trúc sư cân bằng - True Ending)
+### 4. Health Failure (Thất bại về Sức khỏe)
+
+- **Điều kiện:** Health < 20 trong thời gian dài (Chapters 5-8).
+- **Kết cục:** Bạn bị đột quỵ hoặc bệnh nặng do làm việc quá sức. Karoshi (過労死 - chết vì quá tải). Dù giàu có nhưng không sống để tận hưởng. Đây là Bad Ending sớm nhất.
+- **Trigger Points:** Liên tục chọn code thâu đêm, bỏ qua tập gym/yoga, ăn mì tôm thường xuyên, không ngủ đủ giấc.
+- **Warning Signs:** Đau lưng kinh niên, huyết áp cao, cân nặng tăng/giảm đột ngột, mất ngủ.
+
+### 5. Burnout (Kiệt sức)
+
+- **Điều kiện:** Stress > 90 và không được quản lý (Chapters 6-8).
+- **Kết cục:** Stress đỉnh điểm, bạn sụp đổ tinh thần. Phải từ chức CEO, đi điều trị tâm lý. Công ty do co-founders tiếp quản. Bạn rút lui khỏi ngành, không thể chạm máy tính nữa.
+- **Trigger Points:** Không bao giờ từ chối việc, không ủy quyền, xử lý mọi crisis một mình, bỏ qua cảnh báo của vợ/bạn bè.
+- **Warning Signs:** Mất hứng thú với code, anxiety attacks, khóc không kiểm soát, nghĩ đến việc "biến mất".
+
+### 6. Soulless Tycoon (Nhà tư bản vô hồn)
+
+- **Điều kiện:** Money > 100M USD nhưng Humanity < 30, chọn giữ lỗi Robot (Chapter 8).
+- **Kết cục:** Giàu có nhưng không ai kính trọng. Bị mái nhà báo đuổi đánh. Nhà đầu tư rút vốn. Thương hiệu mãi mãi bị gắn mác "unethical". Cô độc giữa đám đông.
+- **Trigger Points:** Chọn Option A trong Chapter 8 (Giấu lỗi Robot), liên tục uống đáo luật sư, chọn tiền hơn đạo đức.
+- **Warning Signs:** Mái nhà báo tiêu cực, petitions chống công ty, nhân viên leak thông tin nội bộ.
+
+### 7. The Balanced Architect (Kiến trúc sư cân bằng - True Ending)
 
 - **Điều kiện:** Cả 3 chỉ số đều > 70.
 - **Kết cục:** (Như cốt truyện chính). Cân bằng giữa sự nghiệp và gia đình. Thành công bền vững. Hạnh phúc viên mãn.

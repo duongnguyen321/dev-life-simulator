@@ -7,6 +7,8 @@ import { useGameStore } from '@/store/gameStore';
 import { chapters, allDialogues } from '@/data/chapters';
 import { audioManager } from '@/core/AudioManager';
 import type { StatsEffect, FlagChange } from '@/data/types';
+import { EndingSystem } from '@/core/EndingSystem';
+import { Dialogue_END } from '@/data/enum';
 
 interface Choice {
 	id: string;
@@ -111,27 +113,14 @@ export class GameFlow {
 	// Go to specific dialogue
 	static goToDialogue(dialogueId: string): void {
 		const store = useGameStore.getState();
-		if (dialogueId === 'ending_calculation') {
+		if (dialogueId === Dialogue_END.END) {
 			const { stats } = store;
-			let ending: any = 'TRAGEDY'; // Default
 
-			// Logic to determine ending
-			if (stats.money > 50000000000 && stats.humanity < 30) {
-				ending = 'SOULLESS_TYCOON';
-			} else if (stats.vision > 80 && stats.humanity > 60) {
-				ending = 'LEGACY';
-			} else if (
-				stats.health > 50 &&
-				stats.stress < 50 &&
-				stats.humanity > 50 &&
-				stats.money > 5000000000
-			) {
-				ending = 'BALANCED';
-			} else if (stats.money > 10000000000 && stats.vision > 70) {
-				ending = 'SUCCESS';
-			}
+			// Use centralized EndingSystem to determine ending
+			const result = EndingSystem.calculateEnding(stats);
 
-			store.setEnding(ending);
+			// @ts-ignore
+			store.setEnding(result.type);
 			return;
 		}
 
@@ -160,6 +149,10 @@ export class GameFlow {
 		// 1. Not already in a reflection (dialogueId doesn't contain 'reflect')
 		// 2. Count threshold met
 		// 3. We are not returning from a reflection (pendingReturnDialogue is null)
+		// Only trigger if:
+		// 1. Not already in a reflection (dialogueId doesn't contain 'reflect')
+		// 2. Count threshold met
+		// 3. We are not returning from a reflection (pendingReturnDialogue is null)
 		if (
 			!dialogueId.includes('reflect') &&
 			!store.pendingReturnDialogue &&
@@ -173,10 +166,15 @@ export class GameFlow {
 				chapter.reflectionQuotes.length > 0
 			) {
 				// Trigger Sleep Action instead of random quote
+				// IMPORTANT: Save the NEXT dialogue as the return point
+				console.log('GameFlow: Triggering sleep. Next dialogue:', dialogueId);
+				console.log('GameFlow: Setting pendingReturnDialogue to:', dialogueId);
+				store.setPendingReturnDialogue(dialogueId);
 				store.setTriggerSleepAction(true);
 				store.setLastReflectionCount(dialogueCountInChapter);
-				// Reset trigger for next time (5-8 dialogues)
-				store.setNextReflectionTrigger(Math.floor(Math.random() * 4) + 5);
+				// Reset trigger for next time (10-15 dialogues)
+				store.setNextReflectionTrigger(Math.round(Math.random() * 5) + 10);
+				store.incrementDialogueCount();
 				return;
 			}
 		}

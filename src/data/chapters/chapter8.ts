@@ -572,17 +572,23 @@ export const chapter8Dialogues: Record<Chapter8DialogueID, DialogueNode> = {
 		choices: [
 			{
 				id: 'choice_budget_approve',
-				text: 'Duyệt chi: Đầu tư cho tương lai (-20B)',
-				textVi: 'Duyệt chi: Đầu tư cho tương lai (-20B)',
-				textEn: 'Approve: Invest in future (-20B)',
-				effects: [{ stat: StatID.MONEY, value: -20000000000 }],
+				text: 'Duyệt chi: Đầu tư cho tương lai (-10B)',
+				textVi: 'Duyệt chi: Đầu tư cho tương lai (-10B)',
+				textEn: 'Approve: Invest in future (-10B)',
+				effects: [
+					{ stat: StatID.MONEY, value: -10000000000 },
+					{
+						stat: StatID.VISION,
+						value: 20,
+					},
+				],
 				next: Chapter8DialogueID.CH8_BUDGET_APPROVE,
 			},
 			{
 				id: 'choice_budget_cut',
-				text: 'Cắt giảm: Tận dụng linh kiện cũ (-5B, Vision -3)',
-				textVi: 'Cắt giảm: Tận dụng linh kiện cũ (-5B, Vision -3)',
-				textEn: 'Cut: Reuse old parts (-5B, Vision -3)',
+				text: 'Cắt giảm: Tận dụng linh kiện cũ (-5B)',
+				textVi: 'Cắt giảm: Tận dụng linh kiện cũ (-5B)',
+				textEn: 'Cut: Reuse old parts (-5B)',
 				effects: [
 					{ stat: StatID.MONEY, value: -5000000000 },
 					{ stat: StatID.VISION, value: -3 },
@@ -632,9 +638,9 @@ export const chapter8Dialogues: Record<Chapter8DialogueID, DialogueNode> = {
 			},
 			{
 				id: 'choice_betrayal_negotiate',
-				text: 'Thỏa hiệp: Chia lợi nhuận (Money +10B, Vision -5)',
-				textVi: 'Thỏa hiệp: Chia lợi nhuận (Money +10B, Vision -5)',
-				textEn: 'Negotiate: Share profit (Money +10B, Vision -5)',
+				text: 'Thỏa hiệp: Chia lợi nhuận (Vision -5)',
+				textVi: 'Thỏa hiệp: Chia lợi nhuận (Vision -5)',
+				textEn: 'Negotiate: Share profit (Vision -5)',
 				effects: [
 					{ stat: StatID.MONEY, value: 10000000000 },
 					{ stat: StatID.VISION, value: -5 },
@@ -729,12 +735,12 @@ export const chapter8Dialogues: Record<Chapter8DialogueID, DialogueNode> = {
 		choices: [
 			{
 				id: 'choice_ethics_hire',
-				text: 'Thuê ngay: An toàn là trên hết (-2B, Vision +3)',
-				textVi: 'Thuê ngay: An toàn là trên hết (-2B, Vision +3)',
-				textEn: 'Hire now: Safety first (-2B, Vision +3)',
+				text: 'Thuê ngay: An toàn là trên hết (-2B)',
+				textVi: 'Thuê ngay: An toàn là trên hết (-2B)',
+				textEn: 'Hire now: Safety first (-2B)',
 				effects: [
 					{ stat: StatID.MONEY, value: -2000000000 },
-					{ stat: StatID.VISION, value: 3 },
+					{ stat: StatID.VISION, value: 5 },
 				],
 				next: Chapter8DialogueID.CH8_ETHICS_HIRE,
 			},
@@ -743,7 +749,13 @@ export const chapter8Dialogues: Record<Chapter8DialogueID, DialogueNode> = {
 				text: 'Thuê người quen: Thằng cháu mới ra trường (-200M)',
 				textVi: 'Thuê người quen: Thằng cháu mới ra trường (-200M)',
 				textEn: 'Hire relative: Nephew just graduated (-200M)',
-				effects: [{ stat: StatID.MONEY, value: -200000000 }],
+				effects: [
+					{ stat: StatID.MONEY, value: -200000000 },
+					{
+						stat: StatID.VISION,
+						value: -5,
+					},
+				],
 				next: Chapter8DialogueID.CH8_ETHICS_NEPHEW,
 			},
 		],
@@ -790,22 +802,22 @@ export const chapter8Dialogues: Record<Chapter8DialogueID, DialogueNode> = {
 		choices: [
 			{
 				id: 'choice_lawyer_hire',
-				text: 'Thuê luật sư: Bảo vệ bản thân (-500M, Steel Mind +3)',
-				textVi: 'Thuê luật sư: Bảo vệ bản thân (-500M, Steel Mind +3)',
-				textEn: 'Hire lawyer: Protect self (-500M, Steel Mind +3)',
+				text: 'Thuê luật sư: Bảo vệ bản thân (-500M)',
+				textVi: 'Thuê luật sư: Bảo vệ bản thân (-500M)',
+				textEn: 'Hire lawyer: Protect self (-500M)',
 				effects: [
 					{ stat: StatID.MONEY, value: -500000000 },
 					{ stat: StatID.STEELMIND, value: 3 },
 				],
-				next: Chapter8DialogueID.CH8_LAWYER_HIRE,
+				next: Chapter8DialogueID.CH8_RECALL_REPLY,
 			},
 			{
 				id: 'choice_lawyer_skip',
-				text: 'Tự chịu trách nhiệm: Mình làm mình chịu (Humanity +3)',
-				textVi: 'Tự chịu trách nhiệm: Mình làm mình chịu (Humanity +3)',
-				textEn: 'Self-responsibility: I own it (Humanity +3)',
+				text: 'Tự chịu trách nhiệm: Mình làm mình chịu ',
+				textVi: 'Tự chịu trách nhiệm: Mình làm mình chịu ',
+				textEn: 'Self-responsibility: I own it ',
 				effects: [{ stat: StatID.HUMANITY, value: 3 }],
-				next: Chapter8DialogueID.CH8_RECALL_REPLY,
+				next: Chapter8DialogueID.CH8_LAWYER_HIRE,
 			},
 		],
 	},
@@ -828,9 +840,9 @@ export const chapter8Dialogues: Record<Chapter8DialogueID, DialogueNode> = {
 		choices: [
 			{
 				id: 'choice_divorce_sign',
-				text: 'Ký đơn: Chia tài sản (Money / 2, Stress +10)',
-				textVi: 'Ký đơn: Chia tài sản (Money / 2, Stress +10)',
-				textEn: 'Sign: Split assets (Money / 2, Stress +10)',
+				text: 'Ký đơn: Chia tài sản',
+				textVi: 'Ký đơn: Chia tài sản',
+				textEn: 'Sign: Split assets',
 				effects: [
 					{ stat: StatID.MONEY, value: -10000000000 }, // Approximate half
 					{ stat: StatID.STRESS, value: 10 },
@@ -839,9 +851,9 @@ export const chapter8Dialogues: Record<Chapter8DialogueID, DialogueNode> = {
 			},
 			{
 				id: 'choice_divorce_beg',
-				text: 'Van xin: Anh sẽ thay đổi (Humanity -5, Chance?)',
-				textVi: 'Van xin: Anh sẽ thay đổi (Humanity -5, Chance?)',
-				textEn: 'Beg: I will change (Humanity -5, Chance?)',
+				text: 'Van xin: Anh sẽ thay đổi',
+				textVi: 'Van xin: Anh sẽ thay đổi',
+				textEn: 'Beg: I will change',
 				effects: [{ stat: StatID.HUMANITY, value: -5 }],
 				next: Chapter8DialogueID.CH8_RECALL_REPLY,
 			},
@@ -849,9 +861,9 @@ export const chapter8Dialogues: Record<Chapter8DialogueID, DialogueNode> = {
 	},
 	[Chapter8DialogueID.CH8_RECALL_REPLY]: {
 		speaker: 'player',
-		text: 'Bạn sẽ làm gì trước áp lực này?',
-		textVi: 'Bạn sẽ làm gì trước áp lực này?',
-		textEn: 'What will you do under this pressure?',
+		text: 'Bạn sẽ làm gì trước áp lực từ cổ đông?',
+		textVi: 'Bạn sẽ làm gì trước áp lực từ cổ đông?',
+		textEn: 'What will you do under shareholder pressure?',
 		choices: [
 			{
 				id: 'choice_argue_shareholder',
@@ -999,20 +1011,21 @@ export const chapter8Dialogues: Record<Chapter8DialogueID, DialogueNode> = {
 		choices: [
 			{
 				id: 'choice_donate_uni_give',
-				text: 'Tài trợ: Ươm mầm tài năng (-5B, Vision +3)',
-				textVi: 'Tài trợ: Ươm mầm tài năng (-5B, Vision +3)',
-				textEn: 'Donate: Nurture talent (-5B, Vision +3)',
+				text: 'Tài trợ: Ươm mầm tài năng (-5B)',
+				textVi: 'Tài trợ: Ươm mầm tài năng (-5B)',
+				textEn: 'Donate: Nurture talent (-5B)',
 				effects: [
 					{ stat: StatID.MONEY, value: -5000000000 },
-					{ stat: StatID.VISION, value: 3 },
+					{ stat: StatID.VISION, value: 15 },
 				],
 				next: Chapter8DialogueID.CH8_DONATE_UNI_GIVE,
 			},
 			{
 				id: 'choice_donate_uni_skip',
-				text: 'Giữ lại tái thiết công ty: Cần vốn (Money +0)',
-				textVi: 'Giữ lại tái thiết công ty: Cần vốn (Money +0)',
-				textEn: 'Keep to rebuild: Need capital (Money +0)',
+				text: 'Giữ lại tái thiết công ty: Cần vốn',
+				textVi: 'Giữ lại tái thiết công ty: Cần vốn',
+				textEn: 'Keep to rebuild: Need capital',
+				effects: [{ stat: StatID.STEELMIND, value: 15 }],
 				next: Chapter8DialogueID.CH8_REBIRTH_2,
 			},
 		],
@@ -1044,9 +1057,9 @@ export const chapter8Dialogues: Record<Chapter8DialogueID, DialogueNode> = {
 		choices: [
 			{
 				id: 'ai_gen',
-				text: 'Generative AI (LLM): Theo trend, đốt tiền (High Risk)',
-				textVi: 'Generative AI (LLM): Theo trend, đốt tiền (High Risk)',
-				textEn: 'Generative AI (LLM): Follow trend, burn cash (High Risk)',
+				text: 'Generative AI (LLM): Theo trend',
+				textVi: 'Generative AI (LLM): Theo trend',
+				textEn: 'Generative AI (LLM): Follow trend',
 				effects: [
 					{ stat: StatID.VISION, value: 5 },
 					{ stat: StatID.MONEY, value: -10000000000 },
@@ -1096,9 +1109,9 @@ export const chapter8Dialogues: Record<Chapter8DialogueID, DialogueNode> = {
 		choices: [
 			{
 				id: 'layoff_replace',
-				text: 'Sa thải: Tối ưu chi phí (Money ++, Humanity --)',
-				textVi: 'Sa thải: Tối ưu chi phí (Money ++, Humanity --)',
-				textEn: 'Layoff: Optimize cost (Money ++, Humanity --)',
+				text: 'Sa thải: Tối ưu chi phí',
+				textVi: 'Sa thải: Tối ưu chi phí',
+				textEn: 'Layoff: Optimize cost',
 				effects: [
 					{ stat: StatID.MONEY, value: 5000000000 },
 					{ stat: StatID.HUMANITY, value: -5 },
@@ -1161,7 +1174,7 @@ export const chapter8Dialogues: Record<Chapter8DialogueID, DialogueNode> = {
 				text: 'Công khai xin lỗi: Chịu phạt nhưng giữ uy tín',
 				textVi: 'Công khai xin lỗi: Chịu phạt nhưng giữ uy tín',
 				textEn: 'Public apology: Fined but keep reputation',
-				effects: [{ stat: StatID.VISION, value: 3 }],
+				effects: [{ stat: StatID.VISION, value: 5 }],
 				next: Chapter8DialogueID.CH8_STRATEGY_SUCCESSION,
 			},
 		],
@@ -1185,7 +1198,7 @@ export const chapter8Dialogues: Record<Chapter8DialogueID, DialogueNode> = {
 				text: 'Thuê CEO chuyên nghiệp: Luồng gió mới',
 				textVi: 'Thuê CEO chuyên nghiệp: Luồng gió mới',
 				textEn: 'Hire Pro CEO: Fresh wind',
-				effects: [{ stat: StatID.VISION, value: 3 }],
+				effects: [{ stat: StatID.VISION, value: 10 }],
 				next: Chapter8DialogueID.CH8_STRATEGY_REGULATION,
 			},
 		],
@@ -1246,17 +1259,27 @@ export const chapter8Dialogues: Record<Chapter8DialogueID, DialogueNode> = {
 		choices: [
 			{
 				id: 'board_agree',
-				text: 'Đồng ý: Ép KPI nhân viên (Stress ++)',
-				textVi: 'Đồng ý: Ép KPI nhân viên (Stress ++)',
-				textEn: 'Agree: Push staff KPI (Stress ++)',
-				effects: [{ stat: StatID.STRESS, value: 5 }],
+				text: 'Đồng ý: Ép KPI nhân viên',
+				textVi: 'Đồng ý: Ép KPI nhân viên',
+				textEn: 'Agree: Push staff KPI',
+				effects: [
+					{ stat: StatID.STRESS, value: 15 },
+					{
+						stat: StatID.MONEY,
+						value: 100000000,
+					},
+					{
+						stat: StatID.HUMANITY,
+						value: -10,
+					},
+				],
 				next: Chapter8DialogueID.CH8_STRATEGY_EXIT,
 			},
 			{
 				id: 'board_fight',
-				text: 'Phản đối: Bảo vệ nhân viên (Risk Fired)',
-				textVi: 'Phản đối: Bảo vệ nhân viên (Risk Fired)',
-				textEn: 'Fight: Protect staff (Risk Fired)',
+				text: 'Phản đối: Bảo vệ nhân viên',
+				textVi: 'Phản đối: Bảo vệ nhân viên',
+				textEn: 'Fight: Protect staff',
 				effects: [{ stat: StatID.HUMANITY, value: 5 }],
 				next: Chapter8DialogueID.CH8_STRATEGY_EXIT,
 			},

@@ -1,5 +1,5 @@
 import type { RandomEvent } from './types';
-import { FlagID, RandomEventID, StatID } from './enum';
+import { Dialogue_END, FlagID, RandomEventID, StatID } from './enum';
 
 export const randomEvents: RandomEvent[] = [
 	{
@@ -867,7 +867,7 @@ export const randomEvents: RandomEvent[] = [
 				text: 'Nghỉ hưu sớm',
 				textVi: 'Nghỉ hưu sớm',
 				textEn: 'Retire early',
-				next: '',
+				next: Dialogue_END.END,
 				effects: [{ stat: StatID.HEALTH, value: 20 }], // End game: Retired
 			},
 			{

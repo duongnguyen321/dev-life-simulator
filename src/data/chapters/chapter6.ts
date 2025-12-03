@@ -70,7 +70,7 @@ export const chapter6: Chapter = {
 				text: 'Phỏng vấn ứng viên',
 				textVi: 'Phỏng vấn ứng viên',
 				textEn: 'Interview candidates',
-				effects: [{ stat: StatID.VISION, value: 3 }],
+				effects: [{ stat: StatID.VISION, value: 2 }],
 				cost: { stress: 2 },
 			},
 			{
@@ -78,7 +78,7 @@ export const chapter6: Chapter = {
 				text: 'Pitching gọi vốn',
 				textVi: 'Pitching gọi vốn',
 				textEn: 'Pitching for funding',
-				effects: [{ stat: StatID.VISION, value: 5 }],
+				effects: [{ stat: StatID.VISION, value: 3 }],
 				cost: { stress: 5 }, // Increased Stress cost
 			},
 
@@ -87,7 +87,7 @@ export const chapter6: Chapter = {
 				text: 'Sa thải nhân viên kém',
 				textVi: 'Sa thải nhân viên kém',
 				textEn: 'Fire underperforming staff',
-				effects: [{ stat: StatID.STEELMIND, value: 5 }],
+				effects: [{ stat: StatID.STEELMIND, value: 3 }],
 				cost: { humanity: 5 },
 			},
 			{
@@ -95,14 +95,14 @@ export const chapter6: Chapter = {
 				text: 'Review code của team',
 				textVi: 'Review code của team',
 				textEn: 'Review team code',
-				effects: [{ stat: StatID.VISION, value: 3 }],
+				effects: [{ stat: StatID.VISION, value: 2 }],
 			},
 			{
 				id: 'ch6_todo_handle_drama',
 				text: 'Giải quyết drama công sở',
 				textVi: 'Giải quyết drama công sở',
 				textEn: 'Resolve office drama',
-				effects: [{ stat: StatID.HUMANITY, value: 3 }],
+				effects: [{ stat: StatID.HUMANITY, value: 2 }],
 				cost: { stress: 3 },
 			},
 
@@ -111,7 +111,7 @@ export const chapter6: Chapter = {
 				text: 'Làm việc cả cuối tuần',
 				textVi: 'Làm việc cả cuối tuần',
 				textEn: 'Work on weekends',
-				effects: [{ stat: StatID.STEELMIND, value: 5 }],
+				effects: [{ stat: StatID.STEELMIND, value: 3 }],
 				cost: { humanity: 5, health: 5 }, // Increased Humanity cost
 			},
 
@@ -120,7 +120,7 @@ export const chapter6: Chapter = {
 				text: 'Soi sản phẩm đối thủ',
 				textVi: 'Soi sản phẩm đối thủ',
 				textEn: 'Spy on competitor',
-				effects: [{ stat: StatID.VISION, value: 3 }],
+				effects: [{ stat: StatID.VISION, value: 2 }],
 			},
 
 			{
@@ -128,7 +128,7 @@ export const chapter6: Chapter = {
 				text: 'Fix bug trên Production lúc 3h sáng',
 				textVi: 'Fix bug trên Production lúc 3h sáng',
 				textEn: 'Fix Production bug at 3AM',
-				effects: [{ stat: StatID.STEELMIND, value: 5 }],
+				effects: [{ stat: StatID.STEELMIND, value: 3 }],
 				cost: { health: 5 },
 			},
 			{
@@ -136,7 +136,7 @@ export const chapter6: Chapter = {
 				text: 'Viết Vision & Mission',
 				textVi: 'Viết Vision & Mission',
 				textEn: 'Write Vision & Mission',
-				effects: [{ stat: StatID.VISION, value: 5 }],
+				effects: [{ stat: StatID.VISION, value: 3 }],
 			},
 			{
 				id: 'ch6_todo_ignore_family',
@@ -144,14 +144,14 @@ export const chapter6: Chapter = {
 				textVi: 'Quên sinh nhật người thân',
 				textEn: 'Forget relative birthday',
 				cost: { humanity: 5 },
-				effects: [{ stat: StatID.STEELMIND, value: 3 }],
+				effects: [{ stat: StatID.STEELMIND, value: 2 }],
 			},
 			{
 				id: 'ch6_todo_read_startup_book',
 				text: 'Đọc sách "Zero to One"',
 				textVi: 'Đọc sách "Zero to One"',
 				textEn: 'Read "Zero to One"',
-				effects: [{ stat: StatID.VISION, value: 3 }],
+				effects: [{ stat: StatID.VISION, value: 2 }],
 			},
 			{
 				id: 'ch6_todo_meditate',
@@ -181,14 +181,14 @@ export const chapter6: Chapter = {
 				text: 'Nhìn mình trong gương',
 				textVi: 'Nhìn mình trong gương',
 				textEn: 'Look in mirror',
-				effects: [{ stat: StatID.VISION, value: 3 }], // Self-reflection
+				effects: [{ stat: StatID.VISION, value: 2 }], // Self-reflection
 			},
 			{
 				id: 'ch6_todo_call_bros',
 				text: 'Gọi điện cho anh em Co-founder',
 				textVi: 'Gọi điện cho anh em Co-founder',
 				textEn: 'Call Co-founders',
-				effects: [{ stat: StatID.HUMANITY, value: 3 }],
+				effects: [{ stat: StatID.HUMANITY, value: 2 }],
 			},
 		],
 		dreamQuestions: [
@@ -204,7 +204,7 @@ export const chapter6: Chapter = {
 						textVi: 'Hét lên',
 						textEn: 'Scream',
 						next: '',
-						effects: [{ stat: StatID.STRESS, value: 3 }],
+						effects: [{ stat: StatID.STRESS, value: 2 }],
 					},
 					{
 						id: 'ch6_dream_fall_fly',
@@ -212,7 +212,7 @@ export const chapter6: Chapter = {
 						textVi: 'Mọc cánh bay lên',
 						textEn: 'Grow wings and fly',
 						next: '',
-						effects: [{ stat: StatID.VISION, value: 5 }],
+						effects: [{ stat: StatID.VISION, value: 3 }],
 					},
 					{
 						id: 'ch6_dream_fall_accept',
@@ -220,7 +220,7 @@ export const chapter6: Chapter = {
 						textVi: 'Nhắm mắt chấp nhận',
 						textEn: 'Close eyes and accept',
 						next: '',
-						effects: [{ stat: StatID.STEELMIND, value: 5 }],
+						effects: [{ stat: StatID.STEELMIND, value: 3 }],
 					},
 					{
 						id: 'ch6_dream_fall_grab',
@@ -228,7 +228,7 @@ export const chapter6: Chapter = {
 						textVi: 'Cố bám vào cửa sổ',
 						textEn: 'Grab a window',
 						next: '',
-						effects: [{ stat: StatID.HUMANITY, value: 3 }], // Survival instinct
+						effects: [{ stat: StatID.HUMANITY, value: 2 }], // Survival instinct
 					},
 				],
 			},
@@ -244,7 +244,7 @@ export const chapter6: Chapter = {
 						textVi: 'Quay lại đánh trả',
 						textEn: 'Fight back',
 						next: '',
-						effects: [{ stat: StatID.STEELMIND, value: 5 }],
+						effects: [{ stat: StatID.STEELMIND, value: 3 }],
 					},
 					{
 						id: 'ch6_dream_betray_ask',
@@ -252,7 +252,7 @@ export const chapter6: Chapter = {
 						textVi: 'Hỏi "Tại sao?"',
 						textEn: 'Ask "Why?"',
 						next: '',
-						effects: [{ stat: StatID.HUMANITY, value: 3 }],
+						effects: [{ stat: StatID.HUMANITY, value: 2 }],
 					},
 					{
 						id: 'ch6_dream_betray_run',
@@ -260,7 +260,7 @@ export const chapter6: Chapter = {
 						textVi: 'Chạy trốn',
 						textEn: 'Run away',
 						next: '',
-						effects: [{ stat: StatID.STRESS, value: 3 }],
+						effects: [{ stat: StatID.STRESS, value: 2 }],
 					},
 					{
 						id: 'ch6_dream_betray_forgive',
@@ -268,7 +268,7 @@ export const chapter6: Chapter = {
 						textVi: 'Tha thứ',
 						textEn: 'Forgive',
 						next: '',
-						effects: [{ stat: StatID.VISION, value: 5 }],
+						effects: [{ stat: StatID.VISION, value: 3 }],
 					},
 				],
 			},
@@ -284,7 +284,7 @@ export const chapter6: Chapter = {
 						textVi: 'Tận hưởng quyền lực',
 						textEn: 'Enjoy power',
 						next: '',
-						effects: [{ stat: StatID.STEELMIND, value: 5 }],
+						effects: [{ stat: StatID.STEELMIND, value: 3 }],
 					},
 					{
 						id: 'ch6_dream_throne_lonely',
@@ -292,7 +292,7 @@ export const chapter6: Chapter = {
 						textVi: 'Cảm thấy cô đơn',
 						textEn: 'Feel lonely',
 						next: '',
-						effects: [{ stat: StatID.HUMANITY, value: 3 }],
+						effects: [{ stat: StatID.HUMANITY, value: 2 }],
 					},
 					{
 						id: 'ch6_dream_throne_invite',
@@ -300,7 +300,7 @@ export const chapter6: Chapter = {
 						textVi: 'Gọi mọi người đến',
 						textEn: 'Call everyone',
 						next: '',
-						effects: [{ stat: StatID.VISION, value: 5 }],
+						effects: [{ stat: StatID.VISION, value: 3 }],
 					},
 					{
 						id: 'ch6_dream_throne_leave',
@@ -308,7 +308,7 @@ export const chapter6: Chapter = {
 						textVi: 'Bỏ đi',
 						textEn: 'Leave',
 						next: '',
-						effects: [{ stat: StatID.STRESS, value: -3 }],
+						effects: [{ stat: StatID.STRESS, value: -2 }],
 					},
 				],
 			},
@@ -324,7 +324,7 @@ export const chapter6: Chapter = {
 						textVi: 'Lao vào cứu Server',
 						textEn: 'Save Server',
 						next: '',
-						effects: [{ stat: StatID.VISION, value: 5 }],
+						effects: [{ stat: StatID.VISION, value: 3 }],
 					},
 					{
 						id: 'ch6_dream_fire_save_people',
@@ -332,7 +332,7 @@ export const chapter6: Chapter = {
 						textVi: 'Cứu nhân viên',
 						textEn: 'Save employees',
 						next: '',
-						effects: [{ stat: StatID.HUMANITY, value: 5 }],
+						effects: [{ stat: StatID.HUMANITY, value: 3 }],
 					},
 					{
 						id: 'ch6_dream_fire_run',
@@ -340,7 +340,7 @@ export const chapter6: Chapter = {
 						textVi: 'Chạy thoát thân',
 						textEn: 'Run for life',
 						next: '',
-						effects: [{ stat: StatID.HEALTH, value: 3 }],
+						effects: [{ stat: StatID.HEALTH, value: 2 }],
 					},
 					{
 						id: 'ch6_dream_fire_watch',
@@ -348,7 +348,7 @@ export const chapter6: Chapter = {
 						textVi: 'Đứng nhìn',
 						textEn: 'Watch',
 						next: '',
-						effects: [{ stat: StatID.STEELMIND, value: 3 }],
+						effects: [{ stat: StatID.STEELMIND, value: 2 }],
 					},
 				],
 			},
@@ -364,7 +364,7 @@ export const chapter6: Chapter = {
 						textVi: 'Chạy loạn xạ',
 						textEn: 'Run wildly',
 						next: '',
-						effects: [{ stat: StatID.STRESS, value: 3 }],
+						effects: [{ stat: StatID.STRESS, value: 2 }],
 					},
 					{
 						id: 'ch6_dream_maze_mark',
@@ -372,7 +372,7 @@ export const chapter6: Chapter = {
 						textVi: 'Đánh dấu đường đi',
 						textEn: 'Mark the path',
 						next: '',
-						effects: [{ stat: StatID.VISION, value: 3 }],
+						effects: [{ stat: StatID.VISION, value: 2 }],
 					},
 					{
 						id: 'ch6_dream_maze_break',
@@ -380,7 +380,7 @@ export const chapter6: Chapter = {
 						textVi: 'Đập tường',
 						textEn: 'Break walls',
 						next: '',
-						effects: [{ stat: StatID.STEELMIND, value: 5 }],
+						effects: [{ stat: StatID.STEELMIND, value: 3 }],
 					},
 					{
 						id: 'ch6_dream_maze_sit',
@@ -388,7 +388,7 @@ export const chapter6: Chapter = {
 						textVi: 'Ngồi xuống nghỉ',
 						textEn: 'Sit and rest',
 						next: '',
-						effects: [{ stat: StatID.HEALTH, value: 3 }],
+						effects: [{ stat: StatID.HEALTH, value: 2 }],
 					},
 				],
 			},
@@ -408,7 +408,7 @@ export const chapter6: Chapter = {
 					textVi: 'Mơ về thành công',
 					textEn: 'Dream of success',
 					next: '',
-					effects: [{ stat: StatID.VISION, value: 3 }],
+					effects: [{ stat: StatID.VISION, value: 2 }],
 				},
 				{
 					id: 'ch6_reflect_sleep_1_rest',
@@ -416,7 +416,7 @@ export const chapter6: Chapter = {
 					textVi: 'Nghỉ để sáng mai tiếp tục',
 					textEn: 'Rest to continue tomorrow',
 					next: '',
-					effects: [{ stat: StatID.HEALTH, value: 3 }],
+					effects: [{ stat: StatID.HEALTH, value: 2 }],
 				},
 			],
 		},
@@ -434,8 +434,8 @@ export const chapter6: Chapter = {
 					textEn: 'Push a bit more',
 					next: '',
 					effects: [
-						{ stat: StatID.VISION, value: 5 },
-						{ stat: StatID.HEALTH, value: -3 },
+						{ stat: StatID.VISION, value: 3 },
+						{ stat: StatID.HEALTH, value: -2 },
 					],
 				},
 				{
@@ -444,7 +444,7 @@ export const chapter6: Chapter = {
 					textVi: 'Nhưng cơ thể có giới hạn',
 					textEn: 'But body has limits',
 					next: '',
-					effects: [{ stat: StatID.HEALTH, value: 3 }],
+					effects: [{ stat: StatID.HEALTH, value: 2 }],
 				},
 			],
 		},
@@ -461,7 +461,7 @@ export const chapter6: Chapter = {
 					textVi: 'Đau nhưng cần ngủ',
 					textEn: 'Hurt but need sleep',
 					next: '',
-					effects: [{ stat: StatID.STRESS, value: -3 }],
+					effects: [{ stat: StatID.STRESS, value: -2 }],
 				},
 				{
 					id: 'ch6_reflect_sleep_2_tomorrow',
@@ -469,7 +469,7 @@ export const chapter6: Chapter = {
 					textVi: 'Mai sẽ mạnh mẽ hơn',
 					textEn: 'Tomorrow will be stronger',
 					next: '',
-					effects: [{ stat: StatID.STEELMIND, value: 5 }],
+					effects: [{ stat: StatID.STEELMIND, value: 3 }],
 				},
 			],
 		},
@@ -486,7 +486,7 @@ export const chapter6: Chapter = {
 					textVi: 'Học từ thất bại',
 					textEn: 'Learn from failure',
 					next: '',
-					effects: [{ stat: StatID.VISION, value: 5 }],
+					effects: [{ stat: StatID.VISION, value: 3 }],
 				},
 				{
 					id: 'ch6_reflect_success_2_rest',
@@ -494,7 +494,7 @@ export const chapter6: Chapter = {
 					textVi: 'Nhưng giờ cần nghỉ',
 					textEn: 'But need rest now',
 					next: '',
-					effects: [{ stat: StatID.HEALTH, value: 3 }],
+					effects: [{ stat: StatID.HEALTH, value: 2 }],
 				},
 			],
 		},
@@ -511,7 +511,7 @@ export const chapter6: Chapter = {
 					textVi: 'Nghỉ để phục hồi',
 					textEn: 'Rest to recover',
 					next: '',
-					effects: [{ stat: StatID.HEALTH, value: 5 }],
+					effects: [{ stat: StatID.HEALTH, value: 4 }],
 				},
 				{
 					id: 'ch6_reflect_sleep_3_tired',
@@ -519,7 +519,7 @@ export const chapter6: Chapter = {
 					textVi: 'Quá mệt rồi',
 					textEn: 'Too tired',
 					next: '',
-					effects: [{ stat: StatID.STRESS, value: -3 }],
+					effects: [{ stat: StatID.STRESS, value: -2 }],
 				},
 			],
 		},
@@ -558,7 +558,21 @@ export const chapter6Dialogues: Record<Chapter6DialogueID, DialogueNode> = {
 					operator: Operator.GTE,
 					value: 2000000,
 				},
-				effects: [{ stat: StatID.MONEY, value: -2000000 }],
+				effects: [
+					{ stat: StatID.MONEY, value: -2000000 },
+					{
+						stat: StatID.VISION,
+						value: 10,
+					},
+					{
+						stat: StatID.STRESS,
+						value: -10,
+					},
+					{
+						stat: StatID.HEALTH,
+						value: -5,
+					},
+				],
 				next: Chapter6DialogueID.CH6_INVESTOR_MEET,
 			},
 			{
@@ -566,7 +580,11 @@ export const chapter6Dialogues: Record<Chapter6DialogueID, DialogueNode> = {
 				text: 'Tiết kiệm: Mời cafe vỉa hè (Vision +1)',
 				textVi: 'Tiết kiệm: Mời cafe vỉa hè (Vision +1)',
 				textEn: 'Save: Street coffee (Vision +1)',
-				effects: [{ stat: StatID.VISION, value: 1 }],
+				effects: [
+					{ stat: StatID.VISION, value: 1 },
+					{ stat: StatID.STEELMIND, value: 3 },
+					{ stat: StatID.VISION, value: -5 },
+				],
 				next: Chapter6DialogueID.CH6_STARTUP_MOTIVATION,
 			},
 		],
@@ -609,18 +627,18 @@ export const chapter6Dialogues: Record<Chapter6DialogueID, DialogueNode> = {
 		choices: [
 			{
 				id: 'choice_fake_data',
-				text: 'Làm đẹp số liệu: Để lấy vốn đã (Money +500M, Risk)',
-				textVi: 'Làm đẹp số liệu: Để lấy vốn đã (Money +500M, Risk)',
-				textEn: 'Fake data: Get funding first (Money +500M, Risk)',
+				text: 'Làm đẹp số liệu: Để lấy vốn đã (Money +500M)',
+				textVi: 'Làm đẹp số liệu: Để lấy vốn đã (Money +500M)',
+				textEn: 'Fake data: Get funding first (Money +500M)',
 				effects: [{ stat: StatID.MONEY, value: 500000000 }],
 				next: Chapter6DialogueID.CH6_FRAUD_EXPOSED,
 			},
 			{
 				id: 'choice_honest_data',
-				text: 'Trung thực: Chấp nhận khó khăn (Steel Mind +3)',
-				textVi: 'Trung thực: Chấp nhận khó khăn (Steel Mind +3)',
-				textEn: 'Honest: Accept hardship (Steel Mind +3)',
-				effects: [{ stat: StatID.STEELMIND, value: 3 }],
+				text: 'Trung thực: Chấp nhận khó khăn',
+				textVi: 'Trung thực: Chấp nhận khó khăn',
+				textEn: 'Honest: Accept hardship',
+				effects: [{ stat: StatID.STEELMIND, value: 2 }],
 				next: Chapter6DialogueID.CH6_STARTUP_REPLY,
 			},
 		],
@@ -634,8 +652,8 @@ export const chapter6Dialogues: Record<Chapter6DialogueID, DialogueNode> = {
 			'Investor Due Diligence team found anomalies. Pulled funding, threatened lawsuit. Company reputation collapsed.',
 		effects: [
 			{ stat: StatID.MONEY, value: -500000000 }, // Lose the funding
-			{ stat: StatID.VISION, value: -10 },
-			{ stat: StatID.STRESS, value: 10 },
+			{ stat: StatID.VISION, value: -5 },
+			{ stat: StatID.STRESS, value: 7 },
 		],
 		next: Chapter6DialogueID.CH6_STARTUP_REPLY,
 	},
@@ -650,7 +668,7 @@ export const chapter6Dialogues: Record<Chapter6DialogueID, DialogueNode> = {
 				text: 'Chúng ta sẽ thay đổi thế giới!',
 				textVi: 'Chúng ta sẽ thay đổi thế giới!',
 				textEn: 'We will change the world!',
-				effects: [{ stat: StatID.VISION, value: 5 }],
+				effects: [{ stat: StatID.VISION, value: 3 }],
 				next: Chapter6DialogueID.CH6_TEAM_BUILDING_START,
 			},
 			{
@@ -658,7 +676,7 @@ export const chapter6Dialogues: Record<Chapter6DialogueID, DialogueNode> = {
 				text: 'Cảm ơn các anh. Em sẽ không để mọi người thất vọng.',
 				textVi: 'Cảm ơn các anh. Em sẽ không để mọi người thất vọng.',
 				textEn: "Thank you. I won't let you down.",
-				effects: [{ stat: StatID.HUMANITY, value: 5 }],
+				effects: [{ stat: StatID.HUMANITY, value: 3 }],
 				next: Chapter6DialogueID.CH6_HIRING_START, // Redirect to Hiring Friends
 			},
 		],
@@ -674,27 +692,81 @@ export const chapter6Dialogues: Record<Chapter6DialogueID, DialogueNode> = {
 		choices: [
 			{
 				id: 'choice_hire_friend',
-				text: 'Nhận vào: Bạn bè giúp nhau (Humanity +5, Vision -3)',
-				textVi: 'Nhận vào: Bạn bè giúp nhau (Humanity +5, Vision -3)',
-				textEn: 'Hire: Friends help friends (Humanity +5, Vision -3)',
+				text: 'Nhận vào: Bạn bè giúp nhau (Vision -3)',
+				textVi: 'Nhận vào: Bạn bè giúp nhau (Vision -3)',
+				textEn: 'Hire: Friends help friends (Vision -3)',
 				effects: [
-					{ stat: StatID.HUMANITY, value: 5 },
-					{ stat: StatID.VISION, value: -3 },
+					{ stat: StatID.HUMANITY, value: 3 },
+					{ stat: StatID.VISION, value: -2 },
 				],
-				next: Chapter6DialogueID.CH6_TEAM_BUILDING_START,
+				next: Chapter6DialogueID.CH6_CONSULTING,
 			},
 			{
 				id: 'choice_reject_friend',
-				text: 'Từ chối: Công việc là công việc (Vision +3, Humanity -3)',
-				textVi: 'Từ chối: Công việc là công việc (Vision +3, Humanity -3)',
-				textEn: 'Reject: Business is business (Vision +3, Humanity -3)',
+				text: 'Từ chối: Công việc là công việc (Vision +3)',
+				textVi: 'Từ chối: Công việc là công việc (Vision +3)',
+				textEn: 'Reject: Business is business (Vision +3)',
 				effects: [
-					{ stat: StatID.VISION, value: 3 },
-					{ stat: StatID.HUMANITY, value: -3 },
+					{ stat: StatID.VISION, value: 2 },
+					{ stat: StatID.HUMANITY, value: -2 },
 				],
-				next: Chapter6DialogueID.CH6_TEAM_BUILDING_START,
+				next: Chapter6DialogueID.CH6_CONSULTING,
 			},
 		],
+	},
+
+	// NEW: Consulting Gig (Chapter 6)
+	[Chapter6DialogueID.CH6_CONSULTING]: {
+		speaker: 'narrator',
+		text: 'Một startup đàn em nhờ bạn tư vấn kiến trúc hệ thống. Phí tư vấn: 5 triệu.',
+		textVi:
+			'Một startup đàn em nhờ bạn tư vấn kiến trúc hệ thống. Phí tư vấn: 5 triệu.',
+		textEn:
+			'A junior startup asks for your advice on system architecture. Fee: 5 million.',
+		next: Chapter6DialogueID.CH6_CONSULTING_QUIZ,
+	},
+	[Chapter6DialogueID.CH6_CONSULTING_QUIZ]: {
+		speaker: 'player',
+		text: 'Họ đang gặp vấn đề query chậm. Bạn khuyên họ nên làm gì đầu tiên?',
+		textVi: 'Họ đang gặp vấn đề query chậm. Bạn khuyên họ nên làm gì đầu tiên?',
+		textEn: 'They have slow query issues. What do you advise them to do first?',
+		choices: [
+			{
+				id: 'choice_consulting_quiz_6_1',
+				text: 'Mua server mạnh hơn (Scale Up)',
+				textVi: 'Mua server mạnh hơn (Scale Up)',
+				textEn: 'Buy stronger server (Scale Up)',
+				next: Chapter6DialogueID.CH6_CONSULTING_DONE,
+				effects: [{ stat: StatID.VISION, value: -1 }], // Costly and temporary
+			},
+			{
+				id: 'choice_consulting_quiz_6_2',
+				text: 'Đánh Index cho DB',
+				textVi: 'Đánh Index cho DB',
+				textEn: 'Add Index to DB',
+				next: Chapter6DialogueID.CH6_CONSULTING_DONE,
+				effects: [
+					{ stat: StatID.MONEY, value: 5000000 },
+					{ stat: StatID.VISION, value: 3 },
+				], // Correct and efficient
+			},
+			{
+				id: 'choice_consulting_quiz_6_3',
+				text: 'Viết lại bằng Golang',
+				textVi: 'Viết lại bằng Golang',
+				textEn: 'Rewrite in Golang',
+				next: Chapter6DialogueID.CH6_CONSULTING_DONE,
+				effects: [{ stat: StatID.VISION, value: -3 }], // Premature optimization
+			},
+		],
+	},
+	[Chapter6DialogueID.CH6_CONSULTING_DONE]: {
+		speaker: 'narrator',
+		text: 'Lời khuyên của bạn giúp họ giảm 90% thời gian query. 5 triệu tiền tươi thóc thật.',
+		textVi:
+			'Lời khuyên của bạn giúp họ giảm 90% thời gian query. 5 triệu tiền tươi thóc thật.',
+		textEn: 'Your advice reduced query time by 90%. 5 million hard cash.',
+		next: Chapter6DialogueID.CH6_TEAM_BUILDING_START,
 	},
 
 	// NEW: Team Building Event
@@ -708,9 +780,9 @@ export const chapter6Dialogues: Record<Chapter6DialogueID, DialogueNode> = {
 		choices: [
 			{
 				id: 'choice_team_building_luxury',
-				text: 'Resort 5 sao: Anh em là trên hết (-50M, Humanity +5)',
-				textVi: 'Resort 5 sao: Anh em là trên hết (-50M, Humanity +5)',
-				textEn: '5-star Resort: Bros before code (-50M, Humanity +5)',
+				text: 'Resort 5 sao: Anh em là trên hết (-50M)',
+				textVi: 'Resort 5 sao: Anh em là trên hết (-50M)',
+				textEn: '5-star Resort: Bros before code (-50M)',
 				condition: {
 					type: ConditionType.STAT,
 					key: StatID.MONEY,
@@ -719,27 +791,32 @@ export const chapter6Dialogues: Record<Chapter6DialogueID, DialogueNode> = {
 				},
 				effects: [
 					{ stat: StatID.MONEY, value: -50000000 },
-					{ stat: StatID.HUMANITY, value: 5 },
+					{ stat: StatID.VISION, value: 5 },
+					{ stat: StatID.HUMANITY, value: 3 },
 				],
 				next: Chapter6DialogueID.CH6_TEAM_BUILDING_LUXURY,
 			},
 			{
 				id: 'choice_team_building_motel',
-				text: 'Nhà nghỉ Vũng Tàu: Tiết kiệm là quốc sách (-10M, Humanity +3)',
-				textVi: 'Nhà nghỉ Vũng Tàu: Tiết kiệm là quốc sách (-10M, Humanity +3)',
-				textEn: 'Vung Tau Motel: Saving is policy (-10M, Humanity +3)',
+				text: 'Nhà nghỉ Vũng Tàu: Tiết kiệm là quốc sách (-10M)',
+				textVi: 'Nhà nghỉ Vũng Tàu: Tiết kiệm là quốc sách (-10M)',
+				textEn: 'Vung Tau Motel: Saving is policy (-10M)',
 				effects: [
 					{ stat: StatID.MONEY, value: -10000000 },
-					{ stat: StatID.HUMANITY, value: 3 },
+					{ stat: StatID.HUMANITY, value: 2 },
+					{ stat: StatID.VISION, value: 3 },
 				],
 				next: Chapter6DialogueID.CH6_TEAM_BUILDING_MOTEL,
 			},
 			{
 				id: 'choice_team_building_park',
-				text: 'Công viên: Team building 0 đồng (Humanity -5)',
-				textVi: 'Công viên: Team building 0 đồng (Humanity -5)',
-				textEn: 'Public Park: 0 cost team building (Humanity -5)',
-				effects: [{ stat: StatID.HUMANITY, value: -5 }],
+				text: 'Công viên: Team building 0 đồng',
+				textVi: 'Công viên: Team building 0 đồng',
+				textEn: 'Public Park: 0 cost team building',
+				effects: [
+					{ stat: StatID.HUMANITY, value: -3 },
+					{ stat: StatID.VISION, value: -7 },
+				],
 				flags: [{ key: FlagID.CHEAP_TEAM_BUILDING, value: true }],
 				next: Chapter6DialogueID.CH6_TEAM_BUILDING_PARK,
 			},
@@ -770,8 +847,8 @@ export const chapter6Dialogues: Record<Chapter6DialogueID, DialogueNode> = {
 		textEn:
 			'Team looked at each other in dismay under hot sun. "Boss is too stingy". Team morale collapsed completely.',
 		effects: [
-			{ stat: StatID.HUMANITY, value: -10 },
-			{ stat: StatID.VISION, value: -5 },
+			{ stat: StatID.HUMANITY, value: -5 },
+			{ stat: StatID.VISION, value: -3 },
 		],
 		next: Chapter6DialogueID.CH6_PERSONNEL_1,
 	},
@@ -805,12 +882,12 @@ export const chapter6Dialogues: Record<Chapter6DialogueID, DialogueNode> = {
 		choices: [
 			{
 				id: 'choice_fire',
-				text: 'Sa thải (Steel Mind ++, Humanity --)',
-				textVi: 'Sa thải (Steel Mind ++, Humanity --)',
-				textEn: 'Fire (Steel Mind ++, Humanity --)',
+				text: 'Sa thải (Humanity --)',
+				textVi: 'Sa thải (Humanity --)',
+				textEn: 'Fire (Humanity --)',
 				effects: [
-					{ stat: StatID.STEELMIND, value: 5 },
-					{ stat: StatID.HUMANITY, value: -5 },
+					{ stat: StatID.STEELMIND, value: 3 },
+					{ stat: StatID.HUMANITY, value: -3 },
 				],
 				next: Chapter6DialogueID.CH6_PERSONNEL_SCENE,
 			},
@@ -924,7 +1001,7 @@ export const chapter6Dialogues: Record<Chapter6DialogueID, DialogueNode> = {
 			"Brother D's departure stalled the project. You had to hire expensive external Outsource to fill the gap. Loss 50 million.",
 		effects: [
 			{ stat: StatID.MONEY, value: -50000000 },
-			{ stat: StatID.VISION, value: -5 },
+			{ stat: StatID.VISION, value: -3 },
 		],
 		next: Chapter6DialogueID.CH6_MARKET_1,
 	},
@@ -938,7 +1015,7 @@ export const chapter6Dialogues: Record<Chapter6DialogueID, DialogueNode> = {
 			'Căn phòng trọ ngổn ngang dây cáp và vỏ hộp mì tôm. Ba người bạn, ba chiếc laptop, và một giấc mơ thay đổi thế giới (hoặc ít nhất là kiếm được tiền).',
 		textEn:
 			'Rental room messy with cables and noodle boxes. Three friends, three laptops, and a dream to change the world (or at least make money).',
-		next: 'ch6_start',
+		next: Chapter6DialogueID.CH6_MARKET_1,
 	},
 
 	[Chapter6DialogueID.CH6_MARKET_1]: {
@@ -962,20 +1039,20 @@ export const chapter6Dialogues: Record<Chapter6DialogueID, DialogueNode> = {
 		choices: [
 			{
 				id: 'choice_server_cheap',
-				text: 'Thuê Server giá rẻ: Tiết kiệm chi phí (Money +10M, Risk)',
-				textVi: 'Thuê Server giá rẻ: Tiết kiệm chi phí (Money +10M, Risk)',
-				textEn: 'Cheap Server: Save cost (Money +10M, Risk)',
+				text: 'Thuê Server giá rẻ: Tiết kiệm chi phí (Money +10M)',
+				textVi: 'Thuê Server giá rẻ: Tiết kiệm chi phí (Money +10M)',
+				textEn: 'Cheap Server: Save cost (Money +10M)',
 				effects: [{ stat: StatID.MONEY, value: 10000000 }],
 				next: Chapter6DialogueID.CH6_SERVER_CRASH,
 			},
 			{
 				id: 'choice_server_premium',
-				text: 'Server xịn: Đắt xắt ra miếng (Money -20M, Vision +3)',
-				textVi: 'Server xịn: Đắt xắt ra miếng (Money -20M, Vision +3)',
-				textEn: 'Premium Server: Quality costs (Money -20M, Vision +3)',
+				text: 'Server xịn: Đắt xắt ra miếng (Money -20M)',
+				textVi: 'Server xịn: Đắt xắt ra miếng (Money -20M)',
+				textEn: 'Premium Server: Quality costs (Money -20M)',
 				effects: [
 					{ stat: StatID.MONEY, value: -20000000 },
-					{ stat: StatID.VISION, value: 3 },
+					{ stat: StatID.VISION, value: 2 },
 				],
 				next: Chapter6DialogueID.CH6_MARKET_2,
 			},
@@ -983,14 +1060,15 @@ export const chapter6Dialogues: Record<Chapter6DialogueID, DialogueNode> = {
 	},
 	[Chapter6DialogueID.CH6_SERVER_CRASH]: {
 		speaker: 'narrator',
-		text: 'Server giá rẻ liên tục bị down vào giờ cao điểm. Khách hàng phàn nàn dữ dội.',
+		text: 'Server giá rẻ liên tục bị down vào giờ cao điểm. Khách hàng phàn nàn dữ dội và quyết định không sử dụng nữa.',
 		textVi:
-			'Server giá rẻ liên tục bị down vào giờ cao điểm. Khách hàng phàn nàn dữ dội.',
+			'Server giá rẻ liên tục bị down vào giờ cao điểm. Khách hàng phàn nàn dữ dội và quyết định không sử dụng nữa.',
 		textEn:
 			'Cheap server keeps crashing at peak hours. Customers complain loudly.',
 		effects: [
-			{ stat: StatID.VISION, value: -3 },
-			{ stat: StatID.STRESS, value: 3 },
+			{ stat: StatID.VISION, value: -2 },
+			{ stat: StatID.STRESS, value: 2 },
+			{ stat: StatID.MONEY, value: -15000000 },
 		],
 		next: Chapter6DialogueID.CH6_MARKET_2,
 	},
@@ -1031,13 +1109,26 @@ export const chapter6Dialogues: Record<Chapter6DialogueID, DialogueNode> = {
 			},
 			{
 				id: 'choice_salary_delay',
-				text: 'Khất lương: Anh em thông cảm (Humanity -5)',
-				textVi: 'Khất lương: Anh em thông cảm (Humanity -5)',
-				textEn: 'Delay: Bros please understand (Humanity -5)',
-				effects: [{ stat: StatID.HUMANITY, value: -5 }],
-				next: Chapter6DialogueID.CH6_MARKET_FEAR,
+				text: 'Khất lương: Anh em thông cảm',
+				textVi: 'Khất lương: Anh em thông cảm',
+				textEn: 'Delay: Bros please understand',
+				effects: [{ stat: StatID.HUMANITY, value: -3 }],
+				next: Chapter6DialogueID.CH6_SALARY_DELAY,
 			},
 		],
+	},
+	[Chapter6DialogueID.CH6_SALARY_DELAY]: {
+		speaker: 'narrator',
+		text: 'Ting ting. Tiếng tin nhắn làm cả văn phòng reo hò. Không hề có đồng lương nào cả, các nhân viên được mời 1 cốc highland rồi không ai muốn làm việc nữa.',
+		textVi:
+			'Ting ting. Tiếng tin nhắn làm cả văn phòng reo hò. Không hề có đồng lương nào cả, các nhân viên được mời 1 cốc highland rồi không ai muốn làm việc nữa.',
+		textEn:
+			'Ding ding. The sound of a text message made the whole office cheer. There was no salary, the employees were invited to a cup of highland coffee and no one wanted to work anymore.',
+		effects: [
+			{ stat: StatID.HUMANITY, value: -10 },
+			{ stat: StatID.MONEY, value: -50000000 },
+		],
+		next: Chapter6DialogueID.CH6_MARKET_FEAR,
 	},
 	[Chapter6DialogueID.CH6_SALARY_PAY]: {
 		speaker: 'narrator',
@@ -1054,7 +1145,7 @@ export const chapter6Dialogues: Record<Chapter6DialogueID, DialogueNode> = {
 		textVi:
 			'(Suy nghĩ) Mình đang đi vào vết xe đổ của bố sao? Mình cũng sẽ thất bại sao?',
 		textEn: "(Thinking) Am I following father's path? Will I fail too?",
-		effects: [{ stat: StatID.STEELMIND, value: -3 }],
+		effects: [{ stat: StatID.STEELMIND, value: -2 }],
 		next: Chapter6DialogueID.CH6_REDEMPTION_1,
 	},
 
@@ -1075,7 +1166,7 @@ export const chapter6Dialogues: Record<Chapter6DialogueID, DialogueNode> = {
 			'Giác ngộ: "Công nghệ chỉ là công cụ. Giải quyết nỗi đau (Pain Point) mới là mục đích."',
 		textEn:
 			'Enlightenment: "Tech is just a tool. Solving Pain Point is the goal."',
-		effects: [{ stat: StatID.VISION, value: 5 }],
+		effects: [{ stat: StatID.VISION, value: 3 }],
 		next: Chapter6DialogueID.CH6_SERIES_A_START,
 	},
 
@@ -1112,7 +1203,7 @@ export const chapter6Dialogues: Record<Chapter6DialogueID, DialogueNode> = {
 				textVi: 'Monolith: Nhanh, gọn, dễ deploy (Tech Debt về sau)',
 				textEn: 'Monolith: Fast, simple, easy deploy (Future Tech Debt)',
 				effects: [
-					{ stat: StatID.VISION, value: 5 },
+					{ stat: StatID.VISION, value: 3 },
 					{ stat: StatID.MONEY, value: 10000000 }, // Save cost
 				],
 				next: Chapter6DialogueID.CH6_DECISION_DB,
@@ -1123,9 +1214,9 @@ export const chapter6Dialogues: Record<Chapter6DialogueID, DialogueNode> = {
 				textVi: 'Microservices: Scale tốt nhưng phức tạp (Overengineering)',
 				textEn: 'Microservices: Good Scale but complex (Overengineering)',
 				effects: [
-					{ stat: StatID.VISION, value: -10 },
-					{ stat: StatID.MONEY, value: -50000000 }, // Burn rate high
-					{ stat: StatID.STRESS, value: 10 },
+					{ stat: StatID.VISION, value: -5 },
+					{ stat: StatID.MONEY, value: -5000000 }, // Burn rate high
+					{ stat: StatID.STRESS, value: 7 },
 				],
 				next: Chapter6DialogueID.CH6_DECISION_DB,
 			},
@@ -1142,7 +1233,7 @@ export const chapter6Dialogues: Record<Chapter6DialogueID, DialogueNode> = {
 				text: 'PostgreSQL/MySQL: An toàn (ACID), Join tốt',
 				textVi: 'PostgreSQL/MySQL: An toàn (ACID), Join tốt',
 				textEn: 'PostgreSQL/MySQL: Safe (ACID), Good Join',
-				effects: [{ stat: StatID.VISION, value: 15 }],
+				effects: [{ stat: StatID.VISION, value: 7 }],
 				next: Chapter6DialogueID.CH6_DECISION_CLOUD,
 			},
 			{
@@ -1151,7 +1242,7 @@ export const chapter6Dialogues: Record<Chapter6DialogueID, DialogueNode> = {
 				textVi: 'MongoDB: Schemaless, Dev nhanh (Rủi ro Data Integrity)',
 				textEn: 'MongoDB: Schemaless, Fast Dev (Data Integrity Risk)',
 				effects: [
-					{ stat: StatID.VISION, value: -5 },
+					{ stat: StatID.VISION, value: -3 },
 					{ stat: StatID.MONEY, value: 5000000 }, // Faster dev
 				],
 				next: Chapter6DialogueID.CH6_DECISION_CLOUD,
@@ -1170,8 +1261,8 @@ export const chapter6Dialogues: Record<Chapter6DialogueID, DialogueNode> = {
 				textVi: 'AWS: Đầy đủ nhưng phức tạp, dễ tốn tiền (Vendor Lock-in)',
 				textEn: 'AWS: Complete but complex, costly (Vendor Lock-in)',
 				effects: [
-					{ stat: StatID.VISION, value: 10 },
-					{ stat: StatID.MONEY, value: -20000000 },
+					{ stat: StatID.VISION, value: 5 },
+					{ stat: StatID.MONEY, value: -2000000 },
 				],
 				next: Chapter6DialogueID.CH6_DECISION_CACHE,
 			},
@@ -1181,8 +1272,8 @@ export const chapter6Dialogues: Record<Chapter6DialogueID, DialogueNode> = {
 				textVi: 'VPS/DigitalOcean: Rẻ, tự config (Tốn công vận hành)',
 				textEn: 'VPS/DigitalOcean: Cheap, self-config (Ops effort)',
 				effects: [
-					{ stat: StatID.MONEY, value: 10000000 }, // Save money
-					{ stat: StatID.STRESS, value: 10 }, // Ops headache
+					{ stat: StatID.MONEY, value: 1000000 }, // Save money
+					{ stat: StatID.STRESS, value: 7 }, // Ops headache
 				],
 				next: Chapter6DialogueID.CH6_DECISION_CACHE,
 			},
@@ -1199,7 +1290,7 @@ export const chapter6Dialogues: Record<Chapter6DialogueID, DialogueNode> = {
 				text: 'Redis: In-memory, nhanh, phổ biến',
 				textVi: 'Redis: In-memory, nhanh, phổ biến',
 				textEn: 'Redis: In-memory, fast, popular',
-				effects: [{ stat: StatID.VISION, value: 10 }],
+				effects: [{ stat: StatID.VISION, value: 5 }],
 				next: Chapter6DialogueID.CH6_DECISION_SCALE,
 			},
 			{
@@ -1207,7 +1298,7 @@ export const chapter6Dialogues: Record<Chapter6DialogueID, DialogueNode> = {
 				text: 'File Cache: Đơn giản nhưng khó Scale',
 				textVi: 'File Cache: Đơn giản nhưng khó Scale',
 				textEn: 'File Cache: Simple but hard to Scale',
-				effects: [{ stat: StatID.VISION, value: -5 }],
+				effects: [{ stat: StatID.VISION, value: -3 }],
 				next: Chapter6DialogueID.CH6_DECISION_SCALE,
 			},
 		],
@@ -1224,8 +1315,8 @@ export const chapter6Dialogues: Record<Chapter6DialogueID, DialogueNode> = {
 				textVi: 'Vertical: Nâng cấp Server xịn hơn (Giới hạn phần cứng)',
 				textEn: 'Vertical: Upgrade Server (Hardware Limit)',
 				effects: [
-					{ stat: StatID.MONEY, value: -10000000 },
-					{ stat: StatID.VISION, value: -5 },
+					{ stat: StatID.MONEY, value: -1000000 },
+					{ stat: StatID.VISION, value: -3 },
 				],
 				next: Chapter6DialogueID.CH6_DECISION_HIRE,
 			},
@@ -1235,8 +1326,8 @@ export const chapter6Dialogues: Record<Chapter6DialogueID, DialogueNode> = {
 				textVi: 'Horizontal: Thêm nhiều Server nhỏ + Load Balancer',
 				textEn: 'Horizontal: Add small Servers + Load Balancer',
 				effects: [
-					{ stat: StatID.VISION, value: 15 },
-					{ stat: StatID.MONEY, value: -15000000 },
+					{ stat: StatID.VISION, value: 7 },
+					{ stat: StatID.MONEY, value: -1500000 },
 				],
 				next: Chapter6DialogueID.CH6_DECISION_HIRE,
 			},
@@ -1254,8 +1345,8 @@ export const chapter6Dialogues: Record<Chapter6DialogueID, DialogueNode> = {
 				textVi: 'Thái độ (Attitude) > Kỹ năng (Skill): Đào tạo được',
 				textEn: 'Attitude > Skill: Trainable',
 				effects: [
-					{ stat: StatID.HUMANITY, value: 10 },
-					{ stat: StatID.VISION, value: -5 }, // Slow start
+					{ stat: StatID.HUMANITY, value: 5 },
+					{ stat: StatID.VISION, value: -3 }, // Slow start
 				],
 				next: Chapter6DialogueID.CH6_DECISION_FIRE,
 			},
@@ -1265,9 +1356,9 @@ export const chapter6Dialogues: Record<Chapter6DialogueID, DialogueNode> = {
 				textVi: 'Rockstar Developer: Code giỏi nhưng cái tôi lớn (Toxic)',
 				textEn: 'Rockstar Developer: Good code but big ego (Toxic)',
 				effects: [
-					{ stat: StatID.VISION, value: 10 },
-					{ stat: StatID.HUMANITY, value: -10 },
-					{ stat: StatID.STRESS, value: 10 },
+					{ stat: StatID.VISION, value: 5 },
+					{ stat: StatID.HUMANITY, value: -5 },
+					{ stat: StatID.STRESS, value: 7 },
 				],
 				next: Chapter6DialogueID.CH6_DECISION_FIRE,
 			},
@@ -1286,8 +1377,8 @@ export const chapter6Dialogues: Record<Chapter6DialogueID, DialogueNode> = {
 				textVi: 'Sa thải ngay: "Hire slow, Fire fast" (Bảo vệ team)',
 				textEn: 'Fire immediately: "Hire slow, Fire fast" (Protect team)',
 				effects: [
-					{ stat: StatID.STEELMIND, value: 10 },
-					{ stat: StatID.HUMANITY, value: -5 },
+					{ stat: StatID.STEELMIND, value: 5 },
+					{ stat: StatID.HUMANITY, value: -3 },
 				],
 				next: Chapter6DialogueID.CH6_DECISION_MENTOR,
 			},
@@ -1297,8 +1388,8 @@ export const chapter6Dialogues: Record<Chapter6DialogueID, DialogueNode> = {
 				textVi: 'PIP (Performance Improvement Plan): Cho cơ hội sửa sai',
 				textEn: 'PIP: Give chance to improve',
 				effects: [
-					{ stat: StatID.HUMANITY, value: 10 },
-					{ stat: StatID.MONEY, value: -20000000 }, // Wasted salary
+					{ stat: StatID.HUMANITY, value: 5 },
+					{ stat: StatID.MONEY, value: -10000000 }, // Wasted salary
 				],
 				next: Chapter6DialogueID.CH6_DECISION_MENTOR,
 			},
@@ -1316,8 +1407,8 @@ export const chapter6Dialogues: Record<Chapter6DialogueID, DialogueNode> = {
 				textVi: 'Tìm Mentor: Chia sẻ cổ phần để đổi lấy kinh nghiệm',
 				textEn: 'Find Mentor: Share equity for experience',
 				effects: [
-					{ stat: StatID.VISION, value: 15 },
-					{ stat: StatID.MONEY, value: -50000000 }, // Equity value
+					{ stat: StatID.VISION, value: 7 },
+					{ stat: StatID.MONEY, value: -25000000 }, // Equity value
 				],
 				next: Chapter6DialogueID.CH6_DECISION_PIVOT,
 			},
@@ -1327,7 +1418,7 @@ export const chapter6Dialogues: Record<Chapter6DialogueID, DialogueNode> = {
 				textVi: 'Tự học: Thử và sai (Giữ 100% cổ phần)',
 				textEn: 'Self-taught: Trial & Error (Keep 100% equity)',
 				effects: [
-					{ stat: StatID.STEELMIND, value: 10 },
+					{ stat: StatID.STEELMIND, value: 5 },
 					{ stat: StatID.STRESS, value: 20 },
 				],
 				next: Chapter6DialogueID.CH6_DECISION_PIVOT,
@@ -1348,8 +1439,8 @@ export const chapter6Dialogues: Record<Chapter6DialogueID, DialogueNode> = {
 					'Pivot: Đập đi xây lại theo hướng mới (Tốn kém nhưng cần thiết)',
 				textEn: 'Pivot: Rebuild new direction (Costly but needed)',
 				effects: [
-					{ stat: StatID.VISION, value: 10 },
-					{ stat: StatID.MONEY, value: -100000000 }, // Burn rate
+					{ stat: StatID.VISION, value: 5 },
+					{ stat: StatID.MONEY, value: -50000000 }, // Burn rate
 				],
 				next: Chapter6DialogueID.CH6_DECISION_CULTURE,
 			},
@@ -1359,8 +1450,8 @@ export const chapter6Dialogues: Record<Chapter6DialogueID, DialogueNode> = {
 				textVi: 'Persevere: Kiên trì tối ưu sản phẩm cũ (Cố đấm ăn xôi)',
 				textEn: 'Persevere: Optimize old product (Stubborn)',
 				effects: [
-					{ stat: StatID.STEELMIND, value: 5 },
-					{ stat: StatID.MONEY, value: -50000000 }, // Slow death
+					{ stat: StatID.STEELMIND, value: 3 },
+					{ stat: StatID.MONEY, value: -20000000 }, // Slow death
 				],
 				next: Chapter6DialogueID.CH6_DECISION_CULTURE,
 			},
@@ -1378,8 +1469,8 @@ export const chapter6Dialogues: Record<Chapter6DialogueID, DialogueNode> = {
 				textVi: 'Gia đình: Yêu thương, bao dung (Thoải mái nhưng chậm)',
 				textEn: 'Family: Loving, forgiving (Comfortable but slow)',
 				effects: [
-					{ stat: StatID.HUMANITY, value: 15 },
-					{ stat: StatID.VISION, value: -5 },
+					{ stat: StatID.HUMANITY, value: 7 },
+					{ stat: StatID.VISION, value: -3 },
 				],
 				next: Chapter6DialogueID.CH6_INVESTOR_START,
 			},
@@ -1389,8 +1480,9 @@ export const chapter6Dialogues: Record<Chapter6DialogueID, DialogueNode> = {
 				textVi: 'Đội bóng chuyên nghiệp: Hiệu suất cao, đào thải khắc nghiệt',
 				textEn: 'Pro Sports Team: High performance, harsh elimination',
 				effects: [
-					{ stat: StatID.VISION, value: 15 },
+					{ stat: StatID.VISION, value: 7 },
 					{ stat: StatID.STRESS, value: 20 },
+					{ stat: StatID.HUMANITY, value: -3 },
 				],
 				next: Chapter6DialogueID.CH6_INVESTOR_START,
 			},

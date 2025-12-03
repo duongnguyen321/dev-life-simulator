@@ -55,6 +55,8 @@ interface GameStore extends GameState {
 }
 
 import { achievements } from '@/data/achievements';
+import { skills as allSkills } from '@/data/skills';
+import { shopItems } from '@/data/items';
 
 const detectLanguage = (): 'vi' | 'en' => {
 	try {
@@ -73,11 +75,11 @@ const getInitialState = (): GameState => ({
 	currentScene: Chapter1SceneID.CH1_INTRO,
 	currentDialogue: Chapter1DialogueID.CH1_INTRO,
 	stats: {
-		steelMind: 50,
-		humanity: 50,
-		vision: 50,
-		health: 100,
-		stress: 20,
+		steelMind: 10,
+		humanity: 10,
+		vision: 10,
+		health: 50,
+		stress: 10,
 		money: 500000, // Start with 500k
 	},
 	xp: 0,
@@ -102,7 +104,7 @@ const getInitialState = (): GameState => ({
 	// Reflection Quote tracking
 	dialogueCountInChapter: 0,
 	lastReflectionDialogueCount: 0,
-	nextReflectionTrigger: Math.floor(Math.random() * 4) + 5, // Random 5-8
+	nextReflectionTrigger: Math.round(Math.random() * 5) + 10, // Random 10-15
 	pendingReturnDialogue: null,
 	triggerSleepAction: false,
 });
@@ -134,14 +136,7 @@ export const useGameStore = create<GameStore>()(
 				set((state) => {
 					const currentValue = state.stats[stat];
 					let newValue: number;
-
-					if (stat === StatID.MONEY) {
-						// Money has no cap, can go negative or very high
-						newValue = currentValue + value;
-					} else {
-						// Other stats capped between 0-100
-						newValue = Math.max(0, Math.min(100, currentValue + value));
-					}
+					newValue = currentValue + value;
 
 					const newStats = {
 						...state.stats,
@@ -246,7 +241,6 @@ export const useGameStore = create<GameStore>()(
 			upgradeSkill: (id: string) => {
 				const state = get();
 				const { skills, stats } = state;
-				const { skills: allSkills } = require('@/data/skills');
 
 				const skill = allSkills.find((s: any) => s.id === id);
 				if (!skill) return;
@@ -281,7 +275,6 @@ export const useGameStore = create<GameStore>()(
 			buyItem: (id: string) => {
 				const state = get();
 				const { stats, inventory, flags } = state;
-				const { shopItems } = require('@/data/items');
 
 				const item = shopItems.find((i: any) => i.id === id);
 				if (!item) return;
@@ -384,7 +377,7 @@ export const useGameStore = create<GameStore>()(
 				set({
 					dialogueCountInChapter: 0,
 					lastReflectionDialogueCount: 0,
-					nextReflectionTrigger: Math.floor(Math.random() * 3) + 5, // Random 5-7
+					nextReflectionTrigger: Math.round(Math.random() * 5) + 10, // Random 10-15
 				});
 			},
 
@@ -420,6 +413,7 @@ export const useGameStore = create<GameStore>()(
 				playtime: state.playtime,
 				settings: state.settings,
 				pendingReturnDialogue: state.pendingReturnDialogue,
+				triggerSleepAction: state.triggerSleepAction,
 			}),
 		}
 	)

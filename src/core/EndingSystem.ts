@@ -16,9 +16,52 @@ export interface EndingResult {
 	image?: string;
 }
 
+export interface EndingAnalysis {
+	personality: string;
+	future: string;
+	advice: string;
+	comments: string[];
+}
+
 export class EndingSystem {
 	static calculateEnding(stats: Stats): EndingResult {
-		const { steelMind, humanity, vision } = stats;
+		const { steelMind, humanity, vision, money, health, stress } = stats;
+
+		// 1. BAD ENDINGS (Priority)
+
+		// Bankruptcy
+		if (money < 0) {
+			return {
+				type: 'bankruptcy-ending',
+				title: 'Bankrupt',
+				titleVi: 'Phá Sản',
+				titleEn: 'Bankrupt',
+				description:
+					'Bạn đã tiêu hết tiền tiết kiệm. Giấc mơ khởi nghiệp tan thành mây khói.',
+				descriptionVi:
+					'Bạn đã tiêu hết tiền tiết kiệm. Giấc mơ khởi nghiệp tan thành mây khói. Bạn phải quay về làm thuê để trả nợ.',
+				descriptionEn:
+					'You ran out of money. The startup dream is gone. You have to go back to 9-5 to pay debts.',
+			};
+		}
+
+		// Burnout / Health Failure
+		if (health <= 0 || stress >= 100) {
+			return {
+				type: 'burnout-ending',
+				title: 'Burnout',
+				titleVi: 'Kiệt Sức',
+				titleEn: 'Burnout',
+				description:
+					'Sức khỏe là vàng, và bạn đã đánh mất nó. Bạn gục ngã trước khi kịp nhìn thấy thành công.',
+				descriptionVi:
+					'Sức khỏe là vàng, và bạn đã đánh mất nó. Bạn gục ngã trước khi kịp nhìn thấy thành công. Hãy nhớ: Deadline có thể dời, nhưng mạng sống thì không.',
+				descriptionEn:
+					'Health is wealth, and you lost it. You collapsed before seeing success. Remember: Deadlines can move, life cannot.',
+			};
+		}
+
+		// 2. NORMAL ENDINGS
 
 		// True Ending: All stats 70-90, balanced
 		if (
@@ -103,6 +146,108 @@ export class EndingSystem {
 				'Bạn sống một cuộc đời bình thường của một developer. Không giàu có lắm, nhưng hạnh phúc. Bạn đã vượt qua nỗi đau quá khứ.',
 			descriptionEn:
 				'You lived a normal developer life. Not very rich, but happy. You overcame the pain of the past.',
+		};
+	}
+
+	static analyzeEnding(stats: Stats): EndingAnalysis {
+		const { steelMind, humanity, vision, money, health, stress } = stats;
+		const comments: string[] = [];
+
+		// 1. Personality Analysis
+		let personality = 'Người cân bằng';
+		const maxStat = Math.max(steelMind, humanity, vision);
+
+		if (
+			maxStat === steelMind &&
+			steelMind > humanity + 10 &&
+			steelMind > vision + 10
+		) {
+			personality = 'Người duy lý (The Logician)';
+		} else if (
+			maxStat === humanity &&
+			humanity > steelMind + 10 &&
+			humanity > vision + 10
+		) {
+			personality = 'Người tình cảm (The Empath)';
+		} else if (
+			maxStat === vision &&
+			vision > steelMind + 10 &&
+			vision > humanity + 10
+		) {
+			personality = 'Người nhìn xa (The Visionary)';
+		} else if (steelMind < 30 && humanity < 30 && vision < 30) {
+			personality = 'Người lạc lối (The Lost Soul)';
+		}
+
+		// 2. Future Prediction
+		let future = 'Một tương lai ổn định, không quá nhiều biến động.';
+		if (money > 10000000000) {
+			// 10B
+			future =
+				'Bạn sẽ sống sung túc cả đời, nhưng hãy cẩn thận với những kẻ đào mỏ.';
+		} else if (money < 100000000) {
+			// 100M
+			future =
+				'Tài chính sẽ là gánh nặng lớn. Bạn cần học cách quản lý tiền bạc tốt hơn.';
+		}
+
+		if (vision > 80) {
+			future += ' Bạn có thể sẽ khởi nghiệp thêm nhiều lần nữa.';
+		} else if (humanity > 80) {
+			future += ' Bạn sẽ được bao quanh bởi những người bạn trung thành.';
+		}
+
+		// 3. Advice
+		let advice = 'Hãy tiếp tục phát huy thế mạnh của mình.';
+		const minStat = Math.min(steelMind, humanity, vision);
+
+		if (minStat === steelMind) {
+			advice =
+				'Đừng để cảm xúc chi phối quá nhiều. Hãy học cách suy nghĩ logic hơn.';
+		} else if (minStat === humanity) {
+			advice =
+				'Thành công không có nghĩa lý gì nếu bạn cô đơn. Hãy mở lòng hơn.';
+		} else if (minStat === vision) {
+			advice = 'Đừng chỉ nhìn vào hiện tại. Hãy ngẩng đầu lên và nhìn xa hơn.';
+		}
+
+		// 4. Specific Comments (Edge Cases)
+		if (stress > 80) {
+			comments.push(
+				'⚠️ Mức độ Stress báo động: Bạn đã ép bản thân quá mức. Hãy học cách nghỉ ngơi.'
+			);
+		}
+		if (health < 30) {
+			comments.push(
+				'⚠️ Sức khỏe yếu: Tiền bạc không mua được sức khỏe. Hãy trân trọng cơ thể mình.'
+			);
+		}
+		if (money < 0) {
+			comments.push('💸 Nợ nần: Bạn cần một kế hoạch trả nợ nghiêm túc.');
+		} else if (money > 50000000000) {
+			comments.push(
+				'💰 Phú quý: Bạn nằm trong top 1% giàu có. Đừng quên làm từ thiện.'
+			);
+		}
+
+		const statGap = maxStat - minStat;
+		if (statGap > 50) {
+			comments.push(
+				'⚖️ Mất cân bằng: Cuộc sống của bạn đang bị lệch quá nhiều về một phía.'
+			);
+		}
+
+		if (steelMind < 20 || humanity < 20 || vision < 20) {
+			comments.push(
+				'📉 Điểm yếu chí mạng: Một trong các chỉ số của bạn quá thấp, kìm hãm sự phát triển.'
+			);
+		}
+
+		return {
+			personality,
+			future,
+			advice,
+			comments,
 		};
 	}
 }
