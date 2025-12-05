@@ -530,12 +530,12 @@ export const chapter3: Chapter = {
 export const chapter3Dialogues: Record<Chapter3DialogueID, DialogueNode> = {
 	// NEW: Intro
 	[Chapter3DialogueID.CH3_INTRO]: {
-		speaker: 'narrator',
-		text: 'Tiếng bàn phím lạch cạch thay thế tiếng ve sầu. Những dòng code chạy dài trên màn hình đen. Bạn tìm thấy sự bình yên trong logic của máy tính.',
+		speaker: 'player',
+		text: '(Gõ phím lạch cạch) Tiếng ve sầu ồn ào quá... nhưng khi đeo tai nghe vào, chỉ còn mình và những dòng code.',
 		textVi:
-			'Tiếng bàn phím lạch cạch thay thế tiếng ve sầu. Những dòng code chạy dài trên màn hình đen. Bạn tìm thấy sự bình yên trong logic của máy tính.',
+			'(Gõ phím lạch cạch) Tiếng ve sầu ồn ào quá... nhưng khi đeo tai nghe vào, chỉ còn mình và những dòng code.',
 		textEn:
-			'Clacking keyboard replaced cicadas. Lines of code running on black screen. You found peace in computer logic.',
+			"(Typing clack-clack) Cicadas are loud... but with headphones on, it's just me and the code.",
 		next: Chapter3DialogueID.CH3_LEARN_LANG_CHOICE,
 	},
 
@@ -641,12 +641,12 @@ export const chapter3Dialogues: Record<Chapter3DialogueID, DialogueNode> = {
 	},
 	// NEW: Freelance Event (Chapter 3)
 	[Chapter3DialogueID.CH3_FREELANCE]: {
-		speaker: 'narrator',
-		text: 'Một người hàng xóm nhờ bạn làm website bán hàng đơn giản. Cơ hội kiếm tiền đầu tiên!',
+		speaker: 'npc',
+		text: 'Hàng xóm: "Cháu biết làm web à? Làm cho chú cái web bán hàng đơn giản nhé? Chú trả công."',
 		textVi:
-			'Một người hàng xóm nhờ bạn làm website bán hàng đơn giản. Cơ hội kiếm tiền đầu tiên!',
+			'Hàng xóm: "Cháu biết làm web à? Làm cho chú cái web bán hàng đơn giản nhé? Chú trả công."',
 		textEn:
-			'A neighbor asks you to build a simple shop website. First chance to earn money!',
+			'Neighbor: "You know web dev? Build me a simple shop site? I\'ll pay you."',
 		next: Chapter3DialogueID.CH3_FREELANCE_QUIZ,
 	},
 	[Chapter3DialogueID.CH3_FREELANCE_QUIZ]: {
@@ -691,7 +691,7 @@ export const chapter3Dialogues: Record<Chapter3DialogueID, DialogueNode> = {
 			'Bạn hoàn thành dự án. Tuy chỉ là web tĩnh đơn giản nhưng cầm 1 triệu trong tay, bạn thấy mình như Bill Gates.',
 		textEn:
 			'You finished the project. Just a simple static site, but holding 1 million, you feel like Bill Gates.',
-		next: Chapter3DialogueID.CH3_LEARN_TIME,
+		next: Chapter3DialogueID.CH3_QUIZ_FE_BE, // Start Quiz Chunk 2
 	},
 	[Chapter3DialogueID.CH3_LEARN_TIME]: {
 		speaker: 'player',
@@ -746,7 +746,7 @@ export const chapter3Dialogues: Record<Chapter3DialogueID, DialogueNode> = {
 					{ stat: StatID.VISION, value: 12 },
 					{ stat: StatID.MONEY, value: -5000000 },
 				],
-				next: Chapter3DialogueID.CH3_QUIZ_HTML_TAGS,
+				next: Chapter3DialogueID.CH3_QUIZ_HTML_TAGS, // Start Quiz Chunk 1
 			},
 			{
 				id: 'choice_resource_tutor',
@@ -758,7 +758,7 @@ export const chapter3Dialogues: Record<Chapter3DialogueID, DialogueNode> = {
 					{ stat: StatID.STRESS, value: 10 },
 					{ stat: StatID.MONEY, value: -2000000 },
 				],
-				next: Chapter3DialogueID.CH3_QUIZ_HTML_TAGS,
+				next: Chapter3DialogueID.CH3_QUIZ_HTML_TAGS, // Start Quiz Chunk 1
 			},
 			{
 				id: 'choice_resource_free',
@@ -769,19 +769,19 @@ export const chapter3Dialogues: Record<Chapter3DialogueID, DialogueNode> = {
 					{ stat: StatID.VISION, value: 5 },
 					{ stat: StatID.MONEY, value: 0 },
 				],
-				next: Chapter3DialogueID.CH3_QUIZ_HTML_TAGS,
+				next: Chapter3DialogueID.CH3_QUIZ_HTML_TAGS, // Start Quiz Chunk 1
 			},
 		],
 	},
 	// 3.1 Khu tập thể & Miu
 	[Chapter3DialogueID.CH3_DORM_1]: {
-		speaker: 'narrator',
-		text: 'Căn nhà thuê ở khu tập thể Thành Công. Tường mốc xanh, mùa mưa nước dột tứ bề, phải lấy xô chậu hứng. Bạn sống cùng mẹ và em trai V.',
+		speaker: 'meQ',
+		text: 'Con ơi, lấy cái xô hứng nước chỗ dột đi. Mưa to quá, tường mốc hết rồi.',
 		textVi:
-			'Căn nhà thuê ở khu tập thể Thành Công. Tường mốc xanh, mùa mưa nước dột tứ bề, phải lấy xô chậu hứng. Bạn sống cùng mẹ và em trai V.',
+			'Con ơi, lấy cái xô hứng nước chỗ dột đi. Mưa to quá, tường mốc hết rồi.',
 		textEn:
-			'Rented house in Thanh Cong dorm. Moldy walls, leaking roof requiring buckets when it rained. You lived with mom and brother V.',
-		next: Chapter3DialogueID.CH3_CRUSH_START, // Redirect to Crush Event
+			'Son, get the bucket for the leak. Heavy rain, walls are all moldy.',
+		next: Chapter3DialogueID.CH3_CRUSH_START,
 	},
 
 	// NEW: First Crush Event
@@ -880,17 +880,15 @@ export const chapter3Dialogues: Record<Chapter3DialogueID, DialogueNode> = {
 		textEn:
 			'Neighbor awkwardly gave you 100k small change. "Take this for water". Wasted effort.',
 		effects: [{ stat: StatID.MONEY, value: 100000 }],
-		next: Chapter3DialogueID.CH3_DEBT_1,
+		next: Chapter3DialogueID.CH3_QUIZ_DEBUG_LOGIC, // Start Quiz Chunk 3
 	},
 
 	// 3.2 Biến cố chủ nợ
 	[Chapter3DialogueID.CH3_DEBT_1]: {
-		speaker: 'narrator',
-		text: 'Một buổi tối, chủ nợ tìm được địa chỉ. Họ đập cửa, la hét, dọa dẫm. Bạn và em trai V co rúm trong góc nhà.',
-		textVi:
-			'Một buổi tối, chủ nợ tìm được địa chỉ. Họ đập cửa, la hét, dọa dẫm. Bạn và em trai V co rúm trong góc nhà.',
-		textEn:
-			'One evening, debt collectors found the address. Banging doors, screaming, threatening. You and brother V cowered in the corner.',
+		speaker: 'npc',
+		text: '(Tiếng đập cửa rầm rầm) "Mở cửa ra! Trốn mãi được à?"',
+		textVi: '(Tiếng đập cửa rầm rầm) "Mở cửa ra! Trốn mãi được à?"',
+		textEn: '(Banging on door) "Open up! Can\'t hide forever!"',
 		next: Chapter3DialogueID.CH3_DEBT_2,
 	},
 	[Chapter3DialogueID.CH3_DEBT_2]: {
@@ -1025,12 +1023,12 @@ export const chapter3Dialogues: Record<Chapter3DialogueID, DialogueNode> = {
 
 	// 3.3 Hy vọng lóe lên
 	[Chapter3DialogueID.CH3_HOPE_1]: {
-		speaker: 'narrator',
-		text: 'Lớp 11. Công việc của bố tiến triển tốt. Bố được chia thưởng dự án và quyết định trả góp mua một chiếc VinFast LuxSA.',
+		speaker: 'boQ',
+		text: 'Con ra xem này! Xe VinFast LuxSA đấy! Bố mua trả góp. Từ giờ nhà mình sẽ khác.',
 		textVi:
-			'Lớp 11. Công việc của bố tiến triển tốt. Bố được chia thưởng dự án và quyết định trả góp mua một chiếc VinFast LuxSA.',
+			'Con ra xem này! Xe VinFast LuxSA đấy! Bố mua trả góp. Từ giờ nhà mình sẽ khác.',
 		textEn:
-			"Grade 11. Father's work went well. Got bonus, decided to buy a VinFast LuxSA on installment.",
+			'Come look! VinFast LuxSA! Bought on installment. Things will change now.',
 		next: Chapter3DialogueID.CH3_HOPE_2,
 	},
 	[Chapter3DialogueID.CH3_HOPE_2]: {
@@ -1099,7 +1097,7 @@ export const chapter3Dialogues: Record<Chapter3DialogueID, DialogueNode> = {
 			'Bạn tận dụng thời gian cày nát các khóa học lập trình trên Udemy, Coursera. 14 tiếng mỗi ngày bên màn hình máy tính cũ kỹ.',
 		textEn:
 			'You devoured coding courses on Udemy, Coursera. 14 hours a day by the old PC.',
-		next: Chapter3DialogueID.CH3_SELL_ITEMS_START,
+		next: Chapter3DialogueID.CH3_QUIZ_BROWSER, // Start Quiz Chunk 4
 	},
 
 	// NEW: Sell Items Event
@@ -1396,7 +1394,7 @@ export const chapter3Dialogues: Record<Chapter3DialogueID, DialogueNode> = {
 				textVi: 'Scope (Phạm vi) và khả năng gán lại (Reassignment)',
 				textEn: 'Scope and Reassignment',
 				effects: [{ stat: StatID.VISION, value: 7 }],
-				next: Chapter3DialogueID.CH3_QUIZ_FE_BE,
+				next: Chapter3DialogueID.CH3_DORM_1, // End Quiz Chunk 1 -> Dorm
 			},
 			{
 				id: 'quiz_js_syntax',
@@ -1404,7 +1402,7 @@ export const chapter3Dialogues: Record<Chapter3DialogueID, DialogueNode> = {
 				textVi: 'Chỉ là cú pháp, dùng cái nào cũng được',
 				textEn: 'Just syntax, use any',
 				effects: [{ stat: StatID.VISION, value: -5 }],
-				next: Chapter3DialogueID.CH3_QUIZ_FE_BE,
+				next: Chapter3DialogueID.CH3_DORM_1, // End Quiz Chunk 1 -> Dorm
 			},
 		],
 	},
@@ -1445,7 +1443,7 @@ export const chapter3Dialogues: Record<Chapter3DialogueID, DialogueNode> = {
 				textVi: 'Application Programming Interface',
 				textEn: 'Application Programming Interface',
 				effects: [{ stat: StatID.VISION, value: 5 }],
-				next: Chapter3DialogueID.CH3_QUIZ_DEBUG_LOGIC,
+				next: Chapter3DialogueID.CH3_LEARN_TIME, // End Quiz Chunk 2 -> Time Management
 			},
 			{
 				id: 'quiz_api_auto',
@@ -1453,7 +1451,7 @@ export const chapter3Dialogues: Record<Chapter3DialogueID, DialogueNode> = {
 				textVi: 'Automated Process Integration',
 				textEn: 'Automated Process Integration',
 				effects: [{ stat: StatID.VISION, value: -3 }],
-				next: Chapter3DialogueID.CH3_QUIZ_DEBUG_LOGIC,
+				next: Chapter3DialogueID.CH3_LEARN_TIME, // End Quiz Chunk 2 -> Time Management
 			},
 		],
 	},
@@ -1493,7 +1491,7 @@ export const chapter3Dialogues: Record<Chapter3DialogueID, DialogueNode> = {
 				textVi: 'Not Found (Không tìm thấy trang)',
 				textEn: 'Not Found',
 				effects: [{ stat: StatID.VISION, value: 5 }],
-				next: Chapter3DialogueID.CH3_QUIZ_BROWSER,
+				next: Chapter3DialogueID.CH3_DEBT_1, // End Quiz Chunk 3 -> Debt Crisis
 			},
 			{
 				id: 'quiz_http_server',
@@ -1501,7 +1499,7 @@ export const chapter3Dialogues: Record<Chapter3DialogueID, DialogueNode> = {
 				textVi: 'Server Error (Lỗi máy chủ)',
 				textEn: 'Server Error',
 				effects: [{ stat: StatID.VISION, value: -3 }],
-				next: Chapter3DialogueID.CH3_QUIZ_BROWSER,
+				next: Chapter3DialogueID.CH3_DEBT_1, // End Quiz Chunk 3 -> Debt Crisis
 			},
 		],
 	},
@@ -1565,7 +1563,7 @@ export const chapter3Dialogues: Record<Chapter3DialogueID, DialogueNode> = {
 				textVi: 'git init',
 				textEn: 'git init',
 				effects: [{ stat: StatID.VISION, value: 5 }],
-				next: Chapter3DialogueID.CH3_DORM_1,
+				next: Chapter3DialogueID.CH3_SELL_ITEMS_START, // End Quiz Chunk 4 -> Sell Items
 			},
 			{
 				id: 'quiz_git_commit',
@@ -1573,7 +1571,7 @@ export const chapter3Dialogues: Record<Chapter3DialogueID, DialogueNode> = {
 				textVi: 'git commit',
 				textEn: 'git commit',
 				effects: [{ stat: StatID.VISION, value: -3 }],
-				next: Chapter3DialogueID.CH3_DORM_1,
+				next: Chapter3DialogueID.CH3_SELL_ITEMS_START, // End Quiz Chunk 4 -> Sell Items
 			},
 			{
 				id: 'quiz_git_clone',
@@ -1581,7 +1579,7 @@ export const chapter3Dialogues: Record<Chapter3DialogueID, DialogueNode> = {
 				textVi: 'git clone (Copy repo có sẵn)',
 				textEn: 'git clone (Copy existing repo)',
 				effects: [{ stat: StatID.VISION, value: 3 }],
-				next: Chapter3DialogueID.CH3_DORM_1,
+				next: Chapter3DialogueID.CH3_SELL_ITEMS_START, // End Quiz Chunk 4 -> Sell Items
 			},
 		],
 	},

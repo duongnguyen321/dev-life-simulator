@@ -522,22 +522,22 @@ export const chapter4Dialogues: Record<Chapter4DialogueID, DialogueNode> = {
 		next: Chapter5DialogueID.CH5_INTRO,
 	},
 	[Chapter4DialogueID.CH4_START]: {
-		speaker: 'narrator',
-		text: 'Hà Nội ồn ào và bụi bặm. Giảng đường Đại học rộng lớn đến choáng ngợp. Bạn cảm thấy mình thật nhỏ bé giữa dòng người hối hả.',
+		speaker: 'player',
+		text: '(Nhìn quanh) Hà Nội ồn ào quá... Giảng đường này rộng thật, mình như hạt cát vậy.',
 		textVi:
-			'Hà Nội ồn ào và bụi bặm. Giảng đường Đại học rộng lớn đến choáng ngợp. Bạn cảm thấy mình thật nhỏ bé giữa dòng người hối hả.',
+			'(Nhìn quanh) Hà Nội ồn ào quá... Giảng đường này rộng thật, mình như hạt cát vậy.',
 		textEn:
-			'Hanoi is noisy and dusty. The University lecture hall is overwhelmingly large. You feel so small amidst the rushing crowd.',
+			'(Looking around) Hanoi is so noisy... This lecture hall is huge, I feel like a grain of sand.',
 		next: Chapter4DialogueID.CH4_FUNERAL_1,
 	},
 	// 4.1 Đám giỗ
 	[Chapter4DialogueID.CH4_FUNERAL_1]: {
-		speaker: 'narrator',
-		text: 'Năm 2 Đại học. Bà nội mất. Đám giỗ quan trọng nhất dòng họ. Các chú bác lái xe hơi bóng loáng về cổng làng.',
+		speaker: 'player',
+		text: '(Năm 2 Đại học) Bà nội mất. Các chú bác lái xe hơi bóng loáng về cổng làng. Còn nhà mình...',
 		textVi:
-			'Năm 2 Đại học. Bà nội mất. Đám giỗ quan trọng nhất dòng họ. Các chú bác lái xe hơi bóng loáng về cổng làng.',
+			'(Năm 2 Đại học) Bà nội mất. Các chú bác lái xe hơi bóng loáng về cổng làng. Còn nhà mình...',
 		textEn:
-			'Year 2 Uni. Grandma passed. Important funeral. Uncles drove shiny cars to the village gate.',
+			'(Year 2 Uni) Grandma passed. Uncles drove shiny cars to village gate. And us...',
 		next: Chapter4DialogueID.CH4_FUNERAL_2,
 	},
 	[Chapter4DialogueID.CH4_FUNERAL_2]: {
@@ -596,12 +596,12 @@ export const chapter4Dialogues: Record<Chapter4DialogueID, DialogueNode> = {
 
 	// 4.2 Ly hôn
 	[Chapter4DialogueID.CH4_DIVORCE_1]: {
-		speaker: 'narrator',
-		text: 'Ngay sau đám giỗ, vì nhục, bố lại lao vào dự án mới ở vùng sâu vùng xa bất chấp lời can ngăn. Mẹ không chịu nổi sự bấp bênh nữa.',
+		speaker: 'meQ',
+		text: 'Ông lại định đi nữa à? Dự án vùng sâu vùng xa? Ông không thấy nhục sau vụ đám giỗ sao? Tôi không chịu nổi nữa rồi!',
 		textVi:
-			'Ngay sau đám giỗ, vì nhục, bố lại lao vào dự án mới ở vùng sâu vùng xa bất chấp lời can ngăn. Mẹ không chịu nổi sự bấp bênh nữa.',
+			'Ông lại định đi nữa à? Dự án vùng sâu vùng xa? Ông không thấy nhục sau vụ đám giỗ sao? Tôi không chịu nổi nữa rồi!',
 		textEn:
-			"After funeral, humiliated, father joined risky remote project despite warnings. Mom couldn't take the insecurity.",
+			"You going again? Remote project? Not humiliated enough after funeral? I can't take it anymore!",
 		next: Chapter4DialogueID.CH4_DIVORCE_2,
 	},
 	[Chapter4DialogueID.CH4_DIVORCE_2]: {
@@ -737,7 +737,7 @@ export const chapter4Dialogues: Record<Chapter4DialogueID, DialogueNode> = {
 			'Khách hàng hài lòng và chuyển khoản ngay lập tức. 2 triệu đồng - đủ sống cả tháng sinh viên!',
 		textEn:
 			'Client satisfied and transferred money immediately. 2 million - enough for a whole student month!',
-		next: Chapter4DialogueID.CH4_CLUB_START,
+		next: Chapter4DialogueID.CH4_SITUATION_ESTIMATE, // Start Quiz Chunk 1
 	},
 
 	// NEW: Club Activity
@@ -814,12 +814,12 @@ export const chapter4Dialogues: Record<Chapter4DialogueID, DialogueNode> = {
 
 	// NEW: Exam & Cheating Chain
 	[Chapter4DialogueID.CH4_EXAM_START]: {
-		speaker: 'narrator',
-		text: 'Kỳ thi cuối kỳ môn Cấu trúc dữ liệu & Giải thuật. Đề bài cực khó. Bạn bí ở câu cuối cùng.',
+		speaker: 'player',
+		text: '(Toát mồ hôi) Chết rồi, câu cuối khó quá... Cấu trúc dữ liệu này mình chưa ôn kỹ.',
 		textVi:
-			'Kỳ thi cuối kỳ môn Cấu trúc dữ liệu & Giải thuật. Đề bài cực khó. Bạn bí ở câu cuối cùng.',
+			'(Toát mồ hôi) Chết rồi, câu cuối khó quá... Cấu trúc dữ liệu này mình chưa ôn kỹ.',
 		textEn:
-			'Final exam on Data Structures & Algorithms. Extremely hard. You are stuck on the last question.',
+			"(Sweating) Damn, last question is too hard... I didn't review this Data Structure well.",
 		choices: [
 			{
 				id: 'choice_exam_cheat',
@@ -845,12 +845,12 @@ export const chapter4Dialogues: Record<Chapter4DialogueID, DialogueNode> = {
 		],
 	},
 	[Chapter4DialogueID.CH4_CHEAT_CAUGHT]: {
-		speaker: 'narrator',
-		text: 'Giám thị bắt gặp bạn đang liếc bài. Bạn bị lập biên bản, đình chỉ thi. Điểm F. Bố mẹ nhận được thông báo về hạnh kiểm.',
+		speaker: 'npc',
+		text: 'Giám thị: "Cậu kia! Đứng dậy! Dám quay cóp trong giờ của tôi à? Lập biên bản ngay!"',
 		textVi:
-			'Giám thị bắt gặp bạn đang liếc bài. Bạn bị lập biên bản, đình chỉ thi. Điểm F. Bố mẹ nhận được thông báo về hạnh kiểm.',
+			'Giám thị: "Cậu kia! Đứng dậy! Dám quay cóp trong giờ của tôi à? Lập biên bản ngay!"',
 		textEn:
-			'Proctor caught you peeking. Record made, suspended. Grade F. Parents notified about conduct.',
+			'Proctor: "You there! Stand up! Cheating in my class? Report immediately!"',
 		effects: [
 			{ stat: StatID.VISION, value: -3 },
 			{ stat: StatID.HUMANITY, value: -3 },
@@ -937,7 +937,7 @@ export const chapter4Dialogues: Record<Chapter4DialogueID, DialogueNode> = {
 			'Bố cứ lo cho em. Con tự lo được. Con không cần tiền của bố nữa. Con là Developer mà, con có thể tự build cuộc đời mình.',
 		textEn:
 			"Take care of younger brother. I can handle myself. I don't need your money anymore. I am a Developer, I can build my own life.",
-		next: Chapter4DialogueID.CH4_SITUATION_ESTIMATE,
+		next: Chapter4DialogueID.CH4_KEYBOARD_START,
 	},
 
 	// NEW: Buy Keyboard Event
@@ -969,7 +969,7 @@ export const chapter4Dialogues: Record<Chapter4DialogueID, DialogueNode> = {
 				textVi: 'Dùng tạm phím cũ: Vẫn gõ được là được',
 				textEn: 'Use old one: Still works',
 				effects: [{ stat: StatID.STEELMIND, value: 2 }],
-				next: Chapter4DialogueID.CH4_BI_1,
+				next: Chapter4DialogueID.CH4_SITUATION_QA_BUG, // Start Quiz Chunk 2
 			},
 		],
 	},
@@ -979,15 +979,13 @@ export const chapter4Dialogues: Record<Chapter4DialogueID, DialogueNode> = {
 		textVi: 'Cảm giác gõ phím cơ thật sướng. Code như bay. Tiền nào của nấy.',
 		textEn:
 			'Mechanical keyboard feels great. Coding like flying. You get what you pay for.',
-		next: Chapter4DialogueID.CH4_BI_1,
+		next: Chapter4DialogueID.CH4_SITUATION_QA_BUG, // Start Quiz Chunk 2
 	},
 	[Chapter4DialogueID.CH4_BI_1]: {
-		speaker: 'narrator',
-		text: 'Trong lần bố về thăm em, bạn nhận ra con Miu không còn đó nữa. Bạn hỏi bố, bố lảng tránh...',
-		textVi:
-			'Trong lần bố về thăm em, bạn nhận ra con Miu không còn đó nữa. Bạn hỏi bố, bố lảng tránh...',
-		textEn:
-			'When father visited, you noticed Miu was gone. You asked, father evaded...',
+		speaker: 'player',
+		text: 'Bố ơi, con Miu đâu rồi? Sao con về không thấy nó?',
+		textVi: 'Bố ơi, con Miu đâu rồi? Sao con về không thấy nó?',
+		textEn: "Dad, where is Miu? Why don't I see him?",
 		next: Chapter4DialogueID.CH4_BI_TRUTH,
 	},
 	[Chapter4DialogueID.CH4_BI_TRUTH]: {
@@ -1100,7 +1098,7 @@ export const chapter4Dialogues: Record<Chapter4DialogueID, DialogueNode> = {
 			'(Vui sướng) 20 triệu! Một khoản tiền lớn đối với sinh viên mới ra trường.',
 		textEn: '(Joyful) 20 million! A huge amount for a fresh graduate.',
 		effects: [{ stat: StatID.MONEY, value: 20000000 }],
-		next: Chapter4DialogueID.CH4_RETAKE_FEE_CHECK,
+		next: Chapter4DialogueID.CH4_SITUATION_REST_METHOD, // Start Quiz Chunk 3
 	},
 	[Chapter4DialogueID.CH4_RETAKE_FEE_CHECK]: {
 		speaker: 'narrator',
@@ -1231,11 +1229,12 @@ export const chapter4Dialogues: Record<Chapter4DialogueID, DialogueNode> = {
 		],
 	},
 	[Chapter4DialogueID.CH4_INTERVIEW_PREP]: {
-		speaker: 'narrator',
-		text: 'Chuẩn bị phỏng vấn thử (Mock Interview). Câu hỏi: "Điểm yếu lớn nhất của bạn là gì?"',
+		speaker: 'npc',
+		text: 'Interviewer: "Chào em. Câu hỏi đầu tiên: Điểm yếu lớn nhất của em là gì?"',
 		textVi:
-			'Chuẩn bị phỏng vấn thử (Mock Interview). Câu hỏi: "Điểm yếu lớn nhất của bạn là gì?"',
-		textEn: 'Mock Interview. Question: "What is your biggest weakness?"',
+			'Interviewer: "Chào em. Câu hỏi đầu tiên: Điểm yếu lớn nhất của em là gì?"',
+		textEn:
+			'Interviewer: "Hello. First question: What is your biggest weakness?"',
 		choices: [
 			{
 				id: 'choice_weakness_perfectionist',
@@ -1264,10 +1263,10 @@ export const chapter4Dialogues: Record<Chapter4DialogueID, DialogueNode> = {
 		],
 	},
 	[Chapter4DialogueID.CH4_INTERVIEW_SALARY]: {
-		speaker: 'narrator',
-		text: 'Câu hỏi: "Em mong muốn mức lương bao nhiêu?"',
-		textVi: 'Câu hỏi: "Em mong muốn mức lương bao nhiêu?"',
-		textEn: 'Question: "What is your expected salary?"',
+		speaker: 'npc',
+		text: 'Interviewer: "Em mong muốn mức lương bao nhiêu?"',
+		textVi: 'Interviewer: "Em mong muốn mức lương bao nhiêu?"',
+		textEn: 'Interviewer: "What is your expected salary?"',
 		choices: [
 			{
 				id: 'choice_salary_high',
@@ -1300,7 +1299,7 @@ export const chapter4Dialogues: Record<Chapter4DialogueID, DialogueNode> = {
 		text: 'Bạn đã sẵn sàng cho cuộc chiến tìm việc thực sự.',
 		textVi: 'Bạn đã sẵn sàng cho cuộc chiến tìm việc thực sự.',
 		textEn: 'You are ready for the real job hunt battle.',
-		next: Chapter4DialogueID.CH4_END,
+		next: Chapter4DialogueID.CH4_SITUATION_ENGLISH, // Start Quiz Chunk 4
 	},
 	// NEW: Developer Scenarios (Internship/Freelance Context)
 	[Chapter4DialogueID.CH4_SITUATION_ESTIMATE]: {
@@ -1352,7 +1351,7 @@ export const chapter4Dialogues: Record<Chapter4DialogueID, DialogueNode> = {
 					{ stat: StatID.VISION, value: -10 },
 					{ stat: StatID.HUMANITY, value: -5 },
 				],
-				next: Chapter4DialogueID.CH4_SITUATION_QA_BUG,
+				next: Chapter4DialogueID.CH4_CLUB_START,
 			},
 			{
 				id: 'git_resolve',
@@ -1363,7 +1362,7 @@ export const chapter4Dialogues: Record<Chapter4DialogueID, DialogueNode> = {
 					{ stat: StatID.STEELMIND, value: 5 },
 					{ stat: StatID.VISION, value: 3 },
 				],
-				next: Chapter4DialogueID.CH4_SITUATION_QA_BUG,
+				next: Chapter4DialogueID.CH4_CLUB_START, // End Quiz Chunk 1 -> Club
 			},
 		],
 	},
@@ -1407,7 +1406,7 @@ export const chapter4Dialogues: Record<Chapter4DialogueID, DialogueNode> = {
 				textVi: 'Dùng Index của mảng (key={index}): Nhanh gọn',
 				textEn: 'Use Array Index (key={index}): Fast',
 				effects: [{ stat: StatID.VISION, value: -3 }], // Bad practice for dynamic lists
-				next: Chapter4DialogueID.CH4_SITUATION_REST_METHOD,
+				next: Chapter4DialogueID.CH4_BI_1,
 			},
 			{
 				id: 'react_key_id',
@@ -1415,7 +1414,7 @@ export const chapter4Dialogues: Record<Chapter4DialogueID, DialogueNode> = {
 				textVi: 'Dùng ID duy nhất từ DB (key={item.id})',
 				textEn: 'Use Unique ID from DB (key={item.id})',
 				effects: [{ stat: StatID.VISION, value: 5 }],
-				next: Chapter4DialogueID.CH4_SITUATION_REST_METHOD,
+				next: Chapter4DialogueID.CH4_BI_1, // End Quiz Chunk 2 -> Bi Story
 			},
 		],
 	},
@@ -1480,7 +1479,7 @@ export const chapter4Dialogues: Record<Chapter4DialogueID, DialogueNode> = {
 				textVi: 'Callback Hell: Lồng nhau 5 tầng',
 				textEn: 'Callback Hell: 5 levels deep',
 				effects: [{ stat: StatID.VISION, value: -3 }],
-				next: Chapter4DialogueID.CH4_SITUATION_ENGLISH,
+				next: Chapter4DialogueID.CH4_RETAKE_FEE_CHECK,
 			},
 			{
 				id: 'async_await',
@@ -1488,7 +1487,7 @@ export const chapter4Dialogues: Record<Chapter4DialogueID, DialogueNode> = {
 				textVi: 'Async/Await: Code trông như đồng bộ, dễ đọc',
 				textEn: 'Async/Await: Looks synchronous, readable',
 				effects: [{ stat: StatID.VISION, value: 5 }],
-				next: Chapter4DialogueID.CH4_SITUATION_ENGLISH,
+				next: Chapter4DialogueID.CH4_RETAKE_FEE_CHECK, // End Quiz Chunk 3 -> Retake Fee
 			},
 		],
 	},
@@ -1559,7 +1558,7 @@ export const chapter4Dialogues: Record<Chapter4DialogueID, DialogueNode> = {
 					{ stat: StatID.VISION, value: 3 },
 					{ stat: StatID.HUMANITY, value: -5 },
 				],
-				next: Chapter4DialogueID.CH4_KEYBOARD_START,
+				next: Chapter4DialogueID.CH4_END,
 			},
 			{
 				id: 'lunch_go',
@@ -1570,7 +1569,7 @@ export const chapter4Dialogues: Record<Chapter4DialogueID, DialogueNode> = {
 					{ stat: StatID.HUMANITY, value: 5 },
 					{ stat: StatID.STRESS, value: -4 },
 				],
-				next: Chapter4DialogueID.CH4_KEYBOARD_START,
+				next: Chapter4DialogueID.CH4_END, // End Quiz Chunk 4 -> End Chapter
 			},
 		],
 	},

@@ -529,22 +529,22 @@ export const chapter5: Chapter = {
 export const chapter5Dialogues: Record<Chapter5DialogueID, DialogueNode> = {
 	// NEW: Intro
 	[Chapter5DialogueID.CH5_INTRO]: {
-		speaker: 'narrator',
-		text: 'Thẻ nhân viên đeo trên cổ. Văn phòng máy lạnh chạy ro ro. Bạn có một chỗ ngồi, một mức lương, và hàng tá deadline đang chờ đợi.',
+		speaker: 'player',
+		text: '(Nhìn thẻ nhân viên) FPT Software... Văn phòng máy lạnh chạy ro ro. Mình đã có một chỗ ngồi, một mức lương, và hàng tá deadline đang chờ đợi.',
 		textVi:
-			'Thẻ nhân viên đeo trên cổ. Văn phòng máy lạnh chạy ro ro. Bạn có một chỗ ngồi, một mức lương, và hàng tá deadline đang chờ đợi.',
+			'(Nhìn thẻ nhân viên) FPT Software... Văn phòng máy lạnh chạy ro ro. Mình đã có một chỗ ngồi, một mức lương, và hàng tá deadline đang chờ đợi.',
 		textEn:
-			'Employee badge on neck. AC humming in office. You have a seat, a salary, and dozens of deadlines waiting.',
+			'(Looking at badge) FPT Software... AC humming. I have a seat, a salary, and dozens of deadlines waiting.',
 		next: Chapter5DialogueID.CH5_CV_1,
 	},
 	// 5.0 Viết CV
 	[Chapter5DialogueID.CH5_CV_1]: {
-		speaker: 'narrator',
-		text: 'Năm cuối ĐH. Bạn bè check-in sang chảnh. Bạn ví rỗng, mở Word viết CV. Kinh nghiệm trống trơn. Ghi đại "HTML, CSS, Java".',
+		speaker: 'player',
+		text: '(Thở dài) Năm cuối rồi. Bọn bạn check-in sang chảnh, còn mình ví rỗng tuếch. CV thì trống trơn... Thôi thì ghi đại "HTML, CSS, Java" vậy.',
 		textVi:
-			'Năm cuối ĐH. Bạn bè check-in sang chảnh. Bạn ví rỗng, mở Word viết CV. Kinh nghiệm trống trơn. Ghi đại "HTML, CSS, Java".',
+			'(Thở dài) Năm cuối rồi. Bọn bạn check-in sang chảnh, còn mình ví rỗng tuếch. CV thì trống trơn... Thôi thì ghi đại "HTML, CSS, Java" vậy.',
 		textEn:
-			'Final year. Friends checking in fancy places. You broke, writing CV. Empty experience. Just put "HTML, CSS, Java".',
+			'(Sigh) Final year. Friends checking in fancy places, I\'m broke. CV empty... Just put "HTML, CSS, Java".',
 		next: Chapter5DialogueID.CH5_CV_2,
 	},
 	[Chapter5DialogueID.CH5_CV_2]: {
@@ -643,22 +643,23 @@ export const chapter5Dialogues: Record<Chapter5DialogueID, DialogueNode> = {
 		],
 	},
 	[Chapter5DialogueID.CH5_FIX_BUG_DO]: {
-		speaker: 'narrator',
-		text: 'Bạn ở lại fix bug. Sếp gật đầu hài lòng và thưởng nóng cho bạn.',
-		textVi: 'Bạn ở lại fix bug. Sếp gật đầu hài lòng và thưởng nóng cho bạn.',
+		speaker: 'npc',
+		text: 'Sếp: "Khá lắm em trai! Fix nhanh đấy. Anh sẽ note lại vào đánh giá cuối kỳ."',
+		textVi:
+			'Sếp: "Khá lắm em trai! Fix nhanh đấy. Anh sẽ note lại vào đánh giá cuối kỳ."',
 		textEn:
-			'You fixed the bug. The boss nodded: "Good job". That\'s it. No bonus.',
-		next: Chapter5DialogueID.CH5_SIDE_PROJECT, // Redirect to Side Project
+			'Boss: "Good job bro! Quick fix. I\'ll note it for performance review."',
+		next: Chapter5DialogueID.CH5_CHALLENGE_DB_INDEX, // Start Quiz Chunk 1
 	},
 
 	// NEW: Side Project (Chapter 5)
 	[Chapter5DialogueID.CH5_SIDE_PROJECT]: {
-		speaker: 'narrator',
-		text: 'Một người quen cũ liên hệ: "Anh cần làm một API nhỏ cho app bán hàng. Budget 3 triệu, làm trong 2 ngày."',
+		speaker: 'npc',
+		text: 'Bạn cũ: "Alo mày, tao đang cần làm cái API cho app bán hàng gấp. Budget 3 củ, 2 ngày xong không? Cứu tao với!"',
 		textVi:
-			'Một người quen cũ liên hệ: "Anh cần làm một API nhỏ cho app bán hàng. Budget 3 triệu, làm trong 2 ngày."',
+			'Bạn cũ: "Alo mày, tao đang cần làm cái API cho app bán hàng gấp. Budget 3 củ, 2 ngày xong không? Cứu tao với!"',
 		textEn:
-			'An old acquaintance contacts you: "I need a small API for a sales app. Budget 3 million, 2 days."',
+			'Old friend: "Hey, need urgent API for sales app. Budget 3 mil, 2 days. Help me!"',
 		next: Chapter5DialogueID.CH5_SIDE_PROJECT_QUIZ,
 	},
 	[Chapter5DialogueID.CH5_SIDE_PROJECT_QUIZ]: {
@@ -705,7 +706,7 @@ export const chapter5Dialogues: Record<Chapter5DialogueID, DialogueNode> = {
 			'API chạy ngon lành. Bạn nhận được 3 triệu chuyển khoản. Cảm giác kiếm tiền bằng kỹ năng thật tuyệt.',
 		textEn:
 			'API runs smoothly. You received 3 million transfer. Earning money with skills feels great.',
-		next: Chapter5DialogueID.CH5_COMMUTE_MENTOR,
+		next: Chapter5DialogueID.CH5_CHALLENGE_CLIENT, // Start Quiz Chunk 2
 	},
 	[Chapter5DialogueID.CH5_COMMUTE_MENTOR]: {
 		speaker: 'npc',
@@ -915,12 +916,12 @@ export const chapter5Dialogues: Record<Chapter5DialogueID, DialogueNode> = {
 	},
 	// NEW: Office Politics
 	[Chapter5DialogueID.CH5_POLITICS_START]: {
-		speaker: 'narrator',
-		text: 'Trong team có một Senior hay bắt nạt Junior. Hôm nay, hắn ta đang mắng xối xả một cậu thực tập sinh vì lỗi nhỏ.',
+		speaker: 'npc',
+		text: 'Senior (quát tháo): "Mày code cái kiểu gì thế này hả? Tao đã bảo bao nhiêu lần rồi? Mày có não không?" (Đang mắng thực tập sinh)',
 		textVi:
-			'Trong team có một Senior hay bắt nạt Junior. Hôm nay, hắn ta đang mắng xối xả một cậu thực tập sinh vì lỗi nhỏ.',
+			'Senior (quát tháo): "Mày code cái kiểu gì thế này hả? Tao đã bảo bao nhiêu lần rồi? Mày có não không?" (Đang mắng thực tập sinh)',
 		textEn:
-			'A Senior in team bullies Juniors. Today, he is yelling at an intern for a small mistake.',
+			'Senior (yelling): "What kind of code is this? How many times did I tell you? Do you have a brain?" (Scolding intern)',
 		choices: [
 			{
 				id: 'choice_politics_defend',
@@ -966,7 +967,7 @@ export const chapter5Dialogues: Record<Chapter5DialogueID, DialogueNode> = {
 			'(Suy nghĩ) Lần đầu tiên mình hiểu code không chỉ là kỹ thuật, mà là trách nhiệm.',
 		textEn:
 			'(Thinking) For the first time, I understood code is not just tech, but responsibility.',
-		next: Chapter5DialogueID.CH5_OT_START, // Redirect to OT
+		next: Chapter5DialogueID.CH5_CHALLENGE_TECH_DEBT, // Start Quiz Chunk 3
 	},
 
 	// NEW: OT Culture
@@ -1036,10 +1037,12 @@ export const chapter5Dialogues: Record<Chapter5DialogueID, DialogueNode> = {
 		],
 	},
 	[Chapter5DialogueID.CH5_SALARY_SEND]: {
-		speaker: 'narrator',
-		text: 'Mẹ gọi điện lên, giọng rưng rưng. Bạn thấy ấm lòng.',
-		textVi: 'Mẹ gọi điện lên, giọng rưng rưng. Bạn thấy ấm lòng.',
-		textEn: 'Mom called, voice trembling. You feel warm inside.',
+		speaker: 'meQ',
+		text: '"Con ơi... Mẹ nhận được tiền rồi. Sao gửi nhiều thế con? Giữ lại mà ăn uống chứ... Mẹ không sao đâu..." (Giọng mẹ rưng rưng)',
+		textVi:
+			'"Con ơi... Mẹ nhận được tiền rồi. Sao gửi nhiều thế con? Giữ lại mà ăn uống chứ... Mẹ không sao đâu..." (Giọng mẹ rưng rưng)',
+		textEn:
+			'"Son... I got the money. Why so much? Keep it for food... I\'m fine..." (Voice trembling)',
 		next: Chapter5DialogueID.CH5_SIDE_PROJECT_START,
 	},
 	[Chapter5DialogueID.CH5_SALARY_KEEP_CONSEQUENCE]: {
@@ -1139,12 +1142,12 @@ export const chapter5Dialogues: Record<Chapter5DialogueID, DialogueNode> = {
 
 	// 5.3 Lời mời Anh V
 	[Chapter5DialogueID.CH5_BROTHER_V_1]: {
-		speaker: 'narrator',
-		text: 'Đang ổn định thì Anh V (sếp cũ) gọi. Rủ về làm dự án "triệu đô". Bạn lao vào và nhận ra đó là địa ngục "Callback Hell". Code rối như canh hẹ (Spaghetti Code).',
+		speaker: 'npc',
+		text: 'Anh V (Sếp cũ): "Alo em trai! Anh đang build team cho dự án triệu đô. Về với anh không? Anh em mình lại cùng nhau chiến!"',
 		textVi:
-			'Đang ổn định thì Anh V (sếp cũ) gọi. Rủ về làm dự án "triệu đô". Bạn lao vào và nhận ra đó là địa ngục "Callback Hell". Code rối như canh hẹ (Spaghetti Code).',
+			'Anh V (Sếp cũ): "Alo em trai! Anh đang build team cho dự án triệu đô. Về với anh không? Anh em mình lại cùng nhau chiến!"',
 		textEn:
-			'Stable job, then Brother V (old boss) called. Invited to "million dollar" project. You jumped in and realized it was "Callback Hell". Spaghetti Code everywhere.',
+			'Brother V (Old boss): "Hello bro! Building team for million dollar project. Join me? Let\'s fight together again!"',
 		next: Chapter5DialogueID.CH5_BROTHER_V_ASSEMBLE,
 	},
 	[Chapter5DialogueID.CH5_BROTHER_V_ASSEMBLE]: {
@@ -1256,15 +1259,7 @@ export const chapter5Dialogues: Record<Chapter5DialogueID, DialogueNode> = {
 		textEn: 'Task done. Body aches but wallet thicker.',
 		next: Chapter5DialogueID.CH5_END,
 	},
-	[Chapter5DialogueID.CH5_END]: {
-		speaker: 'narrator',
-		text: 'Bạn thu dọn đồ đạc vào chiếc thùng các-tông. Tạm biệt cái cubicle chật hẹp. Bạn bước ra khỏi tòa nhà cao tầng, hít một hơi thật sâu. Tự do, nhưng đầy rủi ro.',
-		textVi:
-			'Bạn thu dọn đồ đạc vào chiếc thùng các-tông. Tạm biệt cái cubicle chật hẹp. Bạn bước ra khỏi tòa nhà cao tầng, hít một hơi thật sâu. Tự do, nhưng đầy rủi ro.',
-		textEn:
-			'You packed belongings into a cardboard box. Goodbye cramped cubicle. You walked out of the high-rise, taking a deep breath. Freedom, but risky.',
-		next: Chapter6DialogueID.CH6_STARTUP_1,
-	},
+
 	[Chapter5DialogueID.CH5_ENGLISH]: {
 		speaker: 'narrator',
 		text: 'Nhận ra PM lương nghìn đô nhờ tiếng Anh. Lao vào học tiếng Anh như con nghiện. Unlock Global Market.',
@@ -1285,10 +1280,12 @@ export const chapter5Dialogues: Record<Chapter5DialogueID, DialogueNode> = {
 	},
 	// NEW: Mom Sick Consequence
 	[Chapter5DialogueID.CH5_MOM_SICK_CHECK]: {
-		speaker: 'narrator',
-		text: 'Vừa đón mẹ lên thì mẹ đổ bệnh. Căn bệnh mãn tính tái phát.',
-		textVi: 'Vừa đón mẹ lên thì mẹ đổ bệnh. Căn bệnh mãn tính tái phát.',
-		textEn: 'Just brought Mom up when she fell ill. Chronic illness relapsed.',
+		speaker: 'npc',
+		text: 'Bác sĩ: "Gia đình đâu? Bệnh nhân bị tái phát bệnh mãn tính nặng. Cần nhập viện gấp!"',
+		textVi:
+			'Bác sĩ: "Gia đình đâu? Bệnh nhân bị tái phát bệnh mãn tính nặng. Cần nhập viện gấp!"',
+		textEn:
+			'Doctor: "Family? Patient has severe relapse. Need hospitalization immediately!"',
 		choices: [
 			{
 				id: 'choice_mom_sick_ok',
@@ -1426,7 +1423,7 @@ export const chapter5Dialogues: Record<Chapter5DialogueID, DialogueNode> = {
 				textVi: 'Dùng useMemo/useCallback đúng chỗ',
 				textEn: 'Use useMemo/useCallback correctly',
 				effects: [{ stat: StatID.VISION, value: 5 }],
-				next: Chapter5DialogueID.CH5_CHALLENGE_CLIENT,
+				next: Chapter5DialogueID.CH5_SIDE_PROJECT, // End Quiz Chunk 1 -> Side Project
 			},
 			{
 				id: 'render_ignore',
@@ -1434,7 +1431,7 @@ export const chapter5Dialogues: Record<Chapter5DialogueID, DialogueNode> = {
 				textVi: 'Kệ nó, máy user mạnh mà',
 				textEn: 'Ignore it, user PC is strong',
 				effects: [{ stat: StatID.VISION, value: -5 }],
-				next: Chapter5DialogueID.CH5_CHALLENGE_CLIENT,
+				next: Chapter5DialogueID.CH5_SIDE_PROJECT, // End Quiz Chunk 1 -> Side Project
 			},
 		],
 	},
@@ -1492,34 +1489,11 @@ export const chapter5Dialogues: Record<Chapter5DialogueID, DialogueNode> = {
 					{ stat: StatID.VISION, value: 3 },
 					{ stat: StatID.HUMANITY, value: 3 },
 				],
-				next: Chapter5DialogueID.CH5_CHALLENGE_OFFER,
+				next: Chapter5DialogueID.CH5_CHALLENGE_OFFER, // End Quiz Chunk 2 -> Offer
 			},
 		],
 	},
-	[Chapter5DialogueID.CH5_CHALLENGE_OFFER]: {
-		speaker: 'narrator',
-		text: 'Nhận Offer mới. HR hỏi: "Em muốn lương Gross hay Net?"',
-		textVi: 'Nhận Offer mới. HR hỏi: "Em muốn lương Gross hay Net?"',
-		textEn: 'New Offer. HR asks: "Gross or Net salary?"',
-		choices: [
-			{
-				id: 'offer_gross',
-				text: 'Gross: Tự chủ đóng bảo hiểm/thuế (Minh bạch)',
-				textVi: 'Gross: Tự chủ đóng bảo hiểm/thuế (Minh bạch)',
-				textEn: 'Gross: Self-manage tax/insurance (Transparent)',
-				effects: [{ stat: StatID.VISION, value: 5 }],
-				next: Chapter5DialogueID.CH5_CHALLENGE_TECH_DEBT,
-			},
-			{
-				id: 'offer_net',
-				text: 'Net: Nhận tiền về tay cho gọn (Rủi ro đóng BH thấp)',
-				textVi: 'Net: Nhận tiền về tay cho gọn (Rủi ro đóng BH thấp)',
-				textEn: 'Net: Take home pay (Risk low insurance)',
-				effects: [{ stat: StatID.VISION, value: -3 }],
-				next: Chapter5DialogueID.CH5_CHALLENGE_TECH_DEBT,
-			},
-		],
-	},
+
 	[Chapter5DialogueID.CH5_CHALLENGE_TECH_DEBT]: {
 		speaker: 'narrator',
 		text: 'Code cũ quá nát (Spaghetti). Sếp giục ra tính năng mới.',
@@ -1570,7 +1544,7 @@ export const chapter5Dialogues: Record<Chapter5DialogueID, DialogueNode> = {
 				textVi: 'Chặn IP của hacker (Giải pháp tạm thời)',
 				textEn: 'Block Hacker IP (Temporary)',
 				effects: [{ stat: StatID.VISION, value: -3 }],
-				next: Chapter5DialogueID.CH5_CHALLENGE_DOCKER,
+				next: Chapter5DialogueID.CH5_OT_START, // End Quiz Chunk 3 -> OT
 			},
 		],
 	},
@@ -1611,7 +1585,7 @@ export const chapter5Dialogues: Record<Chapter5DialogueID, DialogueNode> = {
 				textVi: 'Thiết lập CI/CD Pipeline (Automated Test & Deploy)',
 				textEn: 'Setup CI/CD Pipeline',
 				effects: [{ stat: StatID.VISION, value: 7 }],
-				next: Chapter5DialogueID.CH5_POLITICS_START,
+				next: Chapter5DialogueID.CH5_OT_START,
 			},
 			{
 				id: 'cicd_manual',
@@ -1619,8 +1593,41 @@ export const chapter5Dialogues: Record<Chapter5DialogueID, DialogueNode> = {
 				textVi: 'Viết script bash chạy tay cho nhanh',
 				textEn: 'Write bash script to run manually',
 				effects: [{ stat: StatID.VISION, value: 3 }],
+				next: Chapter5DialogueID.CH5_OT_START,
+			},
+		],
+	},
+	[Chapter5DialogueID.CH5_CHALLENGE_OFFER]: {
+		speaker: 'npc',
+		text: 'Nhận Offer mới. HR hỏi: "Em muốn lương Gross hay Net?"',
+		textVi: 'Nhận Offer mới. HR hỏi: "Em muốn lương Gross hay Net?"',
+		textEn: 'New Offer. HR asks: "Gross or Net salary?"',
+		choices: [
+			{
+				id: 'offer_gross',
+				text: 'Gross: Tự chủ đóng bảo hiểm/thuế (Minh bạch)',
+				textVi: 'Gross: Tự chủ đóng bảo hiểm/thuế (Minh bạch)',
+				textEn: 'Gross: Self-manage tax/insurance (Transparent)',
+				effects: [{ stat: StatID.VISION, value: 5 }],
+				next: Chapter5DialogueID.CH5_POLITICS_START,
+			},
+			{
+				id: 'offer_net',
+				text: 'Net: Nhận tiền về tay cho gọn (Rủi ro đóng BH thấp)',
+				textVi: 'Net: Nhận tiền về tay cho gọn (Rủi ro đóng BH thấp)',
+				textEn: 'Net: Take home pay (Risk low insurance)',
+				effects: [{ stat: StatID.VISION, value: -3 }],
 				next: Chapter5DialogueID.CH5_POLITICS_START,
 			},
 		],
+	},
+	[Chapter5DialogueID.CH5_END]: {
+		speaker: 'narrator',
+		text: 'Bạn thu dọn đồ đạc vào chiếc thùng các-tông. Tạm biệt cái cubicle chật hẹp. Bạn bước ra khỏi tòa nhà cao tầng, hít một hơi thật sâu. Tự do, nhưng đầy rủi ro.',
+		textVi:
+			'Bạn thu dọn đồ đạc vào chiếc thùng các-tông. Tạm biệt cái cubicle chật hẹp. Bạn bước ra khỏi tòa nhà cao tầng, hít một hơi thật sâu. Tự do, nhưng đầy rủi ro.',
+		textEn:
+			'You packed belongings into a cardboard box. Goodbye cramped cubicle. You walked out of the high-rise, taking a deep breath. Freedom, but risky.',
+		next: Chapter6DialogueID.CH6_STARTUP_1,
 	},
 };

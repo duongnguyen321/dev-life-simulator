@@ -1,8 +1,9 @@
 import { motion } from 'framer-motion';
-import { useState, useEffect, useRef } from 'react';
+import { useState, useEffect, useRef, useMemo } from 'react';
 import type { DialogueChoice } from '@/data/types';
 import { audioManager } from '@/core/AudioManager';
 import { useGameStore } from '@/store/gameStore';
+import { shuffleArray } from '@/utils/arrayUtils';
 
 interface DialogueBoxProps {
 	speaker?: string;
@@ -26,6 +27,11 @@ export default function DialogueBox({
 	const [isTyping, setIsTyping] = useState(true); // Always start typing
 	const [isProcessing, setIsProcessing] = useState(false);
 	const typingTimeoutRef = useRef<NodeJS.Timeout | null>(null);
+
+	// Shuffle choices once when they change
+	const shuffledChoices = useMemo(() => {
+		return choices.length > 0 ? shuffleArray(choices) : [];
+	}, [choices]);
 
 	// Typing effect
 	useEffect(() => {
@@ -54,7 +60,7 @@ export default function DialogueBox({
 		return () => {
 			if (typingTimeoutRef.current) clearTimeout(typingTimeoutRef.current);
 		};
-	}, [text, settings.textSpeed, choices.length]);
+	}, [text, settings.textSpeed, shuffledChoices.length]);
 
 	const handleChoiceClick = (choice: DialogueChoice) => {
 		if (isProcessing) {
@@ -79,7 +85,7 @@ export default function DialogueBox({
 		}
 
 		// 1. If choices exist, NEVER advance - user must pick a choice
-		if (choices.length > 0) {
+		if (shuffledChoices.length > 0) {
 			return;
 		}
 
@@ -102,10 +108,14 @@ export default function DialogueBox({
 			animate={{ y: 0, opacity: 1 }}
 			transition={{ duration: 0.3 }}
 			className={`pixel-dialog-box relative mx-auto mb-8 w-11/12 max-w-4xl ${
-				choices.length === 0 && !isTyping ? 'cursor-pointer' : 'cursor-default'
+				shuffledChoices.length === 0 && !isTyping
+					? 'cursor-pointer'
+					: 'cursor-default'
 			}`}
 			onClick={
-				choices.length === 0 && !isTyping ? handleContainerClick : undefined
+				shuffledChoices.length === 0 && !isTyping
+					? handleContainerClick
+					: undefined
 			}
 			style={{
 				backgroundColor: isReflection
@@ -137,9 +147,9 @@ export default function DialogueBox({
 			</div>
 
 			{/* Choices */}
-			{!isTyping && choices.length > 0 && displayedText === text && (
+			{!isTyping && shuffledChoices.length > 0 && displayedText === text && (
 				<div className='choices-container mt-6 flex flex-col gap-3 animate-fade-in'>
-					{choices.map((choice) => {
+					{shuffledChoices.map((choice) => {
 						// Check if this choice is affordable
 						const { stats } = useGameStore.getState();
 						let canAfford = true;
@@ -191,7 +201,7 @@ export default function DialogueBox({
 			)}
 
 			{/* Next Button / Indicator */}
-			{!isTyping && choices.length === 0 && (
+			{!isTyping && shuffledChoices.length === 0 && (
 				<motion.div
 					animate={{ y: [0, 5, 0] }}
 					transition={{ duration: 1.5, repeat: Infinity }}

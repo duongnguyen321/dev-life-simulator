@@ -1,8 +1,9 @@
-import { useState } from 'react';
+import { useState, useMemo } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { useGameStore } from '@/store/gameStore';
 import type { RandomEvent, DialogueChoice } from '@/data/types';
 import { audioManager } from '@/core/AudioManager';
+import { shuffleArray } from '@/utils/arrayUtils';
 
 interface RandomEventModalProps {
 	isOpen: boolean;
@@ -17,6 +18,11 @@ export default function RandomEventModal({
 }: RandomEventModalProps) {
 	const { settings } = useGameStore();
 	const [hoveredChoice, setHoveredChoice] = useState<string | null>(null);
+
+	// Shuffle choices once when event changes
+	const shuffledChoices = useMemo(() => {
+		return event?.choices ? shuffleArray(event.choices) : [];
+	}, [event]);
 
 	if (!isOpen || !event) return null;
 
@@ -65,7 +71,7 @@ export default function RandomEventModal({
 
 					{/* Choices */}
 					<div className='space-y-3'>
-						{event.choices.map((choice) => {
+						{shuffledChoices.map((choice) => {
 							const choiceText = isVi ? choice.textVi : choice.textEn;
 							const isHovered = hoveredChoice === choice.id;
 

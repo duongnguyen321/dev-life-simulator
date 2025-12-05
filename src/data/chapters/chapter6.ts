@@ -590,10 +590,12 @@ export const chapter6Dialogues: Record<Chapter6DialogueID, DialogueNode> = {
 		],
 	},
 	[Chapter6DialogueID.CH6_INVESTOR_MEET]: {
-		speaker: 'narrator',
-		text: 'Bữa tối tốn kém nhưng bạn học được nhiều điều từ tầm nhìn của họ.',
-		textVi: 'Bữa tối tốn kém nhưng bạn học được nhiều điều từ tầm nhìn của họ.',
-		textEn: 'Expensive dinner but you learned a lot from their vision.',
+		speaker: 'npc',
+		text: 'Nhà đầu tư: "Tôi thấy tiềm năng trong team của các bạn. Tầm nhìn rất hay. Nhưng hãy nhớ: Execution mới là tất cả."',
+		textVi:
+			'Nhà đầu tư: "Tôi thấy tiềm năng trong team của các bạn. Tầm nhìn rất hay. Nhưng hãy nhớ: Execution mới là tất cả."',
+		textEn:
+			'Investor: "I see potential in your team. Great vision. But remember: Execution is everything."',
 		next: Chapter6DialogueID.CH6_STARTUP_MOTIVATION,
 	},
 	[Chapter6DialogueID.CH6_STARTUP_MOTIVATION]: {
@@ -606,14 +608,14 @@ export const chapter6Dialogues: Record<Chapter6DialogueID, DialogueNode> = {
 		next: Chapter6DialogueID.CH6_STARTUP_2,
 	},
 	[Chapter6DialogueID.CH6_STARTUP_2]: {
-		speaker: 'narrator',
-		text: 'Kích hoạt di sản (Legacy Activation): Bạn lôi giấy phép "Công ty Ma" của bố ra. Vốn điều lệ 20 tỷ (trên giấy). Đây là "Virtual Capital" (Mock Data) - một lớp "Firewall" tạo uy tín cực lớn với đối tác.',
+		speaker: 'player',
+		text: '(Lôi giấy tờ ra) Các anh ơi, em có giấy phép "Công ty Ma" của bố em. Vốn điều lệ 20 tỷ trên giấy. Firewall uy tín cực lớn với đối tác!',
 		textVi:
-			'Kích hoạt di sản (Legacy Activation): Bạn lôi giấy phép "Công ty Ma" của bố ra. Vốn điều lệ 20 tỷ (trên giấy). Đây là "Virtual Capital" (Mock Data) - một lớp "Firewall" tạo uy tín cực lớn với đối tác.',
+			'(Lôi giấy tờ ra) Các anh ơi, em có giấy phép "Công ty Ma" của bố em. Vốn điều lệ 20 tỷ trên giấy. Firewall uy tín cực lớn với đối tác!',
 		textEn:
-			'Legacy Activation: You used Father\'s "Ghost Company" license. 20 billion charter capital (on paper). This is "Virtual Capital" (Mock Data) - a "Firewall" creating huge credibility.',
+			'(Pulling out papers) Bros, I have Father\'s "Ghost Company" license. 20 billion charter capital on paper. Huge credibility Firewall!',
 		effects: [{ stat: StatID.VISION, value: 1 }],
-		next: Chapter6DialogueID.CH6_FRAUD_START, // Redirect to Investor Fraud Check
+		next: Chapter6DialogueID.CH6_FRAUD_START,
 	},
 
 	// NEW: Investor Fraud Chain
@@ -766,7 +768,7 @@ export const chapter6Dialogues: Record<Chapter6DialogueID, DialogueNode> = {
 		textVi:
 			'Lời khuyên của bạn giúp họ giảm 90% thời gian query. 5 triệu tiền tươi thóc thật.',
 		textEn: 'Your advice reduced query time by 90%. 5 million hard cash.',
-		next: Chapter6DialogueID.CH6_TEAM_BUILDING_START,
+		next: Chapter6DialogueID.CH6_DECISION_CACHE, // Start Quiz Chunk 2
 	},
 
 	// NEW: Team Building Event
@@ -855,21 +857,21 @@ export const chapter6Dialogues: Record<Chapter6DialogueID, DialogueNode> = {
 
 	// 6.2 Personnel Crisis
 	[Chapter6DialogueID.CH6_PERSONNEL_1]: {
-		speaker: 'narrator',
-		text: 'Tuyển nhân viên đầu tiên (người thứ 5). Cậu em nhiệt huyết, ngoan ngoãn. Nhưng sau 2 năm, cậu ta tụt hậu, gây Bug nghiêm trọng xóa sạch dữ liệu khách hàng trên Production.',
+		speaker: 'npc',
+		text: 'Anh N (PM): "Em ơi, có chuyện rồi. Thằng cu thực tập sinh mới xóa sạch database Production. Dữ liệu khách hàng bay hết rồi..."',
 		textVi:
-			'Tuyển nhân viên đầu tiên (người thứ 5). Cậu em nhiệt huyết, ngoan ngoãn. Nhưng sau 2 năm, cậu ta tụt hậu, gây Bug nghiêm trọng xóa sạch dữ liệu khách hàng trên Production.',
+			'Anh N (PM): "Em ơi, có chuyện rồi. Thằng cu thực tập sinh mới xóa sạch database Production. Dữ liệu khách hàng bay hết rồi..."',
 		textEn:
-			'Hired 1st employee (5th person). Enthusiastic, obedient. But after 2 years, fell behind, caused critical Bug wiping client data on Production.',
+			'Brother N (PM): "Bro, we have a problem. The intern just wiped the Production database. All client data is gone..."',
 		next: Chapter6DialogueID.CH6_PERSONNEL_CAFE,
 	},
 	[Chapter6DialogueID.CH6_PERSONNEL_CAFE]: {
-		speaker: 'narrator',
-		text: 'Hẹn cậu ấy ra quán cafe. Trời mưa tầm tã. Cậu ấy ngồi co ro, tay run run cầm cốc nâu nóng.',
+		speaker: 'player',
+		text: '(Nhìn cậu ấy co ro trong quán cafe, trời mưa tầm tã bên ngoài) Mình phải nói gì đây? Cậu ấy từng tốt lắm...',
 		textVi:
-			'Hẹn cậu ấy ra quán cafe. Trời mưa tầm tã. Cậu ấy ngồi co ro, tay run run cầm cốc nâu nóng.',
+			'(Nhìn cậu ấy co ro trong quán cafe, trời mưa tầm tã bên ngoài) Mình phải nói gì đây? Cậu ấy từng tốt lắm...',
 		textEn:
-			'Met him at a cafe. Pouring rain. He sat shivering, trembling hands holding hot coffee.',
+			'(Looking at him huddled in cafe, rain pouring outside) What should I say? He used to be so good...',
 		next: Chapter6DialogueID.CH6_PERSONNEL_CONFLICT,
 	},
 	[Chapter6DialogueID.CH6_PERSONNEL_CONFLICT]: {
@@ -912,13 +914,13 @@ export const chapter6Dialogues: Record<Chapter6DialogueID, DialogueNode> = {
 		next: Chapter6DialogueID.CH6_PERSONNEL_LESSON,
 	},
 	[Chapter6DialogueID.CH6_PERSONNEL_LESSON]: {
-		speaker: 'narrator',
-		text: 'Cậu ấy bỏ đi dưới mưa. Bạn ngồi lại một mình. Bài học quản trị tàn khốc đầu tiên: Làm sếp là phải biết ác.',
+		speaker: 'player',
+		text: '(Ngồi lại một mình, nhìn cậu ấy bỏ đi dưới mưa) Bài học quản trị tàn khốc đầu tiên: Làm sếp là phải biết ác...',
 		textVi:
-			'Cậu ấy bỏ đi dưới mưa. Bạn ngồi lại một mình. Bài học quản trị tàn khốc đầu tiên: Làm sếp là phải biết ác.',
+			'(Ngồi lại một mình, nhìn cậu ấy bỏ đi dưới mưa) Bài học quản trị tàn khốc đầu tiên: Làm sếp là phải biết ác...',
 		textEn:
-			'He walked away in the rain. You sat alone. First cruel management lesson: To be a boss is to be ruthless.',
-		next: Chapter6DialogueID.CH6_END,
+			'(Sitting alone, watching him walk away in rain) First cruel management lesson: To be a boss is to be ruthless...',
+		next: Chapter6DialogueID.CH6_DECISION_HIRE, // Start Quiz Chunk 3
 	},
 	[Chapter6DialogueID.CH6_END]: {
 		speaker: 'narrator',
@@ -1009,22 +1011,22 @@ export const chapter6Dialogues: Record<Chapter6DialogueID, DialogueNode> = {
 	// 6.3 Market
 	// NEW: Intro
 	[Chapter6DialogueID.CH6_INTRO]: {
-		speaker: 'narrator',
-		text: 'Căn phòng trọ ngổn ngang dây cáp và vỏ hộp mì tôm. Ba người bạn, ba chiếc laptop, và một giấc mơ thay đổi thế giới (hoặc ít nhất là kiếm được tiền).',
+		speaker: 'player',
+		text: '(Nhìn quanh căn phòng trọ ngổn ngang) Dây cáp, vỏ mì tôm... Ba thằng tao, ba cái laptop, và một giấc mơ thay đổi thế giới. Hoặc ít nhất là kiếm được tiền.',
 		textVi:
-			'Căn phòng trọ ngổn ngang dây cáp và vỏ hộp mì tôm. Ba người bạn, ba chiếc laptop, và một giấc mơ thay đổi thế giới (hoặc ít nhất là kiếm được tiền).',
+			'(Nhìn quanh căn phòng trọ ngổn ngang) Dây cáp, vỏ mì tôm... Ba thằng tao, ba cái laptop, và một giấc mơ thay đổi thế giới. Hoặc ít nhất là kiếm được tiền.',
 		textEn:
-			'Rental room messy with cables and noodle boxes. Three friends, three laptops, and a dream to change the world (or at least make money).',
+			'(Looking around messy rental room) Cables, noodle boxes... Three of us, three laptops, and a dream to change the world. Or at least make money.',
 		next: Chapter6DialogueID.CH6_MARKET_1,
 	},
 
 	[Chapter6DialogueID.CH6_MARKET_1]: {
-		speaker: 'narrator',
-		text: '29 tuổi. Tham vọng làm Super App (AI, Blockchain). Over-engineering. Ra mắt: 0 user. Thị trường không cần.',
+		speaker: 'player',
+		text: '(Nhìn dashboard trống rỗng) 29 tuổi. Super App với AI, Blockchain... Ra mắt xong: 0 user. Thị trường không cần mình.',
 		textVi:
-			'29 tuổi. Tham vọng làm Super App (AI, Blockchain). Over-engineering. Ra mắt: 0 user. Thị trường không cần.',
+			'(Nhìn dashboard trống rỗng) 29 tuổi. Super App với AI, Blockchain... Ra mắt xong: 0 user. Thị trường không cần mình.',
 		textEn:
-			"29 years old. Ambition for Super App (AI, Blockchain). Over-engineering. Launch: 0 users. Market didn't need it.",
+			"(Looking at empty dashboard) 29 years old. Super App with AI, Blockchain... Launched: 0 users. Market doesn't need us.",
 		next: Chapter6DialogueID.CH6_SERVER_START,
 	},
 
@@ -1087,7 +1089,7 @@ export const chapter6Dialogues: Record<Chapter6DialogueID, DialogueNode> = {
 			'Sản phẩm thất bại (Product Fail). Nhưng may mắn thay, mảng Outsource vẫn hoạt động tốt, gánh team qua cơn bĩ cực (Fallback Mechanism). Công ty không chết, nhưng giấc mơ Product bị trì hoãn.',
 		textEn:
 			'Product Fail. Luckily, Outsource arm worked well, carrying the team through crisis (Fallback Mechanism). Company survived, but Product dream delayed.',
-		next: Chapter6DialogueID.CH6_SALARY_START,
+		next: Chapter6DialogueID.CH6_DECISION_MENTOR, // Start Quiz Chunk 4
 	},
 
 	// NEW: Salary Event
@@ -1151,12 +1153,12 @@ export const chapter6Dialogues: Record<Chapter6DialogueID, DialogueNode> = {
 
 	// 6.4 Redemption
 	[Chapter6DialogueID.CH6_REDEMPTION_1]: {
-		speaker: 'narrator',
-		text: 'Gap Year (Nghiên cứu thị trường): Bạn quyết định dành 1 năm đi nước ngoài (Nhật, Mỹ, Sing) để tìm đường. Ở nhà, Anh Q, Anh D, Anh N lo vận hành mảng Outsource (Maintenance Mode).',
+		speaker: 'npc',
+		text: 'Anh Q (Co-founder): "Em cần đi ra ngoài, thở một chút. Gap year đi! Tao với anh D, anh N lo mảng Outsource. Em đi tìm đường mới đi."',
 		textVi:
-			'Gap Year (Nghiên cứu thị trường): Bạn quyết định dành 1 năm đi nước ngoài (Nhật, Mỹ, Sing) để tìm đường. Ở nhà, Anh Q, Anh D, Anh N lo vận hành mảng Outsource (Maintenance Mode).',
+			'Anh Q (Co-founder): "Em cần đi ra ngoài, thở một chút. Gap year đi! Tao với anh D, anh N lo mảng Outsource. Em đi tìm đường mới đi."',
 		textEn:
-			'Gap Year (Market Research): You spent 1 year abroad (Japan, US, Sing) to find the way. At home, Q, D, N managed Outsource (Maintenance Mode).',
+			'Brother Q (Co-founder): "You need to get out, breathe. Take a gap year! We\'ll handle Outsource. Go find a new path."',
 		next: Chapter6DialogueID.CH6_REDEMPTION_2,
 	},
 	[Chapter6DialogueID.CH6_REDEMPTION_2]: {
@@ -1172,12 +1174,12 @@ export const chapter6Dialogues: Record<Chapter6DialogueID, DialogueNode> = {
 
 	// NEW: Series A Funding
 	[Chapter6DialogueID.CH6_SERIES_A_START]: {
-		speaker: 'narrator',
-		text: 'Tin vui! Nhà đầu tư thiên thần đã đồng ý rót vốn Series A. 5 tỷ đồng được chuyển vào tài khoản công ty.',
+		speaker: 'npc',
+		text: 'Nhà đầu tư thiên thần (hào hứng): "Chúng tôi đồng ý rót vốn Series A! 5 tỷ đồng sẽ được chuyển vào tài khoản công ty ngay hôm nay!"',
 		textVi:
-			'Tin vui! Nhà đầu tư thiên thần đã đồng ý rót vốn Series A. 5 tỷ đồng được chuyển vào tài khoản công ty.',
+			'Nhà đầu tư thiên thần (hào hứng): "Chúng tôi đồng ý rót vốn Series A! 5 tỷ đồng sẽ được chuyển vào tài khoản công ty ngay hôm nay!"',
 		textEn:
-			'Good news! Angel investor agreed to Series A funding. 5 billion transferred to company account.',
+			'Angel Investor (excited): "We agree to Series A funding! 5 billion will be transferred to company account today!"',
 		next: Chapter6DialogueID.CH6_SERIES_A_RECEIVE,
 	},
 	[Chapter6DialogueID.CH6_SERIES_A_RECEIVE]: {
@@ -1318,7 +1320,7 @@ export const chapter6Dialogues: Record<Chapter6DialogueID, DialogueNode> = {
 					{ stat: StatID.MONEY, value: -1000000 },
 					{ stat: StatID.VISION, value: -3 },
 				],
-				next: Chapter6DialogueID.CH6_DECISION_HIRE,
+				next: Chapter6DialogueID.CH6_TEAM_BUILDING_START, // End Quiz Chunk 2
 			},
 			{
 				id: 'scale_horiz',
@@ -1329,7 +1331,7 @@ export const chapter6Dialogues: Record<Chapter6DialogueID, DialogueNode> = {
 					{ stat: StatID.VISION, value: 7 },
 					{ stat: StatID.MONEY, value: -1500000 },
 				],
-				next: Chapter6DialogueID.CH6_DECISION_HIRE,
+				next: Chapter6DialogueID.CH6_TEAM_BUILDING_START, // End Quiz Chunk 2
 			},
 		],
 	},
@@ -1380,7 +1382,7 @@ export const chapter6Dialogues: Record<Chapter6DialogueID, DialogueNode> = {
 					{ stat: StatID.STEELMIND, value: 5 },
 					{ stat: StatID.HUMANITY, value: -3 },
 				],
-				next: Chapter6DialogueID.CH6_DECISION_MENTOR,
+				next: Chapter6DialogueID.CH6_BIG_CONTRACT_START, // End Quiz Chunk 3
 			},
 			{
 				id: 'fire_coach',
@@ -1391,7 +1393,7 @@ export const chapter6Dialogues: Record<Chapter6DialogueID, DialogueNode> = {
 					{ stat: StatID.HUMANITY, value: 5 },
 					{ stat: StatID.MONEY, value: -10000000 }, // Wasted salary
 				],
-				next: Chapter6DialogueID.CH6_DECISION_MENTOR,
+				next: Chapter6DialogueID.CH6_BIG_CONTRACT_START, // End Quiz Chunk 3
 			},
 		],
 	},
@@ -1472,7 +1474,7 @@ export const chapter6Dialogues: Record<Chapter6DialogueID, DialogueNode> = {
 					{ stat: StatID.HUMANITY, value: 7 },
 					{ stat: StatID.VISION, value: -3 },
 				],
-				next: Chapter6DialogueID.CH6_INVESTOR_START,
+				next: Chapter6DialogueID.CH6_SALARY_START, // End Quiz Chunk 4
 			},
 			{
 				id: 'cult_sport',
@@ -1484,7 +1486,7 @@ export const chapter6Dialogues: Record<Chapter6DialogueID, DialogueNode> = {
 					{ stat: StatID.STRESS, value: 20 },
 					{ stat: StatID.HUMANITY, value: -3 },
 				],
-				next: Chapter6DialogueID.CH6_INVESTOR_START,
+				next: Chapter6DialogueID.CH6_SALARY_START, // End Quiz Chunk 4
 			},
 		],
 	},

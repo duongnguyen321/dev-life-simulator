@@ -532,32 +532,32 @@ export const chapter8: Chapter = {
 export const chapter8Dialogues: Record<Chapter8DialogueID, DialogueNode> = {
 	// NEW: Intro
 	[Chapter8DialogueID.CH8_END]: {
-		speaker: 'narrator',
-		text: 'Cơn bão qua đi, để lại những tàn tích. Bạn đứng giữa văn phòng trống rỗng, nhìn ra thành phố lên đèn. Bạn đã chiến thắng, nhưng bạn còn lại gì?',
+		speaker: 'player',
+		text: '(Đứng giữa văn phòng trống rỗng, nhìn ra thành phố lên đèn) Cơn bão đã qua... Mình đã chiến thắng tất cả, nhưng... mình còn lại gì?',
 		textVi:
-			'Cơn bão qua đi, để lại những tàn tích. Bạn đứng giữa văn phòng trống rỗng, nhìn ra thành phố lên đèn. Bạn đã chiến thắng, nhưng bạn còn lại gì?',
+			'(Đứng giữa văn phòng trống rỗng, nhìn ra thành phố lên đèn) Cơn bão đã qua... Mình đã chiến thắng tất cả, nhưng... mình còn lại gì?',
 		textEn:
-			'Storm passed, leaving ruins. You stand in empty office, looking at city lights. You won, but what is left?',
+			'(Standing in empty office, looking at city lights) The storm passed... I won everything, but... what is left?',
 		next: Chapter9DialogueID.CH9_INTRO,
 	},
 
 	// 8.1 AI Gamble
 	[Chapter8DialogueID.CH8_AI_1]: {
-		speaker: 'narrator',
-		text: '40 tuổi. Cơn sóng thần AI ập đến. ChatGPT, Copilot khiến mảng Outsource truyền thống lao đao. "Innovate or Die" (Đổi mới hay là chết).',
+		speaker: 'player',
+		text: '(Nhìn màn hình ChatGPT) 40 tuổi... Nó viết code nhanh hơn mình, sạch hơn mình. Outsource chết chắc rồi. "Innovate or Die".',
 		textVi:
-			'40 tuổi. Cơn sóng thần AI ập đến. ChatGPT, Copilot khiến mảng Outsource truyền thống lao đao. "Innovate or Die" (Đổi mới hay là chết).',
+			'(Nhìn màn hình ChatGPT) 40 tuổi... Nó viết code nhanh hơn mình, sạch hơn mình. Outsource chết chắc rồi. "Innovate or Die".',
 		textEn:
-			'40 years old. AI Tsunami hit. ChatGPT, Copilot crushed traditional Outsource. "Innovate or Die".',
-		next: Chapter8DialogueID.CH8_STRATEGY_AI,
+			'(Looking at ChatGPT) 40 years old... It codes faster, cleaner than me. Outsource is dead. "Innovate or Die".',
+		next: Chapter8DialogueID.CH8_STRATEGY_AI, // Start Quiz Chunk 1
 	},
 	[Chapter8DialogueID.CH8_AI_VISION]: {
-		speaker: 'narrator',
-		text: 'Bạn thấy cơ hội trong mảng Robot chăm sóc sức khỏe (Care Robots). Không phải vì tiền, mà vì ý nghĩa: Giúp người già sống đàng hoàng hơn.',
+		speaker: 'player',
+		text: '(Nhìn bảng kế hoạch) Robot chăm sóc sức khỏe... Không chỉ vì lợi nhuận. Mình muốn giúp những người già như bố được sống đàng hoàng hơn.',
 		textVi:
-			'Bạn thấy cơ hội trong mảng Robot chăm sóc sức khỏe (Care Robots). Không phải vì tiền, mà vì ý nghĩa: Giúp người già sống đàng hoàng hơn.',
+			'(Nhìn bảng kế hoạch) Robot chăm sóc sức khỏe... Không chỉ vì lợi nhuận. Mình muốn giúp những người già như bố được sống đàng hoàng hơn.',
 		textEn:
-			'Saw opportunity in Care Robots. Not for money, but for meaning: Help elderly live with dignity.',
+			'(Looking at plan) Care Robots... Not just for profit. I want to help elderly like Dad live with dignity.',
 		next: Chapter8DialogueID.CH8_BUDGET_START,
 	},
 
@@ -598,32 +598,33 @@ export const chapter8Dialogues: Record<Chapter8DialogueID, DialogueNode> = {
 		],
 	},
 	[Chapter8DialogueID.CH8_BUDGET_APPROVE]: {
-		speaker: 'narrator',
-		text: 'Ngân sách được thông qua. Các kỹ sư làm việc hăng say với thiết bị mới nhất.',
+		speaker: 'npc',
+		text: 'Kỹ sư trưởng (Hào hứng): "Cảm ơn sếp! Với linh kiện Nvidia xịn xò này, bọn em hứa sẽ làm ra con Robot đỉnh nhất thế giới!"',
 		textVi:
-			'Ngân sách được thông qua. Các kỹ sư làm việc hăng say với thiết bị mới nhất.',
-		textEn: 'Budget approved. Engineers work passionately with latest gear.',
-		next: Chapter8DialogueID.CH8_BETRAYAL_START, // Redirect to Betrayal
+			'Kỹ sư trưởng (Hào hứng): "Cảm ơn sếp! Với linh kiện Nvidia xịn xò này, bọn em hứa sẽ làm ra con Robot đỉnh nhất thế giới!"',
+		textEn:
+			'Lead Engineer (Excited): "Thanks boss! With these Nvidia chips, we promise the world\'s best Robot!"',
+		next: Chapter8DialogueID.CH8_STRATEGY_LAYOFF, // Start Quiz Chunk 2
 	},
 	[Chapter8DialogueID.CH8_BUDGET_FAIL]: {
-		speaker: 'narrator',
-		text: 'Linh kiện cũ gây ra lỗi quá nhiệt. Robot thử nghiệm phát nổ trong phòng Lab. Cổ phiếu lao dốc không phanh. Đối tác rút vốn. Bạn mất 100 tỷ để đền bù và khắc phục.',
+		speaker: 'npc',
+		text: 'Trợ lý (Hốt hoảng): "Sếp ơi! Robot thử nghiệm phát nổ trong phòng Lab rồi! Quá nhiệt! Cổ phiếu đang sàn, đối tác rút vốn rồi sếp ơi!"',
 		textVi:
-			'Linh kiện cũ gây ra lỗi quá nhiệt. Robot thử nghiệm phát nổ trong phòng Lab. Cổ phiếu lao dốc không phanh. Đối tác rút vốn. Bạn mất 100 tỷ để đền bù và khắc phục.',
+			'Trợ lý (Hốt hoảng): "Sếp ơi! Robot thử nghiệm phát nổ trong phòng Lab rồi! Quá nhiệt! Cổ phiếu đang sàn, đối tác rút vốn rồi sếp ơi!"',
 		textEn:
-			'Old parts caused overheating. Prototype robot exploded in Lab. Stocks plummeted. Partners withdrew capital. You lost 100 billion in compensation and repairs.',
+			'Assistant (Panicked): "Boss! Prototype robot exploded in Lab! Overheating! Stocks crashing, partners pulling out!"',
 		effects: [{ stat: StatID.MONEY, value: -100000000000 }],
-		next: Chapter8DialogueID.CH8_BETRAYAL_START, // Redirect to Betrayal
+		next: Chapter8DialogueID.CH8_STRATEGY_LAYOFF, // Start Quiz Chunk 2
 	},
 
 	// NEW: Co-founder Betrayal
 	[Chapter8DialogueID.CH8_BETRAYAL_START]: {
-		speaker: 'narrator',
-		text: 'Tin mật báo: Co-founder của bạn đang bí mật đàm phán bán công nghệ lõi cho đối thủ.',
+		speaker: 'npc',
+		text: 'Thám tử tư (Đưa xấp ảnh): "Không nhầm đâu anh. Co-founder của anh đang đi đêm với đối thủ. Hắn định bán source code lõi Robot."',
 		textVi:
-			'Tin mật báo: Co-founder của bạn đang bí mật đàm phán bán công nghệ lõi cho đối thủ.',
+			'Thám tử tư (Đưa xấp ảnh): "Không nhầm đâu anh. Co-founder của anh đang đi đêm với đối thủ. Hắn định bán source code lõi Robot."',
 		textEn:
-			'Intel: Your Co-founder is secretly negotiating to sell core tech to competitor.',
+			'Private Investigator (Handing photos): "No mistake. Your Co-founder is meeting competitor. Planning to sell Robot core source code."',
 		choices: [
 			{
 				id: 'choice_betrayal_fight',
@@ -650,22 +651,24 @@ export const chapter8Dialogues: Record<Chapter8DialogueID, DialogueNode> = {
 		],
 	},
 	[Chapter8DialogueID.CH8_AI_BET]: {
-		speaker: 'narrator',
-		text: 'Đốc toàn lực. Vay vốn nhà nước, hợp tác với các giáo sư đầu ngành. Đây là canh bạc cuối cùng để đưa công ty lên tầm Unicorn (Kỳ lân).',
+		speaker: 'player',
+		text: '(Đập bàn họp) Chúng ta sẽ làm lại! Vay vốn nhà nước, mời giáo sư xịn nhất về. Đây là canh bạc tất tay (All-in) để thành Unicorn!',
 		textVi:
-			'Đốc toàn lực. Vay vốn nhà nước, hợp tác với các giáo sư đầu ngành. Đây là canh bạc cuối cùng để đưa công ty lên tầm Unicorn (Kỳ lân).',
+			'(Đập bàn họp) Chúng ta sẽ làm lại! Vay vốn nhà nước, mời giáo sư xịn nhất về. Đây là canh bạc tất tay (All-in) để thành Unicorn!',
 		textEn:
-			'All-in. Government loans, top professor partnerships. Final gamble to become a Unicorn.',
+			'(Slamming table) We will rebuild! Get Gov loans, hire best professors. This is All-in gamble to be Unicorn!',
 		effects: [{ stat: StatID.VISION, value: 5 }],
 		next: Chapter8DialogueID.CH8_PRISON_CHECK, // Redirect to Prison Check
 	},
 
 	// NEW: Lawsuit/Prison Check
 	[Chapter8DialogueID.CH8_PRISON_CHECK]: {
-		speaker: 'narrator',
-		text: 'Chính phủ rà soát hồ sơ năng lực để cấp vốn.',
-		textVi: 'Chính phủ rà soát hồ sơ năng lực để cấp vốn.',
-		textEn: 'Government reviews profile for funding.',
+		speaker: 'npc',
+		text: 'Quan chức chính phủ (Xem hồ sơ): "Dự án rất tham vọng. Nhưng chúng tôi cần rà soát lại quá khứ của anh trước khi giải ngân."',
+		textVi:
+			'Quan chức chính phủ (Xem hồ sơ): "Dự án rất tham vọng. Nhưng chúng tôi cần rà soát lại quá khứ của anh trước khi giải ngân."',
+		textEn:
+			'Govt Official (Reviewing): "Ambitious project. But we need to review your past before funding."',
 		choices: [
 			{
 				id: 'choice_prison_trigger',
@@ -685,42 +688,42 @@ export const chapter8Dialogues: Record<Chapter8DialogueID, DialogueNode> = {
 				text: 'Hồ sơ sạch: Được duyệt',
 				textVi: 'Hồ sơ sạch: Được duyệt',
 				textEn: 'Clean profile: Approved',
-				next: Chapter8DialogueID.CH8_RECALL_1,
+				next: Chapter8DialogueID.CH8_STRATEGY_CRISIS, // Start Quiz Chunk 3
 			},
 		],
 	},
 	[Chapter8DialogueID.CH8_PRISON_RISK]: {
-		speaker: 'narrator',
-		text: 'Phát hiện gian lận số liệu trong quá khứ (Vụ án Chapter 6). Bạn bị điều tra hình sự. Cổ phiếu bị đình chỉ giao dịch.',
+		speaker: 'npc',
+		text: 'Cảnh sát kinh tế: "Phát hiện dấu hiệu gian lận tài chính từ 10 năm trước. Anh bị cấm xuất cảnh để phục vụ điều tra!"',
 		textVi:
-			'Phát hiện gian lận số liệu trong quá khứ (Vụ án Chapter 6). Bạn bị điều tra hình sự. Cổ phiếu bị đình chỉ giao dịch.',
+			'Cảnh sát kinh tế: "Phát hiện dấu hiệu gian lận tài chính từ 10 năm trước. Anh bị cấm xuất cảnh để phục vụ điều tra!"',
 		textEn:
-			'Past data fraud detected (Chapter 6 case). Criminal investigation. Stock trading suspended.',
+			'Economic Police: "Financial fraud detected from 10 years ago. You are banned from exit for investigation!"',
 		effects: [
 			{ stat: StatID.MONEY, value: -100000000000 }, // Huge fine
 			{ stat: StatID.VISION, value: -10 },
 			{ stat: StatID.STRESS, value: 10 },
 		],
-		next: Chapter8DialogueID.CH8_RECALL_1, // Still proceed but crippled
+		next: Chapter8DialogueID.CH8_STRATEGY_CRISIS, // Start Quiz Chunk 3
 	},
 
 	// 8.2 The Recall
 	[Chapter8DialogueID.CH8_RECALL_1]: {
-		speaker: 'narrator',
-		text: '45-48 tuổi. Robot phiên bản 1 ra mắt. Cháy hàng. Cổ phiếu tăng trần. Bạn đang thắng. Bạn đang lên.',
+		speaker: 'player',
+		text: '(Nhìn bảng điện tử xanh tím) Robot cháy hàng. Cổ phiếu dựng đứng. Mình đã thắng. Mình thực sự đã thắng...',
 		textVi:
-			'45-48 tuổi. Robot phiên bản 1 ra mắt. Cháy hàng. Cổ phiếu tăng trần. Bạn đang thắng. Bạn đang lên.',
+			'(Nhìn bảng điện tử xanh tím) Robot cháy hàng. Cổ phiếu dựng đứng. Mình đã thắng. Mình thực sự đã thắng...',
 		textEn:
-			'Age 45-48. Robot V1 launched. Sold out. Stock hit ceiling. You were winning. You were rising.',
+			'(Watching green screen) Robots sold out. Stocks skyrocket. I won. I truly won...',
 		next: Chapter8DialogueID.CH8_RECALL_REPORT,
 	},
 	[Chapter8DialogueID.CH8_RECALL_REPORT]: {
-		speaker: 'narrator',
-		text: 'Một báo cáo nội bộ gửi đến bàn làm việc: Trong một số điều kiện hiếm gặp, AI bị ảo giác (Hallucination) và robot có thể kẹp tay người già gây thương tích. Tỷ lệ: 1%.',
+		speaker: 'npc',
+		text: 'Trưởng nhóm QA (Run rẩy): "Sếp... Báo cáo mật. Tỷ lệ 1%... Robot bị ảo giác. Nó có thể... kẹp nát tay người già..."',
 		textVi:
-			'Một báo cáo nội bộ gửi đến bàn làm việc: Trong một số điều kiện hiếm gặp, AI bị ảo giác (Hallucination) và robot có thể kẹp tay người già gây thương tích. Tỷ lệ: 1%.',
+			'Trưởng nhóm QA (Run rẩy): "Sếp... Báo cáo mật. Tỷ lệ 1%... Robot bị ảo giác. Nó có thể... kẹp nát tay người già..."',
 		textEn:
-			'Internal report landed on desk: In rare edge cases, AI hallucinates and robot may clamp elderly hands causing injury. Rate: 1%.',
+			'QA Lead (Trembling): "Boss... Secret report. 1% rate... Robot hallucinates. It can... crush elderly hands..."',
 		next: Chapter8DialogueID.CH8_ETHICS_START,
 	},
 
@@ -761,20 +764,21 @@ export const chapter8Dialogues: Record<Chapter8DialogueID, DialogueNode> = {
 		],
 	},
 	[Chapter8DialogueID.CH8_ETHICS_HIRE]: {
-		speaker: 'narrator',
-		text: 'Giám đốc Đạo đức đưa ra những cảnh báo quan trọng. Bạn cảm thấy yên tâm hơn.',
+		speaker: 'npc',
+		text: 'Giám đốc Đạo đức: "Thưa anh, rủi ro là có thật. Chúng ta phải minh bạch hóa quy trình fail-safe ngay lập tức."',
 		textVi:
-			'Giám đốc Đạo đức đưa ra những cảnh báo quan trọng. Bạn cảm thấy yên tâm hơn.',
-		textEn: 'Ethics Director gave important warnings. You feel more secure.',
+			'Giám đốc Đạo đức: "Thưa anh, rủi ro là có thật. Chúng ta phải minh bạch hóa quy trình fail-safe ngay lập tức."',
+		textEn:
+			'Ethics Director: "Sir, risk is real. We must transparently implement fail-safe immediately."',
 		next: Chapter8DialogueID.CH8_RECALL_PRESSURE,
 	},
 	[Chapter8DialogueID.CH8_ETHICS_NEPHEW]: {
-		speaker: 'narrator',
-		text: 'Thằng cháu làm việc hời hợt, bỏ qua các cảnh báo an toàn. Một scandal lộ dữ liệu xảy ra trên quy mô toàn cầu. Google và Apple gỡ ứng dụng. Công ty bị phạt 20 tỷ và mất uy tín nghiêm trọng.',
+		speaker: 'npc',
+		text: 'Bản tin tối: "Scandal lộ dữ liệu chấn động! Ứng dụng Robot của công ty X bị Google gỡ bỏ vì vi phạm nghiêm trọng!"',
 		textVi:
-			'Thằng cháu làm việc hời hợt, bỏ qua các cảnh báo an toàn. Một scandal lộ dữ liệu xảy ra trên quy mô toàn cầu. Google và Apple gỡ ứng dụng. Công ty bị phạt 20 tỷ và mất uy tín nghiêm trọng.',
+			'Bản tin tối: "Scandal lộ dữ liệu chấn động! Ứng dụng Robot của công ty X bị Google gỡ bỏ vì vi phạm nghiêm trọng!"',
 		textEn:
-			'Nephew worked carelessly, ignored safety warnings. Global data leak scandal. Google and Apple delisted app. Company fined 20 billion and lost serious reputation.',
+			'Evening News: "Shocking data leak! Company X Robot App delisted by Google for serious violation!"',
 		effects: [
 			{ stat: StatID.MONEY, value: -20000000000 },
 			{ stat: StatID.VISION, value: -20 },
@@ -822,21 +826,23 @@ export const chapter8Dialogues: Record<Chapter8DialogueID, DialogueNode> = {
 		],
 	},
 	[Chapter8DialogueID.CH8_LAWYER_HIRE]: {
-		speaker: 'narrator',
-		text: 'Luật sư tư vấn các phương án bảo vệ tài sản và danh dự.',
-		textVi: 'Luật sư tư vấn các phương án bảo vệ tài sản và danh dự.',
-		textEn: 'Lawyer advised on asset and reputation protection.',
+		speaker: 'npc',
+		text: 'Luật sư: "Chúng ta có thể chuyển tài sản sang tên người thân. Về mặt pháp lý, anh sẽ an toàn."',
+		textVi:
+			'Luật sư: "Chúng ta có thể chuyển tài sản sang tên người thân. Về mặt pháp lý, anh sẽ an toàn."',
+		textEn:
+			'Lawyer: "We can transfer assets to relatives. Legally, you will be safe."',
 		next: Chapter8DialogueID.CH8_DIVORCE_START, // Redirect to Divorce
 	},
 
 	// NEW: Divorce Crisis
 	[Chapter8DialogueID.CH8_DIVORCE_START]: {
-		speaker: 'narrator',
-		text: 'Giữa tâm bão khủng hoảng công ty, vợ bạn đưa đơn ly hôn. "Em không thể chịu đựng sự vô tâm của anh thêm một ngày nào nữa."',
+		speaker: 'npc',
+		text: 'Vợ (Đặt tờ đơn lên bàn): "Ký đi anh. Em chịu đựng đủ rồi. Tiền, danh vọng... anh giữ lấy tất cả đi. Em chỉ cần bình yên."',
 		textVi:
-			'Giữa tâm bão khủng hoảng công ty, vợ bạn đưa đơn ly hôn. "Em không thể chịu đựng sự vô tâm của anh thêm một ngày nào nữa."',
+			'Vợ (Đặt tờ đơn lên bàn): "Ký đi anh. Em chịu đựng đủ rồi. Tiền, danh vọng... anh giữ lấy tất cả đi. Em chỉ cần bình yên."',
 		textEn:
-			'Amidst company crisis, wife files for divorce. "I can\'t stand your indifference one more day."',
+			'Wife (Placing paper on table): "Sign it. I\'ve had enough. Money, fame... you keep it all. I just need peace."',
 		choices: [
 			{
 				id: 'choice_divorce_sign',
@@ -884,12 +890,12 @@ export const chapter8Dialogues: Record<Chapter8DialogueID, DialogueNode> = {
 		],
 	},
 	[Chapter8DialogueID.CH8_RECALL_FLASHBACK]: {
-		speaker: 'narrator',
-		text: 'Bóng ma quá khứ ùa về. Bạn thấy hình ảnh bố năm xưa, ngồi trên bậc thềm đá, hút thuốc với đôi mắt vô hồn.',
+		speaker: 'player',
+		text: '(Nhắm mắt lại) Hình ảnh bố ngày xưa... ngồi trên bậc thềm đá, hút thuốc lá, ánh mắt vô hồn... Bố cũng từng chọn sai.',
 		textVi:
-			'Bóng ma quá khứ ùa về. Bạn thấy hình ảnh bố năm xưa, ngồi trên bậc thềm đá, hút thuốc với đôi mắt vô hồn.',
+			'(Nhắm mắt lại) Hình ảnh bố ngày xưa... ngồi trên bậc thềm đá, hút thuốc lá, ánh mắt vô hồn... Bố cũng từng chọn sai.',
 		textEn:
-			'Ghost of past surged. You saw father years ago, sitting on stone steps, smoking with soulless eyes.',
+			"(Closing eyes) Father's image years ago... sitting on stone steps, smoking, soulless eyes... He also chose wrong.",
 		next: Chapter8DialogueID.CH8_FLASHBACK_VOICE,
 	},
 	[Chapter8DialogueID.CH8_FLASHBACK_VOICE]: {
@@ -911,10 +917,12 @@ export const chapter8Dialogues: Record<Chapter8DialogueID, DialogueNode> = {
 		next: Chapter8DialogueID.CH8_RECALL_CHOICE,
 	},
 	[Chapter8DialogueID.CH8_RECALL_CHOICE]: {
-		speaker: 'narrator',
-		text: 'Lựa chọn sinh tử. Quyết định này sẽ định hình cả cuộc đời bạn.',
-		textVi: 'Lựa chọn sinh tử. Quyết định này sẽ định hình cả cuộc đời bạn.',
-		textEn: 'Life or death choice. This decision will shape your entire life.',
+		speaker: 'player',
+		text: '(Mở mắt ra) Đây là lúc mình định hình di sản của mình. Là con quỷ hút máu hay là con người?',
+		textVi:
+			'(Mở mắt ra) Đây là lúc mình định hình di sản của mình. Là con quỷ hút máu hay là con người?',
+		textEn:
+			'(Opening eyes) This is when I shape my legacy. A bloodsucking monster or a human?',
 		choices: [
 			{
 				id: 'choice_recall',
@@ -928,6 +936,7 @@ export const chapter8Dialogues: Record<Chapter8DialogueID, DialogueNode> = {
 					value: 40,
 				},
 				effects: [
+					{ stat: StatID.MONEY, value: -5000000000 },
 					{ stat: StatID.HUMANITY, value: 10 },
 					{ stat: StatID.VISION, value: 5 },
 				],
@@ -948,32 +957,32 @@ export const chapter8Dialogues: Record<Chapter8DialogueID, DialogueNode> = {
 	},
 	// 8.3 Rebirth
 	[Chapter8DialogueID.CH8_RECALL_ACTION]: {
-		speaker: 'narrator',
-		text: 'Tổ chức họp báo. Cúi đầu xin lỗi. Công khai mã nguồn lỗi. Đền bù 100%.',
+		speaker: 'player',
+		text: '(Trước hàng trăm ống kính máy quay) "Tôi xin lỗi... Tôi xin chịu hoàn toàn trách nhiệm. Chúng tôi sẽ thu hồi toàn bộ sản phẩm và công khai mã nguồn lỗi..."',
 		textVi:
-			'Tổ chức họp báo. Cúi đầu xin lỗi. Công khai mã nguồn lỗi. Đền bù 100%.',
+			'(Trước hàng trăm ống kính máy quay) "Tôi xin lỗi... Tôi xin chịu hoàn toàn trách nhiệm. Chúng tôi sẽ thu hồi toàn bộ sản phẩm và công khai mã nguồn lỗi..."',
 		textEn:
-			'Press conference. Bowed in apology. Published buggy source code. 100% compensation.',
+			'(Before hundreds of cameras) "I apologize... I take full responsibility. We will recall all products and publish the buggy source code..."',
 		next: Chapter8DialogueID.CH8_FINAL_COMMIT,
 	},
 	[Chapter8DialogueID.CH8_FINAL_COMMIT]: {
-		speaker: 'narrator',
-		text: 'Di sản cuối cùng (Final Commit): Bạn thức trắng đêm, tự tay code bản vá lỗi. Commit message: "Fix bug, heal soul". Đây là dòng code đẹp nhất cuộc đời bạn.',
+		speaker: 'player',
+		text: '(Thức trắng đêm gõ dòng code cuối cùng - Final Commit) "Fix bug, heal soul". (Mỉm cười nhẹ nhõm, đóng nắp laptop).',
 		textVi:
-			'Di sản cuối cùng (Final Commit): Bạn thức trắng đêm, tự tay code bản vá lỗi. Commit message: "Fix bug, heal soul". Đây là dòng code đẹp nhất cuộc đời bạn.',
+			'(Thức trắng đêm gõ dòng code cuối cùng - Final Commit) "Fix bug, heal soul". (Mỉm cười nhẹ nhõm, đóng nắp laptop).',
 		textEn:
-			'Final Commit: You stayed up all night, coding the patch yourself. Commit message: "Fix bug, heal soul". The most beautiful line of code in your life.',
+			'(Staying up all night typing final code - Final Commit) "Fix bug, heal soul". (Smiling with relief, closing laptop).',
 		next: Chapter8DialogueID.CH8_IPO_START,
 	},
 
 	// NEW: IPO Event
 	[Chapter8DialogueID.CH8_IPO_START]: {
-		speaker: 'narrator',
-		text: 'Công ty IPO thành công rực rỡ. Định giá Unicorn. Bạn trở thành tỷ phú đô la.',
+		speaker: 'npc',
+		text: 'Bản tin tài chính: "Cú lội ngược dòng ngoạn mục! Công ty IPO thành công rực rỡ sau khủng hoảng. Định giá Unicorn!"',
 		textVi:
-			'Công ty IPO thành công rực rỡ. Định giá Unicorn. Bạn trở thành tỷ phú đô la.',
+			'Bản tin tài chính: "Cú lội ngược dòng ngoạn mục! Công ty IPO thành công rực rỡ sau khủng hoảng. Định giá Unicorn!"',
 		textEn:
-			'Company IPO successful. Unicorn valuation. You became a billionaire.',
+			'Financial News: "Spectacular comeback! Company IPO success after crisis. Unicorn valuation!"',
 		effects: [{ stat: StatID.MONEY, value: 100000000000 }],
 		next: Chapter8DialogueID.CH8_REBIRTH_1,
 	},
@@ -991,13 +1000,13 @@ export const chapter8Dialogues: Record<Chapter8DialogueID, DialogueNode> = {
 
 	// 8.3 Rebirth
 	[Chapter8DialogueID.CH8_REBIRTH_1]: {
-		speaker: 'narrator',
-		text: 'Cổ phiếu lao dốc. Bị chửi rủa. Nhưng sau đó, khách hàng tin tưởng: "Ông ta không lừa dối".',
+		speaker: 'npc',
+		text: 'Khách hàng (Viết thư tay): "Cảm ơn ông vì sự trung thực. Chúng tôi tin tưởng ông hơn bất kỳ ai khác."',
 		textVi:
-			'Cổ phiếu lao dốc. Bị chửi rủa. Nhưng sau đó, khách hàng tin tưởng: "Ông ta không lừa dối".',
+			'Khách hàng (Viết thư tay): "Cảm ơn ông vì sự trung thực. Chúng tôi tin tưởng ông hơn bất kỳ ai khác."',
 		textEn:
-			'Stocks crashed. Mocked. But then, clients trusted: "He doesn\'t lie".',
-		next: Chapter8DialogueID.CH8_DONATE_UNI_START,
+			'Customer (Handwritten letter): "Thank you for integrity. We trust you more than anyone else."',
+		next: Chapter8DialogueID.CH8_STRATEGY_INNOVATION, // Start Quiz Chunk 4
 	},
 
 	// NEW: Donate Uni Event
@@ -1031,21 +1040,22 @@ export const chapter8Dialogues: Record<Chapter8DialogueID, DialogueNode> = {
 		],
 	},
 	[Chapter8DialogueID.CH8_DONATE_UNI_GIVE]: {
-		speaker: 'narrator',
-		text: 'Trường đại học vinh danh bạn. Sinh viên có thêm nguồn lực để nghiên cứu.',
+		speaker: 'npc',
+		text: 'Hiệu trưởng (Bắt tay cảm động): "Thay mặt các em sinh viên, cảm ơn ông. Cái tên của ông sẽ mãi ở trên tòa nhà này."',
 		textVi:
-			'Trường đại học vinh danh bạn. Sinh viên có thêm nguồn lực để nghiên cứu.',
-		textEn: 'University honors you. Students have resources for research.',
+			'Hiệu trưởng (Bắt tay cảm động): "Thay mặt các em sinh viên, cảm ơn ông. Cái tên của ông sẽ mãi ở trên tòa nhà này."',
+		textEn:
+			'Dean (Shaking hands emotionally): "On behalf of students, thank you. Your name will be on this building forever."',
 		next: Chapter8DialogueID.CH8_REBIRTH_2,
 	},
 	[Chapter8DialogueID.CH8_REBIRTH_2]: {
-		speaker: 'narrator',
-		text: 'Thị trường Mỹ, Nhật mở cửa. Thắng lợi bằng sự Tử tế (Integrity). Phá vỡ lời nguyền gia đình.',
+		speaker: 'player',
+		text: '(Nhìn tấm biển tên mình) Thị trường Mỹ, Nhật đã mở cửa. Thắng lợi bằng sự Tử tế... Bố ơi, con làm được rồi. Con đã phá vỡ lời nguyền.',
 		textVi:
-			'Thị trường Mỹ, Nhật mở cửa. Thắng lợi bằng sự Tử tế (Integrity). Phá vỡ lời nguyền gia đình.',
+			'(Nhìn tấm biển tên mình) Thị trường Mỹ, Nhật đã mở cửa. Thắng lợi bằng sự Tử tế... Bố ơi, con làm được rồi. Con đã phá vỡ lời nguyền.',
 		textEn:
-			'US, Japan markets opened. Victory by Integrity. Family curse broken.',
-		next: Chapter9DialogueID.CH9_INTRO,
+			'(Looking at nameplate) US, Japan markets opened. Victory by Integrity... Dad, I did it. I broke the curse.',
+		next: Chapter8DialogueID.CH8_END,
 	},
 
 	// NEW: Developer Scenarios (CTO/Founder Strategy)
@@ -1089,7 +1099,7 @@ export const chapter8Dialogues: Record<Chapter8DialogueID, DialogueNode> = {
 				textVi: 'Bỏ qua: Tốc độ là vua (Speed > Safety)',
 				textEn: 'Skip: Speed is King (Speed > Safety)',
 				effects: [{ stat: StatID.VISION, value: -3 }], // Future risk
-				next: Chapter8DialogueID.CH8_STRATEGY_LAYOFF,
+				next: Chapter8DialogueID.CH8_AI_VISION, // End Quiz Chunk 1
 			},
 			{
 				id: 'ethics_review',
@@ -1143,7 +1153,7 @@ export const chapter8Dialogues: Record<Chapter8DialogueID, DialogueNode> = {
 				textVi: 'Thị trường Mỹ: Cạnh tranh khốc liệt, lợi nhuận cao',
 				textEn: 'US Market: Fierce competition, high profit',
 				effects: [{ stat: StatID.VISION, value: 3 }],
-				next: Chapter8DialogueID.CH8_STRATEGY_CRISIS,
+				next: Chapter8DialogueID.CH8_BETRAYAL_START, // End Quiz Chunk 2
 			},
 			{
 				id: 'global_sea',
@@ -1151,7 +1161,7 @@ export const chapter8Dialogues: Record<Chapter8DialogueID, DialogueNode> = {
 				textVi: 'Đông Nam Á: Dễ thở hơn, sân nhà',
 				textEn: 'SEA: Easier, home turf',
 				effects: [{ stat: StatID.STEELMIND, value: 2 }],
-				next: Chapter8DialogueID.CH8_STRATEGY_CRISIS,
+				next: Chapter8DialogueID.CH8_BETRAYAL_START, // End Quiz Chunk 2
 			},
 		],
 	},
@@ -1191,7 +1201,7 @@ export const chapter8Dialogues: Record<Chapter8DialogueID, DialogueNode> = {
 				textVi: 'Chọn từ nội bộ: Người hiểu văn hóa',
 				textEn: 'Internal: Knows culture',
 				effects: [{ stat: StatID.HUMANITY, value: 3 }],
-				next: Chapter8DialogueID.CH8_STRATEGY_REGULATION,
+				next: Chapter8DialogueID.CH8_RECALL_1, // End Quiz Chunk 3
 			},
 			{
 				id: 'succ_external',
@@ -1199,7 +1209,7 @@ export const chapter8Dialogues: Record<Chapter8DialogueID, DialogueNode> = {
 				textVi: 'Thuê CEO chuyên nghiệp: Luồng gió mới',
 				textEn: 'Hire Pro CEO: Fresh wind',
 				effects: [{ stat: StatID.VISION, value: 10 }],
-				next: Chapter8DialogueID.CH8_STRATEGY_REGULATION,
+				next: Chapter8DialogueID.CH8_RECALL_1, // End Quiz Chunk 3
 			},
 		],
 	},
@@ -1215,7 +1225,7 @@ export const chapter8Dialogues: Record<Chapter8DialogueID, DialogueNode> = {
 				textVi: 'Tuân thủ tuyệt đối: Tốn kém nhưng bền vững',
 				textEn: 'Full compliance: Costly but sustainable',
 				effects: [{ stat: StatID.STEELMIND, value: 3 }],
-				next: Chapter8DialogueID.CH8_STRATEGY_INNOVATION,
+				next: Chapter8DialogueID.CH8_RECALL_1, // End Quiz Chunk 3
 			},
 			{
 				id: 'reg_lobby',
@@ -1223,7 +1233,7 @@ export const chapter8Dialogues: Record<Chapter8DialogueID, DialogueNode> = {
 				textVi: 'Lobby chính sách: Tìm kẽ hở',
 				textEn: 'Lobby: Find loopholes',
 				effects: [{ stat: StatID.MONEY, value: -2000000000 }],
-				next: Chapter8DialogueID.CH8_STRATEGY_INNOVATION,
+				next: Chapter8DialogueID.CH8_RECALL_1, // End Quiz Chunk 3
 			},
 		],
 	},
@@ -1297,7 +1307,7 @@ export const chapter8Dialogues: Record<Chapter8DialogueID, DialogueNode> = {
 				textVi: 'Quỹ từ thiện công nghệ: Giúp đời',
 				textEn: 'Tech Charity Foundation: Help world',
 				effects: [{ stat: StatID.HUMANITY, value: 10 }],
-				next: Chapter8DialogueID.CH8_AI_VISION,
+				next: Chapter8DialogueID.CH8_DONATE_UNI_START, // End Quiz Chunk 4
 			},
 			{
 				id: 'exit_empire',
@@ -1305,7 +1315,7 @@ export const chapter8Dialogues: Record<Chapter8DialogueID, DialogueNode> = {
 				textVi: 'Đế chế công nghệ: Thống trị',
 				textEn: 'Tech Empire: Domination',
 				effects: [{ stat: StatID.VISION, value: 10 }],
-				next: Chapter8DialogueID.CH8_AI_VISION,
+				next: Chapter8DialogueID.CH8_DONATE_UNI_START, // End Quiz Chunk 4
 			},
 		],
 	},

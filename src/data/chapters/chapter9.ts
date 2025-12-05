@@ -547,23 +547,23 @@ export const chapter9: Chapter = {
 export const chapter9Dialogues: Record<Chapter9DialogueID, DialogueNode> = {
 	// NEW: Intro
 	[Chapter9DialogueID.CH9_INTRO]: {
-		speaker: 'narrator',
-		text: 'Tóc đã điểm bạc. Những giải thưởng, bằng khen treo đầy tường nhưng phủ bụi. Bạn ngồi trên chiếc ghế bành, nhìn ngắm hoàng hôn của cuộc đời.',
+		speaker: 'player',
+		text: '(Ngồi trên chiếc ghế bành cũ, vuốt nhẹ những tấm bằng khen phủ bụi) 55 tuổi... Tóc đã bạc trắng. Hoàng hôn ngoài kia đẹp quá, nhưng sao lòng mình thấy trống trải thế này?',
 		textVi:
-			'Tóc đã điểm bạc. Những giải thưởng, bằng khen treo đầy tường nhưng phủ bụi. Bạn ngồi trên chiếc ghế bành, nhìn ngắm hoàng hôn của cuộc đời.',
+			'(Ngồi trên chiếc ghế bành cũ, vuốt nhẹ những tấm bằng khen phủ bụi) 55 tuổi... Tóc đã bạc trắng. Hoàng hôn ngoài kia đẹp quá, nhưng sao lòng mình thấy trống trải thế này?',
 		textEn:
-			'Hair turned gray. Awards and certificates fill the wall but dusty. You sit in armchair, watching the sunset of life.',
+			'(Sitting in old armchair, touching dusty awards) 55 years old... Hair turned white. Sunset is beautiful, but why does my heart feel so empty?',
 		next: Chapter9DialogueID.CH9_BILLIONAIRE_1,
 	},
 
 	// 9.1 Billionaire
 	[Chapter9DialogueID.CH9_BILLIONAIRE_1]: {
-		speaker: 'narrator',
-		text: '55 tuổi. Tạp chí Forbes vinh danh bạn trong Top 10 người giàu nhất. Net Worth > 1 tỷ USD. Bạn đang ngồi trong văn phòng trên tầng 68, nhìn xuống thành phố bé tí hon.',
+		speaker: 'npc',
+		text: 'Trợ lý (Đặt tạp chí lên bàn): "Thưa ngài, Forbes vừa gửi ấn phẩm mới nhất. Ngài lại lọt Top 10 người giàu nhất hành tinh. Giá trị tài sản ròng hơn 1 tỷ USD. Chúc mừng ngài!"',
 		textVi:
-			'55 tuổi. Tạp chí Forbes vinh danh bạn trong Top 10 người giàu nhất. Net Worth > 1 tỷ USD. Bạn đang ngồi trong văn phòng trên tầng 68, nhìn xuống thành phố bé tí hon.',
+			'Trợ lý (Đặt tạp chí lên bàn): "Thưa ngài, Forbes vừa gửi ấn phẩm mới nhất. Ngài lại lọt Top 10 người giàu nhất hành tinh. Giá trị tài sản ròng hơn 1 tỷ USD. Chúc mừng ngài!"',
 		textEn:
-			'55 years old. Forbes honored you in Top 10 richest. Net Worth > $1B. Sitting in 68th floor office, looking down at tiny city.',
+			'Assistant (Placing magazine): "Sir, Forbes sent latest issue. You are in Top 10 Richest again. Net Worth over $1B. Congratulations!"',
 		next: Chapter9DialogueID.CH9_HERMIT_CHECK, // Redirect to Hermit Check
 		effects: [
 			{
@@ -575,10 +575,12 @@ export const chapter9Dialogues: Record<Chapter9DialogueID, DialogueNode> = {
 
 	// NEW: Hermit Check
 	[Chapter9DialogueID.CH9_HERMIT_CHECK]: {
-		speaker: 'narrator',
-		text: 'Bạn nhìn lại cuộc đời mình. Có ai bên cạnh không?',
-		textVi: 'Bạn nhìn lại cuộc đời mình. Có ai bên cạnh không?',
-		textEn: 'You look back at your life. Is anyone by your side?',
+		speaker: 'player',
+		text: '(Nhìn xuống thành phố từ tầng 68) Cao quá... Ở trên này không khí loãng thật. Nhìn quanh xem nào... Có ai đang đứng cạnh mình không?',
+		textVi:
+			'(Nhìn xuống thành phố từ tầng 68) Cao quá... Ở trên này không khí loãng thật. Nhìn quanh xem nào... Có ai đang đứng cạnh mình không?',
+		textEn:
+			'(Looking down from 68th floor) Too high... Air is thin here. Looking around... Is anyone standing by my side?',
 		choices: [
 			{
 				id: 'choice_hermit_trigger',
@@ -603,12 +605,12 @@ export const chapter9Dialogues: Record<Chapter9DialogueID, DialogueNode> = {
 		],
 	},
 	[Chapter9DialogueID.CH9_LONELY_DEATH]: {
-		speaker: 'narrator',
-		text: 'Bạn nhận ra mình cô độc hoàn toàn. Vợ con đã bỏ đi (hoặc không bao giờ có). Bạn bè xa lánh. Bạn chết già trong căn biệt thự rộng lớn lạnh lẽo.',
+		speaker: 'player',
+		text: '(Tiếng vang vọng trong căn biệt thự trống) "Alo? Có ai ở nhà không?"... Không có tiếng trả lời. Chỉ có tiếng gió rít. Mình giàu nhất thế giới, nhưng mình là kẻ vô gia cư trong chính ngôi nhà của mình.',
 		textVi:
-			'Bạn nhận ra mình cô độc hoàn toàn. Vợ con đã bỏ đi (hoặc không bao giờ có). Bạn bè xa lánh. Bạn chết già trong căn biệt thự rộng lớn lạnh lẽo.',
+			'(Tiếng vang vọng trong căn biệt thự trống) "Alo? Có ai ở nhà không?"... Không có tiếng trả lời. Chỉ có tiếng gió rít. Mình giàu nhất thế giới, nhưng mình là kẻ vô gia cư trong chính ngôi nhà của mình.',
 		textEn:
-			'You realize you are completely alone. Wife and kids left (or never existed). Friends estranged. You die of old age in a cold, vast mansion.',
+			'(Echo in empty mansion) "Hello? Anyone home?"... No answer. Just wind howling. I am richest, but homeless in my own home.',
 		next: Chapter9DialogueID.CH9_TEACHING_START, // Trigger Soulless Tycoon likely
 	},
 	[Chapter9DialogueID.CH9_BILLIONAIRE_HANDS]: {
@@ -621,23 +623,23 @@ export const chapter9Dialogues: Record<Chapter9DialogueID, DialogueNode> = {
 		next: Chapter9DialogueID.CH9_BILLIONAIRE_2,
 	},
 	[Chapter9DialogueID.CH9_BILLIONAIRE_2]: {
-		speaker: 'narrator',
-		text: 'Tiền chỉ là con số trong Database. Di sản (Legacy) mới là thật. Bạn đã phá vỡ vòng lặp (Break the Loop) thất bại của gia đình.',
+		speaker: 'player',
+		text: '(Mỉm cười) Tiền chỉ là Database. Di sản mới là thật. Mình đã không lặp lại sai lầm của bố. Mình đã Break the Loop.',
 		textVi:
-			'Tiền chỉ là con số trong Database. Di sản (Legacy) mới là thật. Bạn đã phá vỡ vòng lặp (Break the Loop) thất bại của gia đình.',
+			'(Mỉm cười) Tiền chỉ là Database. Di sản mới là thật. Mình đã không lặp lại sai lầm của bố. Mình đã Break the Loop.',
 		textEn:
-			"Money is just a number in Database. Legacy is real. You broke the family's Loop of failure.",
+			"(Smiling) Money is just Database. Legacy is real. I did not repeat Dad's mistake. I Broke the Loop.",
 		next: Chapter9DialogueID.CH9_TEACHING_START, // Redirect to Teaching
 	},
 
 	// NEW: Teaching & Writing
 	[Chapter9DialogueID.CH9_TEACHING_START]: {
-		speaker: 'narrator',
-		text: 'Trường Đại học cũ mời bạn về làm giảng viên thỉnh giảng. Chia sẻ kinh nghiệm thực chiến cho sinh viên.',
+		speaker: 'npc',
+		text: 'Hiệu trưởng (Gọi điện): "Chào ngài. Sinh viên trường mình rất ngưỡng mộ ngài. Liệu ngài có thể thu xếp về trường thỉnh giảng một buổi chia sẻ kinh nghiệm thực chiến không?"',
 		textVi:
-			'Trường Đại học cũ mời bạn về làm giảng viên thỉnh giảng. Chia sẻ kinh nghiệm thực chiến cho sinh viên.',
+			'Hiệu trưởng (Gọi điện): "Chào ngài. Sinh viên trường mình rất ngưỡng mộ ngài. Liệu ngài có thể thu xếp về trường thỉnh giảng một buổi chia sẻ kinh nghiệm thực chiến không?"',
 		textEn:
-			'Old University invites you as guest lecturer. Share battle-tested experience with students.',
+			'Dean (Calling): "Hello sir. Students admire you. Can you arrange a guest lecture to share battle-tested experience?"',
 		choices: [
 			{
 				id: 'choice_teach_accept',
@@ -696,12 +698,12 @@ export const chapter9Dialogues: Record<Chapter9DialogueID, DialogueNode> = {
 
 	// 9.2 Gift for Father
 	[Chapter9DialogueID.CH9_GIFT_1]: {
-		speaker: 'narrator',
-		text: 'Đưa bố về Lào Cai. Mua lại quả đồi năm xưa. Xây khu nghỉ dưỡng sinh thái yên bình (không phải pháo đài phô trương).',
+		speaker: 'player',
+		text: 'Bố ơi, hôm nay con đưa bố đi một nơi. Không phải bệnh viện đâu. Chúng ta về nhà. Về Lào Cai.',
 		textVi:
-			'Đưa bố về Lào Cai. Mua lại quả đồi năm xưa. Xây khu nghỉ dưỡng sinh thái yên bình (không phải pháo đài phô trương).',
+			'Bố ơi, hôm nay con đưa bố đi một nơi. Không phải bệnh viện đâu. Chúng ta về nhà. Về Lào Cai.',
 		textEn:
-			'Took father to Lao Cai. Bought back the hill. Built peaceful eco-resort (not showy fortress).',
+			'Dad, taking you somewhere today. Not hospital. We go home. To Lao Cai.',
 		next: Chapter9DialogueID.CH9_GIFT_DIALOGUE,
 	},
 	[Chapter9DialogueID.CH9_GIFT_DIALOGUE]: {
@@ -729,24 +731,24 @@ export const chapter9Dialogues: Record<Chapter9DialogueID, DialogueNode> = {
 		next: Chapter9DialogueID.CH9_GIFT_BI,
 	},
 	[Chapter9DialogueID.CH9_GIFT_BI]: {
-		speaker: 'narrator',
-		text: 'Chú chó Bi (đời con cháu của con Corgi ngày xưa) chạy nhảy trong sân, như cái bóng của quá khứ ùa về nhưng trọn vẹn hơn.',
+		speaker: 'player',
+		text: '(Vỗ tay) "Bi! Lại đây mày!". Chú chó Corgi nhỏ lon ton chạy tới... Giống hệt Bi ngày xưa. Mọi thứ như chưa từng mất đi.',
 		textVi:
-			'Chú chó Bi (đời con cháu của con Corgi ngày xưa) chạy nhảy trong sân, như cái bóng của quá khứ ùa về nhưng trọn vẹn hơn.',
+			'(Vỗ tay) "Bi! Lại đây mày!". Chú chó Corgi nhỏ lon ton chạy tới... Giống hệt Bi ngày xưa. Mọi thứ như chưa từng mất đi.',
 		textEn:
-			'Bi the dog (descendant of old Corgi) running in yard, like shadow of the past returning but more complete.',
+			'(Clapping) "Bi! Come here!". Small Corgi runs over... Just like old Bi. Like nothing was ever lost.',
 		effects: [{ stat: StatID.HUMANITY, value: 10 }],
 		next: Chapter9DialogueID.CH9_ENDING_1,
 	},
 
 	// 9.3 Ending
 	[Chapter9DialogueID.CH9_ENDING_1]: {
-		speaker: 'narrator',
-		text: 'Thành lập quỹ "Sandbox Foundation". Tài trợ cho những đứa trẻ nghèo vùng cao (như Lào Cai quê mình) có đam mê công nghệ. Trao cho chúng chiếc máy tính đầu tiên, giống như bố đã trao cho bạn năm xưa.',
+		speaker: 'npc',
+		text: 'Luật sư: "Thưa ông, hồ sơ quỹ Sandbox Foundation đã xong. 50 tỷ sẽ được dùng để mua máy tính cho trẻ em nghèo vùng cao. Ông chắc chắn chứ?"',
 		textVi:
-			'Thành lập quỹ "Sandbox Foundation". Tài trợ cho những đứa trẻ nghèo vùng cao (như Lào Cai quê mình) có đam mê công nghệ. Trao cho chúng chiếc máy tính đầu tiên, giống như bố đã trao cho bạn năm xưa.',
+			'Luật sư: "Thưa ông, hồ sơ quỹ Sandbox Foundation đã xong. 50 tỷ sẽ được dùng để mua máy tính cho trẻ em nghèo vùng cao. Ông chắc chắn chứ?"',
 		textEn:
-			'Founded "Sandbox Foundation". Fund poor highland kids (like in Lao Cai) with tech passion. Give them their first PC, just like Dad gave you years ago.',
+			'Lawyer: "Sir, Sandbox Foundation papers ready. 50 billion to buy PCs for poor highland kids. Are you sure?"',
 		next: Chapter9DialogueID.CH9_FOUNDATION_START,
 	},
 
@@ -790,21 +792,21 @@ export const chapter9Dialogues: Record<Chapter9DialogueID, DialogueNode> = {
 		],
 	},
 	[Chapter9DialogueID.CH9_FOUNDATION_SIGN]: {
-		speaker: 'narrator',
-		text: 'Chữ ký của bạn trị giá 50 tỷ. Nhưng nụ cười của những đứa trẻ nhận học bổng trị giá hơn thế nhiều. Bạn cảm thấy nhẹ lòng.',
+		speaker: 'player',
+		text: '(Nhìn chữ ký vừa ráo mực) 50 tỷ... Nhiều thật đấy. Nhưng nhìn nụ cười của tụi nhỏ trong ảnh hồ sơ này... *Thở phào* Nhẹ lòng quá.',
 		textVi:
-			'Chữ ký của bạn trị giá 50 tỷ. Nhưng nụ cười của những đứa trẻ nhận học bổng trị giá hơn thế nhiều. Bạn cảm thấy nhẹ lòng.',
+			'(Nhìn chữ ký vừa ráo mực) 50 tỷ... Nhiều thật đấy. Nhưng nhìn nụ cười của tụi nhỏ trong ảnh hồ sơ này... *Thở phào* Nhẹ lòng quá.',
 		textEn:
-			'Your signature is worth 50 billion. But the smiles of scholarship kids are worth much more. You feel relieved.',
+			"(Looking at fresh signature) 50 billion... A lot. But seeing kids' smiles in this profile photo... *Sigh* Heavy heart lifted.",
 		next: Chapter9DialogueID.CH9_ENDING_MONOLOGUE,
 	},
 	[Chapter9DialogueID.CH9_FOUNDATION_REJECT]: {
-		speaker: 'narrator',
-		text: 'Bạn cất bút đi. "Tại sao phải cho đi? Mình đã đổ mồ hôi sôi nước mắt mới có được". Bạn giữ được tiền, nhưng đánh mất sự tôn trọng cuối cùng của xã hội.',
+		speaker: 'npc',
+		text: 'Luật sư (Cất tài liệu, ánh mắt thất vọng): "Tôi hiểu. Tiền là của ông. *Thở dài* Tôi xin phép về trước."',
 		textVi:
-			'Bạn cất bút đi. "Tại sao phải cho đi? Mình đã đổ mồ hôi sôi nước mắt mới có được". Bạn giữ được tiền, nhưng đánh mất sự tôn trọng cuối cùng của xã hội.',
+			'Luật sư (Cất tài liệu, ánh mắt thất vọng): "Tôi hiểu. Tiền là của ông. *Thở dài* Tôi xin phép về trước."',
 		textEn:
-			'You put the pen away. "Why give? I worked hard for this". You kept the money, but lost the last shred of social respect.',
+			'Lawyer (Putting away docs, disappointed eyes): "I understand. Money is yours. *Sigh* I will take my leave."',
 		next: Chapter9DialogueID.CH9_ENDING_MONOLOGUE,
 	},
 	[Chapter9DialogueID.CH9_ENDING_MONOLOGUE]: {

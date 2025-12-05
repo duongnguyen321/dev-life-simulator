@@ -1,7 +1,9 @@
+import { useMemo } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { useGameStore } from '@/store/gameStore';
 import type { DreamQuestion, DialogueChoice } from '@/data/types';
 import { audioManager } from '@/core/AudioManager';
+import { shuffleArray } from '@/utils/arrayUtils';
 
 interface DreamModalProps {
 	isOpen: boolean;
@@ -15,6 +17,11 @@ export default function DreamModal({
 	onChoice,
 }: DreamModalProps) {
 	const { settings } = useGameStore();
+
+	// Shuffle choices once when dream changes
+	const shuffledChoices = useMemo(() => {
+		return dream?.choices ? shuffleArray(dream.choices) : [];
+	}, [dream]);
 
 	if (!isOpen || !dream) return null;
 
@@ -43,7 +50,7 @@ export default function DreamModal({
 						</p>
 
 						<div className='space-y-4'>
-							{dream.choices.map((choice, index) => (
+							{shuffledChoices.map((choice, index) => (
 								<motion.button
 									key={choice.id}
 									initial={{ opacity: 0, x: -20 }}

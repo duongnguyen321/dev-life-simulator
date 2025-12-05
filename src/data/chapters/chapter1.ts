@@ -598,39 +598,35 @@ export const chapter1Dialogues: Record<Chapter1DialogueID, DialogueNode> = {
 	},
 	// 1.1 Ký ức 3 tuổi
 	[Chapter1DialogueID.CH1_INTRO_1]: {
-		speaker: 'narrator',
-		text: 'Ký ức đầu tiên của bạn không phải là lời ru của mẹ, mà là mùi xi măng và tiếng ầm ầm của xe lu.',
-		textVi:
-			'Ký ức đầu tiên của bạn không phải là lời ru của mẹ, mà là mùi xi măng và tiếng ầm ầm của xe lu.',
-		textEn:
-			"Your first memory was not your mother's lullaby, but the smell of cement and the rumbling of road rollers.",
+		speaker: 'player',
+		text: 'Mẹ ơi, sao bố lúc nào cũng mùi xi măng và thuốc lá vậy?',
+		textVi: 'Mẹ ơi, sao bố lúc nào cũng mùi xi măng và thuốc lá vậy?',
+		textEn: 'Mom, why does Dad always smell like cement and cigarettes?',
 		next: Chapter1DialogueID.CH1_INTRO_2,
 	},
 	[Chapter1DialogueID.CH1_INTRO_2]: {
-		speaker: 'narrator',
-		text: 'Bố Q là một huyền thoại trong mắt đứa trẻ 3 tuổi. Một người đàn ông da sạm nắng, tiếng nói vang như chuông, mỗi lần về nhà là mang theo mùi thuốc lá và bụi đường.',
+		speaker: 'meQ',
+		text: '(Vuốt tóc con) Đó là mùi của sự vất vả con ạ. Bố con làm việc suốt ngày trời dưới nắng nóng.',
 		textVi:
-			'Bố Q là một huyền thoại trong mắt đứa trẻ 3 tuổi. Một người đàn ông da sạm nắng, tiếng nói vang như chuông, mỗi lần về nhà là mang theo mùi thuốc lá và bụi đường.',
+			'(Vuốt tóc con) Đó là mùi của sự vất vả con ạ. Bố con làm việc suốt ngày trời dưới nắng nóng.',
 		textEn:
-			'Father Q was a legend in the eyes of a 3-year-old. A sun-tanned man with a voice that rang like a bell, bringing the smell of tobacco and road dust every time he came home.',
+			'(Stroking your hair) That is the smell of hard work, my child. Your father works all day under the scorching sun.',
 		next: Chapter1DialogueID.CH1_INTRO_LORE,
 	},
 	[Chapter1DialogueID.CH1_INTRO_LORE]: {
-		speaker: 'narrator',
-		text: 'Để có ngày hôm nay, bố đã trải qua 10 năm địa ngục. Bố làm thuê cho 3 công ty xây dựng cùng lúc...',
-		textVi:
-			'Để có ngày hôm nay, bố đã trải qua 10 năm địa ngục. Bố làm thuê cho 3 công ty xây dựng cùng lúc...',
-		textEn:
-			'To get here, father went through 10 years of hell. He worked for 3 construction companies simultaneously...',
+		speaker: 'player',
+		text: 'Bố làm việc vất vả lắm phải không mẹ? Sao bố không nghỉ ngơi?',
+		textVi: 'Bố làm việc vất vả lắm phải không mẹ? Sao bố không nghỉ ngơi?',
+		textEn: "Dad works very hard, right Mom? Why doesn't he rest?",
 		next: Chapter1DialogueID.CH1_INTRO_SCHEDULE,
 	},
 	[Chapter1DialogueID.CH1_INTRO_SCHEDULE]: {
-		speaker: 'narrator',
-		text: 'Lịch trình của bố là một cỗ máy không nghỉ: Sáng chỉ huy công trường A, chiều chạy thầu công ty B, đêm đi tiếp khách công ty C.',
+		speaker: 'meQ',
+		text: '(Thở dài) 10 năm trước, bố con làm thuê cho 3 công ty cùng lúc. Sáng chỉ huy công trường này, chiều chạy thầu công ty kia, đêm về tiếp khách... Có lúc mẹ tưởng bố sẽ gục ngã.',
 		textVi:
-			'Lịch trình của bố là một cỗ máy không nghỉ: Sáng chỉ huy công trường A, chiều chạy thầu công ty B, đêm đi tiếp khách công ty C.',
+			'(Thở dài) 10 năm trước, bố con làm thuê cho 3 công ty cùng lúc. Sáng chỉ huy công trường này, chiều chạy thầu công ty kia, đêm về tiếp khách... Có lúc mẹ tưởng bố sẽ gục ngã.',
 		textEn:
-			"Father's schedule was a relentless machine: Morning at site A, afternoon bidding for company B, night entertaining for company C.",
+			'(Sighs) 10 years ago, your father worked for 3 companies at once. Morning at this site, afternoon bidding there, night entertaining clients... There were times I thought he would collapse.',
 		next: Chapter1DialogueID.CH1_FATHER_DRUNK,
 	},
 	[Chapter1DialogueID.CH1_FATHER_DRUNK]: {
@@ -709,20 +705,18 @@ export const chapter1Dialogues: Record<Chapter1DialogueID, DialogueNode> = {
 	// 1.2 Lớp 1-3: Hoàng tử bé nơi biên ải
 	[Chapter1DialogueID.CH1_SCHOOL_1]: {
 		speaker: 'narrator',
-		text: 'Gia đình bạn sống ở Lào Cai. Bố là chủ doanh nghiệp xây dựng hạ tầng "có tiếng nói nhất tỉnh". Các quan chức địa phương thường ghé nhà uống trà.',
-		textVi:
-			'Gia đình bạn sống ở Lào Cai. Bố là chủ doanh nghiệp xây dựng hạ tầng "có tiếng nói nhất tỉnh". Các quan chức địa phương thường ghé nhà uống trà.',
-		textEn:
-			'Your family lived in Lao Cai. Father was the most influential infrastructure contractor in the province. Local officials often visited for tea.',
+		text: 'Vài năm sau. Lớp 1.',
+		textVi: 'Vài năm sau. Lớp 1.',
+		textEn: 'A few years later. Grade 1.',
 		next: Chapter1DialogueID.CH1_SCHOOL_2,
 	},
 	[Chapter1DialogueID.CH1_SCHOOL_2]: {
-		speaker: 'narrator',
-		text: 'Bạn đi học có tài xế đưa đón. Bạn bè nhìn bạn với ánh mắt ngưỡng mộ pha lẫn sợ sệt.',
+		speaker: 'npc',
+		text: 'Cô giáo: "Các em chào em D nhé. Bố em là ông chủ công ty xây dựng lớn nhất tỉnh đấy. Trường mình vinh dự lắm."',
 		textVi:
-			'Bạn đi học có tài xế đưa đón. Bạn bè nhìn bạn với ánh mắt ngưỡng mộ pha lẫn sợ sệt.',
+			'Cô giáo: "Các em chào em D nhé. Bố em là ông chủ công ty xây dựng lớn nhất tỉnh đấy. Trường mình vinh dự lắm."',
 		textEn:
-			'You went to school with a chauffeur. Friends looked at you with a mix of admiration and fear.',
+			'Teacher: "Everyone say hello to D. His father owns the biggest construction company in the province. We are honored."',
 		next: Chapter1DialogueID.CH1_CLASSMATES_WHISPER,
 	},
 	[Chapter1DialogueID.CH1_END]: {
@@ -736,11 +730,18 @@ export const chapter1Dialogues: Record<Chapter1DialogueID, DialogueNode> = {
 	},
 	[Chapter1DialogueID.CH1_CLASSMATES_WHISPER]: {
 		speaker: 'npc',
-		text: '"Con nhà đại gia đấy, đừng động vào nó. Bố nó quen cả chủ tịch tỉnh đấy."',
+		text: 'Bạn cùng lớp 1: "Nhìn kìa, xe sang đưa đón đấy!"',
+		textVi: 'Bạn cùng lớp 1: "Nhìn kìa, xe sang đưa đón đấy!"',
+		textEn: 'Classmate 1: "Look, a luxury car picking him up!"',
+		next: Chapter1DialogueID.CH1_CLASSMATES_WHISPER_2,
+	},
+	[Chapter1DialogueID.CH1_CLASSMATES_WHISPER_2]: {
+		speaker: 'npc',
+		text: 'Bạn cùng lớp 2: (Thì thầm) "Con nhà đại gia đấy, đừng động vào nó. Bố nó quen cả chủ tịch tỉnh đấy."',
 		textVi:
-			'"Con nhà đại gia đấy, đừng động vào nó. Bố nó quen cả chủ tịch tỉnh đấy."',
+			'Bạn cùng lớp 2: (Thì thầm) "Con nhà đại gia đấy, đừng động vào nó. Bố nó quen cả chủ tịch tỉnh đấy."',
 		textEn:
-			'"Rich kid, don\'t touch him. His dad knows the provincial chairman."',
+			'Classmate 2: (Whispers) "Rich kid, don\'t touch him. His dad knows the provincial chairman."',
 		next: Chapter1DialogueID.CH1_SCHOOL_REACTION,
 	},
 	[Chapter1DialogueID.CH1_SCHOOL_REACTION]: {
@@ -942,21 +943,30 @@ export const chapter1Dialogues: Record<Chapter1DialogueID, DialogueNode> = {
 
 	// 1.3 Lớp 4: Căn cứ địa 4.000m²
 	[Chapter1DialogueID.CH1_FORTRESS_1]: {
-		speaker: 'narrator',
-		text: 'Sau nhiều năm tích cóp, bố quyết định xây dựng "di sản" của đời mình. Bố mua đứt quả đồi của ông ngoại. Một dinh thự rộng 4.000m² mọc lên.',
+		speaker: 'boQ',
+		text: 'Con ơi, đây là di sản bố xây cho con. 4000m², mấy năm cố gắng mới có ngày hôm nay!',
 		textVi:
-			'Sau nhiều năm tích cóp, bố quyết định xây dựng "di sản" của đời mình. Bố mua đứt quả đồi của ông ngoại. Một dinh thự rộng 4.000m² mọc lên.',
+			'Con ơi, đây là di sản bố xây cho con. 4000m², mấy năm cố gắng mới có ngày hôm nay!',
 		textEn:
-			'After years of saving, father decided to build his life\'s "legacy". He bought grandfather\'s hill. A 4,000m² mansion rose up.',
+			'My child, this is the legacy I built for you. 4000m², years of effort to reach this day!',
 		next: Chapter1DialogueID.CH1_FORTRESS_ZOO,
 	},
 	[Chapter1DialogueID.CH1_FORTRESS_ZOO]: {
-		speaker: 'narrator',
-		text: 'Nó là một pháo đài với hệ sinh thái riêng. Sân trước: Đà điểu chạy ầm ầm. Vườn sau: Công xòe đuôi múa. Trên cây: Vượn và khỉ chuyền cành.',
+		speaker: 'player',
+		text: 'Bố ơi! Đà điểu đang chạy ầm ầm kia! Và con công xòe đuôi mưa đẹp quá!',
 		textVi:
-			'Nó là một pháo đài với hệ sinh thái riêng. Sân trước: Đà điểu chạy ầm ầm. Vườn sau: Công xòe đuôi múa. Trên cây: Vượn và khỉ chuyền cành.',
+			'Bố ơi! Đà điểu đang chạy ầm ầm kia! Và con công xòe đuôi mưa đẹp quá!',
 		textEn:
-			'It was a fortress with its own ecosystem. Front yard: Thundering ostriches. Back yard: Dancing peacocks. Trees: Swinging gibbons and monkeys.',
+			'Dad! The ostriches are running! And the peacock dancing is so beautiful!',
+		next: Chapter1DialogueID.CH1_FORTRESS_ZOO_2,
+	},
+	[Chapter1DialogueID.CH1_FORTRESS_ZOO_2]: {
+		speaker: 'boQ',
+		text: '(Cười tự hào) Trên cây có vượn và khỉ nữa. Mình không chỉ có nhà , mà còn có hệ sinh thái riêng!',
+		textVi:
+			'(Cười tự hào) Trên cây có vượn và khỉ nữa. Mình không chỉ có nhà , mà còn có hệ sinh thái riêng!',
+		textEn:
+			'(Laughs proudly) Up in the trees are gibbons and monkeys. We have not just a house, but our own ecosystem!',
 		next: Chapter1DialogueID.CH1_FORTRESS_GUARDS,
 	},
 	[Chapter1DialogueID.CH1_FORTRESS_GUARDS]: {
@@ -1076,20 +1086,19 @@ export const chapter1Dialogues: Record<Chapter1DialogueID, DialogueNode> = {
 	// 1.4 Lớp 5: Bước ngoặt và Sự so sánh
 	[Chapter1DialogueID.CH1_REVELATION_1]: {
 		speaker: 'narrator',
-		text: 'Lớp 5. Bạn là học sinh xuất sắc nhất trường. Mùa hè năm đó, bố gửi bạn về Hà Nội ở nhà bác ruột - cũng là một đại gia bất động sản.',
-		textVi:
-			'Lớp 5. Bạn là học sinh xuất sắc nhất trường. Mùa hè năm đó, bố gửi bạn về Hà Nội ở nhà bác ruột - cũng là một đại gia bất động sản.',
+		text: 'Lớp 5. Mùa hè năm đó, bố gửi bạn về Hà Nội ở nhà bác ruột.',
+		textVi: 'Lớp 5. Mùa hè năm đó, bố gửi bạn về Hà Nội ở nhà bác ruột.',
 		textEn:
-			'Grade 5. Top student. That summer, father sent you to Hanoi to stay with your uncle - also a real estate tycoon.',
+			'Grade 5. That summer, father sent you to stay in Hanoi with your uncle.',
 		next: Chapter1DialogueID.CH1_REVELATION_SHOCK,
 	},
 	[Chapter1DialogueID.CH1_REVELATION_SHOCK]: {
-		speaker: 'narrator',
-		text: 'Cú sốc văn hóa. Ở Lào Cai, bạn là vua. Ở Hà Nội, bạn thấy những tòa nhà chọc trời Keangnam, Lotte cao vút.',
+		speaker: 'player',
+		text: '(Nhìn tòa nhà Keangnam, Lotte cao vút) Ở Lào Cai mình là vua... nhưng ở đây...',
 		textVi:
-			'Cú sốc văn hóa. Ở Lào Cai, bạn là vua. Ở Hà Nội, bạn thấy những tòa nhà chọc trời Keangnam, Lotte cao vút.',
+			'(Nhìn tòa nhà Keangnam, Lotte cao vút) Ở Lào Cai mình là vua... nhưng ở đây...',
 		textEn:
-			'Culture shock. In Lao Cai, you were king. In Hanoi, you saw towering Keangnam, Lotte skyscrapers.',
+			'(Looking at towering Keangnam, Lotte buildings) In Lao Cai I was king... but here...',
 		next: Chapter1DialogueID.CH1_UNCLE_BOAST,
 	},
 	[Chapter1DialogueID.CH1_UNCLE_BOAST]: {
@@ -1102,12 +1111,21 @@ export const chapter1Dialogues: Record<Chapter1DialogueID, DialogueNode> = {
 		next: Chapter1DialogueID.CH1_REVELATION_DETAILS,
 	},
 	[Chapter1DialogueID.CH1_REVELATION_DETAILS]: {
-		speaker: 'narrator',
-		text: 'Những đứa trẻ hàng xóm nói tiếng Anh như gió. Những chiếc siêu xe lạ lẫm lướt qua. Bạn nhận ra điều gì?',
+		speaker: 'player',
+		text: '(Nghe lũ bạn hàng xóm nói tiếng Anh trướt) Sao chúng nó giỏi thế nhỉ?',
 		textVi:
-			'Những đứa trẻ hàng xóm nói tiếng Anh như gió. Những chiếc siêu xe lạ lẫm lướt qua. Bạn nhận ra điều gì?',
+			'(Nghe lũ bạn hàng xóm nói tiếng Anh trướt) Sao chúng nó giỏi thế nhỉ?',
 		textEn:
-			'Neighbor kids spoke fluent English. Strange supercars glided by. What did you realize?',
+			'(Hearing neighbor kids speak fluent English) How are they so good?',
+		next: Chapter1DialogueID.CH1_REVELATION_NEIGHBOR,
+	},
+	[Chapter1DialogueID.CH1_REVELATION_NEIGHBOR]: {
+		speaker: 'npc',
+		text: 'Bạn hàng xóm: "How about you? Where are you from?" (Bạn đế “Lào Cow” đã sai rồi)',
+		textVi:
+			'Bạn hàng xóm: "How about you? Where are you from?" (Bạn đế “Lào Cow” đã sai rồi)',
+		textEn:
+			'Neighbor kid: "How about you? Where are you from?" (You said "Lao Cow" wrong already)',
 		next: Chapter1DialogueID.CH1_REVELATION_REALIZATION,
 	},
 	[Chapter1DialogueID.CH1_REVELATION_REALIZATION]: {

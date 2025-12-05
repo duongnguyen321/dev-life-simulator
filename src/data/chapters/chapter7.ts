@@ -497,41 +497,41 @@ export const chapter7: Chapter = {
 export const chapter7Dialogues: Record<Chapter7DialogueID, DialogueNode> = {
 	// NEW: Intro
 	[Chapter7DialogueID.CH7_INTRO]: {
-		speaker: 'narrator',
-		text: 'Văn phòng mới ở tầng 20. View nhìn ra toàn thành phố. Nhân viên đi lại tấp nập. Bạn ngồi trong phòng riêng, tách biệt qua lớp kính cách âm.',
+		speaker: 'player',
+		text: '(Nhìn ra cửa sổ tầng 20) Căn phòng riêng, kính cách âm... Nhìn xuống nhân viên đi lại tấp nập. Mình đã đi được bao xa rồi?',
 		textVi:
-			'Văn phòng mới ở tầng 20. View nhìn ra toàn thành phố. Nhân viên đi lại tấp nập. Bạn ngồi trong phòng riêng, tách biệt qua lớp kính cách âm.',
+			'(Nhìn ra cửa sổ tầng 20) Căn phòng riêng, kính cách âm... Nhìn xuống nhân viên đi lại tấp nập. Mình đã đi được bao xa rồi?',
 		textEn:
-			'New office on 20th floor. City view. Staff bustling. You sit in private room, separated by soundproof glass.',
+			'(Looking out 20th floor window) Private room, soundproof glass... Staff bustling below. How far have I come?',
 		next: Chapter7DialogueID.CH7_DIVIDE_1,
 	},
 
 	// 7.1 Chia để trị (Microservices)
 	[Chapter7DialogueID.CH7_DIVIDE_1]: {
-		speaker: 'narrator',
-		text: '32 tuổi. Sau cú thất bại Product, bạn không bỏ cuộc. Bạn quay về, đập đi xây lại. Đơn giản hơn, thực dụng hơn.',
+		speaker: 'player',
+		text: '(Suy nghĩ) 32 tuổi. Sau cú thất bại Product, mình không bỏ cuộc. Đập đi xây lại. Đơn giản hơn, thực dụng hơn.',
 		textVi:
-			'32 tuổi. Sau cú thất bại Product, bạn không bỏ cuộc. Bạn quay về, đập đi xây lại. Đơn giản hơn, thực dụng hơn.',
+			'(Suy nghĩ) 32 tuổi. Sau cú thất bại Product, mình không bỏ cuộc. Đập đi xây lại. Đơn giản hơn, thực dụng hơn.',
 		textEn:
-			'32 years old. After Product failure, you persisted. Returned, tore down, rebuilt. Simpler, more pragmatic.',
-		next: Chapter7DialogueID.CH7_SCALE_DB_SHARDING,
+			'(Thinking) 32 years old. After Product failure, I persisted. Tear down, rebuild. Simpler, more pragmatic.',
+		next: Chapter7DialogueID.CH7_SCALE_DB_SHARDING, // Start Quiz Chunk 1
 	},
 	[Chapter7DialogueID.CH7_DIVIDE_STRATEGY]: {
-		speaker: 'narrator',
-		text: 'Kiến trúc Microservices: Tách công ty làm 2 service độc lập. Service A (Outsource): Cash Cow, quy trình chuẩn, nuôi sống hệ thống. Service B (Product): Star, R&D, đốt resource nhưng là tương lai.',
+		speaker: 'player',
+		text: '(Nói với team) Anh em ơi, kiến trúc Microservices! Tách công ty làm 2 service. Service A là Outsource - Cash Cow nuôi sống hệ thống. Service B là Product - Star của tương lai!',
 		textVi:
-			'Kiến trúc Microservices: Tách công ty làm 2 service độc lập. Service A (Outsource): Cash Cow, quy trình chuẩn, nuôi sống hệ thống. Service B (Product): Star, R&D, đốt resource nhưng là tương lai.',
+			'(Nói với team) Anh em ơi, kiến trúc Microservices! Tách công ty làm 2 service. Service A là Outsource - Cash Cow nuôi sống hệ thống. Service B là Product - Star của tương lai!',
 		textEn:
-			'Microservices Architecture: Split company into 2 independent services. Service A (Outsource): Cash Cow, standard process, sustains system. Service B (Product): Star, R&D, burns resources but is the future.',
+			'(Telling team) Bros, Microservices architecture! Split company into 2 services. Service A is Outsource - Cash Cow. Service B is Product - our Star for the future!',
 		next: Chapter7DialogueID.CH7_DIVIDE_FUNDING,
 	},
 	[Chapter7DialogueID.CH7_DIVIDE_FUNDING]: {
-		speaker: 'narrator',
-		text: 'Lao vào vòng xoáy gọi vốn (Series A). Gặp gỡ các Shark, các quỹ đầu tư. Họ tung ra những con số định giá khổng lồ.',
+		speaker: 'npc',
+		text: 'Nhà đầu tư (Series A): "Chúng tôi đánh giá công ty các bạn 50 tỷ. Nhưng chúng tôi cần 30% cổ phần và 1 ghế Board."',
 		textVi:
-			'Lao vào vòng xoáy gọi vốn (Series A). Gặp gỡ các Shark, các quỹ đầu tư. Họ tung ra những con số định giá khổng lồ.',
+			'Nhà đầu tư (Series A): "Chúng tôi đánh giá công ty các bạn 50 tỷ. Nhưng chúng tôi cần 30% cổ phần và 1 ghế Board."',
 		textEn:
-			'Entered fundraising whirlwind (Series A). Met Sharks, VC funds. They threw out huge valuation numbers.',
+			'Investor (Series A): "We value your company at 50 billion. But we need 30% equity and 1 Board seat."',
 		next: Chapter7DialogueID.CH7_INVEST_START,
 	},
 
@@ -753,13 +753,13 @@ export const chapter7Dialogues: Record<Chapter7DialogueID, DialogueNode> = {
 
 	// 7.3 Chia rẽ (Fork)
 	[Chapter7DialogueID.CH7_FORK_CONFLICT]: {
-		speaker: 'narrator',
-		text: 'Mâu thuẫn nảy sinh. Anh Q, D, N muốn ổn định (duy trì Outsource). Bạn muốn đốt tiền Outsource để nuôi Product (High Risk). Xung đột Vision.',
+		speaker: 'npc',
+		text: 'Anh N (khoanh tay): "Em ơi, anh Q và anh D muốn ổn định. Outsource nuôi cả nhà. Em cứ đòi đốt tiền làm Product là sao?"',
 		textVi:
-			'Mâu thuẫn nảy sinh. Anh Q, D, N muốn ổn định (duy trì Outsource). Bạn muốn đốt tiền Outsource để nuôi Product (High Risk). Xung đột Vision.',
+			'Anh N (khoanh tay): "Em ơi, anh Q và anh D muốn ổn định. Outsource nuôi cả nhà. Em cứ đòi đốt tiền làm Product là sao?"',
 		textEn:
-			'Conflict arose. Brothers Q, D, N wanted stability (maintain Outsource). You wanted to burn Outsource money for Product (High Risk). Vision Conflict.',
-		next: Chapter7DialogueID.CH7_MERGE_CONFLICT_Q,
+			'Brother N (arms crossed): "Bro, Q and D want stability. Outsource feeds us all. Why do you insist on burning money for Product?"',
+		next: Chapter7DialogueID.CH7_SCALE_CDN, // Start Quiz Chunk 2
 	},
 
 	// 7.4 Merge Conflict (Sự ra đi)
@@ -816,12 +816,12 @@ export const chapter7Dialogues: Record<Chapter7DialogueID, DialogueNode> = {
 
 	// 7.2 Vá lỗi tâm hồn
 	[Chapter7DialogueID.CH7_HEALING_1]: {
-		speaker: 'narrator',
-		text: 'Sau những biến cố, bạn nhận ra gia đình mới là bến đỗ bình yên nhất. Bạn bắt đầu dành thời gian để "vá lỗi" cho những mối quan hệ đã rạn nứt.',
+		speaker: 'player',
+		text: '(Suy nghĩ) Sau những biến cố, mình nhận ra gia đình mới là bến đỗ bình yên nhất. Phải "vá lỗi" những mối quan hệ đã rạn nứt...',
 		textVi:
-			'Sau những biến cố, bạn nhận ra gia đình mới là bến đỗ bình yên nhất. Bạn bắt đầu dành thời gian để "vá lỗi" cho những mối quan hệ đã rạn nứt.',
+			'(Suy nghĩ) Sau những biến cố, mình nhận ra gia đình mới là bến đỗ bình yên nhất. Phải "vá lỗi" những mối quan hệ đã rạn nứt...',
 		textEn:
-			'After the incidents, you realized family is the safest harbor. You started spending time to "patch" the broken relationships.',
+			'(Thinking) After the incidents, I realized family is the safest harbor. Need to "patch" the broken relationships...',
 		next: Chapter7DialogueID.CH7_HEALING_MARRIAGE,
 	},
 
@@ -916,12 +916,12 @@ export const chapter7Dialogues: Record<Chapter7DialogueID, DialogueNode> = {
 		],
 	},
 	[Chapter7DialogueID.CH7_HEALING_BIRTH]: {
-		speaker: 'narrator',
-		text: '38 tuổi. Đứa con đầu lòng chào đời. Tiếng khóc "Oa oa" vang lên trong phòng sinh.',
+		speaker: 'npc',
+		text: 'Bác sĩ (mỉm cười): "Chúc mừng! Mẹ tròn con vuông. Bé trai 3.2kg khỏe mạnh!"',
 		textVi:
-			'38 tuổi. Đứa con đầu lòng chào đời. Tiếng khóc "Oa oa" vang lên trong phòng sinh.',
+			'Bác sĩ (mỉm cười): "Chúc mừng! Mẹ tròn con vuông. Bé trai 3.2kg khỏe mạnh!"',
 		textEn:
-			'38 years old. First child born. The cry echoed in the delivery room.',
+			'Doctor (smiling): "Congratulations! Mother and baby are healthy. A 3.2kg baby boy!"',
 		next: Chapter7DialogueID.CH7_BIRTH_CRY,
 	},
 	[Chapter7DialogueID.CH7_BIRTH_CRY]: {
@@ -933,13 +933,13 @@ export const chapter7Dialogues: Record<Chapter7DialogueID, DialogueNode> = {
 		next: Chapter7DialogueID.CH7_HEALING_TRANSFORM,
 	},
 	[Chapter7DialogueID.CH7_HEALING_TRANSFORM]: {
-		speaker: 'narrator',
-		text: 'Nhưng hạnh phúc đi kèm thử thách. Vợ bị trầm cảm sau sinh. Con ốm sốt lúc 2h sáng đúng lúc Server Crash.',
+		speaker: 'meQ',
+		text: 'Vợ (khóc): "Em không thể chịu nổi nữa rồi... Công việc, con cái... Em mệt quá..."',
 		textVi:
-			'Nhưng hạnh phúc đi kèm thử thách. Vợ bị trầm cảm sau sinh. Con ốm sốt lúc 2h sáng đúng lúc Server Crash.',
+			'Vợ (khóc): "Em không thể chịu nổi nữa rồi... Công việc, con cái... Em mệt quá..."',
 		textEn:
-			'But happiness came with challenges. Wife had postpartum depression. Child fever at 2 AM right when Server Crashed.',
-		next: Chapter7DialogueID.CH7_HEALING_CONFLICT,
+			'Wife (crying): "I can\'t take it anymore... Work, the baby... I\'m so tired..."',
+		next: Chapter7DialogueID.CH7_SCALE_MONITORING, // Start Quiz Chunk 3
 	},
 	[Chapter7DialogueID.CH7_HEALING_CONFLICT]: {
 		speaker: 'player',
@@ -1012,12 +1012,12 @@ export const chapter7Dialogues: Record<Chapter7DialogueID, DialogueNode> = {
 	},
 
 	[Chapter7DialogueID.CH7_HEALING_BALANCE]: {
-		speaker: 'narrator',
-		text: 'Bạn học cách "Tắt máy" (Shutdown). Về nhà là bố, không phải là CEO. Nhưng liệu bạn có thực sự làm được điều đó?',
+		speaker: 'player',
+		text: '(Suy nghĩ) Mình phải học cách "Tắt máy". Về nhà là bố, không phải là CEO. Nhưng liệu mình có thực sự làm được?',
 		textVi:
-			'Bạn học cách "Tắt máy" (Shutdown). Về nhà là bố, không phải là CEO. Nhưng liệu bạn có thực sự làm được điều đó?',
+			'(Suy nghĩ) Mình phải học cách "Tắt máy". Về nhà là bố, không phải là CEO. Nhưng liệu mình có thực sự làm được?',
 		textEn:
-			'You learned to "Shutdown". At home, be a father, not CEO. But could you truly do it?',
+			'(Thinking) I need to learn to "Shutdown". At home, be a father, not CEO. But can I truly do it?',
 		choices: [
 			{
 				id: 'choice_dinner_commitment',
@@ -1255,7 +1255,7 @@ export const chapter7Dialogues: Record<Chapter7DialogueID, DialogueNode> = {
 		textVi: 'Bạn cảm thấy ấm lòng khi giúp đỡ được những mảnh đời khó khăn.',
 		textEn: 'You feel warm helping difficult lives.',
 		effects: [{ stat: StatID.HUMANITY, value: 3 }],
-		next: Chapter7DialogueID.CH7_DIVIDENDS_START,
+		next: Chapter7DialogueID.CH7_SCALE_CULTURE_FIT, // Start Quiz Chunk 4
 	},
 
 	// NEW: Dividends & Real Estate
@@ -1345,7 +1345,7 @@ export const chapter7Dialogues: Record<Chapter7DialogueID, DialogueNode> = {
 				textVi: 'LRU (Least Recently Used): Xóa cái lâu không dùng',
 				textEn: 'LRU (Least Recently Used): Remove old unused',
 				effects: [{ stat: StatID.VISION, value: 5 }],
-				next: Chapter7DialogueID.CH7_SCALE_CDN,
+				next: Chapter7DialogueID.CH7_DIVIDE_STRATEGY, // End Quiz Chunk 1
 			},
 			{
 				id: 'cache_random',
@@ -1353,7 +1353,7 @@ export const chapter7Dialogues: Record<Chapter7DialogueID, DialogueNode> = {
 				textVi: 'Random: Xóa ngẫu nhiên (Rủi ro xóa data hot)',
 				textEn: 'Random: Remove randomly (Risk removing hot data)',
 				effects: [{ stat: StatID.VISION, value: -3 }],
-				next: Chapter7DialogueID.CH7_SCALE_CDN,
+				next: Chapter7DialogueID.CH7_DIVIDE_STRATEGY, // End Quiz Chunk 1
 			},
 		],
 	},
@@ -1396,7 +1396,7 @@ export const chapter7Dialogues: Record<Chapter7DialogueID, DialogueNode> = {
 				textVi: 'Tách theo Domain (User, Order, Payment): Loose Coupling',
 				textEn: 'Split by Domain (User, Order, Payment): Loose Coupling',
 				effects: [{ stat: StatID.VISION, value: 7 }],
-				next: Chapter7DialogueID.CH7_SCALE_MONITORING,
+				next: Chapter7DialogueID.CH7_MERGE_CONFLICT_Q, // End Quiz Chunk 2
 			},
 			{
 				id: 'micro_layer',
@@ -1409,7 +1409,7 @@ export const chapter7Dialogues: Record<Chapter7DialogueID, DialogueNode> = {
 					{ stat: StatID.VISION, value: -5 },
 					{ stat: StatID.STRESS, value: 7 },
 				],
-				next: Chapter7DialogueID.CH7_SCALE_MONITORING,
+				next: Chapter7DialogueID.CH7_MERGE_CONFLICT_Q, // End Quiz Chunk 2
 			},
 		],
 	},
@@ -1458,7 +1458,7 @@ export const chapter7Dialogues: Record<Chapter7DialogueID, DialogueNode> = {
 					{ stat: StatID.VISION, value: 7 },
 					{ stat: StatID.HUMANITY, value: 3 },
 				],
-				next: Chapter7DialogueID.CH7_SCALE_CULTURE_FIT,
+				next: Chapter7DialogueID.CH7_HEALING_CONFLICT, // End Quiz Chunk 3
 			},
 			{
 				id: 'team_hierarchy',
@@ -1469,7 +1469,7 @@ export const chapter7Dialogues: Record<Chapter7DialogueID, DialogueNode> = {
 					{ stat: StatID.STEELMIND, value: 5 },
 					{ stat: StatID.VISION, value: -3 }, // Slow innovation
 				],
-				next: Chapter7DialogueID.CH7_SCALE_CULTURE_FIT,
+				next: Chapter7DialogueID.CH7_HEALING_CONFLICT, // End Quiz Chunk 3
 			},
 		],
 	},
@@ -1488,7 +1488,7 @@ export const chapter7Dialogues: Record<Chapter7DialogueID, DialogueNode> = {
 					{ stat: StatID.VISION, value: 5 },
 					{ stat: StatID.STEELMIND, value: 3 },
 				],
-				next: Chapter7DialogueID.CH7_SCALE_IPO,
+				next: Chapter7DialogueID.CH7_DIVIDENDS_START, // End Quiz Chunk 4
 			},
 			{
 				id: 'cult_hire',
@@ -1499,7 +1499,7 @@ export const chapter7Dialogues: Record<Chapter7DialogueID, DialogueNode> = {
 					{ stat: StatID.VISION, value: -3 },
 					{ stat: StatID.STRESS, value: 10 },
 				],
-				next: Chapter7DialogueID.CH7_SCALE_IPO,
+				next: Chapter7DialogueID.CH7_DIVIDENDS_START, // End Quiz Chunk 4
 			},
 		],
 	},

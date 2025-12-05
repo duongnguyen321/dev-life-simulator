@@ -608,12 +608,21 @@ export const chapter2Dialogues: Record<Chapter2DialogueID, DialogueNode> = {
 		next: Chapter2DialogueID.CH2_FPT_2,
 	},
 	[Chapter2DialogueID.CH2_END]: {
-		speaker: 'narrator',
-		text: 'Trong góc phòng kho bụi bặm, màn hình CRT cũ kỹ bỗng sáng lên. Dòng lệnh nhấp nháy màu xanh lá. Một cánh cửa bí mật vừa hé mở.',
+		speaker: 'player',
+		text: '(Khám phá phòng kho bụi bặm) Cái gì đây? Màn hình cũ kỹ này còn sáng được sao?',
 		textVi:
-			'Trong góc phòng kho bụi bặm, màn hình CRT cũ kỹ bỗng sáng lên. Dòng lệnh nhấp nháy màu xanh lá. Một cánh cửa bí mật vừa hé mở.',
+			'(Khám phá phòng kho bụi bặm) Cái gì đây? Màn hình cũ kỹ này còn sáng được sao?',
 		textEn:
-			'In the dusty storage corner, the old CRT monitor lit up. A green blinking cursor. A secret door just cracked open.',
+			"(Exploring dusty storage) What's this? This old monitor still works?",
+		next: Chapter2DialogueID.CH2_END_DISCOVERY,
+	},
+	[Chapter2DialogueID.CH2_END_DISCOVERY]: {
+		speaker: 'narrator',
+		text: 'Màn hình CRT bỗng sáng lên. Dòng lệnh nhấp nháy màu xanh lá. Một cánh cửa bí mật vừa hé mở.',
+		textVi:
+			'Màn hình CRT bỗng sáng lên. Dòng lệnh nhấp nháy màu xanh lá. Một cánh cửa bí mật vừa hé mở.',
+		textEn:
+			'CRT monitor flickered on. Green blinking cursor. A secret door cracked open.',
 		next: Chapter3DialogueID.CH3_INTRO,
 	},
 	[Chapter2DialogueID.CH2_FPT_2]: {
@@ -672,30 +681,37 @@ export const chapter2Dialogues: Record<Chapter2DialogueID, DialogueNode> = {
 
 	// 2.2 Sự cố Stack Overflow
 	[Chapter2DialogueID.CH2_OVERFLOW_1]: {
-		speaker: 'narrator',
-		text: 'Tại Lào Cai, bố đang ở đỉnh cao nhưng bắt đầu tự tin thái quá. Bố nhận thầu cùng lúc 3 dự án trọng điểm: Đường cao tốc biên giới, Kè sông chống lũ, và Khu đô thị mới.',
+		speaker: 'boQ',
+		text: '(Điện thoại với đối tác) "Anh tin tôi đi! 3 dự án mà! Đường cao tốc, kè sông, khu đô thị - tôi làm được hết! Lào Cai ai không biết Q!"',
 		textVi:
-			'Tại Lào Cai, bố đang ở đỉnh cao nhưng bắt đầu tự tin thái quá. Bố nhận thầu cùng lúc 3 dự án trọng điểm: Đường cao tốc biên giới, Kè sông chống lũ, và Khu đô thị mới.',
+			'(Điện thoại với đối tác) "Anh tin tôi đi! 3 dự án mà! Đường cao tốc, kè sông, khu đô thị - tôi làm được hết! Lào Cai ai không biết Q!"',
 		textEn:
-			'In Lao Cai, father was at his peak but overconfident. Took 3 major projects at once: Border Highway, River Embankment, and New Urban Area.',
+			'(Phone with partner) "Trust me! 3 projects! Highway, embankment, urban area - I can handle all! Everyone in Lao Cai knows Q!"',
 		next: Chapter2DialogueID.CH2_OVERFLOW_MINDSET,
 	},
 	[Chapter2DialogueID.CH2_OVERFLOW_MINDSET]: {
-		speaker: 'narrator',
-		text: 'Nguồn vốn bị dàn trải. Chi phí vận hành tăng phi mã. Bố muốn "đánh nhanh thắng nhanh" để khẳng định vị thế số 1.',
-		textVi:
-			'Nguồn vốn bị dàn trải. Chi phí vận hành tăng phi mã. Bố muốn "đánh nhanh thắng nhanh" để khẳng định vị thế số 1.',
+		speaker: 'meQ',
+		text: '(Lo lắng) "Anh ơi, tiền đâu ra mà làm cả 3 dự án? Em sợ lắm..."',
+		textVi: '(Lo lắng) "Anh ơi, tiền đâu ra mà làm cả 3 dự án? Em sợ lắm..."',
 		textEn:
-			'Capital spread thin. OpEx skyrocketed. Father wanted "blitzkrieg" to claim #1 spot.',
+			'(Worried) "Dear, where will we get money for 3 projects? I\'m scared..."',
+		next: Chapter2DialogueID.CH2_OVERFLOW_REPLY,
+	},
+	[Chapter2DialogueID.CH2_OVERFLOW_REPLY]: {
+		speaker: 'boQ',
+		text: '"Đừng lo! Đánh nhanh thắng nhanh! Làm xong 3 cái này là mình khẳng định vị thế số 1 rồi!"',
+		textVi:
+			'"Đừng lo! Đánh nhanh thắng nhanh! Làm xong 3 cái này là mình khẳng định vị thế số 1 rồi!"',
+		textEn: '"Don\'t worry! Blitzkrieg! Finish these 3 and we\'ll be #1!"',
 		next: Chapter2DialogueID.CH2_OVERFLOW_BUG,
 	},
 	[Chapter2DialogueID.CH2_OVERFLOW_BUG]: {
-		speaker: 'narrator',
-		text: 'Cú trượt chân (The Bug): Trong một lần nghiệm thu vật liệu tại dự án Kè sông, do vội vàng muốn đẩy nhanh tiến độ, bố đã lơ là khâu kiểm định chất lượng đầu vào của một lô thép.',
+		speaker: 'npc',
+		text: 'Nhân viên: (Điện thoại) "Sếp ơi, lô thép này chưa kiểm định kỹ lắm. Có xuất luôn không ạ? Để đẩy nhanh tiến độ..."',
 		textVi:
-			'Cú trượt chân (The Bug): Trong một lần nghiệm thu vật liệu tại dự án Kè sông, do vội vàng muốn đẩy nhanh tiến độ, bố đã lơ là khâu kiểm định chất lượng đầu vào của một lô thép.',
+			'Nhân viên: (Điện thoại) "Sếp ơi, lô thép này chưa kiểm định kỹ lắm. Có xuất luôn không ạ? Để đẩy nhanh tiến độ..."',
 		textEn:
-			'The Bug: In a rush at River Embankment project, father neglected quality check on a steel batch to speed up progress.',
+			'Employee: (Phone) "Boss, this steel batch wasn\'t thoroughly checked. Should we ship it? To speed up progress..."',
 		next: Chapter2DialogueID.CH2_OVERFLOW_2,
 	},
 	[Chapter2DialogueID.CH2_OVERFLOW_2]: {
@@ -708,12 +724,30 @@ export const chapter2Dialogues: Record<Chapter2DialogueID, DialogueNode> = {
 		next: Chapter2DialogueID.CH2_OVERFLOW_COLLAPSE,
 	},
 	[Chapter2DialogueID.CH2_OVERFLOW_COLLAPSE]: {
-		speaker: 'narrator',
-		text: 'Thanh tra phát hiện. Dự án đình chỉ. Ngân hàng siết nợ (Margin Call). Dòng tiền đứt gãy. Bố buông điện thoại, người trượt dài xuống ghế. Chỉ sau một đêm, tóc bố bạc đi một nửa.',
+		speaker: 'npc',
+		text: 'Thanh tra: "Anh Q, dự án đình chỉ. Chúng tôi phát hiện vật liệu không đạt chuẩn."',
 		textVi:
-			'Thanh tra phát hiện. Dự án đình chỉ. Ngân hàng siết nợ (Margin Call). Dòng tiền đứt gãy. Bố buông điện thoại, người trượt dài xuống ghế. Chỉ sau một đêm, tóc bố bạc đi một nửa.',
+			'Thanh tra: "Anh Q, dự án đình chỉ. Chúng tôi phát hiện vật liệu không đạt chuẩn."',
 		textEn:
-			'Inspectors found out. Project suspended. Margin Call. Cash flow broken. Father dropped the phone, sliding down. Overnight, hair turned half gray.',
+			'Inspector: "Mr. Q, project suspended. We found substandard materials."',
+		next: Chapter2DialogueID.CH2_BANK_CALL,
+	},
+	[Chapter2DialogueID.CH2_BANK_CALL]: {
+		speaker: 'npc',
+		text: 'Ngân hàng: (Điện thoại) "Anh Q, margin call. Anh phải thanh toán ngay trong 24h hoặc chúng tôi sẽ phong tỏa tài sản."',
+		textVi:
+			'Ngân hàng: (Điện thoại) "Anh Q, margin call. Anh phải thanh toán ngay trong 24h hoặc chúng tôi sẽ phong tỏa tài sản."',
+		textEn:
+			'Bank: (Phone) "Mr. Q, margin call. You must pay within 24h or we seize assets."',
+		next: Chapter2DialogueID.CH2_FATHER_COLLAPSE,
+	},
+	[Chapter2DialogueID.CH2_FATHER_COLLAPSE]: {
+		speaker: 'narrator',
+		text: 'Bố buông điện thoại, người trượt dài xuống ghế. Chỉ sau một đêm, tóc bố bạc đi một nửa.',
+		textVi:
+			'Bố buông điện thoại, người trượt dài xuống ghế. Chỉ sau một đêm, tóc bố bạc đi một nửa.',
+		textEn:
+			'Father dropped phone, slid down chair. Overnight, hair turned half gray.',
 		next: Chapter2DialogueID.CH2_CRASH_1,
 	},
 
@@ -923,12 +957,30 @@ export const chapter2Dialogues: Record<Chapter2DialogueID, DialogueNode> = {
 		next: Chapter2DialogueID.CH2_COUNTRYSIDE_3,
 	},
 	[Chapter2DialogueID.CH2_COUNTRYSIDE_3]: {
-		speaker: 'narrator',
-		text: 'Bạn phải tự đi gánh nước giếng khơi, nấu cơm bằng bếp rơm khói mù mịt. Mùa đông gió lùa qua khe cửa nứt nẻ. Bạn bè xa lánh "thằng công tử sa cơ". Bạn trở nên lầm lì, giấu mình vào sách vở, coi kiến thức là lối thoát duy nhất.',
+		speaker: 'player',
+		text: '(Gánh nước từ giếng khơi về) Nặng quá... ngày xưa bám nút là có nước, giờ phải tự gánh.',
 		textVi:
-			'Bạn phải tự đi gánh nước giếng khơi, nấu cơm bằng bếp rơm khói mù mịt. Mùa đông gió lùa qua khe cửa nứt nẻ. Bạn bè xa lánh "thằng công tử sa cơ". Bạn trở nên lầm lì, giấu mình vào sách vở, coi kiến thức là lối thoát duy nhất.',
+			'(Gánh nước từ giếng khơi về) Nặng quá... ngày xưa bám nút là có nước, giờ phải tự gánh.',
 		textEn:
-			'Carried water from deep well, cooked with smoky straw stove. Winter wind blew through cracked doors. Friends shunned "fallen prince". Became silent, hid in books, seeing knowledge as the only escape.',
+			'(Carrying water from well) So heavy... used to turn a tap, now must carry myself.',
+		next: Chapter2DialogueID.CH2_COUNTRYSIDE_CHORES,
+	},
+	[Chapter2DialogueID.CH2_COUNTRYSIDE_CHORES]: {
+		speaker: 'meQ',
+		text: 'Con ơi, nấu cơm bằng bếp rơm nhé. Rơm không đủ thì ra sân nhặt rác lá khô.',
+		textVi:
+			'Con ơi, nấu cơm bằng bếp rơm nhé. Rơm không đủ thì ra sân nhặt rác lá khô.',
+		textEn:
+			'Son, cook rice with straw stove. If not enough straw, collect dried leaves from yard.',
+		next: Chapter2DialogueID.CH2_COUNTRYSIDE_FRIENDS,
+	},
+	[Chapter2DialogueID.CH2_COUNTRYSIDE_FRIENDS]: {
+		speaker: 'npc',
+		text: 'Bạn cũ: (Đi qua) "Thằng công tử sa cơ đấy! Đừng chơi với nó, còn lây bệnh."',
+		textVi:
+			'Bạn cũ: (Đi qua) "Thằng công tử sa cơ đấy! Đừng chơi với nó, còn lây bệnh."',
+		textEn:
+			'Old friend: (Passing by) "The fallen prince! Don\'t play with him, might catch poverty."',
 		next: Chapter2DialogueID.CH2_COUNTRYSIDE_STEEL,
 	},
 	[Chapter2DialogueID.CH2_COUNTRYSIDE_STEEL]: {
