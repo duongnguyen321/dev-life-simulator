@@ -12,7 +12,7 @@ interface VersionInfo {
 
 // Configuration - Update these for your deployment
 const VERSION_CHECK_URL =
-	'https://raw.githubusercontent.com/YOUR_USERNAME/DevLife_Simulator/main/version.json';
+	'https://raw.githubusercontent.com/duongnguyen321/dev-life-simulator/main/version.json';
 const CHECK_INTERVAL_MS = 60 * 60 * 1000; // Check every hour
 
 class AutoUpdater {
