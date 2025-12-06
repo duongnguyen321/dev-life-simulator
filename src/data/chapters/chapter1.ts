@@ -68,7 +68,7 @@ export const chapter1: Chapter = {
 				text: 'Khám phá khu vườn 4000m²',
 				textVi: 'Khám phá khu vườn 4000m²',
 				textEn: 'Explore the 4000m² garden',
-				effects: [{ stat: StatID.VISION, value: 3 }],
+				effects: [{ stat: StatID.VISION, value: 1 }],
 				cost: { health: 2 },
 			},
 			{
@@ -76,7 +76,7 @@ export const chapter1: Chapter = {
 				text: 'Hỏi bố về các vì sao',
 				textVi: 'Hỏi bố về các vì sao',
 				textEn: 'Ask Dad about the stars',
-				effects: [{ stat: StatID.VISION, value: 3 }],
+				effects: [{ stat: StatID.VISION, value: 1 }],
 				cost: { stress: 2 },
 			},
 			{
@@ -99,7 +99,7 @@ export const chapter1: Chapter = {
 				text: 'Nghe lén người lớn nói chuyện',
 				textVi: 'Nghe lén người lớn nói chuyện',
 				textEn: 'Eavesdrop on adults',
-				effects: [{ stat: StatID.VISION, value: 2 }],
+				effects: [{ stat: StatID.VISION, value: 1 }],
 				cost: { stress: 3 },
 			},
 			{
@@ -114,7 +114,7 @@ export const chapter1: Chapter = {
 				text: 'Tháo tung đồ chơi ra xem',
 				textVi: 'Tháo tung đồ chơi ra xem',
 				textEn: 'Disassemble toys',
-				effects: [{ stat: StatID.VISION, value: 3 }],
+				effects: [{ stat: StatID.VISION, value: 1 }],
 				cost: { money: 50000 }, // Tốn tiền mua đồ chơi mới
 			},
 			{
@@ -137,7 +137,7 @@ export const chapter1: Chapter = {
 				text: 'Vẽ tranh nguệch ngoạc',
 				textVi: 'Vẽ tranh nguệch ngoạc',
 				textEn: 'Draw doodles',
-				effects: [{ stat: StatID.VISION, value: 2 }],
+				effects: [{ stat: StatID.VISION, value: 1 }],
 			},
 			{
 				id: 'ch1_todo_fight',
@@ -196,14 +196,14 @@ export const chapter1: Chapter = {
 				text: 'Học đếm số',
 				textVi: 'Học đếm số',
 				textEn: 'Learn to count',
-				effects: [{ stat: StatID.VISION, value: 2 }],
+				effects: [{ stat: StatID.VISION, value: 1 }],
 			},
 			{
 				id: 'ch1_todo_dream',
 				text: 'Mơ mộng nhìn mây',
 				textVi: 'Mơ mộng nhìn mây',
 				textEn: 'Daydream watching clouds',
-				effects: [{ stat: StatID.VISION, value: 2 }],
+				effects: [{ stat: StatID.VISION, value: 1 }],
 			},
 		],
 		dreamQuestions: [
@@ -219,7 +219,7 @@ export const chapter1: Chapter = {
 						textVi: 'Bay lên mặt trăng',
 						textEn: 'Fly to the moon',
 						next: '',
-						effects: [{ stat: StatID.VISION, value: 3 }],
+						effects: [{ stat: StatID.VISION, value: 1 }],
 					},
 					{
 						id: 'ch1_dream_fly_home',
@@ -315,7 +315,7 @@ export const chapter1: Chapter = {
 						textVi: 'Xây lâu đài cao hơn nữa',
 						textEn: 'Build castle higher',
 						next: '',
-						effects: [{ stat: StatID.VISION, value: 3 }],
+						effects: [{ stat: StatID.VISION, value: 1 }],
 					},
 					{
 						id: 'ch1_dream_king_destroy',
@@ -339,7 +339,7 @@ export const chapter1: Chapter = {
 						textVi: 'Tự tìm đường ra',
 						textEn: 'Find way out yourself',
 						next: '',
-						effects: [{ stat: StatID.VISION, value: 3 }],
+						effects: [{ stat: StatID.VISION, value: 1 }],
 					},
 					{
 						id: 'ch1_dream_lost_wait',
@@ -363,7 +363,7 @@ export const chapter1: Chapter = {
 						textVi: 'Mải chơi quên cả sợ',
 						textEn: 'Too busy playing to fear',
 						next: '',
-						effects: [{ stat: StatID.VISION, value: 2 }],
+						effects: [{ stat: StatID.VISION, value: 1 }],
 					},
 				],
 			},
@@ -379,7 +379,7 @@ export const chapter1: Chapter = {
 						textVi: 'Hỏi xem mình có giàu không',
 						textEn: 'Ask if I am rich',
 						next: '',
-						effects: [{ stat: StatID.VISION, value: 3 }],
+						effects: [{ stat: StatID.VISION, value: 1 }],
 					},
 					{
 						id: 'ch1_dream_future_hug',
@@ -779,7 +779,7 @@ export const chapter1Dialogues: Record<Chapter1DialogueID, DialogueNode> = {
 				textVi: 'Mách cô giáo: An toàn là trên hết',
 				textEn: 'Tell teacher: Safety first',
 				effects: [
-					{ stat: StatID.VISION, value: 2 },
+					{ stat: StatID.VISION, value: 1 },
 					{ stat: StatID.STEELMIND, value: -1 },
 				],
 				next: Chapter1DialogueID.CH1_BULLY_REPORT_RESULT,
@@ -921,7 +921,7 @@ export const chapter1Dialogues: Record<Chapter1DialogueID, DialogueNode> = {
 				text: 'Để ở nhà: Sợ bị mất',
 				textVi: 'Để ở nhà: Sợ bị mất',
 				textEn: 'Keep at home: Fear losing it',
-				effects: [{ stat: StatID.VISION, value: 2 }],
+				effects: [{ stat: StatID.VISION, value: 1 }],
 				next: Chapter1DialogueID.CH1_FORTRESS_1,
 			},
 		],
@@ -1135,7 +1135,7 @@ export const chapter1Dialogues: Record<Chapter1DialogueID, DialogueNode> = {
 			'(Suy nghĩ) Vương quốc của bố, dù hoành tráng, vẫn chỉ là một cái ao làng. Thế giới ngoài kia rộng lớn và tàn khốc hơn nhiều.',
 		textEn:
 			"(Thinking) Father's kingdom, however grand, is just a village pond. The world out there is much bigger and crueler.",
-		effects: [{ stat: StatID.VISION, value: 2 }],
+		effects: [{ stat: StatID.VISION, value: 1 }],
 		next: Chapter1DialogueID.CH1_REVELATION_DECISION,
 	},
 	[Chapter1DialogueID.CH1_REVELATION_DECISION]: {
@@ -1152,7 +1152,7 @@ export const chapter1Dialogues: Record<Chapter1DialogueID, DialogueNode> = {
 				textVi: 'Quyết tâm: Xin đi học Hà Nội',
 				textEn: 'Determined: Ask to study in Hanoi',
 				effects: [
-					{ stat: StatID.VISION, value: 3 },
+					{ stat: StatID.VISION, value: 1 },
 					{ stat: StatID.STEELMIND, value: 3 },
 				],
 				next: Chapter1DialogueID.CH1_FATHER_AGREES,

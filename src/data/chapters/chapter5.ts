@@ -96,7 +96,7 @@ export const chapter5: Chapter = {
 				text: 'Học tiếng Anh buổi tối',
 				textVi: 'Học tiếng Anh buổi tối',
 				textEn: 'Study English at night',
-				effects: [{ stat: StatID.VISION, value: 2 }],
+				effects: [{ stat: StatID.VISION, value: 1 }],
 				cost: { stress: 2 },
 			},
 
@@ -105,7 +105,7 @@ export const chapter5: Chapter = {
 				text: 'Refactor code rác',
 				textVi: 'Refactor code rác',
 				textEn: 'Refactor legacy code',
-				effects: [{ stat: StatID.VISION, value: 2 }],
+				effects: [{ stat: StatID.VISION, value: 1 }],
 				cost: { stress: 3 },
 			},
 			{
@@ -113,7 +113,7 @@ export const chapter5: Chapter = {
 				text: 'Viết Tech Blog',
 				textVi: 'Viết Tech Blog',
 				textEn: 'Write Tech Blog',
-				effects: [{ stat: StatID.VISION, value: 2 }],
+				effects: [{ stat: StatID.VISION, value: 1 }],
 			},
 
 			{
@@ -152,7 +152,7 @@ export const chapter5: Chapter = {
 				text: 'Nộp CV vào Big Tech',
 				textVi: 'Nộp CV vào Big Tech',
 				textEn: 'Apply to Big Tech',
-				effects: [{ stat: StatID.VISION, value: 3 }],
+				effects: [{ stat: StatID.VISION, value: 1 }],
 				cost: { stress: 3 },
 			},
 			{
@@ -160,7 +160,7 @@ export const chapter5: Chapter = {
 				text: 'Đọc sách System Design',
 				textVi: 'Đọc sách System Design',
 				textEn: 'Read System Design',
-				effects: [{ stat: StatID.VISION, value: 2 }],
+				effects: [{ stat: StatID.VISION, value: 1 }],
 			},
 			{
 				id: 'ch5_todo_coffee_addict',
@@ -183,7 +183,7 @@ export const chapter5: Chapter = {
 				text: 'Mơ về công ty riêng',
 				textVi: 'Mơ về công ty riêng',
 				textEn: 'Dream of own company',
-				effects: [{ stat: StatID.VISION, value: 2 }],
+				effects: [{ stat: StatID.VISION, value: 1 }],
 			},
 			{
 				id: 'ch5_todo_save_money',
@@ -207,7 +207,7 @@ export const chapter5: Chapter = {
 						textVi: 'Dùng lệnh Break',
 						textEn: 'Use Break',
 						next: '',
-						effects: [{ stat: StatID.VISION, value: 2 }],
+						effects: [{ stat: StatID.VISION, value: 1 }],
 					},
 					{
 						id: 'ch5_dream_code_wait',
@@ -231,7 +231,7 @@ export const chapter5: Chapter = {
 						textVi: 'Tìm nguyên nhân (Debug)',
 						textEn: 'Debug',
 						next: '',
-						effects: [{ stat: StatID.VISION, value: 3 }],
+						effects: [{ stat: StatID.VISION, value: 1 }],
 					},
 				],
 			},
@@ -255,7 +255,7 @@ export const chapter5: Chapter = {
 						textVi: 'Lắng nghe',
 						textEn: 'Listen',
 						next: '',
-						effects: [{ stat: StatID.VISION, value: 3 }],
+						effects: [{ stat: StatID.VISION, value: 1 }],
 					},
 					{
 						id: 'ch5_dream_mentor_cry',
@@ -335,7 +335,7 @@ export const chapter5: Chapter = {
 						textVi: 'Đốt đi',
 						textEn: 'Burn it',
 						next: '',
-						effects: [{ stat: StatID.VISION, value: 2 }],
+						effects: [{ stat: StatID.VISION, value: 1 }],
 					},
 					{
 						id: 'ch5_dream_money_run',
@@ -367,7 +367,7 @@ export const chapter5: Chapter = {
 						textVi: 'Bay cao hơn nữa',
 						textEn: 'Fly higher',
 						next: '',
-						effects: [{ stat: StatID.VISION, value: 3 }],
+						effects: [{ stat: StatID.VISION, value: 1 }],
 					},
 					{
 						id: 'ch5_dream_fly_fall',
@@ -419,7 +419,7 @@ export const chapter5: Chapter = {
 					textVi: 'Cần nghỉ để tiếp thu',
 					textEn: 'Need rest to absorb',
 					next: '',
-					effects: [{ stat: StatID.VISION, value: 2 }],
+					effects: [{ stat: StatID.VISION, value: 1 }],
 				},
 			],
 		},
@@ -436,7 +436,7 @@ export const chapter5: Chapter = {
 					textVi: 'Tiếp tục học hỏi',
 					textEn: 'Continue learning',
 					next: '',
-					effects: [{ stat: StatID.VISION, value: 3 }],
+					effects: [{ stat: StatID.VISION, value: 1 }],
 				},
 				{
 					id: 'ch5_reflect_success_1_balance',
@@ -486,7 +486,7 @@ export const chapter5: Chapter = {
 					textVi: 'Tiếp thu hết',
 					textEn: 'Absorb everything',
 					next: '',
-					effects: [{ stat: StatID.VISION, value: 3 }],
+					effects: [{ stat: StatID.VISION, value: 1 }],
 				},
 				{
 					id: 'ch5_reflect_success_2_tired',
@@ -511,7 +511,7 @@ export const chapter5: Chapter = {
 					textVi: 'Suy nghĩ kỹ sau',
 					textEn: 'Think carefully later',
 					next: '',
-					effects: [{ stat: StatID.VISION, value: 2 }],
+					effects: [{ stat: StatID.VISION, value: 1 }],
 				},
 				{
 					id: 'ch5_reflect_sleep_3_sleep',
@@ -589,7 +589,7 @@ export const chapter5Dialogues: Record<Chapter5DialogueID, DialogueNode> = {
 				text: 'Tự học: Google là miễn phí (Vision +5)',
 				textVi: 'Tự học: Google là miễn phí (Vision +5)',
 				textEn: 'Self-study: Google is free (Vision +5)',
-				effects: [{ stat: StatID.VISION, value: 3 }],
+				effects: [{ stat: StatID.VISION, value: 1 }],
 				next: Chapter5DialogueID.CH5_COMMUTE_1,
 			},
 		],
@@ -686,7 +686,7 @@ export const chapter5Dialogues: Record<Chapter5DialogueID, DialogueNode> = {
 				next: Chapter5DialogueID.CH5_SIDE_PROJECT_DONE,
 				effects: [
 					{ stat: StatID.MONEY, value: 3000000 },
-					{ stat: StatID.VISION, value: 3 },
+					{ stat: StatID.VISION, value: 1 },
 				], // Correct
 			},
 			{
@@ -736,7 +736,7 @@ export const chapter5Dialogues: Record<Chapter5DialogueID, DialogueNode> = {
 				text: 'Im lặng tiếp thu và sửa lại',
 				textVi: 'Im lặng tiếp thu và sửa lại',
 				textEn: 'Silently absorb and refactor',
-				effects: [{ stat: StatID.VISION, value: 2 }],
+				effects: [{ stat: StatID.VISION, value: 1 }],
 				next: Chapter5DialogueID.CH5_PROF_DEV_START, // Redirect to Prof Dev
 			},
 		],
@@ -756,7 +756,7 @@ export const chapter5Dialogues: Record<Chapter5DialogueID, DialogueNode> = {
 				text: 'Đi Tech Meetup: Mở rộng quan hệ',
 				textVi: 'Đi Tech Meetup: Mở rộng quan hệ',
 				textEn: 'Go to Tech Meetup: Expand network',
-				effects: [{ stat: StatID.VISION, value: 2 }],
+				effects: [{ stat: StatID.VISION, value: 1 }],
 				next: Chapter5DialogueID.CH5_PROF_SOFT_SKILLS,
 			},
 			{
@@ -764,7 +764,7 @@ export const chapter5Dialogues: Record<Chapter5DialogueID, DialogueNode> = {
 				text: 'Học tiếng Anh: Chuẩn bị cho Global',
 				textVi: 'Học tiếng Anh: Chuẩn bị cho Global',
 				textEn: 'Learn English: Prepare for Global',
-				effects: [{ stat: StatID.VISION, value: 3 }],
+				effects: [{ stat: StatID.VISION, value: 1 }],
 				next: Chapter5DialogueID.CH5_PROF_SOFT_SKILLS,
 			},
 			{
@@ -796,7 +796,7 @@ export const chapter5Dialogues: Record<Chapter5DialogueID, DialogueNode> = {
 				text: 'Quản lý thời gian: Để không trễ deadline',
 				textVi: 'Quản lý thời gian: Để không trễ deadline',
 				textEn: 'Time management: To meet deadlines',
-				effects: [{ stat: StatID.VISION, value: 2 }],
+				effects: [{ stat: StatID.VISION, value: 1 }],
 				next: Chapter5DialogueID.CH5_PROF_PATH,
 			},
 			{
@@ -820,7 +820,7 @@ export const chapter5Dialogues: Record<Chapter5DialogueID, DialogueNode> = {
 				text: 'Technical Specialist: Chuyên gia công nghệ sâu',
 				textVi: 'Technical Specialist: Chuyên gia công nghệ sâu',
 				textEn: 'Technical Specialist: Deep tech expert',
-				effects: [{ stat: StatID.VISION, value: 3 }],
+				effects: [{ stat: StatID.VISION, value: 1 }],
 				next: Chapter5DialogueID.CH5_PROF_BALANCE,
 			},
 			{
@@ -830,7 +830,7 @@ export const chapter5Dialogues: Record<Chapter5DialogueID, DialogueNode> = {
 				textEn: 'Manager: Manage people and projects',
 				effects: [
 					{ stat: StatID.HUMANITY, value: 2 },
-					{ stat: StatID.VISION, value: 2 },
+					{ stat: StatID.VISION, value: 1 },
 				],
 				next: Chapter5DialogueID.CH5_PROF_BALANCE,
 			},
@@ -840,7 +840,7 @@ export const chapter5Dialogues: Record<Chapter5DialogueID, DialogueNode> = {
 				textVi: 'Startup Founder: Làm chủ cuộc chơi',
 				textEn: 'Startup Founder: Own the game',
 				effects: [
-					{ stat: StatID.VISION, value: 3 },
+					{ stat: StatID.VISION, value: 1 },
 					{ stat: StatID.STEELMIND, value: 3 },
 				],
 				next: Chapter5DialogueID.CH5_PROF_BALANCE,
@@ -859,7 +859,7 @@ export const chapter5Dialogues: Record<Chapter5DialogueID, DialogueNode> = {
 				textVi: 'Đồng ý: Cống hiến hết mình (Health -3)',
 				textEn: 'Accept: Dedicate fully (Health -3)',
 				effects: [
-					{ stat: StatID.VISION, value: 3 },
+					{ stat: StatID.VISION, value: 1 },
 					{ stat: StatID.HEALTH, value: -2 },
 				],
 				next: Chapter5DialogueID.CH5_PROF_MENTOR,
@@ -877,7 +877,7 @@ export const chapter5Dialogues: Record<Chapter5DialogueID, DialogueNode> = {
 				text: 'Đàm phán: OT phải có lương hoặc nghỉ bù',
 				textVi: 'Đàm phán: OT phải có lương hoặc nghỉ bù',
 				textEn: 'Negotiate: OT must be paid or comp time',
-				effects: [{ stat: StatID.VISION, value: 2 }],
+				effects: [{ stat: StatID.VISION, value: 1 }],
 				next: Chapter5DialogueID.CH5_PROF_MENTOR,
 			},
 		],
@@ -893,7 +893,7 @@ export const chapter5Dialogues: Record<Chapter5DialogueID, DialogueNode> = {
 				text: 'Tìm Mentor giỏi trong công ty',
 				textVi: 'Tìm Mentor giỏi trong công ty',
 				textEn: 'Find good Mentor in company',
-				effects: [{ stat: StatID.VISION, value: 2 }],
+				effects: [{ stat: StatID.VISION, value: 1 }],
 				next: Chapter5DialogueID.CH5_CHALLENGE_DB_INDEX,
 			},
 			{
@@ -901,7 +901,7 @@ export const chapter5Dialogues: Record<Chapter5DialogueID, DialogueNode> = {
 				text: 'Follow các KOLs công nghệ trên mạng',
 				textVi: 'Follow các KOLs công nghệ trên mạng',
 				textEn: 'Follow tech KOLs online',
-				effects: [{ stat: StatID.VISION, value: 2 }],
+				effects: [{ stat: StatID.VISION, value: 1 }],
 				next: Chapter5DialogueID.CH5_CHALLENGE_DB_INDEX,
 			},
 			{
@@ -985,7 +985,7 @@ export const chapter5Dialogues: Record<Chapter5DialogueID, DialogueNode> = {
 				textVi: 'Ở lại làm: Cống hiến hết mình (Health -3)',
 				textEn: 'Stay: Dedicate yourself (Health -3)',
 				effects: [
-					{ stat: StatID.VISION, value: 3 },
+					{ stat: StatID.VISION, value: 1 },
 					{ stat: StatID.HEALTH, value: -2 },
 				],
 				next: Chapter5DialogueID.CH5_SALARY_START,
@@ -1121,7 +1121,7 @@ export const chapter5Dialogues: Record<Chapter5DialogueID, DialogueNode> = {
 				textVi: 'Từ chối: Em bận học rồi',
 				textEn: 'Refuse: Busy studying',
 				effects: [
-					{ stat: StatID.VISION, value: 3 },
+					{ stat: StatID.VISION, value: 1 },
 					{
 						stat: StatID.HUMANITY,
 						value: -5,
@@ -1377,7 +1377,7 @@ export const chapter5Dialogues: Record<Chapter5DialogueID, DialogueNode> = {
 				text: 'Dùng Redux/Zustand: Quản lý tập trung (Scalable)',
 				textVi: 'Dùng Redux/Zustand: Quản lý tập trung (Scalable)',
 				textEn: 'Use Redux/Zustand: Centralized (Scalable)',
-				effects: [{ stat: StatID.VISION, value: 5 }],
+				effects: [{ stat: StatID.VISION, value: 2 }],
 				next: Chapter5DialogueID.CH5_CHALLENGE_RENDER,
 			},
 			{
@@ -1404,7 +1404,7 @@ export const chapter5Dialogues: Record<Chapter5DialogueID, DialogueNode> = {
 				text: 'Dùng useMemo/useCallback đúng chỗ',
 				textVi: 'Dùng useMemo/useCallback đúng chỗ',
 				textEn: 'Use useMemo/useCallback correctly',
-				effects: [{ stat: StatID.VISION, value: 5 }],
+				effects: [{ stat: StatID.VISION, value: 2 }],
 				next: Chapter5DialogueID.CH5_SIDE_PROJECT, // End Quiz Chunk 1 -> Side Project
 			},
 			{
@@ -1468,7 +1468,7 @@ export const chapter5Dialogues: Record<Chapter5DialogueID, DialogueNode> = {
 				textVi: 'Hỏi về tư duy giải quyết vấn đề (Problem Solving)',
 				textEn: 'Problem Solving Mindset',
 				effects: [
-					{ stat: StatID.VISION, value: 3 },
+					{ stat: StatID.VISION, value: 1 },
 					{ stat: StatID.HUMANITY, value: 3 },
 				],
 				next: Chapter5DialogueID.CH5_CHALLENGE_OFFER, // End Quiz Chunk 2 -> Offer
@@ -1488,7 +1488,7 @@ export const chapter5Dialogues: Record<Chapter5DialogueID, DialogueNode> = {
 				textVi: 'Refactor trước, Feature sau (Chậm nhưng bền)',
 				textEn: 'Refactor first, Feature later (Slow but sustainable)',
 				effects: [
-					{ stat: StatID.VISION, value: 5 },
+					{ stat: StatID.VISION, value: 2 },
 					{ stat: StatID.STRESS, value: 4 }, // Boss angry
 				],
 				next: Chapter5DialogueID.CH5_CHALLENGE_SECURITY,
@@ -1542,7 +1542,7 @@ export const chapter5Dialogues: Record<Chapter5DialogueID, DialogueNode> = {
 				text: 'Dùng Docker: Đóng gói môi trường (Chuẩn hóa)',
 				textVi: 'Dùng Docker: Đóng gói môi trường (Chuẩn hóa)',
 				textEn: 'Use Docker: Containerize (Standardize)',
-				effects: [{ stat: StatID.VISION, value: 5 }],
+				effects: [{ stat: StatID.VISION, value: 2 }],
 				next: Chapter5DialogueID.CH5_CHALLENGE_CI_CD,
 			},
 			{
@@ -1574,7 +1574,7 @@ export const chapter5Dialogues: Record<Chapter5DialogueID, DialogueNode> = {
 				text: 'Viết script bash chạy tay cho nhanh',
 				textVi: 'Viết script bash chạy tay cho nhanh',
 				textEn: 'Write bash script to run manually',
-				effects: [{ stat: StatID.VISION, value: 3 }],
+				effects: [{ stat: StatID.VISION, value: 1 }],
 				next: Chapter5DialogueID.CH5_OT_START,
 			},
 		],
@@ -1590,7 +1590,7 @@ export const chapter5Dialogues: Record<Chapter5DialogueID, DialogueNode> = {
 				text: 'Gross: Tự chủ đóng bảo hiểm/thuế (Minh bạch)',
 				textVi: 'Gross: Tự chủ đóng bảo hiểm/thuế (Minh bạch)',
 				textEn: 'Gross: Self-manage tax/insurance (Transparent)',
-				effects: [{ stat: StatID.VISION, value: 5 }],
+				effects: [{ stat: StatID.VISION, value: 2 }],
 				next: Chapter5DialogueID.CH5_POLITICS_START,
 			},
 			{
@@ -1625,7 +1625,7 @@ export const chapter5Dialogues: Record<Chapter5DialogueID, DialogueNode> = {
 				text: 'Chuẩn bị khởi nghiệp',
 				textVi: 'Chuẩn bị khởi nghiệp',
 				textEn: 'Prepare for Startup',
-				effects: [{ stat: StatID.VISION, value: 2 }],
+				effects: [{ stat: StatID.VISION, value: 1 }],
 				next: Chapter5DialogueID.CH5_END,
 			},
 		],

@@ -78,7 +78,7 @@ export const chapter3: Chapter = {
 				text: 'Cày code thâu đêm',
 				textVi: 'Cày code thâu đêm',
 				textEn: 'Code all night',
-				effects: [{ stat: StatID.VISION, value: 3 }],
+				effects: [{ stat: StatID.VISION, value: 1 }],
 				cost: { health: 5, stress: 5 },
 			},
 
@@ -98,7 +98,7 @@ export const chapter3: Chapter = {
 				text: 'Học tiếng Anh online',
 				textVi: 'Học tiếng Anh online',
 				textEn: 'Learn English online',
-				effects: [{ stat: StatID.VISION, value: 3 }],
+				effects: [{ stat: StatID.VISION, value: 1 }],
 			},
 			{
 				id: 'ch3_todo_care_miu',
@@ -121,14 +121,14 @@ export const chapter3: Chapter = {
 				text: 'Đọc blog công nghệ',
 				textVi: 'Đọc blog công nghệ',
 				textEn: 'Read tech blogs',
-				effects: [{ stat: StatID.VISION, value: 2 }],
+				effects: [{ stat: StatID.VISION, value: 1 }],
 			},
 			{
 				id: 'ch3_todo_hack',
 				text: 'Thử hack một trang web dạo',
 				textVi: 'Thử hack một trang web dạo',
 				textEn: 'Try hacking a random site',
-				effects: [{ stat: StatID.VISION, value: 3 }],
+				effects: [{ stat: StatID.VISION, value: 1 }],
 				cost: { stress: 5, humanity: 2 },
 			},
 			{
@@ -158,7 +158,7 @@ export const chapter3: Chapter = {
 				text: 'Debug code suốt 3 tiếng',
 				textVi: 'Debug code suốt 3 tiếng',
 				textEn: 'Debug code for 3 hours',
-				effects: [{ stat: StatID.VISION, value: 4 }],
+				effects: [{ stat: StatID.VISION, value: 2 }],
 				cost: { stress: 5, health: 2 },
 			},
 			{
@@ -166,7 +166,7 @@ export const chapter3: Chapter = {
 				text: 'Mơ về cánh cổng đại học',
 				textVi: 'Mơ về cánh cổng đại học',
 				textEn: 'Dream of university gates',
-				effects: [{ stat: StatID.VISION, value: 2 }],
+				effects: [{ stat: StatID.VISION, value: 1 }],
 			},
 			{
 				id: 'ch3_todo_teach_bro',
@@ -195,7 +195,7 @@ export const chapter3: Chapter = {
 				text: 'Luyện gõ phím 10 ngón',
 				textVi: 'Luyện gõ phím 10 ngón',
 				textEn: 'Practice touch typing',
-				effects: [{ stat: StatID.VISION, value: 2 }],
+				effects: [{ stat: StatID.VISION, value: 1 }],
 			},
 			{
 				id: 'ch3_todo_sleep_sun',
@@ -552,7 +552,7 @@ export const chapter3Dialogues: Record<Chapter3DialogueID, DialogueNode> = {
 				text: 'Python: Dễ học, phổ biến',
 				textVi: 'Python: Dễ học, phổ biến',
 				textEn: 'Python: Easy, popular',
-				effects: [{ stat: StatID.VISION, value: 3 }],
+				effects: [{ stat: StatID.VISION, value: 1 }],
 				next: Chapter3DialogueID.CH3_LEARN_LOOPS,
 			},
 			{
@@ -560,7 +560,7 @@ export const chapter3Dialogues: Record<Chapter3DialogueID, DialogueNode> = {
 				text: 'JavaScript: Web development',
 				textVi: 'JavaScript: Web development',
 				textEn: 'JavaScript: Web development',
-				effects: [{ stat: StatID.VISION, value: 3 }],
+				effects: [{ stat: StatID.VISION, value: 1 }],
 				next: Chapter3DialogueID.CH3_LEARN_LOOPS,
 			},
 			{
@@ -569,7 +569,7 @@ export const chapter3Dialogues: Record<Chapter3DialogueID, DialogueNode> = {
 				textVi: 'C++: Học nền tảng vững',
 				textEn: 'C++: Strong foundation',
 				effects: [
-					{ stat: StatID.VISION, value: 4 },
+					{ stat: StatID.VISION, value: 2 },
 					{ stat: StatID.STRESS, value: 1 },
 				],
 				next: Chapter3DialogueID.CH3_LEARN_LOOPS,
@@ -587,7 +587,7 @@ export const chapter3Dialogues: Record<Chapter3DialogueID, DialogueNode> = {
 				text: 'Làm bài tập thực hành ngay',
 				textVi: 'Làm bài tập thực hành ngay',
 				textEn: 'Practice exercises immediately',
-				effects: [{ stat: StatID.VISION, value: 3 }],
+				effects: [{ stat: StatID.VISION, value: 1 }],
 				next: Chapter3DialogueID.CH3_LEARN_DEBUG,
 			},
 			{
@@ -595,7 +595,7 @@ export const chapter3Dialogues: Record<Chapter3DialogueID, DialogueNode> = {
 				text: 'Đọc kỹ lý thuyết trước',
 				textVi: 'Đọc kỹ lý thuyết trước',
 				textEn: 'Read theory first',
-				effects: [{ stat: StatID.VISION, value: 2 }],
+				effects: [{ stat: StatID.VISION, value: 1 }],
 				next: Chapter3DialogueID.CH3_LEARN_DEBUG,
 			},
 			{
@@ -603,7 +603,7 @@ export const chapter3Dialogues: Record<Chapter3DialogueID, DialogueNode> = {
 				text: 'Xem video hướng dẫn',
 				textVi: 'Xem video hướng dẫn',
 				textEn: 'Watch tutorial videos',
-				effects: [{ stat: StatID.VISION, value: 2 }],
+				effects: [{ stat: StatID.VISION, value: 1 }],
 				next: Chapter3DialogueID.CH3_LEARN_DEBUG,
 			},
 		],
@@ -620,7 +620,7 @@ export const chapter3Dialogues: Record<Chapter3DialogueID, DialogueNode> = {
 				text: 'Google error message',
 				textVi: 'Google error message',
 				textEn: 'Google error message',
-				effects: [{ stat: StatID.VISION, value: 3 }],
+				effects: [{ stat: StatID.VISION, value: 1 }],
 				next: Chapter3DialogueID.CH3_FREELANCE,
 			},
 			{
@@ -673,7 +673,7 @@ export const chapter3Dialogues: Record<Chapter3DialogueID, DialogueNode> = {
 				next: Chapter3DialogueID.CH3_FREELANCE_DONE,
 				effects: [
 					{ stat: StatID.MONEY, value: 1000000 },
-					{ stat: StatID.VISION, value: 3 },
+					{ stat: StatID.VISION, value: 1 },
 				], // Correct answer
 			},
 			{
@@ -708,7 +708,7 @@ export const chapter3Dialogues: Record<Chapter3DialogueID, DialogueNode> = {
 				textVi: 'Thức đêm học code',
 				textEn: 'Stay up late coding',
 				effects: [
-					{ stat: StatID.VISION, value: 3 },
+					{ stat: StatID.VISION, value: 1 },
 					{ stat: StatID.HEALTH, value: -1 },
 				],
 				next: Chapter3DialogueID.CH3_LEARN_RESOURCES,
@@ -719,7 +719,7 @@ export const chapter3Dialogues: Record<Chapter3DialogueID, DialogueNode> = {
 				textVi: 'Dậy sớm 5h sáng',
 				textEn: 'Wake at 5am',
 				effects: [
-					{ stat: StatID.VISION, value: 3 },
+					{ stat: StatID.VISION, value: 1 },
 					{ stat: StatID.STEELMIND, value: 2 },
 				],
 				next: Chapter3DialogueID.CH3_LEARN_RESOURCES,
@@ -729,7 +729,7 @@ export const chapter3Dialogues: Record<Chapter3DialogueID, DialogueNode> = {
 				text: 'Chỉ học cuối tuần',
 				textVi: 'Chỉ học cuối tuần',
 				textEn: 'Only weekends',
-				effects: [{ stat: StatID.VISION, value: 2 }],
+				effects: [{ stat: StatID.VISION, value: 1 }],
 				next: Chapter3DialogueID.CH3_LEARN_RESOURCES,
 			},
 		],
@@ -821,7 +821,7 @@ export const chapter3Dialogues: Record<Chapter3DialogueID, DialogueNode> = {
 				textVi: 'Lơ đi: Code là chân ái (Humanity -2)',
 				textEn: 'Ignore: Code is true love (Humanity -2)',
 				effects: [
-					{ stat: StatID.VISION, value: 2 },
+					{ stat: StatID.VISION, value: 1 },
 					{ stat: StatID.HUMANITY, value: -1 },
 				],
 				next: Chapter3DialogueID.CH3_FIX_PC_START,
@@ -861,7 +861,7 @@ export const chapter3Dialogues: Record<Chapter3DialogueID, DialogueNode> = {
 				text: 'Từ chối: Tập trung học',
 				textVi: 'Từ chối: Tập trung học',
 				textEn: 'Refuse: Focus on study',
-				effects: [{ stat: StatID.VISION, value: 2 }],
+				effects: [{ stat: StatID.VISION, value: 1 }],
 				next: Chapter3DialogueID.CH3_QUIZ_DEBUG_LOGIC,
 			},
 		],
@@ -1070,7 +1070,7 @@ export const chapter3Dialogues: Record<Chapter3DialogueID, DialogueNode> = {
 			'Để sau này con ra trường, con sẽ có một công ty thâm niên 5-7 năm. Khách hàng sẽ tin con hơn. Bố đang lót đường cho con.',
 		textEn:
 			"So when you graduate, you have a 5-7 year old company. Clients will trust you. I'm paving the way for you.",
-		effects: [{ stat: StatID.VISION, value: 3 }],
+		effects: [{ stat: StatID.VISION, value: 1 }],
 		next: Chapter3DialogueID.CH3_COVID_1,
 	},
 
@@ -1210,7 +1210,7 @@ export const chapter3Dialogues: Record<Chapter3DialogueID, DialogueNode> = {
 				text: 'Con ổn mà bố, con thích lập trình',
 				textVi: 'Con ổn mà bố, con thích lập trình',
 				textEn: "I'm fine Dad, I love coding",
-				effects: [{ stat: StatID.VISION, value: 2 }],
+				effects: [{ stat: StatID.VISION, value: 1 }],
 				next: Chapter3DialogueID.CH3_COVID_FREELANCE,
 			},
 		],
@@ -1278,7 +1278,7 @@ export const chapter3Dialogues: Record<Chapter3DialogueID, DialogueNode> = {
 				text: 'Từ chối (Chưa đủ kỹ năng, cần học thêm)',
 				textVi: 'Từ chối (Chưa đủ kỹ năng, cần học thêm)',
 				textEn: 'Refuse (Not skilled enough, need to learn more)',
-				effects: [{ stat: StatID.VISION, value: 3 }],
+				effects: [{ stat: StatID.VISION, value: 1 }],
 				next: Chapter3DialogueID.CH3_COVID_REFUSE,
 			},
 		],
@@ -1573,7 +1573,7 @@ export const chapter3Dialogues: Record<Chapter3DialogueID, DialogueNode> = {
 				text: 'git clone (Copy repo có sẵn)',
 				textVi: 'git clone (Copy repo có sẵn)',
 				textEn: 'git clone (Copy existing repo)',
-				effects: [{ stat: StatID.VISION, value: 3 }],
+				effects: [{ stat: StatID.VISION, value: 1 }],
 				next: Chapter3DialogueID.CH3_SELL_ITEMS_START, // End Quiz Chunk 4 -> Sell Items
 			},
 		],
