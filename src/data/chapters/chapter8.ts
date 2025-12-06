@@ -61,14 +61,14 @@ export const chapter8: Chapter = {
 				text: 'Đọc tài liệu nghiên cứu AI',
 				textVi: 'Đọc tài liệu nghiên cứu AI',
 				textEn: 'Read AI research papers',
-				effects: [{ stat: StatID.VISION, value: 3 }], // Knowledge
+				effects: [{ stat: StatID.VISION, value: 1 }], // Knowledge
 			},
 			{
 				id: 'ch8_todo_meet_gov',
 				text: 'Gặp gỡ quan chức chính phủ',
 				textVi: 'Gặp gỡ quan chức chính phủ',
 				textEn: 'Meet government officials',
-				effects: [{ stat: StatID.VISION, value: 3 }], // Reputation
+				effects: [{ stat: StatID.VISION, value: 1 }], // Reputation
 				cost: { stress: 2 },
 			},
 
@@ -102,7 +102,7 @@ export const chapter8: Chapter = {
 				text: 'Tổ chức họp báo',
 				textVi: 'Tổ chức họp báo',
 				textEn: 'Hold press conference',
-				effects: [{ stat: StatID.VISION, value: 3 }], // Reputation
+				effects: [{ stat: StatID.VISION, value: 1 }], // Reputation
 				cost: { stress: 5 },
 			},
 			{
@@ -110,7 +110,7 @@ export const chapter8: Chapter = {
 				text: 'Sa thải thanh tra an toàn',
 				textVi: 'Sa thải thanh tra an toàn',
 				textEn: 'Fire safety inspector',
-				effects: [{ stat: StatID.VISION, value: 3 }], // Speed
+				effects: [{ stat: StatID.VISION, value: 1 }], // Speed
 				cost: { stress: 3 }, // Risk High
 			},
 
@@ -119,14 +119,14 @@ export const chapter8: Chapter = {
 				text: 'Thiền định về ý nghĩa cuộc sống',
 				textVi: 'Thiền định về ý nghĩa cuộc sống',
 				textEn: 'Meditate on life meaning',
-				effects: [{ stat: StatID.VISION, value: 3 }], // Wisdom
+				effects: [{ stat: StatID.VISION, value: 1 }], // Wisdom
 			},
 			{
 				id: 'ch8_todo_review_core',
 				text: 'Review mã nguồn lõi của AI',
 				textVi: 'Review mã nguồn lõi của AI',
 				textEn: 'Review AI core source code',
-				effects: [{ stat: StatID.VISION, value: 3 }], // Skill Coding
+				effects: [{ stat: StatID.VISION, value: 1 }], // Skill Coding
 			},
 			{
 				id: 'ch8_todo_family_time',
@@ -149,7 +149,7 @@ export const chapter8: Chapter = {
 				text: 'Viết hồi ký',
 				textVi: 'Viết hồi ký',
 				textEn: 'Write memoir',
-				effects: [{ stat: StatID.VISION, value: 3 }], // Legacy
+				effects: [{ stat: StatID.VISION, value: 1 }], // Legacy
 			},
 			{
 				id: 'ch8_todo_spy_cofounder',
@@ -194,7 +194,7 @@ export const chapter8: Chapter = {
 				text: 'Nhớ lại sự cố "Stack Overflow" của Bố',
 				textVi: 'Nhớ lại sự cố "Stack Overflow" của Bố',
 				textEn: 'Remember Dad\'s "Stack Overflow" incident',
-				effects: [{ stat: StatID.VISION, value: 3 }], // Wisdom
+				effects: [{ stat: StatID.VISION, value: 1 }], // Wisdom
 			},
 		],
 		dreamQuestions: [
@@ -568,7 +568,7 @@ export const chapter8Dialogues: Record<Chapter8DialogueID, DialogueNode> = {
 					{ stat: StatID.MONEY, value: -10000000000 },
 					{
 						stat: StatID.VISION,
-						value: 20,
+						value: 10,
 					},
 				],
 				next: Chapter8DialogueID.CH8_BUDGET_APPROVE,
@@ -1060,8 +1060,8 @@ export const chapter8Dialogues: Record<Chapter8DialogueID, DialogueNode> = {
 				textVi: 'Generative AI (LLM): Theo trend',
 				textEn: 'Generative AI (LLM): Follow trend',
 				effects: [
-					{ stat: StatID.VISION, value: 5 },
-					{ stat: StatID.MONEY, value: -10000000000 },
+					{ stat: StatID.VISION, value: 3 },
+					{ stat: StatID.MONEY, value: 500000000 },
 				],
 				next: Chapter8DialogueID.CH8_STRATEGY_ETHICS,
 			},
@@ -1070,7 +1070,10 @@ export const chapter8Dialogues: Record<Chapter8DialogueID, DialogueNode> = {
 				text: 'Traditional AI (Predictive): Ứng dụng thực tế, an toàn',
 				textVi: 'Traditional AI (Predictive): Ứng dụng thực tế, an toàn',
 				textEn: 'Traditional AI (Predictive): Practical, safe',
-				effects: [{ stat: StatID.MONEY, value: 5000000000 }],
+				effects: [
+					{ stat: StatID.MONEY, value: 1000000000 },
+					{ stat: StatID.VISION, value: 2 },
+				],
 				next: Chapter8DialogueID.CH8_STRATEGY_ETHICS,
 			},
 		],
@@ -1095,7 +1098,10 @@ export const chapter8Dialogues: Record<Chapter8DialogueID, DialogueNode> = {
 				text: 'Kiểm duyệt kỹ: Chậm mà chắc (Safety > Speed)',
 				textVi: 'Kiểm duyệt kỹ: Chậm mà chắc (Safety > Speed)',
 				textEn: 'Strict review: Slow but sure (Safety > Speed)',
-				effects: [{ stat: StatID.HUMANITY, value: 3 }],
+				effects: [
+					{ stat: StatID.HUMANITY, value: 3 },
+					{ stat: StatID.MONEY, value: 200000000 },
+				],
 				next: Chapter8DialogueID.CH8_STRATEGY_LAYOFF,
 			},
 		],
@@ -1112,7 +1118,7 @@ export const chapter8Dialogues: Record<Chapter8DialogueID, DialogueNode> = {
 				textVi: 'Sa thải: Tối ưu chi phí',
 				textEn: 'Layoff: Optimize cost',
 				effects: [
-					{ stat: StatID.MONEY, value: 5000000000 },
+					{ stat: StatID.MONEY, value: 1000000000 },
 					{ stat: StatID.HUMANITY, value: -5 },
 				],
 				next: Chapter8DialogueID.CH8_STRATEGY_GLOBAL,
@@ -1141,7 +1147,10 @@ export const chapter8Dialogues: Record<Chapter8DialogueID, DialogueNode> = {
 				text: 'Thị trường Mỹ: Cạnh tranh khốc liệt, lợi nhuận cao',
 				textVi: 'Thị trường Mỹ: Cạnh tranh khốc liệt, lợi nhuận cao',
 				textEn: 'US Market: Fierce competition, high profit',
-				effects: [{ stat: StatID.VISION, value: 3 }],
+				effects: [
+					{ stat: StatID.VISION, value: 2 },
+					{ stat: StatID.MONEY, value: 1000000000 },
+				],
 				next: Chapter8DialogueID.CH8_BETRAYAL_START, // End Quiz Chunk 2
 			},
 			{
@@ -1149,7 +1158,10 @@ export const chapter8Dialogues: Record<Chapter8DialogueID, DialogueNode> = {
 				text: 'Đông Nam Á: Dễ thở hơn, sân nhà',
 				textVi: 'Đông Nam Á: Dễ thở hơn, sân nhà',
 				textEn: 'SEA: Easier, home turf',
-				effects: [{ stat: StatID.STEELMIND, value: 2 }],
+				effects: [
+					{ stat: StatID.STEELMIND, value: 2 },
+					{ stat: StatID.MONEY, value: 500000000 },
+				],
 				next: Chapter8DialogueID.CH8_BETRAYAL_START, // End Quiz Chunk 2
 			},
 		],
@@ -1173,7 +1185,10 @@ export const chapter8Dialogues: Record<Chapter8DialogueID, DialogueNode> = {
 				text: 'Công khai xin lỗi: Chịu phạt nhưng giữ uy tín',
 				textVi: 'Công khai xin lỗi: Chịu phạt nhưng giữ uy tín',
 				textEn: 'Public apology: Fined but keep reputation',
-				effects: [{ stat: StatID.VISION, value: 5 }],
+				effects: [
+					{ stat: StatID.VISION, value: 3 },
+					{ stat: StatID.MONEY, value: 500000000 },
+				],
 				next: Chapter8DialogueID.CH8_STRATEGY_SUCCESSION,
 			},
 		],
@@ -1189,7 +1204,10 @@ export const chapter8Dialogues: Record<Chapter8DialogueID, DialogueNode> = {
 				text: 'Chọn từ nội bộ: Người hiểu văn hóa',
 				textVi: 'Chọn từ nội bộ: Người hiểu văn hóa',
 				textEn: 'Internal: Knows culture',
-				effects: [{ stat: StatID.HUMANITY, value: 3 }],
+				effects: [
+					{ stat: StatID.HUMANITY, value: 3 },
+					{ stat: StatID.MONEY, value: 500000000 },
+				],
 				next: Chapter8DialogueID.CH8_RECALL_1, // End Quiz Chunk 3
 			},
 			{
@@ -1197,7 +1215,10 @@ export const chapter8Dialogues: Record<Chapter8DialogueID, DialogueNode> = {
 				text: 'Thuê CEO chuyên nghiệp: Luồng gió mới',
 				textVi: 'Thuê CEO chuyên nghiệp: Luồng gió mới',
 				textEn: 'Hire Pro CEO: Fresh wind',
-				effects: [{ stat: StatID.VISION, value: 10 }],
+				effects: [
+					{ stat: StatID.VISION, value: 5 },
+					{ stat: StatID.MONEY, value: 1000000000 },
+				],
 				next: Chapter8DialogueID.CH8_RECALL_1, // End Quiz Chunk 3
 			},
 		],
@@ -1237,7 +1258,10 @@ export const chapter8Dialogues: Record<Chapter8DialogueID, DialogueNode> = {
 				text: 'Quantum Computing: Tương lai xa',
 				textVi: 'Quantum Computing: Tương lai xa',
 				textEn: 'Quantum Computing: Far future',
-				effects: [{ stat: StatID.VISION, value: 5 }],
+				effects: [
+					{ stat: StatID.VISION, value: 3 },
+					{ stat: StatID.MONEY, value: 500000000 },
+				],
 				next: Chapter8DialogueID.CH8_STRATEGY_BOARD,
 			},
 			{
@@ -1279,7 +1303,10 @@ export const chapter8Dialogues: Record<Chapter8DialogueID, DialogueNode> = {
 				text: 'Phản đối: Bảo vệ nhân viên',
 				textVi: 'Phản đối: Bảo vệ nhân viên',
 				textEn: 'Fight: Protect staff',
-				effects: [{ stat: StatID.HUMANITY, value: 5 }],
+				effects: [
+					{ stat: StatID.HUMANITY, value: 5 },
+					{ stat: StatID.MONEY, value: 500000000 },
+				],
 				next: Chapter8DialogueID.CH8_STRATEGY_EXIT,
 			},
 		],

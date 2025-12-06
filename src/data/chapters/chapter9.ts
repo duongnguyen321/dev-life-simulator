@@ -76,7 +76,7 @@ export const chapter9: Chapter = {
 				text: 'Dạy trẻ em nghèo học code',
 				textVi: 'Dạy trẻ em nghèo học code',
 				textEn: 'Teach poor kids to code',
-				effects: [{ stat: StatID.VISION, value: 3 }], // Legacy
+				effects: [{ stat: StatID.VISION, value: 1 }], // Legacy
 			},
 			{
 				id: 'ch9_todo_sunset',
@@ -104,7 +104,7 @@ export const chapter9: Chapter = {
 				text: 'Viết thư cho bản thân năm 20 tuổi',
 				textVi: 'Viết thư cho bản thân năm 20 tuổi',
 				textEn: 'Write letter to 20-year-old self',
-				effects: [{ stat: StatID.VISION, value: 3 }], // Wisdom
+				effects: [{ stat: StatID.VISION, value: 1 }], // Wisdom
 			},
 			{
 				id: 'ch9_todo_nap',
@@ -125,14 +125,14 @@ export const chapter9: Chapter = {
 				text: 'Trồng một cái cây',
 				textVi: 'Trồng một cái cây',
 				textEn: 'Plant a tree',
-				effects: [{ stat: StatID.VISION, value: 3 }], // Legacy
+				effects: [{ stat: StatID.VISION, value: 1 }], // Legacy
 			},
 			{
 				id: 'ch9_todo_advice_startup',
 				text: 'Cho lời khuyên một Startup trẻ',
 				textVi: 'Cho lời khuyên một Startup trẻ',
 				textEn: 'Advise young Startup',
-				effects: [{ stat: StatID.VISION, value: 3 }], // Wisdom
+				effects: [{ stat: StatID.VISION, value: 1 }], // Wisdom
 			},
 			{
 				id: 'ch9_todo_donate_clothes',
@@ -146,14 +146,14 @@ export const chapter9: Chapter = {
 				text: 'Đọc sách lịch sử',
 				textVi: 'Đọc sách lịch sử',
 				textEn: 'Read history books',
-				effects: [{ stat: StatID.VISION, value: 3 }], // Knowledge
+				effects: [{ stat: StatID.VISION, value: 1 }], // Knowledge
 			},
 			{
 				id: 'ch9_todo_write_book',
 				text: 'Viết sách (Legacy)',
 				textVi: 'Viết sách (Legacy)',
 				textEn: 'Write book (Legacy)',
-				effects: [{ stat: StatID.VISION, value: 10 }], // Increased Vision reward
+				effects: [{ stat: StatID.VISION, value: 5 }], // Legacy
 				cost: { health: 3 },
 			},
 			{
@@ -200,7 +200,7 @@ export const chapter9: Chapter = {
 				text: 'Kể chuyện "ngày xưa" cho con cháu',
 				textVi: 'Kể chuyện "ngày xưa" cho con cháu',
 				textEn: 'Tell "old days" stories to grandkids',
-				effects: [{ stat: StatID.VISION, value: 3 }], // Legacy
+				effects: [{ stat: StatID.VISION, value: 1 }], // Legacy
 			},
 			{
 				id: 'ch9_todo_breathe',
@@ -568,7 +568,7 @@ export const chapter9Dialogues: Record<Chapter9DialogueID, DialogueNode> = {
 		effects: [
 			{
 				stat: StatID.MONEY,
-				value: 2500000000000,
+				value: 27000000000000,
 			},
 		],
 	},
@@ -647,8 +647,9 @@ export const chapter9Dialogues: Record<Chapter9DialogueID, DialogueNode> = {
 				textVi: 'Nhận lời: Truyền lửa',
 				textEn: 'Accept: Pass the torch',
 				effects: [
-					{ stat: StatID.VISION, value: 5 },
+					{ stat: StatID.VISION, value: 3 },
 					{ stat: StatID.HUMANITY, value: 5 },
+					{ stat: StatID.MONEY, value: 500000000 },
 				],
 				next: Chapter9DialogueID.CH9_WRITING_START,
 			},
@@ -679,7 +680,10 @@ export const chapter9Dialogues: Record<Chapter9DialogueID, DialogueNode> = {
 				text: 'Sự thật trần trụi: Cả thất bại và sai lầm',
 				textVi: 'Sự thật trần trụi: Cả thất bại và sai lầm',
 				textEn: 'Naked truth: Failures and mistakes',
-				effects: [{ stat: StatID.HUMANITY, value: 5 }],
+				effects: [
+					{ stat: StatID.HUMANITY, value: 5 },
+					{ stat: StatID.MONEY, value: 1000000000 },
+				],
 				next: Chapter9DialogueID.CH9_GIFT_1,
 			},
 			{
@@ -688,8 +692,8 @@ export const chapter9Dialogues: Record<Chapter9DialogueID, DialogueNode> = {
 				textVi: 'Câu chuyện thành công: PR bản thân',
 				textEn: 'Success story: Self PR',
 				effects: [
-					{ stat: StatID.MONEY, value: 500000000 },
-					{ stat: StatID.VISION, value: -3 },
+					{ stat: StatID.MONEY, value: 1000000000 },
+					{ stat: StatID.VISION, value: -2 },
 				],
 				next: Chapter9DialogueID.CH9_GIFT_1,
 			},
@@ -774,7 +778,7 @@ export const chapter9Dialogues: Record<Chapter9DialogueID, DialogueNode> = {
 				},
 				effects: [
 					{ stat: StatID.MONEY, value: -50000000000 },
-					{ stat: StatID.VISION, value: 10 },
+					{ stat: StatID.VISION, value: 5 },
 				],
 				next: Chapter9DialogueID.CH9_FOUNDATION_SIGN,
 			},
@@ -823,7 +827,7 @@ export const chapter9Dialogues: Record<Chapter9DialogueID, DialogueNode> = {
 		text: 'Tôi không phải là tỷ phú. Tôi là một Developer.',
 		textVi: 'Tôi không phải là tỷ phú. Tôi là một Developer.',
 		textEn: 'I am not a billionaire. I am a Developer.',
-		effects: [{ stat: StatID.VISION, value: 20 }],
+		effects: [{ stat: StatID.VISION, value: 10 }],
 		next: Dialogue_END.END,
 	},
 };

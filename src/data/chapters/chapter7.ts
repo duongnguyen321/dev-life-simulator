@@ -69,21 +69,21 @@ export const chapter7: Chapter = {
 				text: 'Duyệt báo cáo tài chính quý',
 				textVi: 'Duyệt báo cáo tài chính quý',
 				textEn: 'Review quarterly finance',
-				effects: [{ stat: StatID.VISION, value: 2 }],
+				effects: [{ stat: StatID.VISION, value: 1 }],
 			},
 			{
 				id: 'ch7_todo_approve_hiring',
 				text: 'Phê duyệt kế hoạch tuyển dụng mới',
 				textVi: 'Phê duyệt kế hoạch tuyển dụng mới',
 				textEn: 'Approve hiring plan',
-				effects: [{ stat: StatID.VISION, value: 2 }],
+				effects: [{ stat: StatID.VISION, value: 1 }],
 			},
 			{
 				id: 'ch7_todo_handle_crisis',
 				text: 'Xử lý khủng hoảng truyền thông',
 				textVi: 'Xử lý khủng hoảng truyền thông',
 				textEn: 'Handle media crisis',
-				effects: [{ stat: StatID.VISION, value: 3 }],
+				effects: [{ stat: StatID.VISION, value: 1 }],
 				cost: { stress: 5 }, // Increased Stress cost
 			},
 			{
@@ -99,7 +99,7 @@ export const chapter7: Chapter = {
 				text: 'Mentor cho các Founder trẻ',
 				textVi: 'Mentor cho các Founder trẻ',
 				textEn: 'Mentor young Founders',
-				effects: [{ stat: StatID.VISION, value: 2 }],
+				effects: [{ stat: StatID.VISION, value: 1 }],
 			},
 			{
 				id: 'ch7_todo_reject_party',
@@ -129,7 +129,7 @@ export const chapter7: Chapter = {
 				text: 'Ủy quyền công việc cho cấp dưới',
 				textVi: 'Ủy quyền công việc cho cấp dưới',
 				textEn: 'Delegate work',
-				effects: [{ stat: StatID.VISION, value: 2 }],
+				effects: [{ stat: StatID.VISION, value: 1 }],
 				reward: { stress: -3 },
 			},
 			{
@@ -551,7 +551,7 @@ export const chapter7Dialogues: Record<Chapter7DialogueID, DialogueNode> = {
 					'Đầu tư: Liều ăn nhiều (+500M hoặc -500M), chắc lại lùa gà đây mà...',
 				textEn:
 					'Invest: High risk high return (+500M or -500M), sure thing or sure loss',
-				effects: [{ stat: StatID.VISION, value: 2 }],
+				effects: [{ stat: StatID.VISION, value: 1 }],
 				next: Chapter7DialogueID.CH7_INVEST_DO,
 			},
 			{
@@ -606,9 +606,9 @@ export const chapter7Dialogues: Record<Chapter7DialogueID, DialogueNode> = {
 				textEn: 'Ask about training data & edge cases',
 				next: Chapter7DialogueID.CH7_ADVISORY_DONE,
 				effects: [
-					{ stat: StatID.MONEY, value: 5000000 },
-					{ stat: StatID.VISION, value: 3 },
-				], // Professional
+					{ stat: StatID.MONEY, value: 10000000 },
+					{ stat: StatID.VISION, value: 2 },
+				], // Professional + bonus
 			},
 			{
 				id: 'choice_advisory_quiz_7_3',
@@ -661,7 +661,7 @@ export const chapter7Dialogues: Record<Chapter7DialogueID, DialogueNode> = {
 				text: 'Bỏ qua: Tập trung vào Product',
 				textVi: 'Bỏ qua: Tập trung vào Product',
 				textEn: 'Ignore: Focus on Product',
-				effects: [{ stat: StatID.VISION, value: 2 }],
+				effects: [{ stat: StatID.VISION, value: 1 }],
 				next: Chapter7DialogueID.CH7_HEALTH_CHECK,
 			},
 		],
@@ -1057,7 +1057,7 @@ export const chapter7Dialogues: Record<Chapter7DialogueID, DialogueNode> = {
 				effects: [
 					{ stat: StatID.MONEY, value: -200000000 },
 					{ stat: StatID.HUMANITY, value: 3 },
-					{ stat: StatID.VISION, value: 5 },
+					{ stat: StatID.VISION, value: 2 },
 				],
 				next: Chapter7DialogueID.CH7_TRAVEL_EUROPE,
 			},
@@ -1090,7 +1090,7 @@ export const chapter7Dialogues: Record<Chapter7DialogueID, DialogueNode> = {
 				textVi: 'Bận quá: Để dịp khác',
 				textEn: 'Too busy: Maybe next time',
 				effects: [
-					{ stat: StatID.VISION, value: 3 },
+					{ stat: StatID.VISION, value: 1 },
 					{ stat: StatID.HUMANITY, value: -3 },
 				],
 				next: Chapter7DialogueID.CH7_TRAVEL_SKIP_CONSEQUENCE,
@@ -1284,7 +1284,10 @@ export const chapter7Dialogues: Record<Chapter7DialogueID, DialogueNode> = {
 				textVi: 'User ID: Phân tán đều, dễ query theo user (High Cardinality)',
 				textEn:
 					'User ID: Even distribution, easy query by user (High Cardinality)',
-				effects: [{ stat: StatID.VISION, value: 7 }],
+				effects: [
+					{ stat: StatID.VISION, value: 3 },
+					{ stat: StatID.MONEY, value: 5000000 },
+				],
 				next: Chapter7DialogueID.CH7_SCALE_IPO,
 			},
 			{
@@ -1311,7 +1314,7 @@ export const chapter7Dialogues: Record<Chapter7DialogueID, DialogueNode> = {
 				text: 'Round Robin: Chia đều lần lượt (Không quan tâm tải server)',
 				textVi: 'Round Robin: Chia đều lần lượt (Không quan tâm tải server)',
 				textEn: 'Round Robin: Distribute evenly (Ignore server load)',
-				effects: [{ stat: StatID.VISION, value: 3 }],
+				effects: [{ stat: StatID.VISION, value: 1 }],
 				next: Chapter7DialogueID.CH7_SCALE_CACHE,
 			},
 			{
@@ -1319,7 +1322,10 @@ export const chapter7Dialogues: Record<Chapter7DialogueID, DialogueNode> = {
 				text: 'Least Connections: Chia cho server rảnh nhất (Tối ưu hơn)',
 				textVi: 'Least Connections: Chia cho server rảnh nhất (Tối ưu hơn)',
 				textEn: 'Least Connections: To idlest server (More optimal)',
-				effects: [{ stat: StatID.VISION, value: 7 }],
+				effects: [
+					{ stat: StatID.VISION, value: 3 },
+					{ stat: StatID.MONEY, value: 5000000 },
+				],
 				next: Chapter7DialogueID.CH7_SCALE_CACHE,
 			},
 		],
@@ -1335,7 +1341,10 @@ export const chapter7Dialogues: Record<Chapter7DialogueID, DialogueNode> = {
 				text: 'LRU (Least Recently Used): Xóa cái lâu không dùng',
 				textVi: 'LRU (Least Recently Used): Xóa cái lâu không dùng',
 				textEn: 'LRU (Least Recently Used): Remove old unused',
-				effects: [{ stat: StatID.VISION, value: 5 }],
+				effects: [
+					{ stat: StatID.VISION, value: 2 },
+					{ stat: StatID.MONEY, value: 5000000 },
+				],
 				next: Chapter7DialogueID.CH7_DIVIDE_STRATEGY, // End Quiz Chunk 1
 			},
 			{
@@ -1361,7 +1370,7 @@ export const chapter7Dialogues: Record<Chapter7DialogueID, DialogueNode> = {
 				textEn: 'Use CDN (Cloudflare/AWS CloudFront): Costly but fast',
 				effects: [
 					{ stat: StatID.MONEY, value: -50000000 },
-					{ stat: StatID.VISION, value: 5 },
+					{ stat: StatID.VISION, value: 2 },
 				],
 				next: Chapter7DialogueID.CH7_SCALE_MICROSERVICES,
 			},
@@ -1386,7 +1395,10 @@ export const chapter7Dialogues: Record<Chapter7DialogueID, DialogueNode> = {
 				text: 'Tách theo Domain (User, Order, Payment): Loose Coupling',
 				textVi: 'Tách theo Domain (User, Order, Payment): Loose Coupling',
 				textEn: 'Split by Domain (User, Order, Payment): Loose Coupling',
-				effects: [{ stat: StatID.VISION, value: 7 }],
+				effects: [
+					{ stat: StatID.VISION, value: 3 },
+					{ stat: StatID.MONEY, value: 10000000 },
+				],
 				next: Chapter7DialogueID.CH7_MERGE_CONFLICT_Q, // End Quiz Chunk 2
 			},
 			{
@@ -1416,7 +1428,7 @@ export const chapter7Dialogues: Record<Chapter7DialogueID, DialogueNode> = {
 				textVi: 'Full Stack Observability (Logs, Metrics, Traces)',
 				textEn: 'Full Stack Observability (Logs, Metrics, Traces)',
 				effects: [
-					{ stat: StatID.VISION, value: 7 },
+					{ stat: StatID.VISION, value: 3 },
 					{ stat: StatID.MONEY, value: -20000000 },
 				],
 				next: Chapter7DialogueID.CH7_SCALE_TEAM_STRUCTURE,
@@ -1446,8 +1458,8 @@ export const chapter7Dialogues: Record<Chapter7DialogueID, DialogueNode> = {
 				textVi: 'Spotify Model (Squads, Tribes): Cross-functional, Autonomous',
 				textEn: 'Spotify Model (Squads, Tribes): Cross-functional, Autonomous',
 				effects: [
-					{ stat: StatID.VISION, value: 7 },
-					{ stat: StatID.HUMANITY, value: 3 },
+					{ stat: StatID.VISION, value: 3 },
+					{ stat: StatID.MONEY, value: 10000000 },
 				],
 				next: Chapter7DialogueID.CH7_HEALING_CONFLICT, // End Quiz Chunk 3
 			},
@@ -1476,8 +1488,8 @@ export const chapter7Dialogues: Record<Chapter7DialogueID, DialogueNode> = {
 				textVi: 'Từ chối: Văn hóa là sống còn (Bảo vệ team)',
 				textEn: 'Reject: Culture is vital (Protect team)',
 				effects: [
-					{ stat: StatID.VISION, value: 5 },
-					{ stat: StatID.STEELMIND, value: 3 },
+					{ stat: StatID.VISION, value: 2 },
+					{ stat: StatID.MONEY, value: 5000000 },
 				],
 				next: Chapter7DialogueID.CH7_DIVIDENDS_START, // End Quiz Chunk 4
 			},
