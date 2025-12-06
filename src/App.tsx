@@ -5,6 +5,7 @@ import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 const MainMenu = lazy(() => import('./screens/MainMenu'));
 const GameScreen = lazy(() => import('./screens/GameScreen'));
 const EndingScreen = lazy(() => import('./screens/EndingScreen'));
+const StoryVisualization = lazy(() => import('./screens/StoryVisualization'));
 
 // Loading component
 const Loading = () => (
@@ -21,6 +22,7 @@ function App() {
 					<Route path='/' element={<MainMenu />} />
 					<Route path='/game' element={<GameScreen />} />
 					<Route path='/ending' element={<EndingScreen />} />
+					<Route path='/story-map' element={<StoryVisualization />} />
 				</Routes>
 			</Suspense>
 		</Router>

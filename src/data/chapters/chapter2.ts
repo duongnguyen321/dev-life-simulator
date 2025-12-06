@@ -607,24 +607,7 @@ export const chapter2Dialogues: Record<Chapter2DialogueID, DialogueNode> = {
 			'You entered boarding school at FPT School. A disciplined, modern, and competitive environment.',
 		next: Chapter2DialogueID.CH2_FPT_2,
 	},
-	[Chapter2DialogueID.CH2_END]: {
-		speaker: 'player',
-		text: '(Khám phá phòng kho bụi bặm) Cái gì đây? Màn hình cũ kỹ này còn sáng được sao?',
-		textVi:
-			'(Khám phá phòng kho bụi bặm) Cái gì đây? Màn hình cũ kỹ này còn sáng được sao?',
-		textEn:
-			"(Exploring dusty storage) What's this? This old monitor still works?",
-		next: Chapter2DialogueID.CH2_END_DISCOVERY,
-	},
-	[Chapter2DialogueID.CH2_END_DISCOVERY]: {
-		speaker: 'narrator',
-		text: 'Màn hình CRT bỗng sáng lên. Dòng lệnh nhấp nháy màu xanh lá. Một cánh cửa bí mật vừa hé mở.',
-		textVi:
-			'Màn hình CRT bỗng sáng lên. Dòng lệnh nhấp nháy màu xanh lá. Một cánh cửa bí mật vừa hé mở.',
-		textEn:
-			'CRT monitor flickered on. Green blinking cursor. A secret door cracked open.',
-		next: Chapter3DialogueID.CH3_INTRO,
-	},
+
 	[Chapter2DialogueID.CH2_FPT_2]: {
 		speaker: 'narrator',
 		text: 'Bạn mang theo niềm kiêu hãnh của "thiếu gia Lào Cai". Hào phóng bao bạn bè, dùng đồ hiệu. Nhưng sâu bên trong, bạn thấy cô đơn.',
@@ -1065,8 +1048,26 @@ export const chapter2Dialogues: Record<Chapter2DialogueID, DialogueNode> = {
 				textVi: 'Nghe lời bố, bắt đầu học Code',
 				textEn: 'Listen to father, start coding',
 				effects: [{ stat: StatID.VISION, value: 2 }],
-				next: Chapter3DialogueID.CH3_INTRO,
+				next: Chapter2DialogueID.CH2_END,
 			},
 		],
+	},
+	[Chapter2DialogueID.CH2_END]: {
+		speaker: 'player',
+		text: '(Bấm bấm linh tinh) Cái gì đây? Màn hình cũ kỹ này còn sáng được sao?',
+		textVi:
+			'(Bấm bấm linh tinh) Cái gì đây? Màn hình cũ kỹ này còn sáng được sao?',
+		textEn:
+			"(Exploring dusty storage) What's this? This old monitor still works?",
+		next: Chapter2DialogueID.CH2_END_DISCOVERY,
+	},
+	[Chapter2DialogueID.CH2_END_DISCOVERY]: {
+		speaker: 'narrator',
+		text: 'Màn hình CRT bỗng sáng lên. Dòng lệnh nhấp nháy màu xanh lá. Một cánh cửa bí mật vừa hé mở.',
+		textVi:
+			'Màn hình CRT bỗng sáng lên. Dòng lệnh nhấp nháy màu xanh lá. Một cánh cửa bí mật vừa hé mở.',
+		textEn:
+			'CRT monitor flickered on. Green blinking cursor. A secret door cracked open.',
+		next: Chapter3DialogueID.CH3_INTRO,
 	},
 };

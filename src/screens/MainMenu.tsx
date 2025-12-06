@@ -77,6 +77,10 @@ export default function MainMenu() {
 				</MenuButton>
 
 				<MenuButton onClick={() => setShowSettings(true)}>Settings</MenuButton>
+
+				<MenuButton onClick={() => navigate('/story-map')}>
+					🗺️ {isVi ? 'Bản Đồ Truyện' : 'Story Map'}
+				</MenuButton>
 			</motion.div>
 
 			<motion.div

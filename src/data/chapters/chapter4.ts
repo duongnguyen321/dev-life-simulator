@@ -512,15 +512,6 @@ export const chapter4: Chapter = {
 };
 
 export const chapter4Dialogues: Record<Chapter4DialogueID, DialogueNode> = {
-	[Chapter4DialogueID.CH4_END]: {
-		speaker: 'narrator',
-		text: 'Lễ tốt nghiệp kết thúc. Bạn ném chiếc mũ cử nhân lên trời, nhưng trong lòng trĩu nặng lo âu. Ngày mai, bạn chính thức thất nghiệp.',
-		textVi:
-			'Lễ tốt nghiệp kết thúc. Bạn ném chiếc mũ cử nhân lên trời, nhưng trong lòng trĩu nặng lo âu. Ngày mai, bạn chính thức thất nghiệp.',
-		textEn:
-			'Graduation ceremony ended. You threw the cap in the sky, but heart heavy with worry. Tomorrow, you are officially unemployed.',
-		next: Chapter5DialogueID.CH5_INTRO,
-	},
 	[Chapter4DialogueID.CH4_START]: {
 		speaker: 'player',
 		text: '(Nhìn quanh) Hà Nội ồn ào quá... Giảng đường này rộng thật, mình như hạt cát vậy.',
@@ -1573,5 +1564,14 @@ export const chapter4Dialogues: Record<Chapter4DialogueID, DialogueNode> = {
 				next: Chapter4DialogueID.CH4_END, // End Quiz Chunk 4 -> End Chapter
 			},
 		],
+	},
+	[Chapter4DialogueID.CH4_END]: {
+		speaker: 'narrator',
+		text: 'Lễ tốt nghiệp kết thúc. Bạn ném chiếc mũ cử nhân lên trời, nhưng trong lòng trĩu nặng lo âu. Ngày mai, bạn chính thức thất nghiệp.',
+		textVi:
+			'Lễ tốt nghiệp kết thúc. Bạn ném chiếc mũ cử nhân lên trời, nhưng trong lòng trĩu nặng lo âu. Ngày mai, bạn chính thức thất nghiệp.',
+		textEn:
+			'Graduation ceremony ended. You threw the cap in the sky, but heart heavy with worry. Tomorrow, you are officially unemployed.',
+		next: Chapter5DialogueID.CH5_INTRO,
 	},
 };

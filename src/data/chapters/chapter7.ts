@@ -560,7 +560,7 @@ export const chapter7Dialogues: Record<Chapter7DialogueID, DialogueNode> = {
 				textVi: 'Giữ tiền mặt: An toàn là trên hết',
 				textEn: 'Keep cash: Safety first',
 				effects: [{ stat: StatID.STEELMIND, value: 2 }],
-				next: Chapter7DialogueID.CH7_DIVIDE_ECONOMICS,
+				next: Chapter7DialogueID.CH7_ADVISORY,
 			},
 		],
 	},
@@ -825,15 +825,6 @@ export const chapter7Dialogues: Record<Chapter7DialogueID, DialogueNode> = {
 		next: Chapter7DialogueID.CH7_HEALING_MARRIAGE,
 	},
 
-	[Chapter7DialogueID.CH7_END]: {
-		speaker: 'narrator',
-		text: 'Mọi thứ có vẻ hoàn hảo. Nhưng những báo cáo tài chính bắt đầu có những con số bất thường. Một cơn địa chấn đang âm thầm hình thành dưới chân đế chế của bạn.',
-		textVi:
-			'Mọi thứ có vẻ hoàn hảo. Nhưng những báo cáo tài chính bắt đầu có những con số bất thường. Một cơn địa chấn đang âm thầm hình thành dưới chân đế chế của bạn.',
-		textEn:
-			'Everything seems perfect. But financial reports start showing unusual numbers. An earthquake is silently forming beneath your empire.',
-		next: Chapter8DialogueID.CH8_AI_1,
-	},
 	[Chapter7DialogueID.CH7_HEALING_MARRIAGE]: {
 		speaker: 'npc',
 		text: '"Em không quan tâm anh code, em chỉ quan tâm anh có về ăn cơm đúng giờ không thôi."',
@@ -1142,7 +1133,7 @@ export const chapter7Dialogues: Record<Chapter7DialogueID, DialogueNode> = {
 			{ stat: StatID.HUMANITY, value: -5 },
 			{ stat: StatID.STRESS, value: 4 },
 		],
-		next: Chapter7DialogueID.CH7_HEALTH_CHECK,
+		next: Chapter7DialogueID.CH7_GIFT_START,
 	},
 
 	[Chapter7DialogueID.CH7_HEALING_LESSON]: {
@@ -1245,7 +1236,7 @@ export const chapter7Dialogues: Record<Chapter7DialogueID, DialogueNode> = {
 					{ stat: StatID.VISION, value: -3 },
 					{ stat: StatID.HUMANITY, value: -5 },
 				],
-				next: Chapter7DialogueID.CH7_DIVIDENDS_START,
+				next: Chapter7DialogueID.CH7_SCALE_CULTURE_FIT,
 			},
 		],
 	},
@@ -1277,7 +1268,7 @@ export const chapter7Dialogues: Record<Chapter7DialogueID, DialogueNode> = {
 		textEn:
 			'You also decided to sell the old apartment bought when newlywed. Land price skyrocketed. You profited 2 billion.',
 		effects: [{ stat: StatID.MONEY, value: 2000000000 }],
-		next: Chapter8DialogueID.CH8_AI_1,
+		next: Chapter7DialogueID.CH7_END,
 	},
 
 	// NEW: Developer Scenarios (Scaling & Architecture)
@@ -1294,7 +1285,7 @@ export const chapter7Dialogues: Record<Chapter7DialogueID, DialogueNode> = {
 				textEn:
 					'User ID: Even distribution, easy query by user (High Cardinality)',
 				effects: [{ stat: StatID.VISION, value: 7 }],
-				next: Chapter7DialogueID.CH7_SCALE_LOAD_BALANCER,
+				next: Chapter7DialogueID.CH7_SCALE_IPO,
 			},
 			{
 				id: 'shard_geo',
@@ -1562,5 +1553,14 @@ export const chapter7Dialogues: Record<Chapter7DialogueID, DialogueNode> = {
 				next: Chapter7DialogueID.CH7_DIVIDE_STRATEGY,
 			},
 		],
+	},
+	[Chapter7DialogueID.CH7_END]: {
+		speaker: 'narrator',
+		text: 'Mọi thứ có vẻ hoàn hảo. Nhưng những báo cáo tài chính bắt đầu có những con số bất thường. Một cơn địa chấn đang âm thầm hình thành dưới chân đế chế của bạn.',
+		textVi:
+			'Mọi thứ có vẻ hoàn hảo. Nhưng những báo cáo tài chính bắt đầu có những con số bất thường. Một cơn địa chấn đang âm thầm hình thành dưới chân đế chế của bạn.',
+		textEn:
+			'Everything seems perfect. But financial reports start showing unusual numbers. An earthquake is silently forming beneath your empire.',
+		next: Chapter8DialogueID.CH8_AI_1,
 	},
 };

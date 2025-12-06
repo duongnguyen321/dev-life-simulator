@@ -862,7 +862,7 @@ export const chapter3Dialogues: Record<Chapter3DialogueID, DialogueNode> = {
 				textVi: 'Từ chối: Tập trung học',
 				textEn: 'Refuse: Focus on study',
 				effects: [{ stat: StatID.VISION, value: 2 }],
-				next: Chapter3DialogueID.CH3_DEBT_1,
+				next: Chapter3DialogueID.CH3_QUIZ_DEBUG_LOGIC,
 			},
 		],
 	},
@@ -1120,7 +1120,7 @@ export const chapter3Dialogues: Record<Chapter3DialogueID, DialogueNode> = {
 					{ stat: StatID.MONEY, value: 500000 },
 					{ stat: StatID.HUMANITY, value: -2 },
 				],
-				next: Chapter3DialogueID.CH3_GAMBLE_START, // Redirect to Gamble Chain
+				next: Chapter3DialogueID.CH3_SELL_ITEMS_SELL, // Redirect to Gamble Chain
 			},
 			{
 				id: 'choice_sell_items_no',
@@ -1139,7 +1139,7 @@ export const chapter3Dialogues: Record<Chapter3DialogueID, DialogueNode> = {
 			'Giao dịch thành công. Bạn có thêm tiền để trang trải, nhưng lòng hơi tiếc nuối.',
 		textEn:
 			'Transaction successful. Extra money for expenses, but a bit regretful.',
-		next: Chapter3DialogueID.CH3_COVID_FATHER,
+		next: Chapter3DialogueID.CH3_GAMBLE_START,
 	},
 
 	// NEW: Gamble Chain
@@ -1311,21 +1311,13 @@ export const chapter3Dialogues: Record<Chapter3DialogueID, DialogueNode> = {
 			'Post-COVID, father joined resort project. Failed due to legal issues. Returned empty handed. Confidence truly cracked.',
 		next: Chapter3DialogueID.CH3_PTIT_ADMISSION,
 	},
-	[Chapter3DialogueID.CH3_PTIT_ADMISSION]: {
-		speaker: 'narrator',
-		text: 'Kết thúc lớp 12, giữa bộn bề khó khăn, bạn nhận giấy báo trúng tuyển Học viện. Đây là tấm vé thông hành đầu tiên để bạn bước vào thế giới của "Mã nguồn", rời xa những công trình xây dựng đầy bụi bặm của bố.',
-		textVi:
-			'Kết thúc lớp 12, giữa bộn bề khó khăn, bạn nhận giấy báo trúng tuyển Học viện. Đây là tấm vé thông hành đầu tiên để bạn bước vào thế giới của "Mã nguồn", rời xa những công trình xây dựng đầy bụi bặm của bố.',
-		textEn:
-			'End of Grade 12, amidst difficulties, you got admitted to the Academy. This is your first ticket into the world of "Source Code", away from father\'s dusty construction sites.',
-		next: Chapter4DialogueID.CH4_START,
-	},
+
 	// NEW: Developer Scenarios (Quizzes)
 	[Chapter3DialogueID.CH3_QUIZ_HTML_TAGS]: {
 		speaker: 'narrator',
-		text: 'Quiz 1: Trong một trang web chuẩn SEO, nên có bao nhiêu thẻ H1?',
-		textVi: 'Quiz 1: Trong một trang web chuẩn SEO, nên có bao nhiêu thẻ H1?',
-		textEn: 'Quiz 1: How many H1 tags should be on a standard SEO page?',
+		text: 'Trong một trang web chuẩn SEO, nên có bao nhiêu thẻ H1?',
+		textVi: 'Trong một trang web chuẩn SEO, nên có bao nhiêu thẻ H1?',
+		textEn: 'How many H1 tags should be on a standard SEO page?',
 		choices: [
 			{
 				id: 'quiz_h1_one',
@@ -1355,9 +1347,9 @@ export const chapter3Dialogues: Record<Chapter3DialogueID, DialogueNode> = {
 	},
 	[Chapter3DialogueID.CH3_QUIZ_CSS_DISPLAY]: {
 		speaker: 'narrator',
-		text: 'Quiz 2: Mặc định, thẻ <div> có thuộc tính display là gì?',
-		textVi: 'Quiz 2: Mặc định, thẻ <div> có thuộc tính display là gì?',
-		textEn: 'Quiz 2: By default, what is the display property of a <div>?',
+		text: 'Mặc định, thẻ <div> có thuộc tính display là gì?',
+		textVi: 'Mặc định, thẻ <div> có thuộc tính display là gì?',
+		textEn: 'By default, what is the display property of a <div>?',
 		choices: [
 			{
 				id: 'quiz_css_block',
@@ -1387,9 +1379,9 @@ export const chapter3Dialogues: Record<Chapter3DialogueID, DialogueNode> = {
 	},
 	[Chapter3DialogueID.CH3_QUIZ_JS_VAR]: {
 		speaker: 'narrator',
-		text: 'Quiz 3: Sự khác biệt chính giữa var, let và const?',
-		textVi: 'Quiz 3: Sự khác biệt chính giữa var, let và const?',
-		textEn: 'Quiz 3: Main difference between var, let, and const?',
+		text: 'Sự khác biệt chính giữa var, let và const?',
+		textVi: 'Sự khác biệt chính giữa var, let và const?',
+		textEn: 'Main difference between var, let, and const?',
 		choices: [
 			{
 				id: 'quiz_js_scope',
@@ -1411,9 +1403,9 @@ export const chapter3Dialogues: Record<Chapter3DialogueID, DialogueNode> = {
 	},
 	[Chapter3DialogueID.CH3_QUIZ_FE_BE]: {
 		speaker: 'narrator',
-		text: 'Quiz 4: Frontend Developer chủ yếu làm việc với?',
-		textVi: 'Quiz 4: Frontend Developer chủ yếu làm việc với?',
-		textEn: 'Quiz 4: Frontend Developer mainly works with?',
+		text: 'Frontend Developer chủ yếu làm việc với?',
+		textVi: 'Frontend Developer chủ yếu làm việc với?',
+		textEn: 'Frontend Developer mainly works with?',
 		choices: [
 			{
 				id: 'quiz_fe_ui',
@@ -1436,9 +1428,9 @@ export const chapter3Dialogues: Record<Chapter3DialogueID, DialogueNode> = {
 	},
 	[Chapter3DialogueID.CH3_QUIZ_API]: {
 		speaker: 'narrator',
-		text: 'Quiz 5: API là viết tắt của?',
-		textVi: 'Quiz 5: API là viết tắt của?',
-		textEn: 'Quiz 5: API stands for?',
+		text: 'API là viết tắt của?',
+		textVi: 'API là viết tắt của?',
+		textEn: 'API stands for?',
 		choices: [
 			{
 				id: 'quiz_api_app',
@@ -1460,9 +1452,9 @@ export const chapter3Dialogues: Record<Chapter3DialogueID, DialogueNode> = {
 	},
 	[Chapter3DialogueID.CH3_QUIZ_DEBUG_LOGIC]: {
 		speaker: 'narrator',
-		text: "Quiz 6: Tại sao trong JS: 1 + '1' = '11'?",
-		textVi: "Quiz 6: Tại sao trong JS: 1 + '1' = '11'?",
-		textEn: "Quiz 6: Why in JS: 1 + '1' = '11'?",
+		text: "Tại sao trong JS: 1 + '1' = '11'?",
+		textVi: "Tại sao trong JS: 1 + '1' = '11'?",
+		textEn: "Why in JS: 1 + '1' = '11'?",
 		choices: [
 			{
 				id: 'quiz_debug_coercion',
@@ -1484,9 +1476,9 @@ export const chapter3Dialogues: Record<Chapter3DialogueID, DialogueNode> = {
 	},
 	[Chapter3DialogueID.CH3_QUIZ_HTTP]: {
 		speaker: 'narrator',
-		text: 'Quiz 7: HTTP Status 404 nghĩa là gì?',
-		textVi: 'Quiz 7: HTTP Status 404 nghĩa là gì?',
-		textEn: 'Quiz 7: What does HTTP Status 404 mean?',
+		text: 'HTTP Status 404 nghĩa là gì?',
+		textVi: 'HTTP Status 404 nghĩa là gì?',
+		textEn: 'What does HTTP Status 404 mean?',
 		choices: [
 			{
 				id: 'quiz_http_notfound',
@@ -1508,9 +1500,9 @@ export const chapter3Dialogues: Record<Chapter3DialogueID, DialogueNode> = {
 	},
 	[Chapter3DialogueID.CH3_QUIZ_BROWSER]: {
 		speaker: 'narrator',
-		text: 'Quiz 8: Phím F12 trên trình duyệt thường dùng để làm gì?',
-		textVi: 'Quiz 8: Phím F12 trên trình duyệt thường dùng để làm gì?',
-		textEn: 'Quiz 8: What is F12 key usually used for in browser?',
+		text: 'Phím F12 trên trình duyệt thường dùng để làm gì?',
+		textVi: 'Phím F12 trên trình duyệt thường dùng để làm gì?',
+		textEn: 'What is F12 key usually used for in browser?',
 		choices: [
 			{
 				id: 'quiz_browser_dev',
@@ -1532,9 +1524,9 @@ export const chapter3Dialogues: Record<Chapter3DialogueID, DialogueNode> = {
 	},
 	[Chapter3DialogueID.CH3_QUIZ_VSCODE]: {
 		speaker: 'narrator',
-		text: 'Quiz 9: Để format code đẹp tự động trong VS Code?',
-		textVi: 'Quiz 9: Để format code đẹp tự động trong VS Code?',
-		textEn: 'Quiz 9: To auto-format code in VS Code?',
+		text: 'Để format code đẹp tự động trong VS Code?',
+		textVi: 'Để format code đẹp tự động trong VS Code?',
+		textEn: 'To auto-format code in VS Code?',
 		choices: [
 			{
 				id: 'quiz_vscode_format',
@@ -1585,5 +1577,14 @@ export const chapter3Dialogues: Record<Chapter3DialogueID, DialogueNode> = {
 				next: Chapter3DialogueID.CH3_SELL_ITEMS_START, // End Quiz Chunk 4 -> Sell Items
 			},
 		],
+	},
+	[Chapter3DialogueID.CH3_PTIT_ADMISSION]: {
+		speaker: 'narrator',
+		text: 'Kết thúc lớp 12, giữa bộn bề khó khăn, bạn nhận giấy báo trúng tuyển Học viện. Đây là tấm vé thông hành đầu tiên để bạn bước vào thế giới của "Mã nguồn", rời xa những công trình xây dựng đầy bụi bặm của bố.',
+		textVi:
+			'Kết thúc lớp 12, giữa bộn bề khó khăn, bạn nhận giấy báo trúng tuyển Học viện. Đây là tấm vé thông hành đầu tiên để bạn bước vào thế giới của "Mã nguồn", rời xa những công trình xây dựng đầy bụi bặm của bố.',
+		textEn:
+			'End of Grade 12, amidst difficulties, you got admitted to the Academy. This is your first ticket into the world of "Source Code", away from father\'s dusty construction sites.',
+		next: Chapter4DialogueID.CH4_START,
 	},
 };

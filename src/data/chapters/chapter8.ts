@@ -530,17 +530,6 @@ export const chapter8: Chapter = {
 };
 
 export const chapter8Dialogues: Record<Chapter8DialogueID, DialogueNode> = {
-	// NEW: Intro
-	[Chapter8DialogueID.CH8_END]: {
-		speaker: 'player',
-		text: '(Đứng giữa văn phòng trống rỗng, nhìn ra thành phố lên đèn) Cơn bão đã qua... Mình đã chiến thắng tất cả, nhưng... mình còn lại gì?',
-		textVi:
-			'(Đứng giữa văn phòng trống rỗng, nhìn ra thành phố lên đèn) Cơn bão đã qua... Mình đã chiến thắng tất cả, nhưng... mình còn lại gì?',
-		textEn:
-			'(Standing in empty office, looking at city lights) The storm passed... I won everything, but... what is left?',
-		next: Chapter9DialogueID.CH9_INTRO,
-	},
-
 	// 8.1 AI Gamble
 	[Chapter8DialogueID.CH8_AI_1]: {
 		speaker: 'player',
@@ -995,7 +984,7 @@ export const chapter8Dialogues: Record<Chapter8DialogueID, DialogueNode> = {
 			'Bạn chọn im lặng. Vá lỗi âm thầm. Giữ tiền, giữ ghế. Lặp lại vòng lặp của bố. Bạn đã trở thành Cỗ máy (The Machine).',
 		textEn:
 			"You chose silence. Silent patch. Kept money, kept power. Repeated Father's loop. You became The Machine.",
-		next: Chapter9DialogueID.CH9_INTRO,
+		next: Chapter8DialogueID.CH8_FINAL_COMMIT,
 	},
 
 	// 8.3 Rebirth
@@ -1177,7 +1166,7 @@ export const chapter8Dialogues: Record<Chapter8DialogueID, DialogueNode> = {
 				textVi: 'Trả tiền: Im lặng xử lý (-10B)',
 				textEn: 'Pay: Silent fix (-10B)',
 				effects: [{ stat: StatID.MONEY, value: -10000000000 }],
-				next: Chapter8DialogueID.CH8_STRATEGY_SUCCESSION,
+				next: Chapter8DialogueID.CH8_STRATEGY_REGULATION,
 			},
 			{
 				id: 'crisis_public',
@@ -1318,5 +1307,15 @@ export const chapter8Dialogues: Record<Chapter8DialogueID, DialogueNode> = {
 				next: Chapter8DialogueID.CH8_DONATE_UNI_START, // End Quiz Chunk 4
 			},
 		],
+	},
+	// NEW: Intro
+	[Chapter8DialogueID.CH8_END]: {
+		speaker: 'player',
+		text: '(Đứng giữa văn phòng trống rỗng, nhìn ra thành phố lên đèn) Cơn bão đã qua... Mình đã chiến thắng tất cả, nhưng... mình còn lại gì?',
+		textVi:
+			'(Đứng giữa văn phòng trống rỗng, nhìn ra thành phố lên đèn) Cơn bão đã qua... Mình đã chiến thắng tất cả, nhưng... mình còn lại gì?',
+		textEn:
+			'(Standing in empty office, looking at city lights) The storm passed... I won everything, but... what is left?',
+		next: Chapter9DialogueID.CH9_INTRO,
 	},
 };

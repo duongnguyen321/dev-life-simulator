@@ -540,9 +540,9 @@ export const chapter5Dialogues: Record<Chapter5DialogueID, DialogueNode> = {
 	// 5.0 Viết CV
 	[Chapter5DialogueID.CH5_CV_1]: {
 		speaker: 'player',
-		text: '(Thở dài) Năm cuối rồi. Bọn bạn check-in sang chảnh, còn mình ví rỗng tuếch. CV thì trống trơn... Thôi thì ghi đại "HTML, CSS, Java" vậy.',
+		text: '(Thở dài) Ra trường rồi. Bọn bạn check-in sang chảnh, còn mình ví rỗng tuếch. CV thì trống trơn... Thôi thì ghi đại "HTML, CSS, Java" vậy.',
 		textVi:
-			'(Thở dài) Năm cuối rồi. Bọn bạn check-in sang chảnh, còn mình ví rỗng tuếch. CV thì trống trơn... Thôi thì ghi đại "HTML, CSS, Java" vậy.',
+			'(Thở dài) Ra trường rồi. Bọn bạn check-in sang chảnh, còn mình ví rỗng tuếch. CV thì trống trơn... Thôi thì ghi đại "HTML, CSS, Java" vậy.',
 		textEn:
 			'(Sigh) Final year. Friends checking in fancy places, I\'m broke. CV empty... Just put "HTML, CSS, Java".',
 		next: Chapter5DialogueID.CH5_CV_2,
@@ -649,7 +649,7 @@ export const chapter5Dialogues: Record<Chapter5DialogueID, DialogueNode> = {
 			'Sếp: "Khá lắm em trai! Fix nhanh đấy. Anh sẽ note lại vào đánh giá cuối kỳ."',
 		textEn:
 			'Boss: "Good job bro! Quick fix. I\'ll note it for performance review."',
-		next: Chapter5DialogueID.CH5_CHALLENGE_DB_INDEX, // Start Quiz Chunk 1
+		next: Chapter5DialogueID.CH5_COMMUTE_MENTOR, // Start Quiz Chunk 1
 	},
 
 	// NEW: Side Project (Chapter 5)
@@ -1257,7 +1257,7 @@ export const chapter5Dialogues: Record<Chapter5DialogueID, DialogueNode> = {
 		text: 'Bạn cày xong task. Người mỏi nhừ nhưng ví dày thêm một chút.',
 		textVi: 'Bạn cày xong task. Người mỏi nhừ nhưng ví dày thêm một chút.',
 		textEn: 'Task done. Body aches but wallet thicker.',
-		next: Chapter5DialogueID.CH5_END,
+		next: Chapter5DialogueID.CH5_ENGLISH,
 	},
 
 	[Chapter5DialogueID.CH5_ENGLISH]: {
@@ -1336,24 +1336,6 @@ export const chapter5Dialogues: Record<Chapter5DialogueID, DialogueNode> = {
 			{ stat: StatID.STRESS, value: 20 },
 		],
 		next: Chapter5DialogueID.CH5_RUNTIME_STATUS,
-	},
-	[Chapter5DialogueID.CH5_RUNTIME_STATUS]: {
-		speaker: 'narrator',
-		text: 'Trạng thái hiện tại (Runtime Status): Anh Q (Senior, lương 4k$), Anh D (Tech Lead, 2k$), Anh N (Team Lead, 1.5k$). Bạn đang làm Outsource tích lũy vốn. Team phân tán nhưng vẫn giữ liên lạc (Distributed System).',
-		textVi:
-			'Trạng thái hiện tại (Runtime Status): Anh Q (Senior, lương 4k$), Anh D (Tech Lead, 2k$), Anh N (Team Lead, 1.5k$). Bạn đang làm Outsource tích lũy vốn. Team phân tán nhưng vẫn giữ liên lạc (Distributed System).',
-		textEn:
-			'Runtime Status: Brother Q (Senior, $4k), Brother D (Tech Lead, $2k), Brother N (Team Lead, $1.5k). You are outsourcing to build capital. Team distributed but connected.',
-		choices: [
-			{
-				id: 'choice_startup',
-				text: 'Chuẩn bị khởi nghiệp',
-				textVi: 'Chuẩn bị khởi nghiệp',
-				textEn: 'Prepare for Startup',
-				effects: [{ stat: StatID.VISION, value: 2 }],
-				next: Chapter6DialogueID.CH6_STARTUP_1,
-			},
-		],
 	},
 
 	// NEW: Developer Scenarios (Career Growth)
@@ -1544,7 +1526,7 @@ export const chapter5Dialogues: Record<Chapter5DialogueID, DialogueNode> = {
 				textVi: 'Chặn IP của hacker (Giải pháp tạm thời)',
 				textEn: 'Block Hacker IP (Temporary)',
 				effects: [{ stat: StatID.VISION, value: -3 }],
-				next: Chapter5DialogueID.CH5_OT_START, // End Quiz Chunk 3 -> OT
+				next: Chapter5DialogueID.CH5_CHALLENGE_DOCKER, // End Quiz Chunk 3 -> OT
 			},
 		],
 	},
@@ -1629,5 +1611,23 @@ export const chapter5Dialogues: Record<Chapter5DialogueID, DialogueNode> = {
 		textEn:
 			'You packed belongings into a cardboard box. Goodbye cramped cubicle. You walked out of the high-rise, taking a deep breath. Freedom, but risky.',
 		next: Chapter6DialogueID.CH6_STARTUP_1,
+	},
+	[Chapter5DialogueID.CH5_RUNTIME_STATUS]: {
+		speaker: 'narrator',
+		text: 'Trạng thái hiện tại (Runtime Status): Anh Q (Senior, lương 4k$), Anh D (Tech Lead, 2k$), Anh N (Team Lead, 1.5k$). Bạn đang làm Outsource tích lũy vốn. Team phân tán nhưng vẫn giữ liên lạc (Distributed System).',
+		textVi:
+			'Trạng thái hiện tại (Runtime Status): Anh Q (Senior, lương 4k$), Anh D (Tech Lead, 2k$), Anh N (Team Lead, 1.5k$). Bạn đang làm Outsource tích lũy vốn. Team phân tán nhưng vẫn giữ liên lạc (Distributed System).',
+		textEn:
+			'Runtime Status: Brother Q (Senior, $4k), Brother D (Tech Lead, $2k), Brother N (Team Lead, $1.5k). You are outsourcing to build capital. Team distributed but connected.',
+		choices: [
+			{
+				id: 'choice_startup',
+				text: 'Chuẩn bị khởi nghiệp',
+				textVi: 'Chuẩn bị khởi nghiệp',
+				textEn: 'Prepare for Startup',
+				effects: [{ stat: StatID.VISION, value: 2 }],
+				next: Chapter5DialogueID.CH5_END,
+			},
+		],
 	},
 };

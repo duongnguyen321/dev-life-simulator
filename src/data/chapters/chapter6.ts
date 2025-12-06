@@ -535,7 +535,7 @@ export const chapter6Dialogues: Record<Chapter6DialogueID, DialogueNode> = {
 			'Hội tụ (Reunion): Anh Q (đang làm cho Big Tech Singapore), Anh D (Tech Lead công ty Product top đầu), Anh N (Quản lý dự án thâm niên). Tất cả đều đang ở đỉnh cao sự nghiệp.',
 		textEn:
 			'Reunion: Brother Q (Big Tech Singapore), Brother D (Top Product Company Tech Lead), Brother N (Senior PM). All at the peak of their careers.',
-		next: Chapter6DialogueID.CH6_DECISION_ARCH,
+		next: Chapter6DialogueID.CH6_STARTUP_MOTIVATION,
 	},
 
 	// NEW: Investor Event
@@ -573,7 +573,7 @@ export const chapter6Dialogues: Record<Chapter6DialogueID, DialogueNode> = {
 						value: -5,
 					},
 				],
-				next: Chapter6DialogueID.CH6_INVESTOR_MEET,
+				next: Chapter6DialogueID.CH6_FRAUD_START,
 			},
 			{
 				id: 'choice_investor_skip',
@@ -585,7 +585,7 @@ export const chapter6Dialogues: Record<Chapter6DialogueID, DialogueNode> = {
 					{ stat: StatID.STEELMIND, value: 3 },
 					{ stat: StatID.VISION, value: -5 },
 				],
-				next: Chapter6DialogueID.CH6_STARTUP_MOTIVATION,
+				next: Chapter6DialogueID.CH6_FRAUD_START,
 			},
 		],
 	},
@@ -596,7 +596,7 @@ export const chapter6Dialogues: Record<Chapter6DialogueID, DialogueNode> = {
 			'Nhà đầu tư: "Tôi thấy tiềm năng trong team của các bạn. Tầm nhìn rất hay. Nhưng hãy nhớ: Execution mới là tất cả."',
 		textEn:
 			'Investor: "I see potential in your team. Great vision. But remember: Execution is everything."',
-		next: Chapter6DialogueID.CH6_STARTUP_MOTIVATION,
+		next: Chapter6DialogueID.CH6_MARKET_1,
 	},
 	[Chapter6DialogueID.CH6_STARTUP_MOTIVATION]: {
 		speaker: 'npc',
@@ -616,7 +616,7 @@ export const chapter6Dialogues: Record<Chapter6DialogueID, DialogueNode> = {
 			'(Pulling out papers) Bros, I have Father\'s "Ghost Company" license. 20 billion charter capital on paper. Huge credibility Firewall!',
 		flags: [{ key: FlagID.IS_FOUNDER, value: true }],
 		effects: [{ stat: StatID.VISION, value: 1 }],
-		next: Chapter6DialogueID.CH6_FRAUD_START,
+		next: Chapter6DialogueID.CH6_STARTUP_REPLY,
 	},
 
 	// NEW: Investor Fraud Chain
@@ -642,7 +642,7 @@ export const chapter6Dialogues: Record<Chapter6DialogueID, DialogueNode> = {
 				textVi: 'Trung thực: Chấp nhận khó khăn',
 				textEn: 'Honest: Accept hardship',
 				effects: [{ stat: StatID.STEELMIND, value: 2 }],
-				next: Chapter6DialogueID.CH6_STARTUP_REPLY,
+				next: Chapter6DialogueID.CH6_INVESTOR_MEET,
 			},
 		],
 	},
@@ -658,7 +658,7 @@ export const chapter6Dialogues: Record<Chapter6DialogueID, DialogueNode> = {
 			{ stat: StatID.VISION, value: -5 },
 			{ stat: StatID.STRESS, value: 7 },
 		],
-		next: Chapter6DialogueID.CH6_STARTUP_REPLY,
+		next: Chapter6DialogueID.CH6_MARKET_1,
 	},
 	[Chapter6DialogueID.CH6_STARTUP_REPLY]: {
 		speaker: 'player',
@@ -672,7 +672,8 @@ export const chapter6Dialogues: Record<Chapter6DialogueID, DialogueNode> = {
 				textVi: 'Chúng ta sẽ thay đổi thế giới!',
 				textEn: 'We will change the world!',
 				effects: [{ stat: StatID.VISION, value: 3 }],
-				next: Chapter6DialogueID.CH6_TEAM_BUILDING_START,
+				next: Chapter6DialogueID.CH6_INTRO,
+				// Chapter6DialogueID.CH6_STARTUP_REPLY
 			},
 			{
 				id: 'choice_humble_start',
@@ -680,7 +681,7 @@ export const chapter6Dialogues: Record<Chapter6DialogueID, DialogueNode> = {
 				textVi: 'Cảm ơn các anh. Em sẽ không để mọi người thất vọng.',
 				textEn: "Thank you. I won't let you down.",
 				effects: [{ stat: StatID.HUMANITY, value: 3 }],
-				next: Chapter6DialogueID.CH6_HIRING_START, // Redirect to Hiring Friends
+				next: Chapter6DialogueID.CH6_INTRO, // Redirect to Hiring Friends
 			},
 		],
 	},
@@ -702,7 +703,7 @@ export const chapter6Dialogues: Record<Chapter6DialogueID, DialogueNode> = {
 					{ stat: StatID.HUMANITY, value: 3 },
 					{ stat: StatID.VISION, value: -2 },
 				],
-				next: Chapter6DialogueID.CH6_CONSULTING,
+				next: Chapter6DialogueID.CH6_DECISION_FIRE,
 			},
 			{
 				id: 'choice_reject_friend',
@@ -713,7 +714,7 @@ export const chapter6Dialogues: Record<Chapter6DialogueID, DialogueNode> = {
 					{ stat: StatID.VISION, value: 2 },
 					{ stat: StatID.HUMANITY, value: -2 },
 				],
-				next: Chapter6DialogueID.CH6_CONSULTING,
+				next: Chapter6DialogueID.CH6_DECISION_FIRE,
 			},
 		],
 	},
@@ -921,16 +922,7 @@ export const chapter6Dialogues: Record<Chapter6DialogueID, DialogueNode> = {
 			'(Ngồi lại một mình, nhìn cậu ấy bỏ đi dưới mưa) Bài học quản trị tàn khốc đầu tiên: Làm sếp là phải biết ác...',
 		textEn:
 			'(Sitting alone, watching him walk away in rain) First cruel management lesson: To be a boss is to be ruthless...',
-		next: Chapter6DialogueID.CH6_DECISION_HIRE, // Start Quiz Chunk 3
-	},
-	[Chapter6DialogueID.CH6_END]: {
-		speaker: 'narrator',
-		text: 'Hợp đồng đầu tư được ký kết. Tiếng nổ của sâm-panh vang lên. Các bạn ôm chầm lấy nhau. Nhưng ánh mắt của Co-founder có gì đó là lạ.',
-		textVi:
-			'Hợp đồng đầu tư được ký kết. Tiếng nổ của sâm-panh vang lên. Các bạn ôm chầm lấy nhau. Nhưng ánh mắt của Co-founder có gì đó là lạ.',
-		textEn:
-			"Investment contract signed. Champagne popped. You hugged each other. But Co-founder's eyes had something strange.",
-		next: Chapter7DialogueID.CH7_INTRO,
+		next: Chapter6DialogueID.CH6_STAFF_QUIT_CHECK, // Start Quiz Chunk 3
 	},
 
 	// NEW: Big Contract Event
@@ -949,7 +941,7 @@ export const chapter6Dialogues: Record<Chapter6DialogueID, DialogueNode> = {
 		textVi: '(Thở phào) Đủ tiền trả lương cho anh em rồi.',
 		textEn: '(Relieved) Enough money to pay salaries.',
 		effects: [{ stat: StatID.MONEY, value: 500000000 }],
-		next: Chapter6DialogueID.CH6_STAFF_QUIT_CHECK,
+		next: Chapter6DialogueID.CH6_TEAM_BUILDING_START,
 	},
 	// NEW: Staff Quit Consequence
 	[Chapter6DialogueID.CH6_STAFF_QUIT_CHECK]: {
@@ -982,7 +974,7 @@ export const chapter6Dialogues: Record<Chapter6DialogueID, DialogueNode> = {
 					operator: Operator.NOT_EQUAL,
 					value: true,
 				},
-				next: Chapter6DialogueID.CH6_MARKET_1,
+				next: Chapter6DialogueID.CH6_CONSULTING,
 			},
 		],
 	},
@@ -1006,7 +998,7 @@ export const chapter6Dialogues: Record<Chapter6DialogueID, DialogueNode> = {
 			{ stat: StatID.MONEY, value: -50000000 },
 			{ stat: StatID.VISION, value: -3 },
 		],
-		next: Chapter6DialogueID.CH6_MARKET_1,
+		next: Chapter6DialogueID.CH6_CONSULTING,
 	},
 
 	// 6.3 Market
@@ -1018,7 +1010,7 @@ export const chapter6Dialogues: Record<Chapter6DialogueID, DialogueNode> = {
 			'(Nhìn quanh căn phòng trọ ngổn ngang) Dây cáp, vỏ mì tôm... Ba thằng tao, ba cái laptop, và một giấc mơ thay đổi thế giới. Hoặc ít nhất là kiếm được tiền.',
 		textEn:
 			'(Looking around messy rental room) Cables, noodle boxes... Three of us, three laptops, and a dream to change the world. Or at least make money.',
-		next: Chapter6DialogueID.CH6_MARKET_1,
+		next: Chapter6DialogueID.CH6_DECISION_HIRE,
 	},
 
 	[Chapter6DialogueID.CH6_MARKET_1]: {
@@ -1057,7 +1049,7 @@ export const chapter6Dialogues: Record<Chapter6DialogueID, DialogueNode> = {
 					{ stat: StatID.MONEY, value: -20000000 },
 					{ stat: StatID.VISION, value: 2 },
 				],
-				next: Chapter6DialogueID.CH6_MARKET_2,
+				next: Chapter6DialogueID.CH6_SERVER_BUY,
 			},
 		],
 	},
@@ -1189,7 +1181,7 @@ export const chapter6Dialogues: Record<Chapter6DialogueID, DialogueNode> = {
 		textVi: '(Hét lớn) Chúng ta sống rồi!',
 		textEn: '(Shouting) We are alive!',
 		effects: [{ stat: StatID.MONEY, value: 5000000000 }],
-		next: Chapter7DialogueID.CH7_INTRO,
+		next: Chapter6DialogueID.CH6_END,
 	},
 
 	// NEW: Developer Scenarios (Startup Tech Decisions)
@@ -1267,7 +1259,7 @@ export const chapter6Dialogues: Record<Chapter6DialogueID, DialogueNode> = {
 					{ stat: StatID.VISION, value: 5 },
 					{ stat: StatID.MONEY, value: -2000000 },
 				],
-				next: Chapter6DialogueID.CH6_DECISION_CACHE,
+				next: Chapter6DialogueID.CH6_HIRING_START,
 			},
 			{
 				id: 'cloud_vps',
@@ -1278,7 +1270,7 @@ export const chapter6Dialogues: Record<Chapter6DialogueID, DialogueNode> = {
 					{ stat: StatID.MONEY, value: 1000000 }, // Save money
 					{ stat: StatID.STRESS, value: 7 }, // Ops headache
 				],
-				next: Chapter6DialogueID.CH6_DECISION_CACHE,
+				next: Chapter6DialogueID.CH6_HIRING_START,
 			},
 		],
 	},
@@ -1321,7 +1313,7 @@ export const chapter6Dialogues: Record<Chapter6DialogueID, DialogueNode> = {
 					{ stat: StatID.MONEY, value: -1000000 },
 					{ stat: StatID.VISION, value: -3 },
 				],
-				next: Chapter6DialogueID.CH6_TEAM_BUILDING_START, // End Quiz Chunk 2
+				next: Chapter6DialogueID.CH6_INVESTOR_START, // End Quiz Chunk 2
 			},
 			{
 				id: 'scale_horiz',
@@ -1332,7 +1324,7 @@ export const chapter6Dialogues: Record<Chapter6DialogueID, DialogueNode> = {
 					{ stat: StatID.VISION, value: 7 },
 					{ stat: StatID.MONEY, value: -1500000 },
 				],
-				next: Chapter6DialogueID.CH6_TEAM_BUILDING_START, // End Quiz Chunk 2
+				next: Chapter6DialogueID.CH6_INVESTOR_START, // End Quiz Chunk 2
 			},
 		],
 	},
@@ -1351,7 +1343,7 @@ export const chapter6Dialogues: Record<Chapter6DialogueID, DialogueNode> = {
 					{ stat: StatID.HUMANITY, value: 5 },
 					{ stat: StatID.VISION, value: -3 }, // Slow start
 				],
-				next: Chapter6DialogueID.CH6_DECISION_FIRE,
+				next: Chapter6DialogueID.CH6_DECISION_ARCH,
 			},
 			{
 				id: 'hire_rockstar',
@@ -1363,7 +1355,7 @@ export const chapter6Dialogues: Record<Chapter6DialogueID, DialogueNode> = {
 					{ stat: StatID.HUMANITY, value: -5 },
 					{ stat: StatID.STRESS, value: 7 },
 				],
-				next: Chapter6DialogueID.CH6_DECISION_FIRE,
+				next: Chapter6DialogueID.CH6_DECISION_ARCH,
 			},
 		],
 	},
@@ -1490,5 +1482,14 @@ export const chapter6Dialogues: Record<Chapter6DialogueID, DialogueNode> = {
 				next: Chapter6DialogueID.CH6_SALARY_START, // End Quiz Chunk 4
 			},
 		],
+	},
+	[Chapter6DialogueID.CH6_END]: {
+		speaker: 'narrator',
+		text: 'Hợp đồng đầu tư được ký kết. Tiếng nổ của sâm-panh vang lên. Các bạn ôm chầm lấy nhau. Nhưng ánh mắt của Co-founder có gì đó là lạ.',
+		textVi:
+			'Hợp đồng đầu tư được ký kết. Tiếng nổ của sâm-panh vang lên. Các bạn ôm chầm lấy nhau. Nhưng ánh mắt của Co-founder có gì đó là lạ.',
+		textEn:
+			"Investment contract signed. Champagne popped. You hugged each other. But Co-founder's eyes had something strange.",
+		next: Chapter7DialogueID.CH7_INTRO,
 	},
 };
