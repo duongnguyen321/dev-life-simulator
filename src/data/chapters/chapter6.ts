@@ -596,7 +596,7 @@ export const chapter6Dialogues: Record<Chapter6DialogueID, DialogueNode> = {
 			'Nhà đầu tư: "Tôi thấy tiềm năng trong team của các bạn. Tầm nhìn rất hay. Nhưng hãy nhớ: Execution mới là tất cả."',
 		textEn:
 			'Investor: "I see potential in your team. Great vision. But remember: Execution is everything."',
-		next: Chapter6DialogueID.CH6_MARKET_1,
+		next: Chapter6DialogueID.CH6_SERVER_START,
 	},
 	[Chapter6DialogueID.CH6_STARTUP_MOTIVATION]: {
 		speaker: 'npc',
@@ -658,7 +658,7 @@ export const chapter6Dialogues: Record<Chapter6DialogueID, DialogueNode> = {
 			{ stat: StatID.VISION, value: -5 },
 			{ stat: StatID.STRESS, value: 7 },
 		],
-		next: Chapter6DialogueID.CH6_MARKET_1,
+		next: Chapter6DialogueID.CH6_SERVER_START,
 	},
 	[Chapter6DialogueID.CH6_STARTUP_REPLY]: {
 		speaker: 'player',
@@ -1007,7 +1007,7 @@ export const chapter6Dialogues: Record<Chapter6DialogueID, DialogueNode> = {
 			'(Nhìn dashboard trống rỗng) 29 tuổi. Super App với AI, Blockchain... Ra mắt xong: 0 user. Thị trường không cần mình.',
 		textEn:
 			"(Looking at empty dashboard) 29 years old. Super App with AI, Blockchain... Launched: 0 users. Market doesn't need us.",
-		next: Chapter6DialogueID.CH6_SERVER_START,
+		next: Chapter6DialogueID.CH6_DECISION_PIVOT,
 	},
 
 	// NEW: Server Event
@@ -1052,7 +1052,7 @@ export const chapter6Dialogues: Record<Chapter6DialogueID, DialogueNode> = {
 			{ stat: StatID.STRESS, value: 2 },
 			{ stat: StatID.MONEY, value: -15000000 },
 		],
-		next: Chapter6DialogueID.CH6_MARKET_2,
+		next: Chapter6DialogueID.CH6_MARKET_1,
 	},
 	[Chapter6DialogueID.CH6_SERVER_BUY]: {
 		speaker: 'narrator',
@@ -1060,7 +1060,7 @@ export const chapter6Dialogues: Record<Chapter6DialogueID, DialogueNode> = {
 		textVi:
 			'Server mới chạy mượt mà. Model train nhanh hơn hẳn. Nhưng ví tiền thì rỗng tuếch.',
 		textEn: 'New server runs smooth. Model trains faster. But wallet is empty.',
-		next: Chapter6DialogueID.CH6_MARKET_2,
+		next: Chapter6DialogueID.CH6_MARKET_1,
 	},
 	[Chapter6DialogueID.CH6_MARKET_2]: {
 		speaker: 'narrator',
@@ -1069,7 +1069,8 @@ export const chapter6Dialogues: Record<Chapter6DialogueID, DialogueNode> = {
 			'Sản phẩm thất bại (Product Fail). Nhưng may mắn thay, mảng Outsource vẫn hoạt động tốt, gánh team qua cơn bĩ cực (Fallback Mechanism). Công ty không chết, nhưng giấc mơ Product bị trì hoãn.',
 		textEn:
 			'Product Fail. Luckily, Outsource arm worked well, carrying the team through crisis (Fallback Mechanism). Company survived, but Product dream delayed.',
-		next: Chapter6DialogueID.CH6_DECISION_MENTOR, // Start Quiz Chunk 4
+		next: Chapter6DialogueID.CH6_MARKET_FEAR,
+		// Start Quiz Chunk 4
 	},
 
 	// NEW: Salary Event
@@ -1110,7 +1111,7 @@ export const chapter6Dialogues: Record<Chapter6DialogueID, DialogueNode> = {
 			{ stat: StatID.HUMANITY, value: -10 },
 			{ stat: StatID.MONEY, value: -50000000 },
 		],
-		next: Chapter6DialogueID.CH6_MARKET_FEAR,
+		next: Chapter6DialogueID.CH6_END,
 	},
 	[Chapter6DialogueID.CH6_SALARY_PAY]: {
 		speaker: 'narrator',
@@ -1119,7 +1120,8 @@ export const chapter6Dialogues: Record<Chapter6DialogueID, DialogueNode> = {
 			'Ting ting. Tiếng tin nhắn báo lương làm cả văn phòng reo hò. Bạn thở phào nhẹ nhõm.',
 		textEn:
 			'Ding ding. Salary notification makes office cheer. You sigh in relief.',
-		next: Chapter6DialogueID.CH6_MARKET_FEAR,
+		effects: [{ stat: StatID.MONEY, value: -100000000 }],
+		next: Chapter6DialogueID.CH6_SERIES_A_START,
 	},
 	[Chapter6DialogueID.CH6_MARKET_FEAR]: {
 		speaker: 'player',
@@ -1149,7 +1151,7 @@ export const chapter6Dialogues: Record<Chapter6DialogueID, DialogueNode> = {
 		textEn:
 			'Enlightenment: "Tech is just a tool. Solving Pain Point is the goal."',
 		effects: [{ stat: StatID.VISION, value: 3 }],
-		next: Chapter6DialogueID.CH6_SERIES_A_START,
+		next: Chapter6DialogueID.CH6_DECISION_MENTOR,
 	},
 
 	// NEW: Series A Funding
@@ -1164,9 +1166,11 @@ export const chapter6Dialogues: Record<Chapter6DialogueID, DialogueNode> = {
 	},
 	[Chapter6DialogueID.CH6_SERIES_A_RECEIVE]: {
 		speaker: 'player',
-		text: '(Hét lớn) Chúng ta sống rồi!',
-		textVi: '(Hét lớn) Chúng ta sống rồi!',
-		textEn: '(Shouting) We are alive!',
+		text: '(Hét lớn) Chúng ta sống rồi! Hợp đồng đầu tư được ký kết. Tiếng nổ của sâm-panh vang lên. Các bạn ôm chầm lấy nhau. Nhưng ánh mắt của Co-founder có gì đó là lạ',
+		textVi:
+			'(Hét lớn) Chúng ta sống rồi! Hợp đồng đầu tư được ký kết. Tiếng nổ của sâm-panh vang lên. Các bạn ôm chầm lấy nhau. Nhưng ánh mắt của Co-founder có gì đó là lạ',
+		textEn:
+			'(Shouting) We are alive! The investment contract was signed. The sound of the sambal panjang exploded. The students hugged each other. But the Co-founder had a strange look',
 		effects: [{ stat: StatID.MONEY, value: 5000000000 }],
 		next: Chapter6DialogueID.CH6_END,
 	},
@@ -1392,7 +1396,7 @@ export const chapter6Dialogues: Record<Chapter6DialogueID, DialogueNode> = {
 					{ stat: StatID.VISION, value: 7 },
 					{ stat: StatID.MONEY, value: -25000000 }, // Equity value
 				],
-				next: Chapter6DialogueID.CH6_DECISION_PIVOT,
+				next: Chapter6DialogueID.CH6_DECISION_CULTURE,
 			},
 			{
 				id: 'mentor_self',
@@ -1403,7 +1407,7 @@ export const chapter6Dialogues: Record<Chapter6DialogueID, DialogueNode> = {
 					{ stat: StatID.STEELMIND, value: 5 },
 					{ stat: StatID.STRESS, value: 20 },
 				],
-				next: Chapter6DialogueID.CH6_DECISION_PIVOT,
+				next: Chapter6DialogueID.CH6_DECISION_CULTURE,
 			},
 		],
 	},
@@ -1424,7 +1428,7 @@ export const chapter6Dialogues: Record<Chapter6DialogueID, DialogueNode> = {
 					{ stat: StatID.VISION, value: 5 },
 					{ stat: StatID.MONEY, value: -50000000 }, // Burn rate
 				],
-				next: Chapter6DialogueID.CH6_DECISION_CULTURE,
+				next: Chapter6DialogueID.CH6_MARKET_2,
 			},
 			{
 				id: 'pivot_no',
@@ -1435,7 +1439,7 @@ export const chapter6Dialogues: Record<Chapter6DialogueID, DialogueNode> = {
 					{ stat: StatID.STEELMIND, value: 3 },
 					{ stat: StatID.MONEY, value: -20000000 }, // Slow death
 				],
-				next: Chapter6DialogueID.CH6_DECISION_CULTURE,
+				next: Chapter6DialogueID.CH6_MARKET_2,
 			},
 		],
 	},
@@ -1472,11 +1476,11 @@ export const chapter6Dialogues: Record<Chapter6DialogueID, DialogueNode> = {
 	},
 	[Chapter6DialogueID.CH6_END]: {
 		speaker: 'narrator',
-		text: 'Hợp đồng đầu tư được ký kết. Tiếng nổ của sâm-panh vang lên. Các bạn ôm chầm lấy nhau. Nhưng ánh mắt của Co-founder có gì đó là lạ.',
+		text: 'Year end party, cầm cốc rượu vang trên tay, nhìn về phía xa xăm...',
 		textVi:
-			'Hợp đồng đầu tư được ký kết. Tiếng nổ của sâm-panh vang lên. Các bạn ôm chầm lấy nhau. Nhưng ánh mắt của Co-founder có gì đó là lạ.',
+			'Year end party, cầm cốc rượu vang trên tay, nhìn về phía xa xăm...',
 		textEn:
-			"Investment contract signed. Champagne popped. You hugged each other. But Co-founder's eyes had something strange.",
+			'Year end party, holding a glass of wine, looking at the horizon...',
 		next: Chapter7DialogueID.CH7_INTRO,
 	},
 };
