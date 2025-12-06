@@ -10,6 +10,7 @@
 		"dev": "vite",
 		"build": "tsc && vite build",
 		"build:web": "tsc && vite build",
+		"build:all": "bash scripts/build-all.sh",
 		"preview": "vite preview",
 		"electron:compile": "tsc -p tsconfig.electron.json",
 		"electron:dev": "concurrently \"vite\" \"wait-on http://localhost:2004 && electron .\"",
