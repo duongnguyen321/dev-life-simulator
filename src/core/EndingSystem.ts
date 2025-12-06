@@ -1,11 +1,11 @@
-// ==========================================
 // ENDING SYSTEM
 // Calculates and displays game endings
 // ==========================================
 
-import type { GameState, Stats } from '@/data/types';
+import type { GameState, Stats, Condition } from '@/data/types';
 import { skills as allSkills } from '@/data/skills';
-import { FlagID } from '@/data/enum';
+import { achievements as allAchievements } from '@/data/achievements';
+import { FlagID, ConditionType, Operator, StatID } from '@/data/enum';
 
 export interface EndingResult {
 	type: string;
@@ -744,5 +744,69 @@ export class EndingSystem {
 			keyMomentsVi,
 			keyMomentsEn,
 		};
+	}
+
+	static evaluateCondition(
+		condition: Condition,
+		gameState: GameState
+	): boolean {
+		const { stats, flags, skills } = gameState;
+		let currentValue: number | boolean | string = 0;
+
+		switch (condition.type) {
+			case ConditionType.STAT:
+				currentValue = stats[condition.key as StatID] || 0;
+				break;
+			case ConditionType.FLAG:
+				currentValue = flags[condition.key as string] ?? 0; // Default to 0/false if undefined
+				break;
+			case ConditionType.SKILL:
+				currentValue = skills[condition.key as string] || 0;
+				break;
+			default:
+				return false;
+		}
+
+		// Normalize boolean flags to match operator logic if needed,
+		// but usually equality check works fine for true/false.
+		// If comparing number vs string, be careful.
+
+		switch (condition.operator) {
+			case Operator.EQUAL:
+				return currentValue === condition.value;
+			case Operator.NOT_EQUAL:
+				return currentValue !== condition.value;
+			case Operator.GT:
+				return (currentValue as number) > (condition.value as number);
+			case Operator.GTE:
+				return (currentValue as number) >= (condition.value as number);
+			case Operator.LT:
+				return (currentValue as number) < (condition.value as number);
+			case Operator.LTE:
+				return (currentValue as number) <= (condition.value as number);
+			default:
+				return false;
+		}
+	}
+
+	static checkAllAchievements(gameState: GameState): string[] {
+		const { achievements: unlockedAchievements } = gameState;
+		const finalUnlocked = new Set(unlockedAchievements);
+
+		allAchievements.forEach((ach) => {
+			if (finalUnlocked.has(ach.id)) return; // Already unlocked
+
+			if (ach.conditions && ach.conditions.length > 0) {
+				const allConditionsMet = ach.conditions.every((cond) =>
+					this.evaluateCondition(cond, gameState)
+				);
+
+				if (allConditionsMet) {
+					finalUnlocked.add(ach.id);
+				}
+			}
+		});
+
+		return Array.from(finalUnlocked);
 	}
 }

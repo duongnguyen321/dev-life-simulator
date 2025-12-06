@@ -8,8 +8,8 @@ import { audioManager } from '@/core/AudioManager';
 export default function EndingScreen() {
 	const navigate = useNavigate();
 	const gameState = useGameStore();
-	const { stats, achievements: unlockedAchievements, settings } = gameState;
-
+	const { stats, settings } = gameState;
+	const unlockedAchievements = EndingSystem.checkAllAchievements(gameState);
 	const ending = EndingSystem.calculateEnding(stats);
 	const analysis = EndingSystem.analyzeEnding(gameState);
 	const lifeScore = EndingSystem.calculateLifeScore(stats);

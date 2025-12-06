@@ -177,6 +177,7 @@ export interface StatsEffect {
 export interface FlagChange {
 	key: FlagID | string;
 	value: boolean | number | string;
+	operation?: 'set' | 'add';
 }
 
 // Condition for choices/events

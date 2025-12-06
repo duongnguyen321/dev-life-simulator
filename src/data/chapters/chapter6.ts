@@ -614,6 +614,7 @@ export const chapter6Dialogues: Record<Chapter6DialogueID, DialogueNode> = {
 			'(Lôi giấy tờ ra) Các anh ơi, em có giấy phép "Công ty Ma" của bố em. Vốn điều lệ 20 tỷ trên giấy. Firewall uy tín cực lớn với đối tác!',
 		textEn:
 			'(Pulling out papers) Bros, I have Father\'s "Ghost Company" license. 20 billion charter capital on paper. Huge credibility Firewall!',
+		flags: [{ key: FlagID.IS_FOUNDER, value: true }],
 		effects: [{ stat: StatID.VISION, value: 1 }],
 		next: Chapter6DialogueID.CH6_FRAUD_START,
 	},

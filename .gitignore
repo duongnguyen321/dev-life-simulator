@@ -26,6 +26,12 @@ dist-ssr
 # Electron
 out/
 dist_electron/
+electron-dist/
+release/
+*.dmg
+*.exe
+*.blockmap
+build/
 
 # Capacitor
 android/

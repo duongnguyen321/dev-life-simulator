@@ -674,6 +674,26 @@ export enum RandomEventID {
 	EVT_TEEN_CHEAT = 'evt_teen_cheat',
 	EVT_TEEN_CHEAT_COPY = 'evt_teen_cheat_copy',
 	EVT_TEEN_CHEAT_STUDY = 'evt_teen_cheat_study',
+	// Chapter 8 Events
+	EVT_AI_DEBATE = 'evt_ai_debate',
+	EVT_AI_DEBATE_ENGAGE = 'evt_ai_debate_engage',
+	EVT_AI_DEBATE_SHUTDOWN = 'evt_ai_debate_shutdown',
+	EVT_HEART_SCARE = 'evt_heart_scare',
+	EVT_HEART_SCARE_REST = 'evt_heart_scare_rest',
+	EVT_HEART_SCARE_WORK = 'evt_heart_scare_work',
+	// Chapter 9 Events
+	EVT_OLD_FRIEND_PASS = 'evt_old_friend_pass',
+	EVT_OLD_FRIEND_FUNERAL = 'evt_old_friend_funeral',
+	EVT_OLD_FRIEND_WORK = 'evt_old_friend_work',
+	EVT_BIOGRAPHY = 'evt_biography',
+	EVT_BIOGRAPHY_ACCEPT = 'evt_biography_accept',
+	EVT_BIOGRAPHY_DECLINE = 'evt_biography_decline',
+	EVT_GRANDCHILD_TECH = 'evt_grandchild_tech',
+	EVT_GRANDCHILD_EXPLAIN = 'evt_grandchild_explain',
+	EVT_GRANDCHILD_GRUMPY = 'evt_grandchild_grumpy',
+	EVT_LIFETIME_AWARD = 'evt_lifetime_award',
+	EVT_LIFETIME_RECEIVE = 'evt_lifetime_receive',
+	EVT_LIFETIME_SKIP = 'evt_lifetime_skip',
 }
 
 export enum Chapter1SceneID {

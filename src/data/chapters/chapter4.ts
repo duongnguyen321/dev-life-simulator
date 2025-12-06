@@ -737,6 +737,7 @@ export const chapter4Dialogues: Record<Chapter4DialogueID, DialogueNode> = {
 			'Khách hàng hài lòng và chuyển khoản ngay lập tức. 2 triệu đồng - đủ sống cả tháng sinh viên!',
 		textEn:
 			'Client satisfied and transferred money immediately. 2 million - enough for a whole student month!',
+		flags: [{ key: FlagID.FREELANCE_INCOME, value: 500, operation: 'add' }],
 		next: Chapter4DialogueID.CH4_SITUATION_ESTIMATE, // Start Quiz Chunk 1
 	},
 

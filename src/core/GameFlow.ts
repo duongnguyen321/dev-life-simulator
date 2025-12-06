@@ -119,7 +119,12 @@ export class GameFlow {
 		// Apply flag changes
 		if (choice.flags) {
 			choice.flags.forEach((flag) => {
-				store.setFlag(flag.key, flag.value);
+				if (flag.operation === 'add' && typeof flag.value === 'number') {
+					const currentVal = (store.flags[flag.key] as number) || 0;
+					store.setFlag(flag.key, currentVal + flag.value);
+				} else {
+					store.setFlag(flag.key, flag.value);
+				}
 			});
 		}
 
@@ -215,6 +220,18 @@ export class GameFlow {
 		if (dialogue.effects) {
 			dialogue.effects.forEach((effect) => {
 				store.updateStat(effect.stat, effect.value);
+			});
+		}
+
+		// Apply flag changes (NEW)
+		if (dialogue.flags) {
+			dialogue.flags.forEach((flag) => {
+				if (flag.operation === 'add' && typeof flag.value === 'number') {
+					const currentVal = (store.flags[flag.key] as number) || 0;
+					store.setFlag(flag.key, currentVal + flag.value);
+				} else {
+					store.setFlag(flag.key, flag.value);
+				}
 			});
 		}
 

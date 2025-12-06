@@ -10,6 +10,7 @@ import {
 	Chapter3TodoID,
 	Chapter4DialogueID,
 	ConditionType,
+	FlagID,
 	StatID,
 } from '../enum';
 import { type Chapter, type DialogueNode } from '../types';
@@ -612,6 +613,7 @@ export const chapter3Dialogues: Record<Chapter3DialogueID, DialogueNode> = {
 		text: 'Code bị lỗi. Màn hình đỏ rực. Stack trace dài như sợi mì.',
 		textVi: 'Code bị lỗi. Màn hình đỏ rực. Stack trace dài như sợi mì.',
 		textEn: 'Code has error. Red screen. Long stack trace.',
+		flags: [{ key: FlagID.BUGS_FIXED, value: 1, operation: 'add' }],
 		choices: [
 			{
 				id: 'choice_debug_google',
@@ -691,6 +693,7 @@ export const chapter3Dialogues: Record<Chapter3DialogueID, DialogueNode> = {
 			'Bạn hoàn thành dự án. Tuy chỉ là web tĩnh đơn giản nhưng cầm 1 triệu trong tay, bạn thấy mình như Bill Gates.',
 		textEn:
 			'You finished the project. Just a simple static site, but holding 1 million, you feel like Bill Gates.',
+		flags: [{ key: FlagID.FREELANCE_INCOME, value: 500, operation: 'add' }],
 		next: Chapter3DialogueID.CH3_QUIZ_FE_BE, // Start Quiz Chunk 2
 	},
 	[Chapter3DialogueID.CH3_LEARN_TIME]: {

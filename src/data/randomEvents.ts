@@ -1195,4 +1195,198 @@ export const randomEvents: RandomEvent[] = [
 			},
 		],
 	},
+	// Chapter 8 Events (New)
+	{
+		id: RandomEventID.EVT_AI_DEBATE,
+		name: 'AI Debate',
+		nameVi: 'Tranh luận với AI',
+		nameEn: 'Debate with AI',
+		description: 'AI do bạn tạo ra bắt đầu đặt câu hỏi về sự tồn tại.',
+		descriptionVi: 'AI do bạn tạo ra bắt đầu đặt câu hỏi về sự tồn tại.',
+		descriptionEn: 'Your AI starts questioning existentialism.',
+		probability: 0.1,
+		minChapter: 8,
+		maxChapter: 8,
+		choices: [
+			{
+				id: RandomEventID.EVT_AI_DEBATE_ENGAGE,
+				text: 'Tranh luận nghiêm túc',
+				textVi: 'Tranh luận nghiêm túc',
+				textEn: 'Debate seriously',
+				next: '',
+				effects: [{ stat: StatID.VISION, value: 10 }], // Wisdom
+			},
+			{
+				id: RandomEventID.EVT_AI_DEBATE_SHUTDOWN,
+				text: 'Reset hệ thống',
+				textVi: 'Reset hệ thống',
+				textEn: 'System Reset',
+				next: '',
+				effects: [{ stat: StatID.STEELMIND, value: 5 }], // Control
+			},
+		],
+	},
+	{
+		id: RandomEventID.EVT_HEART_SCARE,
+		name: 'Heart Scare',
+		nameVi: 'Cơn đau thắt ngực',
+		nameEn: 'Chest Pain',
+		description: 'Cảnh báo từ bác sĩ: "Ông cần nghỉ ngơi ngay lập tức."',
+		descriptionVi: 'Cảnh báo từ bác sĩ: "Ông cần nghỉ ngơi ngay lập tức."',
+		descriptionEn: 'Doctor warns: "You need rest immediately."',
+		probability: 0.1,
+		minChapter: 8,
+		maxChapter: 8,
+		choices: [
+			{
+				id: RandomEventID.EVT_HEART_SCARE_REST,
+				text: 'Nghỉ ngơi 1 tuần',
+				textVi: 'Nghỉ ngơi 1 tuần',
+				textEn: 'Rest for a week',
+				next: '',
+				effects: [
+					{ stat: StatID.HEALTH, value: 10 },
+					{ stat: StatID.VISION, value: -5 }, // Delay
+				],
+			},
+			{
+				id: RandomEventID.EVT_HEART_SCARE_WORK,
+				text: 'Uống thuốc rồi làm tiếp',
+				textVi: 'Uống thuốc rồi làm tiếp',
+				textEn: 'Take pills and work',
+				next: '',
+				effects: [
+					{ stat: StatID.HEALTH, value: -20 },
+					{ stat: StatID.STEELMIND, value: 5 },
+				],
+			},
+		],
+	},
+	// Chapter 9 Events (New)
+	{
+		id: RandomEventID.EVT_OLD_FRIEND_PASS,
+		name: 'Old Friend Passes',
+		nameVi: 'Tin buồn từ bạn cũ',
+		nameEn: 'Sad news from old friend',
+		description: 'Một người bạn đồng nghiệp năm xưa vừa qua đời.',
+		descriptionVi: 'Một người bạn đồng nghiệp năm xưa vừa qua đời.',
+		descriptionEn: 'An old colleague passed away.',
+		probability: 0.1,
+		minChapter: 9,
+		maxChapter: 9,
+		choices: [
+			{
+				id: RandomEventID.EVT_OLD_FRIEND_FUNERAL,
+				text: 'Đi viếng và suy ngẫm',
+				textVi: 'Đi viếng và suy ngẫm',
+				textEn: 'Attend funeral and reflect',
+				next: '',
+				effects: [{ stat: StatID.HUMANITY, value: 10 }],
+			},
+			{
+				id: RandomEventID.EVT_OLD_FRIEND_WORK,
+				text: 'Gửi hoa, tiếp tục làm việc',
+				textVi: 'Gửi hoa, tiếp tục làm việc',
+				textEn: 'Send flowers, keep working',
+				next: '',
+				effects: [{ stat: StatID.STEELMIND, value: 5 }],
+			},
+		],
+	},
+	{
+		id: RandomEventID.EVT_BIOGRAPHY,
+		name: 'Biography',
+		nameVi: 'Lời mời viết tiểu sử',
+		nameEn: 'Biography Offer',
+		description: 'Nhà báo nổi tiếng muốn viết sách về cuộc đời bạn.',
+		descriptionVi: 'Nhà báo nổi tiếng muốn viết sách về cuộc đời bạn.',
+		descriptionEn: 'Famous journalist wants to write your biography.',
+		probability: 0.1,
+		minChapter: 9,
+		maxChapter: 9,
+		choices: [
+			{
+				id: RandomEventID.EVT_BIOGRAPHY_ACCEPT,
+				text: 'Đồng ý',
+				textVi: 'Đồng ý',
+				textEn: 'Accept',
+				next: '',
+				effects: [
+					{ stat: StatID.VISION, value: 10 }, // Legacy
+					{ stat: StatID.MONEY, value: 100000000 }, // Royalties
+				],
+			},
+			{
+				id: RandomEventID.EVT_BIOGRAPHY_DECLINE,
+				text: 'Từ chối: Đời tư là của tôi',
+				textVi: 'Từ chối: Đời tư là của tôi',
+				textEn: 'Decline: Privacy first',
+				next: '',
+				effects: [{ stat: StatID.STEELMIND, value: 5 }],
+			},
+		],
+	},
+	{
+		id: RandomEventID.EVT_GRANDCHILD_TECH,
+		name: 'Grandchild Tech',
+		nameVi: 'Cháu hỏi về "đồ cổ"',
+		nameEn: 'Grandchild asks about "antiques"',
+		description:
+			'Cháu nội cầm cái iPhone 15 cũ của bạn: "Cái cục gạch này là gì hả ông?"',
+		descriptionVi:
+			'Cháu nội cầm cái iPhone 15 cũ của bạn: "Cái cục gạch này là gì hả ông?"',
+		descriptionEn:
+			'Grandchild holds your old iPhone 15: "What is this brick, Grandpa?"',
+		probability: 0.1,
+		minChapter: 9,
+		maxChapter: 9,
+		choices: [
+			{
+				id: RandomEventID.EVT_GRANDCHILD_EXPLAIN,
+				text: 'Kiên nhẫn giải thích lịch sử',
+				textVi: 'Kiên nhẫn giải thích lịch sử',
+				textEn: 'Patiently explain history',
+				next: '',
+				effects: [{ stat: StatID.HUMANITY, value: 5 }],
+			},
+			{
+				id: RandomEventID.EVT_GRANDCHILD_GRUMPY,
+				text: 'Càu nhàu: "Tụi bây sướng quá hóa rồ"',
+				textVi: 'Càu nhàu: "Tụi bây sướng quá hóa rồ"',
+				textEn: 'Grumble: "Kids these days"',
+				next: '',
+				effects: [{ stat: StatID.STEELMIND, value: 2 }],
+			},
+		],
+	},
+	{
+		id: RandomEventID.EVT_LIFETIME_AWARD,
+		name: 'Lifetime Achievement',
+		nameVi: 'Giải thưởng Thành tựu trọn đời',
+		nameEn: 'Lifetime Achievement Award',
+		description: 'Hiệp hội Công nghệ vinh danh bạn.',
+		descriptionVi: 'Hiệp hội Công nghệ vinh danh bạn.',
+		descriptionEn: 'Tech Association honors you.',
+		probability: 0.05,
+		minChapter: 9,
+		maxChapter: 9,
+		choices: [
+			{
+				id: RandomEventID.EVT_LIFETIME_RECEIVE,
+				text: 'Đến nhận giải: Một chút tự hào',
+				textVi: 'Đến nhận giải: Một chút tự hào',
+				textEn: 'Accept: A bit of pride',
+				next: '',
+				effects: [{ stat: StatID.VISION, value: 20 }], // Legacy
+			},
+			{
+				id: RandomEventID.EVT_LIFETIME_SKIP,
+				text: 'Vắng mặt: Hư danh thôi',
+				textVi: 'Vắng mặt: Hư danh thôi',
+				textEn: 'Absent: Just vanity',
+				next: '',
+				effects: [{ stat: StatID.STEELMIND, value: 10 }], // Humble/Stoic
+			},
+		],
+	},
 ];
