@@ -4,6 +4,7 @@ import { useGameStore } from '@/store/gameStore';
 import { EndingSystem } from '@/core/EndingSystem';
 import { achievements as allAchievements } from '@/data/achievements';
 import { audioManager } from '@/core/AudioManager';
+import BuyMeCoffee from '@/components/UI/BuyMeCoffee';
 
 export default function EndingScreen() {
 	const navigate = useNavigate();
@@ -302,6 +303,11 @@ export default function EndingScreen() {
 									? 'Game dựa trên câu chuyện có thật 100% không cắt gọt chỉnh sửa'
 									: 'Based on a 100% true story, uncut and unedited'}
 							</div>
+						</div>
+
+						{/* Buy Me a Coffee Support */}
+						<div className='max-w-2xl mx-auto'>
+							<BuyMeCoffee variant='banner' />
 						</div>
 
 						<div className='flex flex-col sm:flex-row gap-4 justify-center'>

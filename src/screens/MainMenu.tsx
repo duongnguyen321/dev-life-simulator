@@ -5,6 +5,8 @@ import { saveSystem } from '@/core/SaveSystem';
 import { useGameStore } from '@/store/gameStore';
 import { audioManager } from '@/core/AudioManager';
 import SettingsModal from '@/components/UI/SettingsModal';
+import BuyMeCoffee from '@/components/UI/BuyMeCoffee';
+import AdBanner from '@/components/UI/AdBanner';
 
 export default function MainMenu() {
 	const navigate = useNavigate();
@@ -87,15 +89,24 @@ export default function MainMenu() {
 				initial={{ opacity: 0 }}
 				animate={{ opacity: 1 }}
 				transition={{ delay: 1, duration: 0.5 }}
-				className='absolute bottom-8 text-center space-y-2'
+				className='absolute bottom-8 w-full px-4 space-y-3'
 			>
-				<div className='text-text-primary opacity-50 text-sm'>
-					Version 1.0.0 - Made with ❤️ and Code
-				</div>
-				<div className='text-text-primary opacity-40 text-xs uppercase tracking-widest'>
-					{isVi
-						? 'Game dựa trên câu chuyện có thật 100% không cắt gọt chỉnh sửa'
-						: 'Based on a 100% true story, uncut and unedited'}
+				{/* Buy Me a Coffee Banner */}
+				<BuyMeCoffee variant='banner' />
+
+				{/* Ad Banner */}
+				<AdBanner position='bottom' />
+
+				{/* Version Info */}
+				<div className='text-center space-y-2'>
+					<div className='text-text-primary opacity-50 text-sm'>
+						Version 1.0.0 - Made with ❤️ and Code
+					</div>
+					<div className='text-text-primary opacity-40 text-xs uppercase tracking-widest'>
+						{isVi
+							? 'Game dựa trên câu chuyện có thật 100% không cắt gọt chỉnh sửa'
+							: 'Based on a 100% true story, uncut and unedited'}
+					</div>
 				</div>
 			</motion.div>
 

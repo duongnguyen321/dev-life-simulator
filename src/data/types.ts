@@ -410,6 +410,7 @@ export interface GameSettings {
 	musicVolume: number; // 0-1
 	sfxVolume: number; // 0-1
 	textSpeed: number; // 0-100
+	showSupportBanner?: boolean; // Show/hide "Buy Me a Coffee" banners
 }
 
 // Ending Type

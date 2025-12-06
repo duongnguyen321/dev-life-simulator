@@ -131,6 +131,61 @@ export default function SettingsModal({ isOpen, onClose }: SettingsModalProps) {
 								className='w-full h-2 bg-gray-700 rounded-lg appearance-none cursor-pointer accent-steel-mind'
 							/>
 						</div>
+
+						{/* Support Developer Section */}
+						<div className='space-y-3 pt-4 border-t-2 border-gray-700'>
+							<label className='pixel-font text-humanity block text-center'>
+								{settings.language === 'vi'
+									? '☕ Hỗ Trợ Nhà Phát Triển'
+									: '☕ Support Developer'}
+							</label>
+
+							{/* Toggle Support Banner */}
+							<div className='flex justify-between items-center'>
+								<span className='text-text-primary text-sm'>
+									{settings.language === 'vi'
+										? 'Hiển thị banner hỗ trợ'
+										: 'Show support banner'}
+								</span>
+								<button
+									onClick={() =>
+										updateSettings({
+											showSupportBanner: !settings.showSupportBanner,
+										})
+									}
+									className={`w-12 h-6 rounded-full transition-colors border-2 ${
+										settings.showSupportBanner !== false
+											? 'bg-vision border-vision'
+											: 'bg-gray-700 border-gray-600'
+									}`}
+								>
+									<div
+										className={`w-4 h-4 bg-white rounded-full transition-transform ${
+											settings.showSupportBanner !== false
+												? 'translate-x-6'
+												: 'translate-x-1'
+										}`}
+									/>
+								</button>
+							</div>
+
+							{/* Buy Me a Coffee Button */}
+							<button
+								onClick={() =>
+									window.open(
+										'https://www.buymeacoffee.com/donkey321',
+										'_blank',
+										'noopener,noreferrer'
+									)
+								}
+								className='w-full py-2 bg-gradient-to-r from-vision to-humanity border-2 border-vision text-white pixel-font hover:opacity-80 transition-opacity'
+							>
+								☕{' '}
+								{settings.language === 'vi'
+									? 'Mua Cà Phê Cho Tôi'
+									: 'Buy Me a Coffee'}
+							</button>
+						</div>
 					</div>
 
 					<div className='mt-8 flex justify-center'>
