@@ -636,7 +636,7 @@ export const chapter3Dialogues: Record<Chapter3DialogueID, DialogueNode> = {
 				text: 'Khóc và viết lại từ đầu',
 				textVi: 'Khóc và viết lại từ đầu',
 				textEn: 'Cry and rewrite',
-				effects: [{ stat: StatID.STRESS, value: 4 }],
+				effects: [{ stat: StatID.STRESS, value: 6 }],
 				next: Chapter3DialogueID.CH3_FREELANCE,
 			},
 		],
@@ -672,7 +672,7 @@ export const chapter3Dialogues: Record<Chapter3DialogueID, DialogueNode> = {
 				textEn: 'margin: 0 auto',
 				next: Chapter3DialogueID.CH3_FREELANCE_DONE,
 				effects: [
-					{ stat: StatID.MONEY, value: 1000000 },
+					{ stat: StatID.MONEY, value: 2000000 },
 					{ stat: StatID.VISION, value: 1 },
 				], // Correct answer
 			},
@@ -1324,7 +1324,10 @@ export const chapter3Dialogues: Record<Chapter3DialogueID, DialogueNode> = {
 				text: 'Duy nhất 1 thẻ H1 (Best Practice)',
 				textVi: 'Duy nhất 1 thẻ H1 (Best Practice)',
 				textEn: 'Only 1 H1 tag (Best Practice)',
-				effects: [{ stat: StatID.VISION, value: 5 }],
+				effects: [
+					{ stat: StatID.VISION, value: 5 },
+					{ stat: StatID.MONEY, value: 500000 },
+				],
 				next: Chapter3DialogueID.CH3_QUIZ_CSS_DISPLAY,
 			},
 			{
@@ -1356,7 +1359,10 @@ export const chapter3Dialogues: Record<Chapter3DialogueID, DialogueNode> = {
 				text: 'block (Chiếm hết chiều ngang)',
 				textVi: 'block (Chiếm hết chiều ngang)',
 				textEn: 'block (Takes full width)',
-				effects: [{ stat: StatID.VISION, value: 5 }],
+				effects: [
+					{ stat: StatID.VISION, value: 5 },
+					{ stat: StatID.MONEY, value: 500000 },
+				],
 				next: Chapter3DialogueID.CH3_QUIZ_JS_VAR,
 			},
 			{
@@ -1388,7 +1394,10 @@ export const chapter3Dialogues: Record<Chapter3DialogueID, DialogueNode> = {
 				text: 'Scope (Phạm vi) và khả năng gán lại (Reassignment)',
 				textVi: 'Scope (Phạm vi) và khả năng gán lại (Reassignment)',
 				textEn: 'Scope and Reassignment',
-				effects: [{ stat: StatID.VISION, value: 7 }],
+				effects: [
+					{ stat: StatID.VISION, value: 7 },
+					{ stat: StatID.MONEY, value: 1000000 },
+				],
 				next: Chapter3DialogueID.CH3_DORM_1, // End Quiz Chunk 1 -> Dorm
 			},
 			{
@@ -1413,7 +1422,10 @@ export const chapter3Dialogues: Record<Chapter3DialogueID, DialogueNode> = {
 				textVi:
 					'Giao diện người dùng (UI) và trải nghiệm (UX) trên trình duyệt',
 				textEn: 'User Interface (UI) and Experience (UX) in browser',
-				effects: [{ stat: StatID.VISION, value: 5 }],
+				effects: [
+					{ stat: StatID.VISION, value: 5 },
+					{ stat: StatID.MONEY, value: 500000 },
+				],
 				next: Chapter3DialogueID.CH3_QUIZ_API,
 			},
 			{
@@ -1437,7 +1449,10 @@ export const chapter3Dialogues: Record<Chapter3DialogueID, DialogueNode> = {
 				text: 'Application Programming Interface',
 				textVi: 'Application Programming Interface',
 				textEn: 'Application Programming Interface',
-				effects: [{ stat: StatID.VISION, value: 5 }],
+				effects: [
+					{ stat: StatID.VISION, value: 5 },
+					{ stat: StatID.MONEY, value: 500000 },
+				],
 				next: Chapter3DialogueID.CH3_LEARN_TIME, // End Quiz Chunk 2 -> Time Management
 			},
 			{
@@ -1461,7 +1476,10 @@ export const chapter3Dialogues: Record<Chapter3DialogueID, DialogueNode> = {
 				text: 'Type Coercion (Ép kiểu tự động): Số thành chuỗi',
 				textVi: 'Type Coercion (Ép kiểu tự động): Số thành chuỗi',
 				textEn: 'Type Coercion: Number to String',
-				effects: [{ stat: StatID.VISION, value: 7 }],
+				effects: [
+					{ stat: StatID.VISION, value: 7 },
+					{ stat: StatID.MONEY, value: 1000000 },
+				],
 				next: Chapter3DialogueID.CH3_QUIZ_HTTP,
 			},
 			{
@@ -1485,7 +1503,10 @@ export const chapter3Dialogues: Record<Chapter3DialogueID, DialogueNode> = {
 				text: 'Not Found (Không tìm thấy trang)',
 				textVi: 'Not Found (Không tìm thấy trang)',
 				textEn: 'Not Found',
-				effects: [{ stat: StatID.VISION, value: 5 }],
+				effects: [
+					{ stat: StatID.VISION, value: 5 },
+					{ stat: StatID.MONEY, value: 500000 },
+				],
 				next: Chapter3DialogueID.CH3_DEBT_1, // End Quiz Chunk 3 -> Debt Crisis
 			},
 			{
@@ -1509,7 +1530,10 @@ export const chapter3Dialogues: Record<Chapter3DialogueID, DialogueNode> = {
 				text: 'Mở Developer Tools (Console, Network, Elements)',
 				textVi: 'Mở Developer Tools (Console, Network, Elements)',
 				textEn: 'Open Developer Tools',
-				effects: [{ stat: StatID.VISION, value: 5 }],
+				effects: [
+					{ stat: StatID.VISION, value: 5 },
+					{ stat: StatID.MONEY, value: 500000 },
+				],
 				next: Chapter3DialogueID.CH3_QUIZ_VSCODE,
 			},
 			{
@@ -1533,7 +1557,10 @@ export const chapter3Dialogues: Record<Chapter3DialogueID, DialogueNode> = {
 				text: 'Shift + Alt + F (Windows) hoặc Shift + Option + F (Mac)',
 				textVi: 'Shift + Alt + F (Windows) hoặc Shift + Option + F (Mac)',
 				textEn: 'Shift + Alt + F (Win) / Shift + Opt + F (Mac)',
-				effects: [{ stat: StatID.VISION, value: 5 }],
+				effects: [
+					{ stat: StatID.VISION, value: 5 },
+					{ stat: StatID.MONEY, value: 500000 },
+				],
 				next: Chapter3DialogueID.CH3_QUIZ_GIT_INIT,
 			},
 			{
@@ -1557,7 +1584,10 @@ export const chapter3Dialogues: Record<Chapter3DialogueID, DialogueNode> = {
 				text: 'git init',
 				textVi: 'git init',
 				textEn: 'git init',
-				effects: [{ stat: StatID.VISION, value: 5 }],
+				effects: [
+					{ stat: StatID.VISION, value: 5 },
+					{ stat: StatID.MONEY, value: 500000 },
+				],
 				next: Chapter3DialogueID.CH3_SELL_ITEMS_START, // End Quiz Chunk 4 -> Sell Items
 			},
 			{

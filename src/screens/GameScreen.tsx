@@ -465,13 +465,21 @@ export default function GameScreen() {
 		);
 	}
 
+	// Helpers to resolve asset paths (strip leading slash for relative path usage)
+	const resolvePath = (path?: string) => {
+		if (!path) return '';
+		return path.startsWith('/') ? path.substring(1) : path;
+	};
+
 	// Determine background path
-	const backgroundPath = scene.background.startsWith('/')
+	const rawBackground = scene.background.startsWith('/')
 		? scene.background
 		: `/assets/sprites/backgrounds/${scene.background}`;
+	const backgroundPath = resolvePath(rawBackground);
 
 	// Determine character sprite
-	const characterSprite = speaker?.sprites?.neutral || speaker?.sprites?.idle;
+	const rawSprite = speaker?.sprites?.neutral || speaker?.sprites?.idle;
+	const characterSprite = resolvePath(rawSprite);
 
 	return (
 		<div className='w-full h-full relative overflow-hidden'>

@@ -50,7 +50,7 @@ class AudioManager {
 
 		const filename = chapterThemes[chapter] || `ch${chapter}_theme`;
 		// Update path to match user's data structure
-		const trackPath = `/assets/audio/music/chapters/${filename}.mp3`;
+		const trackPath = `assets/audio/music/chapters/${filename}.mp3`;
 
 		// Use the path as the key, because that's what GameScreen passes to playMusic
 		const trackName = trackPath;
@@ -70,9 +70,6 @@ class AudioManager {
 	/**
 	 * Play background music with crossfade
 	 */
-	/**
-	 * Play background music with crossfade
-	 */
 	playMusic(name: string, fadeTime: number = 2000): void {
 		// Don't replay if already playing
 		if (this.currentMusicName === name && this.currentMusic?.playing()) {
@@ -85,8 +82,8 @@ class AudioManager {
 		if (!track) {
 			// Special mappings
 			const musicMapping: Record<string, string> = {
-				menu: '/assets/audio/music/menu.mp3',
-				ending: '/assets/audio/music/ending.mp3',
+				menu: 'assets/audio/music/menu.mp3',
+				ending: 'assets/audio/music/ending.mp3',
 			};
 
 			const path =
@@ -172,7 +169,7 @@ class AudioManager {
 
 			// Auto-load SFX on first play
 			sound = new Howl({
-				src: [`/audio/sfx/${filename}`],
+				src: [`assets/audio/sfx/${filename}`],
 				volume: volume ?? this._sfxVolume,
 			});
 			this.sfx.set(name, sound);
@@ -203,7 +200,7 @@ class AudioManager {
 			if (!this.sfx.has(name)) {
 				const filename = sfxMapping[name] || `${name}.wav`;
 				const sound = new Howl({
-					src: [`/audio/sfx/${filename}`],
+					src: [`assets/audio/sfx/${filename}`],
 					volume: this._sfxVolume,
 					preload: true,
 				});

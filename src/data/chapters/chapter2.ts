@@ -94,7 +94,7 @@ export const chapter2: Chapter = {
 				textVi: 'Gánh nước giếng',
 				textEn: 'Carry well water',
 				effects: [{ stat: StatID.HEALTH, value: 4 }],
-				cost: { stress: 5, health: 2 }, // Increased Stress cost, physical labor
+				cost: { stress: 8, health: 2 }, // Increased Stress cost, physical labor
 			},
 			{
 				id: 'ch2_todo_study_late',
@@ -110,7 +110,7 @@ export const chapter2: Chapter = {
 				textVi: 'Trốn trong nhà khi chủ nợ đến',
 				textEn: 'Hide when debt collectors come',
 				effects: [{ stat: StatID.STEELMIND, value: 3 }],
-				cost: { stress: 10 }, // High stress
+				cost: { stress: 15 }, // High stress
 			},
 			{
 				id: 'ch2_todo_read_book',
@@ -125,7 +125,7 @@ export const chapter2: Chapter = {
 				textVi: 'Lờ đi lời trêu chọc của hàng xóm',
 				textEn: 'Ignore neighbors mocking',
 				effects: [{ stat: StatID.STEELMIND, value: 3 }],
-				cost: { stress: 5 }, // Increased stress
+				cost: { stress: 8 }, // Increased stress
 			},
 			{
 				id: 'ch2_todo_help_mom',
@@ -140,14 +140,13 @@ export const chapter2: Chapter = {
 				textVi: 'Nhớ bố',
 				textEn: 'Miss Dad',
 				effects: [{ stat: StatID.HUMANITY, value: 3 }],
-				cost: { stress: 5 }, // Increased stress
+				cost: { stress: 8 }, // Increased stress
 			},
 			{
 				id: 'ch2_todo_look_mirror',
 				text: 'Nhìn mình trong gương',
 				textVi: 'Nhìn mình trong gương',
 				textEn: 'Look in the mirror',
-				effects: [{ stat: StatID.VISION, value: 1 }], // Tự nhủ phải thành công
 			},
 
 			{
@@ -170,7 +169,6 @@ export const chapter2: Chapter = {
 				text: 'Nặn đất sét',
 				textVi: 'Nặn đất sét',
 				textEn: 'Play with clay',
-				effects: [{ stat: StatID.VISION, value: 1 }], // Sáng tạo
 			},
 
 			{
@@ -272,7 +270,6 @@ export const chapter2: Chapter = {
 						textVi: 'Leo lên lái nó',
 						textEn: 'Climb in and drive',
 						next: '',
-						effects: [{ stat: StatID.VISION, value: 1 }],
 					},
 					{
 						id: 'ch2_dream_car_run',
@@ -352,7 +349,7 @@ export const chapter2: Chapter = {
 						textVi: 'Hét lên',
 						textEn: 'Scream',
 						next: '',
-						effects: [{ stat: StatID.STRESS, value: 2 }],
+						effects: [{ stat: StatID.STRESS, value: 4 }],
 					},
 					{
 						id: 'ch2_dream_falling_fly',

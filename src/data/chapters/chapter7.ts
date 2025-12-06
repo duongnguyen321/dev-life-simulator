@@ -570,6 +570,7 @@ export const chapter7Dialogues: Record<Chapter7DialogueID, DialogueNode> = {
 		textVi: 'Bạn chốt lời thành công. Một khoản thu nhập thụ động nhỏ.',
 		textEn:
 			'You poured money into stocks. The market is volatile, but you believe in your vision.',
+		effects: [{ stat: StatID.MONEY, value: 500000000 }],
 		next: Chapter7DialogueID.CH7_ADVISORY, // Redirect to Advisory
 	},
 
