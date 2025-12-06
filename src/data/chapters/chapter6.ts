@@ -854,7 +854,7 @@ export const chapter6Dialogues: Record<Chapter6DialogueID, DialogueNode> = {
 			{ stat: StatID.HUMANITY, value: -5 },
 			{ stat: StatID.VISION, value: -3 },
 		],
-		next: Chapter6DialogueID.CH6_PERSONNEL_1,
+		next: Chapter6DialogueID.CH6_STAFF_QUIT_CHECK,
 	},
 
 	// 6.2 Personnel Crisis
@@ -922,7 +922,7 @@ export const chapter6Dialogues: Record<Chapter6DialogueID, DialogueNode> = {
 			'(Ngồi lại một mình, nhìn cậu ấy bỏ đi dưới mưa) Bài học quản trị tàn khốc đầu tiên: Làm sếp là phải biết ác...',
 		textEn:
 			'(Sitting alone, watching him walk away in rain) First cruel management lesson: To be a boss is to be ruthless...',
-		next: Chapter6DialogueID.CH6_STAFF_QUIT_CHECK, // Start Quiz Chunk 3
+		next: Chapter6DialogueID.CH6_CONSULTING, // Start Quiz Chunk 3
 	},
 
 	// NEW: Big Contract Event
@@ -963,19 +963,6 @@ export const chapter6Dialogues: Record<Chapter6DialogueID, DialogueNode> = {
 				},
 				next: Chapter6DialogueID.CH6_STAFF_QUIT_BAD,
 			},
-			{
-				id: 'choice_staff_quit_check_ok',
-				text: 'Mọi người vẫn làm việc chăm chỉ.',
-				textVi: 'Mọi người vẫn làm việc chăm chỉ.',
-				textEn: 'Everyone is working hard.',
-				condition: {
-					type: ConditionType.FLAG,
-					key: FlagID.CHEAP_TEAM_BUILDING,
-					operator: Operator.NOT_EQUAL,
-					value: true,
-				},
-				next: Chapter6DialogueID.CH6_CONSULTING,
-			},
 		],
 	},
 	[Chapter6DialogueID.CH6_STAFF_QUIT_BAD]: {
@@ -998,7 +985,7 @@ export const chapter6Dialogues: Record<Chapter6DialogueID, DialogueNode> = {
 			{ stat: StatID.MONEY, value: -50000000 },
 			{ stat: StatID.VISION, value: -3 },
 		],
-		next: Chapter6DialogueID.CH6_CONSULTING,
+		next: Chapter6DialogueID.CH6_PERSONNEL_1,
 	},
 
 	// 6.3 Market

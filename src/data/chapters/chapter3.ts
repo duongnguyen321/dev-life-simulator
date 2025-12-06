@@ -1548,9 +1548,9 @@ export const chapter3Dialogues: Record<Chapter3DialogueID, DialogueNode> = {
 	},
 	[Chapter3DialogueID.CH3_QUIZ_GIT_INIT]: {
 		speaker: 'narrator',
-		text: 'Quiz 10: Lệnh nào để khởi tạo một Git repository mới?',
-		textVi: 'Quiz 10: Lệnh nào để khởi tạo một Git repository mới?',
-		textEn: 'Quiz 10: Which command initializes a new Git repository?',
+		text: 'Lệnh nào để khởi tạo một Git repository mới?',
+		textVi: 'Lệnh nào để khởi tạo một Git repository mới?',
+		textEn: 'Which command initializes a new Git repository?',
 		choices: [
 			{
 				id: 'quiz_git_init',
