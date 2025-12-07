@@ -23,11 +23,16 @@ dist-ssr
 *.sln
 *.sw?
 
-# Electron
+# Electron build output
 out/
 dist_electron/
 electron-dist/
 release/
+
+# Release artifacts
+publish/*
+!publish/README.md
+!publish/.gitkeep
 *.dmg
 *.exe
 *.blockmap

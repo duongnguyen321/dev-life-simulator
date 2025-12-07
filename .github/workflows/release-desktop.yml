@@ -1,0 +1,83 @@
+name: Release Desktop Apps
+
+on:
+  push:
+    tags:
+      - 'v*'
+  workflow_dispatch:
+
+jobs:
+  create-release:
+    runs-on: ubuntu-latest
+    outputs:
+      upload_url: ${{ steps.create_release.outputs.upload_url }}
+    steps:
+      - name: Create Release
+        id: create_release
+        uses: actions/create-release@v1
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        with:
+          tag_name: ${{ github.ref }}
+          release_name: DevLife Simulator ${{ github.ref_name }}
+          draft: false
+          prerelease: false
+
+  release-macos:
+    needs: create-release
+    runs-on: macos-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Setup Bun
+        uses: oven-sh/setup-bun@v1
+
+      - name: Install dependencies
+        run: bun install
+
+      - name: Build macOS DMG
+        run: bun run release:macos
+
+      - name: Get DMG filename
+        id: get_dmg
+        run: echo "DMG_FILE=$(ls release/*.dmg | head -1)" >> $GITHUB_OUTPUT
+
+      - name: Upload macOS DMG
+        uses: actions/upload-release-asset@v1
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        with:
+          upload_url: ${{ needs.create-release.outputs.upload_url }}
+          asset_path: ${{ steps.get_dmg.outputs.DMG_FILE }}
+          asset_name: DevLife-Simulator-macOS-${{ github.ref_name }}.dmg
+          asset_content_type: application/octet-stream
+
+  release-windows:
+    needs: create-release
+    runs-on: windows-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Setup Bun
+        uses: oven-sh/setup-bun@v1
+
+      - name: Install dependencies
+        run: bun install
+
+      - name: Build Windows installer
+        run: bun run release:windows
+
+      - name: Get EXE filename
+        id: get_exe
+        shell: bash
+        run: echo "EXE_FILE=$(ls release/*.exe | head -1)" >> $GITHUB_OUTPUT
+
+      - name: Upload Windows installer
+        uses: actions/upload-release-asset@v1
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        with:
+          upload_url: ${{ needs.create-release.outputs.upload_url }}
+          asset_path: ${{ steps.get_exe.outputs.EXE_FILE }}
+          asset_name: DevLife-Simulator-Windows-${{ github.ref_name }}.exe
+          asset_content_type: application/octet-stream
