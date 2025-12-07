@@ -5,12 +5,14 @@ interface SceneProps {
 	background: string;
 	children: ReactNode;
 	transition?: boolean;
+	onClick?: (e: React.MouseEvent) => void;
 }
 
 export default function Scene({
 	background,
 	children,
 	transition = true,
+	onClick,
 }: SceneProps) {
 	return (
 		<motion.div
@@ -19,6 +21,7 @@ export default function Scene({
 			animate={{ opacity: 1 }}
 			exit={{ opacity: 0 }}
 			transition={{ duration: 0.5 }}
+			onClick={onClick}
 			style={{
 				width: '100%',
 				height: '100vh',

@@ -31,6 +31,7 @@ export default function DreamModal({
 				initial={{ opacity: 0 }}
 				animate={{ opacity: 1 }}
 				exit={{ opacity: 0 }}
+				onClick={(e) => e.stopPropagation()}
 				className='fixed inset-0 z-[60] flex items-center justify-center bg-black text-white'
 			>
 				<div className='max-w-2xl w-full p-8 text-center'>

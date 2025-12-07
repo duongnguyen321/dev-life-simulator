@@ -89,7 +89,7 @@ export default function MainMenu() {
 				initial={{ opacity: 0 }}
 				animate={{ opacity: 1 }}
 				transition={{ delay: 1, duration: 0.5 }}
-				className='absolute bottom-8 w-full px-4 space-y-3'
+				className='mt-8 md:mt-12 w-full px-4 space-y-3 mb-8'
 			>
 				{/* Buy Me a Coffee Banner */}
 				<BuyMeCoffee variant='banner' />
@@ -99,10 +99,10 @@ export default function MainMenu() {
 
 				{/* Version Info */}
 				<div className='text-center space-y-2'>
-					<div className='text-text-primary opacity-50 text-sm'>
+					<div className='text-text-primary opacity-50 text-xs md:text-sm'>
 						Version 1.0.0 - Made with ❤️ and Code
 					</div>
-					<div className='text-text-primary opacity-40 text-xs uppercase tracking-widest'>
+					<div className='text-text-primary opacity-40 text-[10px] md:text-xs uppercase tracking-widest'>
 						{isVi
 							? 'Game dựa trên câu chuyện có thật 100% không cắt gọt chỉnh sửa'
 							: 'Based on a 100% true story, uncut and unedited'}

@@ -65,7 +65,10 @@ export default function SkillModal({ isOpen, onClose }: SkillModalProps) {
 	};
 
 	return (
-		<div className='fixed inset-0 z-50 flex items-center justify-center bg-black/80 animate-fade-in'>
+		<div
+			onClick={(e) => e.stopPropagation()}
+			className='fixed inset-0 z-50 flex items-center justify-center bg-black/80 animate-fade-in'
+		>
 			<div className='bg-game-bg-primary w-full max-w-4xl h-[80vh] rounded-lg border-4 border-game-accent flex flex-col overflow-hidden'>
 				{/* Header */}
 				<div className='p-6 border-b-2 border-game-accent flex justify-between items-center bg-game-bg-secondary'>

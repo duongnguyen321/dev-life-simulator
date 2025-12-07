@@ -112,11 +112,12 @@ export default function DialogueBox({
 					? 'cursor-pointer'
 					: 'cursor-default'
 			}`}
-			onClick={
-				shuffledChoices.length === 0 && !isTyping
-					? handleContainerClick
-					: undefined
-			}
+			onClick={(e) => {
+				e.stopPropagation(); // Prevent click from propagating to Scene
+				if (shuffledChoices.length === 0 && !isTyping) {
+					handleContainerClick();
+				}
+			}}
 			style={{
 				backgroundColor: isReflection
 					? 'rgba(20, 20, 35, 0.95)'

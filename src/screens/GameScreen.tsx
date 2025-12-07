@@ -481,10 +481,26 @@ export default function GameScreen() {
 	const rawSprite = speaker?.sprites?.neutral || speaker?.sprites?.idle;
 	const characterSprite = resolvePath(rawSprite);
 
+	// Handler for click-anywhere to advance
+	const handleSceneClick = () => {
+		// Only advance if there are no choices (next is available)
+		if (!dialogue?.choices || dialogue.choices.length === 0) {
+			// Check if dialogue has a next
+			if (dialogue?.next) {
+				audioManager.resumeContext();
+				// Clear query params when advancing dialogue
+				if (searchParams.get('newgame')) {
+					navigate('/game', { replace: true });
+				}
+				GameFlow.advanceDialogue();
+			}
+		}
+	};
+
 	return (
 		<div className='w-full h-full relative overflow-hidden'>
 			{/* Game Scene */}
-			<Scene background={backgroundPath}>
+			<Scene background={backgroundPath} onClick={handleSceneClick}>
 				{/* Stats Bar */}
 				<div className='absolute top-4 right-4 z-10'>
 					<StatsBar stats={stats} />
@@ -493,7 +509,10 @@ export default function GameScreen() {
 				{/* Sleep Button & Controls */}
 				<div className='absolute top-4 left-4 z-30 flex flex-wrap gap-2 max-w-[calc(100%-280px)]'>
 					<button
-						onClick={handleExit}
+						onClick={(e) => {
+							e.stopPropagation();
+							handleExit();
+						}}
 						className='px-3 py-2 md:px-4 md:py-2 bg-gray-800/80 border-2 border-gray-600 text-white pixel-font hover:bg-gray-700 transition-colors rounded shadow-lg flex items-center gap-2 text-sm md:text-base'
 					>
 						<span>🏠</span>
@@ -502,7 +521,10 @@ export default function GameScreen() {
 						</span>
 					</button>
 					<button
-						onClick={handleSleepClick}
+						onClick={(e) => {
+							e.stopPropagation();
+							handleSleepClick();
+						}}
 						disabled={isReflection || currentDialogueId === 'SLEEP_FLOW'}
 						className={`px-3 py-2 md:px-4 md:py-2 border-2 text-white pixel-font transition-colors rounded shadow-lg flex items-center gap-2 text-sm md:text-base ${
 							isReflection || currentDialogueId === 'SLEEP_FLOW'
@@ -516,7 +538,10 @@ export default function GameScreen() {
 						</span>
 					</button>
 					<button
-						onClick={() => setShowSkillModal(true)}
+						onClick={(e) => {
+							e.stopPropagation();
+							setShowSkillModal(true);
+						}}
 						className='px-3 py-2 md:px-4 md:py-2 bg-emerald-900/80 border-2 border-emerald-400 text-white pixel-font hover:bg-emerald-800 transition-colors rounded shadow-lg flex items-center gap-2 text-sm md:text-base'
 					>
 						<span>⚡</span>
@@ -530,7 +555,8 @@ export default function GameScreen() {
 					{import.meta.env.DEV && (
 						<div className='flex gap-2'>
 							<button
-								onClick={() => {
+								onClick={(e) => {
+									e.stopPropagation();
 									const prevChapterId = currentChapter - 1;
 									if (prevChapterId >= 1) {
 										const prevChapter = chapters[prevChapterId];
@@ -552,7 +578,8 @@ export default function GameScreen() {
 								<span>Prev</span>
 							</button>
 							<button
-								onClick={() => {
+								onClick={(e) => {
+									e.stopPropagation();
 									const nextChapterId = currentChapter + 1;
 									const nextChapter = chapters[nextChapterId];
 									if (nextChapter) {

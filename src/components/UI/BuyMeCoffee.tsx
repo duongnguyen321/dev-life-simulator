@@ -31,9 +31,9 @@ export default function BuyMeCoffee({
 				transition={{ delay: 0.3 }}
 				className={`support-banner ${className}`}
 			>
-				<div className='bg-bg-secondary border-2 border-vision/50 rounded px-4 py-3 flex items-center justify-between gap-4 max-w-2xl mx-auto'>
-					<div className='flex-1 text-center md:text-left'>
-						<p className='text-text-primary text-sm md:text-base'>
+				<div className='bg-bg-secondary border-2 border-vision/50 rounded px-3 py-2 md:px-4 md:py-3 flex flex-col md:flex-row items-center justify-between gap-2 md:gap-4 max-w-2xl mx-auto'>
+					<div className='flex-1 text-center'>
+						<p className='text-text-primary text-xs md:text-sm lg:text-base'>
 							☕{' '}
 							{isVi
 								? 'Thích game này? Hỗ trợ nhà phát triển!'
@@ -44,7 +44,7 @@ export default function BuyMeCoffee({
 						whileHover={{ scale: 1.05 }}
 						whileTap={{ scale: 0.95 }}
 						onClick={handleClick}
-						className='pixel-font text-sm md:text-base px-4 py-2 bg-vision border-2 border-vision text-white hover:bg-vision/80 transition-colors whitespace-nowrap'
+						className='pixel-font text-xs md:text-sm px-3 py-1.5 md:px-4 md:py-2 bg-vision border-2 border-vision text-white hover:bg-vision/80 transition-colors whitespace-nowrap w-full md:w-auto'
 					>
 						{isVi ? '☕ Mua Cà Phê' : '☕ Buy Me a Coffee'}
 					</motion.button>
